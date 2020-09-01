@@ -228,27 +228,27 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
           
     
     @IBAction func register_now_btn(_ sender: Any) {
-       let isValidateName = validateName(name: fullName.text!)
+//       let isValidateName = validateName(name: fullName.text!)
         
         let temp = self.email_address.text!
         let x = isValidEmail1(testStr: temp)
         
-            if (isValidateName == false) {
+//            if (isValidateName == false) {
               //  SVProgressHUD.showError(withStatus: "Enter atleast 3 character UserName & with no Digits")
-                fullName.placeholderText = "Enter Full Name"
-                //fullName.font = UIFont(name: "Montserrat-Light", size: 10)
-//                fullName_img.image = UIImage(named: "errorIcon")
-                fullName.placeholderColor = UIColor.red
-            }else if  x == false {
+//                fullName.toolbarPlaceholder = "Enter Full Name"
+//                //fullName.font = UIFont(name: "Montserrat-Light", size: 10)
+////                fullName_img.image = UIImage(named: "errorIcon")
+//                fullName.placeholderColor = UIColor.red
+//            }else
+    if  x == false {
           //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
                            
-            email_address.text = "Enter Full Email Address"
-              email_address.textColor = UIColor.red
+            address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
-        } else if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) == false {
+        } else if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) == true {
                 
-            phone_no.text =  "Contact Phone No"
-               phone_no.textColor =  UIColor.red
+        address.attributedPlaceholder = NSAttributedString(string: "Please enter valid phone number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        
            //  SVProgressHUD.showError(withStatus: "Please Enter 11 digit Number start with 0 ")
                 
             }else if self.address.text == "" {
@@ -263,15 +263,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         }else{
             registerTransporter()
         }
-        
-//       else if phone_no.text != "" {
-//        if  {
-//
-//        } else {
-//        phone_no.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//
-//        }
-//        }
+    
     }
     
     //register function
