@@ -321,6 +321,9 @@ class JobDetailController: UIViewController, GMSMapViewDelegate, UITableViewDele
                                     self.HEADER_HEIGHT = 1420
                                 }
                             }
+                            
+                            
+                            
                             self.topView.frame.size = CGSize(width: self.tableView.frame.width, height: CGFloat(self.HEADER_HEIGHT))
                             self.tableView.tableHeaderView = self.topView
                             self.tableView.layoutIfNeeded()
