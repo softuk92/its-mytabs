@@ -1,0 +1,34 @@
+# Uncomment the next line to define a global platform for your project
+  platform :ios, '11.0'
+
+target 'LoadX Transporter' do
+  
+  use_frameworks!
+
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    pod 'SVProgressHUD'
+    pod 'GoogleMaps', '= 3.0.3'
+    pod 'GooglePlaces', '= 3.0.3'
+    pod 'PayPal-iOS-SDK/Core'
+	pod 'BmoViewPager'
+    pod 'SwiftSignatureView'
+    pod 'GoogleSignIn'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'SideMenu', '5.0.3'
+    pod 'IQKeyboardManagerSwift', '6.0.4'
+    pod 'IBAnimatable', '5.2.0'
+    pod 'DropDown', '2.3.12'
+    pod 'SDWebImage', '~> 4.0'
+    pod 'ZDCChat'
+    pod 'Cosmos', '~> 18.0'
+    pod 'YouTubePlayer'
+    pod 'SKPhotoBrowser', '6.1.0'
+    pod 'Siren'
+    pod 'XLPagerTabStrip', '~> 8.0'
+    pod 'SwiftyGif'
+    pod 'LabelSwitch'
+
+    
+end
