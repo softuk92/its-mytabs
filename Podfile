@@ -6,13 +6,13 @@ target 'LoadX Transporter' do
   use_frameworks!
 
     pod 'SwiftyJSON'
-    pod 'Alamofire'
+    pod 'Alamofire', '= 4.8.2'
     pod 'SVProgressHUD'
     pod 'GoogleMaps', '= 3.0.3'
     pod 'GooglePlaces', '= 3.0.3'
     pod 'PayPal-iOS-SDK/Core'
 	pod 'BmoViewPager'
-    pod 'SwiftSignatureView'
+    pod 'SwiftSignatureView', '= 2.2.3'
     pod 'GoogleSignIn'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'

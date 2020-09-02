@@ -45,6 +45,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     @IBOutlet weak var vehicle_RegNo_img: UIImageView!
     
     @IBOutlet weak var viewOfPop: UIView!
+    @IBOutlet weak var innerPopupView: UIView!
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     @IBOutlet weak var tableview: UITableView!
@@ -93,6 +94,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         tableview.delegate = self
         tableview.dataSource = self
         tableview.reloadData()
+        innerPopupView.layer.cornerRadius = 10
     //        dropDown1.anchorView = van_type_drop
     //
     //        dropDown1.dataSource = list

@@ -66,7 +66,7 @@ var userToken: String?
 //var distance_map = ""
 //var vehicleType = ""
 
-class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate, GIDSignInDelegate {
     
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
     let Login_URL = main_URL+"api/loginapi"
@@ -116,7 +116,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
         userName.delegate = self
         _password.delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
 
         if let token = FBSDKAccessToken.current() {

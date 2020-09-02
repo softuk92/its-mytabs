@@ -27,7 +27,7 @@ enum VersionError: Error {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
      var window: UIWindow?
      let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate, UNUs
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = "587172480915-vfmq9iep5qedimh9eso3kp286un2dof0.apps.googleusercontent.com"
-        
+//        GIDSignIn.sharedInstance()?.delegate = self
         ZDCChat.initialize(withAccountKey: "4k8uFpslgPe7adeBdxoacCrRhCOyELOL")
         
         return true
@@ -146,9 +146,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate, UNUs
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
-                                                                sourceApplication: sourceApplication,
-                                                                annotation: annotation)
+        let googleDidHandle = GIDSignIn.sharedInstance()?.handle(url)
+        
+//        GIDSignIn.sharedInstance().handle(url,
+//                                                                sourceApplication: sourceApplication,
+//                                                                annotation: annotation)
         
         let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(
             application,
@@ -156,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate, UNUs
             sourceApplication: sourceApplication,
             annotation: annotation)
         
-        return facebookDidHandle || googleDidHandle
+        return facebookDidHandle || (googleDidHandle != nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
