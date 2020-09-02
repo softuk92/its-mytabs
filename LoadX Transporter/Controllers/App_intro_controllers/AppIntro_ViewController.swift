@@ -67,18 +67,17 @@ class AppIntro_ViewController: UIViewController , BmoViewPagerDataSource {
         if self.nextButton.titleLabel?.text == "Finish" {
             self.navigationController?.popViewController(animated: true)
         }
+        
         if self.nextController == 0 {
             self.pagerView.pageControlIndex = 1
             self.pagerView.presentedPageIndex = 1
-        }
-            else if self.nextController == 1 {
-                self.pagerView.pageControlIndex = 2
-                self.pagerView.presentedPageIndex = 2
+        } else if self.nextController == 1 {
+            self.pagerView.pageControlIndex = 2
+            self.pagerView.presentedPageIndex = 2
         } else if self.nextController == 2 {
-         self.pagerView.pageControlIndex = 3
+            self.pagerView.pageControlIndex = 3
             self.pagerView.presentedPageIndex = 3
         } 
-
     }
     
     
@@ -118,9 +117,4 @@ extension AppIntro_ViewController: BmoViewPagerDelegate {
             self.nextButton.titleLabel?.text = "Finish"
         }
     }
-    
-//    func bmoViewPagerDelegate(_ viewPager: BmoViewPager, shouldSelect page: Int) -> Bool {
-//        
-//    }
-    
 }

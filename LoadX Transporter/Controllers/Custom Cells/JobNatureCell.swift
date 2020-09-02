@@ -11,6 +11,7 @@ import UIKit
 class JobNatureCell: UITableViewCell {
     
     @IBOutlet weak var lblJobNature : UILabel!
+    @IBOutlet weak var bottomLineView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

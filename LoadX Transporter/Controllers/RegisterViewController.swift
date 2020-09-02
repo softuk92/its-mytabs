@@ -638,12 +638,17 @@ extension RegisterViewController: UITableViewDataSource , UITableViewDelegate  {
        
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
         cell?.layer.cornerRadius = 10
+        cell?.backgroundColor = UIColor.clear
+        cell?.backgroundView = nil
             cell?.lblJobNature.text = self.list[indexPath.row]
+        if indexPath.row == 10 {
+            cell?.bottomLineView.isHidden = true
+        }
             return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 50
         
     }
    
