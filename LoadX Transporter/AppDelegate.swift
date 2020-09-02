@@ -71,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         DropDown.startListeningToKeyboard()
         window = UIWindow(frame: UIScreen.main.bounds)
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "TextfieldTextColor")
         application.isStatusBarHidden = true
         UNUserNotificationCenter.current().delegate = self
         

@@ -24,7 +24,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class CardView: UIView {
 
     @IBInspectable var cornerRadius: CGFloat = 10

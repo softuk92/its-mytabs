@@ -45,7 +45,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     @IBOutlet weak var vehicle_RegNo_img: UIImageView!
     
     @IBOutlet weak var viewOfPop: UIView!
-    @IBOutlet weak var innerPopupView: UIView!
+    @IBOutlet weak var innerViewPop: UIView!
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     @IBOutlet weak var tableview: UITableView!
@@ -94,7 +94,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         tableview.delegate = self
         tableview.dataSource = self
         tableview.reloadData()
-        innerPopupView.layer.cornerRadius = 10
+        tableview.backgroundView = nil
+        tableview.backgroundColor = UIColor.clear
+        self.innerViewPop.layer.cornerRadius = 10
     //        dropDown1.anchorView = van_type_drop
     //
     //        dropDown1.dataSource = list
@@ -635,6 +637,7 @@ extension RegisterViewController: UITableViewDataSource , UITableViewDelegate  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
+        cell?.layer.cornerRadius = 10
             cell?.lblJobNature.text = self.list[indexPath.row]
             return cell!
     }
