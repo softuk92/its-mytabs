@@ -42,7 +42,7 @@ class SplashScreen_ViewController: UIViewController {
                     let y =  (self.view.frame.size.height / 2) - ((self.view.frame.size.height * 0.7) / 2)
                     imageview.frame = CGRect(x: x, y: y, width: self.view.frame.size.width , height: self.view.frame.size.height * 0.7)
                         view.addSubview(imageview)
-                    self.view.backgroundColor = UIColor.white
+                    self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
                     } catch {
                         print(error)
                     }
