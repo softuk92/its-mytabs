@@ -21,38 +21,38 @@ class ChangePassword_ViewController: UIViewController {
     @IBOutlet weak var newPass_btn: UIButton!
     @IBOutlet weak var confromPass_btn: UIButton!
     
-    var isSecure = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let userPassword = UserDefaults.standard.value(forKey: "userPass") as? String {
+        old_password_txt.text = userPassword
+        }
+        
     }
     @IBAction func oldPassword_hideaction(_ sender: Any) {
-        isSecure = !isSecure
-        old_password_txt.isSecureTextEntry = isSecure
-        if isSecure == true {
-            oldPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
-        }else{
-             oldPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        if old_password_txt.isSecureTextEntry == true {
+        oldPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        old_password_txt.isSecureTextEntry = false
+        } else {
+        oldPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
+        old_password_txt.isSecureTextEntry = true
         }
     }
     @IBAction func new_pass_hideAction(_ sender: Any) {
-        isSecure = !isSecure
-        new_password_txt.isSecureTextEntry = isSecure
-        if isSecure == true {
-            newPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
-        }else{
-             newPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        if new_password_txt.isSecureTextEntry == true {
+        newPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        new_password_txt.isSecureTextEntry = false
+        } else {
+        newPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
+        new_password_txt.isSecureTextEntry = true
         }
     }
     @IBAction func repeatNewpass_action(_ sender: Any) {
-        isSecure = !isSecure
-        confrom_password_text.isSecureTextEntry = isSecure
-        if isSecure == true {
-            confromPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
-        }else{
-             confromPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        if confrom_password_text.isSecureTextEntry == true {
+        confromPass_btn.setBackgroundImage(UIImage(named: "password_Hide"), for: .normal)
+        confrom_password_text.isSecureTextEntry = false
+        } else {
+        confromPass_btn.setBackgroundImage(UIImage(named: "password_unHide"), for: .normal)
+        confrom_password_text.isSecureTextEntry = true
         }
     }
     
@@ -104,7 +104,7 @@ class ChangePassword_ViewController: UIViewController {
         }
     }else{
              SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Alert", message: "Please Enter the All Field", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: "Please Enter all fields", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

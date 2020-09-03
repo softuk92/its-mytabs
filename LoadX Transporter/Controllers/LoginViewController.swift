@@ -410,12 +410,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                             user_name = jsonData[0]["user_name"].stringValue
                             user_phone = jsonData[0]["user_phone"].stringValue
                             user_image = jsonData[0]["user_image"].stringValue
-                            
+                                
                             let userDefaults = UserDefaults.standard
                             userDefaults.set(user_id, forKey: "user_id")
                             userDefaults.set(user_name, forKey: "user_name")
                             userDefaults.set(user_email, forKey: "user_email")
-                            userDefaults.set(userPass, forKey: "userPass")
+                            userDefaults.set(self._password.text ?? "", forKey: "userPass")
                             userDefaults.set(user_phone, forKey: "user_phone")
                             userDefaults.set(user_image, forKey: "user_image")
                             userDefaults.set(user_type, forKey: "user_type")

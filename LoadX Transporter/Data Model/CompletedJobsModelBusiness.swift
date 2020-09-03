@@ -34,6 +34,6 @@ struct CompletedJobsModelBusiness: Decodable  {
     let payment_type: String
     let is_company_job: String
     let due_amount_status: String
-    let do_house_no : String
-    let pu_house_no: String
+    let do_house_no : String?
+    let pu_house_no: String?
 }

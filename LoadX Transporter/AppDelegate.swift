@@ -147,11 +147,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        let googleDidHandle = GIDSignIn.sharedInstance()?.handle(url)
+//        let googleDidHandle = GIDSignIn.sharedInstance()?.handle(url)
         
-//        GIDSignIn.sharedInstance().handle(url,
-//                                                                sourceApplication: sourceApplication,
-//                                                                annotation: annotation)
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
+                                                                sourceApplication: sourceApplication,
+                                                                annotation: annotation)
         
         let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(
             application,
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             sourceApplication: sourceApplication,
             annotation: annotation)
         
-        return facebookDidHandle || (googleDidHandle != nil)
+        return facebookDidHandle || (googleDidHandle)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

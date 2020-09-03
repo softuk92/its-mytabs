@@ -19,14 +19,13 @@ class AppIntro_ViewController: UIViewController , BmoViewPagerDataSource {
     var showingIndex: Int = 0
     var pageVC: UIPageViewController?
     
-    var nextController : Int?
+    var nextController = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pagerView.delegate = self
         pagerView.dataSource = self
         
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func skip_action(_ sender: Any) {
@@ -79,33 +78,6 @@ class AppIntro_ViewController: UIViewController , BmoViewPagerDataSource {
             self.pagerView.presentedPageIndex = 3
         } 
     }
-    
-    
-    func viewControllerAtIndex(tempIndex: Int) -> UIViewController {
-        
-        if tempIndex == 0 {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC1") as! VC1
-            
-            return vc
-        }
-        else if tempIndex == 1 {
-            
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC2" ) as! VC2
-            
-            return vc
-        }  else if tempIndex == 2 {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC3") as! VC3
-            
-            return vc
-            
-        } else {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC4") as! VC4
-            
-            return vc
-            
-        }
-    }
-    
 }
 
 extension AppIntro_ViewController: BmoViewPagerDelegate {
@@ -114,7 +86,7 @@ extension AppIntro_ViewController: BmoViewPagerDelegate {
         pageControl.currentPage = page
         nextController = page
         if page == 3 {
-            self.nextButton.titleLabel?.text = "Finish"
+            self.nextButton.setTitle("Finish", for: .normal)
         }
     }
 }

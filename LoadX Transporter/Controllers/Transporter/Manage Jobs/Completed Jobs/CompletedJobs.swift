@@ -526,8 +526,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
   */
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
-            cell.pick_up.text = completedJobsRow.pu_house_no + " " + completedJobsRow.pick_up
-            cell.drop_off.text = completedJobsRow.do_house_no + " " + completedJobsRow.drop_off
+            cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
+            cell.drop_off.text = completedJobsRow.do_house_no ?? "" + " " + completedJobsRow.drop_off
             let stringDate = completedJobsRow.date
             let convertedDate = self.convertDateFormatter(stringDate)
             cell.date.text = convertedDate
@@ -640,8 +640,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
            
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
-            cell.pick_up.text = completedJobsRow.pu_house_no + " " + completedJobsRow.pick_up
-            cell.drop_off.text = completedJobsRow.do_house_no + " " + completedJobsRow.drop_off
+            cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
+            cell.drop_off.text = completedJobsRow.do_house_no ?? "" + " " + completedJobsRow.drop_off
            
             let stringDate = completedJobsRow.date
             let convertedDate = self.convertDateFormatter(stringDate)
