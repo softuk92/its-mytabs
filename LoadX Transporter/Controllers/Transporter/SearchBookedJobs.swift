@@ -588,27 +588,21 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         cell.deliveryDateLabel.text = convertedDate2
         
         let currentBid = searchDeliveriesRow.price
-        let allJobs = String(searchDeliveriesRow.alljobs)
-        let allTransporters = String(searchDeliveriesRow.allTransporter)
+//        let allJobs = String(searchDeliveriesRow.alljobs)
+//        let allTransporters = String(searchDeliveriesRow.allTransporter)
         
 //        self.availableJobs.text = allJobs
 //        self.transporterPartners.text = allTransporters
 //        cell.lowestBidOutlet.text = "Job Price"
-        cell.bidNowBtn.setTitle("Get Job", for: .normal)
+        cell.bidNowBtn.setTitle("Accept Job", for: .normal)
        
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let  doubleValue = Double(x)
-        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//        let resultInitialPrice = Double(currentBid)! * Double(0.25)
-        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-        let resultRemaining = Double(currentBid)! - self.roundedPrice
-        
         if currentBid != "NoBid" {
-            cell.lowest_bid.text = "£ "+"\(resultRemaining)"
+            cell.lowest_bid.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
         } else {
             cell.lowest_bid.text = "N/A"
         }
-        
         
         cell.bidNowRow = { (selectedCell) in
             let selectedIndex = self.tableView.indexPath(for: selectedCell)

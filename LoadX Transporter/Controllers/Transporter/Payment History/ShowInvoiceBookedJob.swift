@@ -86,6 +86,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
         super.viewDidLoad()
         
         self.title = "Invoice"
+        self.customer_lbl.text = "Billed To"
         self.callpopup_innerView.clipsToBounds = true
         self.callpopup_innerView.layer.cornerRadius = 18
         self.callpopup_innerView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
@@ -302,16 +303,11 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         let currentBid = jsonData[0]["current_bid"].stringValue
                         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                         let doubleValue = Double(x)
-                        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-                        
-//                        let resultInitialPrice = Double(currentBid)! * Double(0.25)
-                        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-                        
-                        let resultRemaining = Double(currentBid)! - self.roundedPrice
-                        self.current_bid.text = "£"+String(resultRemaining)
-                        self.current_bid2.text = "£"+String(resultRemaining)
-                        self.received_amount.text = "£"+String(resultRemaining)
-                        self.received_amount2.text = "£"+String(resultRemaining)
+                        let finalPrice = getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0)
+                        self.current_bid.text = "£"+finalPrice
+                        self.current_bid2.text = "£"+finalPrice
+                        self.received_amount.text = "£"+finalPrice
+                        self.received_amount2.text = "£"+finalPrice
                         let date = jsonData[0]["pay_date"].stringValue
                         let stringDate = String(date.prefix(10))
                         

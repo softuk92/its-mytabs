@@ -3063,7 +3063,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfn-ga-vpV">
-                                        <rect key="frame" x="61" y="13" width="62.5" height="19"/>
+                                        <rect key="frame" x="61" y="13" width="57.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3091,7 +3091,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4z-mO-gLb">
-                                                <rect key="frame" x="139" y="85" width="78" height="24"/>
+                                                <rect key="frame" x="142" y="85" width="72" height="24"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3111,7 +3111,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zw-c6-bEq">
-                                                <rect key="frame" x="20" y="124" width="86" height="20"/>
+                                                <rect key="frame" x="20" y="124" width="77" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3135,7 +3135,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpE-yE-yqb">
-                                                <rect key="frame" x="20" y="200" width="53" height="20"/>
+                                                <rect key="frame" x="20" y="200" width="46.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3155,7 +3155,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rii-3l-3fd">
-                                                <rect key="frame" x="20" y="280.5" width="200" height="20"/>
+                                                <rect key="frame" x="20" y="280.5" width="180" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3184,7 +3184,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4M-46-b97">
-                                                <rect key="frame" x="20" y="359" width="67" height="20"/>
+                                                <rect key="frame" x="20" y="359" width="63" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3216,7 +3216,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Van Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2K-hV-nrm">
-                                                <rect key="frame" x="20" y="438.5" width="75" height="20"/>
+                                                <rect key="frame" x="20" y="438.5" width="68.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3261,7 +3261,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Reg.No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-tU-4Qd">
-                                                <rect key="frame" x="187" y="438" width="126" height="20.5"/>
+                                                <rect key="frame" x="187" y="438" width="116" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3386,13 +3386,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="775-SX-WyH">
-                                                <rect key="frame" x="67" y="803.5" width="211.5" height="20"/>
+                                                <rect key="frame" x="74" y="803.5" width="197" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsC-7e-BSF">
-                                                <rect key="frame" x="280.5" y="797" width="46" height="33"/>
+                                                <rect key="frame" x="273" y="797.5" width="43" height="32"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" red="0.1529411765" green="0.3294117647" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3521,7 +3521,7 @@
                                         <rect key="frame" x="20" y="70" width="335" height="750"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Van Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUd-mj-98Z">
-                                                <rect key="frame" x="77.5" y="15" width="180.5" height="19"/>
+                                                <rect key="frame" x="84.5" y="15" width="166" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -6425,7 +6425,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get more detial about this job, please call to this user," textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqt-Uw-yfM">
-                            <rect key="frame" x="20" y="117" width="262" height="41"/>
+                            <rect key="frame" x="20" y="117" width="262" height="40"/>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -8363,7 +8363,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3Q-DC-4dh">
-                                <rect key="frame" x="0.0" y="45" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="130"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4o8-Ny-rkg">
                                         <rect key="frame" x="15" y="25" width="150" height="50"/>
@@ -8376,13 +8376,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             </constraint>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welleseley Court, Apsley Way, London NW2 &amp;HF" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqi-rI-UW5">
-                                        <rect key="frame" x="197" y="20" width="173" height="30.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit 1 &amp; 2 Welleseley Court, Apsley Way, London NW2 &amp;HF" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqi-rI-UW5">
+                                        <rect key="frame" x="197" y="20" width="173" height="45.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                         </variation>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpAddress" translatesAutoresizingMaskIntoConstraints="NO" id="BbP-tO-JVm">
@@ -8393,13 +8393,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-tT-vZ6">
-                                        <rect key="frame" x="175" y="20" width="195" height="30.5"/>
+                                        <rect key="frame" x="175" y="20" width="195" height="45.5"/>
                                         <connections>
                                             <action selector="location_btn_action:" destination="PBv-RX-gNW" eventType="touchUpInside" id="Wmw-Ta-lBe"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="020 85057 0111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ik-Hh-JTn">
-                                        <rect key="frame" x="197" y="59" width="101.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="020 85057 0111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ik-Hh-JTn">
+                                        <rect key="frame" x="197" y="73" width="103.5" height="17"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -8407,15 +8407,15 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="18"/>
                                         </variation>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpPhone" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-At-6Tv">
-                                        <rect key="frame" x="175" y="60" width="15" height="15"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="signUpPhone" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-At-6Tv">
+                                        <rect key="frame" x="175" y="74" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="0TT-di-ujP"/>
                                             <constraint firstAttribute="width" constant="15" id="CXb-9Q-C3l"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6k-FA-dFe">
-                                        <rect key="frame" x="175" y="60" width="123.5" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6k-FA-dFe">
+                                        <rect key="frame" x="175" y="74" width="125.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="mDq-lT-lYF"/>
                                         </constraints>
@@ -8423,8 +8423,8 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <action selector="phone_btn_action:" destination="PBv-RX-gNW" eventType="touchUpInside" id="BUa-bU-ONa"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info@loadx.co.uk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-Qy-CMY">
-                                        <rect key="frame" x="197" y="84" width="107" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="info@loadx.co.uk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-Qy-CMY">
+                                        <rect key="frame" x="197" y="98" width="119" height="17"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -8432,22 +8432,22 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="18"/>
                                         </variation>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpEmail" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-Ty-K9V">
-                                        <rect key="frame" x="175" y="85" width="15" height="15"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="signUpEmail" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-Ty-K9V">
+                                        <rect key="frame" x="175" y="99" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="928-ZZ-kTO"/>
                                             <constraint firstAttribute="width" constant="15" id="OAV-NH-sNe"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrv-A7-Bll">
-                                        <rect key="frame" x="29" y="110" width="317" height="1.5"/>
+                                        <rect key="frame" x="29" y="124" width="317" height="1.5"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1.5" id="PLb-Ex-U3J"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEm-a6-SsQ">
-                                        <rect key="frame" x="175" y="85" width="129" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEm-a6-SsQ">
+                                        <rect key="frame" x="175" y="99" width="141" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Paf-O1-X69"/>
                                         </constraints>
@@ -8460,7 +8460,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <constraints>
                                     <constraint firstItem="kyd-Qy-CMY" firstAttribute="leading" secondItem="iQf-Ty-K9V" secondAttribute="trailing" constant="7" id="22X-hW-Mv6"/>
                                     <constraint firstItem="8Bf-tT-vZ6" firstAttribute="trailing" secondItem="Pqi-rI-UW5" secondAttribute="trailing" id="5OV-K9-gK9"/>
-                                    <constraint firstItem="xrv-A7-Bll" firstAttribute="top" secondItem="iQf-Ty-K9V" secondAttribute="bottom" constant="10" id="5tS-7k-C9U"/>
+                                    <constraint firstItem="xrv-A7-Bll" firstAttribute="top" secondItem="iQf-Ty-K9V" secondAttribute="bottom" constant="24" id="5tS-7k-C9U"/>
                                     <constraint firstItem="xrv-A7-Bll" firstAttribute="leading" secondItem="t3Q-DC-4dh" secondAttribute="leading" constant="29" id="7tM-rI-goZ"/>
                                     <constraint firstItem="8Bf-tT-vZ6" firstAttribute="leading" secondItem="BbP-tO-JVm" secondAttribute="leading" id="L8q-WJ-oIK"/>
                                     <constraint firstItem="BbP-tO-JVm" firstAttribute="leading" secondItem="4o8-Ny-rkg" secondAttribute="trailing" constant="10" id="M16-8j-zFi"/>
@@ -8486,37 +8486,37 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="0ik-Hh-JTn" firstAttribute="centerY" secondItem="eU6-At-6Tv" secondAttribute="centerY" id="xIa-gx-crT"/>
                                     <constraint firstItem="8Bf-tT-vZ6" firstAttribute="bottom" secondItem="Pqi-rI-UW5" secondAttribute="bottom" id="xKQ-AH-Quk"/>
                                     <constraint firstItem="eU6-At-6Tv" firstAttribute="top" secondItem="BbP-tO-JVm" secondAttribute="bottom" constant="25" id="zVT-c0-l5r"/>
-                                    <constraint firstAttribute="height" constant="110" id="zn6-52-Vhw">
+                                    <constraint firstAttribute="height" constant="130" id="zn6-52-Vhw">
                                         <variation key="heightClass=regular-widthClass=regular" constant="500"/>
                                     </constraint>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Invoice No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsT-5k-qBQ">
-                                <rect key="frame" x="18" y="165" width="76" height="18"/>
+                                <rect key="frame" x="18" y="185" width="76" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadX2019J19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD3-Zy-tEk">
-                                <rect key="frame" x="18" y="183" width="95" height="18"/>
+                                <rect key="frame" x="18" y="203" width="95" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Issued Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2x-PF-TwQ">
-                                <rect key="frame" x="248" y="165" width="86" height="18"/>
+                                <rect key="frame" x="248" y="185" width="86" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQC-KM-GAf">
-                                <rect key="frame" x="248" y="183" width="86" height="18"/>
+                                <rect key="frame" x="248" y="203" width="86" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custmer " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-HL-FQA">
-                                <rect key="frame" x="18" y="216" width="155" height="18"/>
+                                <rect key="frame" x="18" y="236" width="155" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="9SI-ye-lo2"/>
                                 </constraints>
@@ -8524,13 +8524,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ms C Williams" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-pR-tdD">
-                                <rect key="frame" x="18" y="242" width="316" height="17"/>
+                                <rect key="frame" x="18" y="262" width="316" height="17"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WtN-7c-xtA">
-                                <rect key="frame" x="10" y="269" width="355" height="170"/>
+                                <rect key="frame" x="10" y="289" width="355" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice Detials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hv-LT-NUq">
                                         <rect key="frame" x="20" y="5" width="111" height="20"/>
@@ -8667,13 +8667,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* C + ULEZ Charges Inclusive : £24" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVD-ZC-NJH">
-                                <rect key="frame" x="100" y="454" width="250" height="17"/>
+                                <rect key="frame" x="100" y="474" width="250" height="17"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UB0-Th-v1F">
-                                <rect key="frame" x="10" y="511" width="355" height="45"/>
+                                <rect key="frame" x="10" y="531" width="355" height="45"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KFK-rJ-tmC"/>
@@ -8899,7 +8899,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to send an email to this user?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-Qw-FGy">
-                            <rect key="frame" x="20" y="117" width="262" height="37.5"/>
+                            <rect key="frame" x="20" y="117" width="262" height="38.5"/>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -9425,7 +9425,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver Authentication  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB2-88-DNE">
-                                        <rect key="frame" x="56" y="13" width="197" height="19"/>
+                                        <rect key="frame" x="56" y="13" width="179" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -9450,13 +9450,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <rect key="frame" x="25" y="20" width="325" height="105"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTG-ZZ-l5C">
-                                                        <rect key="frame" x="15" y="15" width="96" height="17"/>
+                                                        <rect key="frame" x="15" y="15" width="89.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce0-vY-DmB">
-                                                        <rect key="frame" x="223.5" y="15" width="86.5" height="17"/>
+                                                        <rect key="frame" x="239.5" y="15" width="70.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -9469,13 +9469,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLd-BR-Hlk">
-                                                        <rect key="frame" x="15" y="45" width="95" height="17"/>
+                                                        <rect key="frame" x="15" y="45" width="86" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ms C Willson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j27-KC-56f">
-                                                        <rect key="frame" x="223" y="45" width="87" height="17"/>
+                                                        <rect key="frame" x="227.5" y="45" width="82.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -9488,13 +9488,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4E-y6-XYg">
-                                                        <rect key="frame" x="15" y="76" width="81" height="17"/>
+                                                        <rect key="frame" x="15" y="76" width="76" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0786 866 786" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1p-Xb-1lh">
-                                                        <rect key="frame" x="217.5" y="76" width="92.5" height="17"/>
+                                                        <rect key="frame" x="224" y="76" width="86" height="17"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -9556,7 +9556,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Delivery Proof" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-8B-k5K">
-                                                <rect key="frame" x="40" y="214" width="181" height="20"/>
+                                                <rect key="frame" x="40" y="214" width="166" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -9586,12 +9586,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rom-VB-VgV">
-                                                <rect key="frame" x="40" y="414" width="156" height="20"/>
+                                                <rect key="frame" x="40" y="414" width="143.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-Is-bTs">
-                                                <rect key="frame" x="299" y="401" width="36" height="46"/>
+                                                <rect key="frame" x="302" y="401" width="33" height="46"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Clear">
                                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -10571,7 +10571,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-oL-5fl">
-                                                <rect key="frame" x="61" y="13" width="61" height="19"/>
+                                                <rect key="frame" x="61" y="13" width="64" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -10590,7 +10590,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <rect key="frame" x="20" y="70" width="335" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Completed Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKN-PM-D9X">
-                                                <rect key="frame" x="8" y="15.5" width="157" height="19"/>
+                                                <rect key="frame" x="8" y="15.5" width="173" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -10615,7 +10615,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <rect key="frame" x="20" y="135" width="335" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Eraning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKk-lA-xHY">
-                                                <rect key="frame" x="8" y="15.5" width="92.5" height="19"/>
+                                                <rect key="frame" x="8" y="15.5" width="105" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -10647,13 +10647,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjQ-g3-90e">
-                                        <rect key="frame" x="40" y="309.5" width="48" height="16.5"/>
+                                        <rect key="frame" x="40" y="310" width="52" height="17"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUy-0O-VEd" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                        <rect key="frame" x="40" y="331" width="300" height="25"/>
+                                        <rect key="frame" x="40" y="332" width="300" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="nuN-1N-Aci"/>
                                         </constraints>
@@ -10666,20 +10666,20 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOf-Zn-U7v">
-                                        <rect key="frame" x="40" y="358" width="300" height="0.5"/>
+                                        <rect key="frame" x="40" y="359" width="300" height="0.5"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.80000000000000004" id="OaN-nh-KbK"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSK-IR-Llt">
-                                        <rect key="frame" x="40" y="250" width="66" height="16.5"/>
+                                        <rect key="frame" x="40" y="250" width="73" height="17"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-ol-Sk5" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                        <rect key="frame" x="40" y="271.5" width="300" height="25"/>
+                                        <rect key="frame" x="40" y="272" width="300" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Hxb-cm-hkJ"/>
                                         </constraints>
@@ -10692,14 +10692,14 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRG-0o-0Pr">
-                                        <rect key="frame" x="40" y="298.5" width="300" height="1"/>
+                                        <rect key="frame" x="40" y="299" width="300" height="1"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.80000000000000004" id="I4V-6H-38h"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJT-KD-vHi">
-                                        <rect key="frame" x="40" y="393.5" width="300" height="40"/>
+                                        <rect key="frame" x="40" y="394.5" width="300" height="40"/>
                                         <color key="backgroundColor" red="0.18024975060000001" green="0.18426975609999999" blue="0.18841210010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hOx-qy-4nw"/>
@@ -10718,7 +10718,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </button>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7OE-g9-lYk">
-                                        <rect key="frame" x="0.0" y="443.5" width="375" height="223.5"/>
+                                        <rect key="frame" x="0.0" y="444.5" width="375" height="222.5"/>
                                         <color key="backgroundColor" name="Background_color"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k10-Wl-5V9">
@@ -10728,7 +10728,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="72.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No jobs Found." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lX-i0-14T">
-                                                <rect key="frame" x="8.5" y="80.5" width="103.5" height="19.5"/>
+                                                <rect key="frame" x="4.5" y="80.5" width="111.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -11031,7 +11031,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <viewLayoutGuide key="safeArea" id="vPd-8l-gsa"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable email notification?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-Ns-q3r">
-                            <rect key="frame" x="30" y="125" width="242" height="40"/>
+                            <rect key="frame" x="30" y="125" width="242" height="41"/>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -11210,7 +11210,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtJ-9a-1O4">
-                                        <rect key="frame" x="66" y="13" width="77.5" height="19"/>
+                                        <rect key="frame" x="66" y="13" width="86" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -11238,7 +11238,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siu-zM-iiE">
-                                        <rect key="frame" x="25" y="25" width="77" height="20"/>
+                                        <rect key="frame" x="25" y="25" width="86" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11267,7 +11267,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dke-Ci-ZlK">
-                                        <rect key="frame" x="25" y="93" width="109" height="20"/>
+                                        <rect key="frame" x="25" y="93" width="119.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11296,7 +11296,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMh-SD-OKe">
-                                        <rect key="frame" x="25" y="161" width="76" height="20"/>
+                                        <rect key="frame" x="25" y="161" width="83" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11328,7 +11328,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EII-Dg-CGy">
-                                        <rect key="frame" x="25" y="229" width="63" height="20"/>
+                                        <rect key="frame" x="25" y="229" width="67" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11366,7 +11366,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Van Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEL-Yo-ppE">
-                                        <rect key="frame" x="25" y="297" width="68.5" height="20"/>
+                                        <rect key="frame" x="25" y="297" width="75" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11403,7 +11403,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Van Reg. No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-0b-6k2">
-                                        <rect key="frame" x="25" y="365" width="100" height="20"/>
+                                        <rect key="frame" x="25" y="365" width="105" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -11527,7 +11527,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <rect key="frame" x="20" y="100" width="335" height="367"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Van Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6U-0b-Pix">
-                                                <rect key="frame" x="84.5" y="15" width="166" height="19"/>
+                                                <rect key="frame" x="77.5" y="15" width="180.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

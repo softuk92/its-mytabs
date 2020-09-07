@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
 		4E1D09FF22DCC5EF008C264A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
@@ -153,6 +154,7 @@
 
 /* Begin PBXFileReference section */
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
+		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4E223D1C23FE7FD100DE4D29 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				6DFAC4C422930B5100556D30 /* SearchBookedJobsModel.swift */,
 				6D23537122999313004C085F /* iOSDropDown.swift */,
 				4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */,
+				1837E44025065B1700FF0D17 /* Extensions.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */,
 				8D246FAD22284A3E00E2B290 /* FooterTableViewCell.swift in Sources */,
 				4E59299023E9CA7E007A3C09 /* Security_ViewController.swift in Sources */,
+				1837E44125065B1700FF0D17 /* Extensions.swift in Sources */,
 				BBED7FA024B5094600D65DC7 /* ServiceHeaderCell.swift in Sources */,
 				4E818287241B92BB005D3EC9 /* VC2.swift in Sources */,
 				8D48C207222438DB00417EF5 /* EditProfileController.swift in Sources */,

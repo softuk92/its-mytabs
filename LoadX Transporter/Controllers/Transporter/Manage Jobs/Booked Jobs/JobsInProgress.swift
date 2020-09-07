@@ -139,7 +139,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                             do {
                                 self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data!)
                                 SVProgressHUD.dismiss()
-                                print(self.jobsInProgressModel)
+//                                print(self.jobsInProgressModel)
 
                                 DispatchQueue.main.async {
 //                                    self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
@@ -310,11 +310,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let currentBid = jobsInProgressRow.current_bid
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let doubleValue = Double(x)
-        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
+//        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
 //        let resultInitialPrice = Double(currentBid)! * Double(0.25)
-        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-        let resultRemaining = Double(currentBid)! - self.roundedPrice
-        cell.jobPrice.text = "£ "+"\(resultRemaining)"
+//        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
+//        let resultRemaining = Double(currentBid)! - self.roundedPrice
+            cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
 //        cell.trailingConstraint.constant = 60
         } else {
         cell.deletBtnOutlet.isHidden = true
