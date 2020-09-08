@@ -169,7 +169,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.feedback_stars.text = "null"
             cell.cosmosView.rating = 0.0
         } else {
-            cell.feedback_stars.text = allReviews.feed_back_star+".0"
+            cell.feedback_stars.text = allReviews.feed_back_star/*+".0"*/
             cell.cosmosView.rating = Double(feedbackStars)!
         }
         
