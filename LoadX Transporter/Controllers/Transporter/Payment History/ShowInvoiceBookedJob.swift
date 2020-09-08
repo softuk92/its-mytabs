@@ -86,7 +86,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
         super.viewDidLoad()
         
         self.title = "Invoice"
-        self.customer_lbl.text = "Billed To"
+        self.customer_lbl.text = "Billed To:"
         self.callpopup_innerView.clipsToBounds = true
         self.callpopup_innerView.layer.cornerRadius = 18
         self.callpopup_innerView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]

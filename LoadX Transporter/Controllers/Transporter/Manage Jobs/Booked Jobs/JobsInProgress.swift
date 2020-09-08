@@ -261,24 +261,24 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     cell.payment_method_lbl.text = "Cash Job"
                 }
         }
-            let payment_type1 = jobsInProgressRow.is_company_job
-                if  payment_type1 == "1" {
-                  if switchCheck == true {
-//                    cell.payment_method_Icon.image = UIImage(named: "bank_dark")
-                    cell.payment_method_lbl.text = "Account Job"
-                }else{
-//                    cell.payment_method_Icon.image = UIImage(named: "bank")
-                    cell.payment_method_lbl.text = "Account Job"
-                }
-            }else{
-                    if switchCheck == true {
-//                        cell.payment_method_Icon.image = UIImage(named: "cashDark")
-                         cell.payment_method_lbl.text = "Cash Job"
-                    }else{
-//                        cell.payment_method_Icon.image = UIImage(named: "cash")
-                        cell.payment_method_lbl.text = "Cash Job"
-                    }
-            }
+//            let payment_type1 = jobsInProgressRow.is_company_job
+//                if  payment_type1 == "1" {
+//                  if switchCheck == true {
+////                    cell.payment_method_Icon.image = UIImage(named: "bank_dark")
+//                    cell.payment_method_lbl.text = "Account Job"
+//                }else{
+////                    cell.payment_method_Icon.image = UIImage(named: "bank")
+//                    cell.payment_method_lbl.text = "Account Job"
+//                }
+//            }else{
+//                    if switchCheck == true {
+////                        cell.payment_method_Icon.image = UIImage(named: "cashDark")
+//                         cell.payment_method_lbl.text = "Cash Job"
+//                    }else{
+////                        cell.payment_method_Icon.image = UIImage(named: "cash")
+//                        cell.payment_method_lbl.text = "Cash Job"
+//                    }
+//            }
         
         if driverPhone != "" {
 //            cell.driver_phone.setTitle(driverPhone, for: .normal)
@@ -594,15 +594,15 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 case .success(let upload, _, _):
                     
                     upload.uploadProgress(closure: { (Progress) in
-                        print("Upload Progress: \(Progress.fractionCompleted)")
+//                        print("Upload Progress: \(Progress.fractionCompleted)")
                     })
                     
                     upload.responseJSON { response in
                         if response.result.value != nil {
-                            print(response.request!)  // original URL request
-                            print(response.response!) // URL response
-                            print(response.data!)     // server data
-                            print(response.result)   // result of response serialization
+//                            print(response.request!)  // original URL request
+//                            print(response.response!) // URL response
+//                            print(response.data!)     // server data
+//                            print(response.result)   // result of response serialization
                             let jsonData : JSON = JSON(response.result.value!)
                             print("JSON: \(jsonData)")
                             let result = jsonData[0]["result"].stringValue
