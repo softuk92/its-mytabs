@@ -402,7 +402,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     response in
                     let response1 = response.result.value
                     
-                    print("this is completed job api response.../n \(String(describing: response1))")
+//                    print("this is completed job api response.../n \(String(describing: response1))")
                     if response.result.isSuccess {
                         SVProgressHUD.dismiss()
                         
@@ -424,7 +424,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 if url == "api/transporterCompletedJobsBusiness" {
                                     self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data!)
                                     SVProgressHUD.dismiss()
-                                    print(self.completedJobsModelBusiness)
+//                                    print(self.completedJobsModelBusiness)
                                     
                                     DispatchQueue.main.async {
 //                                        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
@@ -434,7 +434,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 } else {
                                     self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data!)
                                     SVProgressHUD.dismiss()
-                                    print(self.completedJobsModel)
+//print(self.completedJobsModel)
                                     
                                     DispatchQueue.main.async {
 //                                        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
@@ -640,8 +640,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
            
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
-            cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
-            cell.drop_off.text = completedJobsRow.do_house_no ?? "" + " " + completedJobsRow.drop_off
+            cell.pick_up.text = "\(completedJobsRow.pu_house_no ?? "") \(completedJobsRow.pick_up)"
+            cell.drop_off.text = "\(completedJobsRow.do_house_no ?? "") \(completedJobsRow.drop_off)"
            
             let stringDate = completedJobsRow.date
             let convertedDate = self.convertDateFormatter(stringDate)
@@ -660,7 +660,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             resultRemaining = Double(currentBid)! - self.roundedPrice
             
            // self.priceValue = "\(resultRemaining)"
-            cell.price.text = "£"+String(resultRemaining)
+            cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
         }
         
         cell.deleteRow = { (selectedCell) in

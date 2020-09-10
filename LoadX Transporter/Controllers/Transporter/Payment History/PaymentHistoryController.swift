@@ -147,9 +147,12 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         cell.moving_item.text = movingItem.capitalized
         
         let stringDate = paymentHistoryRow.pay_date
-       
-        let convertedDate = self.convertDateFormatter(stringDate)
-        cell.job_posted_date.text = convertedDate
+        
+        if stringDate.contains("am") || stringDate.contains("pm") {
+            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate.dropLast(2)))
+        } else {
+        cell.job_posted_date.text = self.convertDateFormatter(stringDate)
+        }
         
         let jobID = paymentHistoryRow.payment_id
         let job_id = "LOADX"+String(self.year)+"JI"+jobID
@@ -180,14 +183,14 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func convertDateFormatter(_ date: String!) -> String
+    func convertDateFormatter(_ date: String?) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dateFormatter.date(from: date!)
+        let date = dateFormatter.date(from: date ?? "")
       
         dateFormatter.dateFormat = "dd-MMMM-yyyy"
-        return  dateFormatter.string(from: date!)
+        return  dateFormatter.string(from: date ?? Date())
         
     }
     
