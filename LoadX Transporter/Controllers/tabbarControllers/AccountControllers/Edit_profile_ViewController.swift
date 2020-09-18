@@ -24,6 +24,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var adress_tf: AnimatableTextField!
     @IBOutlet weak var van_type_tf: AnimatableTextField!
     @IBOutlet weak var vanRegNo_tf: AnimatableTextField!
+    @IBOutlet weak var aboutMe: UITextView!
     
     @IBOutlet weak var vanType_tableView: UITableView!
     @IBOutlet weak var dropdown_popupView: UIView!
@@ -45,7 +46,9 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         profileDetail()
-        
+        aboutMe.layer.cornerRadius = 5
+        aboutMe.layer.borderWidth = 1
+        aboutMe.layer.borderColor = UIColor.black.cgColor
         vanType_tableView.delegate = self
         vanType_tableView.dataSource = self
         vanType_tableView.reloadData()
@@ -237,7 +240,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         
                         self.fullName_tf.text = jsonData[0]["user_name"].stringValue
                         self.email_address_tf.text = jsonData[0]["user_email"].stringValue
-                            
+                        self.aboutMe.text = jsonData[0]["about_me"].stringValue
                         self.phoneNo_tf.text = jsonData[0]["user_phone"].stringValue
                         self.adress_tf.text = jsonData[0]["user_address"].stringValue
                         let vanType = jsonData[0]["van_type"].stringValue
