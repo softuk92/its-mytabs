@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
+		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
+		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
+		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
 		4E1D09FF22DCC5EF008C264A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
@@ -155,6 +158,9 @@
 /* Begin PBXFileReference section */
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
+		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
+		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4E223D1C23FE7FD100DE4D29 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -462,6 +468,7 @@
 				6D23537122999313004C085F /* iOSDropDown.swift */,
 				4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */,
 				1837E44025065B1700FF0D17 /* Extensions.swift */,
+				1890DC5B251B7EA800B964C9 /* CustomizedView.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -615,6 +622,8 @@
 		8D98C726222056DB00420BFA /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1890DC57251B7DD700B964C9 /* FAQSCell.swift */,
+				1890DC58251B7DD700B964C9 /* FAQSCell.xib */,
 				BBED7FA124B50CBA00D65DC7 /* InventoryCell.swift */,
 				BBED7FA224B50CBA00D65DC7 /* InventoryCell.xib */,
 				BB16169D24BF36F5008420A8 /* JobNatureCell.swift */,
@@ -788,6 +797,7 @@
 				BB16A98823D8298D0041EA4E /* Asset 47@3x.png in Resources */,
 				8D48C20D22243E3D00417EF5 /* ManageReviewsCell.xib in Resources */,
 				8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */,
+				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
 				4E454B5F23E48217009AFF47 /* Montserrat-Bold.otf in Resources */,
 				8D3E60FD21F76432004EAB06 /* Main.storyboard in Resources */,
 				BBED7FA424B50CBA00D65DC7 /* InventoryCell.xib in Resources */,
@@ -883,6 +893,7 @@
 				8D270CF821FB3CFB0016D6DD /* LoginViewController.swift in Sources */,
 				4E55003C23E01FC80004A700 /* MainTabBarController.swift in Sources */,
 				8D48C20522242B8200417EF5 /* JobsInProgress.swift in Sources */,
+				1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */,
 				8D3E60FA21F76432004EAB06 /* OnboardingController.swift in Sources */,
 				8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */,
 				8D246FAD22284A3E00E2B290 /* FooterTableViewCell.swift in Sources */,
@@ -936,6 +947,7 @@
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
 				4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */,
+				1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */,
 				4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */,
 				8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */,
 				8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */,

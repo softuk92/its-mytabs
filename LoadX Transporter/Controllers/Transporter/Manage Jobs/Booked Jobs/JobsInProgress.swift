@@ -496,7 +496,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     @IBAction func jobcomplete_YesBtn(_ sender: Any) {
 //         self.performSegue(withIdentifier: "book", sender: self)
-        
+        self.jobComplete_popview.removeFromSuperview()
+        self.tableView.alpha = 1
         let vc = self.sb.instantiateViewController(withIdentifier: "BookJobController") as! BookJobController
         vc.contact_no = contact_no
         vc.ref_no = refference_no

@@ -32,6 +32,13 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
     var fuelCost: String?
     
     var jsonData : JSON = []
+    
+    var puStreet_Route = ""
+    var pu_City_Route = ""
+    var pu_allAddress = ""
+    var doStreet_Route = ""
+    var do_City_Route = ""
+    var do_allAddress = ""
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
@@ -71,8 +78,69 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
         lat_pickup =  Double(jsonData[0]["lat_pickup"].stringValue)
         lat_dropoff =  Double(jsonData[0]["lat_dropoff"].stringValue)
        
-        pickUp_lbl.text =  jsonData[0]["pu_house_no"].stringValue  + " " + jsonData[0]["pick_up"].stringValue
-        dropOff_lbl.text = jsonData[0]["do_house_no"].stringValue + " " + jsonData[0]["drop_off"].stringValue
+       let puStreet = jsonData[0]["pu_street"].stringValue
+       let puRoute = jsonData[0]["pu_route"].stringValue
+       let puCity = jsonData[0]["pu_city"].stringValue
+       let puPostCode = jsonData[0]["pu_post_code"].stringValue
+       
+       if puStreet != "" || puRoute != "" {
+           puStreet_Route = puStreet+" "+puRoute+","
+           pickUp_lbl.text = puStreet
+       } else {
+           puStreet_Route = ""
+       }
+       if puCity != "" {
+           pu_City_Route = puStreet_Route+" "+puCity+","
+           pickUp_lbl.text = pu_City_Route
+       } else {
+           pu_City_Route = puStreet_Route
+       }
+       if puPostCode != "" {
+           let spaceCount = puPostCode.filter{$0 == " "}.count
+           if spaceCount > 0 {
+               if let first = puPostCode.components(separatedBy: " ").first {
+                   pu_allAddress = pu_City_Route+" "+first
+                   pickUp_lbl.text = pu_allAddress
+               }
+           } else if spaceCount == 0 {
+               pu_allAddress = pu_City_Route+" "+puPostCode
+               pickUp_lbl.text = pu_allAddress
+           }
+       }
+       
+       //pickUp_lbl.text =  jsonData[0]["pu_house_no"].stringValue  + " " + jsonData[0]["pick_up"].stringValue
+       
+       let doStreet = jsonData[0]["do_street"].stringValue
+       let doRoute = jsonData[0]["do_route"].stringValue
+       let doCity = jsonData[0]["do_city"].stringValue
+       let doPostCode = jsonData[0]["do_post_code"].stringValue
+       
+       if doStreet != "" || doRoute != "" {
+           doStreet_Route = doStreet+" "+doRoute+","
+           dropOff_lbl.text = doStreet
+       } else {
+           doStreet_Route = ""
+       }
+       if doCity != "" {
+           do_City_Route = doStreet_Route+" "+doCity+","
+           dropOff_lbl.text = do_City_Route
+       } else {
+           do_City_Route = doStreet_Route
+       }
+       if doPostCode != "" {
+           let spaceCount = doPostCode.filter{$0 == " "}.count
+           if spaceCount > 0 {
+               if let first = doPostCode.components(separatedBy: " ").first {
+                   do_allAddress = do_City_Route+" "+first
+                   dropOff_lbl.text = do_allAddress
+               }
+           } else if spaceCount == 0 {
+               do_allAddress = do_City_Route+" "+doPostCode
+               dropOff_lbl.text = do_allAddress
+           }
+       }
+       
+        //dropOff_lbl.text = jsonData[0]["do_house_no"].stringValue + " " + jsonData[0]["drop_off"].stringValue
         
         let distance1 = jsonData[0]["distance"].stringValue
         

@@ -703,11 +703,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             let currentBid2 = self.searchBookModel[indexPath.row].price
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let doubleValue = Double(x)
-            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-//            let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
-            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
-            self.bookedPrice = "£"+"\(resultRemaining2)"
+            self.bookedPrice = "£ "+"\(getDoubleValue2(currentBid: Double(currentBid2) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
             del_id = self.searchBookModel[indexPath.row].del_id
             //self.performSegue(withIdentifier: "detail", sender: self)
             self.SearchListJob = true

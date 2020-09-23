@@ -33,7 +33,7 @@ class Contact_ViewController: UIViewController {
         contactView.layer.shadowOpacity = 0.4
         contactView.layer.shadowRadius = 3.0
         
-        name = jsonData[0]["user_name"].stringValue
+        name = jsonData[0]["user_name"].stringValue.capitalized
         phone = jsonData[0]["user_phone"].stringValue
         email = jsonData[0]["user_email"].stringValue
         address = jsonData[0]["user_address"].stringValue

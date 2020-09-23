@@ -66,7 +66,8 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         
                         let jsonData : JSON = JSON(response.result.value!)
                         print("all reviews jsonData is \(jsonData)")
-                        let result = jsonData[0]["result"].stringValue
+//                        let result = jsonData[0]["result"].stringValue
+                        let result = "0"
                         self.allReviewsModel.removeAll()
                         if result == "0" {
                             self.tableView.isHidden = true

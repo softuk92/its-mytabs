@@ -22,4 +22,12 @@ public func getDoubleValue(currentBid: Double, doubleValue: Double) -> String {
     }
 }
 
+public func getDoubleValue2(currentBid: Double, doubleValue: Double) -> String {
+    let resultInitialPrice = currentBid * Double(doubleValue/100)
+    
+    let resultRemaining = currentBid - resultInitialPrice.rounded(toPlaces: 2)
+    
+    return String(format: "%.2f", resultRemaining)
+}
+
 
