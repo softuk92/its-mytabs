@@ -59,14 +59,19 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
       // Set the delegate to inform when the switch was triggered
         self.lableSwitch.delegate = self
 //        self.lableSwitch.curState = .R
-        UIApplication.shared.windows.forEach { window in
-            if #available(iOS 13.0, *) {
-                window.overrideUserInterfaceStyle = .light
-                self.lableSwitch.curState = .L
-            } else {
-                self.lableSwitch.curState = .R
-            }
-        }
+//        if UserDefaults.standard.bool(forKey: "dark") == true {
+//            self.lableSwitch.curState = .R
+//        } else {
+//            self.lableSwitch.curState = .L
+//        }
+//        UIApplication.shared.windows.forEach { window in
+//            if #available(iOS 13.0, *) {
+//                window.overrideUserInterfaceStyle = .light
+//                self.lableSwitch.curState = .L
+//            } else {
+//                self.lableSwitch.curState = .R
+//            }
+//        }
               
         
         switchChangToState(sender: lableSwitch)
@@ -349,6 +354,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
 }
 extension More_ViewController: LabelSwitchDelegate {
     func switchChangToState(sender: LabelSwitch) {
+        if UserDefaults.standard.bool(forKey: "dark") != true {
         if sender.curState == .L {
           print("left state((on state)")
           
@@ -356,6 +362,13 @@ extension More_ViewController: LabelSwitchDelegate {
             self.lableSwitch.circleColor = .init(hexString: "#AAAAAA")
             self.lableSwitch.layer.borderWidth = 0.5
             self.lableSwitch.layer.borderColor = UIColor.gray.cgColor
+            UIApplication.shared.windows.forEach { window in
+                if #available(iOS 13.0, *) {
+                    window.overrideUserInterfaceStyle = .dark
+                    UserDefaults.standard.set(true, forKey: "dark")
+                }
+                 
+            }
            
         }else{
              print("Right state((off state)")
@@ -363,13 +376,13 @@ extension More_ViewController: LabelSwitchDelegate {
                       self.lableSwitch.backgroundColor = .init(hexString: "#296013")
                       UIApplication.shared.windows.forEach { window in
                              if #available(iOS 13.0, *) {
-                                 window.overrideUserInterfaceStyle = .dark
-                             } else {
-                                 // Fallback on earlier versions
+                                 window.overrideUserInterfaceStyle = .light
+                                UserDefaults.standard.set(false, forKey: "dark")
                              }
                               
                          }
         }
+    }
     }
 }
 

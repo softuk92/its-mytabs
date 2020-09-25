@@ -81,6 +81,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.getNotificationSettings()
         }
         
+        if #available(iOS 13.0, *) {
+        if UserDefaults.standard.bool(forKey: "dark") == true {
+            UIApplication.shared.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .dark
+            }
+        } else {
+            UIApplication.shared.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .light
+            }
+        }
+        }
+        
          //new apikey when live the app: AIzaSyANwnbbxW4h3wwHSUjKLk2EVg_H0YNtSi4
         //new apikey with new account when live the app: AIzaSyCRPL-6sONXqdXDX0uZhSXuE25JoHQPmB8
                 
