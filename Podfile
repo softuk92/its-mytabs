@@ -17,7 +17,6 @@ target 'LoadX Transporter' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'SideMenu', '5.0.3'
-    pod 'IQKeyboardManagerSwift', '6.0.4'
     pod 'IBAnimatable', '5.2.0'
     pod 'DropDown', '2.3.12'
     pod 'SDWebImage', '~> 4.0'
@@ -29,6 +28,11 @@ target 'LoadX Transporter' do
     pod 'XLPagerTabStrip', '~> 8.0'
     pod 'SwiftyGif'
     pod 'LabelSwitch'
+    pod 'RxSwift', '~> 5.0'
+    pod 'Reusable',  '~> 4.1'
+    pod 'RxCocoa', '~> 5.1.1'
+    pod 'RxRelay', '~> 5.1.1'
+    pod 'IQKeyboardManagerSwift', '~> 6.5'
 
     
 end

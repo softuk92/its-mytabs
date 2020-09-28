@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
+		184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48E5252233440042AA94 /* CustomUISwitch.swift */; };
+		184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48E6252233440042AA94 /* CustomUISwitch.xib */; };
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
@@ -158,6 +160,8 @@
 /* Begin PBXFileReference section */
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		184C48E5252233440042AA94 /* CustomUISwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
+		184C48E6252233440042AA94 /* CustomUISwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomUISwitch.xib; sourceTree = "<group>"; };
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
@@ -330,6 +334,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184C48E4252233280042AA94 /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				184C48E5252233440042AA94 /* CustomUISwitch.swift */,
+				184C48E6252233440042AA94 /* CustomUISwitch.xib */,
+			);
+			path = "Custom UI";
+			sourceTree = "<group>";
+		};
 		3DA0DBBD6B0B73C84F222B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +460,7 @@
 		8D3E610A21F76477004EAB06 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				184C48E4252233280042AA94 /* Custom UI */,
 				8D1616B921FF328E0014070E /* VKCheckBox.swift */,
 				8DD0DFCF22048EB2009A7E52 /* ActiveJobsModel.swift */,
 				8DD0DFD92204A387009A7E52 /* JobsInProgressModel.swift */,
@@ -776,6 +790,7 @@
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
 				8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */,
+				184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */,
 				BBE9402F24709EF000DB58F3 /* splashScreenDark.gif in Resources */,
 				8D61D3CE221DA1EC00F215D4 /* GoogleService-Info.plist in Resources */,
 				8D48C2192224420700417EF5 /* PaymentHistoryCell.xib in Resources */,
@@ -958,6 +973,7 @@
 				BBED7FA324B50CBA00D65DC7 /* InventoryCell.swift in Sources */,
 				4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */,
 				8D48C20C22243E3D00417EF5 /* ManageReviews.swift in Sources */,
+				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,
 				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,
 				8D33199C2211D84F00BCB339 /* UserModel.swift in Sources */,

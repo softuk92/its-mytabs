@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 import SwiftyJSON
-import LabelSwitch
+import RxSwift
 
 class Notification_ViewController: UIViewController {
    
@@ -18,8 +18,8 @@ class Notification_ViewController: UIViewController {
     @IBOutlet weak var mobileSwitch_btn: UISwitch!
     @IBOutlet weak var mainView: UIView!
     
-    @IBOutlet weak var emailSwitch: LabelSwitch!
-    @IBOutlet weak var mobile_switch: LabelSwitch!
+    @IBOutlet weak var emailSwitch: CustomUISwitch!
+    @IBOutlet weak var mobile_switch: CustomUISwitch!
     
     @IBOutlet weak var email_popupView_lbl: UILabel!
     @IBOutlet weak var mobile_popup_lbl: UILabel!
@@ -31,6 +31,7 @@ class Notification_ViewController: UIViewController {
     
     var emailNotification = UserDefaults.standard.string(forKey: "emailSwitch")
     var mobileNotification = UserDefaults.standard.string(forKey: "MobileSwitch")
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,45 +48,78 @@ class Notification_ViewController: UIViewController {
                     
         mobileSwitch_btn.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         
-        if emailNotification == "ON" {
-//            self.emailSwitch_btn.isOn = true
-            self.emailSwitch.curState = .L
-            self.emailSwitch.circleColor = .init(hexString: "#039846")
-            self.emailSwitch.layer.borderWidth = 0.5
-            self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-                      
+        emailSwitch.configureGesture()
+        mobile_switch.configureGesture()
+        
+        if UserDefaults.standard.bool(forKey: "emailSwitch") == true {
+            emailSwitch.switchState.accept(true)
         }else{
-            self.emailSwitch.curState = .R
-            self.emailSwitch.circleColor = .init(hexString: "#AAAAAA")
-            self.emailSwitch.layer.borderWidth = 0.5
-            self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-                      
+            emailSwitch.switchState.accept(false)
         }
         
-        if  mobileNotification == "ON" {
-//            self.mobileSwitch_btn.isOn = true
-            self.mobile_switch.curState = .L
-            self.mobile_switch.circleColor = .init(hexString: "#039846")
-            self.mobile_switch.layer.borderWidth = 0.5
-            self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
-            
+        if UserDefaults.standard.bool(forKey: "MobileSwitch") == true {
+            mobile_switch.switchState.accept(true)
         }else{
-            self.mobile_switch.curState = .R
-            self.mobile_switch.circleColor = .init(hexString: "#AAAAAA")
-            self.mobile_switch.layer.borderWidth = 0.5
-            self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
-//             self.mobileSwitch_btn.isOn = false
+            mobile_switch.switchState.accept(false)
         }
-            // Make switch be triggered by tapping on any position in the switch
-        self.emailSwitch.fullSizeTapEnabled = true
-        self.mobile_switch.fullSizeTapEnabled = true
-        self.mobile_switch.delegate = self
-             // Set the delegate to inform when the switch was triggered
-               self.emailSwitch.delegate = self
+        
+        emailSwitch.switchState.skip(1).subscribe(onNext: {[weak self] (value) in
+            guard let self = self else { return }
+            if value {
+                UserDefaults.standard.set(value, forKey: "emailSwitch") //setObject
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+                    self.email_popupView.layer.borderWidth = 1
+                    self.email_popupView.layer.cornerRadius = 18
+                    self.mainView.alpha = 0.5
+                    self.email_popupView_lbl.text = "Do you want to enable email notification?"
+                    self.view.addSubview(self.email_popupView)
+                    self.email_popupView.center = self.view.center
+                })
+            } else {
+                UserDefaults.standard.set(value, forKey: "emailSwitch")
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+                    self.email_popupView.layer.borderWidth = 1
+                    self.email_popupView.layer.cornerRadius = 18
+                    self.mainView.alpha = 0.5
+                    self.email_popupView_lbl.text = "Do you want to disable email notification?"
+                    self.view.addSubview(self.email_popupView)
+                    self.email_popupView.center = self.view.center
+                })
+            }
+        }).disposed(by: disposeBag)
+        
+        mobile_switch.switchState.skip(1).subscribe(onNext: {[weak self] (value) in
+            guard let self = self else { return }
+            if value {
+                UserDefaults.standard.set(value, forKey: "MobileSwitch")
+                   
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+                    self.mobilePopup_view.layer.borderWidth = 1
+                    self.mobilePopup_view.layer.cornerRadius = 18
+                    self.mainView.alpha = 0.5
+                    self.mobile_popup_lbl.text = "Do you want to enable mobile notification?"
+                    self.view.addSubview(self.mobilePopup_view)
+                    self.mobilePopup_view.center = self.view.center
+                        })
+                }else{
+                UserDefaults.standard.set(value, forKey: "MobileSwitch")
+                       
+                UIView.animate(withDuration: 0.3, animations: {
+                           self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+                           self.mobilePopup_view.layer.borderWidth = 1
+                           self.mobilePopup_view.layer.cornerRadius = 18
+                           self.mainView.alpha = 0.5
+                           self.mobile_popup_lbl.text = "Do you want to disable mobile notification?"
+                           self.view.addSubview(self.mobilePopup_view)
+                           self.mobilePopup_view.center = self.view.center
+                       })
+                   }
+        }).disposed(by: disposeBag)
         
     }
-    
-   
     
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
@@ -93,134 +127,92 @@ class Notification_ViewController: UIViewController {
     }
 
    @IBAction func email_btn(_ sender: Any) {
-    if self.emailSwitch.curState == .L {
-            emailNotification = "ON"
-            UserDefaults.standard.set(emailNotification, forKey: "emailSwitch") //setObject
-             UIView.animate(withDuration: 0.3, animations: {
-                        self.email_popupView.layer.borderColor = UIColor.gray.cgColor
-                        self.email_popupView.layer.borderWidth = 1
-                        self.email_popupView.layer.cornerRadius = 18
-                        self.mainView.alpha = 0.5
-                self.email_popupView_lbl.text = "Do you want to enable email notification?"
-                        self.view.addSubview(self.email_popupView)
-                        self.email_popupView.center = self.view.center
-             })
-           
-        }else{
-            emailNotification = "OFF"
-            UserDefaults.standard.set(emailNotification, forKey: "emailSwitch")
-            UIView.animate(withDuration: 0.3, animations: {
-                self.email_popupView.layer.borderColor = UIColor.gray.cgColor
-                self.email_popupView.layer.borderWidth = 1
-                self.email_popupView.layer.cornerRadius = 18
-                self.mainView.alpha = 0.5
-                self.email_popupView_lbl.text = "Do you want to disable email notification?"
-                self.view.addSubview(self.email_popupView)
-                self.email_popupView.center = self.view.center
-            })
-            
-        }
+//    if self.emailSwitch.curState == .L {
+//            emailNotification = "ON"
+//            UserDefaults.standard.set(emailNotification, forKey: "emailSwitch") //setObject
+//             UIView.animate(withDuration: 0.3, animations: {
+//                        self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+//                        self.email_popupView.layer.borderWidth = 1
+//                        self.email_popupView.layer.cornerRadius = 18
+//                        self.mainView.alpha = 0.5
+//                self.email_popupView_lbl.text = "Do you want to enable email notification?"
+//                        self.view.addSubview(self.email_popupView)
+//                        self.email_popupView.center = self.view.center
+//             })
+//
+//        }else{
+//            emailNotification = "OFF"
+//            UserDefaults.standard.set(emailNotification, forKey: "emailSwitch")
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+//                self.email_popupView.layer.borderWidth = 1
+//                self.email_popupView.layer.cornerRadius = 18
+//                self.mainView.alpha = 0.5
+//                self.email_popupView_lbl.text = "Do you want to disable email notification?"
+//                self.view.addSubview(self.email_popupView)
+//                self.email_popupView.center = self.view.center
+//            })
+//
+//        }
     }
     
     @IBAction func mobileNotification_action(_ sender: Any) {
-        if self.mobile_switch.curState == .L {
-            mobileNotification = "ON"
-             UserDefaults.standard.set(mobileNotification, forKey: "MobileSwitch")
-               
-            UIView.animate(withDuration: 0.3, animations: {
-                self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
-                self.mobilePopup_view.layer.borderWidth = 1
-                self.mobilePopup_view.layer.cornerRadius = 18
-                self.mainView.alpha = 0.5
-                self.mobile_popup_lbl.text = "Do you want to enable mobile notification?"
-                self.view.addSubview(self.mobilePopup_view)
-                self.mobilePopup_view.center = self.view.center
-                    })
-                  
-            }else{
-             mobileNotification = "OFF"
-             UserDefaults.standard.set(mobileNotification, forKey: "MobileSwitch")
-                   
-            UIView.animate(withDuration: 0.3, animations: {
-                       self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
-                       self.mobilePopup_view.layer.borderWidth = 1
-                       self.mobilePopup_view.layer.cornerRadius = 18
-                       self.mainView.alpha = 0.5
-                       self.mobile_popup_lbl.text = "Do you want to disable mobile notification?"
-                       self.view.addSubview(self.mobilePopup_view)
-                       self.mobilePopup_view.center = self.view.center
-                   })
-               }
+//        if self.mobile_switch.curState == .L {
+//            mobileNotification = "ON"
+//             UserDefaults.standard.set(mobileNotification, forKey: "MobileSwitch")
+//
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+//                self.mobilePopup_view.layer.borderWidth = 1
+//                self.mobilePopup_view.layer.cornerRadius = 18
+//                self.mainView.alpha = 0.5
+//                self.mobile_popup_lbl.text = "Do you want to enable mobile notification?"
+//                self.view.addSubview(self.mobilePopup_view)
+//                self.mobilePopup_view.center = self.view.center
+//                    })
+//
+//            }else{
+//             mobileNotification = "OFF"
+//             UserDefaults.standard.set(mobileNotification, forKey: "MobileSwitch")
+//
+//            UIView.animate(withDuration: 0.3, animations: {
+//                       self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+//                       self.mobilePopup_view.layer.borderWidth = 1
+//                       self.mobilePopup_view.layer.cornerRadius = 18
+//                       self.mainView.alpha = 0.5
+//                       self.mobile_popup_lbl.text = "Do you want to disable mobile notification?"
+//                       self.view.addSubview(self.mobilePopup_view)
+//                       self.mobilePopup_view.center = self.view.center
+//                   })
+//               }
     }
     
     @IBAction func emailPopup_yesAction(_ sender: Any) {
-        if emailSwitch_btn.isOn == false{
             emailNotificationFunc()
             self.mainView.alpha = 1
             self.email_popupView.removeFromSuperview()
-         }else{
-            self.mainView.alpha = 1
-            emailNotificationFunc()
-            self.email_popupView.removeFromSuperview()
-        }
     }
     @IBAction func emailPopup_no(_ sender: Any) {
-        if  emailSwitch_btn.isOn == true{
             self.mainView.alpha = 1
             self.email_popupView.removeFromSuperview()
-//            emailSwitch_btn.isOn = false
-            
-            self.emailSwitch.curState = .L
-             self.emailSwitch.circleColor = .init(hexString: "#AAAAAA")
-            self.emailSwitch.layer.borderWidth = 0.5
-            self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-           
-        }else{
-            self.mainView.alpha = 1
-            self.email_popupView.removeFromSuperview()
-            emailSwitch_btn.isOn = true
-            self.emailSwitch.curState = .R
-            self.emailSwitch.circleColor = .init(hexString: "#039846" )
-            self.emailSwitch.layer.borderWidth = 0.5
-            self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-                                 
-        }
     }
     
     @IBAction func mobilePopup_no(_ sender: Any) {
-        if mobileSwitch_btn.isOn == true{
             self.mainView.alpha = 1
             self.mobilePopup_view.removeFromSuperview()
-//            mobileSwitch_btn.isOn = false
-            
-            self.mobile_switch.curState = .L
-            self.mobile_switch.circleColor = .init(hexString: "#AAAAAA")
-            self.mobile_switch.layer.borderWidth = 0.5
-            self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
-                       
-        }else{
-            self.mainView.alpha = 1
-            self.mobilePopup_view.removeFromSuperview()
-            mobileSwitch_btn.isOn = true
-             self.mobile_switch.curState = .R
-            self.mobile_switch.circleColor = .init(hexString: "#039846")
-            self.mobile_switch.layer.borderWidth = 0.5
-            self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
-            
-        }
     }
     
     @IBAction func mobilePopup_yes(_ sender: Any) {
         self.mainView.alpha = 1
         self.mobilePopup_view.removeFromSuperview()
-         SVProgressHUD.showSuccess(withStatus: "Mobile Notification Updated!")
+        SVProgressHUD.showSuccess(withStatus: "Mobile Notification Updated!")
     }
     
     func emailNotificationFunc() {
         SVProgressHUD.show(withStatus: "Please wait...")
         if user_id != nil {
             let updateNotification_URL = main_URL+"api/UserNotificationSettingUpdate"
-            let parameters : Parameters = ["user_id" : user_id!, "emailNotification" : emailNotification]
+            let parameters : Parameters = ["user_id" : user_id!, "emailNotification" : emailNotification ?? ""]
             if Connectivity.isConnectedToInternet() {
                 Alamofire.request(updateNotification_URL, method : .post, parameters : parameters).responseString {
                     response in
@@ -256,47 +248,47 @@ class Notification_ViewController: UIViewController {
         }
     }
 }
-extension Notification_ViewController: LabelSwitchDelegate{
-
-       func switchChangToState(sender: LabelSwitch) {
-        if sender == emailSwitch  {
-        if sender.curState == .L {
-                
-        print("left state........ this is notificatin  (ON State)")
-        self.emailSwitch.circleColor = .init(hexString: "#039846")
-        self.emailSwitch.layer.borderWidth = 0.5
-        self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-//                 self.emailSwitch.backgroundColor = .init(hexString: "#296013")
-            email_btn(sender)
-
-    }else{
-               
-                   print("Right side ........ this is notificatin  (Off State)")
-//                   self.emailSwitch.backgroundColor = .green
-                   self.emailSwitch.circleColor = .init(hexString: "#AAAAAA")
-                   self.emailSwitch.layer.borderWidth = 0.5
-                   self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
-                    email_btn(sender)
-             emailSwitch_btn.isOn = false
-           }
-         
-        }else {
-            if sender.curState == .L {
-                         print("MObile notification off state going to ON state")
-                self.mobile_switch.circleColor = .init(hexString: "#039846")
-        //                 self.mobile_switch.backgroundColor = .init(hexString: "#296013")
-                
-                mobileNotification_action(sender)
-            }else{
-                         print("left state((on state) going to OFF state")
-        //                 self.mobile_switch.backgroundColor = .green
-                self.mobile_switch.circleColor = .init(hexString: "#AAAAAA")
-                self.mobile_switch.layer.borderWidth = 0.5
-                self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
-                mobileNotification_action(sender)
-                mobileSwitch_btn.isOn = false
-            }
-        }
-    }
-
-}
+//extension Notification_ViewController: LabelSwitchDelegate{
+//
+//       func switchChangToState(sender: LabelSwitch) {
+//        if sender == emailSwitch  {
+//        if sender.curState == .L {
+//
+//        print("left state........ this is notificatin  (ON State)")
+//        self.emailSwitch.circleColor = .init(hexString: "#039846")
+//        self.emailSwitch.layer.borderWidth = 0.5
+//        self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
+////                 self.emailSwitch.backgroundColor = .init(hexString: "#296013")
+//            email_btn(sender)
+//
+//    }else{
+//
+//                   print("Right side ........ this is notificatin  (Off State)")
+////                   self.emailSwitch.backgroundColor = .green
+//                   self.emailSwitch.circleColor = .init(hexString: "#AAAAAA")
+//                   self.emailSwitch.layer.borderWidth = 0.5
+//                   self.emailSwitch.layer.borderColor = UIColor.gray.cgColor
+//                    email_btn(sender)
+//             emailSwitch_btn.isOn = false
+//           }
+//
+//        }else {
+//            if sender.curState == .L {
+//                         print("MObile notification off state going to ON state")
+//                self.mobile_switch.circleColor = .init(hexString: "#039846")
+//        //                 self.mobile_switch.backgroundColor = .init(hexString: "#296013")
+//
+//                mobileNotification_action(sender)
+//            }else{
+//                         print("left state((on state) going to OFF state")
+//        //                 self.mobile_switch.backgroundColor = .green
+//                self.mobile_switch.circleColor = .init(hexString: "#AAAAAA")
+//                self.mobile_switch.layer.borderWidth = 0.5
+//                self.mobile_switch.layer.borderColor = UIColor.gray.cgColor
+//                mobileNotification_action(sender)
+//                mobileSwitch_btn.isOn = false
+//            }
+//        }
+//    }
+//
+//}

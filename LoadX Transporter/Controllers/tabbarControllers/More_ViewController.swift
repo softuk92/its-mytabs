@@ -15,7 +15,9 @@ import SKPhotoBrowser
 import GoogleSignIn
 import Cosmos
 import LabelSwitch
+import RxSwift
 
+@available(iOS 13.0, *)
 class More_ViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
    
     @IBOutlet weak var userName: UILabel!
@@ -32,10 +34,10 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     let tapRec = UITapGestureRecognizer()
     private var imageThree = 0
     private var imageData3 : Data?
-    
+    private var disposeBag = DisposeBag()
     @IBOutlet weak var themeSwitch: UISwitch!
    
-    @IBOutlet weak var lableSwitch: LabelSwitch!
+    @IBOutlet weak var lableSwitch: CustomUISwitch!
      
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var window: UIWindow?
@@ -52,57 +54,27 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
 //       dashboradUpdateImage()
          profileDetail()
       
-       
       // Make switch be triggered by tapping on any position in the switch
-        self.lableSwitch.fullSizeTapEnabled = true
+//        self.lableSwitch.fullSizeTapEnabled = true
 
       // Set the delegate to inform when the switch was triggered
-        self.lableSwitch.delegate = self
-//        self.lableSwitch.curState = .R
-//        if UserDefaults.standard.bool(forKey: "dark") == true {
-//            self.lableSwitch.curState = .R
-//        } else {
-//            self.lableSwitch.curState = .L
-//        }
-//        UIApplication.shared.windows.forEach { window in
-//            if #available(iOS 13.0, *) {
-//                window.overrideUserInterfaceStyle = .light
-//                self.lableSwitch.curState = .L
-//            } else {
-//                self.lableSwitch.curState = .R
-//            }
-//        }
-              
+//        self.lableSwitch.delegate = self
         
-        switchChangToState(sender: lableSwitch)
+        if UserDefaults.standard.bool(forKey: "dark") == true {
+            self.lableSwitch.switchState.accept(true)
+        } else {
+            self.lableSwitch.switchState.accept(false)
+        }
+        
+        lableSwitch.configureGesture()
+        lableSwitch.switchState.skip(1).subscribe(onNext: { (value) in
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = value ? .dark : .light
+                UserDefaults.standard.set(value, forKey: "dark")
+            }
+        }).disposed(by: disposeBag)
+        
     }
-
-//    func switchChangToState(sender: LabelSwitch) {
-//           switch sender.curState {
-//                    case .L: print("left state")
-//                    case .R: print("right state")
-//                }
-//       }
-    
-//    @IBAction func switch_btn_action(_ sender: Any) {
-//        if themeSwitch.isOn == true {
-//            UIApplication.shared.windows.forEach { window in
-//                if #available(iOS 13.0, *) {
-//                    window.overrideUserInterfaceStyle = .dark
-//                } else {
-//                    // Fallback on earlier versions
-//                    
-//                }
-//                
-//            }
-//        }else{
-//           UIApplication.shared.windows.forEach { window in
-//           if #available(iOS 13.0, *) {
-//               window.overrideUserInterfaceStyle = .light
-//           }
-//        }
-//        }
-//    }
     
         @IBAction func userProfileBtn(_ sender: Any) {
            transporter_id = user_id
@@ -352,39 +324,41 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
             }
         }
 }
-extension More_ViewController: LabelSwitchDelegate {
-    func switchChangToState(sender: LabelSwitch) {
-        if UserDefaults.standard.bool(forKey: "dark") != true {
-        if sender.curState == .L {
-          print("left state((on state)")
-          
-            self.lableSwitch.backgroundColor = .none
-            self.lableSwitch.circleColor = .init(hexString: "#AAAAAA")
-            self.lableSwitch.layer.borderWidth = 0.5
-            self.lableSwitch.layer.borderColor = UIColor.gray.cgColor
-            UIApplication.shared.windows.forEach { window in
-                if #available(iOS 13.0, *) {
-                    window.overrideUserInterfaceStyle = .dark
-                    UserDefaults.standard.set(true, forKey: "dark")
-                }
-                 
-            }
-           
-        }else{
-             print("Right state((off state)")
-            self.lableSwitch.circleColor = .init(hexString: "#039846")
-                      self.lableSwitch.backgroundColor = .init(hexString: "#296013")
-                      UIApplication.shared.windows.forEach { window in
-                             if #available(iOS 13.0, *) {
-                                 window.overrideUserInterfaceStyle = .light
-                                UserDefaults.standard.set(false, forKey: "dark")
-                             }
-                              
-                         }
-        }
-    }
-    }
-}
+//extension More_ViewController: LabelSwitchDelegate {
+//
+//    func switchChangToState(sender: LabelSwitch) {
+//        if sender.curState == .L {
+//          print("left state((on state)")
+//
+//            self.lableSwitch.backgroundColor = .none
+//            self.lableSwitch.circleColor = .init(hexString: "#AAAAAA")
+//            self.lableSwitch.layer.borderWidth = 0.5
+//            self.lableSwitch.layer.borderColor = UIColor.gray.cgColor
+//            UIApplication.shared.windows.forEach { window in
+//                if #available(iOS 13.0, *) {
+//                    if UserDefaults.standard.bool(forKey: "dark") == false {
+//                    window.overrideUserInterfaceStyle = .dark
+//                    UserDefaults.standard.set(true, forKey: "dark")
+//                    }
+//                }
+//
+//            }
+//
+//        }else{
+//             print("Right state((off state)")
+//            self.lableSwitch.circleColor = .init(hexString: "#039846")
+//                      self.lableSwitch.backgroundColor = .init(hexString: "#296013")
+//                      UIApplication.shared.windows.forEach { window in
+//                             if #available(iOS 13.0, *) {
+//                                if UserDefaults.standard.bool(forKey: "dark") == true {
+//                                 window.overrideUserInterfaceStyle = .light
+//                                UserDefaults.standard.set(false, forKey: "dark")
+//                                }
+//                             }
+//                         }
+//        }
+//    }
+//}
 
 
 extension UIImageView {
