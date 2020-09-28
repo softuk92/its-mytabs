@@ -31,12 +31,11 @@ class ReportAProblem: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryDropDown.layer.cornerRadius = 10
+        self.categoryDropDown.layer.cornerRadius = 15
         self.jobID_height.constant = 0
         self.title = "Need Any Help?"
         self.jobId_View.isHidden = true
         selectCategory.delegate = self
-        dropDown1.cellHeight = 100
         dropDown1.backgroundColor = UIColor.white
         dropDown1.anchorView = categoryDropDown
         dropDown1.dataSource = categoryDataSource

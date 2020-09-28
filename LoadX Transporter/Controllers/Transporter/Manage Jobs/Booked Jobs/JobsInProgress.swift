@@ -45,6 +45,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     var HEADER_HEIGHT = 60
     var menuShowing = false
     let sb = UIStoryboard(name: "Main", bundle: nil)
+    let year = Calendar.current.component(.year, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -369,14 +370,15 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        cell.completeJobRow = { (selectedCell) in
+        cell.completeJobRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
            
             jb_id = self.jobsInProgressModel[indexPath.row].jb_id
             self.contact_person = self.jobsInProgressModel[indexPath.row].contact_person
             self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
-            self.refference_no = self.jobsInProgressModel[indexPath.row].del_id
+            self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
             
             UIView.animate(withDuration: 0.3, animations: {
 //                    self.jobComplete_popview.layer.borderColor = UIColor.gray.cgColor
@@ -389,7 +391,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
            
             }
         
-        cell.deleteRow = { (selectedCell) in
+        cell.deleteRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             jb_id = self.jobsInProgressModel[indexPath.row].jb_id
@@ -416,7 +419,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     
         
-        cell.callRow = { (selectedCell) in
+        cell.callRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             let callNumber = self.jobsInProgressModel[indexPath.row].contact_phone
@@ -431,7 +435,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        cell.emailRow = { (selectedCell) in
+        cell.emailRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             let email = self.jobsInProgressModel[indexPath.row].contact_mail
@@ -444,7 +449,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        cell.transporterProfileRow = { (selectedCell) in
+        cell.transporterProfileRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             transporter_id = self.jobsInProgressModel[indexPath.row].user_id
