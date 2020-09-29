@@ -72,7 +72,7 @@ class Notification_ViewController: UIViewController {
                     self.email_popupView.layer.borderWidth = 1
                     self.email_popupView.layer.cornerRadius = 18
                     self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Do you want to enable email notification?"
+                    self.email_popupView_lbl.text = "Get in touch with us via email?"
                     self.view.addSubview(self.email_popupView)
                     self.email_popupView.center = self.view.center
                 })

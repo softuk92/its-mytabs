@@ -24,6 +24,10 @@ class ReportAProblem: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     @IBOutlet weak var jobID_height: NSLayoutConstraint!
     @IBOutlet weak var submitBtn: UIButton!
     
+    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     var categoryDataSource = ["Account Update", "Issue With Job Payment", "Issue With Job", "Report User", "Security Settings", "Others"]
@@ -31,40 +35,16 @@ class ReportAProblem: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryDropDown.layer.cornerRadius = 15
+        blurView.isHidden = true
+        innerView.layer.cornerRadius = 15
+        tableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         self.jobID_height.constant = 0
         self.title = "Need Any Help?"
         self.jobId_View.isHidden = true
         selectCategory.delegate = self
-        dropDown1.backgroundColor = UIColor.white
-        dropDown1.anchorView = categoryDropDown
-        dropDown1.dataSource = categoryDataSource
-        dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            self.arrowImage.image = UIImage(named: "upArrow")
-            self.selectCategory.text = item
-            if index == 1 || index == 2 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.jobId_View.isHidden = false
-                    self.jobID_height.constant = 100
-                    self.arrowImage.image = UIImage(named: "upArrow")
-                    let alert = UIAlertController(title: "", message: "You can find your Job ID on job detail page.", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    self.job_id.becomeFirstResponder()
-                })
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.jobId_View.isHidden = true
-                    self.jobID_height.constant = 0
-                    self.job_id.becomeFirstResponder()
-//                   self.arrowImage.image = UIImage(named: "upArrow")
-                    
-                })
-            }
-        }
-        dropDown1.direction = .bottom
-        dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
     
         problem.delegate = self
 //        problem.text = "Please let us know the problem you face in detail..."
@@ -108,9 +88,8 @@ class ReportAProblem: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == selectCategory {
-            dropDown1.show()
+            self.blurView.isHidden = false
             view.endEditing(true)
-            self.arrowImage.image = UIImage(named: "downArrow-1")
         }
     }
     @IBAction func back_action(_ sender: Any) {
@@ -162,4 +141,51 @@ class ReportAProblem: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         }
     }
 
+}
+
+extension ReportAProblem: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.blurView.isHidden = true
+        self.selectCategory.text = categoryDataSource[indexPath.row]
+        if indexPath.row == 1 || indexPath.row == 2 {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.jobId_View.isHidden = false
+                self.jobID_height.constant = 100
+                
+                let alert = UIAlertController(title: "", message: "You can find your Job ID on job detail page.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                self.job_id.becomeFirstResponder()
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.jobId_View.isHidden = true
+                self.jobID_height.constant = 0
+                self.problem.becomeFirstResponder()
+//                self.job_id.becomeFirstResponder()
+            })
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+        
+extension ReportAProblem: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        categoryDataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+        
+        cell.label.text = categoryDataSource[indexPath.row]
+        
+        return cell
+    }
+    
 }

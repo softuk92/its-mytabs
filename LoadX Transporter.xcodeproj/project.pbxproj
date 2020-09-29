@@ -10,6 +10,8 @@
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48E5252233440042AA94 /* CustomUISwitch.swift */; };
 		184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48E6252233440042AA94 /* CustomUISwitch.xib */; };
+		184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48EA2523525C0042AA94 /* DropDownViewCell.swift */; };
+		184C48ED2523525C0042AA94 /* DropDownViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48EB2523525C0042AA94 /* DropDownViewCell.xib */; };
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
@@ -162,6 +164,8 @@
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		184C48E5252233440042AA94 /* CustomUISwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
 		184C48E6252233440042AA94 /* CustomUISwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomUISwitch.xib; sourceTree = "<group>"; };
+		184C48EA2523525C0042AA94 /* DropDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownViewCell.swift; sourceTree = "<group>"; };
+		184C48EB2523525C0042AA94 /* DropDownViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownViewCell.xib; sourceTree = "<group>"; };
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
@@ -343,6 +347,16 @@
 			path = "Custom UI";
 			sourceTree = "<group>";
 		};
+		184C48E9252351F10042AA94 /* Report a Problem */ = {
+			isa = PBXGroup;
+			children = (
+				8D48C20F22243FD900417EF5 /* ReportAProblem.swift */,
+				184C48EA2523525C0042AA94 /* DropDownViewCell.swift */,
+				184C48EB2523525C0042AA94 /* DropDownViewCell.xib */,
+			);
+			path = "Report a Problem";
+			sourceTree = "<group>";
+		};
 		3DA0DBBD6B0B73C84F222B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +461,6 @@
 				8DB4999D2220272A00D0887C /* RegisterViewController.swift */,
 				8D270CF721FB3CFB0016D6DD /* LoginViewController.swift */,
 				8D270D0C21FB6D7B0016D6DD /* ForgetPasswordController.swift */,
-				8D48C20F22243FD900417EF5 /* ReportAProblem.swift */,
 				8DE8FAFE220074EE009309F8 /* SuccessController.swift */,
 				4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */,
 				4EC8049623E31E0700540F9A /* location_ViewController.swift */,
@@ -606,6 +619,7 @@
 		8D61D3CC221D9D5600F215D4 /* Transporter */ = {
 			isa = PBXGroup;
 			children = (
+				184C48E9252351F10042AA94 /* Report a Problem */,
 				8DF9F0F122566EDE00137495 /* Freebie Items */,
 				8D246F9B2228361500E2B290 /* View All Queries */,
 				8D48C213222441F900417EF5 /* Payment History */,
@@ -782,6 +796,7 @@
 			files = (
 				BBED7F9F24B5094600D65DC7 /* ServiceHeaderCell.xib in Resources */,
 				4E454B5E23E48217009AFF47 /* Montserrat-Light.otf in Resources */,
+				184C48ED2523525C0042AA94 /* DropDownViewCell.xib in Resources */,
 				4E454B6123E48217009AFF47 /* Montserrat-SemiBold.otf in Resources */,
 				8D48C1F722240A1A00417EF5 /* ActiveJobsCell.xib in Resources */,
 				8D270D1121FB86C90016D6DD /* client_590790755826-9u7kq1p0ecc71gtp8f42ol6hf16ho4eh.apps.googleusercontent.com.plist in Resources */,
@@ -884,6 +899,7 @@
 				4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */,
 				BBECC6092497F9B500BF6334 /* InventoryList_TableViewCell.swift in Sources */,
 				8D246FA72228417000E2B290 /* TermsAndConditionController.swift in Sources */,
+				184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */,
 				6D657B07229C4C06002156C9 /* ShowInvoiceBookedJob.swift in Sources */,
 				BBF12A22243C8F4700CD5FA0 /* SplashScreen_ViewController.swift in Sources */,
 				8D48C1EE2224062800417EF5 /* TransporterDashboard.swift in Sources */,

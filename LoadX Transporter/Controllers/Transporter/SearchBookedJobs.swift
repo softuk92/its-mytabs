@@ -71,6 +71,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var popup2_no_btn: UIButton!
     @IBOutlet weak var searchCount_job_lbl: UILabel!
     
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     
@@ -179,6 +182,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refresher.addTarget(self, action: #selector(SearchDeliveriesController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
+        
+//        popup_yes_btn.layer.masksToBounds = true
+//        popup_no_btn.layer.masksToBounds = true
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -652,6 +658,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     del_id = self.searchBookModel[indexPath.row].del_id
                     let currentPrice = cell.lowest_bid.text
                     self.jobPrice.text = currentPrice
+                        self.timeLabel.text = self.searchBookModel[indexPath.row].timeslot
+                        self.dateLabel.text = self.convertDateFormatter2(self.searchBookModel[indexPath.row].date)
                    
                     UIView.animate(withDuration: 0.3, animations: {
                       //  self.popUpView.layer.borderColor = UIColor.gray.cgColor
@@ -1001,6 +1009,17 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
     }
     
+    public func convertDateFormatter2(_ date: String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let date = dateFormatter.date(from: date)
+        
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        return  dateFormatter.string(from: date!)
+        
+    }
+    
     //MARK: - Function for UIDatepicker
     /***************************************************************/
     func createDatePicker() {
@@ -1054,7 +1073,7 @@ extension SearchBookedJobs: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewConqtroller: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if locationPicked == 1 {
-            print("Place name: \(place.name)")
+//            print("Place name: \(place.name)")
             dismiss(animated: true, completion: nil)
             pickupLocation.text = place.formattedAddress
            
