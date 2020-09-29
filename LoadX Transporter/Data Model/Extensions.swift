@@ -15,11 +15,11 @@ public func getDoubleValue(currentBid: Double, doubleValue: Double) -> String {
     
     let resultRemaining = currentBid - resultInitialPrice.rounded(toPlaces: 2)
     
-    if String(resultRemaining).contains(".0") {
-        return String(format: "%.1f", resultRemaining)
-    } else {
+//    if String(resultRemaining).contains(".0") {
+//        return String(format: "%.1f", resultRemaining)
+//    } else {
         return String(format: "%.2f", resultRemaining)
-    }
+//    }
 }
 
 public func getDoubleValue2(currentBid: Double, doubleValue: Double) -> String {

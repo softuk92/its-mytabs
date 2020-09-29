@@ -153,8 +153,8 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
         if let roundedValue1 = Double(distance1)?.rounded(toPlaces: 2) {
            // roundedValue1.rounded()
           //  print(roundedValue1)
-            let distanceString = String(roundedValue1)+" miles"
-            self.distance_lbl.text = (distanceString)
+            //let distanceString = String(roundedValue1)+" miles"
+            self.distance_lbl.text = String(format: "%.2f", roundedValue1)+" miles"
             }
         }
         
