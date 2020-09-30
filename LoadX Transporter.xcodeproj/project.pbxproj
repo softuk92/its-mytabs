@@ -454,6 +454,7 @@
 			children = (
 				4E275CEA241AAABB00D05A24 /* App_intro_controllers */,
 				BB21E06A23DF68D5004DFE76 /* tabbarControllers */,
+				184C48E4252233280042AA94 /* Custom UI */,
 				8D98C726222056DB00420BFA /* Custom Cells */,
 				8D61D3CC221D9D5600F215D4 /* Transporter */,
 				8D3E60F921F76432004EAB06 /* OnboardingController.swift */,
@@ -473,7 +474,6 @@
 		8D3E610A21F76477004EAB06 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				184C48E4252233280042AA94 /* Custom UI */,
 				8D1616B921FF328E0014070E /* VKCheckBox.swift */,
 				8DD0DFCF22048EB2009A7E52 /* ActiveJobsModel.swift */,
 				8DD0DFD92204A387009A7E52 /* JobsInProgressModel.swift */,
@@ -1166,7 +1166,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.20;
+				MARKETING_VERSION = 3.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1199,7 +1199,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.20;
+				MARKETING_VERSION = 3.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";

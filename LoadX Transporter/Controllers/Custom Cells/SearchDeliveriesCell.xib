@@ -34,6 +34,11 @@
                                     <constraint firstAttribute="width" constant="75" id="FKZ-wa-MhB"/>
                                     <constraint firstAttribute="height" constant="75" id="VCY-KS-OhQ"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FKZ-wa-MhB"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessJob_Lbl_new" translatesAutoresizingMaskIntoConstraints="NO" id="gyD-UW-u8Q">
                                 <rect key="frame" x="295" y="0.0" width="95" height="65"/>
@@ -167,7 +172,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
                             <constraint firstItem="gyD-UW-u8Q" firstAttribute="leading" secondItem="fSX-aa-Ccn" secondAttribute="trailing" constant="5" id="3An-eM-RHU"/>
                             <constraint firstItem="1BR-ge-MtI" firstAttribute="top" secondItem="fSX-aa-Ccn" secondAttribute="bottom" constant="14" id="3Dv-Es-g56"/>
@@ -244,7 +249,10 @@
         <image name="pickDropLine" width="4.5" height="61.5"/>
         <image name="pickUp_icon_new" width="22" height="33"/>
         <namedColor name="PriceColor">
-            <color red="0.15686274509803921" green="0.55294117647058827" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.15700000524520874" green="0.55299997329711914" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cellBackgroundcolor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

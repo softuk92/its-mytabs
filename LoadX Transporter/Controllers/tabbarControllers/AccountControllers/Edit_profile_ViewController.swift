@@ -93,16 +93,16 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
      
     @IBAction func updateBtn_action(_ sender: Any) {
         
-        let isValidateName = validateName(name: fullName_tf.text!)
+//        let isValidateName = validateName(name: fullName_tf.text!)
               
-              let temp = self.email_address_tf.text!
-              let x = isValidEmail1(testStr: temp)
+//              let temp = self.email_address_tf.text!
+//              let x = isValidEmail1(testStr: temp)
               
-                  if (isValidateName == false) {
+        if (fullName_tf.text == "") {
 //                      SVProgressHUD.showError(withStatus: "")
                       fullName_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Full Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
                      
-                  }else if  x == false {
+        }else if  email_address_tf.text == "" {
 //                  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
                                  
                   email_address_tf.attributedPlaceholder = NSAttributedString(string: "Enter Full Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])

@@ -39,6 +39,8 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
     var doStreet_Route = ""
     var do_City_Route = ""
     var do_allAddress = ""
+    
+    var showHouseNumber = false
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
@@ -107,7 +109,10 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
                pickUp_lbl.text = pu_allAddress
            }
        }
-       
+       if showHouseNumber {
+           let pText = pickUp_lbl.text ?? ""
+           pickUp_lbl.text = jsonData[0]["pu_house_no"].stringValue + " " + pText
+       }
        //pickUp_lbl.text =  jsonData[0]["pu_house_no"].stringValue  + " " + jsonData[0]["pick_up"].stringValue
        
        let doStreet = jsonData[0]["do_street"].stringValue
@@ -138,6 +143,11 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
                do_allAddress = do_City_Route+" "+doPostCode
                dropOff_lbl.text = do_allAddress
            }
+       }
+       
+       if showHouseNumber {
+           let dText = dropOff_lbl.text ?? ""
+           dropOff_lbl.text = jsonData[0]["do_house_no"].stringValue + " " + dText
        }
        
         //dropOff_lbl.text = jsonData[0]["do_house_no"].stringValue + " " + jsonData[0]["drop_off"].stringValue

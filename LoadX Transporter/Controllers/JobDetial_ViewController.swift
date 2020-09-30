@@ -32,6 +32,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
     var pageVC: UIPageViewController?
     var images = [SKPhoto]()
     var userId = ""
+    var showHouseNumber = false
     
     @IBOutlet var viewOfTop: UIView!
     @IBOutlet weak var innerView: UIView!
@@ -351,7 +352,7 @@ func setPager() {
             if tempIndex == 0 {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "location_ViewController") as! location_ViewController
                 vc.jsonData = self.jsonDataPArse
-                
+                vc.showHouseNumber = self.showHouseNumber
                 
                 return vc
             }

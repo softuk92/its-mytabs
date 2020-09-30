@@ -717,7 +717,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
                 let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
                 vc.bookedJobPrice = cell.price.text
-             
+                vc.showHouseNumber = true
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             } else {
@@ -726,6 +726,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
            
             let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
             vc.bookedJobPrice = cell.price.text
+                vc.showHouseNumber = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
         }
@@ -757,6 +758,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //            jobPrice = self.completedJobsModelBusiness[indexPath.row]
            
             let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+            vc.showHouseNumber = true
             self.navigationController?.pushViewController(vc, animated: true)
         
         } else {
@@ -766,6 +768,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //        self.performSegue(withIdentifier: "detail", sender: self)
 
         let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+            vc.showHouseNumber = true
         self.navigationController?.pushViewController(vc, animated: true)
               
         }

@@ -56,7 +56,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     
     @IBOutlet weak var unique_id: UITextField!
-    @IBOutlet weak var businessJobPrice: UILabel!
+//    @IBOutlet weak var businessJobPrice: UILabel!
     @IBOutlet weak var no_data_image: UIImageView!
   /*  @IBOutlet weak var search_filter_btn: UIButton!
     @IBOutlet weak var searchfliter_img: UIImageView!
@@ -77,7 +77,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     
-    let categoryList = ["Small Van",
+    let categoryList = ["Car", "Small Van",
     "Medium Van",
     "Large Van",
     "Luton Van",
@@ -104,10 +104,32 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     var blurView: UIVisualEffectView?
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBOutlet weak var categoryBlurView: UIView!
+    @IBOutlet weak var categoryInnerView: UIView!
+    @IBOutlet weak var categoryTableView: UITableView!
 
+    @IBOutlet weak var radiusBlurView: UIView!
+    @IBOutlet weak var radiusInnerView: UIView!
+    @IBOutlet weak var radiusTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //category drop down view
+        categoryBlurView.isHidden = true
+        categoryInnerView.layer.cornerRadius = 10
+        categoryTableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        
+        //radius drop down view
+        radiusBlurView.isHidden = true
+        radiusInnerView.layer.cornerRadius = 10
+        radiusTableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
+        radiusTableView.delegate = self
+        radiusTableView.dataSource = self
+        
         spinner.isHidden = true
         SearchListJob = false
 //        self.title = "Search Jobs"
@@ -121,18 +143,18 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
         createDatePicker()
         
-      selectCategory.optionArray = categoryList
-        selectCategory.isSearchEnable = false
+//        selectCategory.optionArray = categoryList
+//        selectCategory.isSearchEnable = false
       
         if #available(iOS 13.0, *) {
                   if UITraitCollection.current.userInterfaceStyle == .dark  {
                       selectCategory.rowBackgroundColor = UIColor.secondarySystemBackground
-                      selectCategory.arrowSize = 17.0
+                      selectCategory.arrowSize = 15.0
                       selectCategory.arrow.backgroundColor = .gray
                       
                       pickup_radius.rowBackgroundColor = UIColor.secondarySystemBackground
                       pickup_radius.arrow.backgroundColor = .gray
-                      pickup_radius.arrowSize = 17.0
+                      pickup_radius.arrowSize = 15.0
                  
                   }
               } else {
@@ -140,19 +162,17 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
               }
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.searchChange(notification:)), name: Notification.Name("SearchBarSelect"), object: nil)
 
-        selectCategory.didSelect{(selectedText , index ,id) in
-            self.selectCategory.text = selectedText
-            
-            
-        }
+//        selectCategory.didSelect{(selectedText , index ,id) in
+//            self.selectCategory.text = selectedText
+//        }
        
         
-        pickup_radius.optionArray = radiusList
-        pickup_radius.isSearchEnable = false
-        
-        pickup_radius.didSelect{(selectedText , index ,id) in
-            self.pickup_radius.text = selectedText
-        }
+//        pickup_radius.optionArray = radiusList
+//        pickup_radius.isSearchEnable = false
+//
+//        pickup_radius.didSelect{(selectedText , index ,id) in
+//            self.pickup_radius.text = selectedText
+//        }
           
         searchDeliveriesFunc {
             
@@ -185,28 +205,21 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
 //        popup_yes_btn.layer.masksToBounds = true
 //        popup_no_btn.layer.masksToBounds = true
-        
+            
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-//                searchDeliveriesFunc {
-//                    
-//                    if self.searchBookModel.isEmpty {
-//                        SVProgressHUD.dismiss()
-//                        self.tableView.reloadData()
-//                        self.stackView.isHidden = false
-//        //                self.tableView.backgroundView = UIColor.
-//                    } else {
-//                        SVProgressHUD.dismiss()
-//                        self.stackView.isHidden = true
-//                        self.tableView.reloadData()
-//                      
-//                    }
-//                }
-//        print("search job relaod..... n\n/")
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == selectCategory {
+            self.categoryBlurView.isHidden = false
+            view.endEditing(true)
+        } else if textField == pickup_radius {
+            self.radiusBlurView.isHidden = false
+            view.endEditing(true)
+        }
     }
- 
-    @objc  func searchChange(notification: NSNotification) {
+
+
+    @objc func searchChange(notification: NSNotification) {
                 let x = appDelegate.searchBtn_bool
                 if x == true {
                     self.navigationController?.view.addSubview(self.searchFilter)
@@ -275,7 +288,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBAction func SearchFliter_back_Action(_ sender: Any) {
         self.searchFilter.removeFromSuperview()
         self.searchFilter.isHidden = true
-         self.searchFilter.alpha = 0.0
+        self.searchFilter.alpha = 0.0
     }
     
     @IBAction func viewAll_job(_ sender: Any) {
@@ -286,7 +299,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                         SVProgressHUD.dismiss()
                         self.tableView.reloadData()
                         self.stackView.isHidden = false
-        //                self.tableView.backgroundView = UIColor.
+        //              self.tableView.backgroundView = UIColor.
                     } else {
                         SVProgressHUD.dismiss()
                         self.stackView.isHidden = true
@@ -295,13 +308,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     }
                 }
         self.searchFilter.removeFromSuperview()
-               self.searchFilter.isHidden = true
-                self.searchFilter.alpha = 0.0
+            self.searchFilter.isHidden = true
+            self.searchFilter.alpha = 0.0
     }
     
       @IBAction func searchFilterBtn(_ sender: Any) {
 
-        if  searchBookModel.count < 1 {
+        if searchBookModel.count < 1 {
              self.stackView.isHidden = false
         }else{
             self.stackView.isHidden = true
@@ -401,7 +414,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         if let vc = segue.destination as? JobDetial_ViewController {
             vc.bookedJobPrice = bookedPrice
-//            vc.searchJobDetail = true
+//          vc.searchJobDetail = true
         }
     }
     
@@ -448,16 +461,26 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     /***************************************************************/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == categoryTableView {
+            return categoryList.count
+        } else if tableView == radiusTableView {
+            return radiusList.count
+        } else {
         if (pageNumber * 10 > searchBookModel.count) {
             return searchBookModel.count
         } else {
             return pageNumber * 10
         }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
+        if tableView == categoryTableView || tableView == radiusTableView {
+         return 45
+        } else {
         return 236
+        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -482,13 +505,36 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == categoryTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            
+            cell.label.text = categoryList[indexPath.row]
+            cell.label.font = UIFont(name: "Montserrat-Regular", size: 15)
+            
+            return cell
+        }
+        
+        if tableView == radiusTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            
+            cell.label.text = radiusList[indexPath.row]
+            cell.label.font = UIFont(name: "Montserrat-Regular", size: 15)
+            
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "allDeliveries") as! SearchDeliveriesCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
         cell.backgroundColor = nil
         cell.layer.shadowRadius = 10
         cell.innerView.layer.cornerRadius = 10
-        
         
         cell.bidNowBtn.layer.cornerRadius = 10
         cell.bidNowBtn.clipsToBounds = true
@@ -498,8 +544,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         cell.Dates_View.clipsToBounds = true
         cell.Dates_View.layer.maskedCorners = [ .layerMinXMaxYCorner]
        
-        
-        
         let searchDeliveriesRow = searchBookModel[indexPath.row]
         
         let companyJob = searchDeliveriesRow.is_company_job
@@ -632,7 +676,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     if companyJob == "1" {
                     del_id = self.searchBookModel[indexPath.row].del_id
                         let currentPrice = cell.lowest_bid.text
-                        self.businessJobPrice.text = currentPrice
+//                        self.businessJobPrice.text = currentPrice
                         UIView.animate(withDuration: 0.3, animations: {
 //                            self.popUpView2.layer.borderColor = UIColor.gray.cgColor
 //                            self.popUpView2.layer.borderWidth = 1
@@ -652,6 +696,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
 //                            self.view.addSubview(self.blurView!)
                             self.view.addSubview(self.popUpView2)
                             self.popUpView2.center = self.view.center
+                            self.jobPrice.text = currentPrice
+                            self.timeLabel.text = self.searchBookModel[indexPath.row].timeslot
+                            self.dateLabel.text = self.convertDateFormatter2(self.searchBookModel[indexPath.row].date)
 
                         })
                     } else {
@@ -718,6 +765,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController
             vc?.bookedJobPrice = self.bookedPrice
             vc?.selectSearchJob = self.SearchListJob
+            vc?.showHouseNumber = false
             self.navigationController?.pushViewController(vc!, animated: true)
         }
         
@@ -769,6 +817,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == categoryTableView {
+            self.categoryBlurView.isHidden = true
+            self.selectCategory.text = categoryList[indexPath.row]
+        } else if tableView == radiusTableView {
+            self.radiusBlurView.isHidden = true
+            self.pickup_radius.text = radiusList[indexPath.row]
+        } else {
         del_id = self.searchBookModel[indexPath.row].del_id
         bookedPriceBool = true
         let currentBid2 = self.searchBookModel[indexPath.row].price
@@ -786,6 +841,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         vc?.bookedJobPrice = bookedPrice
         vc?.selectSearchJob = SearchListJob
         self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     func bookedJobFunc() {

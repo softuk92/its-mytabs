@@ -320,58 +320,43 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        if self.items.count == 0 {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! job_DetialView_TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! job_DetialView_TableViewCell
+        
+        self.del_id = jsonData[0]["del_id"].stringValue
+        cell.jobId_lbl.text = "LOADX"+String(year)+"J"+(del_id ?? "")
+        cell.category_lbl.text = jsonData[0]["add_type"].stringValue
+        let pickUp_date = jsonData[0]["date"].stringValue
+        
+        if pickUp_date != ""{
+            cell.pickUp_lbl.text = convertDateFormatter(pickUp_date)
+        }
+        cell.pickUp_time.text = jsonData[0]["timeslot"].stringValue
+        
+        self.Posteddate = jsonData[0]["job_posted_date"].stringValue
+        
+        if Posteddate != ""{
+            cell.postedDate_lbl.text = convertDateFormatter(Posteddate)
+        }
+        let no_of_hepler = jsonData[0]["no_of_helper"].stringValue
+        if no_of_hepler == "1" {
+            cell.no_of_helpers_lbl.text = "Driver Only"
+        }else{
+            cell.no_of_helpers_lbl.text = no_of_hepler + " Helpers"
+        }
+        
+        cell.supermarketName_lbl.text = jsonData[0]["super_market_name"].stringValue
+        
+        cell.movingFrom_lbl.text = jsonData[0]["moving_from"].stringValue
+        cell.movingTo_lbl.text = jsonData[0]["moving_to"].stringValue
              
-             self.del_id = jsonData[0]["del_id"].stringValue
-             
-             
-            
-             cell.category_lbl.text = jsonData[0]["add_type"].stringValue
-             cell.movingFrom_lbl.text = jsonData[0]["moving_from"].stringValue
-             cell.movingTo_lbl.text = jsonData[0]["moving_to"].stringValue
-             
-             cell.pickUp_time.text = jsonData[0]["timeslot"].stringValue
-             
-             self.Posteddate = jsonData[0]["job_posted_date"].stringValue
-             let pickUp_date = jsonData[0]["date"].stringValue
-             
-             if pickUp_date != ""{
-                 let converted_pickUpDate = convertDateFormatter(pickUp_date)
-                 
-                 cell.pickUp_lbl.text = converted_pickUpDate
-             }
-             if Posteddate != ""{
-                 let convertedJobPostedDate = convertDateFormatter(Posteddate)
-                 cell.postedDate_lbl.text = convertedJobPostedDate
-             }
              cell.vehicleType_lbl.text = jsonData[0]["vehicle_type"].stringValue
              cell.No_of_vehicle_lbl.text = jsonData[0]["no_of_vehicle"].stringValue
-             let no_of_hepler = jsonData[0]["no_of_helper"].stringValue
-             if no_of_hepler == "1" {
-                 cell.no_of_helpers_lbl.text = no_of_hepler + " Helper"
-             }else{
-                 cell.no_of_helpers_lbl.text = no_of_hepler + " Helpers"
-             }
+             
              Vehicle_no = jsonData[0]["no_of_vehicle"].stringValue
              d_item = jsonData[0]["d_items"].stringValue
-             
-             
-             let jobID = "LOADX"+String(year)+"J"+del_id!
-             cell.jobId_lbl.text = jobID
-             
-//             if jsonData_inventory.stringValue == "" {
-//
-//                 cell.inventory_view.isHidden = true
-//                 cell.inventory_view_height.constant = 0
-//
-//             }else{
-//                 cell.inventory_view.isHidden = false
-//                 cell.inventory_view_height.constant = 120
-//             }
-             
+
              if cell.category_lbl.text == "Furniture and General Items" || cell.category_lbl.text == "One Item" || cell.category_lbl.text == "Two Items" || cell.category_lbl.text == "Three or More Items" || cell.category_lbl.text == "Piano"  || cell.category_lbl.text == "Business & Industrial Goods" ||  cell.category_lbl.text == "Machine and Vehicle Parts" || cell.category_lbl.text == "Waste Removal" || cell.category_lbl.text ==  "Office Move" || cell.category_lbl.text == "Other"{
                  
-                 cell.noOfBeds_view.isHidden = true
                  cell.noOfBeds_view.isHidden = true
                  cell.noOfVehicle_view.isHidden = true
                  cell.vehicleType_view.isHidden = false
@@ -483,7 +468,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         cell.No_of_vehicle_lbl.text = jsonData[0]["no_of_vehicle"].stringValue
         let no_of_hepler = jsonData[0]["no_of_helper"].stringValue
         if no_of_hepler == "1" {
-            cell.no_of_helpers_lbl.text = no_of_hepler + " Helper"
+            cell.no_of_helpers_lbl.text = "Driver Only"
         }else{
             cell.no_of_helpers_lbl.text = no_of_hepler + " Helpers"
         }

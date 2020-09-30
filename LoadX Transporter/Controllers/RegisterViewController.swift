@@ -17,6 +17,28 @@ import GooglePlaces
 import SKPhotoBrowser
 import MobileCoreServices
 
+struct CarMakeModel: Decodable {
+    let cmb_name : String
+    let is_deleted : String
+    let cmb_id : String
+    
+    init(cmb_name: String, is_deleted: String, cmb_id: String) {
+        self.cmb_name = cmb_name
+        self.is_deleted = is_deleted
+        self.cmb_id = cmb_id
+    }
+}
+
+struct CarModel: Decodable {
+    let is_deleted : String
+    let cmt_id : String
+    let cmd_model : String
+    let cmb_id : String
+    let cmd_truck_required : String
+    let cmd_id : String
+    let cmd_weight : String
+    let cmd_length : String
+}
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate {
 
@@ -49,6 +71,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
     @IBOutlet weak var tableview: UITableView!
+    
+    @IBOutlet weak var carMakeModelView: UIView!
+    @IBOutlet weak var carMakeViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var carMakeField: AnimatableTextField!
+    @IBOutlet weak var carModelField: AnimatableTextField!
+    
+    //carmake and models popups
+    @IBOutlet weak var carMakeBlurView: UIView!
+    @IBOutlet weak var carMakeInnerView: UIView!
+    @IBOutlet weak var carMakeTableView: UITableView!
+    
+    @IBOutlet weak var carModelBlurView: UIView!
+    @IBOutlet weak var carModelInnerView: UIView!
+    @IBOutlet weak var carModelTableView: UITableView!
+    
     //let list = ["Small Van", "Medium Van", "Large Van", "Luton Van","Rubbish Removal Truck", "7.5 Truck", "Vehicle Recovery Truck", "Container Truck", "Other"]
     
     var list = ["Car","Small Van",
@@ -72,17 +109,37 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     private var insurancePicked : Int?
     private var licensePicked : Int?
     var images1 = [SKPhoto]()
+    var carsMake = [CarMakeModel]()
+    var carModels = [CarModel]()
     var docData1 : Data?
     var fileName1 : String?
     var docData2 : Data?
     var fileName2 : String?
-    
-    
+    var cmb_id: String = ""
+    var cmd_id: String = ""
+    var car_model_manual: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        carMakeBlurView.isHidden = true
+        carMakeInnerView.layer.cornerRadius = 15
+        carMakeTableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
+        carMakeTableView.delegate = self
+        carMakeTableView.dataSource = self
+        
+        carModelBlurView.isHidden = true
+        carModelInnerView.layer.cornerRadius = 15
+        carModelTableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
+        carModelTableView.delegate = self
+        carModelTableView.dataSource = self
+        
+        carMakeField.delegate = self
+        carModelField.delegate = self
        
         self.title = "Sign Up"
+        self.carMakeViewHeight.constant = 0
+        self.carMakeModelView.isHidden = true
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -97,32 +154,64 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         tableview.backgroundView = nil
         tableview.backgroundColor = UIColor.clear
         self.innerViewPop.layer.cornerRadius = 10
-    //        dropDown1.anchorView = van_type_drop
-    //
-    //        dropDown1.dataSource = list
-    //        dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
-    //            print("Selected item: \(item) at index: \(index)")
-    //            self.van_type.text = item
-    //             self.van_type.rightImage = UIImage(named: "arrowDown_new")
-    //            self.vehicle_reg_no.becomeFirstResponder()
-    //        }
-    //
-    //        dropDown1.direction = .bottom
-    //        dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
-    //        dropDown1.width = 135
-        
-        if #available(iOS 13.0, *) {
-            DropDown.appearance().textColor = UIColor.label
-        } else {
-            DropDown.appearance().textColor = UIColor.black
+        getCarsMake()
+    }
+    
+    func getCarsMake() {
+                let getcallCarsURL = main_URL+"api/getAllCarMake"
+                Alamofire.request(getcallCarsURL, method : .get).responseJSON {
+                    response in
+
+                    if response.result.isSuccess {
+                        SVProgressHUD.dismiss()
+                        let jsonData : JSON = JSON(response.result.value!)
+                        print("cars make json is \(jsonData)")
+                        if let data = response.data {
+                            do {
+                            self.carsMake = try JSONDecoder().decode([CarMakeModel].self, from: data)
+                                self.carMakeTableView.reloadData()
+                            } catch {
+                            print("car make model error")
+                            }
+                        }
+                        
+                    } else {
+                        SVProgressHUD.dismiss()
+                        print("Error \(String(describing: response.result.error))")
+                        let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
         }
-        DropDown.appearance().selectedTextColor = UIColor.red
-        DropDown.appearance().textFont = UIFont.systemFont(ofSize: 10)
-        DropDown.appearance().backgroundColor = UIColor(named: "Background_color")
-        DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
-        DropDown.appearance().cellHeight = 30
-        DropDown.appearance().setupCornerRadius(10)
-        
+    
+    func getCarsMakeModel(cmb_id: String) {
+            let getcallCarsURL = main_URL+"api/getAllCarModel"
+        let parameter: Parameters = ["cmb_id" : cmb_id]
+            Alamofire.request(getcallCarsURL, method : .post, parameters: parameter).responseJSON {
+                response in
+
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let jsonData : JSON = JSON(response.result.value!)
+                    print("cars make model json is \(jsonData)")
+                    if let data = response.data {
+                        do {
+                        self.carModels = try JSONDecoder().decode([CarModel].self, from: data)
+                            self.carModelTableView.reloadData()
+                        } catch {
+                        print("car model error")
+                        }
+                    }
+                    
+                } else {
+                    SVProgressHUD.dismiss()
+                    print("Error \(String(describing: response.result.error))")
+                    let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
     }
   
       @IBAction private func btnCross_Pressed(_ sender : UIButton) {
@@ -162,8 +251,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             dropDown1.show()
             self.van_type.rightImage = UIImage(named: "ArrowUp")
             self.view.endEditing(true)
-        }else{
-            print("this is did select textflied ")
+        }else if textField == carMakeField {
+            self.carMakeBlurView.isHidden = false
+            view.endEditing(true)
+        } else if textField == carModelField {
+            self.carModelBlurView.isHidden = false
+            view.endEditing(true)
         }
     }
     
@@ -234,8 +327,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     @IBAction func register_now_btn(_ sender: Any) {
 //       let isValidateName = validateName(name: fullName.text!)
         
-        let temp = self.email_address.text!
-        let x = isValidEmail1(testStr: temp)
+//        let temp = self.email_address.text!
+//        let x = isValidEmail1(testStr: temp)
         
 //            if (isValidateName == false) {
               //  SVProgressHUD.showError(withStatus: "Enter atleast 3 character UserName & with no Digits")
@@ -244,7 +337,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
 ////                fullName_img.image = UIImage(named: "errorIcon")
 //                fullName.placeholderColor = UIColor.red
 //            }else
-    if  x == false {
+        if  email_address.text == "" {
           //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
                            
             address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
@@ -253,7 +346,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
                 
         address.attributedPlaceholder = NSAttributedString(string: "Please enter valid phone number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         
-           //  SVProgressHUD.showError(withStatus: "Please Enter 11 digit Number start with 0 ")
+           SVProgressHUD.showError(withStatus: "Please Enter 11 digit Number start with 0 ")
                 
             }else if self.address.text == "" {
             address.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
@@ -278,7 +371,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         if self.fullName.text != "" && self.phone_no.text != "" && self.email_address.text != "" && self.address.text != "" && self.van_type.text != "" && self.vehicle_reg_no.text != "" {
             let registerTransporter_URL = main_URL+"api/registerdriver"
             
-            let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
+            let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!/*, "cmb_id" : cmb_id, "cmd_id" : cmd_id*/]
             
             if imageOne == 1 {
                 var image1 = licenseImage.image
@@ -594,7 +687,7 @@ extension RegisterViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
 
-        print("Place name: \(place.name)")
+        print("Place name: \(String(describing: place.name))")
             dismiss(animated: true, completion: nil)
         self.address.text = place.formattedAddress
         
@@ -630,12 +723,35 @@ extension RegisterViewController: UITableViewDataSource , UITableViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        if tableView == carMakeTableView {
+            return carsMake.count
+        } else if tableView == carModelTableView {
+            return carModels.count
+        } else {
             return list.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        if tableView == carMakeTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
+                   cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                   cell.backgroundView = nil
+                   cell.backgroundColor = nil
+                   
+            cell.label.text = carsMake[indexPath.row].cmb_name
+                   
+                   return cell
+        } else if tableView == carModelTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
+                   cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                   cell.backgroundView = nil
+                   cell.backgroundColor = nil
+                   
+            cell.label.text = carModels[indexPath.row].cmd_model
+                   
+                   return cell
+        }
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
         cell?.layer.cornerRadius = 10
         cell?.backgroundColor = UIColor.clear
@@ -648,15 +764,38 @@ extension RegisterViewController: UITableViewDataSource , UITableViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == carMakeTableView || tableView == carModelTableView {
+            return 40
+        } else {
         return 50
-        
+        }
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
+        if tableView == carMakeTableView {
+            self.carMakeBlurView.isHidden = true
+            self.carMakeField.text = carsMake[indexPath.row].cmb_name
+            self.getCarsMakeModel(cmb_id: carsMake[indexPath.row].cmb_id)
+        } else if tableView == carModelTableView {
+            self.carModelBlurView.isHidden = true
+            self.carModelField.text = carModels[indexPath.row].cmd_model
+            self.cmd_id = carModels[indexPath.row].cmd_id
+            self.cmb_id = carModels[indexPath.row].cmb_id
+        } else {
             let selectedValue = self.list[indexPath.row]
             self.van_type.text = selectedValue
             viewOfPop.isHidden = true
+        
+        if selectedValue == "Car" {
+            self.carMakeViewHeight.constant = 100
+            self.carMakeModelView.isHidden = false
+            self.view.layoutIfNeeded()
+        } else {
+            self.carMakeViewHeight.constant = 0
+            self.carMakeModelView.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+        }
         
     }
 }

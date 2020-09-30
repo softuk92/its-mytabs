@@ -359,12 +359,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 del_id = jobsInProgressRow.del_id
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                 vc.bookedJobPrice = self.bookedPrice
+                vc.showHouseNumber = true
                 self.navigationController?.pushViewController(vc, animated: true)
 //                self.performSegue(withIdentifier: "detail", sender: self)
             } else {
                 del_id = jobsInProgressRow.del_id
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                 vc.bookedJobPrice = self.bookedPrice
+                vc.showHouseNumber = true
                 self.navigationController?.pushViewController(vc, animated: true)
 //                self.performSegue(withIdentifier: "detail", sender: self)
             }
@@ -480,12 +482,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            self.performSegue(withIdentifier: "detail", sender: self)
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
+            vc.showHouseNumber = true
         self.navigationController?.pushViewController(vc, animated: true)
         } else {
             del_id = self.jobsInProgressModel[indexPath.row].del_id
 //            self.performSegue(withIdentifier: "detail", sender: self)
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
+            vc.showHouseNumber = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

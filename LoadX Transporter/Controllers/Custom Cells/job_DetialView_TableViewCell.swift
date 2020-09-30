@@ -33,6 +33,8 @@ class job_DetialView_TableViewCell: UITableViewCell {
     @IBOutlet weak var no_of_helpers_lbl: UILabel!
     @IBOutlet weak var no_of_beds_lbl: UILabel!
     @IBOutlet weak var no_of_items_lbl: UILabel!
+    @IBOutlet weak var supermarketName_lbl: UILabel!
+    @IBOutlet weak var vehicleOperational_lbl: UILabel!
     
     @IBOutlet weak var jobId_view: UIView!
     @IBOutlet weak var category_view: UIView!
@@ -46,6 +48,8 @@ class job_DetialView_TableViewCell: UITableViewCell {
     @IBOutlet weak var noOfHelpers_view: UIView!
     @IBOutlet weak var noOfBeds_view: UIView!
     @IBOutlet weak var noOfItems_view: UIView!
+    @IBOutlet weak var supermarketName_view: UIView!
+    @IBOutlet weak var vehicleOperational_view: UIView!
     
     @IBOutlet weak var jobDetialView_height: NSLayoutConstraint!
     @IBOutlet weak var movingFrom_height: NSLayoutConstraint!
@@ -55,6 +59,8 @@ class job_DetialView_TableViewCell: UITableViewCell {
     @IBOutlet weak var noOfHelper_height: NSLayoutConstraint!
     @IBOutlet weak var noOfBed_height: NSLayoutConstraint!
     @IBOutlet weak var noOfItem_height: NSLayoutConstraint!
+    @IBOutlet weak var supermarketName_height: NSLayoutConstraint!
+    @IBOutlet weak var vehicleOperational_height: NSLayoutConstraint!
     @IBOutlet weak var detialView: UIView!
     
     
