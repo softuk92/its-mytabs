@@ -40,5 +40,6 @@ struct SearchBookedJobsModel: Decodable {
     let alljobs: Int
     let allTransporter: Int
     let is_company_job: String
+    let transporter_share: String
 
 }

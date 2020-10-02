@@ -77,6 +77,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     @IBOutlet weak var carMakeField: AnimatableTextField!
     @IBOutlet weak var carModelField: AnimatableTextField!
     
+    @IBOutlet weak var enterCarModel: UITextField!
+    @IBOutlet weak var selectCarModelLabel: UILabel!
+    
     //carmake and models popups
     @IBOutlet weak var carMakeBlurView: UIView!
     @IBOutlet weak var carMakeInnerView: UIView!
@@ -115,12 +118,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     var fileName1 : String?
     var docData2 : Data?
     var fileName2 : String?
-    var cmb_id: String = ""
-    var cmd_id: String = ""
+    var cmb_id: String = "0"
+    var cmd_id: String = "0"
     var car_model_manual: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        enterCarModel.isHidden = true
         
         carMakeBlurView.isHidden = true
         carMakeInnerView.layer.cornerRadius = 15
@@ -255,7 +260,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             self.carMakeBlurView.isHidden = false
             view.endEditing(true)
         } else if textField == carModelField {
+            if carModels.count > 0 {
             self.carModelBlurView.isHidden = false
+            }
             view.endEditing(true)
         }
     }
@@ -342,11 +349,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
                            
             address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
-        } else if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) == true {
+        } else if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) != true {
                 
         address.attributedPlaceholder = NSAttributedString(string: "Please enter valid phone number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         
-           SVProgressHUD.showError(withStatus: "Please Enter 11 digit Number start with 0 ")
+           SVProgressHUD.showError(withStatus: "Please enter 11 digit number start with 0 ")
                 
             }else if self.address.text == "" {
             address.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
@@ -369,10 +376,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         SVProgressHUD.show(withStatus: "Registering...")
         if imageOne == 1 && imageTwo == 2 {
         if self.fullName.text != "" && self.phone_no.text != "" && self.email_address.text != "" && self.address.text != "" && self.van_type.text != "" && self.vehicle_reg_no.text != "" {
+            var parameters : [String:String] = [:]
             let registerTransporter_URL = main_URL+"api/registerdriver"
             
-            let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!/*, "cmb_id" : cmb_id, "cmd_id" : cmd_id*/]
-            
+            if cmb_id == "124" {
+                parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "cmb_id" : cmb_id, "cmd_id" : cmd_id, "car_model_manual" : self.enterCarModel.text ?? ""]
+            } else {
+            parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
+            }
+//
             if imageOne == 1 {
                 var image1 = licenseImage.image
                 image1 = image1?.resizeWithWidth(width: 500)
@@ -776,6 +788,16 @@ extension RegisterViewController: UITableViewDataSource , UITableViewDelegate  {
             self.carMakeBlurView.isHidden = true
             self.carMakeField.text = carsMake[indexPath.row].cmb_name
             self.getCarsMakeModel(cmb_id: carsMake[indexPath.row].cmb_id)
+            if carsMake[indexPath.row].cmb_id == "124" {
+                enterCarModel.isHidden = false
+                carModelField.isHidden = true
+                selectCarModelLabel.text = "Enter Car Model"
+            } else {
+                enterCarModel.isHidden = true
+                carModelField.isHidden = false
+                selectCarModelLabel.text = "Select Car Model"
+            }
+            
         } else if tableView == carModelTableView {
             self.carModelBlurView.isHidden = true
             self.carModelField.text = carModels[indexPath.row].cmd_model

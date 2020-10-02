@@ -400,7 +400,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if Connectivity.isConnectedToInternet() {
                 Alamofire.request(activeJobs_URL, method : .post, parameters : parameters).responseJSON {
                     response in
-                    let response1 = response.result.value
+//                    let response1 = response.result.value
                     
 //                    print("this is completed job api response.../n \(String(describing: response1))")
                     if response.result.isSuccess {

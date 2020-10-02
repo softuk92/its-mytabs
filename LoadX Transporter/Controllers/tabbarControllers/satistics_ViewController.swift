@@ -115,9 +115,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     
   func searchCompletedJob() {
           SVProgressHUD.show(withStatus: "Getting details...")
-                 if user_id != nil {
                      let searchCompletedJob = main_URL+"api/searchtransporterCompletedJobs"
-                  let parameters : Parameters = ["user_id" : user_id!, "start_date": fromDate_tf.text! , "end_date" : toDate_tf.text! ]
+                  let parameters : Parameters = ["user_id" : user_id ?? "", "start_date": fromDate_tf.text! , "end_date" : toDate_tf.text! ]
                      if Connectivity.isConnectedToInternet() {
                          Alamofire.request(searchCompletedJob, method : .post, parameters : parameters).responseJSON {
                              response in
@@ -163,7 +162,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                               
                           }else {
                               SVProgressHUD.dismiss()
-                              let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                                let alert = UIAlertController(title: "Alert", message: response.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                               alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                               self.present(alert, animated: true, completion: nil)
                               print("Error \(response.result.error!)")
@@ -176,13 +175,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                           self.present(alert, animated: true, completion: nil)
                          
                       }
-          }else {
-              SVProgressHUD.dismiss()
-              let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-              alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-              self.present(alert, animated: true, completion: nil)
-             
-          }
+
       }
 
         func getCompletedJobs(url: String) {

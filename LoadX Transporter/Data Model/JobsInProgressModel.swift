@@ -36,6 +36,6 @@ struct JobsInProgressModel: Decodable  {
     let is_company_job: String
     let is_cz: String
     let payment_type: String
-    let pu_house_no: String
-    let do_house_no: String
+    let pu_house_no: String?
+    let do_house_no: String?
 }

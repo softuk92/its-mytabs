@@ -103,7 +103,6 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                         
                         print("this is the job detial api inventory list result:-- \(self.jsonDataPArse[1])")
                         
-                        
                         self.movingItem_lbl.text = self.jsonDataPArse[0]["moving_item"].stringValue
                         self.price_lbl.text = self.bookedJobPrice
                         

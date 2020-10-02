@@ -220,13 +220,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
         
-        cell.pick_up.text = jobsInProgressRow.pu_house_no + " " + jobsInProgressRow.pick_up
-        cell.drop_off.text = jobsInProgressRow.do_house_no + " " + jobsInProgressRow.drop_off
+        cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
+        cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
         let stringDate = jobsInProgressRow.date
         let convertedDate = self.convertDateFormatter(stringDate)
         cell.date.text = convertedDate
-        let contactPerson = jobsInProgressRow.contact_person
 //        cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
 //        let driverEmail = jobsInProgressRow.contact_mail
         let driverPhone = jobsInProgressRow.contact_phone

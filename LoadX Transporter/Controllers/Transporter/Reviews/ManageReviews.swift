@@ -13,7 +13,7 @@ import SVProgressHUD
 
 class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var noReview_lbl: UILabel!
+//    @IBOutlet weak var noReview_lbl: UILabel!
     @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     lazy var allReviewsModel = [AllReviewsModel]()
@@ -30,7 +30,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 168.0
+        tableView.estimatedRowHeight = 180.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "ManageReviewsCell", bundle: nil) , forCellReuseIdentifier: "manageReviews")
         
@@ -67,7 +67,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         let jsonData : JSON = JSON(response.result.value!)
                         print("all reviews jsonData is \(jsonData)")
 //                        let result = jsonData[0]["result"].stringValue
-                        let result = "0"
+                        let result = jsonData["result"].stringValue
                         self.allReviewsModel.removeAll()
                         if result == "0" {
                             self.tableView.isHidden = true
@@ -78,7 +78,6 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 do {
                                     self.allReviewsModel = try JSONDecoder().decode([AllReviewsModel].self, from: data!)
                                     SVProgressHUD.dismiss()
-                                    print(self.allReviewsModel)
                                     
                                     DispatchQueue.main.async {
                                         self.tableView.isHidden = false

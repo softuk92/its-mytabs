@@ -431,7 +431,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     self.searchBookModel.removeAll()
                     self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data!)
                     SVProgressHUD.dismiss()
-                    print("Search all jobs json is \(self.searchBookModel)")
+                    print("Search all jobs json is \(JSON(data!))")
                     
                     self.searchCount = String(self.searchBookModel.count)
                     
@@ -546,6 +546,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
        
         let searchDeliveriesRow = searchBookModel[indexPath.row]
         
+        if searchDeliveriesRow.add_type == "Mercedes-Benz S-Class" {
+            print("search job: \(searchDeliveriesRow)")
+        }
+        
         let companyJob = searchDeliveriesRow.is_company_job
         
         if companyJob == "1" {
@@ -646,6 +650,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
 //        cell.lowestBidOutlet.text = "Job Price"
         cell.bidNowBtn.setTitle("Accept Job", for: .normal)
        
+        if searchDeliveriesRow.transporter_share != "0" {
+            let str = Double(searchDeliveriesRow.transporter_share) ?? 0.0
+            cell.lowest_bid.text = "£ "+String(format: "%.2f", str)
+        } else {
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let  doubleValue = Double(x)
         if currentBid != "NoBid" {
@@ -653,6 +661,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         } else {
             cell.lowest_bid.text = "N/A"
         }
+        }
+        
         
         cell.bidNowRow = { (selectedCell) in
             let selectedIndex = self.tableView.indexPath(for: selectedCell)

@@ -22,20 +22,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="manageReviews" rowHeight="126" id="KGk-i7-Jjw" customClass="ManageReviewsCell" customModule="LoadX_Transporter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="402" height="126"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="manageReviews" rowHeight="156" id="KGk-i7-Jjw" customClass="ManageReviewsCell" customModule="LoadX_Transporter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="156"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="402" height="126"/>
+                <rect key="frame" x="0.0" y="0.0" width="402" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNK-fl-ADO">
-                        <rect key="frame" x="10" y="5" width="382" height="116"/>
+                        <rect key="frame" x="10" y="5" width="382" height="146"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="JPx-N7-xmM">
-                                <rect key="frame" x="8" y="5" width="55" height="45"/>
+                                <rect key="frame" x="8" y="5" width="55" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="JQf-tt-eyL"/>
+                                    <constraint firstAttribute="height" constant="50" id="JQf-tt-eyL"/>
                                     <constraint firstAttribute="width" constant="55" id="OHC-np-j1D"/>
                                 </constraints>
                             </imageView>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgo-RL-bEo">
-                                <rect key="frame" x="78" y="27" width="279" height="20"/>
+                                <rect key="frame" x="78" y="31" width="279" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cpK-DO-A9f"/>
                                 </constraints>
@@ -58,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rPH-ke-4ik">
-                                <rect key="frame" x="12" y="60" width="165" height="25"/>
+                                <rect key="frame" x="12" y="67" width="165" height="25"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUK-PD-ITF">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="25"/>
@@ -97,7 +97,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-dJ-wYW">
-                                <rect key="frame" x="265.5" y="62.5" width="96.5" height="20"/>
+                                <rect key="frame" x="265.5" y="69.5" width="96.5" height="20"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookJobDelivery_date" translatesAutoresizingMaskIntoConstraints="NO" id="7Nu-7X-KJq">
                                         <rect key="frame" x="0.0" y="0.0" width="17" height="20"/>
@@ -121,7 +121,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jkhjkhjkhjk" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqO-Uk-UrE">
-                                <rect key="frame" x="12" y="90.5" width="362" height="20.5"/>
+                                <rect key="frame" x="12" y="107.5" width="362" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -130,17 +130,17 @@
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
                             <constraint firstItem="JPx-N7-xmM" firstAttribute="leading" secondItem="sNK-fl-ADO" secondAttribute="leading" constant="8" id="7ZE-jr-kOP"/>
-                            <constraint firstItem="rPH-ke-4ik" firstAttribute="top" secondItem="Sgo-RL-bEo" secondAttribute="bottom" constant="13" id="7pE-3X-piu"/>
+                            <constraint firstItem="rPH-ke-4ik" firstAttribute="top" secondItem="Sgo-RL-bEo" secondAttribute="bottom" constant="16" id="7pE-3X-piu"/>
                             <constraint firstItem="JPx-N7-xmM" firstAttribute="top" secondItem="sNK-fl-ADO" secondAttribute="top" constant="5" id="8pq-rB-vmg"/>
-                            <constraint firstAttribute="bottom" secondItem="dqO-Uk-UrE" secondAttribute="bottom" constant="5" id="Gte-fb-4Fz"/>
+                            <constraint firstAttribute="bottom" secondItem="dqO-Uk-UrE" secondAttribute="bottom" constant="8" id="Gte-fb-4Fz"/>
                             <constraint firstItem="rPH-ke-4ik" firstAttribute="leading" secondItem="sNK-fl-ADO" secondAttribute="leading" constant="12" id="HHu-6B-zrm"/>
                             <constraint firstAttribute="trailing" secondItem="dqO-Uk-UrE" secondAttribute="trailing" constant="8" id="Kui-9B-wLy"/>
                             <constraint firstItem="Obc-dJ-wYW" firstAttribute="centerY" secondItem="rPH-ke-4ik" secondAttribute="centerY" id="O8m-WE-o9S"/>
                             <constraint firstItem="Sgo-RL-bEo" firstAttribute="leading" secondItem="B44-Ck-6qC" secondAttribute="leading" id="SSQ-LD-8Gt"/>
-                            <constraint firstItem="Sgo-RL-bEo" firstAttribute="top" secondItem="B44-Ck-6qC" secondAttribute="bottom" constant="2" id="Xsp-7a-5iC"/>
+                            <constraint firstItem="Sgo-RL-bEo" firstAttribute="top" secondItem="B44-Ck-6qC" secondAttribute="bottom" constant="6" id="Xsp-7a-5iC"/>
                             <constraint firstItem="Sgo-RL-bEo" firstAttribute="trailing" secondItem="B44-Ck-6qC" secondAttribute="trailing" id="e1z-zc-Fe0"/>
                             <constraint firstItem="dqO-Uk-UrE" firstAttribute="leading" secondItem="sNK-fl-ADO" secondAttribute="leading" constant="12" id="e2g-w0-qdJ"/>
-                            <constraint firstItem="dqO-Uk-UrE" firstAttribute="top" secondItem="Obc-dJ-wYW" secondAttribute="bottom" constant="8" id="eX8-oL-LOj"/>
+                            <constraint firstItem="dqO-Uk-UrE" firstAttribute="top" secondItem="Obc-dJ-wYW" secondAttribute="bottom" constant="18" id="eX8-oL-LOj"/>
                             <constraint firstItem="B44-Ck-6qC" firstAttribute="top" secondItem="sNK-fl-ADO" secondAttribute="top" constant="5" id="pLr-jG-ZmU"/>
                             <constraint firstAttribute="trailing" secondItem="Obc-dJ-wYW" secondAttribute="trailing" constant="20" id="qYB-0x-5xa"/>
                             <constraint firstAttribute="trailing" secondItem="B44-Ck-6qC" secondAttribute="trailing" constant="25" id="skS-wE-Gyl"/>
@@ -171,7 +171,7 @@
                 <outlet property="job_title" destination="B44-Ck-6qC" id="T35-tm-F9s"/>
                 <outlet property="transporter_name" destination="Sgo-RL-bEo" id="kOK-1L-DUw"/>
             </connections>
-            <point key="canvasLocation" x="99.200000000000003" y="191.6041979010495"/>
+            <point key="canvasLocation" x="99.200000000000003" y="205.09745127436284"/>
         </tableViewCell>
     </objects>
     <resources>
