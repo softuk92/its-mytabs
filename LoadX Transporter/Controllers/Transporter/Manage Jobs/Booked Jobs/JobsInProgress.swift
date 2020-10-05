@@ -339,7 +339,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let resultRemaining = Double(currentBid)! - self.roundedPrice
 //        cell.remaining_amount.text = "£"+String(resultRemaining)
         
-        cell.detailJobRow = { (selectedCell) in
+        cell.detailJobRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             protected = true
@@ -359,6 +360,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                 vc.bookedJobPrice = self.bookedPrice
                 vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
                 self.navigationController?.pushViewController(vc, animated: true)
 //                self.performSegue(withIdentifier: "detail", sender: self)
             } else {
@@ -366,6 +369,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                 vc.bookedJobPrice = self.bookedPrice
                 vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
                 self.navigationController?.pushViewController(vc, animated: true)
 //                self.performSegue(withIdentifier: "detail", sender: self)
             }
@@ -464,7 +469,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         protected = true
-        
+        let cell = tableView.cellForRow(at: indexPath) as! JobsInProgressCell
         let bookedJob_id = self.jobsInProgressModel[indexPath.row].is_booked_job
         
         if bookedJob_id == "1" {
@@ -482,6 +487,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
             vc.showHouseNumber = true
+            vc.pickupAdd = cell.pick_up.text
+            vc.dropoffAdd = cell.drop_off.text
         self.navigationController?.pushViewController(vc, animated: true)
         } else {
             del_id = self.jobsInProgressModel[indexPath.row].del_id
@@ -489,6 +496,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
             vc.showHouseNumber = true
+            vc.pickupAdd = cell.pick_up.text
+            vc.dropoffAdd = cell.drop_off.text
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -707,7 +707,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
         
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        cell.detailJobRow = { (selectedCell) in
+        cell.detailJobRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             if businessJobs == true {
@@ -718,6 +719,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
                 vc.bookedJobPrice = cell.price.text
                 vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             } else {
@@ -727,6 +730,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
             vc.bookedJobPrice = cell.price.text
                 vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
             self.navigationController?.pushViewController(vc, animated: true)
         }
         }
@@ -750,6 +755,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CompletedJobsCell
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if businessJobs == true {
             del_id = self.completedJobsModelBusiness[indexPath.row].del_id
@@ -759,6 +765,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
            
             let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
             vc.showHouseNumber = true
+            vc.pickupAdd = cell.pick_up.text
+            vc.dropoffAdd = cell.drop_off.text
             self.navigationController?.pushViewController(vc, animated: true)
         
         } else {
@@ -769,6 +777,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
         let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
             vc.showHouseNumber = true
+            vc.pickupAdd = cell.pick_up.text
+            vc.dropoffAdd = cell.drop_off.text
         self.navigationController?.pushViewController(vc, animated: true)
               
         }

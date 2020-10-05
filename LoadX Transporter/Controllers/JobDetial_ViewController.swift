@@ -51,8 +51,8 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
     var lat_pickup : String?
     var lat_dropoff : String?
 
-    var pickUp: String?
-    var dropOff: String?
+    var pickupAdd: String?
+    var dropoffAdd: String?
     var distance: String?
     var fuelCost: String?
     var jsonDataPArse : JSON = []
@@ -352,7 +352,8 @@ func setPager() {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "location_ViewController") as! location_ViewController
                 vc.jsonData = self.jsonDataPArse
                 vc.showHouseNumber = self.showHouseNumber
-                
+                vc.pickupAddress = self.pickupAdd
+                vc.dropOffAddress = self.dropoffAdd
                 return vc
             }
             else if tempIndex == 1 {

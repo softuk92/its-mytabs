@@ -761,7 +761,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
         }
         
-        cell.getDetail = { (selectedCell) in
+        cell.getDetail = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             bookedPriceBool = true
@@ -776,6 +777,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             vc?.bookedJobPrice = self.bookedPrice
             vc?.selectSearchJob = self.SearchListJob
             vc?.showHouseNumber = false
+            vc?.pickupAdd = cell.pickupLabel.text
+            vc?.dropoffAdd = cell.dropOffLabel.text
             self.navigationController?.pushViewController(vc!, animated: true)
         }
         
@@ -827,6 +830,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SearchDeliveriesCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "allDeliveries") as! SearchDeliveriesCell
         if tableView == categoryTableView {
             self.categoryBlurView.isHidden = true
             self.selectCategory.text = categoryList[indexPath.row]
@@ -850,6 +855,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController
         vc?.bookedJobPrice = bookedPrice
         vc?.selectSearchJob = SearchListJob
+            vc?.pickupAdd = cell.pickupLabel.text
+            vc?.dropoffAdd = cell.dropOffLabel.text
         self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
