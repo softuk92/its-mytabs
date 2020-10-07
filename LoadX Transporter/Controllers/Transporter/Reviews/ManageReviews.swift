@@ -67,7 +67,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         let jsonData : JSON = JSON(response.result.value!)
                         print("all reviews jsonData is \(jsonData)")
 //                        let result = jsonData[0]["result"].stringValue
-                        let result = jsonData["result"].stringValue
+                        let result = jsonData[0]["result"].stringValue
                         self.allReviewsModel.removeAll()
                         if result == "0" {
                             self.tableView.isHidden = true
@@ -86,7 +86,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                     
                                 } catch {
                                     print(error)
-                                    let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                 }
@@ -95,7 +95,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         
                     } else {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         print("Error \(response.result.error!)")

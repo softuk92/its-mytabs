@@ -354,8 +354,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
 //                let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
                 self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-                let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
-                self.bookedPrice = "£"+"\(resultRemaining2)"
+//                let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
+                self.bookedPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid2) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
                 del_id = jobsInProgressRow.del_id
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                 vc.bookedJobPrice = self.bookedPrice

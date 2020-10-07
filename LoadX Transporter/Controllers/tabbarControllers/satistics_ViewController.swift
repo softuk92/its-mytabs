@@ -12,7 +12,7 @@ import SwiftyJSON
 import SVProgressHUD
 import IBAnimatable
 
-
+@available(iOS 13.0, *)
 class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -42,7 +42,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         createDatePicker()
         stackView.isHidden = true
         tableView.isHidden = true
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         guard let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") else { return }
         totalEarning.text =  totalEarningAmount
         
@@ -132,10 +133,11 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                               let total_income = jsonData[0]["total_income"].stringValue
                                print("this is total income job:\n\(total_income)")
                               
-                                self.totalEarning.text = "£ " + total_income
-                                self.totalCompletedJob_lbl.text =  totaljobs
+                                
                                 
                                 if result == "0" {
+                                    self.totalEarning.text = "£0.0"
+                                    self.totalCompletedJob_lbl.text = "0"
                                    self.completedJobsModel.removeAll()
                                     
 //                                  self.tableView.reloadData()
@@ -147,10 +149,11 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                //   self.total_compeleted_job.text = "0"
                              //     self.total_income_count.text = "0"
                               } else {
-                                    
+                                    self.totalEarning.text = "£" + total_income
+                                    self.totalCompletedJob_lbl.text =  totaljobs
                                   self.getCompletedJobs(url: "api/transporterCompletedJobs")
                                     self.tableView.isHidden = false
-                                    self.tableView.backgroundColor = UIColor.init(hexString: "EAEAEA")
+//                                    self.tableView.backgroundColor = UIColor.init(hexString: "EAEAEA")
                              //     self.liveView.isHidden = false
 //                                  self.search_filter_backbtn.isHidden = false
 //                                  self.searchResult_view.isHidden = false
@@ -199,7 +202,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                             self.completedJobsModelBusiness.removeAll()
                            
                             if result == "0" {
-                                self.tableView.backgroundView = nil
+//                                self.tableView.backgroundView = nil
                                 self.stackView.isHidden = false
                                 self.tableView.reloadData()
                             } else {
@@ -211,7 +214,6 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                     if url == "api/transporterCompletedJobsBusiness" {
                                         self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data!)
                                         SVProgressHUD.dismiss()
-                                        print(self.completedJobsModelBusiness)
                                         
                                         DispatchQueue.main.async {
     //                                        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
@@ -222,7 +224,6 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                     } else {
                                         self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data!)
                                         SVProgressHUD.dismiss()
-                                        print(self.completedJobsModel)
                                         
                                         DispatchQueue.main.async {
 //                                            self.tableView.backgroundcolor = UIColor(hexString: "")
@@ -278,35 +279,16 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundView = nil
             cell.backgroundColor = nil
-           
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize(width: 2, height: 2)
-            cell.layer.shadowOpacity = 0.3
-            cell.layer.shadowRadius = 3.0
-        
-        
-            if switchCheck == true {
-                
-                cell.cellBackground_view.backgroundColor = UIColor(hexString: "454545")
-                 cell.date.textColor = UIColor.white
-                cell.moving_item.textColor = UIColor.white
-                cell.pick_up.textColor = UIColor.white
-                cell.drop_off.textColor = UIColor.white
-                cell.completionDate_Lbl.textColor = UIColor.white
-                cell.payment_type_lbl.textColor = UIColor.white
-                cell.price.textColor = UIColor.white
-               /* cell.receivedAmount.textColor = UIColor.white
-                cell.Revice_amount_view.backgroundColor = UIColor.darkGray
-                cell.driver_view.backgroundColor = UIColor.darkGray
-                cell.driver_name.setTitleColor(.white, for: .normal)
-                cell.user_Icon_img.image = UIImage(named: "userIconDark")
-                */
-                cell.delete_btn.setImage(UIImage(named: "delete_dark"), for: .normal)
-                cell.dateIcon.image = UIImage(named: "deliveryDateDark")
-               
-                
-            }
+          
+            cell.cellBackground_view.layer.cornerRadius = 10
+            cell.completion_dateView.clipsToBounds = true
+            cell.completion_dateView.layer.cornerRadius = 10
+            cell.completion_dateView.layer.maskedCorners = [.layerMinXMaxYCorner]
             
+            cell.delete_btn.layer.cornerRadius = 10
+            cell.delete_btn.clipsToBounds = true
+            cell.delete_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner  ]
+           
             if businessJobs == true {
             let completedJobsRow = completedJobsModelBusiness[indexPath.row]
                 let payment_type1 = completedJobsRow.payment_type
@@ -327,8 +309,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
       */
                 let movingItem = completedJobsRow.moving_item
                 cell.moving_item.text = movingItem.capitalized
-                cell.pick_up.text = completedJobsRow.pick_up
-                cell.drop_off.text = completedJobsRow.drop_off
+                cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
+                cell.drop_off.text = completedJobsRow.do_house_no ?? "" + " " + completedJobsRow.drop_off
                 let stringDate = completedJobsRow.date
                 let convertedDate = self.convertDateFormatter(stringDate)
                 cell.date.text = convertedDate
@@ -342,8 +324,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     //            let resultInitialPrice = Double(currentBid)! * Double(0.25)
                 self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
                 
-                let resultRemaining1 = Double(currentBid)! - self.roundedPrice
-                cell.price.text = "£"+String(resultRemaining1)
+    //            let resultRemaining1 = Double(currentBid)! - self.roundedPrice
+                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
            
                 let payment_type = completedJobsRow.is_company_job
                   if payment_type != "0" {
@@ -441,11 +423,13 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                
                 let movingItem = completedJobsRow.moving_item
                 cell.moving_item.text = movingItem.capitalized
-                cell.pick_up.text = completedJobsRow.pick_up
-                cell.drop_off.text = completedJobsRow.drop_off
+                cell.pick_up.text = "\(completedJobsRow.pu_house_no ?? "") \(completedJobsRow.pick_up)"
+                cell.drop_off.text = "\(completedJobsRow.do_house_no ?? "") \(completedJobsRow.drop_off)"
+               
                 let stringDate = completedJobsRow.date
                 let convertedDate = self.convertDateFormatter(stringDate)
                 cell.date.text = convertedDate
+                
                 let contactPerson = completedJobsRow.contact_person
     //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
                 
@@ -456,38 +440,58 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     //            let resultInitialPrice = Double(currentBid)! * Double(0.25)
                 self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
                 
-               let resultRemaining = Double(currentBid)! - self.roundedPrice
+                resultRemaining = Double(currentBid)! - self.roundedPrice
                 
                // self.priceValue = "\(resultRemaining)"
-                cell.price.text = "£"+String(resultRemaining)
+                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
             }
             
             cell.deleteRow = { (selectedCell) in
                 let selectedIndex = self.tableView.indexPath(for: selectedCell)
                 self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
                 
-                let refreshAlert = UIAlertController(title: "Delete!", message: "Do you want to delete this job?", preferredStyle: UIAlertController.Style.alert)
-                
-                refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-                    if self.businessJobs == true {
-                        del_id = self.completedJobsModelBusiness[indexPath.row].del_id
+                if self.businessJobs == true {
+                    del_id = self.completedJobsModelBusiness[indexPath.row].del_id
                         self.rowID = indexPath.row
-                        self.deleteJob()
+                        //self.deleteJob()
                     } else {
-                    del_id = self.completedJobsModel[indexPath.row].del_id
-                    self.rowID = indexPath.row
-                    self.deleteJob()
-                    }
-                }))
+                        del_id = self.completedJobsModel[indexPath.row].del_id
+                        self.rowID = indexPath.row
+                       // self.deleteJob()
+                        }
+                    
                 
-                refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
-                    print("Handle Cancel Logic here")
-                }))
                 
-                self.present(refreshAlert, animated: true, completion: nil)
-                }
+    //            let refreshAlert = UIAlertController(title: "Delete!", message: "Do you want to delete this job?", preferredStyle: UIAlertController.Style.alert)
+    //
+    //            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+    //
+    //
+    //            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+    //                print("Handle Cancel Logic here")
+    //            }))
+    //
+    //            self.present(refreshAlert, animated: true, completion: nil)
+                
+//                UIView.animate(withDuration: 0.3, animations: {
+//    //                self.delete_popview.layer.borderColor = UIColor.gray.cgColor
+//    //                self.delete_popview.layer.borderWidth = 1
+//                    self.delete_popview.layer.cornerRadius = 18
+//                    self.tableView.alpha = 0.5
+//
+//                    self.logo_popupView.clipsToBounds = true
+//                    self.logo_popupView.layer.cornerRadius = 18
+//                    self.logo_popupView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
+//
+//                    self.view.addSubview(self.delete_popview)
+//                    self.delete_popview.center = self.view.center
+//                })
+            
+        }
+            
              let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            cell.detailJobRow = { (selectedCell) in
+            cell.detailJobRow = {[weak self] (selectedCell) in
+                guard let self = self else { return }
                 let selectedIndex = self.tableView.indexPath(for: selectedCell)
                 self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
                 if self.businessJobs == true {
@@ -495,14 +499,22 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                     jobs_completed = true
     //                self.performSegue(withIdentifier: "detail", sender: self)
 
-                    let vc = storyboard.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+                    let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                    vc.bookedJobPrice = cell.price.text
+                    vc.showHouseNumber = true
+                    vc.pickupAdd = cell.pick_up.text
+                    vc.dropoffAdd = cell.drop_off.text
                     self.navigationController?.pushViewController(vc, animated: true)
                     
                 } else {
                 del_id = self.completedJobsModel[indexPath.row].del_id
                 jobs_completed = true
                
-                let vc = storyboard.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                vc.bookedJobPrice = cell.price.text
+                    vc.showHouseNumber = true
+                    vc.pickupAdd = cell.pick_up.text
+                    vc.dropoffAdd = cell.drop_off.text
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             }

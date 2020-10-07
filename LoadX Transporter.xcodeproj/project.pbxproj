@@ -15,8 +15,8 @@
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
+		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
-		4E1D09FF22DCC5EF008C264A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
 		4E228E0D23F16ECC00A12947 /* Edit_profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0C23F16ECC00A12947 /* Edit_profile_ViewController.swift */; };
 		4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0E23F16F7E00A12947 /* Document_ViewController.swift */; };
@@ -169,6 +169,7 @@
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
+		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4E223D1C23FE7FD100DE4D29 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -325,12 +326,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E1D09FF22DCC5EF008C264A /* MobileCoreServices.framework in Frameworks */,
 				8D270D0021FB49660016D6DD /* Bolts.framework in Frameworks */,
 				8D270CFD21FB49660016D6DD /* FBSDKShareKit.framework in Frameworks */,
 				8D270CFF21FB49660016D6DD /* FBSDKCoreKit.framework in Frameworks */,
 				8D270CFE21FB49660016D6DD /* FBSDKLoginKit.framework in Frameworks */,
 				8DEF4BA622577C2A00E6E069 /* MapKit.framework in Frameworks */,
+				18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */,
 				B3F95C23A8304B6BC82EA818 /* Pods_LoadX_Transporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +694,7 @@
 		9AE261268342FD152F2ED396 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C7832A252DEF87004B7F4F /* CoreServices.framework */,
 				4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */,
 				8DEF4BA522577C2A00E6E069 /* MapKit.framework */,
 				8D270CFC21FB49660016D6DD /* Bolts.framework */,

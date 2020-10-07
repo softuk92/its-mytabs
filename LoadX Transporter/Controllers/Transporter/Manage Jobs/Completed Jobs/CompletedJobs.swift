@@ -541,8 +541,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //            let resultInitialPrice = Double(currentBid)! * Double(0.25)
             self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
             
-            let resultRemaining1 = Double(currentBid)! - self.roundedPrice
-            cell.price.text = "£"+String(resultRemaining1)
+//            let resultRemaining1 = Double(currentBid)! - self.roundedPrice
+            cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
        
             let payment_type = completedJobsRow.is_company_job
               if payment_type != "0" {
