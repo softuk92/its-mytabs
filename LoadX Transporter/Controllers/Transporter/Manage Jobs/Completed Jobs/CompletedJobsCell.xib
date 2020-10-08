@@ -90,7 +90,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yme-Um-oVv">
-                                <rect key="frame" x="0.0" y="146" width="275" height="45"/>
+                                <rect key="frame" x="0.0" y="146" width="285" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deliveryDate_icon_new" translatesAutoresizingMaskIntoConstraints="NO" id="Zmt-dS-z5e">
                                         <rect key="frame" x="25" y="15" width="15" height="15"/>
@@ -112,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.24683967232704163" green="0.25509437918663025" blue="0.24678981304168701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="completedDataBackground"/>
                                 <constraints>
                                     <constraint firstItem="q4q-8h-KqK" firstAttribute="leading" secondItem="lER-Ag-xu7" secondAttribute="trailing" constant="5" id="29h-cs-cn7"/>
                                     <constraint firstItem="q4q-8h-KqK" firstAttribute="centerY" secondItem="lER-Ag-xu7" secondAttribute="centerY" id="3q4-Wz-qOX"/>
@@ -142,6 +142,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessJob_Lbl_new" translatesAutoresizingMaskIntoConstraints="NO" id="Cf2-It-yZp">
                                 <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="1mk-G6-biQ"/>
                                     <constraint firstAttribute="height" constant="50" id="fWA-eH-pQe"/>
@@ -154,6 +155,14 @@
                                     <constraint firstAttribute="width" constant="65" id="ul8-iG-xcD"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Ub-41A">
+                                <rect key="frame" x="82" y="61.5" width="70" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="gaq-1n-B3i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
@@ -161,7 +170,7 @@
                             <constraint firstItem="9FZ-GC-jjy" firstAttribute="top" secondItem="Op0-Bm-Bcf" secondAttribute="top" constant="5" id="2Ad-jx-eac"/>
                             <constraint firstItem="65y-QN-8KR" firstAttribute="top" secondItem="9FZ-GC-jjy" secondAttribute="bottom" constant="12" id="5KM-xD-shF"/>
                             <constraint firstAttribute="trailing" secondItem="56S-X7-LeD" secondAttribute="trailing" id="5gN-0K-WS6"/>
-                            <constraint firstItem="56S-X7-LeD" firstAttribute="leading" secondItem="Yme-Um-oVv" secondAttribute="trailing" constant="30" id="6ir-4t-9lL"/>
+                            <constraint firstItem="56S-X7-LeD" firstAttribute="leading" secondItem="Yme-Um-oVv" secondAttribute="trailing" constant="20" id="6ir-4t-9lL"/>
                             <constraint firstItem="9FZ-GC-jjy" firstAttribute="leading" secondItem="Op0-Bm-Bcf" secondAttribute="leading" constant="5" id="77b-nb-upw"/>
                             <constraint firstItem="zdL-uc-egX" firstAttribute="leading" secondItem="Hyt-kV-cMU" secondAttribute="leading" id="9PP-58-8a9"/>
                             <constraint firstItem="56S-X7-LeD" firstAttribute="height" secondItem="Yme-Um-oVv" secondAttribute="height" id="AkT-Wg-Lsx"/>
@@ -171,9 +180,10 @@
                             <constraint firstItem="Y1W-Nq-FII" firstAttribute="centerY" secondItem="56S-X7-LeD" secondAttribute="centerY" id="N2j-5T-1lT"/>
                             <constraint firstItem="Yme-Um-oVv" firstAttribute="leading" secondItem="Op0-Bm-Bcf" secondAttribute="leading" id="N8a-Ig-wgb"/>
                             <constraint firstItem="qAj-Rp-rIE" firstAttribute="centerX" secondItem="g6r-q3-eTA" secondAttribute="centerX" id="OKh-b4-qfr"/>
-                            <constraint firstItem="Cf2-It-yZp" firstAttribute="leading" secondItem="Hyt-kV-cMU" secondAttribute="trailing" id="PKG-GE-hqg"/>
+                            <constraint firstItem="I3r-Ub-41A" firstAttribute="top" secondItem="zdL-uc-egX" secondAttribute="bottom" constant="3" id="SKL-9b-hf2"/>
                             <constraint firstItem="431-UX-fTB" firstAttribute="leading" secondItem="Hyt-kV-cMU" secondAttribute="leading" multiplier="2" id="UZk-Cr-sRK"/>
                             <constraint firstItem="65t-Dk-Pkl" firstAttribute="leading" secondItem="Op0-Bm-Bcf" secondAttribute="leading" constant="10" id="XIK-vk-9ct"/>
+                            <constraint firstItem="I3r-Ub-41A" firstAttribute="leading" secondItem="zdL-uc-egX" secondAttribute="leading" id="blh-Gf-9ve"/>
                             <constraint firstItem="65t-Dk-Pkl" firstAttribute="top" secondItem="65y-QN-8KR" secondAttribute="bottom" constant="22" id="dRg-YC-HuV"/>
                             <constraint firstAttribute="bottom" secondItem="Yme-Um-oVv" secondAttribute="bottom" id="dXg-TC-hAG"/>
                             <constraint firstItem="431-UX-fTB" firstAttribute="centerY" secondItem="zdL-uc-egX" secondAttribute="centerY" id="epw-YO-Juz"/>
@@ -185,6 +195,7 @@
                             <constraint firstItem="zdL-uc-egX" firstAttribute="top" secondItem="Hyt-kV-cMU" secondAttribute="bottom" constant="5" id="pXp-Wm-boq"/>
                             <constraint firstItem="qAj-Rp-rIE" firstAttribute="top" secondItem="65y-QN-8KR" secondAttribute="bottom" id="qCz-VJ-oXh"/>
                             <constraint firstItem="Hyt-kV-cMU" firstAttribute="top" secondItem="Op0-Bm-Bcf" secondAttribute="top" constant="15" id="ql7-ew-7lb"/>
+                            <constraint firstAttribute="trailing" secondItem="Hyt-kV-cMU" secondAttribute="trailing" constant="50" id="rrj-2Y-cCw"/>
                             <constraint firstAttribute="trailing" secondItem="Cf2-It-yZp" secondAttribute="trailing" id="sOo-cl-Rau"/>
                             <constraint firstAttribute="bottom" secondItem="56S-X7-LeD" secondAttribute="bottom" id="uGs-IM-uc6"/>
                             <constraint firstItem="65t-Dk-Pkl" firstAttribute="top" secondItem="qAj-Rp-rIE" secondAttribute="bottom" id="ylW-AA-lrc"/>
@@ -211,6 +222,7 @@
                 <outlet property="payment_type_lbl" destination="431-UX-fTB" id="M3m-Y2-w5m"/>
                 <outlet property="pick_up" destination="Pky-3K-BbB" id="Z8g-BC-kze"/>
                 <outlet property="price" destination="zdL-uc-egX" id="iIt-J6-pwT"/>
+                <outlet property="receivedAmount" destination="I3r-Ub-41A" id="xMV-is-U8D"/>
                 <outlet property="widthBusiness" destination="1mk-G6-biQ" id="yTK-kj-APt"/>
             </connections>
             <point key="canvasLocation" x="309.60000000000002" y="112.89355322338831"/>
@@ -229,6 +241,9 @@
         </namedColor>
         <namedColor name="cellBackgroundcolor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="completedDataBackground">
+            <color red="0.25098039215686274" green="0.25098039215686274" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

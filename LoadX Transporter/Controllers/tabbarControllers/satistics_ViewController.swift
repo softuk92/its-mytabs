@@ -143,15 +143,16 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
 //                                  self.tableView.reloadData()
                                  
                                   self.stackView.isHidden = false
-                                 
+                                 self.tableView.isHidden = false
 //                                  self.tableView.backgroundView = nil
-                                  SVProgressHUD.showError(withStatus: message1)
+//                                  SVProgressHUD.showError(withStatus: message1)
                                //   self.total_compeleted_job.text = "0"
                              //     self.total_income_count.text = "0"
                               } else {
                                     self.totalEarning.text = "£" + total_income
                                     self.totalCompletedJob_lbl.text =  totaljobs
-                                  self.getCompletedJobs(url: "api/transporterCompletedJobs")
+                                    self.stackView.isHidden = true
+//                                  self.getCompletedJobs(url: "api/transporterCompletedJobs")
                                     self.tableView.isHidden = false
 //                                    self.tableView.backgroundColor = UIColor.init(hexString: "EAEAEA")
                              //     self.liveView.isHidden = false

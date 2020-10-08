@@ -170,6 +170,4 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
             }
         }
     
-    
-    
 }

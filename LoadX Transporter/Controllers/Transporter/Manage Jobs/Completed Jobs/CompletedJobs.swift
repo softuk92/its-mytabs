@@ -510,7 +510,27 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let completedJobsRow = completedJobsModelBusiness[indexPath.row]
             let payment_type1 = completedJobsRow.payment_type
             let due_amount_status = completedJobsRow.due_amount_status
+            if payment_type1 == "full" {
+                if due_amount_status == "Pending" {
+                    cell.receivedAmount.text = "Pending"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
                     
+                } else if due_amount_status == "paid" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                }
+            } else if due_amount_status == "paid" {
+                cell.receivedAmount.text = "Received"
+                cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+            } else if payment_type1 == "initial" {
+                if due_amount_status == "Pending" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                } else if due_amount_status == "paid" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                }
+            }
            /*  if payment_type1 == "full" {
                 if due_amount_status == "Pending" {
                     cell.receivedAmount.text = "Pending Amount"
@@ -637,6 +657,28 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     cell.payment_type_lbl.text = "Cash Job"
             }
         }
+            
+            if payment_type2 == "full" {
+                if due_amount_status == "Pending" {
+                    cell.receivedAmount.text = "Pending"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
+                    
+                } else if due_amount_status == "paid" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                }
+            } else if due_amount_status == "paid" {
+                cell.receivedAmount.text = "Received"
+                cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+            } else if payment_type2 == "initial" {
+                if due_amount_status == "Pending" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                } else if due_amount_status == "paid" {
+                    cell.receivedAmount.text = "Received"
+                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                }
+            }
            
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized

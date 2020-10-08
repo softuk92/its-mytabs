@@ -15,6 +15,7 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var drop_off: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var receivedAmount: UILabel!
     
     @IBOutlet weak var businessPatti: UIImageView!
     @IBOutlet weak var widthBusiness: NSLayoutConstraint!
