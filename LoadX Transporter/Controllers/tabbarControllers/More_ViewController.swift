@@ -265,7 +265,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                             
                             let result =  jsonData[0]["result"].stringValue
                             if result != "0"{
-                            self.userName.text = jsonData[0]["user_name"].stringValue
+                                self.userName.text = jsonData[0]["user_name"].stringValue.capitalized
                             
                             let image1 = jsonData[0]["user_image_url"].stringValue
                           

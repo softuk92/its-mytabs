@@ -10,13 +10,13 @@ import Foundation
 
 struct PaymentHistoryModel : Decodable {
     
-    let del_id: String
-    let moving_item: String
-    let job_posted_date: String
-    let payment_id: String
-    let amount: String
-    let payment_type: String
-    let pay_date: String
-    let is_booked_job: String
+    let del_id: String?
+    let moving_item: String?
+    let job_posted_date: String?
+    let payment_id: String?
+    let amount: String?
+    let payment_type: String?
+    let pay_date: String?
+    let is_booked_job: String?
     
 }

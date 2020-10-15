@@ -84,7 +84,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 
                                 } catch {
                                     print(error)
-                                    let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                 }
@@ -93,7 +93,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                         
                     } else {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         print("Error \(response.result.error!)")
@@ -144,17 +144,17 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         let paymentHistoryRow = paymentHistoryModel[indexPath.row]
         
         let movingItem = paymentHistoryRow.moving_item
-        cell.moving_item.text = movingItem.capitalized
+        cell.moving_item.text = movingItem?.capitalized
         
         let stringDate = paymentHistoryRow.pay_date
         
-        if stringDate.contains("am") || stringDate.contains("pm") {
-            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate.dropLast(2)))
+        if (stringDate?.contains("am")) != nil || ((stringDate?.contains("pm")) != nil) {
+            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate?.dropLast(2) ?? ""))
         } else {
         cell.job_posted_date.text = self.convertDateFormatter(stringDate)
         }
         
-        let jobID = paymentHistoryRow.payment_id
+        let jobID = paymentHistoryRow.payment_id ?? ""
         let job_id = "LOADX"+String(self.year)+"JI"+jobID
         cell.invoiceNo.text = job_id
         let payment_type = paymentHistoryRow.payment_type
