@@ -44,8 +44,9 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
-        guard let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") else { return }
-        totalEarning.text =  totalEarningAmount
+        if let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") {
+        totalEarning.text = "£ \(totalEarningAmount)"
+        }
         
         guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
                totalCompletedJob_lbl.text =  totalCompletedJob
@@ -136,7 +137,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                 
                                 
                                 if result == "0" {
-                                    self.totalEarning.text = "£0.0"
+                                    self.totalEarning.text = "£0.00"
                                     self.totalCompletedJob_lbl.text = "0"
                                    self.completedJobsModel.removeAll()
                                     

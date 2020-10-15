@@ -48,6 +48,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var crossBtn: UIButton!
     @IBOutlet weak var jobPrice: UILabel!
+    @IBOutlet weak var jobPrice2: UILabel!
     @IBOutlet var popUpView: UIView!
     @IBOutlet var popUpView2: UIView!
     
@@ -73,6 +74,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel2: UILabel!
+    @IBOutlet weak var dateLabel2: UILabel!
     
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
@@ -714,9 +717,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     } else {
                     del_id = self.searchBookModel[indexPath.row].del_id
                     let currentPrice = cell.lowest_bid.text
-                    self.jobPrice.text = currentPrice
-                        self.timeLabel.text = self.searchBookModel[indexPath.row].timeslot
-                        self.dateLabel.text = self.convertDateFormatter2(self.searchBookModel[indexPath.row].date)
+                    self.jobPrice2.text = currentPrice
+                        self.timeLabel2.text = self.searchBookModel[indexPath.row].timeslot
+                        self.dateLabel2.text = self.convertDateFormatter2(self.searchBookModel[indexPath.row].date)
                    
                     UIView.animate(withDuration: 0.3, animations: {
                       //  self.popUpView.layer.borderColor = UIColor.gray.cgColor
@@ -1088,7 +1091,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let date = dateFormatter.date(from: date)
         
-        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        dateFormatter.dateFormat = "dd-MMMM-yyyy"
         return  dateFormatter.string(from: date!)
         
     }

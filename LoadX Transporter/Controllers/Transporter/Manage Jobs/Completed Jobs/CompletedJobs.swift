@@ -481,7 +481,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 255
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -510,40 +510,28 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let completedJobsRow = completedJobsModelBusiness[indexPath.row]
             let payment_type1 = completedJobsRow.payment_type
             let due_amount_status = completedJobsRow.due_amount_status
-            if payment_type1 == "full" {
+            if payment_type1 == "full" || payment_type1 == "Full" {
                 if due_amount_status == "Pending" {
                     cell.receivedAmount.text = "Pending"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
                     
-                } else if due_amount_status == "paid" {
+                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
-            } else if due_amount_status == "paid" {
+            } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                 cell.receivedAmount.text = "Received"
                 cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
-            } else if payment_type1 == "initial" {
+            } else if payment_type1 == "initial" || payment_type1 == "Initial" {
                 if due_amount_status == "Pending" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
-                } else if due_amount_status == "paid" {
+                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
             }
-           /*  if payment_type1 == "full" {
-                if due_amount_status == "Pending" {
-                    cell.receivedAmount.text = "Pending Amount"
-                    cell.receivedAmount.textColor = UIColor(red: 253/255, green: 179/255, blue: 62/255, alpha: 1)
-                } else {
-                    cell.receivedAmount.text = "Received Amount"
-                    cell.receivedAmount.textColor = UIColor(red: 5/255, green: 130/255, blue: 6/255, alpha: 1)
-                }
-                }else {
-                    cell.receivedAmount.text = "Received Amount"
-                    cell.receivedAmount.textColor = UIColor(red: 5/255, green: 130/255, blue: 6/255, alpha: 1)
-                }
-  */
+            
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
             cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
@@ -555,15 +543,16 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
             
             let currentBid = completedJobsRow.current_bid
-            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-            let doubleValue = Double(x)
-            let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//            let resultInitialPrice = Double(currentBid)! * Double(0.25)
-            self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
             
-//            let resultRemaining1 = Double(currentBid)! - self.roundedPrice
-            cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
-       
+            if completedJobsRow.transporter_share != "0" {
+                let str = Double(completedJobsRow.transporter_share) ?? 0.0
+                cell.price.text = "£ "+String(format: "%.2f", str)
+            } else {
+                let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+                let  doubleValue = Double(x)
+                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+            }
+            
             let payment_type = completedJobsRow.is_company_job
               if payment_type != "0" {
                 if switchCheck == true {
@@ -658,23 +647,23 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
             
-            if payment_type2 == "full" {
+            if payment_type2 == "full" || payment_type2 == "Full" {
                 if due_amount_status == "Pending" {
                     cell.receivedAmount.text = "Pending"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
                     
-                } else if due_amount_status == "paid" {
+                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
-            } else if due_amount_status == "paid" {
+            } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                 cell.receivedAmount.text = "Received"
                 cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
-            } else if payment_type2 == "initial" {
+            } else if payment_type2 == "initial" || payment_type2 == "Initial" {
                 if due_amount_status == "Pending" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
-                } else if due_amount_status == "paid" {
+                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
                     cell.receivedAmount.text = "Received"
                     cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
@@ -693,16 +682,19 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
             
             let currentBid = completedJobsRow.current_bid
-            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-            let doubleValue = Double(x)
-            let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//            let resultInitialPrice = Double(currentBid)! * Double(0.25)
-            self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
+            if completedJobsRow.transporter_share != "0" {
+                let str = Double(completedJobsRow.transporter_share) ?? 0.0
+                cell.price.text = "£ "+String(format: "%.2f", str)
+            } else {
+                let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+                let  doubleValue = Double(x)
+                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+            }
             
-            resultRemaining = Double(currentBid)! - self.roundedPrice
-            
-           // self.priceValue = "\(resultRemaining)"
-            cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+//            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+//            let doubleValue = Double(x)
+//
+//            cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
         }
         
         cell.deleteRow = { (selectedCell) in

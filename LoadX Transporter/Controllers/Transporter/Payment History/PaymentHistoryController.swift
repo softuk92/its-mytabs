@@ -42,7 +42,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
          guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
-               paymentTotal.text =  "(" + totalEarning + ")"
+               paymentTotal.text =  "£ (" + totalEarning + ")"
     }
     @objc func populate() {
         DispatchQueue.main.async {

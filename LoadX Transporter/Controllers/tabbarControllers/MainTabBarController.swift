@@ -148,7 +148,8 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                             
                             if let roundedPrice = Double(self.driver_earning)?.rounded(toPlaces: 2) {
                          
-                                self.driverEarning = "£ \(roundedPrice)"
+                                self.driverEarning = String(format: "%.2f", roundedPrice)
+//                                "£ \(roundedPrice)"
                                 UserDefaults.standard.set(self.driverEarning, forKey: "total_earning")
                                                           
                             }
