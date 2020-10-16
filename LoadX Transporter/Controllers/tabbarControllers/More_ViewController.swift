@@ -263,7 +263,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                             let jsonData : JSON = JSON(response.result.value!)
                             print("transporter Profile jsonData is \(jsonData)")
                             
-                            let result =  jsonData[0]["result"].stringValue
+                            let result = jsonData[0]["result"].stringValue
                             if result != "0"{
                                 self.userName.text = jsonData[0]["user_name"].stringValue.capitalized
                             
