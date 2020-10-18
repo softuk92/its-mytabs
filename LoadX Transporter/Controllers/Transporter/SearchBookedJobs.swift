@@ -238,8 +238,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                         self.searchFilter.alpha = 1.0
                         //self.searchFilter.pinEdges(to: self.parentView)
                         self.view.addSubview(self.searchFilter)
-                        self.searchFilter.center = self.view.center
+//                        self.searchFilter.translatesAutoresizingMaskIntoConstraints = false
+//                        NSLayoutConstraint.activate([self.searchFilter.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0), self.searchFilter.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0), self.searchFilter.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0), self.searchFilter.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)])
+                      self.searchFilter.center = self.view.center
                     })
+                      
                       
                     print("this is search button press for showing search filter view")
                 } else{
@@ -261,7 +264,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
        self.searchFilter.alpha = 1.0
        //self.searchFilter.pinEdges(to: self.parentView)
        self.view.addSubview(self.searchFilter)
-       self.searchFilter.center = self.view.center
+     self.searchFilter.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([self.searchFilter.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0), self.searchFilter.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0), self.searchFilter.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0), self.searchFilter.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)])
+//    self.searchFilter.center = self.view.center
    })
         
     }
@@ -833,8 +838,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! SearchDeliveriesCell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "allDeliveries") as! SearchDeliveriesCell
         if tableView == categoryTableView {
             self.categoryBlurView.isHidden = true
             self.selectCategory.text = categoryList[indexPath.row]
@@ -842,6 +845,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self.radiusBlurView.isHidden = true
             self.pickup_radius.text = radiusList[indexPath.row]
         } else {
+        let cell = tableView.cellForRow(at: indexPath) as! SearchDeliveriesCell
         del_id = self.searchBookModel[indexPath.row].del_id
         bookedPriceBool = true
         let currentBid2 = self.searchBookModel[indexPath.row].price

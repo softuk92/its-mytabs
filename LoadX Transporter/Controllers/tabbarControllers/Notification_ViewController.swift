@@ -72,7 +72,7 @@ class Notification_ViewController: UIViewController {
                     self.email_popupView.layer.borderWidth = 1
                     self.email_popupView.layer.cornerRadius = 18
                     self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Get in touch with us via email?"
+                    self.email_popupView_lbl.text = "Do you want to enable email notification?"
                     self.view.addSubview(self.email_popupView)
                     self.email_popupView.center = self.view.center
                 })
@@ -223,14 +223,14 @@ class Notification_ViewController: UIViewController {
                         print("update Profile jsonData is \(jsonData)")
                         let result = jsonData[0]["result"].stringValue
                         //let message = jsonData[0]["message"].stringValue
-                        if result == "1" {
+//                        if result == "1" {
                             SVProgressHUD.showSuccess(withStatus: "Email Notification Updated!")
-                        } else {
-                            SVProgressHUD.showError(withStatus: "Email Notification Not Updated!")
-                        }
+//                        } else {
+//                            SVProgressHUD.showError(withStatus: "Email Notification Not Updated!")
+//                        }
                     } else {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         print("Error \(response.result.error!)")
