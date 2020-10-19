@@ -220,8 +220,8 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     
     @IBAction func updateDocument_action(_ sender: Any) {
         SVProgressHUD.show()
-        if imageOne == 1 && imageTwo == 2 && imageThree == 1 {
-        if insurancePicked == 1 && licensePicked == 1 && VanImagePicked == 1 {
+        if imageOne == 1 || imageTwo == 2 || imageThree == 1 {
+        if insurancePicked == 1 || licensePicked == 1 || VanImagePicked == 1 {
         updateDocuments()
         }else{
             SVProgressHUD.dismiss()

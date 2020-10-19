@@ -38,6 +38,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var themeSwitch: UISwitch!
    
     @IBOutlet weak var lableSwitch: CustomUISwitch!
+    @IBOutlet weak var noFeedbackView: UIView!
      
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var window: UIWindow?
@@ -287,12 +288,14 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                                 }
                             }
                             let feedbackStars = jsonData[0]["avgfdbck"].stringValue
-                            if feedbackStars == "null" {
+                            if feedbackStars == "null" || feedbackStars == "0" {
+                                self.noFeedbackView.isHidden = false
                                 self.feedback_stars.text = "null"
                                 self.cosmosView.rating = 0.0
                             } else {
+                                self.noFeedbackView.isHidden = true
                                 self.feedback_stars.text = feedbackStars + ".0"
-                                self.cosmosView.rating = Double(feedbackStars)!
+                                self.cosmosView.rating = Double(feedbackStars) ?? 0.0
                                 }
                             }else{
                                 SVProgressHUD.dismiss()

@@ -21,14 +21,15 @@ class Reach_Us_ViewController : UIViewController {
         self.navigationController!.popViewController(animated: true)
         
     }
-//    @IBAction func reportProblem_action(_ sender: Any) {
-//
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//
-//        let showVC = sb.instantiateViewController(withIdentifier: "ReportAProblem") as? ReportAProblem
-//
-//        self.navigationController?.pushViewController(showVC!, animated: true)
-//    }
+    @IBAction func contactUs(_ sender: Any) {
+
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+
+        let showVC = sb.instantiateViewController(withIdentifier: "ContactUsViewController") as? ContactUsViewController
+
+        self.navigationController?.pushViewController(showVC!, animated: true)
+    }
+    
     @IBAction func liveChat_action(_ sender: Any) {
       //   ZDCChat.start(in: self.navigationController, withConfig: nil)
    let sb = UIStoryboard(name: "Main", bundle: nil)

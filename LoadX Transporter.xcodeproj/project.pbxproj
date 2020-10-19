@@ -15,6 +15,7 @@
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
+		18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD1E49253DBE80008F881A /* ContactUsViewController.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
@@ -169,6 +170,7 @@
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
+		18AD1E49253DBE80008F881A /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -400,6 +402,7 @@
 				4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */,
 				4E4282C523EC760D00DDA5CF /* satistics_ViewController.swift */,
 				BB560F29246C38F800F1AA23 /* LiveChat_ViewController.swift */,
+				18AD1E49253DBE80008F881A /* ContactUsViewController.swift */,
 			);
 			name = MoreScreens;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 				8DC526202226DBA40033D6CA /* AcceptBidCell.swift in Sources */,
 				4EFC62DF237EA6FC00BD32F3 /* SettingViewController.swift in Sources */,
 				4E275CEC241AAAE600D05A24 /* AppIntro_ViewController.swift in Sources */,
+				18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */,
 				8DE44D412211B42A008CBEE0 /* SessionManager.swift in Sources */,
 				8D270CF621FB3A860016D6DD /* HomeViewController.swift in Sources */,
 				8DD0DFD022048EB2009A7E52 /* ActiveJobsModel.swift in Sources */,

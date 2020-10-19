@@ -75,8 +75,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                                 do {
                                     self.paymentHistoryModel = try JSONDecoder().decode([PaymentHistoryModel].self, from: data!)
                                     SVProgressHUD.dismiss()
-                                    print(self.paymentHistoryModel)
-
+                                    
                                     DispatchQueue.main.async {
                                         self.tableView.isHidden = false
                                         self.tableView.reloadData()
