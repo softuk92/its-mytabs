@@ -133,11 +133,11 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessJob_Lbl_new" translatesAutoresizingMaskIntoConstraints="NO" id="Cf2-It-yZp">
-                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="301" y="0.0" width="54" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="1mk-G6-biQ"/>
-                                    <constraint firstAttribute="height" constant="50" id="fWA-eH-pQe"/>
+                                    <constraint firstAttribute="width" constant="54" id="1mk-G6-biQ"/>
+                                    <constraint firstAttribute="height" constant="54" id="fWA-eH-pQe"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="9FZ-GC-jjy">

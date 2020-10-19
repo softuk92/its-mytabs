@@ -37,7 +37,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY4-MJ-boq">
-                                <rect key="frame" x="90" y="15" width="204" height="20"/>
+                                <rect key="frame" x="90" y="15" width="120.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="dJi-ET-Hzl"/>
                                 </constraints>
@@ -59,10 +59,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessJob_Lbl_new" translatesAutoresizingMaskIntoConstraints="NO" id="wzP-k7-KWf">
-                                <rect key="frame" x="294" y="0.0" width="65" height="65"/>
+                                <rect key="frame" x="305" y="0.0" width="54" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="L3X-HM-AJJ"/>
-                                    <constraint firstAttribute="width" constant="65" id="Mho-MM-RxD"/>
+                                    <constraint firstAttribute="height" constant="54" id="L3X-HM-AJJ"/>
+                                    <constraint firstAttribute="width" constant="54" id="Mho-MM-RxD"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zdH-w5-pzs">
@@ -205,7 +205,6 @@
                             <constraint firstItem="da0-me-TX8" firstAttribute="centerY" secondItem="fLh-BX-mZG" secondAttribute="centerY" id="wXb-dO-84A"/>
                             <constraint firstAttribute="trailing" secondItem="Nkm-pv-2pN" secondAttribute="trailing" constant="25" id="ybu-Iy-JwK"/>
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="height" secondItem="zdH-w5-pzs" secondAttribute="height" id="z3Z-CV-K8T"/>
-                            <constraint firstItem="wzP-k7-KWf" firstAttribute="leading" secondItem="vY4-MJ-boq" secondAttribute="trailing" id="zNd-8N-7yc"/>
                             <constraint firstItem="Wz2-sL-Jnj" firstAttribute="centerY" secondItem="AWD-39-aan" secondAttribute="centerY" id="zVX-Ac-1MM"/>
                         </constraints>
                     </view>

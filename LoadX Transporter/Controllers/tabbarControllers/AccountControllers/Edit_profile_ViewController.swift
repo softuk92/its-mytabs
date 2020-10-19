@@ -29,6 +29,12 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var vanType_tableView: UITableView!
     @IBOutlet weak var dropdown_popupView: UIView!
     
+    
+     @IBOutlet weak var viewOfPop: UIView!
+     @IBOutlet weak var innerViewPop: UIView!
+     
+     @IBOutlet weak var tableview: UITableView!
+    
     @IBOutlet weak var vanTypeDropDown: UIView!
     let dropDown1 = DropDown()
     let list = ["Car","Small Van",
@@ -328,6 +334,9 @@ extension Edit_profile_ViewController: UITableViewDataSource , UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
+        cell?.layer.cornerRadius = 10
+        cell?.backgroundColor = UIColor.clear
+        cell?.backgroundView = nil
             cell?.lblJobNature.text = self.list[indexPath.row]
             return cell!
     }

@@ -142,73 +142,92 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
              
              Vehicle_no = jsonData[0]["no_of_vehicle"].stringValue
              d_item = jsonData[0]["d_items"].stringValue
+        
+        if cell.category_lbl.text == "Small Van" {
+            cell.noOfHelpers_view.isHidden = false
+            cell.noOfHelper_height.constant = 44
+            
+            cell.MovingFrom_view.isHidden = true
+            cell.movingFrom_height.constant = 0
+            cell.movingTo_view.isHidden = true
+            cell.movingTo_height.constant = 0
+            cell.vehicleType_view.isHidden = true
+            cell.vehicleType_height.constant = 0
+            cell.noOfVehicle_view.isHidden = true
+            cell.no_ofVehicle_height.constant = 0
+            cell.noOfBeds_view.isHidden = true
+            cell.noOfBed_height.constant = 0
+            cell.noOfItems_view.isHidden = true
+            cell.noOfItem_height.constant = 0
+            
+        }
 
-             if cell.category_lbl.text == "Furniture and General Items" || cell.category_lbl.text == "One Item" || cell.category_lbl.text == "Two Items" || cell.category_lbl.text == "Three or More Items" || cell.category_lbl.text == "Piano"  || cell.category_lbl.text == "Business & Industrial Goods" ||  cell.category_lbl.text == "Machine and Vehicle Parts" || cell.category_lbl.text == "Waste Removal" || cell.category_lbl.text ==  "Office Move" || cell.category_lbl.text == "Other"{
-                 
-                 cell.noOfBeds_view.isHidden = true
-                 cell.noOfVehicle_view.isHidden = true
-                 cell.vehicleType_view.isHidden = false
-                 cell.vehicleType_height.constant = 44
-                 cell.no_ofVehicle_height.constant = 0
-                 cell.noOfBed_height.constant = 0
-                 cell.jobDetialView_height.constant = 260
-                 
-                 cell.movingTo_view.isHidden = true
-                 cell.movingTo_height.constant = 0
-                 cell.MovingFrom_view.isHidden = true
-                 cell.movingFrom_height.constant = 0
-                 
-                 if d_item == "One Item" || cell.category_lbl.text == "One Item" {
-                     cell.noOfItems_view.isHidden = false
-                     cell.noOfItem_height.constant = 44
-                     cell.no_of_items_lbl.text = d_item
-                     cell.jobDetialView_height.constant = 404
-                     
-                 }else if d_item == "Two Items" || cell.category_lbl.text == "Two Items" {
-                     cell.noOfItems_view.isHidden = false
-                     cell.noOfItem_height.constant = 44
-                     cell.no_of_items_lbl.text = d_item
-                     cell.jobDetialView_height.constant = 404
-                 }else{
-                     cell.noOfItems_view.isHidden = true
-                     cell.noOfItem_height.constant = 0
-                     cell.jobDetialView_height.constant = 360
-                 }
-             } else {
+//             if cell.category_lbl.text == "Furniture and General Items" || cell.category_lbl.text == "One Item" || cell.category_lbl.text == "Two Items" || cell.category_lbl.text == "Three or More Items" || cell.category_lbl.text == "Piano"  || cell.category_lbl.text == "Business & Industrial Goods" ||  cell.category_lbl.text == "Machine and Vehicle Parts" || cell.category_lbl.text == "Waste Removal" || cell.category_lbl.text ==  "Office Move" || cell.category_lbl.text == "Other"{
+//
+//                 cell.noOfBeds_view.isHidden = true
+//                 cell.noOfVehicle_view.isHidden = true
+//                 cell.vehicleType_view.isHidden = false
+//                 cell.vehicleType_height.constant = 44
+//                 cell.no_ofVehicle_height.constant = 0
+//                 cell.noOfBed_height.constant = 0
+//                 cell.jobDetialView_height.constant = 260
+//
+//                 cell.movingTo_view.isHidden = true
+//                 cell.movingTo_height.constant = 0
+//                 cell.MovingFrom_view.isHidden = true
+//                 cell.movingFrom_height.constant = 0
+//
+//                 if d_item == "One Item" || cell.category_lbl.text == "One Item" {
+//                     cell.noOfItems_view.isHidden = false
+//                     cell.noOfItem_height.constant = 44
+//                     cell.no_of_items_lbl.text = d_item
+//                     cell.jobDetialView_height.constant = 404
+//
+//                 }else if d_item == "Two Items" || cell.category_lbl.text == "Two Items" {
+//                     cell.noOfItems_view.isHidden = false
+//                     cell.noOfItem_height.constant = 44
+//                     cell.no_of_items_lbl.text = d_item
+//                     cell.jobDetialView_height.constant = 404
+//                 }else{
+//                     cell.noOfItems_view.isHidden = true
+//                     cell.noOfItem_height.constant = 0
+//                     cell.jobDetialView_height.constant = 360
+//                 }
+//             } else {
              
-             if cell.category_lbl.text == "Cars & Vehicles" || cell.category_lbl.text == "Cars and Vehicles" || cell.category_lbl.text == "Bikes & Motorcycles"  {
-                 cell.movingTo_view.isHidden = true
-                 cell.MovingFrom_view.isHidden = true
-                 cell.movingTo_height.constant = 0
-                 cell.movingFrom_height.constant = 0
-                 cell.noOfBeds_view.isHidden = true
-                 cell.noOfBed_height.constant = 0
-                 cell.noOfVehicle_view.isHidden = true
-                 cell.no_ofVehicle_height.constant = 0
-                 cell.noOfItems_view.isHidden = true
-                 cell.noOfItem_height.constant = 0
-                 cell.jobDetialView_height.constant = 316
-                 
-                 cell.vehicleType_view.isHidden = true
-                 cell.vehicleType_height.constant = 0
-                 
-             }
+//             if cell.category_lbl.text == "Cars & Vehicles" || cell.category_lbl.text == "Cars and Vehicles" || cell.category_lbl.text == "Bikes & Motorcycles"  {
+//                 cell.movingTo_view.isHidden = true
+//                 cell.MovingFrom_view.isHidden = true
+//                 cell.movingTo_height.constant = 0
+//                 cell.movingFrom_height.constant = 0
+//                 cell.noOfBeds_view.isHidden = true
+//                 cell.noOfBed_height.constant = 0
+//                 cell.noOfVehicle_view.isHidden = true
+//                 cell.no_ofVehicle_height.constant = 0
+//                 cell.noOfItems_view.isHidden = true
+//                 cell.noOfItem_height.constant = 0
+//                 cell.jobDetialView_height.constant = 316
+//
+//                 cell.vehicleType_view.isHidden = true
+//                 cell.vehicleType_height.constant = 0
+//
+//             }
              
-             if cell.category_lbl.text == "Moving Home" {
-                 cell.no_of_helpers_lbl.text = "2"+" Persons"
-                 cell.noOfBeds_view.isHidden = false
-                 cell.noOfBed_height.constant = 44
-                 
-//                 cell.jobDetialView_height.constant = 400
-                 if Vehicle_no == "1"{
-                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicle"
-                 }else{
-                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicles"
-                 }
-             }
+//             if cell.category_lbl.text == "Moving Home" {
+//                 cell.no_of_helpers_lbl.text = "2"+" Persons"
+//                 cell.noOfBeds_view.isHidden = false
+//                 cell.noOfBed_height.constant = 44
+//
+////                 cell.jobDetialView_height.constant = 400
+//                 if Vehicle_no == "1"{
+//                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicle"
+//                 }else{
+//                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicles"
+//                 }
+//             }
              
              return cell
-            }
+//            }
         }
         if indexPath.section == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell") as! InventoryCell
