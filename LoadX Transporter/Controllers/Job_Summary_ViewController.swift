@@ -80,6 +80,12 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let vehicleType_lbl = jsonData[0]["vehicle_type"].stringValue
         let No_of_vehicle_lbl = jsonData[0]["no_of_vehicle"].stringValue
         let noOfPallate = jsonData[0]["noOfPallet"].stringValue
+        let carMake = jsonData[0]["car_make"].stringValue
+        let carModel = jsonData[0]["car_model"].stringValue
+        let pickupLift = jsonData[0]["pickup_lift"].stringValue
+        let dropoffLift = jsonData[0]["dropoff_lift"].stringValue
+        let pickupPropertyType = jsonData[0]["pickup_prop_type"].stringValue
+        let dropoffPropertyType = jsonData[0]["dropoff_prop_type"].stringValue
         
         summaryData.append(SummaryData(label: "Job ID", detail: jobID))
         summaryData.append(SummaryData(label: "Category", detail: category))
@@ -91,29 +97,55 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         summaryData.append(SummaryData(label: "Moving To", detail: movingTo_lbl))
         }
         
+        if category == "Furniture and General Items" || category == "Furniture & General Items" {
+            if pickupLift != "" {
+                summaryData.append(SummaryData(label: "Lift at Pick Up", detail: (pickupLift == "0") ? "No" : "Yes"))
+            }
+            if dropoffLift != "" {
+                summaryData.append(SummaryData(label: "Lift at Drop Off", detail: (dropoffLift == "0") ? "No" : "Yes"))
+            }
+        }
+        
+        if category == "Moving Home" || category == "House Move" {
+            if pickupPropertyType != "" {
+                summaryData.append(SummaryData(label: "Pickup Property Type", detail: pickupPropertyType))
+            }
+            if dropoffPropertyType != "" {
+                summaryData.append(SummaryData(label: "Dropoff Property Type", detail: dropoffPropertyType))
+            }
+        }
+        
         summaryData.append(SummaryData(label: "Pickup Date", detail: pickUp_date))
         summaryData.append(SummaryData(label: "Pickup Time", detail: pickUp_time))
         summaryData.append(SummaryData(label: "Date Posted", detail: Posteddate))
-        summaryData.append(SummaryData(label: "No. of Helpers", detail: no_of_hepler))
         
-        if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
-        summaryData.append(SummaryData(label: "Vehicle Type", detail: vehicleType_lbl))
-        }
-        
-        if No_of_vehicle_lbl != "" && No_of_vehicle_lbl != "N/A" {
-        summaryData.append(SummaryData(label: "No. of Vehicle", detail: No_of_vehicle_lbl))
-        }
-
-        if supermarketName_lbl != "" {
-        summaryData.append(SummaryData(label: "Supermarket Name", detail: supermarketName_lbl))
+        if category == "Vehicle Move" {
+            if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
+            summaryData.append(SummaryData(label: "Vehicle Type", detail: vehicleType_lbl))
+            }
+            if carMake != "" {
+            summaryData.append(SummaryData(label: "Car Make", detail: carMake))
+            }
+            if carModel != "" {
+                summaryData.append(SummaryData(label: "Car Model", detail: carModel))
+            }
+            if vehicleOperational != "" {
+            summaryData.append(SummaryData(label: "Vehicle Operational", detail: "Yes"))
+            }
+        } else {
+            summaryData.append(SummaryData(label: "No. of Helpers", detail: no_of_hepler))
         }
         
         if noOfPallate != "" && noOfPallate != "N/A" {
         summaryData.append(SummaryData(label: "No Of Pallet", detail: "\(noOfPallate) Pallet"))
         }
         
-        if vehicleOperational != "" {
-        summaryData.append(SummaryData(label: "Vehicle Operational", detail: "Yes"))
+        if No_of_vehicle_lbl != "" && No_of_vehicle_lbl != "N/A" {
+        summaryData.append(SummaryData(label: "No. of Vehicle", detail: No_of_vehicle_lbl))
+        }
+        
+        if supermarketName_lbl != "" {
+        summaryData.append(SummaryData(label: "Supermarket Name", detail: supermarketName_lbl))
         }
     
         tableView.reloadData()
