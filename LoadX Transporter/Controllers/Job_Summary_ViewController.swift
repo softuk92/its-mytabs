@@ -10,6 +10,11 @@ import UIKit
 import XLPagerTabStrip
 import SwiftyJSON
 
+struct SummaryData {
+    let label: String
+    let detail: String
+}
+
 class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +32,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     var d_item: String?
     let year = Calendar.current.component(.year, from: Date())
     var Posteddate: String?
+    var summaryData = [SummaryData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         })
         tableView.register(UINib(nibName: "ServiceHeaderCell", bundle: nil), forCellReuseIdentifier: "ServiceHeaderCell")
         tableView.register(UINib(nibName: "InventoryCell", bundle: nil), forCellReuseIdentifier: "InventoryCell")
+        tableView.register(cellType: JobSummaryCell.self)
         
         print("\n this is inventry list value\n\(items)")
         
@@ -54,6 +61,62 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
+        getData()
+    }
+    
+    func getData() {
+        self.del_id = jsonData[0]["del_id"].stringValue
+        
+        let category = jsonData[0]["add_type"].stringValue
+        let jobID = "LOADX"+String(year)+"J"+(del_id ?? "")
+        let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
+        let pickUp_time = jsonData[0]["timeslot"].stringValue
+        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
+        let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
+        let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        let supermarketName_lbl = jsonData[0]["super_market_name"].stringValue
+        let movingFrom_lbl = jsonData[0]["moving_from"].stringValue
+        let movingTo_lbl = jsonData[0]["moving_to"].stringValue
+        let vehicleType_lbl = jsonData[0]["vehicle_type"].stringValue
+        let No_of_vehicle_lbl = jsonData[0]["no_of_vehicle"].stringValue
+        let noOfPallate = jsonData[0]["noOfPallet"].stringValue
+        
+        summaryData.append(SummaryData(label: "Job ID", detail: jobID))
+        summaryData.append(SummaryData(label: "Category", detail: category))
+        
+        if movingFrom_lbl != "" {
+        summaryData.append(SummaryData(label: "Moving From", detail: movingFrom_lbl))
+        }
+        if movingTo_lbl != "" {
+        summaryData.append(SummaryData(label: "Moving To", detail: movingTo_lbl))
+        }
+        
+        summaryData.append(SummaryData(label: "Pickup Date", detail: pickUp_date))
+        summaryData.append(SummaryData(label: "Pickup Time", detail: pickUp_time))
+        summaryData.append(SummaryData(label: "Date Posted", detail: Posteddate))
+        summaryData.append(SummaryData(label: "No. of Helpers", detail: no_of_hepler))
+        
+        if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
+        summaryData.append(SummaryData(label: "Vehicle Type", detail: vehicleType_lbl))
+        }
+        
+        if No_of_vehicle_lbl != "" && No_of_vehicle_lbl != "N/A" {
+        summaryData.append(SummaryData(label: "No. of Vehicle", detail: No_of_vehicle_lbl))
+        }
+
+        if supermarketName_lbl != "" {
+        summaryData.append(SummaryData(label: "Supermarket Name", detail: supermarketName_lbl))
+        }
+        
+        if noOfPallate != "" && noOfPallate != "N/A" {
+        summaryData.append(SummaryData(label: "No Of Pallet", detail: "\(noOfPallate) Pallet"))
+        }
+        
+        if vehicleOperational != "" {
+        summaryData.append(SummaryData(label: "Vehicle Operational", detail: "Yes"))
+        }
+    
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
@@ -84,154 +147,37 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        if items.count == 0 {
-         return 1
-       }  else {
+        return summaryData.count
+        }  else {
         if section == 0 {
             return self.items.count
         } else {
-            return 1
+            return summaryData.count
         }
       }
 //    }
   }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.items.count == 0 {
-            return 525
+            return 50
         } else {
             if indexPath.section == 0 {
                 return 50
 
             } else {
-                return 525      
+                return 50
             }
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        if self.items.count == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! job_DetialView_TableViewCell
-        
-        self.del_id = jsonData[0]["del_id"].stringValue
-        cell.jobId_lbl.text = "LOADX"+String(year)+"J"+(del_id ?? "")
-        cell.category_lbl.text = jsonData[0]["add_type"].stringValue
-        let pickUp_date = jsonData[0]["date"].stringValue
-        
-        if pickUp_date != ""{
-            cell.pickUp_lbl.text = convertDateFormatter(pickUp_date)
-        }
-        cell.pickUp_time.text = jsonData[0]["timeslot"].stringValue
-        
-        self.Posteddate = jsonData[0]["job_posted_date"].stringValue
-        
-        if Posteddate != ""{
-            cell.postedDate_lbl.text = convertDateFormatter(Posteddate)
-        }
-        let no_of_hepler = jsonData[0]["no_of_helper"].stringValue
-        if no_of_hepler == "1" {
-            cell.no_of_helpers_lbl.text = "Driver Only"
-        }else{
-            cell.no_of_helpers_lbl.text = no_of_hepler + " Helpers"
-        }
-        
-        cell.supermarketName_lbl.text = jsonData[0]["super_market_name"].stringValue
-        
-        cell.movingFrom_lbl.text = jsonData[0]["moving_from"].stringValue
-        cell.movingTo_lbl.text = jsonData[0]["moving_to"].stringValue
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+//         cell.backgroundColor = nil
+//        cell.backgroundView = nil
+        cell.title.text = self.summaryData[indexPath.row].label
+        cell.detail.text = self.summaryData[indexPath.row].detail
              
-             cell.vehicleType_lbl.text = jsonData[0]["vehicle_type"].stringValue
-             cell.No_of_vehicle_lbl.text = jsonData[0]["no_of_vehicle"].stringValue
-             
-             Vehicle_no = jsonData[0]["no_of_vehicle"].stringValue
-             d_item = jsonData[0]["d_items"].stringValue
-        
-        if cell.category_lbl.text == "Dedicated Van" {
-            cell.noOfHelpers_view.isHidden = false
-            cell.noOfHelper_height.constant = 44
-            
-            cell.MovingFrom_view.isHidden = true
-            cell.movingFrom_height.constant = 0
-            cell.movingTo_view.isHidden = true
-            cell.movingTo_height.constant = 0
-            cell.vehicleType_view.isHidden = true
-            cell.vehicleType_height.constant = 0
-            cell.noOfVehicle_view.isHidden = true
-            cell.no_ofVehicle_height.constant = 0
-            cell.noOfBeds_view.isHidden = true
-            cell.noOfBed_height.constant = 0
-            cell.noOfItems_view.isHidden = true
-            cell.noOfItem_height.constant = 0
-            cell.supermarketName_view.isHidden = true
-            cell.supermarketName_height.constant = 0
-            cell.vehicleOperational_view.isHidden = true
-            cell.vehicleOperational_height.constant = 0
-            cell.jobDetialView_height.constant = 260
-        }
-
-//             if cell.category_lbl.text == "Furniture and General Items" || cell.category_lbl.text == "One Item" || cell.category_lbl.text == "Two Items" || cell.category_lbl.text == "Three or More Items" || cell.category_lbl.text == "Piano"  || cell.category_lbl.text == "Business & Industrial Goods" ||  cell.category_lbl.text == "Machine and Vehicle Parts" || cell.category_lbl.text == "Waste Removal" || cell.category_lbl.text ==  "Office Move" || cell.category_lbl.text == "Other"{
-//
-//                 cell.noOfBeds_view.isHidden = true
-//                 cell.noOfVehicle_view.isHidden = true
-//                 cell.vehicleType_view.isHidden = false
-//                 cell.vehicleType_height.constant = 44
-//                 cell.no_ofVehicle_height.constant = 0
-//                 cell.noOfBed_height.constant = 0
-//                 cell.jobDetialView_height.constant = 260
-//
-//                 cell.movingTo_view.isHidden = true
-//                 cell.movingTo_height.constant = 0
-//                 cell.MovingFrom_view.isHidden = true
-//                 cell.movingFrom_height.constant = 0
-//
-//                 if d_item == "One Item" || cell.category_lbl.text == "One Item" {
-//                     cell.noOfItems_view.isHidden = false
-//                     cell.noOfItem_height.constant = 44
-//                     cell.no_of_items_lbl.text = d_item
-//                     cell.jobDetialView_height.constant = 404
-//
-//                 }else if d_item == "Two Items" || cell.category_lbl.text == "Two Items" {
-//                     cell.noOfItems_view.isHidden = false
-//                     cell.noOfItem_height.constant = 44
-//                     cell.no_of_items_lbl.text = d_item
-//                     cell.jobDetialView_height.constant = 404
-//                 }else{
-//                     cell.noOfItems_view.isHidden = true
-//                     cell.noOfItem_height.constant = 0
-//                     cell.jobDetialView_height.constant = 360
-//                 }
-//             } else {
-             
-//             if cell.category_lbl.text == "Cars & Vehicles" || cell.category_lbl.text == "Cars and Vehicles" || cell.category_lbl.text == "Bikes & Motorcycles"  {
-//                 cell.movingTo_view.isHidden = true
-//                 cell.MovingFrom_view.isHidden = true
-//                 cell.movingTo_height.constant = 0
-//                 cell.movingFrom_height.constant = 0
-//                 cell.noOfBeds_view.isHidden = true
-//                 cell.noOfBed_height.constant = 0
-//                 cell.noOfVehicle_view.isHidden = true
-//                 cell.no_ofVehicle_height.constant = 0
-//                 cell.noOfItems_view.isHidden = true
-//                 cell.noOfItem_height.constant = 0
-//                 cell.jobDetialView_height.constant = 316
-//
-//                 cell.vehicleType_view.isHidden = true
-//                 cell.vehicleType_height.constant = 0
-//
-//             }
-             
-//             if cell.category_lbl.text == "Moving Home" {
-//                 cell.no_of_helpers_lbl.text = "2"+" Persons"
-//                 cell.noOfBeds_view.isHidden = false
-//                 cell.noOfBed_height.constant = 44
-//
-////                 cell.jobDetialView_height.constant = 400
-//                 if Vehicle_no == "1"{
-//                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicle"
-//                 }else{
-//                     cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicles"
-//                 }
-//             }
-             
-             return cell
-//            }
+        return cell
         }
         if indexPath.section == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell") as! InventoryCell
@@ -242,129 +188,13 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
          return cell
 
       } else  {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! job_DetialView_TableViewCell
-        
-        self.del_id = jsonData[0]["del_id"].stringValue
-        
-//        
-//        if jsonData[0]["description"].stringValue == ""{
-//            
-//            cell.jobDesrpt_view.isHidden = true
-//            cell.jobDescrp_height.constant = 0
-//            cell.job_description_lbl.text = "nil"
-//        }else{
-//            cell.jobDesrpt_view.isHidden = false
-//            cell.jobDescrp_height.constant = 80
-//            cell.job_description_lbl.text = jsonData[0]["description"].stringValue
-//        }
-        cell.category_lbl.text = jsonData[0]["add_type"].stringValue
-        cell.movingFrom_lbl.text = jsonData[0]["moving_from"].stringValue
-        cell.movingTo_lbl.text = jsonData[0]["moving_to"].stringValue
-        
-        cell.pickUp_time.text = jsonData[0]["timeslot"].stringValue
-        
-        self.Posteddate = jsonData[0]["job_posted_date"].stringValue
-        let pickUp_date = jsonData[0]["date"].stringValue
-        
-        if pickUp_date != ""{
-            let converted_pickUpDate = convertDateFormatter(pickUp_date)
-            
-            cell.pickUp_lbl.text = converted_pickUpDate
-        }
-        if Posteddate != ""{
-            let convertedJobPostedDate = convertDateFormatter(Posteddate)
-            cell.postedDate_lbl.text = convertedJobPostedDate
-        }
-        cell.vehicleType_lbl.text = jsonData[0]["vehicle_type"].stringValue
-        cell.No_of_vehicle_lbl.text = jsonData[0]["no_of_vehicle"].stringValue
-        let no_of_hepler = jsonData[0]["no_of_helper"].stringValue
-        if no_of_hepler == "1" {
-            cell.no_of_helpers_lbl.text = "Driver Only"
-        }else{
-            cell.no_of_helpers_lbl.text = no_of_hepler + " Helpers"
-        }
-        Vehicle_no = jsonData[0]["no_of_vehicle"].stringValue
-        d_item = jsonData[0]["d_items"].stringValue
-        
-        
-        let jobID = "LOADX"+String(year)+"J"+del_id!
-        cell.jobId_lbl.text = jobID
-        
-//        if jsonData_inventory.stringValue == "" {
-//
-//            cell.inventory_view.isHidden = true
-//            cell.inventory_view_height.constant = 0
-//
-//        }else{
-//            cell.inventory_view.isHidden = false
-//            cell.inventory_view_height.constant = 120
-//        }
-        
-//        if cell.category_lbl.text == "Furniture and General Items" || cell.category_lbl.text == "One Item" || cell.category_lbl.text == "Two Items" || cell.category_lbl.text == "Three or More Items" || cell.category_lbl.text == "Piano"  || cell.category_lbl.text == "Business & Industrial Goods" ||  cell.category_lbl.text == "Machine and Vehicle Parts" || cell.category_lbl.text == "Waste Removal" || cell.category_lbl.text ==  "Office Move" || cell.category_lbl.text == "Other"{
-//
-//            cell.noOfBeds_view.isHidden = true
-//            cell.noOfBeds_view.isHidden = true
-//            cell.noOfVehicle_view.isHidden = true
-//            cell.vehicleType_view.isHidden = false
-//            cell.vehicleType_height.constant = 44
-//            cell.no_ofVehicle_height.constant = 0
-//            cell.noOfBed_height.constant = 0
-//            cell.jobDetialView_height.constant = 260
-//
-//            cell.movingTo_view.isHidden = true
-//            cell.movingTo_height.constant = 0
-//            cell.MovingFrom_view.isHidden = true
-//            cell.movingFrom_height.constant = 0
-//
-//            if d_item == "One Item" || cell.category_lbl.text == "One Item" {
-//                cell.noOfItems_view.isHidden = false
-//                cell.noOfItem_height.constant = 44
-//                cell.no_of_items_lbl.text = d_item
-//                cell.jobDetialView_height.constant = 404
-//
-//            }else if d_item == "Two Items" || cell.category_lbl.text == "Two Items" {
-//                cell.noOfItems_view.isHidden = false
-//                cell.noOfItem_height.constant = 44
-//                cell.no_of_items_lbl.text = d_item
-//                cell.jobDetialView_height.constant = 404
-//            }else{
-//                cell.noOfItems_view.isHidden = true
-//                cell.noOfItem_height.constant = 0
-//                cell.jobDetialView_height.constant = 360
-//            }
-//        }
-        
-//        if cell.category_lbl.text == "Cars & Vehicles" || cell.category_lbl.text == "Cars and Vehicles" || cell.category_lbl.text == "Bikes & Motorcycles"  {
-//            cell.movingTo_view.isHidden = true
-//            cell.MovingFrom_view.isHidden = true
-//            cell.movingTo_height.constant = 0
-//            cell.movingFrom_height.constant = 0
-//            cell.noOfBeds_view.isHidden = true
-//            cell.noOfBed_height.constant = 0
-//            cell.noOfVehicle_view.isHidden = true
-//            cell.no_ofVehicle_height.constant = 0
-//            cell.noOfItems_view.isHidden = true
-//            cell.noOfItem_height.constant = 0
-//            cell.jobDetialView_height.constant = 316
-//
-//            cell.vehicleType_view.isHidden = true
-//            cell.vehicleType_height.constant = 0
-//
-//        }
-//
-//        if cell.category_lbl.text == "Moving Home" {
-//            cell.no_of_helpers_lbl.text = "2"+" Persons"
-//            cell.noOfBeds_view.isHidden = false
-//            cell.noOfBed_height.constant = 44
-//
-//            cell.jobDetialView_height.constant = 400
-//            if Vehicle_no == "1"{
-//                cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicle"
-//            }else{
-//                cell.No_of_vehicle_lbl.text = Vehicle_no! + " Vehicles"
-//            }
-//        }
-            return cell
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+//             cell.backgroundColor = nil
+//            cell.backgroundView = nil
+        cell.title.text = self.summaryData[indexPath.row].label
+        cell.detail.text = self.summaryData[indexPath.row].detail
+             
+        return cell
 
         }
        }
