@@ -300,7 +300,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                             }else{
                                 SVProgressHUD.dismiss()
                                 print("Error \(String(describing: response.result.error))")
-                                let alert = UIAlertController(title: "Alert", message: "Transporter profile api is not working try again", preferredStyle: UIAlertController.Style.alert)
+                                let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
                             }

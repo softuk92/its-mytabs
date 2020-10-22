@@ -48,7 +48,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         totalEarning.text = "£ \(totalEarningAmount)"
         }
         
-        guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
+        guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_jobs") else { return }
                totalCompletedJob_lbl.text =  totalCompletedJob
         // Do any additional setup after loading the view.
         tableView.separatorStyle = .none
@@ -150,7 +150,11 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                //   self.total_compeleted_job.text = "0"
                              //     self.total_income_count.text = "0"
                               } else {
+                                    if total_income == "0" {
+                                        self.totalEarning.text = "£0.00"
+                                    } else {
                                     self.totalEarning.text = "£" + total_income
+                                    }
                                     self.totalCompletedJob_lbl.text =  totaljobs
                                     self.stackView.isHidden = true
 //                                  self.getCompletedJobs(url: "api/transporterCompletedJobs")

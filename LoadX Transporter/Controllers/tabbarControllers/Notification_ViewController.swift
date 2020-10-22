@@ -72,7 +72,7 @@ class Notification_ViewController: UIViewController {
                     self.email_popupView.layer.borderWidth = 1
                     self.email_popupView.layer.cornerRadius = 18
                     self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Do you want to enable email notification?"
+                    self.email_popupView_lbl.text = "Do you want to enable email notifications?"
                     self.view.addSubview(self.email_popupView)
                     self.email_popupView.center = self.view.center
                 })
@@ -83,7 +83,7 @@ class Notification_ViewController: UIViewController {
                     self.email_popupView.layer.borderWidth = 1
                     self.email_popupView.layer.cornerRadius = 18
                     self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Do you want to disable email notification?"
+                    self.email_popupView_lbl.text = "Do you want to disable email notifications?"
                     self.view.addSubview(self.email_popupView)
                     self.email_popupView.center = self.view.center
                 })
@@ -100,7 +100,7 @@ class Notification_ViewController: UIViewController {
                     self.mobilePopup_view.layer.borderWidth = 1
                     self.mobilePopup_view.layer.cornerRadius = 18
                     self.mainView.alpha = 0.5
-                    self.mobile_popup_lbl.text = "Do you want to enable mobile notification?"
+                    self.mobile_popup_lbl.text = "Do you want to enable mobile notifications?"
                     self.view.addSubview(self.mobilePopup_view)
                     self.mobilePopup_view.center = self.view.center
                         })
@@ -112,7 +112,7 @@ class Notification_ViewController: UIViewController {
                            self.mobilePopup_view.layer.borderWidth = 1
                            self.mobilePopup_view.layer.cornerRadius = 18
                            self.mainView.alpha = 0.5
-                           self.mobile_popup_lbl.text = "Do you want to disable mobile notification?"
+                           self.mobile_popup_lbl.text = "Do you want to disable mobile notifications?"
                            self.view.addSubview(self.mobilePopup_view)
                            self.mobilePopup_view.center = self.view.center
                        })
@@ -205,7 +205,10 @@ class Notification_ViewController: UIViewController {
     @IBAction func mobilePopup_yes(_ sender: Any) {
         self.mainView.alpha = 1
         self.mobilePopup_view.removeFromSuperview()
-        SVProgressHUD.showSuccess(withStatus: "Mobile Notification Updated!")
+        
+        let alert = UIAlertController(title: "", message: "Mobile notification updated.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func emailNotificationFunc() {
@@ -224,7 +227,9 @@ class Notification_ViewController: UIViewController {
                         let result = jsonData[0]["result"].stringValue
                         //let message = jsonData[0]["message"].stringValue
 //                        if result == "1" {
-                            SVProgressHUD.showSuccess(withStatus: "Email Notification Updated!")
+                            let alert = UIAlertController(title: "", message: "Email notification updated.", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
 //                        } else {
 //                            SVProgressHUD.showError(withStatus: "Email Notification Not Updated!")
 //                        }

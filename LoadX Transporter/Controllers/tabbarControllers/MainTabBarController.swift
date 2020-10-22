@@ -133,7 +133,9 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                             let totalInProgressJobs = totalInProgress
                             print("total in progress jobs is \(totalInProgressJobs)")
                            
-                            self.userCompletedJobs = jsonData[0]["User_Completed_Jobs_sidebar"].stringValue
+                            self.userCompletedJobs = jsonData[0]["User_Completed_Jobs"].stringValue
+                            UserDefaults.standard.set(jsonData[0]["User_Completed_Jobs_sidebar"].stringValue, forKey: "complete_jobs")
+//                                jsonData[0]["User_Completed_Jobs_sidebar"].stringValue
                             UserDefaults.standard.set(self.userCompletedJobs, forKey: "complete_job")
                             
                             self.User_Completed_Jobs_Business = jsonData[0]["User_Completed_Jobs_Business"].stringValue

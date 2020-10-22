@@ -146,6 +146,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
         createDatePicker()
         
+        keywords.setLeftPaddingPoints(5)
+        pickup_radius.setLeftPaddingPoints(5)
+        
 //        selectCategory.optionArray = categoryList
 //        selectCategory.isSearchEnable = false
       
@@ -210,6 +213,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
 //        popup_no_btn.layer.masksToBounds = true
             
     }
+    
+    @IBAction func clearAllFields(_ sender: Any) {
+        selectCategory.text = ""
+        pickup_radius.text = ""
+        keywords.text = ""
+        pickupLocation.text = ""
+        dropOff.text = ""
+    }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == selectCategory {
