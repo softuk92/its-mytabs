@@ -804,8 +804,8 @@
                                 <rect key="frame" x="0.0" y="45" width="375" height="573"/>
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-rF-5dT">
-                                <rect key="frame" x="77.5" y="263" width="220" height="141"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-rF-5dT">
+                                <rect key="frame" x="77.5" y="259.5" width="220" height="148"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="OHq-f9-TOl">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="120"/>
@@ -815,7 +815,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently no booked job" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly5-TQ-y1O">
-                                        <rect key="frame" x="0.0" y="121" width="220" height="20"/>
+                                        <rect key="frame" x="18" y="128" width="184" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -823,12 +823,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ly5-TQ-y1O" firstAttribute="top" secondItem="OHq-f9-TOl" secondAttribute="bottom" constant="1" id="1iz-3s-JRU"/>
-                                    <constraint firstAttribute="bottom" secondItem="ly5-TQ-y1O" secondAttribute="bottom" id="9V9-zR-zo8"/>
-                                    <constraint firstAttribute="trailing" secondItem="OHq-f9-TOl" secondAttribute="trailing" id="A95-On-ePg"/>
-                                    <constraint firstAttribute="trailing" secondItem="ly5-TQ-y1O" secondAttribute="trailing" id="JfR-LP-oSE"/>
-                                    <constraint firstItem="OHq-f9-TOl" firstAttribute="leading" secondItem="qyW-rF-5dT" secondAttribute="leading" id="NnD-ZK-tKS"/>
-                                    <constraint firstItem="OHq-f9-TOl" firstAttribute="top" secondItem="qyW-rF-5dT" secondAttribute="top" id="SC8-Pu-RWT"/>
-                                    <constraint firstItem="ly5-TQ-y1O" firstAttribute="leading" secondItem="qyW-rF-5dT" secondAttribute="leading" id="mni-9i-cu6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -868,17 +862,17 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHE-KB-cCt">
-                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completejob_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9qB-Q4-QmE">
-                                    <rect key="frame" x="121" y="20" width="60" height="60"/>
+                                    <rect key="frame" x="122" y="20" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="0Kt-P6-sw9"/>
                                         <constraint firstAttribute="height" constant="60" id="S3R-IT-qyx"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure this job is complete?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmW-rR-s42">
-                                    <rect key="frame" x="15" y="95" width="272" height="30"/>
+                                    <rect key="frame" x="15" y="95" width="274" height="30"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -902,10 +896,10 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Rh-iQ-xJV">
-                            <rect key="frame" x="22" y="175" width="258" height="35"/>
+                            <rect key="frame" x="22" y="175" width="260" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-vd-aaY" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="119" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="1w1-Yn-PYB"/>
@@ -925,7 +919,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTE-zv-sbR" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="139" y="0.0" width="119" height="35"/>
+                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="NO" backgroundImage="popup_noBtn">
@@ -1119,26 +1113,22 @@
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-zp-v0h">
-                                <rect key="frame" x="55.5" y="268.5" width="264" height="130"/>
+                                <rect key="frame" x="77.5" y="259.5" width="220" height="148"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-zE-p6v">
-                                        <rect key="frame" x="22" y="0.0" width="220" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="WSG-v1-8FF"/>
                                             <constraint firstAttribute="width" constant="220" id="ghO-r0-90l"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently no completed job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-uT-Mxv">
-                                        <rect key="frame" x="28.5" y="128" width="207" height="2"/>
+                                        <rect key="frame" x="6.5" y="128" width="207" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="16S-FY-b7r"/>
-                                    <constraint firstAttribute="width" constant="264" id="EfP-V3-mhk"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Background_color"/>
@@ -1268,7 +1258,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCQ-US-viy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2457" y="3319"/>
+            <point key="canvasLocation" x="2452" y="3346"/>
         </scene>
         <!--Job Cancel View Controller-->
         <scene sceneID="i8L-YG-M6h">
@@ -3072,15 +3062,15 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="5I9-MZ-ZlT">
-                                <rect key="frame" x="125" y="283.5" width="125" height="100"/>
+                                <rect key="frame" x="77.5" y="273.5" width="220" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="bXc-X2-ISJ"/>
-                                    <constraint firstAttribute="height" constant="100" id="y7Z-yq-hAX"/>
+                                    <constraint firstAttribute="width" constant="220" id="bXc-X2-ISJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="y7Z-yq-hAX"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently no earning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77Y-K3-7kf">
-                                <rect key="frame" x="110.5" y="388.5" width="154.5" height="20"/>
-                                <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
+                                <rect key="frame" x="110.5" y="401.5" width="154.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3097,7 +3087,7 @@
                             <constraint firstItem="Qvh-wa-ofo" firstAttribute="trailing" secondItem="zlX-mg-IJx" secondAttribute="trailing" id="CcS-sd-wsN"/>
                             <constraint firstItem="RwH-xj-vpX" firstAttribute="top" secondItem="Qvh-wa-ofo" secondAttribute="top" id="Q27-wN-z0E"/>
                             <constraint firstItem="zlX-mg-IJx" firstAttribute="leading" secondItem="Qvh-wa-ofo" secondAttribute="leading" id="eKg-2w-Qmh"/>
-                            <constraint firstItem="77Y-K3-7kf" firstAttribute="top" secondItem="5I9-MZ-ZlT" secondAttribute="bottom" constant="5" id="fro-7q-vFx"/>
+                            <constraint firstItem="77Y-K3-7kf" firstAttribute="top" secondItem="5I9-MZ-ZlT" secondAttribute="bottom" constant="8" id="fro-7q-vFx"/>
                             <constraint firstItem="77Y-K3-7kf" firstAttribute="centerX" secondItem="5I9-MZ-ZlT" secondAttribute="centerX" id="jku-Db-Ypr"/>
                             <constraint firstItem="Qvh-wa-ofo" firstAttribute="bottom" secondItem="zlX-mg-IJx" secondAttribute="bottom" id="nsy-wx-jmR"/>
                             <constraint firstItem="zlX-mg-IJx" firstAttribute="top" secondItem="RwH-xj-vpX" secondAttribute="bottom" id="sQS-Nj-2Fv"/>
@@ -9950,7 +9940,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="8uf-wB-Jjq" firstAttribute="top" secondItem="baK-wJ-m0d" secondAttribute="bottom" id="Im4-XJ-R1D"/>
                             <constraint firstItem="baK-wJ-m0d" firstAttribute="leading" secondItem="ojm-4t-iT6" secondAttribute="leading" id="V5o-2d-6fV"/>
                             <constraint firstItem="8uf-wB-Jjq" firstAttribute="width" secondItem="ojm-4t-iT6" secondAttribute="width" id="gUi-e8-8L8"/>
-                            <constraint firstItem="baK-wJ-m0d" firstAttribute="top" secondItem="ojm-4t-iT6" secondAttribute="top" id="s3f-Wq-MS7"/>
+                            <constraint firstItem="baK-wJ-m0d" firstAttribute="top" secondItem="s4z-aW-ryc" secondAttribute="top" id="s3f-Wq-MS7"/>
                             <constraint firstAttribute="trailing" secondItem="baK-wJ-m0d" secondAttribute="trailing" id="v3S-RU-UnD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s4z-aW-ryc"/>
