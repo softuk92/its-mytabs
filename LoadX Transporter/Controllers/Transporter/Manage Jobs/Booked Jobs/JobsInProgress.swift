@@ -508,7 +508,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func jobCancel_YesBtn(_ sender: Any) {
     
          let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
-                  // self.deleteBtn()
+        vc.jb_id = jb_id
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

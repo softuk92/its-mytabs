@@ -18,5 +18,6 @@ struct PaymentHistoryModel : Decodable {
     let payment_type: String?
     let pay_date: String?
     let is_booked_job: String?
+    let route_id: String?
     
 }

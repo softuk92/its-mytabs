@@ -61,7 +61,14 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
       // Set the delegate to inform when the switch was triggered
 //        self.lableSwitch.delegate = self
         
-        if UserDefaults.standard.bool(forKey: "dark") == true {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                print("Dark mode")
+            }
+            else {
+                print("Light mode")
+            }
+        
+        if UserDefaults.standard.bool(forKey: "dark") == true || UITraitCollection.current.userInterfaceStyle == .dark {
             self.lableSwitch.switchState.accept(true)
         } else {
             self.lableSwitch.switchState.accept(false)

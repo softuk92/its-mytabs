@@ -29,6 +29,16 @@ struct CarMakeModel: Decodable {
     }
 }
 
+struct Form: Codable {
+    let result: Int
+    let message: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case result
+        case message
+    }
+}
+
 struct CarModel: Decodable {
     let is_deleted : String
     let cmt_id : String
@@ -427,15 +437,23 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
                         
                         upload.responseString { response in
                             if response.result.value != nil {
-                                print(response.request!)  // original URL request
-                                print(response.response!) // URL response
-                                print(response.data!)     // server data
-                                print(response.result)   // result of response serialization
+//                                print(response.request!)  // original URL request
+//                                print(response.response!) // URL response
+//                                print(response.data!)     // server data
+//                                print(response.result)   // result of response serialization
                                 let jsonData : JSON = JSON(response.result.value!)
                                 print("JSON: \(jsonData)")
                                 let result = jsonData[0]["result"].stringValue
                                 let message = jsonData[0]["message"].stringValue
                                 SVProgressHUD.dismiss()
+                                do {
+                                if let jsonData = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String : Any], let dataDict = jsonData["data"] as? [[String : Any]] {
+                                    print("js: \(jsonData)")
+                                    print("d: \(dataDict)")
+                                }
+                                } catch {
+                                    
+                                }
                                 if result == "false" {
                                     let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))

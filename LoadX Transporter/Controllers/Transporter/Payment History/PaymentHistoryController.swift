@@ -16,6 +16,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paymentTotal: UILabel!
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
+    var filteredPaymentHistory = [PaymentHistoryModel]()
     let year = Calendar.current.component(.year, from: Date())
     var refresher: UIRefreshControl!
     var paymentHistory: String?
@@ -66,6 +67,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                         print("payment History jsonData is \(jsonData)")
                         let result = jsonData[0]["result"].stringValue
                         self.paymentHistoryModel.removeAll()
+                        self.filteredPaymentHistory.removeAll()
                         if result == "0" {
                             self.tableView.isHidden = true
                         } else {
@@ -74,6 +76,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                             if error == nil {
                                 do {
                                     self.paymentHistoryModel = try JSONDecoder().decode([PaymentHistoryModel].self, from: data!)
+                                    self.filteredPaymentHistory = self.paymentHistoryModel.filter{$0.route_id == nil}
                                     SVProgressHUD.dismiss()
                                     
                                     DispatchQueue.main.async {
@@ -113,7 +116,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paymentHistoryModel.count
+        return filteredPaymentHistory.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,7 +143,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         
       
         
-        let paymentHistoryRow = paymentHistoryModel[indexPath.row]
+        let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
         
         let movingItem = paymentHistoryRow.moving_item
         cell.moving_item.text = movingItem?.capitalized
@@ -163,8 +166,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         cell.viewInvoiceRow = { (selectedCell) in
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            let booked_id = self.paymentHistoryModel[indexPath.row].is_booked_job
-            payment_id = self.paymentHistoryModel[indexPath.row].payment_id
+            let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
+            payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
 
             if booked_id == "1" {
 //            self.performSegue(withIdentifier: "showBooked", sender: self)
