@@ -258,6 +258,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
         present(browser, animated: true, completion: nil)
     }
     
+    @IBAction func carMakeBlurPop(_ sender: Any) {
+        self.carMakeBlurView.isHidden = false
+    }
+    
+    @IBAction func carModelBlurPop(_ sender: Any) {
+        if carModels.count > 0 {
+        self.carModelBlurView.isHidden = false
+        }
+    }
+    
     //MARK: - Select Vehicle Drop Down
     /***************************************************************/
     
