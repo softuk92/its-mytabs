@@ -83,6 +83,9 @@
 		<string>Ubuntu-L.ttf</string>
 		<string>Ubuntu-B.ttf</string>
 		<string>Ubuntu-M.ttf</string>
+		<string>Montserrat-Regular.otf</string>
+		<string>Montserrat-Light.otf</string>
+		<string>Montserrat-Bold.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -111,6 +114,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>
 </plist>

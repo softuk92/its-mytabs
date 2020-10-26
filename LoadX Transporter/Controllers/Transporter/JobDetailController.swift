@@ -260,8 +260,6 @@ class JobDetailController: UIViewController, GMSMapViewDelegate, UITableViewDele
         tableView.tableHeaderView = topView
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: CGFloat(HEADER_HEIGHT))
         tableView.register(UINib(nibName: "AcceptBidCell", bundle: nil) , forCellReuseIdentifier: "acceptBid")
-   
-   
     }
     
     override func viewDidDisappear(_ animated: Bool) {

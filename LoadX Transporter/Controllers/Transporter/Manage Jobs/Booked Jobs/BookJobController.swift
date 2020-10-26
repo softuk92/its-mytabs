@@ -65,7 +65,6 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         info_view.layer.shadowOpacity = 0.4
         info_view.layer.shadowRadius = 4.0
         
-        
         self.signatureView.delegate = self
         
             User_location.requestAlwaysAuthorization()
@@ -174,7 +173,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func updateBtn(_ sender: Any) {
-        self.signature_Image.isHidden = false
+//        self.signature_Image.isHidden = false
         self.signature_Image.image = signatureView.getCroppedSignature()
         
         if self.signature_Image.image != nil {
