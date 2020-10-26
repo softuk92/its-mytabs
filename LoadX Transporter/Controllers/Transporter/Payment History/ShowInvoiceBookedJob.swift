@@ -273,14 +273,15 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         self.paymentID = jsonData[0]["payment_id"].stringValue
                         self.finalURL = self.pdfUrl+jobID
                         let job_id = "LOADX"+String(self.year)+"JI"+jobID
-                        self.invoice_no.text = job_id
-                        self.invoice_no2.text = job_id
+//                        self.invoice_no.text = job_id
+//                        self.invoice_no2.text = job_id
                         self.invoiceNo = job_id
                         let jobID2 = jsonData[0]["del_id"].stringValue
                         let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
                         self.job_id_label.text = job_id2
                         self.job_id_label2.text = job_id2
-                        
+                        self.invoice_no.text = job_id2
+                        self.invoice_no2.text = job_id2
                         if user_name != nil {
                         //    self.transporter_partner.text = user_name?.capitalized
 //                            self.transporter_partner2.text = user_name?.capitalized
@@ -296,8 +297,10 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         }
                         
                         let customerName = jsonData[0]["user_name"].stringValue
-                        self.customer_name.text = customerName.capitalized
-                        self.customer_name2.text = customerName.capitalized
+                        self.customer_name.text = user_name
+//                        customerName.capitalized
+                        self.customer_name2.text = user_name
+//                            customerName.capitalized
                         self.current_bid.text = "£"+jsonData[0]["current_bid"].stringValue
                         self.current_bid2.text = "£"+jsonData[0]["current_bid"].stringValue
                         let currentBid = jsonData[0]["current_bid"].stringValue
