@@ -17,29 +17,19 @@ import GooglePlaces
 import SKPhotoBrowser
 import MobileCoreServices
 
-struct CarMakeModel: Decodable {
+public struct CarMakeModel: Decodable {
     let cmb_name : String
     let is_deleted : String
     let cmb_id : String
     
-    init(cmb_name: String, is_deleted: String, cmb_id: String) {
+    public init(cmb_name: String, is_deleted: String, cmb_id: String) {
         self.cmb_name = cmb_name
         self.is_deleted = is_deleted
         self.cmb_id = cmb_id
     }
 }
 
-struct Form: Codable {
-    let result: Int
-    let message: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case result
-        case message
-    }
-}
-
-struct CarModel: Decodable {
+public struct CarModel: Decodable {
     let is_deleted : String
     let cmt_id : String
     let cmd_model : String
@@ -240,6 +230,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             self.viewOfPop.isHidden = false
             
         }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        imageOne = 0
+        imageTwo = 0
+    }
         
     
     @IBAction func back_action(_ sender: Any) {
@@ -402,20 +397,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             if cmb_id == "124" {
                 parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "cmb_id" : cmb_id, "cmd_id" : cmd_id, "car_model_manual" : self.enterCarModel.text ?? ""]
             } else {
-            parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
+            parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "cmb_id" : cmb_id, "cmd_id" : cmd_id, "car_model_manual" : self.enterCarModel.text ?? ""]
             }
 //
             if imageOne == 1 {
                 var image1 = licenseImage.image
                 image1 = image1?.resizeWithWidth(width: 500)
                 imageData1 = image1?.jpegData(compressionQuality: 0.2)
-                imageOne = 0
+//                imageOne = 0
             }
             if imageTwo == 2 {
                 var image2 = insuranceImage.image
                 image2 = image2?.resizeWithWidth(width: 500)
                 imageData2 = image2?.jpegData(compressionQuality: 0.2)
-                imageTwo = 0
+//                imageTwo = 0
             }
             if Connectivity.isConnectedToInternet() {
                 Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -453,16 +448,29 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
 //                                print(response.result)   // result of response serialization
                                 let jsonData : JSON = JSON(response.result.value!)
                                 print("JSON: \(jsonData)")
-                                let result = jsonData[0]["result"].stringValue
-                                let message = jsonData[0]["message"].stringValue
+                                var result : String = ""
+                                var message : String = ""
                                 SVProgressHUD.dismiss()
+                                
                                 do {
-                                if let jsonData = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String : Any], let dataDict = jsonData["data"] as? [[String : Any]] {
-                                    print("js: \(jsonData)")
-                                    print("d: \(dataDict)")
-                                }
-                                } catch {
+                                    if let jsonD = try JSONSerialization.jsonObject(with: response.data ?? Data(), options: .mutableContainers) as? NSArray {
+                                  
+                                        if let j = jsonD[0] as? [String:Any] {
+                                            for (key, value) in j {
+                                                if key == "result" {
+                                                    result = value as? String ?? ""
+                                                } else if key == "message" {
+                                                message = value as? String ?? ""
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
                                     
+                                    
+                                
+                                } catch {
+                                    print(error.localizedDescription)
                                 }
                                 if result == "false" {
                                     let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
@@ -474,7 +482,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
                             } else {
                                 SVProgressHUD.dismiss()
                                 print("Error \(response.result.error!)")
-                                let alert = UIAlertController(title: "Error", message: "Network Error", preferredStyle: UIAlertController.Style.alert)
+                                let alert = UIAlertController(title: "Error", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
                             }
@@ -484,7 +492,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
                         //self.delegate?.showFailAlert()
                         print(encodingError)
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Error!", message: "Connection error! Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Error!", message: encodingError.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
