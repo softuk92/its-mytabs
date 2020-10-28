@@ -71,6 +71,25 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
             }
     }
     
+    @IBAction func updateApp(_ sender: Any) {
+        rateApp { (sucess) in
+            print(sucess)
+        }
+    }
+    
+    func rateApp(completion: @escaping ((_ success: Bool)->())) {
+            guard let url = URL(string : "itms-apps://itunes.apple.com/app/id1458875857?mt=8") else {
+                completion(false)
+                return
+            }
+            guard #available(iOS 10, *) else {
+                completion(UIApplication.shared.openURL(url))
+                return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: completion)
+    }
+
+    
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let indexOfTab = tabBar.items?.index(of: item)
@@ -101,7 +120,7 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                  let  DeviceCurrentVersion = Float(currentVersion)!
                  let  appStoreVersion = Float(version)!
      
-                 return appStoreVersion > DeviceCurrentVersion
+                 return DeviceCurrentVersion > appStoreVersion
      //            return version != currentVersion
              }
              throw VersionError.invalidResponse

@@ -48,7 +48,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         totalEarning.text = "£ \(totalEarningAmount)"
         }
         
-        guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_jobs") else { return }
+        guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
                totalCompletedJob_lbl.text =  totalCompletedJob
         // Do any additional setup after loading the view.
         tableView.separatorStyle = .none
@@ -131,7 +131,9 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                               let message1 = jsonData[0]["message"].stringValue
                               let totaljobs = jsonData[0]["totaljobs"].stringValue
                                 print("this is total complete job:\n\(totaljobs)")
-                              let total_income = jsonData[0]["total_income"].stringValue
+                              let total_income = jsonData[0]["total_income"].doubleValue
+                                let routeIncome = jsonData[0]["route_payment"].doubleValue
+                                let totalIncome = total_income+routeIncome
                                print("this is total income job:\n\(total_income)")
                               
                                 
@@ -150,10 +152,10 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                //   self.total_compeleted_job.text = "0"
                              //     self.total_income_count.text = "0"
                               } else {
-                                    if total_income == "0" {
+                                    if total_income == 0 {
                                         self.totalEarning.text = "£0.00"
                                     } else {
-                                    self.totalEarning.text = "£" + total_income
+                                    self.totalEarning.text = "£" + "\(totalIncome)"
                                     }
                                     self.totalCompletedJob_lbl.text =  totaljobs
                                     self.stackView.isHidden = true

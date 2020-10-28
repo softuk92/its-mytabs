@@ -282,7 +282,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
    })
         
     }
-    
+
     @objc func populate() {
         pickupLocation.text = ""
         dropOff.text = ""

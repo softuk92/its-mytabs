@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBOutlet weak var login_with_lbl: UILabel!
     @IBOutlet weak var dontHaveAccount_lbl: UILabel!
     @IBOutlet weak var signUp_btn: UIButton!
-    @IBOutlet var updateView: UIView!
+    @IBOutlet weak var updateView: UIView!
     
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     var window: UIWindow?
@@ -139,15 +139,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 let update = try self.isUpdateAvailable()
                     DispatchQueue.main.async {
                         if update == true {
-                                self.updateView.layer.shadowColor = UIColor.darkGray.cgColor
-                                self.updateView.layer.shadowOffset = .zero
-                                self.updateView.layer.shadowOpacity = 2
-                                self.view.addSubview(self.updateView)
-                                self.background_view.alpha = 0.3
-                                self.background_view.isUserInteractionEnabled = false
-                                   
-                                self.updateView.center = self.view.center
-                                }
+                                self.updateView.isHidden = false
+                        } else {
+                            self.updateView.isHidden = true
+                        }
                             }
                         } catch {
                             print(error)
@@ -178,7 +173,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 let  DeviceCurrentVersion = Float(currentVersion)!
                 let  appStoreVersion = Float(version)!
     
-                return appStoreVersion > DeviceCurrentVersion
+                return DeviceCurrentVersion > appStoreVersion
     //            return version != currentVersion
             }
             throw VersionError.invalidResponse
@@ -471,6 +466,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
     @IBAction func facebook_signIn_btn(_ sender: Any) {
         loginButton.sendActions(for: .touchUpInside)
+    }
+    
+    @IBAction func updateApp(_ sender: Any) {
+        rateApp { (sucess) in
+            print(sucess)
+        }
+    }
+    
+    func rateApp(completion: @escaping ((_ success: Bool)->())) {
+            guard let url = URL(string : "itms-apps://itunes.apple.com/app/id1458875857?mt=8") else {
+                completion(false)
+                return
+            }
+            guard #available(iOS 10, *) else {
+                completion(UIApplication.shared.openURL(url))
+                return
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: completion)
     }
 
 }
