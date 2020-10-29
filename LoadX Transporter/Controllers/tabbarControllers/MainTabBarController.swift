@@ -48,20 +48,20 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
             let month = components.month
             let day = components.day
             
-        if(month == 12 && day == 9 && year == 2019) || (month == 12 && day == 10 && year == 2019) || (month == 12 && day == 11 && year == 2019)  { //nov 17 2019 onward app
-                        //do nothing
+        if(month == 12 && day == 9 && year == 2019) || (month == 12 && day == 10 && year == 2019) || (month == 12 && day == 11 && year == 2019)  {
+            
             } else {
                 DispatchQueue.global().async {
                 do {
                     let update = try self.isUpdateAvailable()
                         DispatchQueue.main.async {
                     if update == true {
-                        self.updateView.layer.shadowColor = UIColor.darkGray.cgColor
-                        self.updateView.layer.shadowOffset = .zero
-                        self.updateView.layer.shadowOpacity = 2
-                        self.view.addSubview(self.updateView)
-                       
-                        self.updateView.center = self.view.center
+//                        self.updateView.layer.shadowColor = UIColor.darkGray.cgColor
+//                        self.updateView.layer.shadowOffset = .zero
+//                        self.updateView.layer.shadowOpacity = 2
+//                        self.view.addSubview(self.updateView)
+//
+//                        self.updateView.center = self.view.center
                         }
                     }
                 } catch {

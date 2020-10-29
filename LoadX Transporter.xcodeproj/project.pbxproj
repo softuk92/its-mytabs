@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824425F254ADD80005901AC /* UpdateAppViewController.swift */; };
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */; };
 		1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */; };
@@ -164,6 +165,7 @@
 
 /* Begin PBXFileReference section */
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
+		1824425F254ADD80005901AC /* UpdateAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppViewController.swift; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryCell.swift; sourceTree = "<group>"; };
 		1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryCell.xib; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				4E4282C523EC760D00DDA5CF /* satistics_ViewController.swift */,
 				BB560F29246C38F800F1AA23 /* LiveChat_ViewController.swift */,
 				18AD1E49253DBE80008F881A /* ContactUsViewController.swift */,
+				1824425F254ADD80005901AC /* UpdateAppViewController.swift */,
 			);
 			name = MoreScreens;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
 				4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */,
+				18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */,
 				1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */,
 				4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */,
 				8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */,
@@ -1175,7 +1179,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LoadX Transporter/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1188,7 +1192,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "LoadX Transporter/CTS Move Transporter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1208,7 +1212,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LoadX Transporter/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1220,7 +1224,7 @@
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoadX Transporter/CTS Move Transporter-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

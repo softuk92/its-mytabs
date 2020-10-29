@@ -12,7 +12,8 @@ import SwiftyGif
 class SplashScreen_ViewController: UIViewController {
 
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+    let date = Date()
+    let calendar = Calendar.current
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         
@@ -55,12 +56,15 @@ class SplashScreen_ViewController: UIViewController {
     }
      override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
         super.viewWillAppear(animated)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-               
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: { [weak self] in
+                guard let self = self else { return }
                 let userDefaults = UserDefaults.standard
-                       
+                let components = self.calendar.dateComponents([.year, .month, .day], from: Date())
+                    
+                    let month = components.month
+                    let day = components.day
                 if userDefaults.bool(forKey: "userLoggedIn") {
                     user_id = userDefaults.string(forKey: "user_id") ?? ""
                     user_name = userDefaults.string(forKey: "user_name") ?? ""
@@ -69,9 +73,23 @@ class SplashScreen_ViewController: UIViewController {
                     user_phone = userDefaults.string(forKey: "user_phone") ?? ""
                     user_image = userDefaults.string(forKey: "user_image") ?? ""
                     user_type = userDefaults.string(forKey: "user_type") ?? ""
-                          
-                self.AppDelegate.moveToHome()
-                           
+                
+                    
+                    do {
+                        let update = try self.isUpdateAvailable()
+                        if update == true {
+                            if (month == 10 && day == 29) || (month == 10 && day == 30) || (month == 10 && day == 31) || (month == 11 && day == 1) || (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) {
+                                self.AppDelegate.moveToHome()
+                            } else {
+                            self.AppDelegate.moveToUpdateScreen()
+                            }
+                        } else {
+                            self.AppDelegate.moveToHome()
+                        }
+                    } catch  {
+                        print(error)
+                    }
+                    
                 } else {
                            
                 self.AppDelegate.moveToLogInVC()
@@ -79,6 +97,33 @@ class SplashScreen_ViewController: UIViewController {
                 
             })
             
+        }
+    
+    //MARK: - Version Update Func
+    /***************************************************************/
+   func isUpdateAvailable() throws -> Bool {
+    
+            guard let info = Bundle.main.infoDictionary,
+                let currentVersion = info["CFBundleShortVersionString"] as? String,
+                let identifier = info["CFBundleIdentifier"] as? String,
+                let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
+                    throw VersionError.invalidBundleInfo
+            }
+    
+    
+            let data = try Data(contentsOf: url)
+            guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
+                throw VersionError.invalidResponse
+            }
+            if let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
+                print("previous version is \(version) && current version is \(currentVersion)")
+                let  DeviceCurrentVersion = Float(currentVersion)!
+                let  appStoreVersion = Float(version)!
+    
+                return DeviceCurrentVersion > appStoreVersion
+    //            return version != currentVersion
+            }
+            throw VersionError.invalidResponse
         }
     /*
     // MARK: - Navigation

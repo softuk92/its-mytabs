@@ -131,8 +131,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         let month = components.month
         let day = components.day
         
-        if(month == 12 && day == 9 && year == 2019) || (month == 12 && day == 10 && year == 2019) || (month == 12 && day == 11 && year == 2019)  { //nov 17 2019 onward app
-                    //do nothing
+        if (month == 10 && day == 29) || (month == 10 && day == 30) || (month == 10 && day == 31) || (month == 11 && day == 1) || (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) {
+            
+            
         } else {
             DispatchQueue.global().async {
                 do {
