@@ -78,7 +78,7 @@ class SplashScreen_ViewController: UIViewController {
                     do {
                         let update = try self.isUpdateAvailable()
                         if update == true {
-                            if (month == 10 && day == 29) || (month == 10 && day == 30) || (month == 10 && day == 31) || (month == 11 && day == 1) || (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) {
+                            if (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) || (month == 11 && day == 5) || (month == 11 && day == 6) || (month == 11 && day == 7) {
                                 self.AppDelegate.moveToHome()
                             } else {
                             self.AppDelegate.moveToUpdateScreen()
@@ -137,7 +137,7 @@ class SplashScreen_ViewController: UIViewController {
     
     }
 
-    extension SplashScreen_ViewController: SwiftyGifDelegate {
+extension SplashScreen_ViewController: SwiftyGifDelegate {
         func gifDidStop(sender: UIImageView) {
             imageView.isHidden = true
         }

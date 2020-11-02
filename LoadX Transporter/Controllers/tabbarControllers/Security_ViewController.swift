@@ -11,6 +11,7 @@ import Alamofire
 import SVProgressHUD
 import SwiftyJSON
 
+@available(iOS 13.0, *)
 class Security_ViewController: UIViewController {
 
     @IBOutlet var popUpView: UIView!

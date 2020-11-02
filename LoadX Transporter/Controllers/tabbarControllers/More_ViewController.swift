@@ -298,8 +298,12 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                             if feedbackStars == "null" || feedbackStars == "0" {
                                 self.noFeedbackView.isHidden = false
                                 self.feedback_stars.text = "null"
+                                self.feedback_stars.isHidden  = true
+                                self.cosmosView.isHidden = true
                                 self.cosmosView.rating = 0.0
                             } else {
+                                self.feedback_stars.isHidden  = false
+                                self.cosmosView.isHidden = false
                                 self.noFeedbackView.isHidden = true
                                 self.feedback_stars.text = String(format: "%.1f", Double(feedbackStars) ?? 0.0)
                                 self.cosmosView.rating = Double(feedbackStars) ?? 0.0

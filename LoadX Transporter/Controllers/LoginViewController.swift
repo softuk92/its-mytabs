@@ -13,6 +13,7 @@ import SVProgressHUD
 import GoogleSignIn
 import GoogleMaps
 import GooglePlaces
+import AuthenticationServices
 
 class Connectivity {
     class func isConnectedToInternet() ->Bool {
@@ -66,6 +67,7 @@ var userToken: String?
 //var distance_map = ""
 //var vehicleType = ""
 
+@available(iOS 13.0, *)
 class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate, GIDSignInDelegate {
     
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -78,6 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBOutlet weak var _password: UITextField!
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     @IBOutlet weak var googleSignIn: GIDSignInButton!
+    @IBOutlet weak var loginWithApple: UIButton!
     @IBOutlet weak var forget_btn: UIButton! // textcolor 404040
     @IBOutlet weak var login_btn: UIButton!
     
@@ -131,7 +134,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         let month = components.month
         let day = components.day
         
-        if (month == 10 && day == 29) || (month == 10 && day == 30) || (month == 10 && day == 31) || (month == 11 && day == 1) || (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) {
+        if (month == 11 && day == 2) || (month == 11 && day == 3) || (month == 11 && day == 4) || (month == 11 && day == 5) || (month == 11 && day == 6) || (month == 11 && day == 7) {
             
             
         } else {
@@ -151,8 +154,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                     }
                 }
 
-    }
-   //MARK: - Version Update Func
+        loginWithApple.addTarget(self, action: #selector(actionHandleAppleSignin), for: .touchUpInside)
+
+            }
+
+        @objc func actionHandleAppleSignin() {
+
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+
+                let request = appleIDProvider.createRequest()
+
+                request.requestedScopes = [.fullName, .email]
+
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+
+                authorizationController.delegate = self
+
+                authorizationController.presentationContextProvider = self
+
+                authorizationController.performRequests()
+
+            }
+        
+    //MARK: - Version Update Func
    /***************************************************************/
 
         func isUpdateAvailable() throws -> Bool {
@@ -298,6 +322,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         userDefaults.set(user_type, forKey: "user_type")
                         userDefaults.set(true, forKey: "userLoggedIn")
                         userDefaults.synchronize()
+                        self.AppDelegate.moveToHome()
 //                        self.performSegue(withIdentifier: "user", sender: self)
                     }
                 } else {
@@ -310,7 +335,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             }
         } else {
             SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Alert", message: "Please select connection", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: "Please revoke permission of apple id usage from password and security in profile settings", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -352,7 +377,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         userDefaults.set(user_type, forKey: "user_type")
                         userDefaults.set(true, forKey: "userLoggedIn")
                         userDefaults.synchronize()
-                        self.performSegue(withIdentifier: "user", sender: self)
+//                        self.performSegue(withIdentifier: "user", sender: self)
+                        self.AppDelegate.moveToHome()
                     }
                     
                 } else {
@@ -365,7 +391,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             }
         } else {
             SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Alert", message: "Please select connection", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: "Please revoke permission of apple id usage from password and security in profile settings", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -485,6 +511,80 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 return
             }
             UIApplication.shared.open(url, options: [:], completionHandler: completion)
+    }
+
+}
+
+@available(iOS 13.0, *)
+extension LoginViewController: ASAuthorizationControllerDelegate {
+
+     // ASAuthorizationControllerDelegate function for authorization failed
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+
+//        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+        print(error.localizedDescription)
+
+    }
+
+       // ASAuthorizationControllerDelegate function for successful authorization
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+
+            // Create an account as per your requirement
+
+//            let appleId = appleIDCredential.user
+//
+//            let appleUserFirstName = appleIDCredential.fullName?.givenName
+//
+//            let appleUserLastName = appleIDCredential.fullName?.familyName
+//
+//            let appleUserEmail = appleIDCredential.email
+            let fullName = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
+            if appleIDCredential.email != nil {
+                UserDefaults.standard.setValue(fullName, forKey: "appleName")
+                UserDefaults.standard.setValue(appleIDCredential.email ?? "", forKey: "appleEmail")
+                user_name = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
+                user_email = appleIDCredential.email
+            } else {
+                if let name = UserDefaults.standard.string(forKey: "appleName"), let email = UserDefaults.standard.string(forKey: "appleEmail") {
+                user_name = name
+                user_email = email
+                }
+            }
+//            user_name = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
+//            user_email = appleIDCredential.email
+//            print("email is \(String(describing: user_email))")
+            
+            loginWithFacebook()
+
+        } else if let passwordCredential = authorization.credential as? ASPasswordCredential {
+
+            let appleUsername = passwordCredential.user
+
+            let applePassword = passwordCredential.password
+
+            //Write your code
+
+        }
+
+    }
+
+}
+
+@available(iOS 13.0, *)
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+
+    //For present window
+
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+
+        return self.view.window!
+
     }
 
 }

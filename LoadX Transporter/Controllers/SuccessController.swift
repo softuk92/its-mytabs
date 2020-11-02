@@ -29,8 +29,13 @@ class SuccessController: UIViewController {
     }
     
     @IBAction func login_action(_ sender: Any) {
-         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-                   self.navigationController?.pushViewController(vc!, animated: true)
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            // Fallback on earlier versions
+        }
+                   
     }
     
     @IBAction func dashboard_action(_ sender: Any) {
