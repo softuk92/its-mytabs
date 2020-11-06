@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         if #available(iOS 13.0, *) {
-        if UserDefaults.standard.bool(forKey: "dark") == true {
+            if UserDefaults.standard.bool(forKey: "dark") == true || UITraitCollection.current.userInterfaceStyle == .dark {
             UIApplication.shared.windows.forEach { window in
                     window.overrideUserInterfaceStyle = .dark
             }
@@ -197,14 +197,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func moveToLogInVC() {
-        let login = self.sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        let nvc: UINavigationController = UINavigationController(rootViewController: login)
-        self.window?.rootViewController = nvc
-        self.window?.makeKeyAndVisible()
+        if #available(iOS 13.0, *) {
+            let login = self.sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let nvc: UINavigationController = UINavigationController(rootViewController: login)
+            self.window?.rootViewController = nvc
+            self.window?.makeKeyAndVisible()
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
 
     func moveToHome() {
         let mainController = self.sb.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
+        let baseVC: UINavigationController = UINavigationController(rootViewController: mainController)
+        
+        self.window?.rootViewController = baseVC
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func moveToUpdateScreen() {
+        let mainController = self.sb.instantiateViewController(withIdentifier: "UpdateAppViewController") as! UpdateAppViewController
         let baseVC: UINavigationController = UINavigationController(rootViewController: mainController)
         
         self.window?.rootViewController = baseVC
