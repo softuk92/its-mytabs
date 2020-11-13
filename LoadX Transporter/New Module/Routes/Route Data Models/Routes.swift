@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Routes : Decodable {
+public struct Routes : Decodable {
     
     let lr_id: String
     let lr_no_of_stops: String
