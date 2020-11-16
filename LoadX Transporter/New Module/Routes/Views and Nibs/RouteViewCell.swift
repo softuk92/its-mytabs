@@ -18,6 +18,7 @@ open class RouteViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var noOfHelpers: UILabel!
     @IBOutlet weak var routePrice: UILabel!
     @IBOutlet weak var routeDate: UILabel!
+    @IBOutlet weak var acceptRoute: UIButton!
 
     open var dataSource: Routes! {
         didSet {
@@ -30,6 +31,9 @@ open class RouteViewCell: UITableViewCell, NibReusable {
         stops.text = "No of Stops: \(route.lr_no_of_stops)"
         pickup.text = route.lr_start_location
         dropoff.text = route.lr_end_location
+        routePrice.text = "£"+String(route.lr_total_price ?? 0.0)
+        movingItem.text = "000"+route.lr_id
+        routeDate.text = route.lr_date
     }
     
     open override func awakeFromNib() {

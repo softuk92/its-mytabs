@@ -204,6 +204,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="acceptRoute" destination="qp4-hP-HCO" id="FRN-9c-TqR"/>
                 <outlet property="dropoff" destination="TjK-7I-PCA" id="4wr-4B-WEe"/>
                 <outlet property="movingItem" destination="jRH-fD-vjY" id="DW2-41-90b"/>
                 <outlet property="noOfHelpers" destination="ktX-TK-Mqi" id="mR6-Yd-XN1"/>
@@ -214,14 +215,6 @@
             </connections>
             <point key="canvasLocation" x="180.43478260869566" y="154.6875"/>
         </tableViewCell>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ydH-dA-YZJ">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-            <nil key="textColor"/>
-            <nil key="highlightedColor"/>
-            <point key="canvasLocation" x="386" y="99"/>
-        </label>
     </objects>
     <resources>
         <image name="dropOff_new" width="22" height="32.5"/>

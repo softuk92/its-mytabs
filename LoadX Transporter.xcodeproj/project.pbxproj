@@ -16,6 +16,9 @@
 		184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48E6252233440042AA94 /* CustomUISwitch.xib */; };
 		184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48EA2523525C0042AA94 /* DropDownViewCell.swift */; };
 		184C48ED2523525C0042AA94 /* DropDownViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48EB2523525C0042AA94 /* DropDownViewCell.xib */; };
+		185139BE2562D3EC0053098B /* RouteDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185139BC2562D3EC0053098B /* RouteDetailsCell.swift */; };
+		185139BF2562D3EC0053098B /* RouteDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185139BD2562D3EC0053098B /* RouteDetailsCell.xib */; };
+		185139C32562DA7F0053098B /* UI Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185139C22562DA7E0053098B /* UI Extensions.swift */; };
 		18624ED4255AE592000E1954 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624ED3255AE592000E1954 /* APIManager.swift */; };
 		18624EDB255AF0C9000E1954 /* RouteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624ED9255AF0C9000E1954 /* RouteViewCell.swift */; };
 		18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18624EDA255AF0C9000E1954 /* RouteViewCell.xib */; };
@@ -27,6 +30,7 @@
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
 		18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD1E49253DBE80008F881A /* ContactUsViewController.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
+		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
 		4E228E0D23F16ECC00A12947 /* Edit_profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0C23F16ECC00A12947 /* Edit_profile_ViewController.swift */; };
@@ -181,6 +185,9 @@
 		184C48E6252233440042AA94 /* CustomUISwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomUISwitch.xib; sourceTree = "<group>"; };
 		184C48EA2523525C0042AA94 /* DropDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownViewCell.swift; sourceTree = "<group>"; };
 		184C48EB2523525C0042AA94 /* DropDownViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownViewCell.xib; sourceTree = "<group>"; };
+		185139BC2562D3EC0053098B /* RouteDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsCell.swift; sourceTree = "<group>"; };
+		185139BD2562D3EC0053098B /* RouteDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteDetailsCell.xib; sourceTree = "<group>"; };
+		185139C22562DA7E0053098B /* UI Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI Extensions.swift"; sourceTree = "<group>"; };
 		18624ED3255AE592000E1954 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		18624ED9255AF0C9000E1954 /* RouteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewCell.swift; sourceTree = "<group>"; };
 		18624EDA255AF0C9000E1954 /* RouteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteViewCell.xib; sourceTree = "<group>"; };
@@ -192,6 +199,7 @@
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
 		18AD1E49253DBE80008F881A /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4E223D1C23FE7FD100DE4D29 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -403,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				18624ED3255AE592000E1954 /* APIManager.swift */,
+				185139C22562DA7E0053098B /* UI Extensions.swift */,
 			);
 			path = "Helper Methods and Extensions";
 			sourceTree = "<group>";
@@ -412,6 +421,8 @@
 			children = (
 				18624ED9255AF0C9000E1954 /* RouteViewCell.swift */,
 				18624EDA255AF0C9000E1954 /* RouteViewCell.xib */,
+				185139BC2562D3EC0053098B /* RouteDetailsCell.swift */,
+				185139BD2562D3EC0053098B /* RouteDetailsCell.xib */,
 			);
 			path = "Views and Nibs";
 			sourceTree = "<group>";
@@ -420,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				18624EE4255AFE5D000E1954 /* GetAllRoutes.swift */,
+				18CB24642562E1A3009F0472 /* ParentViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -886,6 +898,7 @@
 				8D3E610221F76435004EAB06 /* LaunchScreen.storyboard in Resources */,
 				BB16169C24BF31E2008420A8 /* GeneralItemHeaderCell.xib in Resources */,
 				1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */,
+				185139BF2562D3EC0053098B /* RouteDetailsCell.xib in Resources */,
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
 				8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */,
@@ -990,6 +1003,7 @@
 				BBF12A22243C8F4700CD5FA0 /* SplashScreen_ViewController.swift in Sources */,
 				8D48C1EE2224062800417EF5 /* TransporterDashboard.swift in Sources */,
 				8DD0DFE32204AACD009A7E52 /* CompletedJobsModel.swift in Sources */,
+				18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */,
 				BB560F2A246C38F800F1AA23 /* LiveChat_ViewController.swift in Sources */,
 				8D48C21A2224420700417EF5 /* ShowInvoice.swift in Sources */,
 				4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */,
@@ -1082,6 +1096,7 @@
 				BBED7FA324B50CBA00D65DC7 /* InventoryCell.swift in Sources */,
 				18633DB6255044C5002913FC /* AppleButton.swift in Sources */,
 				4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */,
+				185139C32562DA7F0053098B /* UI Extensions.swift in Sources */,
 				8D48C20C22243E3D00417EF5 /* ManageReviews.swift in Sources */,
 				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,
 				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
@@ -1092,6 +1107,7 @@
 				4E818285241B92A8005D3EC9 /* VC1.swift in Sources */,
 				8DE5908E225F7DCA008B6FCD /* CopyableLabel.swift in Sources */,
 				8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */,
+				185139BE2562D3EC0053098B /* RouteDetailsCell.swift in Sources */,
 				4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */,
 				4E818289241B92CB005D3EC9 /* VC3.swift in Sources */,
 				4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */,

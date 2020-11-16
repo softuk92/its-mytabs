@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class APIManager: NSObject {
 
-class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (Data?, JSON?, NSError?) -> ()) {
 
     Alamofire.request(main_URL+serviceName, method: .get, parameters: parameters).responseJSON { (response:DataResponse<Any>) in
 
@@ -20,12 +20,12 @@ class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandle
         case .success(_):
             if let data = response.result.value{
                 let json = JSON(data)
-                completionHandler(json,nil)
+                completionHandler(response.data,json,nil)
             }
             break
 
         case .failure(_):
-            completionHandler(nil,response.result.error as NSError?)
+            completionHandler(nil, nil,response.result.error as NSError?)
             break
 
         }
