@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -89,10 +89,29 @@
                             <constraint firstItem="3ao-jl-ghB" firstAttribute="leading" secondItem="z33-fR-hvz" secondAttribute="leading" id="zNB-Pb-XgK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonBarView" destination="PXv-yp-Q7N" id="zA7-2p-dlM"/>
+                        <outlet property="containerView" destination="ilW-Lw-cQN" id="dcE-qC-AUj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHy-dJ-OrI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165.21739130434784" y="132.58928571428572"/>
+            <point key="canvasLocation" x="-603" y="126"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pq1-jR-bGp">
+            <objects>
+                <viewController id="mvQ-yc-xeO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vI8-fG-EF6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="m0q-0e-RXM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sYx-OZ-sgK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="126"/>
         </scene>
     </scenes>
     <resources>

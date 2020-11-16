@@ -66,6 +66,8 @@
 		4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */; };
 		4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */; };
 		4EC8049D23E31EAE00540F9A /* Contact_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049C23E31EAE00540F9A /* Contact_ViewController.swift */; };
+		4EEDA45F25631CEA00E7F212 /* Helper Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDA45E25631CEA00E7F212 /* Helper Methods.swift */; };
+		4EEDA46525631ED000E7F212 /* BookedJobsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDA46425631ED000E7F212 /* BookedJobsExtensions.swift */; };
 		4EFC62DF237EA6FC00BD32F3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC62DE237EA6FC00BD32F3 /* SettingViewController.swift */; };
 		6D23537022998DFD004C085F /* SearchJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23536F22998DFD004C085F /* SearchJobController.swift */; };
 		6D23537222999313004C085F /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23537122999313004C085F /* iOSDropDown.swift */; };
@@ -236,6 +238,8 @@
 		4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetial_ViewController.swift; sourceTree = "<group>"; };
 		4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job_Summary_ViewController.swift; sourceTree = "<group>"; };
 		4EC8049C23E31EAE00540F9A /* Contact_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ViewController.swift; sourceTree = "<group>"; };
+		4EEDA45E25631CEA00E7F212 /* Helper Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Methods.swift"; sourceTree = "<group>"; };
+		4EEDA46425631ED000E7F212 /* BookedJobsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedJobsExtensions.swift; sourceTree = "<group>"; };
 		4EFC62DE237EA6FC00BD32F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		54646F1A2062AD32882F0B2A /* Pods-CTS Move Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTS Move Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTS Move Transporter/Pods-CTS Move Transporter.release.xcconfig"; sourceTree = "<group>"; };
 		6D23536F22998DFD004C085F /* SearchJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchJobController.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 			children = (
 				18624ED3255AE592000E1954 /* APIManager.swift */,
 				185139C22562DA7E0053098B /* UI Extensions.swift */,
+				4EEDA45E25631CEA00E7F212 /* Helper Methods.swift */,
 			);
 			path = "Helper Methods and Extensions";
 			sourceTree = "<group>";
@@ -490,6 +495,23 @@
 				1824425F254ADD80005901AC /* UpdateAppViewController.swift */,
 			);
 			name = MoreScreens;
+			sourceTree = "<group>";
+		};
+		4EEDA46125631E7E00E7F212 /* Search Jobs */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDA46225631E8F00E7F212 /* Booked Jobs */,
+			);
+			path = "Search Jobs";
+			sourceTree = "<group>";
+		};
+		4EEDA46225631E8F00E7F212 /* Booked Jobs */ = {
+			isa = PBXGroup;
+			children = (
+				6DFAC4C22293087400556D30 /* SearchBookedJobs.swift */,
+				4EEDA46425631ED000E7F212 /* BookedJobsExtensions.swift */,
+			);
+			path = "Booked Jobs";
 			sourceTree = "<group>";
 		};
 		8D246F9B2228361500E2B290 /* View All Queries */ = {
@@ -711,6 +733,7 @@
 		8D61D3CC221D9D5600F215D4 /* Transporter */ = {
 			isa = PBXGroup;
 			children = (
+				4EEDA46125631E7E00E7F212 /* Search Jobs */,
 				184C48E9252351F10042AA94 /* Report a Problem */,
 				8DF9F0F122566EDE00137495 /* Freebie Items */,
 				8D246F9B2228361500E2B290 /* View All Queries */,
@@ -731,7 +754,6 @@
 				8D246F9922282E4F00E2B290 /* UserManaulController.swift */,
 				8D246FA82228450A00E2B290 /* FAQSTableViewController.swift */,
 				8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */,
-				6DFAC4C22293087400556D30 /* SearchBookedJobs.swift */,
 				6D23536F22998DFD004C085F /* SearchJobController.swift */,
 				6D2BCDE8229E9DF400C48CBF /* RegisterSuccessController.swift */,
 				4EFC62DE237EA6FC00BD32F3 /* SettingViewController.swift */,
@@ -996,6 +1018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */,
+				4EEDA45F25631CEA00E7F212 /* Helper Methods.swift in Sources */,
 				BBECC6092497F9B500BF6334 /* InventoryList_TableViewCell.swift in Sources */,
 				8D246FA72228417000E2B290 /* TermsAndConditionController.swift in Sources */,
 				184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */,
@@ -1046,6 +1069,7 @@
 				BB16169A24BF3146008420A8 /* GeneralItemHeaderCell.swift in Sources */,
 				8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */,
 				8D48C21022243FD900417EF5 /* ReportAProblem.swift in Sources */,
+				4EEDA46525631ED000E7F212 /* BookedJobsExtensions.swift in Sources */,
 				8D98C7252220543B00420BFA /* SearchDelivariesModel.swift in Sources */,
 				4EC3A40523E866A4009ACBB0 /* More_ViewController.swift in Sources */,
 				8D3C0DC02215CBBA00B7D1E8 /* ViewAllBidsModel.swift in Sources */,
