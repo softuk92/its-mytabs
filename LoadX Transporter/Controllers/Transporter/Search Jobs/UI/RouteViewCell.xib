@@ -29,8 +29,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FB0-6u-kbH">
                         <rect key="frame" x="10" y="10" width="355" height="216"/>
                         <subviews>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRH-fD-vjY">
-                                <rect key="frame" x="10" y="10" width="120.5" height="16.5"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LR0002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRH-fD-vjY">
+                                <rect key="frame" x="10" y="10" width="49" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -206,6 +206,8 @@
             <connections>
                 <outlet property="acceptRoute" destination="qp4-hP-HCO" id="FRN-9c-TqR"/>
                 <outlet property="dropoff" destination="TjK-7I-PCA" id="4wr-4B-WEe"/>
+                <outlet property="innerView" destination="FB0-6u-kbH" id="cUR-z1-6zq"/>
+                <outlet property="leftBtnView" destination="9Db-9r-YA9" id="5Np-rZ-KaL"/>
                 <outlet property="movingItem" destination="jRH-fD-vjY" id="DW2-41-90b"/>
                 <outlet property="noOfHelpers" destination="ktX-TK-Mqi" id="mR6-Yd-XN1"/>
                 <outlet property="pickup" destination="n3g-R2-J3c" id="XII-Mb-Rrk"/>

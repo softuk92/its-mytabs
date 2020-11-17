@@ -14,7 +14,7 @@ class APIManager: NSObject {
 
 class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (Data?, JSON?, NSError?) -> ()) {
 
-    Alamofire.request(main_URL+serviceName, method: .get, parameters: parameters).responseJSON { (response:DataResponse<Any>) in
+    Alamofire.request(main_URL+serviceName, method: .get, parameters: parameters).responseJSON { (response) in
 
         switch(response.result) {
         case .success(_):
@@ -34,7 +34,7 @@ class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandle
 
 class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
 
-    Alamofire.request(main_URL+serviceName, method: .post, parameters: parameters).responseJSON { (response:DataResponse<Any>) in
+    Alamofire.request(main_URL+serviceName, method: .post, parameters: parameters).responseJSON { (response) in
 
         switch(response.result) {
         case .success(_):

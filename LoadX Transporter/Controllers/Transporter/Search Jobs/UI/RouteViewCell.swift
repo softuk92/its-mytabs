@@ -19,6 +19,8 @@ open class RouteViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var routePrice: UILabel!
     @IBOutlet weak var routeDate: UILabel!
     @IBOutlet weak var acceptRoute: UIButton!
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var leftBtnView: UIView!
 
     open var dataSource: Routes! {
         didSet {
@@ -32,7 +34,7 @@ open class RouteViewCell: UITableViewCell, NibReusable {
         pickup.text = route.lr_start_location
         dropoff.text = route.lr_end_location
         routePrice.text = "£"+String(route.lr_total_price ?? 0.0)
-        movingItem.text = "000"+route.lr_id
+        movingItem.text = "LR000"+route.lr_id
         routeDate.text = route.lr_date
     }
     
@@ -42,7 +44,9 @@ open class RouteViewCell: UITableViewCell, NibReusable {
     }
     
     private func customizedView() {
-        self.layer.cornerRadius = 5
+        innerView.layer.cornerRadius = 5
+        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
+        acceptRoute.roundCorners(corners: [.bottomRight], radius: 5)
     }
 
 }

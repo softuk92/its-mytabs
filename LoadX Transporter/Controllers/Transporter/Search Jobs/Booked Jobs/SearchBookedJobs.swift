@@ -24,6 +24,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     private let disposeBag = DisposeBag()
     lazy var searchBookModel = [SearchBookedJobsModel]()
+    var routes = [Routes]()
     var locationPicked = 0
     var pickup_city = ""
     var dropoff_city = ""
@@ -88,9 +89,12 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var pagerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var searchJobsBtn: UIButton!
     @IBOutlet weak var routeJobsBtn: UIButton!
+    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var routesTableView: UITableView!
     
     func setConstraints(leadingSearch: Bool, trailingSearch: Bool, leadingRoute: Bool, trailingRoute: Bool) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 3.0) { [weak self] in
             self?.leadingSearchJobs.isActive = leadingSearch
             self?.trailingSearchJobs.isActive = trailingSearch
             self?.leadingRouteJobs.isActive = leadingRoute
@@ -187,39 +191,79 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             if self.searchBookModel.isEmpty {
                 SVProgressHUD.dismiss()
                 self.tableView.reloadData()
+                self.routesTableView.isHidden = true
                 self.stackView.isHidden = false
             } else {
                 SVProgressHUD.dismiss()
                 self.stackView.isHidden = true
+                self.routesTableView.isHidden = true
                 self.tableView.reloadData()
                 
             }
         }
+        //routes table view
+        configureRoutesTableView()
+        
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView?.frame.size = CGSize(width:tableView.frame.width, height: CGFloat(HEADER_HEIGHT))
         tableView.register(UINib(nibName: "SearchDeliveriesCell", bundle: nil) , forCellReuseIdentifier: "allDeliveries")
-        
         refresher = UIRefreshControl()
         refresher.tintColor = UIColor.white
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refresher.addTarget(self, action: #selector(SearchDeliveriesController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
         
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        
         bindButtons()
+        getRoutes()
+    }
+    
+    func configureRoutesTableView() {
+        routesTableView.delegate = self
+        routesTableView.dataSource = self
+        routesTableView.register(cellType: RouteViewCell.self)
     }
     
     func bindButtons() {
         searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
+            self?.routesTableView.isHidden = true
+            self?.tableView.isHidden = false
             self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
         }).disposed(by: disposeBag)
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
+            
+            self?.tableView.isHidden = true
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
+            if (self?.routes.count ?? 0) > 0 {
+                self?.routesTableView.isHidden = false
+            } else {
+                self?.routesTableView.isHidden = true
+                self?.noJobRecordFound_lable.text = "No Routes Jobs found."
+            }
         }).disposed(by: disposeBag)
         
+    }
+    
+    func getRoutes() {
+        APIManager.apiGet(serviceName: "api/getAllRouteList", parameters: .none) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                
+            }
+            do {
+                self.routes = try JSONDecoder().decode([Routes].self, from: data!)
+                self.routesTableView.reloadData()
+            } catch {
+                
+            }
+        }
     }
     
     @IBAction func clearAllFields(_ sender: Any) {
@@ -428,6 +472,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             return categoryList.count
         } else if tableView == radiusTableView {
             return radiusList.count
+        } else if tableView == routesTableView {
+            return routes.count
         } else {
             if (pageNumber * 10 > searchBookModel.count) {
                 return searchBookModel.count
@@ -441,6 +487,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     {
         if tableView == categoryTableView || tableView == radiusTableView {
             return 45
+        } else if tableView == routesTableView {
+            return 240
         } else {
             return 236
         }
@@ -489,6 +537,16 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.label.text = radiusList[indexPath.row]
             cell.label.font = UIFont(name: "Montserrat-Regular", size: 15)
             
+            return cell
+        }
+        
+        if tableView == routesTableView {
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteViewCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            cell.layer.shadowRadius = 10
+            cell.dataSource = routes[indexPath.row]
             return cell
         }
         
@@ -774,6 +832,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         } else if tableView == radiusTableView {
             self.radiusBlurView.isHidden = true
             self.pickup_radius.text = radiusList[indexPath.row]
+        } else if tableView == routesTableView {
+            
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! SearchDeliveriesCell
             del_id = self.searchBookModel[indexPath.row].del_id
@@ -795,70 +855,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             vc?.pickupAdd = cell.pickupLabel.text
             vc?.dropoffAdd = cell.dropOffLabel.text
             self.navigationController?.pushViewController(vc!, animated: true)
-        }
-    }
-    
-    func bookedJobFunc() {
-        SVProgressHUD.show(withStatus: "Please wait...")
-        if user_id != nil && del_id != nil && user_email != nil {
-            let forgetPassword_URL = main_URL+"api/GetBookedJob"
-            let parameters : Parameters = ["user_id" : user_id!, "user_email" : user_email!, "del_id" : del_id!]
-            Alamofire.request(forgetPassword_URL, method : .post, parameters : parameters).responseJSON {
-                response in
-                if response.result.isSuccess {
-                    SVProgressHUD.dismiss()
-                    
-                    let jsonData : JSON = JSON(response.result.value!)
-                    print("booked job jsonData is \(jsonData)")
-                    let result = jsonData[0]["result"].stringValue
-                    let message = jsonData[0]["message"].stringValue
-                    
-                    if result == "false" && message == "All fields are required." {
-                        self.present(showAlert(title: "Alert", message: "Email is incorrect."), animated: true, completion: nil)
-                    } else {
-                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
-                        self.navigationController?.pushViewController(vc!, animated: true)
-                    }
-                } else {
-                    SVProgressHUD.dismiss()
-                    self.present(showAlert(title: "Alert", message: response.error?.localizedDescription ?? ""), animated: true, completion: nil)
-                }
-            }
-        } else {
-            SVProgressHUD.dismiss()
-            self.present(showAlert(title: "Error!", message: "Please enter your email address"), animated: true, completion: nil)
-        }
-    }
-    
-    func bookedJobFunc2() {
-        SVProgressHUD.show(withStatus: "Please wait...")
-        if user_id != nil && del_id != nil && user_email != nil && unique_id.text != "" {
-            let forgetPassword_URL = main_URL+"api/GetBookedJob"
-            let parameters : Parameters = ["user_id" : user_id!, "user_email" : user_email!, "del_id" : del_id!, "uniq_id" : self.unique_id.text!]
-            Alamofire.request(forgetPassword_URL, method : .post, parameters : parameters).responseJSON {
-                response in
-                if response.result.isSuccess {
-                    SVProgressHUD.dismiss()
-                    
-                    let jsonData : JSON = JSON(response.result.value!)
-                    print("booked job jsonData is \(jsonData)")
-                    let result = jsonData[0]["result"].stringValue
-                    let message = jsonData[0]["message"].stringValue
-                    
-                    if result == "0" || message == "All fields are required." {
-                        self.present(showAlert(title: "Alert", message: message), animated: true, completion: nil)
-                    } else {
-                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
-                        self.navigationController?.pushViewController(vc!, animated: true)
-                    }
-                } else {
-                    SVProgressHUD.dismiss()
-                    self.present(showAlert(title: "Alert", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
-                }
-            }
-        } else {
-            SVProgressHUD.dismiss()
-            self.present(showAlert(title: "Error!", message: "Please enter unique id..."), animated: true, completion: nil)
         }
     }
     

@@ -36,6 +36,7 @@
 		4E228E0D23F16ECC00A12947 /* Edit_profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0C23F16ECC00A12947 /* Edit_profile_ViewController.swift */; };
 		4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0E23F16F7E00A12947 /* Document_ViewController.swift */; };
 		4E275CEC241AAAE600D05A24 /* AppIntro_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E275CEB241AAAE600D05A24 /* AppIntro_ViewController.swift */; };
+		4E3BEDBF2564750700483100 /* RouteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */; };
 		4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4282C523EC760D00DDA5CF /* satistics_ViewController.swift */; };
 		4E44137B24004A47005F8A18 /* AppInfo_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44137A24004A47005F8A18 /* AppInfo_ViewController.swift */; };
 		4E454B5B23E48217009AFF47 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E454B5223E48215009AFF47 /* Montserrat-UltraLight.otf */; };
@@ -55,6 +56,7 @@
 		4E59299223E9CA95007A3C09 /* Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */; };
 		4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */; };
 		4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */; };
+		4E7C9BD125645D13003BC22B /* BookedJobsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */; };
 		4E818285241B92A8005D3EC9 /* VC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818284241B92A8005D3EC9 /* VC1.swift */; };
 		4E818287241B92BB005D3EC9 /* VC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818286241B92BB005D3EC9 /* VC2.swift */; };
 		4E818289241B92CB005D3EC9 /* VC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818288241B92CB005D3EC9 /* VC3.swift */; };
@@ -208,6 +210,7 @@
 		4E228E0C23F16ECC00A12947 /* Edit_profile_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit_profile_ViewController.swift; sourceTree = "<group>"; };
 		4E228E0E23F16F7E00A12947 /* Document_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document_ViewController.swift; sourceTree = "<group>"; };
 		4E275CEB241AAAE600D05A24 /* AppIntro_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntro_ViewController.swift; sourceTree = "<group>"; };
+		4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsViewController.swift; sourceTree = "<group>"; };
 		4E4282C523EC760D00DDA5CF /* satistics_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = satistics_ViewController.swift; sourceTree = "<group>"; };
 		4E44137A24004A47005F8A18 /* AppInfo_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo_ViewController.swift; sourceTree = "<group>"; };
 		4E454B5223E48215009AFF47 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 		4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_ViewController.swift; sourceTree = "<group>"; };
 		4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reach_Us_ViewController.swift; sourceTree = "<group>"; };
 		4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help_ViewController.swift; sourceTree = "<group>"; };
+		4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedJobsFunctions.swift; sourceTree = "<group>"; };
 		4E818284241B92A8005D3EC9 /* VC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1.swift; sourceTree = "<group>"; };
 		4E818286241B92BB005D3EC9 /* VC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC2.swift; sourceTree = "<group>"; };
 		4E818288241B92CB005D3EC9 /* VC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC3.swift; sourceTree = "<group>"; };
@@ -424,10 +428,6 @@
 		18624ED7255AE710000E1954 /* Views and Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				18624ED9255AF0C9000E1954 /* RouteViewCell.swift */,
-				18624EDA255AF0C9000E1954 /* RouteViewCell.xib */,
-				185139BC2562D3EC0053098B /* RouteDetailsCell.swift */,
-				185139BD2562D3EC0053098B /* RouteDetailsCell.xib */,
 			);
 			path = "Views and Nibs";
 			sourceTree = "<group>";
@@ -481,6 +481,14 @@
 			path = App_intro_controllers;
 			sourceTree = "<group>";
 		};
+		4E3BEDBD256474EA00483100 /* Route Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */,
+			);
+			path = "Route Detail Views";
+			sourceTree = "<group>";
+		};
 		4E59298C23E9C9F6007A3C09 /* MoreScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,9 +505,22 @@
 			name = MoreScreens;
 			sourceTree = "<group>";
 		};
+		4E7C9BD3256461E6003BC22B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				18624ED9255AF0C9000E1954 /* RouteViewCell.swift */,
+				18624EDA255AF0C9000E1954 /* RouteViewCell.xib */,
+				185139BC2562D3EC0053098B /* RouteDetailsCell.swift */,
+				185139BD2562D3EC0053098B /* RouteDetailsCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		4EEDA46125631E7E00E7F212 /* Search Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				4E3BEDBD256474EA00483100 /* Route Detail Views */,
+				4E7C9BD3256461E6003BC22B /* UI */,
 				4EEDA46225631E8F00E7F212 /* Booked Jobs */,
 			);
 			path = "Search Jobs";
@@ -510,6 +531,7 @@
 			children = (
 				6DFAC4C22293087400556D30 /* SearchBookedJobs.swift */,
 				4EEDA46425631ED000E7F212 /* BookedJobsExtensions.swift */,
+				4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */,
 			);
 			path = "Booked Jobs";
 			sourceTree = "<group>";
@@ -1091,6 +1113,7 @@
 				18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */,
 				8DE44D412211B42A008CBEE0 /* SessionManager.swift in Sources */,
 				8D270CF621FB3A860016D6DD /* HomeViewController.swift in Sources */,
+				4E3BEDBF2564750700483100 /* RouteDetailsViewController.swift in Sources */,
 				8DD0DFD022048EB2009A7E52 /* ActiveJobsModel.swift in Sources */,
 				4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */,
 				4EC8049723E31E0700540F9A /* location_ViewController.swift in Sources */,
@@ -1104,6 +1127,7 @@
 				8DD94F9B221316F7005EC61E /* PaymentHistoryModel.swift in Sources */,
 				4E228E0D23F16ECC00A12947 /* Edit_profile_ViewController.swift in Sources */,
 				8DE3AF2C22258C4000A41DC1 /* ContactUs.swift in Sources */,
+				4E7C9BD125645D13003BC22B /* BookedJobsFunctions.swift in Sources */,
 				8D4385E92224495200A3CE7F /* ActivityLogList.swift in Sources */,
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
