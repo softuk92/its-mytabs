@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800493E2555A2DC005EA70D /* Routes.storyboard */; };
 		18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824425F254ADD80005901AC /* UpdateAppViewController.swift */; };
+		182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B334225656B7700B8201A /* RouteStopDetail.swift */; };
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */; };
 		1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */; };
@@ -182,6 +183,7 @@
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
 		1800493E2555A2DC005EA70D /* Routes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		1824425F254ADD80005901AC /* UpdateAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppViewController.swift; sourceTree = "<group>"; };
+		182B334225656B7700B8201A /* RouteStopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopDetail.swift; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryCell.swift; sourceTree = "<group>"; };
 		1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryCell.xib; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				18624EE0255AFC1F000E1954 /* Routes.swift */,
+				182B334225656B7700B8201A /* RouteStopDetail.swift */,
 			);
 			path = "Route Data Models";
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */,
 				8D3E60FA21F76432004EAB06 /* OnboardingController.swift in Sources */,
 				8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */,
+				182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */,
 				8D246FAD22284A3E00E2B290 /* FooterTableViewCell.swift in Sources */,
 				4E59299023E9CA7E007A3C09 /* Security_ViewController.swift in Sources */,
 				1837E44125065B1700FF0D17 /* Extensions.swift in Sources */,

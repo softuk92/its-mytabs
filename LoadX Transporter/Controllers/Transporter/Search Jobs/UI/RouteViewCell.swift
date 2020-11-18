@@ -8,34 +8,50 @@
 
 import UIKit
 import Reusable
+import RxSwift
 
 open class RouteViewCell: UITableViewCell, NibReusable {
     
     @IBOutlet weak var movingItem: UILabel!
     @IBOutlet weak var stops: UILabel!
+    @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var pickup: UILabel!
     @IBOutlet weak var dropoff: UILabel!
-    @IBOutlet weak var noOfHelpers: UILabel!
     @IBOutlet weak var routePrice: UILabel!
     @IBOutlet weak var routeDate: UILabel!
     @IBOutlet weak var acceptRoute: UIButton!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var leftBtnView: UIView!
 
+    private var disposeBag = DisposeBag()
+    weak var parentViewController : UIViewController!
     open var dataSource: Routes! {
         didSet {
             guard let route = dataSource else {return}
             bindLabels(route: route)
+            
         }
     }
     
     open func bindLabels(route: Routes) {
         stops.text = "No of Stops: \(route.lr_no_of_stops)"
-        pickup.text = route.lr_start_location
-        dropoff.text = route.lr_end_location
+        distance.text = "\(route.lr_total_distance ?? "") miles"
+        pickup.text = getAddress(street: route.pu_street, route: route.pu_route, city: route.pu_city, postcode: route.pu_post_code)
+        dropoff.text = getAddress(street: route.do_street, route: route.do_route, city: route.do_city, postcode: route.do_post_code)
         routePrice.text = "£"+String(route.lr_total_price ?? 0.0)
         movingItem.text = "LR000"+route.lr_id
         routeDate.text = route.lr_date
+        bindActions(routeId: route.lr_id)
+    }
+    
+    func bindActions(routeId: String) {
+        acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                vc.routeId = routeId
+                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
+            }
+        }).disposed(by: disposeBag)
+        
     }
     
     open override func awakeFromNib() {

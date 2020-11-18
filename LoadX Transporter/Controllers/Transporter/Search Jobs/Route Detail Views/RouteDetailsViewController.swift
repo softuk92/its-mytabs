@@ -13,10 +13,55 @@ import Alamofire
 
 class RouteDetailsViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    var routeStopDetail = [RouteStopDetail]()
+    var routeId : String!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        configureTableView()
+        getRouteDetails()
+    }
+    
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cellType: RouteDetailsCell.self)
+    }
+    
+    func getRouteDetails() {
+        APIManager.apiPost(serviceName: "api/getSpecificRouteDetail", parameters: ["route_id" : routeId ?? ""]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                
+            }
+            do {
+                self.routeStopDetail = try JSONDecoder().decode([RouteStopDetail].self, from: data!)
+                print("Route json is \(String(describing: json))")
+                self.tableView.reloadData()
+            } catch {
+                
+            }
+        }
+    }
+    
+}
+
+extension RouteDetailsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
+}
+
+extension RouteDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        routeStopDetail.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteDetailsCell.self)
+        cell.dataSource = routeStopDetail[indexPath.row]
+        return cell
     }
     
 }

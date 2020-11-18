@@ -259,6 +259,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
             do {
                 self.routes = try JSONDecoder().decode([Routes].self, from: data!)
+                print("Route json is \(String(describing: json))")
                 self.routesTableView.reloadData()
             } catch {
                 
@@ -488,7 +489,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         if tableView == categoryTableView || tableView == radiusTableView {
             return 45
         } else if tableView == routesTableView {
-            return 240
+            return 280
         } else {
             return 236
         }
@@ -540,6 +541,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             return cell
         }
         
+        //Routes Table View
         if tableView == routesTableView {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteViewCell.self)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -547,9 +549,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.backgroundColor = nil
             cell.layer.shadowRadius = 10
             cell.dataSource = routes[indexPath.row]
+            cell.parentViewController = self
             return cell
         }
         
+        //Search Table View
         let cell = tableView.dequeueReusableCell(withIdentifier: "allDeliveries") as! SearchDeliveriesCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
@@ -833,7 +837,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self.radiusBlurView.isHidden = true
             self.pickup_radius.text = radiusList[indexPath.row]
         } else if tableView == routesTableView {
-            
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! SearchDeliveriesCell
             del_id = self.searchBookModel[indexPath.row].del_id

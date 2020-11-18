@@ -32,7 +32,7 @@ class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandle
     }
 }
 
-class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (Data?, JSON?, NSError?) -> ()) {
 
     Alamofire.request(main_URL+serviceName, method: .post, parameters: parameters).responseJSON { (response) in
 
@@ -40,12 +40,12 @@ class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandl
         case .success(_):
             if let data = response.result.value{
                 let json = JSON(data)
-                completionHandler(json,nil)
+                completionHandler(response.data,json,nil)
             }
             break
 
         case .failure(_):
-            completionHandler(nil,response.result.error as NSError?)
+            completionHandler(nil,nil,response.result.error as NSError?)
             break
         }
     }

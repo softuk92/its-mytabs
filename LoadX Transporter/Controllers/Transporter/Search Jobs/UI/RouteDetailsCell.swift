@@ -9,12 +9,15 @@
 import UIKit
 import Reusable
 
-class RouteDetailsCell: UITableViewCell, NibReusable {
+open class RouteDetailsCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var routeId: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var pickup: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var dropoffStopNumber: UILabel!
     @IBOutlet weak var seeDetails: UIButton!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var stops: UILabel!
@@ -23,14 +26,33 @@ class RouteDetailsCell: UITableViewCell, NibReusable {
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var btnView: UIView!
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         customizedView()
     }
     
-    open func bindLabels(route: Routes) {
-        stops.text = "No of Stops: \(route.lr_no_of_stops)"
-        pickup.text = route.lr_start_location
+    open var dataSource: RouteStopDetail! {
+        didSet {
+            guard let route = dataSource else {return}
+            bindLabels(route: route)
+        }
+    }
+    
+    open func bindLabels(route: RouteStopDetail) {
+        stops.text = String(route.stop_no)
+        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
+        routeId.text = "LS2020J"+route.lrh_job_id
+        addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup" : "Dropoff"
+        price.text = "£"+route.price
+        if route.pickup_lrh_stop_no != "N/A" || route.pickup_lrh_stop_no != "" {
+            dropoffStopNumber.isHidden = false
+            dropoffStopNumber.text = "Drop Off of Stop \(route.pickup_lrh_stop_no)"
+        } else {
+            dropoffStopNumber.isHidden = true
+        }
+        name.text = "Customer Name:"
+        phone.text = route.customer_name
+        time.text = route.lrh_arrival_time
         
     }
 
