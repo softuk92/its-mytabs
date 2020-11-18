@@ -16,6 +16,7 @@ class RouteDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var routeStopDetail = [RouteStopDetail]()
     var routeId : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,20 +31,26 @@ class RouteDetailsViewController: UIViewController {
     }
     
     func getRouteDetails() {
+        SVProgressHUD.show(withStatus: "Geting details...")
         APIManager.apiPost(serviceName: "api/getSpecificRouteDetail", parameters: ["route_id" : routeId ?? ""]) { [weak self] (data, json, error) in
             guard let self = self else { return }
             if error != nil {
-                
+                SVProgressHUD.dismiss()
             }
             do {
                 self.routeStopDetail = try JSONDecoder().decode([RouteStopDetail].self, from: data!)
                 print("Route json is \(String(describing: json))")
+                SVProgressHUD.dismiss()
                 self.tableView.reloadData()
             } catch {
-                
+                SVProgressHUD.dismiss()
             }
         }
     }
+    
+    @IBAction func backBtn_action(_ sender: Any) {
+        self.navigationController!.popViewController(animated: true)
+     }
     
 }
 
@@ -60,7 +67,12 @@ extension RouteDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteDetailsCell.self)
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+        cell.layer.shadowRadius = 10
         cell.dataSource = routeStopDetail[indexPath.row]
+        cell.parentViewController = self
         return cell
     }
     

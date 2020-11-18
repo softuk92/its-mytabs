@@ -127,6 +127,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     let picker = UIDatePicker()
     var vehicleType = ""
     var searchCount : String?
+    var routeCount: String?
     var blurView: UIVisualEffectView?
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -141,6 +142,12 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //top tab bar view shadow
+        topPagerView.layer.masksToBounds = false
+        topPagerView.layer.shadowOpacity = 0.5
+        topPagerView.layer.shadowColor = UIColor.black.cgColor
+        topPagerView.layer.shadowOffset = CGSize(width: 0 , height:0.5)
         
         //category drop down view
         categoryBlurView.isHidden = true
@@ -235,6 +242,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.routesTableView.isHidden = true
             self?.tableView.isHidden = false
             self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+            self?.topLabel.text = "Search Jobs"
+            self?.searchCount_job_lbl.text = self?.searchCount
+            self?.searchBtn.isHidden = false
         }).disposed(by: disposeBag)
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
@@ -243,6 +253,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
+                self?.topLabel.text = "Search Routes"
+                self?.searchCount_job_lbl.text = self?.routeCount
+                self?.searchBtn.isHidden = true
             } else {
                 self?.routesTableView.isHidden = true
                 self?.noJobRecordFound_lable.text = "No Routes Jobs found."
@@ -260,6 +273,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             do {
                 self.routes = try JSONDecoder().decode([Routes].self, from: data!)
                 print("Route json is \(String(describing: json))")
+                self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
             } catch {
                 
@@ -433,7 +447,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         SVProgressHUD.show(withStatus: "Getting Jobs...")
         let url = URL(string: main_URL+"api/SearchBookedJobs")
         
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url!) { [weak self] (data, response, error) in
+            guard let self = self else { return }
             if error == nil {
                 do {
                     self.searchBookModel.removeAll()
@@ -441,13 +456,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     SVProgressHUD.dismiss()
                     print("Search all jobs json is \(JSON(data!))")
                     
-                    self.searchCount = String(self.searchBookModel.count)
-                    
-                    
-                    
                     DispatchQueue.main.async {
                         completed()
                         self.searchCount_job_lbl.text = "(" + String(self.searchBookModel.count) + ")"
+                        self.searchCount = "(" + String(self.searchBookModel.count) + ")"
                         SVProgressHUD.dismiss()
                     }
                 } catch {
@@ -595,67 +607,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         } else {
             cell.quotes.text = vanType
         }
-        //        cell.quotesOutlet.text = "Van Type"
-        
-        let puStreet = searchDeliveriesRow.pu_street
-        let puRoute = searchDeliveriesRow.pu_route
-        let puCity = searchDeliveriesRow.pu_city
-        let puPostCode = searchDeliveriesRow.pu_post_code
-        
-        if puStreet != "" || puRoute != "" {
-            puStreet_Route = puStreet+" "+puRoute+","
-            cell.pickupLabel.text = puStreet
-        } else {
-            puStreet_Route = ""
-        }
-        if puCity != "" {
-            pu_City_Route = puStreet_Route+" "+puCity+","
-            cell.pickupLabel.text = pu_City_Route
-        } else {
-            pu_City_Route = puStreet_Route
-        }
-        if puPostCode != "" {
-            let spaceCount = puPostCode.filter{$0 == " "}.count
-            if spaceCount > 0 {
-                if let first = puPostCode.components(separatedBy: " ").first {
-                    pu_allAddress = pu_City_Route+" "+first
-                    cell.pickupLabel.text = pu_allAddress
-                }
-            } else if spaceCount == 0 {
-                pu_allAddress = pu_City_Route+" "+puPostCode
-                cell.pickupLabel.text = pu_allAddress
-            }
-        }
-        
-        let doStreet = searchDeliveriesRow.do_street
-        let doRoute = searchDeliveriesRow.do_route
-        let doCity = searchDeliveriesRow.do_city
-        let doPostCode = searchDeliveriesRow.do_post_code
-        
-        if doStreet != "" || doRoute != "" {
-            doStreet_Route = doStreet+" "+doRoute+","
-            cell.dropOffLabel.text = doStreet
-        } else {
-            doStreet_Route = ""
-        }
-        if doCity != "" {
-            do_City_Route = doStreet_Route+" "+doCity+","
-            cell.dropOffLabel.text = do_City_Route
-        } else {
-            do_City_Route = doStreet_Route
-        }
-        if doPostCode != "" {
-            let spaceCount = doPostCode.filter{$0 == " "}.count
-            if spaceCount > 0 {
-                if let first = doPostCode.components(separatedBy: " ").first {
-                    do_allAddress = do_City_Route+" "+first
-                    cell.dropOffLabel.text = do_allAddress
-                }
-            } else if spaceCount == 0 {
-                do_allAddress = do_City_Route+" "+doPostCode
-                cell.dropOffLabel.text = do_allAddress
-            }
-        }
+
+        cell.pickupLabel.text = getAddress(street: searchDeliveriesRow.pu_street, route: searchDeliveriesRow.pu_route, city: searchDeliveriesRow.pu_city, postcode: searchDeliveriesRow.pu_post_code)
+
+        cell.dropOffLabel.text = getAddress(street: searchDeliveriesRow.do_street, route: searchDeliveriesRow.do_route, city: searchDeliveriesRow.do_city, postcode: searchDeliveriesRow.do_post_code)
         
         cell.postedDateLabel.text = searchDeliveriesRow.job_posted_date
         cell.deliveryDateLabel.text = convertDateFormatter(searchDeliveriesRow.date)
@@ -838,6 +793,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self.pickup_radius.text = radiusList[indexPath.row]
         } else if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                vc.routeId = self.routes[indexPath.row].lr_id
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {

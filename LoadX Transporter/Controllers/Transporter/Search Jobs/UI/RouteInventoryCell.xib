@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="RouteDetailsCell" customModule="LoadX_Transporter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="347" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inventory_icon" translatesAutoresizingMaskIntoConstraints="NO" id="nhT-D9-Gz5">
+                        <rect key="frame" x="5" y="17" width="47" height="16"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tw-Rn-WgR">
+                        <rect key="frame" x="54" y="17" width="221" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="221" id="e4b-mY-xZA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                        <color key="textColor" name="TextfieldTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-BQ-d9M">
+                        <rect key="frame" x="283" y="11" width="52" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dg-j3-MUl">
+                                <rect key="frame" x="22" y="6" width="8" height="16"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="PKs-vX-o1a"/>
+                            <constraint firstItem="8Dg-j3-MUl" firstAttribute="centerX" secondItem="Nxh-BQ-d9M" secondAttribute="centerX" id="dT3-3m-jlG"/>
+                            <constraint firstItem="8Dg-j3-MUl" firstAttribute="centerY" secondItem="Nxh-BQ-d9M" secondAttribute="centerY" id="vdE-nX-idF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Nxh-BQ-d9M" firstAttribute="leading" secondItem="1tw-Rn-WgR" secondAttribute="trailing" constant="8" symbolic="YES" id="0Z6-Kb-hqY"/>
+                    <constraint firstItem="nhT-D9-Gz5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="755-Qh-mxN"/>
+                    <constraint firstItem="1tw-Rn-WgR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PkE-P6-weQ"/>
+                    <constraint firstAttribute="bottom" secondItem="Nxh-BQ-d9M" secondAttribute="bottom" constant="11" id="f2L-Ad-xip"/>
+                    <constraint firstItem="1tw-Rn-WgR" firstAttribute="leading" secondItem="nhT-D9-Gz5" secondAttribute="trailing" constant="2" id="f6h-dL-ez2"/>
+                    <constraint firstAttribute="trailing" secondItem="Nxh-BQ-d9M" secondAttribute="trailing" constant="12" id="g3z-h9-z6f"/>
+                    <constraint firstItem="Nxh-BQ-d9M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="h3y-V0-N91"/>
+                    <constraint firstItem="nhT-D9-Gz5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="nc5-FW-wFt"/>
+                    <constraint firstAttribute="bottom" secondItem="nhT-D9-Gz5" secondAttribute="bottom" constant="17" id="pPc-06-5s1"/>
+                    <constraint firstItem="nhT-D9-Gz5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yK2-XJ-dCJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="136.95652173913044" y="115.84821428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="inventory_icon" width="52" height="42"/>
+        <namedColor name="TextfieldTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -32,6 +32,9 @@
 		18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD1E49253DBE80008F881A /* ContactUsViewController.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
+		4E1948782565BF0400C3C3C8 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1948772565BF0400C3C3C8 /* StopDetailsViewController.swift */; };
+		4E19487C2565C8C300C3C3C8 /* RouteInventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19487A2565C8C300C3C3C8 /* RouteInventoryCell.swift */; };
+		4E19487D2565C8C300C3C3C8 /* RouteInventoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E19487B2565C8C300C3C3C8 /* RouteInventoryCell.xib */; };
 		4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CF5D222FC64CF00503BEC /* BookJobController.swift */; };
 		4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223D1C23FE7FD100DE4D29 /* CardView.swift */; };
 		4E228E0D23F16ECC00A12947 /* Edit_profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0C23F16ECC00A12947 /* Edit_profile_ViewController.swift */; };
@@ -206,6 +209,9 @@
 		18AD1E49253DBE80008F881A /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		4E1948772565BF0400C3C3C8 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
+		4E19487A2565C8C300C3C3C8 /* RouteInventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInventoryCell.swift; sourceTree = "<group>"; };
+		4E19487B2565C8C300C3C3C8 /* RouteInventoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteInventoryCell.xib; sourceTree = "<group>"; };
 		4E1CF5D222FC64CF00503BEC /* BookJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJobController.swift; sourceTree = "<group>"; };
 		4E1D09FE22DCC5EF008C264A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4E223D1C23FE7FD100DE4D29 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -392,7 +398,6 @@
 			children = (
 				18624EDF255AFC00000E1954 /* Route Data Models */,
 				18624ED8255AF09C000E1954 /* View Controllers */,
-				18624ED7255AE710000E1954 /* Views and Nibs */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -425,13 +430,6 @@
 				4EEDA45E25631CEA00E7F212 /* Helper Methods.swift */,
 			);
 			path = "Helper Methods and Extensions";
-			sourceTree = "<group>";
-		};
-		18624ED7255AE710000E1954 /* Views and Nibs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Views and Nibs";
 			sourceTree = "<group>";
 		};
 		18624ED8255AF09C000E1954 /* View Controllers */ = {
@@ -488,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */,
+				4E1948772565BF0400C3C3C8 /* StopDetailsViewController.swift */,
 			);
 			path = "Route Detail Views";
 			sourceTree = "<group>";
@@ -515,6 +514,8 @@
 				18624EDA255AF0C9000E1954 /* RouteViewCell.xib */,
 				185139BC2562D3EC0053098B /* RouteDetailsCell.swift */,
 				185139BD2562D3EC0053098B /* RouteDetailsCell.xib */,
+				4E19487A2565C8C300C3C3C8 /* RouteInventoryCell.swift */,
+				4E19487B2565C8C300C3C3C8 /* RouteInventoryCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -974,6 +975,7 @@
 				8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */,
 				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
 				18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */,
+				4E19487D2565C8C300C3C3C8 /* RouteInventoryCell.xib in Resources */,
 				4E454B5F23E48217009AFF47 /* Montserrat-Bold.otf in Resources */,
 				8D3E60FD21F76432004EAB06 /* Main.storyboard in Resources */,
 				BBED7FA424B50CBA00D65DC7 /* InventoryCell.xib in Resources */,
@@ -1074,6 +1076,7 @@
 				4E55003C23E01FC80004A700 /* MainTabBarController.swift in Sources */,
 				8D48C20522242B8200417EF5 /* JobsInProgress.swift in Sources */,
 				1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */,
+				4E19487C2565C8C300C3C3C8 /* RouteInventoryCell.swift in Sources */,
 				8D3E60FA21F76432004EAB06 /* OnboardingController.swift in Sources */,
 				8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */,
 				182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */,
@@ -1163,6 +1166,7 @@
 				4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */,
 				4E818289241B92CB005D3EC9 /* VC3.swift in Sources */,
 				4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */,
+				4E1948782565BF0400C3C3C8 /* StopDetailsViewController.swift in Sources */,
 				8D246FA32228388D00E2B290 /* ViewAllQueriesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

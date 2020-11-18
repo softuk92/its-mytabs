@@ -8,6 +8,7 @@
 
 import UIKit
 import Reusable
+import RxSwift
 
 open class RouteDetailsCell: UITableViewCell, NibReusable {
 
@@ -26,6 +27,9 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var btnView: UIView!
     
+    private var disposeBag = DisposeBag()
+    weak var parentViewController : UIViewController!
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         customizedView()
@@ -39,12 +43,12 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     }
     
     open func bindLabels(route: RouteStopDetail) {
-        stops.text = String(route.stop_no)
+        stops.text = "Stop "+String(route.stop_no)
         pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
         routeId.text = "LS2020J"+route.lrh_job_id
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup" : "Dropoff"
-        price.text = "£"+route.price
-        if route.pickup_lrh_stop_no != "N/A" || route.pickup_lrh_stop_no != "" {
+        price.text = "£"+String(format: "%.2f", Double(route.price) ?? 0.0)
+        if route.pickup_lrh_stop_no != "N/A" && route.pickup_lrh_stop_no != "" {
             dropoffStopNumber.isHidden = false
             dropoffStopNumber.text = "Drop Off of Stop \(route.pickup_lrh_stop_no)"
         } else {
@@ -53,9 +57,18 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         name.text = "Customer Name:"
         phone.text = route.customer_name
         time.text = route.lrh_arrival_time
-        
+        bindActions(lrh_id: route.lrh_id)
     }
 
+    func bindActions(lrh_id: String) {
+        seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
+                vc.stopId = lrh_id
+                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     private func customizedView() {
         stopView.roundCorners(corners: [.topLeft, .topRight], radius: 5)
         backView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5)

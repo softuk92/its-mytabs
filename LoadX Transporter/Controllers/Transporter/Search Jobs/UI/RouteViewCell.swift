@@ -38,18 +38,18 @@ open class RouteViewCell: UITableViewCell, NibReusable {
         distance.text = "\(route.lr_total_distance ?? "") miles"
         pickup.text = getAddress(street: route.pu_street, route: route.pu_route, city: route.pu_city, postcode: route.pu_post_code)
         dropoff.text = getAddress(street: route.do_street, route: route.do_route, city: route.do_city, postcode: route.do_post_code)
-        routePrice.text = "£"+String(route.lr_total_price ?? 0.0)
-        movingItem.text = "LR000"+route.lr_id
+        routePrice.text = "£"+String(format: "%.2f", route.lr_total_price ?? 0.0)
+        movingItem.text = "LR00"+route.lr_id
         routeDate.text = route.lr_date
         bindActions(routeId: route.lr_id)
     }
     
     func bindActions(routeId: String) {
         acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
-            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-                vc.routeId = routeId
-                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
-            }
+//            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+//                vc.routeId = routeId
+//                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
+//            }
         }).disposed(by: disposeBag)
         
     }
