@@ -57,13 +57,14 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         name.text = "Customer Name:"
         phone.text = route.customer_name
         time.text = route.lrh_arrival_time
-        bindActions(lrh_id: route.lrh_id)
+        bindActions(lrh_id: route.lrh_id, route: route)
     }
 
-    func bindActions(lrh_id: String) {
+    func bindActions(lrh_id: String, route: RouteStopDetail) {
         seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
                 vc.stopId = lrh_id
+                vc.route = route
                 self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)
@@ -71,9 +72,9 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     
     private func customizedView() {
         stopView.roundCorners(corners: [.topLeft, .topRight], radius: 5)
-        backView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5)
-        nameView.roundCorners(corners: [.bottomLeft], radius: 5)
-        btnView.roundCorners(corners: [.bottomRight], radius: 5)
+//        backView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5)
+//        nameView.roundCorners(corners: [.bottomLeft], radius: 5)
+//        btnView.roundCorners(corners: [.bottomRight], radius: 5)
     }
     
 }

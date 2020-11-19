@@ -244,7 +244,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
 }
 
 
-struct MenuItemStruct {
-    let title: String
-    let value  : String
+public struct MenuItemStruct {
+    public let title: String
+    public let value  : String
 }

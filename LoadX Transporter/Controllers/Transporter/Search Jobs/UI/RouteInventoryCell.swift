@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Reusable
+import RxSwift
 
-class RouteInventoryCell: UITableViewCell {
+open class RouteInventoryCell: UITableViewCell, NibReusable {
 
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var number: UILabel!
     
-    override func awakeFromNib() {
+//    open var dataSource: RouteStopDetail! {
+//        didSet {
+//            guard let route = dataSource else {return}
+//            bindLabels(route: route)
+//        }
+//    }
+    
+    open override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
 }
