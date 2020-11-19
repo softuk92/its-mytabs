@@ -29,6 +29,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     
     private var disposeBag = DisposeBag()
     weak var parentViewController : UIViewController!
+    let year = Calendar.current.component(.year, from: Date())
     
     open override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,8 +46,8 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     open func bindLabels(route: RouteStopDetail) {
         stops.text = "Stop "+String(route.stop_no)
         pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
-        routeId.text = "LS2020J"+route.lrh_job_id
-        addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup" : "Dropoff"
+        routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)
+        addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
         price.text = "£"+String(format: "%.2f", Double(route.price) ?? 0.0)
         if route.pickup_lrh_stop_no != "N/A" && route.pickup_lrh_stop_no != "" {
             dropoffStopNumber.isHidden = false
@@ -57,14 +58,29 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         name.text = "Customer Name:"
         phone.text = route.customer_name
         time.text = route.lrh_arrival_time
-        bindActions(lrh_id: route.lrh_id, route: route)
+        bindActions(lrh_id: route.lrh_id, route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0))
+    }
+    
+    func getStopId(company: String, stopId: Int) -> String {
+        var fullId = ""
+        if company == "loadx" {
+            fullId = (stopId >= 10) ? "LX\(year)J\(stopId)" : "LX\(year)J0\(stopId)"
+        } else if company == "shiply" {
+            fullId = (stopId >= 10) ? "LS\(year)J\(stopId)" : "LS\(year)J0\(stopId)"
+        } else if company == "getvan" {
+            fullId = (stopId >= 10) ? "LG\(year)J\(stopId)" : "LG\(year)J0\(stopId)"
+        } else if company == "compare_the_man_and_van" {
+            fullId = (stopId >= 10) ? "LM\(year)J\(stopId)" : "LM\(year)J0\(stopId)"
+        }
+        return fullId
     }
 
-    func bindActions(lrh_id: String, route: RouteStopDetail) {
+    func bindActions(lrh_id: String, route: RouteStopDetail, fullstopId: String) {
         seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
                 vc.stopId = lrh_id
                 vc.route = route
+                vc.fullStopId = fullstopId
                 self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)

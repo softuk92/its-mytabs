@@ -24,16 +24,21 @@ class RouteDetailsViewController: UIViewController {
         getRouteDetails()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cellType: RouteDetailsCell.self)
+        tableView.tableFooterView = UIView()
     }
     
     func getRouteDetails() {
         SVProgressHUD.show(withStatus: "Geting details...")
         APIManager.apiPost(serviceName: "api/getSpecificRouteDetail", parameters: ["route_id" : routeId ?? ""]) { [weak self] (data, json, error) in
-            guard let self = self else { return }
+            guard let self = self, data != nil else { return }
             if error != nil {
                 SVProgressHUD.dismiss()
             }

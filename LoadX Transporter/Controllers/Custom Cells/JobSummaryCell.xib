@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,8 +26,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="326" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-fP-h9O">
-                        <rect key="frame" x="5" y="10" width="40.5" height="39"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-fP-h9O">
+                        <rect key="frame" x="5" y="10" width="316" height="39"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,18 +39,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="1ql-QI-m9L" secondAttribute="trailing" constant="5" id="K3e-Pf-Tcw"/>
                     <constraint firstAttribute="bottom" secondItem="Io8-fP-h9O" secondAttribute="bottom" constant="10" id="M8I-0c-moU"/>
                     <constraint firstItem="Io8-fP-h9O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SDm-UR-gF7"/>
                     <constraint firstAttribute="bottom" secondItem="1ql-QI-m9L" secondAttribute="bottom" constant="10" id="Xly-2G-TAM"/>
                     <constraint firstItem="Io8-fP-h9O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="mBY-PD-4rj"/>
+                    <constraint firstAttribute="trailing" secondItem="Io8-fP-h9O" secondAttribute="trailing" constant="5" id="sS8-sK-Nl8"/>
                     <constraint firstItem="1ql-QI-m9L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xN3-wB-u4f"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
             <connections>
                 <outlet property="detail" destination="1ql-QI-m9L" id="Kfq-Vd-dUU"/>
                 <outlet property="title" destination="Io8-fP-h9O" id="163-4h-5ye"/>
@@ -57,4 +59,9 @@
             <point key="canvasLocation" x="136.23188405797103" y="157.70089285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

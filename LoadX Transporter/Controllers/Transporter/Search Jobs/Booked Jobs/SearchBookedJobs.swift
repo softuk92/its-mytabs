@@ -210,7 +210,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         //routes table view
         configureRoutesTableView()
-        
+        routeJobsBtn.alpha = 0.5
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -240,43 +240,57 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     func bindButtons() {
         searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.routesTableView.isHidden = true
-            self?.tableView.isHidden = false
             self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
             self?.topLabel.text = "Search Jobs"
+            self?.routeJobsBtn.alpha = 0.5
+            self?.searchJobsBtn.alpha = 1.0
             self?.searchCount_job_lbl.text = self?.searchCount
             self?.searchBtn.isHidden = false
+            if (self?.searchBookModel.count ?? 0) > 0 {
+            self?.tableView.isHidden = false
+            self?.stackView.isHidden = true
+            } else {
+            self?.stackView.isHidden = false
+            self?.tableView.isHidden = true
+            self?.noJobRecordFound_lable.text = "Currently no jobs available"
+            }
         }).disposed(by: disposeBag)
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            
+            self?.routeJobsBtn.alpha = 1.0
+            self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
+            self?.topLabel.text = "Search Routes"
+            self?.searchCount_job_lbl.text = self?.routeCount
+            self?.searchBtn.isHidden = true
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
-                self?.topLabel.text = "Search Routes"
-                self?.searchCount_job_lbl.text = self?.routeCount
-                self?.searchBtn.isHidden = true
+                self?.stackView.isHidden = true
             } else {
                 self?.routesTableView.isHidden = true
-                self?.noJobRecordFound_lable.text = "No Routes Jobs found."
+                self?.stackView.isHidden = false
+                self?.noJobRecordFound_lable.text = "Currently no routes available"
             }
         }).disposed(by: disposeBag)
         
     }
     
     func getRoutes() {
+        self.routeJobsBtn.isUserInteractionEnabled = false
         APIManager.apiGet(serviceName: "api/getAllRouteList", parameters: .none) { [weak self] (data, json, error) in
             guard let self = self else { return }
             if error != nil {
-                
+                self.routeJobsBtn.isUserInteractionEnabled = true
             }
             do {
                 self.routes = try JSONDecoder().decode([Routes].self, from: data!)
                 print("Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
+                self.routeJobsBtn.isUserInteractionEnabled = true
             } catch {
-                
+                self.routeJobsBtn.isUserInteractionEnabled = true
             }
         }
     }

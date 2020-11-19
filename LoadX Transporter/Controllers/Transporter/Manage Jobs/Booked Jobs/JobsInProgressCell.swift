@@ -69,6 +69,7 @@ class JobsInProgressCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CompletedJobsCell.viewDetails))
         moving_item.isUserInteractionEnabled = true
         moving_item.addGestureRecognizer(tap)
+        self.innerView.dropShadow(color: .black, offSet: CGSize(width: -1, height: 1))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
