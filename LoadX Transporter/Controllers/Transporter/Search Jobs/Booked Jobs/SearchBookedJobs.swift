@@ -468,7 +468,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     self.searchBookModel.removeAll()
                     self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data!)
                     SVProgressHUD.dismiss()
-                    print("Search all jobs json is \(JSON(data!))")
+//                    print("Search all jobs json is \(JSON(data!))")
                     
                     DispatchQueue.main.async {
                         completed()

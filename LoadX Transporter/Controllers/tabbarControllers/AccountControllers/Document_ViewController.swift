@@ -80,7 +80,6 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
           present(browser, animated: true, completion: nil)
       }
       
-    
     func imagePick(sender: Int) {
         let optionMenu = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
    

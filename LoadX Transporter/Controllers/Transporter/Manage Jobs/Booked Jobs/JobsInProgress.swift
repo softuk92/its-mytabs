@@ -11,10 +11,35 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 import IBAnimatable
+import RxSwift
 
 var businessJobs : Bool?
 
 class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+    
+    private let disposeBag = DisposeBag()
+    var routes = [Routes]()
+    //route jobs
+    //For Routes. Top view setup
+    @IBOutlet weak var topPagerView: UIView!
+    @IBOutlet weak var leadingSearchJobs: NSLayoutConstraint!
+    @IBOutlet weak var trailingSearchJobs: NSLayoutConstraint!
+    @IBOutlet weak var leadingRouteJobs: NSLayoutConstraint!
+    @IBOutlet weak var trailingRouteJobs: NSLayoutConstraint!
+    @IBOutlet weak var pagerViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var searchJobsBtn: UIButton!
+    @IBOutlet weak var routeJobsBtn: UIButton!
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var routesTableView: UITableView!
+    
+    func setConstraints(leadingSearch: Bool, trailingSearch: Bool, leadingRoute: Bool, trailingRoute: Bool) {
+        UIView.animate(withDuration: 3.0) { [weak self] in
+            self?.leadingSearchJobs.isActive = leadingSearch
+            self?.trailingSearchJobs.isActive = trailingSearch
+            self?.leadingRouteJobs.isActive = leadingRoute
+            self?.trailingRouteJobs.isActive = trailingRoute
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
@@ -83,21 +108,75 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         guard let bookJob = UserDefaults.standard.string(forKey: "Book_job") else { return }
         book_job_lbl.text = "(" + bookJob + ")"
+        
+        //routes table view
+        configureRoutesTableView()
+        bindButtons()
+        getRoutes()
+        routeJobsBtn.alpha = 0.5
     }
     
-//    @IBAction func businessJobsBtn(_ sender: Any) {
-//        if progressJobs == false {
-//           businessJobsOutlet.setTitle("Booked Jobs ("+userInprogressJobs+")", for: .normal)
-//           getBookedJobs(url: "api/transporterInprogresJobsBusiness")
-//            self.title = "Business Jobs"+" ("+User_Inprogress_Jobs_Business+")"
-//            progressJobs = true
-//        } else {
-//            businessJobsOutlet.setTitle("Business Jobs ("+User_Inprogress_Jobs_Business+")", for: .normal)
-//            getBookedJobs(url: "api/transporterInprogresJobs")
-//            self.title = "Booked Jobs"+" ("+userInprogressJobs+")"
-//            progressJobs = false
-//        }
-//    }
+    func configureRoutesTableView() {
+        routesTableView.delegate = self
+        routesTableView.dataSource = self
+        routesTableView.register(cellType: RouteViewCell.self)
+    }
+    
+    func bindButtons() {
+        searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
+            self?.routesTableView.isHidden = true
+            self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+            self?.topLabel.text = "Search Jobs"
+            self?.routeJobsBtn.alpha = 0.5
+            self?.searchJobsBtn.alpha = 1.0
+//            self?.searchCount_job_lbl.text = self?.searchCount
+            if (self?.jobsInProgressModel.count ?? 0) > 0 {
+            self?.tableView.isHidden = false
+            self?.stackView.isHidden = true
+            } else {
+            self?.stackView.isHidden = false
+            self?.tableView.isHidden = true
+//            self?.noJobRecordFound_lable.text = "Currently no jobs available"
+            }
+        }).disposed(by: disposeBag)
+        
+        routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
+            self?.routeJobsBtn.alpha = 1.0
+            self?.searchJobsBtn.alpha = 0.5
+            self?.tableView.isHidden = true
+            self?.topLabel.text = "Search Routes"
+//            self?.searchCount_job_lbl.text = self?.routeCount
+            self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
+            if (self?.routes.count ?? 0) > 0 {
+                self?.routesTableView.isHidden = false
+                self?.stackView.isHidden = true
+            } else {
+                self?.routesTableView.isHidden = true
+                self?.stackView.isHidden = false
+//                self?.noJobRecordFound_lable.text = "Currently no routes available"
+            }
+        }).disposed(by: disposeBag)
+        
+    }
+    
+    func getRoutes() {
+        self.routeJobsBtn.isUserInteractionEnabled = false
+        APIManager.apiPost(serviceName: "api/userDashboardRouteJobs", parameters: ["user_id" : user_id ?? ""]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                self.routeJobsBtn.isUserInteractionEnabled = true
+            }
+            do {
+                self.routes = try JSONDecoder().decode([Routes].self, from: data!)
+                print("Route json is \(String(describing: json))")
+//                self.routeCount = "(\(self.routes.count))"
+                self.routesTableView.reloadData()
+                self.routeJobsBtn.isUserInteractionEnabled = true
+            } catch {
+                self.routeJobsBtn.isUserInteractionEnabled = true
+            }
+        }
+    }
     
     @objc func populate() {
         
@@ -124,7 +203,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                         SVProgressHUD.dismiss()
                         
                         let jsonData : JSON = JSON(response.result.value!)
-                        print("Jobs In Progress jsonData is \(jsonData)")
+//                        print("Jobs In Progress jsonData is \(jsonData)")
                         let result = jsonData[0]["result"].stringValue
 //                        let message = jsonData[0]["message"].stringValue
                         self.jobsInProgressModel.removeAll()
@@ -151,32 +230,23 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 
                             } catch {
                                 print(error)
-                                let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
                             }
                         }
                     }
                         
                     } else {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        print("Error \(response.result.error!)")
+                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                     }
                 }
             } else {
                 SVProgressHUD.dismiss()
-                let alert = UIAlertController(title: "Error", message: "You are not connected to Internet", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)
             }
         } else {
             SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Error", message: "Internet connection is missing", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)
         }
     }
     
@@ -184,10 +254,16 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
        /***************************************************************/
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == routesTableView {
+            return routes.count
+        }
         return jobsInProgressModel.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == routesTableView {
+            return 280
+        }
         return 280
     }
     
@@ -199,6 +275,18 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Routes Table View
+        if tableView == routesTableView {
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteViewCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            cell.layer.shadowRadius = 10
+            cell.dataSource = routes[indexPath.row]
+            cell.parentViewController = self
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobsInProgress") as! JobsInProgressCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
@@ -223,69 +311,23 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
         cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
-        let stringDate = jobsInProgressRow.date
-        let convertedDate = self.convertDateFormatter(stringDate)
-        cell.date.text = convertedDate
-//        cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
-//        let driverEmail = jobsInProgressRow.contact_mail
-        let driverPhone = jobsInProgressRow.contact_phone
-//        if driverEmail != "" {
-//            cell.driver_email.setTitle(driverEmail, for: .normal)
-//        } else {
-//            cell.driver_email.setTitle("N/A", for: .normal)
-//        }
-         /*   let is_cz_value = jobsInProgressRow.is_cz
-            if is_cz_value == "1"{
-                cell.cz_price_lbl.isHidden = false
-                cell.sperate_line.isHidden = false
-            }else{
-                cell.cz_price_lbl.isHidden = true
-                 cell.sperate_line.isHidden = true
-            }*/
-            
+        cell.date.text = convertDateFormatter(jobsInProgressRow.date)
+        
             let payment_type = jobsInProgressRow.payment_type
             if  payment_type == "full" {
                 if switchCheck == true {
-//                     cell.payment_method_Icon.image = UIImage(named: "bank_dark")
                     cell.payment_method_lbl.text = "Account Job"
                 }else{
-//                    cell.payment_method_Icon.image = UIImage(named: "bank")
                     cell.payment_method_lbl.text = "Account Job"
                 }
             }else{
                 if switchCheck == true {
-//                    cell.payment_method_Icon.image = UIImage(named: "cashDark")
                      cell.payment_method_lbl.text = "Cash Job"
                 }else{
-//                    cell.payment_method_Icon.image = UIImage(named: "cash")
                     cell.payment_method_lbl.text = "Cash Job"
                 }
         }
-//            let payment_type1 = jobsInProgressRow.is_company_job
-//                if  payment_type1 == "1" {
-//                  if switchCheck == true {
-////                    cell.payment_method_Icon.image = UIImage(named: "bank_dark")
-//                    cell.payment_method_lbl.text = "Account Job"
-//                }else{
-////                    cell.payment_method_Icon.image = UIImage(named: "bank")
-//                    cell.payment_method_lbl.text = "Account Job"
-//                }
-//            }else{
-//                    if switchCheck == true {
-////                        cell.payment_method_Icon.image = UIImage(named: "cashDark")
-//                         cell.payment_method_lbl.text = "Cash Job"
-//                    }else{
-////                        cell.payment_method_Icon.image = UIImage(named: "cash")
-//                        cell.payment_method_lbl.text = "Cash Job"
-//                    }
-//            }
-        
-        if driverPhone != "" {
-//            cell.driver_phone.setTitle(driverPhone, for: .normal)
-        } else {
-//            cell.driver_phone.setTitle("N/A", for: .normal)
-        }
-        
+
         let is_companyJob = jobsInProgressRow.is_company_job
         
         if is_companyJob == "1" {
@@ -299,46 +341,22 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let bookedJob_id = jobsInProgressRow.is_booked_job
         
         if bookedJob_id == "1" {
-       /* cell.acceptedBidStack.isHidden = true
-        cell.receivedAmountStack.isHidden = true
-        cell.rightView.isHidden = true
-        cell.leftView.isHidden = true
-        cell.ctsChargesStack.isHidden = true
-        cell.jobPriceStack.isHidden = false*/
         cell.deletBtnOutlet.isHidden = false
        
         let currentBid = jobsInProgressRow.current_bid
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let doubleValue = Double(x)
-//        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//        let resultInitialPrice = Double(currentBid)! * Double(0.25)
-//        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-//        let resultRemaining = Double(currentBid)! - self.roundedPrice
             cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
-//        cell.trailingConstraint.constant = 60
         } else {
         cell.deletBtnOutlet.isHidden = true
-      /*  cell.acceptedBidStack.isHidden = false
-        cell.receivedAmountStack.isHidden = false
-        cell.rightView.isHidden = false
-        cell.leftView.isHidden = false
-        cell.ctsChargesStack.isHidden = false
-        cell.jobPriceStack.isHidden = true
-        cell.trailingConstraint.constant = 10 */
         }
         
-//        cell.price.text = "£"+jobsInProgressRow.current_bid
         let currentBid = jobsInProgressRow.current_bid
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let doubleValue = Double(x)
         let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//        let resultInitialPrice = Double(currentBid)! * Double(0.25)
         self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-//        cell.cts_charges.text = "£"+String(self.roundedPrice)
-        
-        let resultRemaining = Double(currentBid)! - self.roundedPrice
-//        cell.remaining_amount.text = "£"+String(resultRemaining)
-        
+                
         cell.detailJobRow = {[weak self] (selectedCell) in
             guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
@@ -351,10 +369,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let currentBid2 = jobsInProgressRow.current_bid
                 let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                 let doubleValue = Double(x)
-                let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-//                let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
-                self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-//                let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
                 self.bookedPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid2) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
                 del_id = jobsInProgressRow.del_id
                 let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
@@ -372,7 +386,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 vc.pickupAdd = cell.pick_up.text
                 vc.dropoffAdd = cell.drop_off.text
                 self.navigationController?.pushViewController(vc, animated: true)
-//                self.performSegue(withIdentifier: "detail", sender: self)
             }
         }
         
@@ -387,8 +400,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
             
             UIView.animate(withDuration: 0.3, animations: {
-//                    self.jobComplete_popview.layer.borderColor = UIColor.gray.cgColor
-//                    self.jobComplete_popview.layer.borderWidth = 1
                     self.jobComplete_popview.layer.cornerRadius = 18
                     self.tableView.alpha = 0.5
                     self.view.addSubview(self.jobComplete_popview)
@@ -402,21 +413,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-//            let refreshAlert = UIAlertController(title: "Confirm Cancel Job", message: "Are you sure you want to cancel this job?", preferredStyle: UIAlertController.Style.alert)
-//
-//            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-//                jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-//                self.deleteBtn()
-//            }))
-            
-//            refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
-//                print("Handle Cancel Logic here")
-//            }))
-//
-//            self.present(refreshAlert, animated: true, completion: nil)
              UIView.animate(withDuration: 0.3, animations: {
-//                        self.jobCancel_popview.layer.borderColor = UIColor.gray.cgColor
-//                        self.jobCancel_popview.layer.borderWidth = 1
                         self.jobCancel_popview.layer.cornerRadius = 18
                         self.tableView.alpha = 0.5
                         self.view.addSubview(self.jobCancel_popview)
@@ -468,6 +465,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == routesTableView {
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                vc.routeId = self.routes[indexPath.row].lr_id
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
         protected = true
         let cell = tableView.cellForRow(at: indexPath) as! JobsInProgressCell
         let bookedJob_id = self.jobsInProgressModel[indexPath.row].is_booked_job
@@ -478,12 +482,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let doubleValue = Double(x)
             let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-//            let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
             self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
             let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
             self.bookedPrice = "£"+"\(resultRemaining2)"
             del_id = self.jobsInProgressModel[indexPath.row].del_id
-//            self.performSegue(withIdentifier: "detail", sender: self)
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
             vc.showHouseNumber = true
@@ -492,7 +494,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.pushViewController(vc, animated: true)
         } else {
             del_id = self.jobsInProgressModel[indexPath.row].del_id
-//            self.performSegue(withIdentifier: "detail", sender: self)
             let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
                vc.bookedJobPrice = bookedPrice
             vc.showHouseNumber = true
@@ -513,7 +514,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     @IBAction func jobcomplete_YesBtn(_ sender: Any) {
-//         self.performSegue(withIdentifier: "book", sender: self)
         self.jobComplete_popview.removeFromSuperview()
         self.tableView.alpha = 1
         let vc = self.sb.instantiateViewController(withIdentifier: "BookJobController") as! BookJobController
@@ -618,10 +618,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     upload.responseJSON { response in
                         if response.result.value != nil {
-//                            print(response.request!)  // original URL request
-//                            print(response.response!) // URL response
-//                            print(response.data!)     // server data
-//                            print(response.result)   // result of response serialization
+
                             let jsonData : JSON = JSON(response.result.value!)
                             print("JSON: \(jsonData)")
                             let result = jsonData[0]["result"].stringValue
@@ -631,19 +628,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 let vc = self.sb.instantiateViewController(withIdentifier: "completedJob") as! SuccessController
                             self.navigationController?.pushViewController(vc, animated: true)
                                 
-//                                self.performSegue(withIdentifier: "complete", sender: self)
-                                
                             } else {
-                                let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                self.present(showAlert(title: "Alert", message: message), animated: true, completion: nil)
                             }
                         } else {
                             SVProgressHUD.dismiss()
-                            print("Error \(response.result.error!)")
-                            let alert = UIAlertController(title: "Error", message: "Network Error", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                         }
                     }
                     
@@ -651,32 +641,18 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     //self.delegate?.showFailAlert()
                     print(encodingError)
                     SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: "Error!", message: "Connection error! Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(showAlert(title: "Error", message: encodingError.localizedDescription), animated: true, completion: nil)
                 }
             }
         } else {
             SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Alert!", message: "Please enter receiver name / upload proof image", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.present(showAlert(title: "Alert", message: "Please enter receiver name / upload proof image"), animated: true, completion: nil)
         }
     }
     
     @IBAction func crosssBtn(_ sender: Any) {
         popupView.removeFromSuperview()
         self.tableView.alpha = 1
-    }
-
-    func convertDateFormatter(_ date: String) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "dd-MMMM-yyyy"
-        return  dateFormatter.string(from: date!)
-        
     }
     
     //back function
