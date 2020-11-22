@@ -18,7 +18,7 @@ var businessJobs : Bool?
 class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     private let disposeBag = DisposeBag()
-    var routes = [Routes]()
+    var routes = [BookedRoute]()
     //route jobs
     //For Routes. Top view setup
     @IBOutlet weak var topPagerView: UIView!
@@ -71,6 +71,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     var menuShowing = false
     let sb = UIStoryboard(name: "Main", bundle: nil)
     let year = Calendar.current.component(.year, from: Date())
+    var searchCount : String?
+    var routeCount: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +121,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func configureRoutesTableView() {
         routesTableView.delegate = self
         routesTableView.dataSource = self
-        routesTableView.register(cellType: RouteViewCell.self)
+        routesTableView.register(cellType: RouteBookedView.self)
     }
     
     func bindButtons() {
@@ -129,7 +131,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.topLabel.text = "Search Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-//            self?.searchCount_job_lbl.text = self?.searchCount
+            self?.book_job_lbl.text = self?.searchCount
             if (self?.jobsInProgressModel.count ?? 0) > 0 {
             self?.tableView.isHidden = false
             self?.stackView.isHidden = true
@@ -145,7 +147,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
             self?.topLabel.text = "Search Routes"
-//            self?.searchCount_job_lbl.text = self?.routeCount
+            self?.book_job_lbl.text = self?.routeCount
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
@@ -167,9 +169,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.routeJobsBtn.isUserInteractionEnabled = true
             }
             do {
-                self.routes = try JSONDecoder().decode([Routes].self, from: data!)
-                print("Route json is \(String(describing: json))")
-//                self.routeCount = "(\(self.routes.count))"
+                self.routes = try JSONDecoder().decode([BookedRoute].self, from: data!)
+                print("Booked Route json is \(String(describing: json))")
+                self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
             } catch {
@@ -192,13 +194,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
   
     
     func getBookedJobs(url: String) {
+        guard Connectivity.isConnectedToInternet() else { return self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)}
+        guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
-        if user_id != nil {
             let bookedJobs_URL = main_URL+url
             let parameters : Parameters = ["user_id" : user_id!]
-            if Connectivity.isConnectedToInternet() {
-                Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON {
+                Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON { [weak self]
                     response in
+                    guard let self = self else { return }
                     if response.result.isSuccess {
                         SVProgressHUD.dismiss()
                         
@@ -218,6 +221,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                         if error == nil {
                             do {
                                 self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data!)
+                                self.searchCount = "\(self.jobsInProgressModel.count)"
                                 SVProgressHUD.dismiss()
 //                                print(self.jobsInProgressModel)
 
@@ -227,27 +231,17 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 //                                    self.searchBtn.isHidden = true
                                     self.tableView.reloadData()
                                 }
-
                             } catch {
                                 print(error)
                                 self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
                             }
                         }
                     }
-                        
                     } else {
                         SVProgressHUD.dismiss()
                         self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                     }
                 }
-            } else {
-                SVProgressHUD.dismiss()
-                self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)
-            }
-        } else {
-            SVProgressHUD.dismiss()
-            self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)
-        }
     }
     
     //MARK: - UITABLEVIEW Delegate methods
@@ -277,7 +271,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Routes Table View
         if tableView == routesTableView {
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteViewCell.self)
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteBookedView.self)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundView = nil
             cell.backgroundColor = nil
@@ -467,7 +461,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-                vc.routeId = self.routes[indexPath.row].lr_id
+                vc.routeId = self.routes[indexPath.row].lrID
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
