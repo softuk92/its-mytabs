@@ -203,6 +203,7 @@
                     <constraint firstItem="Op0-Bm-Bcf" firstAttribute="leading" secondItem="SvF-5P-b6o" secondAttribute="leading" constant="10" id="wbX-SM-vUd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="businessPatti" destination="Cf2-It-yZp" id="JkO-W3-4Yx"/>
                 <outlet property="cellBackground_view" destination="Op0-Bm-Bcf" id="wmK-d2-sE3"/>

@@ -37,6 +37,17 @@ public func convertDateFormatter2(_ date: String) -> String
     
 }
 
+public func convertDateYearFirst(_ date: String) -> String
+{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let date = dateFormatter.date(from: date)
+    
+    dateFormatter.dateFormat = "dd-MMMM-yyyy"
+    return  dateFormatter.string(from: date!)
+    
+}
+
 //get address
 public func getAddress(street: String, route: String, city: String, postcode: String) -> String {
     var address1 = ""

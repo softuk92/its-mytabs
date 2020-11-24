@@ -33,14 +33,14 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     }
     
     open func bindLabels(route: BookedRoute) {
-        stops.text = "No of Stops: \(route.lrNoOfStops)"
-        distance.text = "\(route.lrTotalDistance) miles"
-        pickup.text = route.lrStartLocation
-        dropoff.text = route.lrEndLocation
-        routePrice.text = "£"+String(format: "%.2f", Double(route.lrTotalPrice))
-        movingItem.text = "LR00"+route.lrID
-        routeDate.text = route.lrDate
-        bindActions(routeId: route.lrID)
+        stops.text = "No of Stops: \(route.lr_no_of_stops)"
+        distance.text = "\(route.lr_total_distance) miles"
+        pickup.text = route.lr_start_location
+        dropoff.text = route.lr_end_location
+        routePrice.text = "£"+String(format: "%.2f", Double(route.lr_total_price) ?? 0.0)
+        movingItem.text = "LR00"+route.lr_id
+        routeDate.text = convertDateYearFirst(route.lr_date)
+        bindActions(routeId: route.lr_id)
     }
     
     func bindActions(routeId: String) {

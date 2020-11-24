@@ -73,6 +73,8 @@
 		4E9C534B2420C3DB00AFB8C8 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C534A2420C3DB00AFB8C8 /* Gif.swift */; };
 		4EA52ED922FB427F001E800D /* CompletedJobsModelBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */; };
 		4EC3A40523E866A4009ACBB0 /* More_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3A40423E866A4009ACBB0 /* More_ViewController.swift */; };
+		4EC5D908256C5BF100D8DDB3 /* RouteCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */; };
+		4EC5D909256C5BF100D8DDB3 /* RouteCompletedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */; };
 		4EC8049723E31E0700540F9A /* location_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049623E31E0700540F9A /* location_ViewController.swift */; };
 		4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */; };
 		4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */; };
@@ -256,6 +258,8 @@
 		4E9C534A2420C3DB00AFB8C8 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedJobsModelBusiness.swift; sourceTree = "<group>"; };
 		4EC3A40423E866A4009ACBB0 /* More_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More_ViewController.swift; sourceTree = "<group>"; };
+		4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCompletedView.swift; sourceTree = "<group>"; };
+		4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCompletedView.xib; sourceTree = "<group>"; };
 		4EC8049623E31E0700540F9A /* location_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = location_ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetial_ViewController.swift; sourceTree = "<group>"; };
 		4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job_Summary_ViewController.swift; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 				18B211E72566CFE10040C001 /* HeaderView.swift */,
 				4E090839256AFD3600A6B2BB /* RouteBookedView.swift */,
 				4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */,
+				4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */,
+				4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -993,6 +999,7 @@
 				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
 				18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */,
 				4E19487D2565C8C300C3C3C8 /* RouteInventoryCell.xib in Resources */,
+				4EC5D909256C5BF100D8DDB3 /* RouteCompletedView.xib in Resources */,
 				4E454B5F23E48217009AFF47 /* Montserrat-Bold.otf in Resources */,
 				8D3E60FD21F76432004EAB06 /* Main.storyboard in Resources */,
 				BBED7FA424B50CBA00D65DC7 /* InventoryCell.xib in Resources */,
@@ -1119,6 +1126,7 @@
 				4E09083F256B001100A6B2BB /* RouteBooked.swift in Sources */,
 				8D98C7252220543B00420BFA /* SearchDelivariesModel.swift in Sources */,
 				4EC3A40523E866A4009ACBB0 /* More_ViewController.swift in Sources */,
+				4EC5D908256C5BF100D8DDB3 /* RouteCompletedView.swift in Sources */,
 				8D3C0DC02215CBBA00B7D1E8 /* ViewAllBidsModel.swift in Sources */,
 				4EC8049D23E31EAE00540F9A /* Contact_ViewController.swift in Sources */,
 				1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */,

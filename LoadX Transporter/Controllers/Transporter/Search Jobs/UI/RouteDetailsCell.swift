@@ -43,9 +43,8 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         }
     }
     
-    open func bindLabels(route: RouteStopDetail) {
+    open func bindLabels(route: RouteStopDetail, isBooked:Bool = false) {
         stops.text = "Stop "+String(route.stop_no)
-        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
         routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
         price.text = "£"+String(format: "%.2f", Double(route.price) ?? 0.0)
@@ -55,8 +54,15 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         } else {
             dropoffStopNumber.isHidden = true
         }
+        if !isBooked {
         name.text = "Customer Name:"
         phone.text = route.customer_name
+        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
+        } else {
+        name.text = route.customer_name
+        phone.text = route.phone_number
+        pickup.text = route.lrh_postcode
+        }
         time.text = route.lrh_arrival_time
         bindActions(lrh_id: route.lrh_id, route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0))
     }

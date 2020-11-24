@@ -219,6 +219,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="6mB-1d-0bs"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="businessPatti" destination="wzP-k7-KWf" id="8wZ-mh-7l7"/>
                 <outlet property="cellbackground_view" destination="r9R-5V-3go" id="1Fr-Pk-BAe"/>

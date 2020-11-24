@@ -219,6 +219,7 @@
                     <constraint firstAttribute="trailing" secondItem="IDW-eC-z0W" secondAttribute="trailing" constant="10" id="tss-Px-UCN"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="Dates_View" destination="B6u-yR-lT9" id="nd3-1E-laQ"/>
                 <outlet property="bidNowBtn" destination="Lde-Bz-aRI" id="kzo-Ix-hTQ"/>

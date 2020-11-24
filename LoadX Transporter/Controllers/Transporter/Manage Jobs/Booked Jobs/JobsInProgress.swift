@@ -128,17 +128,17 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.routesTableView.isHidden = true
             self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
-            self?.topLabel.text = "Search Jobs"
+            self?.topLabel.text = "Booked Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-            self?.book_job_lbl.text = self?.searchCount
+            self?.book_job_lbl.text = self?.searchCount ?? "()"
             if (self?.jobsInProgressModel.count ?? 0) > 0 {
             self?.tableView.isHidden = false
             self?.stackView.isHidden = true
             } else {
             self?.stackView.isHidden = false
             self?.tableView.isHidden = true
-//            self?.noJobRecordFound_lable.text = "Currently no jobs available"
+            self?.noJob_lbl.text = "Currently no booked jobs"
             }
         }).disposed(by: disposeBag)
         
@@ -146,8 +146,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.routeJobsBtn.alpha = 1.0
             self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
-            self?.topLabel.text = "Search Routes"
-            self?.book_job_lbl.text = self?.routeCount
+            self?.topLabel.text = "Booked Routes"
+            self?.book_job_lbl.text = self?.routeCount ?? "()"
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
@@ -155,7 +155,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else {
                 self?.routesTableView.isHidden = true
                 self?.stackView.isHidden = false
-//                self?.noJobRecordFound_lable.text = "Currently no routes available"
+                self?.noJob_lbl.text = "Currently no booked routes"
             }
         }).disposed(by: disposeBag)
         
@@ -222,6 +222,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                             do {
                                 self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data!)
                                 self.searchCount = "\(self.jobsInProgressModel.count)"
+                                self.book_job_lbl.text = "\(self.jobsInProgressModel.count)"
                                 SVProgressHUD.dismiss()
 //                                print(self.jobsInProgressModel)
 
@@ -256,7 +257,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == routesTableView {
-            return 280
+            return 326
         }
         return 280
     }
@@ -461,10 +462,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-                vc.routeId = self.routes[indexPath.row].lrID
+                vc.routeId = self.routes[indexPath.row].lr_id
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-        }
+        } else {
         
         protected = true
         let cell = tableView.cellForRow(at: indexPath) as! JobsInProgressCell
@@ -494,6 +495,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc.pickupAdd = cell.pick_up.text
             vc.dropoffAdd = cell.drop_off.text
             self.navigationController?.pushViewController(vc, animated: true)
+        }
         }
     }
     @IBAction func jocancel_noBtn_action(_ sender: Any) {

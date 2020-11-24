@@ -10,14 +10,10 @@ import UIKit
 import XLPagerTabStrip
 import SwiftyJSON
 
-struct SummaryData {
-    let label: String
-    let detail: String
-}
-
 class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    var routeSummaryDetails = [RouteSummaryDetails]()
     private var items: [MenuItemStruct] = []
     
     @IBOutlet weak var jobDesrpt_view: UIView!
@@ -32,39 +28,39 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     var d_item: String?
     let year = Calendar.current.component(.year, from: Date())
     var Posteddate: String?
-    var summaryData = [SummaryData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let customData = jsonData_inventory.dictionary ?? [:]
-        items = customData.map({ (key, value) -> MenuItemStruct in
-            return MenuItemStruct.init(title: key.replacingOccurrences(of: "_", with: " "), value: value.stringValue)
-        })
-        tableView.register(UINib(nibName: "ServiceHeaderCell", bundle: nil), forCellReuseIdentifier: "ServiceHeaderCell")
-        tableView.register(UINib(nibName: "InventoryCell", bundle: nil), forCellReuseIdentifier: "InventoryCell")
-        tableView.register(cellType: JobSummaryCell.self)
-        
-        print("\n this is inventry list value\n\(items)")
-        
-        if jsonData[0]["description"].stringValue == ""{
-            
             self.jobDesrpt_view.isHidden = true
             self.jobDescrp_height.constant = 0
             self.jobdescription_lbl.text = "nil"
-        }else{
-            self.jobDesrpt_view.isHidden = false
-            self.jobDescrp_height.constant = 80
-            self.jobdescription_lbl.text = jsonData[0]["description"].stringValue
-        }
     
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+        configureTableView()
         getData()
     }
     
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cellType: JobSummaryCell.self)
+    }
+    
     func getData() {
+        var info = [MenuItemStruct]()
+        let customData = jsonData_inventory.dictionary ?? [:]
+        let inventoryList = customData.map({ (key, value) -> MenuItemStruct in
+            return MenuItemStruct.init(title: key.replacingOccurrences(of: "_", with: " "), value: value.stringValue)
+        })
+        
+        let desc = jsonData[0]["description"].stringValue
+        if desc != "" {
+            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Description", detail: [MenuItemStruct.init(title: desc, value: "")]))
+        }
+        
+        if inventoryList.count > 0 {
+            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Inventory List", detail: inventoryList))
+        }
         self.del_id = jsonData[0]["del_id"].stringValue
         
         let category = jsonData[0]["add_type"].stringValue
@@ -87,83 +83,74 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let pickupPropertyType = jsonData[0]["pickup_prop_type"].stringValue
         let dropoffPropertyType = jsonData[0]["dropoff_prop_type"].stringValue
         
-        summaryData.append(SummaryData(label: "Job ID", detail: jobID))
-        summaryData.append(SummaryData(label: "Category", detail: category))
+        info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
+        info.append(MenuItemStruct.init(title: "Category", value: category))
         
         if movingFrom_lbl != "" {
-        summaryData.append(SummaryData(label: "Moving From", detail: movingFrom_lbl))
+        info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
         }
         if movingTo_lbl != "" {
-        summaryData.append(SummaryData(label: "Moving To", detail: movingTo_lbl))
+        info.append(MenuItemStruct.init(title: "Moving To", value: movingTo_lbl))
         }
         
         if category == "Furniture and General Items" || category == "Furniture & General Items" {
             if pickupLift != "" {
-                summaryData.append(SummaryData(label: "Lift at Pick Up", detail: (pickupLift == "0") ? "No" : "Yes"))
+                info.append(MenuItemStruct.init(title: "Lift at Pick Up", value: (pickupLift == "0") ? "No" : "Yes"))
             }
             if dropoffLift != "" {
-                summaryData.append(SummaryData(label: "Lift at Drop Off", detail: (dropoffLift == "0") ? "No" : "Yes"))
+                info.append(MenuItemStruct.init(title: "Lift at Drop Off", value: (dropoffLift == "0") ? "No" : "Yes"))
             }
         }
         
         if category == "Moving Home" || category == "House Move" {
             if pickupPropertyType != "" {
-                summaryData.append(SummaryData(label: "Pickup Property Type", detail: pickupPropertyType))
+                info.append(MenuItemStruct.init(title: "Pickup Property Type", value: pickupPropertyType))
             }
             if dropoffPropertyType != "" {
-                summaryData.append(SummaryData(label: "Dropoff Property Type", detail: dropoffPropertyType))
+                info.append(MenuItemStruct.init(title: "Dropoff Property Type", value: dropoffPropertyType))
             }
         }
         
-        summaryData.append(SummaryData(label: "Pickup Date", detail: pickUp_date))
-        summaryData.append(SummaryData(label: "Pickup Time", detail: pickUp_time))
-        summaryData.append(SummaryData(label: "Date Posted", detail: Posteddate))
+        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
+        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
+        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         
         if category == "Vehicle Move" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
-            summaryData.append(SummaryData(label: "Vehicle Type", detail: vehicleType_lbl))
+                info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
             }
             if carMake != "" {
-            summaryData.append(SummaryData(label: "Car Make", detail: carMake))
+                info.append(MenuItemStruct.init(title: "Car Make", value: carMake))
             }
             if carModel != "" {
-                summaryData.append(SummaryData(label: "Car Model", detail: carModel))
+                info.append(MenuItemStruct.init(title: "Car Model", value: carModel))
             }
             if vehicleOperational != "" {
-            summaryData.append(SummaryData(label: "Vehicle Operational", detail: "Yes"))
+                info.append(MenuItemStruct.init(title: "Vehicle Operational", value: (vehicleOperational == "0") ? "No" : "Yes"))
             }
         } else {
-            summaryData.append(SummaryData(label: "No. of Helpers", detail: no_of_hepler))
+            info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
         }
         
         if noOfPallate != "" && noOfPallate != "N/A" {
-        summaryData.append(SummaryData(label: "No Of Pallet", detail: "\(noOfPallate) Pallet"))
+            info.append(MenuItemStruct.init(title: "No Of Pallet", value: "\(noOfPallate) Pallet"))
         }
         
         if No_of_vehicle_lbl != "" && No_of_vehicle_lbl != "N/A" {
-        summaryData.append(SummaryData(label: "No. of Vehicle", detail: No_of_vehicle_lbl))
+            info.append(MenuItemStruct.init(title: "No. of Vehicle", value: No_of_vehicle_lbl))
         }
         
         if supermarketName_lbl != "" {
-        summaryData.append(SummaryData(label: "Supermarket Name", detail: supermarketName_lbl))
+            info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
         }
-    
+        self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
-        let  headerCell = tableView.dequeueReusableCell(withIdentifier: "ServiceHeaderCell") as! ServiceHeaderCell
-        if items.count == 0 {
-            headerCell.titleOfHeader.text = "Job Summary"
-        } else {
-            if section == 0 {
-                headerCell.titleOfHeader.text = "Inventory List"
-            } else {
-                headerCell.titleOfHeader.text = "Job Summary"
-            }
-        }
-        return headerCell.contentView
-
+        let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 50))
+        headerView.title.text = self.routeSummaryDetails[section].title
+        return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
@@ -171,76 +158,31 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        if items.count == 0 {
-            return 1
-        } else {
-            return 2
-        }
+        self.routeSummaryDetails.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       if items.count == 0 {
-        return summaryData.count
-        }  else {
-        if section == 0 {
-            return self.items.count
-        } else {
-            return summaryData.count
-        }
-      }
-//    }
+        return self.routeSummaryDetails[section].detail.count
   }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.items.count == 0 {
-            return 50
-        } else {
-            if indexPath.section == 0 {
-                return 50
-
-            } else {
-                return 50
-            }
-        }
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       if self.items.count == 0 {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
-//         cell.backgroundColor = nil
-//        cell.backgroundView = nil
-        cell.title.text = self.summaryData[indexPath.row].label
-        cell.detail.text = self.summaryData[indexPath.row].detail
-             
-        return cell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+        if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value == "" {
+            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
+            cell.detail.isHidden = true
+        } else {
+            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+            cell.detail.isHidden = false
         }
-        if indexPath.section == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell") as! InventoryCell
-            let menuItem = items[indexPath.row]
-            cell.lblInventoryName.text = menuItem.title
-            cell.lblInventoryNum.text = menuItem.value
-
-         return cell
-
-      } else  {
-        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
-//             cell.backgroundColor = nil
-//            cell.backgroundView = nil
-        cell.title.text = self.summaryData[indexPath.row].label
-        cell.detail.text = self.summaryData[indexPath.row].detail
-             
         return cell
-
-        }
-       }
-//    }
-    
-    func convertDateFormatter(_ date: String?) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        let date = dateFormatter.date(from: date!)
-        dateFormatter.dateFormat = "dd-MMMM-yyyy"
-        return  dateFormatter.string(from: date!)
-        
     }
+
 }
 
 

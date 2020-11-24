@@ -244,7 +244,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.topLabel.text = "Search Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-            self?.searchCount_job_lbl.text = self?.searchCount
+            self?.searchCount_job_lbl.text = self?.searchCount ?? "()"
             self?.searchBtn.isHidden = false
             if (self?.searchBookModel.count ?? 0) > 0 {
             self?.tableView.isHidden = false
@@ -261,7 +261,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
             self?.topLabel.text = "Search Routes"
-            self?.searchCount_job_lbl.text = self?.routeCount
+            self?.searchCount_job_lbl.text = self?.routeCount ?? "(0)"
             self?.searchBtn.isHidden = true
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
