@@ -20,6 +20,7 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     @IBOutlet weak var routePrice: UILabel!
     @IBOutlet weak var routeDate: UILabel!
     @IBOutlet weak var startRoute: UIButton!
+    @IBOutlet weak var cancelRoute: UIButton!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var leftBtnView: UIView!
 
@@ -37,10 +38,19 @@ open class RouteBookedView: UITableViewCell, NibReusable {
         distance.text = "\(route.lr_total_distance) miles"
         pickup.text = route.lr_start_location
         dropoff.text = route.lr_end_location
-        routePrice.text = "£"+String(format: "%.2f", Double(route.lr_total_price) ?? 0.0)
+        routePrice.text = "£"+String(format: "%.2f", route.lr_total_price)
         movingItem.text = "LR00"+route.lr_id
         routeDate.text = convertDateYearFirst(route.lr_date)
         bindActions(routeId: route.lr_id)
+        checkRouteStartedStatus(isRouteStarted: route.is_route_started ?? "")
+    }
+    
+    func checkRouteStartedStatus(isRouteStarted: String) {
+        if isRouteStarted == "0" {
+            self.startRoute.isHidden = false
+        } else {
+            self.startRoute.isHidden = true
+        }
     }
     
     func bindActions(routeId: String) {
@@ -60,8 +70,8 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     
     private func customizedView() {
         innerView.layer.cornerRadius = 5
-        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
-        startRoute.roundCorners(corners: [.bottomRight], radius: 5)
+//        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
+//        startRoute.roundCorners(corners: [.bottomRight], radius: 5)
     }
 
 }

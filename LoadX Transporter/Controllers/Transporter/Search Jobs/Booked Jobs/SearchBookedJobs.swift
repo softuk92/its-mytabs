@@ -33,7 +33,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     var bookedPrice : String?
     var roundedPrice: Double = 0.0
     var SearchListJob : Bool?
-    
+    var icStatus: String?
+    var dlStatus: String?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var stackView: UIStackView!
@@ -142,7 +143,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        checkRouteAccess()
         //top tab bar view shadow
         topPagerView.layer.masksToBounds = false
         topPagerView.layer.shadowOpacity = 0.5
@@ -229,6 +230,19 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         bindButtons()
         getRoutes()
+        getProfileDetails()
+    }
+    
+    func checkRouteAccess() {
+        if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+            if isLoadxDrive == "0" {
+                self.pagerViewHeight.constant = 0
+                self.topPagerView.isHidden = true
+            } else {
+                self.pagerViewHeight.constant = 55
+                self.topPagerView.isHidden = false
+            }
+        }
     }
     
     func configureRoutesTableView() {
@@ -244,7 +258,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.topLabel.text = "Search Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-            self?.searchCount_job_lbl.text = self?.searchCount ?? "()"
+            self?.searchCount_job_lbl.text = self?.searchCount ?? "(0)"
             self?.searchBtn.isHidden = false
             if (self?.searchBookModel.count ?? 0) > 0 {
             self?.tableView.isHidden = false
@@ -463,12 +477,35 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         URLSession.shared.dataTask(with: url!) { [weak self] (data, response, error) in
             guard let self = self else { return }
+            var result = ""
+            var message = ""
             if error == nil {
                 do {
                     self.searchBookModel.removeAll()
+                    if let jsonD = try JSONSerialization.jsonObject(with: data ?? Data(), options: .mutableContainers) as? NSArray {
+                  
+                        if let j = jsonD[0] as? [String:Any] {
+                            for (key, value) in j {
+                                if key == "result" {
+                                    result = value as? String ?? ""
+                                } else if key == "message" {
+                                message = value as? String ?? ""
+                                }
+                            }
+                        }
+                        
+                    }
+                    if result == "" {
                     self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data!)
+                        DispatchQueue.main.async {
+                        self.tableView.isHidden = false
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                        self.tableView.isHidden = true
+                        }
+                    }
                     SVProgressHUD.dismiss()
-//                    print("Search all jobs json is \(JSON(data!))")
                     
                     DispatchQueue.main.async {
                         completed()
@@ -481,7 +518,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     print(error)
                     DispatchQueue.main.async {
                         self.stackView.isHidden = false
-                        //                        self.tableView.backgroundView = nil
+                        //self.tableView.backgroundView = nil
                     }
                     
                 }
@@ -576,6 +613,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.layer.shadowRadius = 10
             cell.dataSource = routes[indexPath.row]
             cell.parentViewController = self
+            cell.acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.acceptRoute(lrID: self.routes[indexPath.row].lr_id)
+            }).disposed(by: disposeBag)
             return cell
         }
         
@@ -966,4 +1007,29 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         self.popUpView2.removeFromSuperview()
     }
     
+}
+
+extension SearchBookedJobs {
+    public func getProfileDetails() {
+        APIManager.apiPost(serviceName: "api/getTransporterProfileDetail", parameters: ["user_id" : user_id ?? ""]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                
+            }
+            self.icStatus = json?[0]["ic_status"].stringValue
+            self.dlStatus = json?[0]["dl_status"].stringValue
+            
+        }
+    }
+    
+    public func acceptRoute(lrID: String) {
+        APIManager.apiPost(serviceName: "api/getRouteJob", parameters: ["user_id" : user_id ?? "", "lr_id": lrID]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                
+            }
+            
+        }
+        
+    }
 }

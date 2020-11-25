@@ -77,6 +77,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkRouteAccess()
         guard let completeJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
         completeJobCount_lbl.text = "(" + completeJob + ")"
         //        self.title = "Completed Jobs"+" ("+userCompletedJobs+")"
@@ -119,7 +120,19 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func configureRoutesTableView() {
         routesTableView.delegate = self
         routesTableView.dataSource = self
-        routesTableView.register(cellType: RouteBookedView.self)
+        routesTableView.register(cellType: RouteCompletedView.self)
+    }
+    
+    func checkRouteAccess() {
+        if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+            if isLoadxDrive == "0" {
+                self.pagerViewHeight.constant = 0
+                self.topPagerView.isHidden = true
+            } else {
+                self.pagerViewHeight.constant = 55
+                self.topPagerView.isHidden = false
+            }
+        }
     }
     
     func bindButtons() {
@@ -129,15 +142,15 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self?.topLabel.text = "Completed Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-            self?.completeJobCount_lbl.text = self?.searchCount ?? "()"
-//            if (self?.jobsInProgressModel.count ?? 0) > 0 {
-//            self?.tableView.isHidden = false
-//            self?.stackView.isHidden = true
-//            } else {
-//            self?.stackView.isHidden = false
-//            self?.tableView.isHidden = true
-//            self?.noJob.text = "Currently no booked jobs"
-//            }
+            self?.completeJobCount_lbl.text = self?.searchCount ?? "(0)"
+            if (self?.completedJobsModel.count ?? 0) > 0 {
+            self?.tableView.isHidden = false
+            self?.stackView.isHidden = true
+            } else {
+            self?.stackView.isHidden = false
+            self?.tableView.isHidden = true
+            self?.noJob.text = "Currently no completed jobs"
+            }
         }).disposed(by: disposeBag)
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
@@ -145,7 +158,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
             self?.topLabel.text = "Completed Routes"
-            self?.completeJobCount_lbl.text = self?.routeCount ?? "()"
+            self?.completeJobCount_lbl.text = self?.routeCount ?? "(0)"
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
@@ -168,7 +181,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             do {
                 self.routes = try JSONDecoder().decode([BookedRoute].self, from: data!)
-                print("Booked Route json is \(String(describing: json))")
+                print("completed Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
@@ -231,7 +244,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                             if url == "api/transporterCompletedJobsBusiness" {
                                 self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data!)
                                 SVProgressHUD.dismiss()
-                                //                                    print(self.completedJobsModelBusiness)
+                                //print(self.completedJobsModelBusiness)
                                 
                                 DispatchQueue.main.async {
                                     self.stackView.isHidden = true
@@ -239,6 +252,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 }
                             } else {
                                 self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data!)
+                                self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
+                                self.searchCount = "(\(self.completedJobsModel.count))"
                                 SVProgressHUD.dismiss()
                                 
                                 DispatchQueue.main.async {
@@ -272,9 +287,9 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == routesTableView {
-            return 326
+            return 260
         }
-        return 255
+        return 260
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -287,7 +302,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Routes Table View
         if tableView == routesTableView {
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteBookedView.self)
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RouteCompletedView.self)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundView = nil
             cell.backgroundColor = nil

@@ -33,6 +33,7 @@ target 'LoadX Transporter' do
     pod 'RxCocoa', '~> 5.1.1'
     pod 'RxRelay', '~> 5.1.1'
     pod 'IQKeyboardManagerSwift', '~> 6.5'
+    pod 'KMPlaceholderTextView', '~> 1.4'
 
     
 end

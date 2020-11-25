@@ -61,7 +61,7 @@ class RouteDetailsViewController: UIViewController {
 
 extension RouteDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 240
     }
 }
 

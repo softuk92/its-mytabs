@@ -37,6 +37,7 @@ var transporter_id : String?
 var protected: Bool?
 var frbi_id: String?
 var userToken: String?
+var isLoadxDriver: String?
 
 //var job_id : String = ""
 //var bidId : String = ""
@@ -311,6 +312,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         user_name = jsonData[0]["user_name"].stringValue
                         user_phone = jsonData[0]["user_phone"].stringValue
                         user_image = jsonData[0]["user_image"].stringValue
+                        isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
                         
                         let userDefaults = UserDefaults.standard
                         userDefaults.set(user_id, forKey: "user_id")
@@ -320,6 +322,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         userDefaults.set(user_phone, forKey: "user_phone")
                         userDefaults.set(user_image, forKey: "user_image")
                         userDefaults.set(user_type, forKey: "user_type")
+                        userDefaults.set(isLoadxDriver, forKey: "isLoadxDriver")
                         userDefaults.set(true, forKey: "userLoggedIn")
                         userDefaults.synchronize()
                         self.AppDelegate.moveToHome()
@@ -366,6 +369,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         user_name = jsonData[0]["user_name"].stringValue
                         user_phone = jsonData[0]["user_phone"].stringValue
                         user_image = jsonData[0]["user_image"].stringValue
+                        isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
                         
                         let userDefaults = UserDefaults.standard
                         userDefaults.set(user_id, forKey: "user_id")
@@ -375,6 +379,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         userDefaults.set(user_phone, forKey: "user_phone")
                         userDefaults.set(user_image, forKey: "user_image")
                         userDefaults.set(user_type, forKey: "user_type")
+                        userDefaults.set(isLoadxDriver, forKey: "isLoadxDriver")
                         userDefaults.set(true, forKey: "userLoggedIn")
                         userDefaults.synchronize()
 //                        self.performSegue(withIdentifier: "user", sender: self)
@@ -432,6 +437,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                             user_name = jsonData[0]["user_name"].stringValue
                             user_phone = jsonData[0]["user_phone"].stringValue
                             user_image = jsonData[0]["user_image"].stringValue
+                                isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
                                 
                             let userDefaults = UserDefaults.standard
                             userDefaults.set(user_id, forKey: "user_id")
@@ -441,6 +447,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                             userDefaults.set(user_phone, forKey: "user_phone")
                             userDefaults.set(user_image, forKey: "user_image")
                             userDefaults.set(user_type, forKey: "user_type")
+                                userDefaults.set(isLoadxDriver, forKey: "isLoadxDriver")
                             userDefaults.set(true, forKey: "userLoggedIn")
                             userDefaults.synchronize()
                           

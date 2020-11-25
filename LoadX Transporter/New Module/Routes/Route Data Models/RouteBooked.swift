@@ -17,7 +17,7 @@ public struct BookedRoute: Codable {
     let lr_date: String
     let lr_total_distance: String
     let lr_total_transport_time: String
-    let is_route_started: String
+    let is_route_started: String?
 //    public let lrID, lrNoOfStops, lrStartLocation, lrEndLocation: String
 //    public let lrTotalPrice: Int
 //    public let lrDate, lrTotalDistance, lrTotalTransportTime, isRouteStarted: String

@@ -46,6 +46,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var popupView: UIView!
 //    @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet var jobCancel_popview: UIView!
+    @IBOutlet var jobCancelReason: UILabel!
     @IBOutlet var jobComplete_popview: UIView!
     @IBOutlet weak var noJob_lbl: UILabel!
     @IBOutlet weak var book_job_lbl: UILabel!
@@ -53,7 +54,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var popup_iconView: UIView!
     @IBOutlet weak var Cancel_popup_iconView: UIView!
     
-    
+    var isCancel: Bool = true
     var contact_person: String?
     var contact_no: String?
     var refference_no: String?
@@ -73,9 +74,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     let year = Calendar.current.component(.year, from: Date())
     var searchCount : String?
     var routeCount: String?
+    var lr_id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkRouteAccess()
       //  self.title = "Booked Jobs"+" ("+userInprogressJobs+")"
         self.popup_iconView.clipsToBounds = true
         self.popup_iconView.layer.cornerRadius = 18
@@ -118,6 +121,18 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         routeJobsBtn.alpha = 0.5
     }
     
+    func checkRouteAccess() {
+        if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+            if isLoadxDrive == "0" {
+                self.pagerViewHeight.constant = 0
+                self.topPagerView.isHidden = true
+            } else {
+                self.pagerViewHeight.constant = 55
+                self.topPagerView.isHidden = false
+            }
+        }
+    }
+    
     func configureRoutesTableView() {
         routesTableView.delegate = self
         routesTableView.dataSource = self
@@ -131,7 +146,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.topLabel.text = "Booked Jobs"
             self?.routeJobsBtn.alpha = 0.5
             self?.searchJobsBtn.alpha = 1.0
-            self?.book_job_lbl.text = self?.searchCount ?? "()"
+            self?.book_job_lbl.text = self?.searchCount ?? "(0)"
             if (self?.jobsInProgressModel.count ?? 0) > 0 {
             self?.tableView.isHidden = false
             self?.stackView.isHidden = true
@@ -147,7 +162,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self?.searchJobsBtn.alpha = 0.5
             self?.tableView.isHidden = true
             self?.topLabel.text = "Booked Routes"
-            self?.book_job_lbl.text = self?.routeCount ?? "()"
+            self?.book_job_lbl.text = self?.routeCount ?? "(0)"
             self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
             if (self?.routes.count ?? 0) > 0 {
                 self?.routesTableView.isHidden = false
@@ -221,8 +236,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                         if error == nil {
                             do {
                                 self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data!)
-                                self.searchCount = "\(self.jobsInProgressModel.count)"
-                                self.book_job_lbl.text = "\(self.jobsInProgressModel.count)"
+                                self.searchCount = "(\(self.jobsInProgressModel.count))"
+                                self.book_job_lbl.text = "(\(self.jobsInProgressModel.count))"
                                 SVProgressHUD.dismiss()
 //                                print(self.jobsInProgressModel)
 
@@ -279,6 +294,24 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.layer.shadowRadius = 10
             cell.dataSource = routes[indexPath.row]
             cell.parentViewController = self
+            cell.cancelRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.lr_id = self.routes[indexPath.row].lr_id
+                UIView.animate(withDuration: 0.3, animations: {
+                           self.jobCancel_popview.layer.cornerRadius = 18
+                           self.routesTableView.alpha = 0.5
+                           self.jobCancelReason.text = "Are you sure you want to cancel this route?"
+                           self.isCancel = false
+                           self.view.addSubview(self.jobCancel_popview)
+                           self.jobCancel_popview.center = self.view.center
+               })
+            }).disposed(by: disposeBag)
+            
+            cell.startRoute.rx.tap.subscribe(onNext: {[weak self] (_) in
+                guard let self = self else { return }
+                self.startRoute(lrID: self.routes[indexPath.row].lr_id)
+            }).disposed(by: disposeBag)
+            
             return cell
         }
         
@@ -411,6 +444,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
              UIView.animate(withDuration: 0.3, animations: {
                         self.jobCancel_popview.layer.cornerRadius = 18
                         self.tableView.alpha = 0.5
+                        self.jobCancelReason.text = "Are you sure you want to cancel this job?"
+                        self.isCancel = true
                         self.view.addSubview(self.jobCancel_popview)
                         self.jobCancel_popview.center = self.view.center
             })
@@ -501,12 +536,23 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func jocancel_noBtn_action(_ sender: Any) {
           self.jobCancel_popview.removeFromSuperview()
          self.tableView.alpha = 1
+        self.routesTableView.alpha = 1
     }
     @IBAction func jobCancel_YesBtn(_ sender: Any) {
-    
+        self.jobCancel_popview.removeFromSuperview()
+       self.tableView.alpha = 1
+        self.routesTableView.alpha = 1
+        if isCancel {
          let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
         vc.jb_id = jb_id
+            vc.isCancel = isCancel
         self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
+           vc.lr_id = lr_id
+            vc.isCancel = isCancel
+           self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     @IBAction func jobcomplete_YesBtn(_ sender: Any) {
@@ -659,6 +705,26 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let vc = segue.destination as? JobDetailController {
             vc.bookedJobPrice = bookedPrice
+        }
+    }
+}
+
+extension JobsInProgress {
+    public func startRoute(lrID: String) {
+        APIManager.apiPost(serviceName: "api/startlRoute", parameters: ["lr_id": lrID]) { (data, json, error) in
+            if error != nil {
+                
+            }
+            let msg = json?[0]["msg"].stringValue
+            let result = json?[0]["result"].stringValue
+            if result == "0" {
+                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
+            } else {
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                vc.routeId = self.lr_id
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            }
         }
     }
 }

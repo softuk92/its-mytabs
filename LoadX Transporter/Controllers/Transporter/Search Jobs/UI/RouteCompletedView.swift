@@ -7,18 +7,52 @@
 //
 
 import UIKit
+import Reusable
+import RxSwift
 
-class RouteCompletedView: UITableViewCell {
+open class RouteCompletedView: UITableViewCell, NibReusable {
+    
+    @IBOutlet weak var movingItem: UILabel!
+    @IBOutlet weak var stops: UILabel!
+    @IBOutlet weak var pickup: UILabel!
+    @IBOutlet weak var dropoff: UILabel!
+    @IBOutlet weak var routePrice: UILabel!
+    @IBOutlet weak var routeDate: UILabel!
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var leftBtnView: UIView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private var disposeBag = DisposeBag()
+    weak var parentViewController : UIViewController!
+    open var dataSource: BookedRoute! {
+        didSet {
+            guard let route = dataSource else {return}
+            bindLabels(route: route)
+        }
     }
     
+    open func bindLabels(route: BookedRoute) {
+        stops.text = "No of Stops: \(route.lr_no_of_stops)"
+        pickup.text = route.lr_start_location
+        dropoff.text = route.lr_end_location
+        routePrice.text = "£"+String(format: "%.2f", Double(route.lr_total_price) ?? 0.0)
+        movingItem.text = "LR00"+route.lr_id
+        routeDate.text = convertDateYearFirst(route.lr_date)
+        bindActions(routeId: route.lr_id)
+    }
+    
+    func bindActions(routeId: String) {
+        
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        customizedView()
+    }
+    
+    private func customizedView() {
+        innerView.layer.cornerRadius = 5
+//        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
+    }
+
 }
+

@@ -40,17 +40,11 @@ open class RouteViewCell: UITableViewCell, NibReusable {
         dropoff.text = getAddress(street: route.do_street, route: route.do_route, city: route.do_city, postcode: route.do_post_code)
         routePrice.text = "£"+String(format: "%.2f", route.lr_total_price ?? 0.0)
         movingItem.text = "LR00"+route.lr_id
-        routeDate.text = route.lr_date
+        routeDate.text = convertDateYearFirst(route.lr_date)
         bindActions(routeId: route.lr_id)
     }
     
     func bindActions(routeId: String) {
-        acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
-//            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-//                vc.routeId = routeId
-//                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
-//            }
-        }).disposed(by: disposeBag)
         
     }
     
@@ -61,8 +55,8 @@ open class RouteViewCell: UITableViewCell, NibReusable {
     
     private func customizedView() {
         innerView.layer.cornerRadius = 5
-        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
-        acceptRoute.roundCorners(corners: [.bottomRight], radius: 5)
+//        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
+//        acceptRoute.roundCorners(corners: [.bottomRight], radius: 5)
     }
 
 }
