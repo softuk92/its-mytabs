@@ -40,21 +40,17 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-BQ-d9M">
                         <rect key="frame" x="283" y="11" width="52" height="28"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dg-j3-MUl">
-                                <rect key="frame" x="22" y="6" width="8" height="16"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="52" id="PKs-vX-o1a"/>
-                            <constraint firstItem="8Dg-j3-MUl" firstAttribute="centerX" secondItem="Nxh-BQ-d9M" secondAttribute="centerX" id="dT3-3m-jlG"/>
-                            <constraint firstItem="8Dg-j3-MUl" firstAttribute="centerY" secondItem="Nxh-BQ-d9M" secondAttribute="centerY" id="vdE-nX-idF"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dg-j3-MUl">
+                        <rect key="frame" x="305" y="17" width="8" height="16"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -67,13 +63,19 @@
                     <constraint firstItem="Nxh-BQ-d9M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="h3y-V0-N91"/>
                     <constraint firstItem="nhT-D9-Gz5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="nc5-FW-wFt"/>
                     <constraint firstAttribute="bottom" secondItem="nhT-D9-Gz5" secondAttribute="bottom" constant="17" id="pPc-06-5s1"/>
+                    <constraint firstAttribute="trailing" secondItem="8Dg-j3-MUl" secondAttribute="trailing" constant="34" id="qai-Aj-wpo"/>
                     <constraint firstItem="nhT-D9-Gz5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yK2-XJ-dCJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="8Dg-j3-MUl" secondAttribute="bottom" constant="17" id="G87-M8-OCb"/>
+                <constraint firstItem="8Dg-j3-MUl" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="17" id="fyD-Cf-q4g"/>
+            </constraints>
             <connections>
                 <outlet property="number" destination="8Dg-j3-MUl" id="uXj-K4-bDj"/>
+                <outlet property="numberView" destination="Nxh-BQ-d9M" id="MnX-JW-q0f"/>
                 <outlet property="title" destination="1tw-Rn-WgR" id="3yV-Rr-hyb"/>
             </connections>
             <point key="canvasLocation" x="136.95652173913044" y="115.84821428571428"/>

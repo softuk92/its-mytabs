@@ -119,6 +119,16 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         bindButtons()
         getRoutes()
         routeJobsBtn.alpha = 0.5
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelect), name: NSNotification.Name(rawValue: "didSelect"), object: nil)
+    }
+    
+    @objc func didSelect(_ notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+            self?.goToRoute()
+            self?.routesTableView.isHidden = false
+            self?.stackView.isHidden = true
+        }
     }
     
     func checkRouteAccess() {
@@ -158,22 +168,27 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }).disposed(by: disposeBag)
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.routeJobsBtn.alpha = 1.0
-            self?.searchJobsBtn.alpha = 0.5
-            self?.tableView.isHidden = true
-            self?.topLabel.text = "Booked Routes"
-            self?.book_job_lbl.text = self?.routeCount ?? "(0)"
-            self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
-            if (self?.routes.count ?? 0) > 0 {
-                self?.routesTableView.isHidden = false
-                self?.stackView.isHidden = true
+            guard let self = self else { return }
+            self.goToRoute()
+            if (self.routes.count) > 0 {
+                self.routesTableView.isHidden = false
+                self.stackView.isHidden = true
             } else {
-                self?.routesTableView.isHidden = true
-                self?.stackView.isHidden = false
-                self?.noJob_lbl.text = "Currently no booked routes"
+                self.routesTableView.isHidden = true
+                self.stackView.isHidden = false
+                self.noJob_lbl.text = "Currently no booked routes"
             }
         }).disposed(by: disposeBag)
         
+    }
+    
+    func goToRoute() {
+        self.routeJobsBtn.alpha = 1.0
+        self.searchJobsBtn.alpha = 0.5
+        self.tableView.isHidden = true
+        self.topLabel.text = "Booked Routes"
+        self.book_job_lbl.text = self.routeCount ?? "(0)"
+        self.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
     }
     
     func getRoutes() {
@@ -184,7 +199,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.routeJobsBtn.isUserInteractionEnabled = true
             }
             do {
-                self.routes = try JSONDecoder().decode([BookedRoute].self, from: data!)
+                self.routes = try JSONDecoder().decode([BookedRoute].self, from: data ?? Data())
                 print("Booked Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
@@ -235,7 +250,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let data = response.data
                         if error == nil {
                             do {
-                                self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data!)
+                                self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data ?? Data())
                                 self.searchCount = "(\(self.jobsInProgressModel.count))"
                                 self.book_job_lbl.text = "(\(self.jobsInProgressModel.count))"
                                 SVProgressHUD.dismiss()
@@ -246,6 +261,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                                     self.stackView.isHidden = true
 //                                    self.searchBtn.isHidden = true
                                     self.tableView.reloadData()
+                                    self.routesTableView.reloadData()
                                 }
                             } catch {
                                 print(error)
@@ -498,6 +514,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = self.routes[indexPath.row].lr_id
+                vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
@@ -722,6 +739,7 @@ extension JobsInProgress {
             } else {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = self.lr_id
+                vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             }

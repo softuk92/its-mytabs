@@ -16,6 +16,7 @@ class RouteDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var routeStopDetail = [RouteStopDetail]()
     var routeId : String!
+    var isBooked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class RouteDetailsViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
             do {
-                self.routeStopDetail = try JSONDecoder().decode([RouteStopDetail].self, from: data!)
+                self.routeStopDetail = try JSONDecoder().decode([RouteStopDetail].self, from: data ?? Data())
                 print("Route json is \(String(describing: json))")
                 SVProgressHUD.dismiss()
                 self.tableView.reloadData()
@@ -76,7 +77,8 @@ extension RouteDetailsViewController: UITableViewDataSource {
         cell.backgroundView = nil
         cell.backgroundColor = nil
         cell.layer.shadowRadius = 10
-        cell.dataSource = routeStopDetail[indexPath.row]
+        cell.bindLabels(route: routeStopDetail[indexPath.row], isBooked: isBooked)
+        cell.isBooked = isBooked
         cell.parentViewController = self
         return cell
     }

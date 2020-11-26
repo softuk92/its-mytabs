@@ -298,7 +298,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                 self.routeJobsBtn.isUserInteractionEnabled = true
             }
             do {
-                self.routes = try JSONDecoder().decode([Routes].self, from: data!)
+                self.routes = try JSONDecoder().decode([Routes].self, from: data ?? Data())
                 print("Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
@@ -496,7 +496,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                         
                     }
                     if result == "" {
-                    self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data!)
+                    self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data ?? Data())
                         DispatchQueue.main.async {
                         self.tableView.isHidden = false
                         }
@@ -942,7 +942,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     let data = response.data
                     if error == nil {
                         do {
-                            self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data!)
+                            self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data ?? Data())
                             SVProgressHUD.dismiss()
                             
                             DispatchQueue.main.async {
@@ -1026,9 +1026,20 @@ extension SearchBookedJobs {
         APIManager.apiPost(serviceName: "api/getRouteJob", parameters: ["user_id" : user_id ?? "", "lr_id": lrID]) { [weak self] (data, json, error) in
             guard let self = self else { return }
             if error != nil {
-                
+
             }
-            
+            let msg = json?[0]["msg"].stringValue
+            let result = json?[0]["result"].stringValue
+            if result == "1" {
+                if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController {
+                    vc.selectedIndex = 0
+                    vc.postData()
+                    self.appDelegate.window?.rootViewController = vc
+
+                }
+            } else {
+                self.present(showAlert(title: "Alert", message: msg ?? ""), animated: true, completion: nil)
+            }
         }
         
     }

@@ -38,7 +38,7 @@ class GetAllRoutes: UIViewController {
             }
             
             do {
-                self.routes = try JSONDecoder().decode([Routes].self, from: data!)
+                self.routes = try JSONDecoder().decode([Routes].self, from: data ?? Data())
                 
                 if self.routes.count > 0 {
                 self.tableView.isHidden = false

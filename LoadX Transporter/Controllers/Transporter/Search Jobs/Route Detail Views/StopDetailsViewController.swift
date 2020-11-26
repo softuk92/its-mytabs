@@ -48,7 +48,8 @@ class StopDetailsViewController: UIViewController {
     var stopId: String!
     var fullStopId: String!
     private var disposeBag = DisposeBag()
-    
+    var isBooked: Bool = false
+    var isItem: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,7 +108,7 @@ class StopDetailsViewController: UIViewController {
     func bindFields() {
         guard route != nil else { return }
         stops.text = "Stop "+String(route.stop_no)
-        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
+//        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
         routeId.text = fullStopId
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
         price.text = "£"+String(format: "%.2f", Double(route.price) ?? 0.0)
@@ -117,8 +118,15 @@ class StopDetailsViewController: UIViewController {
         } else {
             dropoffStopNumber.isHidden = true
         }
+        if !isBooked {
         name.text = "Customer Name:"
         phone.text = route.customer_name
+        pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
+        } else {
+        name.text = route.customer_name
+        phone.text = route.phone_number
+        pickup.text = route.lrh_postcode
+        }
         time.text = route.lrh_arrival_time
     }
     
@@ -165,12 +173,22 @@ class StopDetailsViewController: UIViewController {
             info.append(MenuItemStruct.init(title: "Distance", value: "\(distance ?? "") Miles"))
             
             self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
+
+            let items = json?[0]["items"].stringValue
+            let vanRequired = json?[0]["van_required"].stringValue
             
             //inventory table view setup
             let customData = json?[1].dictionary ?? [:]
             self.items = customData.map({ (key, value) -> MenuItemStruct in
                 return MenuItemStruct.init(title: key.replacingOccurrences(of: "_", with: " "), value: value.stringValue)
             })
+            
+            if self.items.count == 0 {
+                self.items.append(MenuItemStruct.init(title: "No. of Items", value: items ?? "0"))
+                self.items.append(MenuItemStruct.init(title: "Van Space Required", value: "Approx. \(vanRequired ?? "")"))
+                self.isItem = true
+            }
+
             self.tableView.reloadData()
             self.additionalInfoTableView.reloadData()
             SVProgressHUD.dismiss()
@@ -247,6 +265,10 @@ extension StopDetailsViewController: UITableViewDataSource {
         cell.backgroundColor = nil
         cell.title.text = items[indexPath.row].title
         cell.number.text = items[indexPath.row].value
+        if isItem {
+            cell.numberView.backgroundColor = .clear
+            cell.number.textColor = UIColor.init(named: "TextfieldTextColor")
+        }
         return cell
     }
 

@@ -220,7 +220,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                             if error == nil {
                                 do {
                                     if url == "api/transporterCompletedJobsBusiness" {
-                                        self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data!)
+                                        self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data ?? Data())
                                         SVProgressHUD.dismiss()
                                         
                                         DispatchQueue.main.async {
@@ -230,7 +230,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                             self.tableView.reloadData()
                                         }
                                     } else {
-                                        self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data!)
+                                        self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data ?? Data())
                                         SVProgressHUD.dismiss()
                                         
                                         DispatchQueue.main.async {

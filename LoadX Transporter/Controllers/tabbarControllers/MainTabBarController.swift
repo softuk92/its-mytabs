@@ -71,6 +71,10 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
             }
     }
     
+    func postData() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didSelect"), object: nil)
+    }
+    
     @IBAction func updateApp(_ sender: Any) {
         rateApp { (sucess) in
             print(sucess)

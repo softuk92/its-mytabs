@@ -14,6 +14,7 @@ open class RouteInventoryCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var numberView: UIView!
     
 //    open var dataSource: RouteStopDetail! {
 //        didSet {

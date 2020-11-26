@@ -180,7 +180,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.routeJobsBtn.isUserInteractionEnabled = true
             }
             do {
-                self.routes = try JSONDecoder().decode([BookedRoute].self, from: data!)
+                self.routes = try JSONDecoder().decode([BookedRoute].self, from: data ?? Data())
                 print("completed Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
@@ -242,7 +242,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     if error == nil {
                         do {
                             if url == "api/transporterCompletedJobsBusiness" {
-                                self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data!)
+                                self.completedJobsModelBusiness = try JSONDecoder().decode([CompletedJobsModelBusiness].self, from: data ?? Data())
                                 SVProgressHUD.dismiss()
                                 //print(self.completedJobsModelBusiness)
                                 
@@ -251,7 +251,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                     self.tableView.reloadData()
                                 }
                             } else {
-                                self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data!)
+                                self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data ?? Data())
                                 self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
                                 self.searchCount = "(\(self.completedJobsModel.count))"
                                 SVProgressHUD.dismiss()
@@ -535,6 +535,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = self.routes[indexPath.row].lr_id
+                vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {

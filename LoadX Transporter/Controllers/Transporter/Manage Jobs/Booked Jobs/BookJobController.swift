@@ -221,10 +221,10 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                     
                     upload.responseJSON { response in
                         if response.result.value != nil {
-                            print(response.request!)  // original URL request
-                            print(response.response!) // URL response
-                            print(response.data!)     // server data
-                            print(response.result)   // result of response serialization
+//                            print(response.request!)  // original URL request
+//                            print(response.response!) // URL response
+//                            print(response.data!)     // server data
+//                            print(response.result)   // result of response serialization
                             let jsonData : JSON = JSON(response.result.value!)
                             print("JSON: \(jsonData)")
                             let result = jsonData[0]["result"].stringValue

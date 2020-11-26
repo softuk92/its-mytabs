@@ -35,7 +35,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         super.awakeFromNib()
         customizedView()
     }
-    
+    open var isBooked: Bool = false
     open var dataSource: RouteStopDetail! {
         didSet {
             guard let route = dataSource else {return}
@@ -83,11 +83,13 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
 
     func bindActions(lrh_id: String, route: RouteStopDetail, fullstopId: String) {
         seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
                 vc.stopId = lrh_id
                 vc.route = route
                 vc.fullStopId = fullstopId
-                self?.parentViewController.navigationController?.pushViewController(vc, animated: true)
+                vc.isBooked = self.isBooked
+                self.parentViewController.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)
     }
