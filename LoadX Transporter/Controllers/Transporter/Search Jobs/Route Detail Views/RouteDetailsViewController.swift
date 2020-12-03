@@ -17,6 +17,7 @@ class RouteDetailsViewController: UIViewController {
     var routeStopDetail = [RouteStopDetail]()
     var routeId : String!
     var isBooked: Bool = false
+    var isRouteStarted = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class RouteDetailsViewController: UIViewController {
     }
     
     func getRouteDetails() {
-        SVProgressHUD.show(withStatus: "Geting details...")
+        SVProgressHUD.show(withStatus: "Getting details...")
         APIManager.apiPost(serviceName: "api/getSpecificRouteDetail", parameters: ["route_id" : routeId ?? ""]) { [weak self] (data, json, error) in
             guard let self = self, data != nil else { return }
             if error != nil {
@@ -77,9 +78,20 @@ extension RouteDetailsViewController: UITableViewDataSource {
         cell.backgroundView = nil
         cell.backgroundColor = nil
         cell.layer.shadowRadius = 10
-        cell.bindLabels(route: routeStopDetail[indexPath.row], isBooked: isBooked)
+        cell.bindLabels(route: routeStopDetail[indexPath.row], isBooked: isBooked, allRoutes: routeStopDetail, isRouteStarted: isRouteStarted, index: indexPath.row)
         cell.isBooked = isBooked
         cell.parentViewController = self
+//        cell.seeStopDetails = {[weak self] (selectedCell) in
+//            guard let self = self else { return }
+//            let selectedIndex = self.tableView.indexPath(for: selectedCell)
+//            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+//            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
+//                vc.route = self.routeStopDetail[indexPath.row]
+//                vc.fullStopId = fullstopId
+//                vc.isBooked = self.isBooked
+//                self.parentViewController.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
         return cell
     }
     

@@ -924,7 +924,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                 self.searchBookModel.removeAll()
                 //                         let jsonData = response.result.value
                 let jsonData : JSON = JSON(response.result.value!)
-                print("Search Jobs json Data is \(jsonData)")
+//                print("Search Jobs json Data is \(jsonData)")
                 let result = jsonData[0]["result"].stringValue
                 let message = jsonData[0]["message"].stringValue
                 

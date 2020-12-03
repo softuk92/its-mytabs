@@ -199,6 +199,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On your way? Click below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKJ-w8-fPt">
+                                <rect key="frame" x="187.5" y="249" width="167.5" height="13"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
+                                <color key="textColor" name="TextfieldTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
@@ -208,8 +214,11 @@
                             <constraint firstItem="nV0-FR-Gpi" firstAttribute="top" secondItem="Ncp-OD-ViF" secondAttribute="bottom" constant="21" id="8Ey-IH-VvS"/>
                             <constraint firstItem="mKa-Vq-32Y" firstAttribute="leading" secondItem="RcP-TE-cLp" secondAttribute="leading" id="ACl-mW-gs9"/>
                             <constraint firstItem="mKa-Vq-32Y" firstAttribute="top" secondItem="Cxh-eR-DZV" secondAttribute="bottom" constant="17" id="AK8-wG-IPm"/>
+                            <constraint firstItem="UKJ-w8-fPt" firstAttribute="centerX" secondItem="nGD-eT-Nly" secondAttribute="centerX" id="DXO-he-djW"/>
                             <constraint firstItem="Cxh-eR-DZV" firstAttribute="top" secondItem="Abg-mf-O90" secondAttribute="bottom" constant="2" id="H8t-CI-FQ3"/>
+                            <constraint firstItem="nGD-eT-Nly" firstAttribute="top" secondItem="UKJ-w8-fPt" secondAttribute="bottom" constant="4" id="M2C-ge-GR7"/>
                             <constraint firstItem="Abg-mf-O90" firstAttribute="top" secondItem="nV0-FR-Gpi" secondAttribute="bottom" id="S3K-wB-NUU"/>
+                            <constraint firstItem="UKJ-w8-fPt" firstAttribute="leading" secondItem="nGD-eT-Nly" secondAttribute="leading" id="SOQ-C7-QoW"/>
                             <constraint firstItem="Ncp-OD-ViF" firstAttribute="leading" secondItem="RcP-TE-cLp" secondAttribute="leading" constant="-2" id="VTE-Cn-f93"/>
                             <constraint firstItem="xJ3-ZA-Zok" firstAttribute="leading" secondItem="Ncp-OD-ViF" secondAttribute="leading" id="YIo-pc-Fnf"/>
                             <constraint firstItem="Cxh-eR-DZV" firstAttribute="leading" secondItem="RcP-TE-cLp" secondAttribute="leading" constant="-2" id="cCH-eR-G6V"/>
@@ -221,7 +230,9 @@
                             <constraint firstItem="Abg-mf-O90" firstAttribute="centerX" secondItem="lxm-RG-eO5" secondAttribute="centerX" id="uW8-3k-WPW"/>
                             <constraint firstAttribute="bottom" secondItem="TuK-Ec-iLv" secondAttribute="bottom" id="uaX-vI-qBt"/>
                             <constraint firstItem="RcP-TE-cLp" firstAttribute="leading" secondItem="769-1u-jc7" secondAttribute="leading" constant="10" id="wb8-iM-C35"/>
+                            <constraint firstItem="UKJ-w8-fPt" firstAttribute="trailing" secondItem="nGD-eT-Nly" secondAttribute="trailing" id="xA1-KB-wWT"/>
                             <constraint firstItem="TuK-Ec-iLv" firstAttribute="top" secondItem="mKa-Vq-32Y" secondAttribute="bottom" constant="23" id="zEG-ww-La1"/>
+                            <constraint firstAttribute="trailing" secondItem="UKJ-w8-fPt" secondAttribute="trailing" id="zos-CF-aNN"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -247,6 +258,7 @@
                 <outlet property="innerView" destination="769-1u-jc7" id="UB5-Ge-K5R"/>
                 <outlet property="leftBtnView" destination="EOr-K8-U4y" id="aha-uo-b0X"/>
                 <outlet property="movingItem" destination="RcP-TE-cLp" id="kuj-fU-p8Y"/>
+                <outlet property="onYourWay" destination="UKJ-w8-fPt" id="REc-Yl-bYa"/>
                 <outlet property="pickup" destination="5YT-p8-rwH" id="oV0-Wu-8dX"/>
                 <outlet property="routeDate" destination="fcu-g3-Zc7" id="TFu-bh-nkR"/>
                 <outlet property="routePrice" destination="9XF-FG-uxd" id="ofx-Gb-tlt"/>

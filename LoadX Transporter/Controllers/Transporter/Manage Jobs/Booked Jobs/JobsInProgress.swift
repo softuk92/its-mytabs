@@ -19,6 +19,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private let disposeBag = DisposeBag()
     var routes = [BookedRoute]()
+    var isRouteStarted = ""
     //route jobs
     //For Routes. Top view setup
     @IBOutlet weak var topPagerView: UIView!
@@ -314,18 +315,18 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 guard let self = self else { return }
                 self.lr_id = self.routes[indexPath.row].lr_id
                 UIView.animate(withDuration: 0.3, animations: {
-                           self.jobCancel_popview.layer.cornerRadius = 18
-                           self.routesTableView.alpha = 0.5
-                           self.jobCancelReason.text = "Are you sure you want to cancel this route?"
-                           self.isCancel = false
-                           self.view.addSubview(self.jobCancel_popview)
-                           self.jobCancel_popview.center = self.view.center
-               })
+                    self.jobCancel_popview.layer.cornerRadius = 18
+                    self.routesTableView.alpha = 0.5
+                    self.jobCancelReason.text = "Are you sure you want to cancel this route?"
+                    self.isCancel = false
+                    self.view.addSubview(self.jobCancel_popview)
+                    self.jobCancel_popview.center = self.view.center
+                })
             }).disposed(by: disposeBag)
             
             cell.startRoute.rx.tap.subscribe(onNext: {[weak self] (_) in
                 guard let self = self else { return }
-                self.startRoute(lrID: self.routes[indexPath.row].lr_id)
+                self.startRoute(lrID: self.routes[indexPath.row].lr_id, isRouteStarted: self.routes[indexPath.row].is_route_started ?? "")
             }).disposed(by: disposeBag)
             
             return cell
@@ -514,6 +515,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = self.routes[indexPath.row].lr_id
+                vc.isRouteStarted = self.routes[indexPath.row].is_route_started ?? ""
                 vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -727,7 +729,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 
 extension JobsInProgress {
-    public func startRoute(lrID: String) {
+    public func startRoute(lrID: String, isRouteStarted: String) {
         APIManager.apiPost(serviceName: "api/startlRoute", parameters: ["lr_id": lrID]) { (data, json, error) in
             if error != nil {
                 
@@ -738,7 +740,8 @@ extension JobsInProgress {
                 self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
             } else {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-                vc.routeId = self.lr_id
+                vc.routeId = lrID /*self.lr_id*/
+                vc.isRouteStarted = isRouteStarted
                 vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }

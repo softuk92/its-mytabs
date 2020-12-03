@@ -43,7 +43,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         }
     }
     
-    open func bindLabels(route: RouteStopDetail, isBooked:Bool = false) {
+    open func bindLabels(route: RouteStopDetail, isBooked:Bool = false, allRoutes: [RouteStopDetail] = [], isRouteStarted: String = "", index: Int = 0) {
         stops.text = "Stop "+String(route.stop_no)
         routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
@@ -64,7 +64,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         pickup.text = route.lrh_postcode
         }
         time.text = route.lrh_arrival_time
-        bindActions(lrh_id: route.lrh_id, route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0))
+        bindActions(route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0), allRoutes: allRoutes, isRouteStarted: isRouteStarted, index: index)
     }
     
     func getStopId(company: String, stopId: Int) -> String {
@@ -81,14 +81,16 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         return fullId
     }
 
-    func bindActions(lrh_id: String, route: RouteStopDetail, fullstopId: String) {
+    func bindActions(route: RouteStopDetail, fullstopId: String, allRoutes: [RouteStopDetail], isRouteStarted: String, index: Int) {
         seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
             guard let self = self else { return }
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
-                vc.stopId = lrh_id
                 vc.route = route
                 vc.fullStopId = fullstopId
                 vc.isBooked = self.isBooked
+                vc.allRoutes = allRoutes
+                vc.isRouteStarted = isRouteStarted
+                vc.routeIndex = index
                 self.parentViewController.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)

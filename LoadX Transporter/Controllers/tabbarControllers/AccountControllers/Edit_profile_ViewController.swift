@@ -381,19 +381,15 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                             
                         self.vanRegNo_tf.text = jsonData[0]["truck_registration"].stringValue
                          
-                    } else {
-                        SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        print("Error \(response.result.error!)")
                     }
+//                        else {
+//                        SVProgressHUD.dismiss()
+//                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+//                    }
                 }
              else {
                 SVProgressHUD.dismiss()
-                let alert = UIAlertController(title: "Error", message: "You are not connected to Internet", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
             }
         }
             }else {

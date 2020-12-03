@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertView" customModule="LoadX_Transporter" customModuleProvider="target">
+            <connections>
+                <outlet property="centerView" destination="aPV-tX-OXA" id="Bso-7M-wTv"/>
+                <outlet property="imageView" destination="6Jl-mf-Oxg" id="FIw-in-Jvl"/>
+                <outlet property="no" destination="N7c-b6-djo" id="9re-qY-vXw"/>
+                <outlet property="question" destination="7gE-A9-j5S" id="u1F-T6-6ru"/>
+                <outlet property="yes" destination="ceG-8W-yi6" id="A7n-GN-xmx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="583"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPV-tX-OXA">
+                    <rect key="frame" x="10" y="178.5" width="308" height="226"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqh-6o-uZg">
+                            <rect key="frame" x="0.0" y="0.0" width="308" height="135"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="canceljob_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6Jl-mf-Oxg">
+                                    <rect key="frame" x="124" y="20" width="60" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="GEu-lo-5JY"/>
+                                        <constraint firstAttribute="width" constant="60" id="cZf-Jr-Dvg"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to cancel this job?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gE-A9-j5S">
+                                    <rect key="frame" x="15" y="90" width="278" height="40"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="k9T-bE-Tym"/>
+                            <color key="backgroundColor" red="0.22338286039999999" green="0.22740969059999999" blue="0.23154494170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="135" id="CUv-x1-2Nu"/>
+                                <constraint firstItem="k9T-bE-Tym" firstAttribute="bottom" secondItem="7gE-A9-j5S" secondAttribute="bottom" constant="5" id="DbS-KC-zPh"/>
+                                <constraint firstItem="6Jl-mf-Oxg" firstAttribute="top" secondItem="Kqh-6o-uZg" secondAttribute="top" constant="20" id="IgH-aL-4qL"/>
+                                <constraint firstItem="7gE-A9-j5S" firstAttribute="leading" secondItem="k9T-bE-Tym" secondAttribute="leading" constant="15" id="Lj1-aI-1CV"/>
+                                <constraint firstItem="7gE-A9-j5S" firstAttribute="top" secondItem="6Jl-mf-Oxg" secondAttribute="bottom" constant="10" id="WFT-Oq-mTK"/>
+                                <constraint firstItem="k9T-bE-Tym" firstAttribute="trailing" secondItem="7gE-A9-j5S" secondAttribute="trailing" constant="15" id="Wgb-dx-ncs"/>
+                                <constraint firstItem="6Jl-mf-Oxg" firstAttribute="centerX" secondItem="Kqh-6o-uZg" secondAttribute="centerX" id="q28-Ei-fRb"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="620-hY-0qM">
+                            <rect key="frame" x="24" y="164" width="260" height="35"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceG-8W-yi6" customClass="AnimatableButton" customModule="IBAnimatable">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="CpE-Cd-3Mo"/>
+                                        <constraint firstAttribute="height" constant="35" id="wNg-Zf-igs"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <state key="normal" title="Yes" backgroundImage="popup_yesBtn">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="17"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7c-b6-djo" customClass="AnimatableButton" customModule="IBAnimatable">
+                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                    <state key="normal" title="No" backgroundImage="popup_noBtn">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="17"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ceG-8W-yi6" firstAttribute="height" secondItem="N7c-b6-djo" secondAttribute="height" id="bW5-I6-vWz"/>
+                                <constraint firstItem="ceG-8W-yi6" firstAttribute="width" secondItem="N7c-b6-djo" secondAttribute="width" id="vcX-oH-jDh"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="620-hY-0qM" firstAttribute="centerX" secondItem="aPV-tX-OXA" secondAttribute="centerX" id="66U-0S-ocV"/>
+                        <constraint firstAttribute="trailing" secondItem="Kqh-6o-uZg" secondAttribute="trailing" id="AP6-2T-s2E"/>
+                        <constraint firstItem="Kqh-6o-uZg" firstAttribute="top" secondItem="aPV-tX-OXA" secondAttribute="top" id="Iiy-sh-360"/>
+                        <constraint firstItem="Kqh-6o-uZg" firstAttribute="leading" secondItem="aPV-tX-OXA" secondAttribute="leading" id="QsC-oG-fKx"/>
+                        <constraint firstAttribute="bottom" secondItem="620-hY-0qM" secondAttribute="bottom" constant="27" id="RcJ-KV-NS4"/>
+                        <constraint firstItem="620-hY-0qM" firstAttribute="top" secondItem="Kqh-6o-uZg" secondAttribute="bottom" constant="29" id="SQp-St-7NU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aPV-tX-OXA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="32X-Dp-K4f"/>
+                <constraint firstItem="aPV-tX-OXA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="5V7-FU-CfK"/>
+                <constraint firstItem="aPV-tX-OXA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OOX-rJ-zWH"/>
+                <constraint firstItem="aPV-tX-OXA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lfs-Sy-mhl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="53.623188405797109" y="225.33482142857142"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="N7c-b6-djo">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="ceG-8W-yi6">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="canceljob_popup_icon" width="496" height="496.5"/>
+        <image name="popup_noBtn" width="285" height="80"/>
+        <image name="popup_yesBtn" width="285" height="80"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

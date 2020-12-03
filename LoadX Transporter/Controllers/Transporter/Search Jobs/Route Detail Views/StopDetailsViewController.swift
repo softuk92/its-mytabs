@@ -41,24 +41,31 @@ class StopDetailsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var additionalInfoTableView: UITableView!
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
     
     var route : RouteStopDetail!
+    var allRoutes: [RouteStopDetail] = []
+    var isRouteStarted = ""
+    var routeIndex = 0
     var routeSummaryDetails = [RouteSummaryDetails]()
     private var items: [MenuItemStruct] = []
-    var stopId: String!
     var fullStopId: String!
     private var disposeBag = DisposeBag()
     var isBooked: Bool = false
     var isItem: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.firstButton.setTitle("VIEW NEXT STOP", for: .normal)
         customizeSearchTabView()
         customizeView()
         configureTableViews()
         bindFields()
         bindButtons()
         getStopDetails()
+        setupTwoButtons()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -144,9 +151,10 @@ class StopDetailsViewController: UIViewController {
     }
     
     func getStopDetails() {
-        SVProgressHUD.show(withStatus: "Geting details...")
-        APIManager.apiPost(serviceName: "api/getSpecificStopAdditionalInfo", parameters: ["lrh_id" : stopId ?? ""]) { [weak self] (data, json, error) in
+        SVProgressHUD.show(withStatus: "Getting details...")
+        APIManager.apiPost(serviceName: "api/getSpecificStopAdditionalInfo", parameters: ["lrh_id" : route?.lrh_id ?? ""]) { [weak self] (data, json, error) in
             guard let self = self else { return }
+            self.routeSummaryDetails = []
             if error != nil {
                 SVProgressHUD.dismiss()
             }
@@ -198,6 +206,74 @@ class StopDetailsViewController: UIViewController {
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
      }
+    
+    func setupTwoButtons() {
+        if isRouteStarted == "0" {
+            self.secondButton.isHidden = true
+            self.thirdButton.isHidden = true
+        }
+        if route.is_t_arrive == "0" {
+            self.secondButton.isHidden = false
+            self.secondButton.setTitle("ARRIVED ?", for: .normal)
+        }
+        if route.inform_running_late == "0" {
+            self.thirdButton.isHidden = false
+            self.thirdButton.setTitle("RUNNING LATE ?", for: .normal)
+            
+        }
+//        route.cash_received
+//        route.cash_received_at_pickup
+//        route.is_damage
+        
+        firstButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+            guard let self = self else { return }
+            if self.isRouteStarted == "0" {
+            self.setupRouteStartingBehaviour()
+            }
+        }).disposed(by: disposeBag)
+
+        secondButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
+            self.showAlertView()
+        }).disposed(by: disposeBag)
+
+    }
+    
+    func showAlertView() {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        self.view.addSubview(aView)
+    }
+    
+    func setupRouteStartingBehaviour() {
+        if self.routeIndex < self.allRoutes.count {
+            self.route = self.allRoutes[self.routeIndex+1]
+            self.routeIndex = self.routeIndex + 1
+            self.bindFields()
+            self.getStopDetails()
+        } else if self.routeIndex == self.allRoutes.count {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    //arrived and running late actions and API Calls
+    private func driverArrived() {
+        APIManager.apiPost(serviceName: "api/transporterArrive", parameters: ["lrh_id": route.lrh_id]) { (data, json, error) in
+            if error != nil {
+                
+            }
+            print("transporter arrived json \(String(describing: json))")
+        }
+    }
+    
+    private func driverLateRunning() {
+        APIManager.apiPost(serviceName: "api/transporterLateRunning", parameters: ["lrh_id": route.lrh_id, "late_running_time" : ""]) { (data, json, error) in
+            if error != nil {
+                
+            }
+            print("transporter late running json \(String(describing: json))")
+        }
+    }
     
 }
 

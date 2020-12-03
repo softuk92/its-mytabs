@@ -23,6 +23,7 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     @IBOutlet weak var cancelRoute: UIButton!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var leftBtnView: UIView!
+    @IBOutlet weak var onYourWay: UILabel!
 
     private var disposeBag = DisposeBag()
     weak var parentViewController : UIViewController!
@@ -35,7 +36,7 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     
     open func bindLabels(route: BookedRoute) {
         stops.text = "No of Stops: \(route.lr_no_of_stops)"
-        distance.text = "\(route.lr_total_distance) miles"
+        distance.text = String(format: "%.2f", Double(route.lr_total_distance) ?? 0.0)+" miles"
         pickup.text = route.lr_start_location
         dropoff.text = route.lr_end_location
         routePrice.text = "£"+String(format: "%.2f", route.lr_total_price)
@@ -48,8 +49,10 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     func checkRouteStartedStatus(isRouteStarted: String) {
         if isRouteStarted == "0" {
             self.startRoute.isHidden = false
+            self.onYourWay.isHidden = false
         } else {
             self.startRoute.isHidden = true
+            self.onYourWay.isHidden = true
         }
     }
     
