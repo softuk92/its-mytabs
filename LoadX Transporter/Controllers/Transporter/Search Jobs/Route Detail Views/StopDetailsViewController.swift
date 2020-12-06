@@ -41,9 +41,13 @@ class StopDetailsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var additionalInfoTableView: UITableView!
-    @IBOutlet weak var firstButton: UIButton!
-    @IBOutlet weak var secondButton: UIButton!
-    @IBOutlet weak var thirdButton: UIButton!
+    @IBOutlet weak var viewNextStop2: UIButton!
+    @IBOutlet weak var arrivedOrCashCollected: UIButton!
+    @IBOutlet weak var runningLate: UIButton!
+    @IBOutlet weak var twoButtonsStackView: UIStackView!
+    @IBOutlet weak var viewNextStop: UIButton!
+    @IBOutlet weak var reportDamage: UIButton!
+    @IBOutlet weak var bottomButtonView: UIView!
     
     var route : RouteStopDetail!
     var allRoutes: [RouteStopDetail] = []
@@ -58,7 +62,7 @@ class StopDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.firstButton.setTitle("VIEW NEXT STOP", for: .normal)
+        self.viewNextStop2.setTitle("VIEW NEXT STOP", for: .normal)
         customizeSearchTabView()
         customizeView()
         configureTableViews()
@@ -66,6 +70,15 @@ class StopDetailsViewController: UIViewController {
         bindButtons()
         getStopDetails()
         setupTwoButtons()
+        customizeUI()
+    }
+    
+    func customizeUI() {
+        viewNextStop2.layer.cornerRadius = 15
+        arrivedOrCashCollected.layer.cornerRadius = 15
+        runningLate.layer.cornerRadius = 15
+        viewNextStop.layer.cornerRadius = 15
+        reportDamage.layer.cornerRadius = 15
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -175,9 +188,16 @@ class StopDetailsViewController: UIViewController {
             } else {
                 info.append(MenuItemStruct.init(title: "Moving To", value: movingTo ?? ""))
             }
+            var noOfHelper = ""
+            if helper == "0" {
+                noOfHelper = "No helpers needed"
+            } else if helper == "1" {
+                noOfHelper = "Driver Only"
+            } else {
+                noOfHelper = "Driver + \(helper ?? "") Helper"
+            }
             
-            let NoOfHelper = (helper == "1") ? "No helper needed" : (helper ?? "")
-            info.append(MenuItemStruct.init(title: "No of Helpers", value: NoOfHelper))
+            info.append(MenuItemStruct.init(title: "No of Helpers", value: noOfHelper))
             info.append(MenuItemStruct.init(title: "Distance", value: "\(distance ?? "") Miles"))
             
             self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
@@ -192,7 +212,9 @@ class StopDetailsViewController: UIViewController {
             })
             
             if self.items.count == 0 {
+                if items != "0" {
                 self.items.append(MenuItemStruct.init(title: "No. of Items", value: items ?? "0"))
+                }
                 self.items.append(MenuItemStruct.init(title: "Van Space Required", value: "Approx. \(vanRequired ?? "")"))
                 self.isItem = true
             }
@@ -209,48 +231,111 @@ class StopDetailsViewController: UIViewController {
     
     func setupTwoButtons() {
         if isRouteStarted == "0" {
-            self.secondButton.isHidden = true
-            self.thirdButton.isHidden = true
+            self.arrivedOrCashCollected.isHidden = true
+            self.runningLate.isHidden = true
         }
         if route.is_t_arrive == "0" {
-            self.secondButton.isHidden = false
-            self.secondButton.setTitle("ARRIVED ?", for: .normal)
+            self.arrivedOrCashCollected.isHidden = false
+            self.arrivedOrCashCollected.setTitle("ARRIVED ?", for: .normal)
+            if route.inform_running_late == "0" {
+                self.runningLate.isHidden = false
+                self.runningLate.setTitle("RUNNING LATE ?", for: .normal)
+            }
+        } else {
+            self.setArrivalButtons()
         }
-        if route.inform_running_late == "0" {
-            self.thirdButton.isHidden = false
-            self.thirdButton.setTitle("RUNNING LATE ?", for: .normal)
-            
-        }
-//        route.cash_received
-//        route.cash_received_at_pickup
-//        route.is_damage
         
-        firstButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+        viewNextStop2.rx.tap.subscribe(onNext: {[weak self] (_) in
             guard let self = self else { return }
-            if self.isRouteStarted == "0" {
             self.setupRouteStartingBehaviour()
+        }).disposed(by: disposeBag)
+
+        arrivedOrCashCollected.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
+            if self.arrivedOrCashCollected.titleLabel?.text == "CASH COLLECTED?" {
+            self.driverCashCollected()
+            } else {
+            self.showArrivedAlertView()
             }
         }).disposed(by: disposeBag)
-
-        secondButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+        
+        runningLate.rx.tap.subscribe(onNext: { [weak self] (_) in
             guard let self = self else { return }
-            self.showAlertView()
+            self.showRunningLateAlertView()
         }).disposed(by: disposeBag)
-
+        
+        viewNextStop.rx.tap.subscribe(onNext: {[weak self] (_) in
+            guard let self = self else { return }
+            self.setupRouteStartingBehaviour()
+        }).disposed(by: disposeBag)
+        
+        reportDamage.rx.tap.subscribe(onNext: {[weak self] (_) in
+            guard let self = self else { return }
+            self.showDamageReportAlertView()
+        }).disposed(by: disposeBag)
+        
+        
     }
     
-    func showAlertView() {
+    func showArrivedAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        aView.question.text = "Have you arrived at stop?"
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            aView.removeFromSuperview()
+            self?.driverArrived()
+        }).disposed(by: disposeBag)
+
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
         self.view.addSubview(aView)
     }
     
+    func showRunningLateAlertView() {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        aView.question.text = "Are you running late?"
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            aView.removeFromSuperview()
+            self?.goToRunningLateScene()
+        }).disposed(by: disposeBag)
+
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
+    }
+    
+    func showDamageReportAlertView() {
+        let aView = AlertViewWithDesciption(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+    
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            aView.removeFromSuperview()
+            self?.goToConfirmDamageScene()
+        }).disposed(by: disposeBag)
+
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
+    }
+        
+    //view next stop
     func setupRouteStartingBehaviour() {
         if self.routeIndex < self.allRoutes.count {
             self.route = self.allRoutes[self.routeIndex+1]
             self.routeIndex = self.routeIndex + 1
             self.bindFields()
             self.getStopDetails()
+            self.setupTwoButtons()
         } else if self.routeIndex == self.allRoutes.count {
             self.navigationController?.popViewController(animated: true)
         }
@@ -258,20 +343,87 @@ class StopDetailsViewController: UIViewController {
     
     //arrived and running late actions and API Calls
     private func driverArrived() {
-        APIManager.apiPost(serviceName: "api/transporterArrive", parameters: ["lrh_id": route.lrh_id]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/transporterArrive", parameters: ["lrh_id": route.lrh_id]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
             if error != nil {
                 
             }
             print("transporter arrived json \(String(describing: json))")
+            
+            let result = json?[0]["result"].stringValue
+            let msg = json?[0]["message"].stringValue
+            if result == "1" {
+            self.setArrivalButtons()
+            } else {
+            self.present(showAlert(title: "", message: msg ?? ""), animated: true, completion: nil)
+            }
         }
     }
     
-    private func driverLateRunning() {
-        APIManager.apiPost(serviceName: "api/transporterLateRunning", parameters: ["lrh_id": route.lrh_id, "late_running_time" : ""]) { (data, json, error) in
+    func goToRunningLateScene() {
+        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RunningLateViewController") as? RunningLateViewController {
+            vc.lrh_id = route.lrh_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func goToConfirmDamageScene() {
+        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ConfirmDamageViewController") as? ConfirmDamageViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func setArrivalButtons() {
+        if route.lrh_type == "Pickup Shipment" {
+        self.runningLate.isHidden = true
+        self.viewNextStop2.isHidden = true
+        self.viewNextStop.isHidden = false
+        if route.cash_received == "1" {
+        self.arrivedOrCashCollected.isHidden = true
+        self.reportDamage.isHidden = false
+        } else {
+        self.arrivedOrCashCollected.isHidden = false
+        self.arrivedOrCashCollected.setTitle("CASH COLLECTED?", for: .normal)
+        }
+            
+        } else {
+            
+            if route.cash_received_at_pickup == "Yes" {
+                self.bottomButtonView.isHidden = true
+                self.reportDamage.isHidden = true
+                self.arrivedOrCashCollected.setTitle("COMPLETE", for: .normal)
+            } else {
+                self.bottomButtonView.isHidden = false
+                self.runningLate.isHidden = true
+                self.viewNextStop2.isHidden = true
+                self.viewNextStop.isHidden = false
+                if route.cash_received == "1" {
+                self.arrivedOrCashCollected.isHidden = true
+                self.reportDamage.isHidden = false
+                } else {
+                self.arrivedOrCashCollected.isHidden = false
+                self.arrivedOrCashCollected.setTitle("CASH COLLECTED?", for: .normal)
+                }
+            }
+        }
+    }
+    
+    //cash collected
+    private func driverCashCollected() {
+        APIManager.apiPost(serviceName: "api/transporterCashCollect", parameters: ["lrh_id": route.lrh_id]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
             if error != nil {
                 
             }
-            print("transporter late running json \(String(describing: json))")
+            print("transporter cash collected json \(String(describing: json))")
+            
+            let result = json?[0]["result"].stringValue
+            let msg = json?[0]["message"].stringValue
+            if result == "1" {
+//            self.setArrivalButtons()
+            } else {
+            self.present(showAlert(title: "", message: msg ?? ""), animated: true, completion: nil)
+            }
         }
     }
     

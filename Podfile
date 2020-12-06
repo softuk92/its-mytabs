@@ -34,6 +34,6 @@ target 'LoadX Transporter' do
     pod 'RxRelay', '~> 5.1.1'
     pod 'IQKeyboardManagerSwift', '~> 6.5'
     pod 'KMPlaceholderTextView', '~> 1.4'
-
+    pod 'YPImagePicker', '~> 4.4.0'
     
 end

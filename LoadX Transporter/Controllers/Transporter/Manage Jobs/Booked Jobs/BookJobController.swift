@@ -221,10 +221,6 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                     
                     upload.responseJSON { response in
                         if response.result.value != nil {
-//                            print(response.request!)  // original URL request
-//                            print(response.response!) // URL response
-//                            print(response.data!)     // server data
-//                            print(response.result)   // result of response serialization
                             let jsonData : JSON = JSON(response.result.value!)
                             print("JSON: \(jsonData)")
                             let result = jsonData[0]["result"].stringValue
@@ -236,16 +232,11 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                          
                             self.navigationController?.pushViewController(vc!, animated: true)
                             } else {
-                                let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                self.present(showAlert(title: "Error", message: message), animated: true, completion: nil)
                             }
                         } else {
                             SVProgressHUD.dismiss()
-                            print("Error \(response.result.error!)")
-                            let alert = UIAlertController(title: "Error", message: "Network Error", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                         }
                     }
                     
@@ -253,16 +244,12 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                     //self.delegate?.showFailAlert()
                     print(encodingError)
                     SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: "Error!", message: "Connection error! Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(showAlert(title: "Error", message: encodingError.localizedDescription), animated: true, completion: nil)
                 }
             }
         } else {
             SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Alert!", message: "Please enter receiver name / upload proof image", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.present(showAlert(title: "Alert", message: "Please enter receiver name / upload proof image"), animated: true, completion: nil)
         }
     }
     

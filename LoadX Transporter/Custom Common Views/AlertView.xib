@@ -119,11 +119,10 @@
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="aPV-tX-OXA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="32X-Dp-K4f"/>
-                <constraint firstItem="aPV-tX-OXA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="5V7-FU-CfK"/>
+                <constraint firstItem="aPV-tX-OXA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="5V7-FU-CfK"/>
                 <constraint firstItem="aPV-tX-OXA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OOX-rJ-zWH"/>
                 <constraint firstItem="aPV-tX-OXA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lfs-Sy-mhl"/>
             </constraints>
