@@ -132,6 +132,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="v7E-P6-bbr"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="jVL-OT-AB8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5U0-Qu-XDT"/>

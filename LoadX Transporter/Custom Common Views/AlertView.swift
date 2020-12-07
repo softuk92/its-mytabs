@@ -18,6 +18,7 @@ public class AlertView: UIView, NibOwnerLoadable {
     @IBOutlet weak public var question: UILabel!
     @IBOutlet weak public var yes: UIButton!
     @IBOutlet weak public var no: UIButton!
+    @IBOutlet weak public var ensure: UILabel!
     
     //MARK: - init
 //    required public init?(coder: NSCoder) {

@@ -76,6 +76,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     var searchCount : String?
     var routeCount: String?
     var lr_id: String?
+    var isRoute = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,8 +151,17 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         routesTableView.register(cellType: RouteBookedView.self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if isRoute {
+            self.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
+        } else {
+            self.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+        }
+    }
+    
     func bindButtons() {
         searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
+            self?.isRoute = false
             self?.routesTableView.isHidden = true
             self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
             self?.topLabel.text = "Booked Jobs"
@@ -170,6 +180,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             guard let self = self else { return }
+            self.isRoute = true
             self.goToRoute()
             if (self.routes.count) > 0 {
                 self.routesTableView.isHidden = false

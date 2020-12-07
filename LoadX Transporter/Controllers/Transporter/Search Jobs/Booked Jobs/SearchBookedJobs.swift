@@ -692,7 +692,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             if user_id != nil {
-                if ic_status == "pending" || dl_status == "pending" {
+                if self.icStatus == "pending" || self.dlStatus == "pending" {
                     self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
                 } else if ic_status == "Reject" || dl_status == "Reject" || ic_status == "" || dl_status == "" {
                     let alert = UIAlertController(title: "Alert!", message: "Please upload your documents.", preferredStyle: UIAlertController.Style.alert)
@@ -1016,8 +1016,8 @@ extension SearchBookedJobs {
             if error != nil {
                 
             }
-            self.icStatus = json?[0]["ic_status"].stringValue
-            self.dlStatus = json?[0]["dl_status"].stringValue
+            self.icStatus = json?[0]["ic_status"].stringValue.lowercased()
+            self.dlStatus = json?[0]["dl_status"].stringValue.lowercased()
             
         }
     }

@@ -279,6 +279,7 @@ class StopDetailsViewController: UIViewController {
     
     func showArrivedAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.ensure.text = ""
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
         aView.question.text = "Have you arrived at stop?"
@@ -296,6 +297,7 @@ class StopDetailsViewController: UIViewController {
     
     func showRunningLateAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.ensure.text = ""
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
         aView.question.text = "Are you running late?"
@@ -312,7 +314,8 @@ class StopDetailsViewController: UIViewController {
     }
     
     func showDamageReportAlertView() {
-        let aView = AlertViewWithDesciption(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.ensure.text = "Please ensure you have informed the customer and upload images of the damage report before completing stop."
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
     

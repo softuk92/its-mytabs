@@ -11664,17 +11664,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h44-G1-V2o">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-T0-PR7">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="mz7-lB-ntq"/>
                                         <constraint firstAttribute="height" constant="60" id="voq-Yb-d3D"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable email notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-Ns-q3r">
-                                    <rect key="frame" x="30" y="83" width="238" height="44"/>
+                                    <rect key="frame" x="30" y="83" width="240" height="44"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11694,10 +11694,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4aC-So-8PO">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-FX-OXZ" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="4N2-JL-nGY"/>
@@ -11717,7 +11717,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-RQ-Eer" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -11761,17 +11761,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Ia-K4Y">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLY-UP-Ncu">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="5xU-4k-Isn"/>
                                         <constraint firstAttribute="height" constant="60" id="JBP-7j-Mho"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable mobile notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-bE-zeh">
-                                    <rect key="frame" x="20" y="80" width="260" height="50"/>
+                                    <rect key="frame" x="20" y="80" width="262" height="50"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11790,10 +11790,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-40-bMs">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-ra-EzO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Zq-1D-JZX"/>
@@ -11813,7 +11813,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Xt-I48" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -13410,7 +13410,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9K-Kk-zdc">
-                                        <rect key="frame" x="132.5" y="341" width="110.5" height="44"/>
+                                        <rect key="frame" x="130.5" y="341" width="114.5" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="gYb-Hz-gy0"/>
                                         </constraints>
@@ -13419,13 +13419,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Login detials have been sent to your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSR-bj-Mcm">
-                                        <rect key="frame" x="60" y="410" width="255" height="38.5"/>
+                                        <rect key="frame" x="60" y="410" width="255" height="40"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLr-xU-hjy">
-                                        <rect key="frame" x="87.5" y="548.5" width="200" height="45"/>
+                                        <rect key="frame" x="87.5" y="550" width="200" height="45"/>
                                         <color key="backgroundColor" red="0.19215686269999999" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Bki-3P-SRG"/>
@@ -13681,7 +13681,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zi0-92-JTm">
-                                <rect key="frame" x="0.0" y="45" width="375" height="651"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW1-db-4mP">
@@ -13724,7 +13724,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="zi0-92-JTm" firstAttribute="top" secondItem="qW1-db-4mP" secondAttribute="bottom" id="YAt-3G-zwE"/>
                             <constraint firstItem="qjy-vf-1kH" firstAttribute="trailing" secondItem="zi0-92-JTm" secondAttribute="trailing" id="gXU-Vr-vlD"/>
                             <constraint firstItem="qW1-db-4mP" firstAttribute="top" secondItem="qjy-vf-1kH" secondAttribute="top" id="hXx-JT-ETd"/>
-                            <constraint firstItem="qjy-vf-1kH" firstAttribute="bottom" secondItem="zi0-92-JTm" secondAttribute="bottom" constant="-29" id="kff-L3-Ea9"/>
+                            <constraint firstItem="qjy-vf-1kH" firstAttribute="bottom" secondItem="zi0-92-JTm" secondAttribute="bottom" id="kff-L3-Ea9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -13733,7 +13733,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrb-Kc-S6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="1172.5637181409297"/>
+            <point key="canvasLocation" x="-74" y="1018"/>
         </scene>
         <!--Stop Details View Controller-->
         <scene sceneID="ANa-jg-D6Q">
