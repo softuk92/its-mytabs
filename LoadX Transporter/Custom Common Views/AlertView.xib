@@ -25,6 +25,8 @@
                 <outlet property="imageView" destination="6Jl-mf-Oxg" id="FIw-in-Jvl"/>
                 <outlet property="no" destination="N7c-b6-djo" id="9re-qY-vXw"/>
                 <outlet property="question" destination="7gE-A9-j5S" id="u1F-T6-6ru"/>
+                <outlet property="sendPaymentLink" destination="e5X-LA-CzI" id="gze-fh-M1A"/>
+                <outlet property="sendPaymentLinkHeight" destination="OGn-kd-ueP" id="9lW-TU-FIi"/>
                 <outlet property="yes" destination="ceG-8W-yi6" id="A7n-GN-xmx"/>
             </connections>
         </placeholder>
@@ -34,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPV-tX-OXA">
-                    <rect key="frame" x="25" y="180.5" width="278" height="222"/>
+                    <rect key="frame" x="25" y="160.5" width="278" height="262"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqh-6o-uZg">
                             <rect key="frame" x="0.0" y="0.0" width="278" height="135"/>
@@ -111,10 +113,27 @@
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2c-WY-cNh">
                             <rect key="frame" x="30" y="147" width="218" height="0.0"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                             <color key="textColor" name="TextfieldTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-LA-CzI" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <rect key="frame" x="54" y="212" width="170" height="35"/>
+                            <color key="backgroundColor" name="PriceColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="OGn-kd-ueP"/>
+                                <constraint firstAttribute="width" constant="170" id="Sav-pC-WIy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                            <state key="normal" title="SEND PAYMENT LINK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="17"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -122,11 +141,13 @@
                         <constraint firstAttribute="trailing" secondItem="Kqh-6o-uZg" secondAttribute="trailing" id="AP6-2T-s2E"/>
                         <constraint firstItem="Kqh-6o-uZg" firstAttribute="top" secondItem="aPV-tX-OXA" secondAttribute="top" id="Iiy-sh-360"/>
                         <constraint firstItem="Kqh-6o-uZg" firstAttribute="leading" secondItem="aPV-tX-OXA" secondAttribute="leading" id="QsC-oG-fKx"/>
-                        <constraint firstAttribute="bottom" secondItem="620-hY-0qM" secondAttribute="bottom" constant="25" id="RcJ-KV-NS4"/>
                         <constraint firstItem="q2c-WY-cNh" firstAttribute="top" secondItem="Kqh-6o-uZg" secondAttribute="bottom" constant="12" id="VA5-eF-dS2"/>
                         <constraint firstAttribute="trailing" secondItem="q2c-WY-cNh" secondAttribute="trailing" constant="30" id="ag1-nx-3ph"/>
+                        <constraint firstItem="e5X-LA-CzI" firstAttribute="top" secondItem="620-hY-0qM" secondAttribute="bottom" constant="15" id="l93-Wk-0vd"/>
+                        <constraint firstItem="e5X-LA-CzI" firstAttribute="centerX" secondItem="620-hY-0qM" secondAttribute="centerX" id="nho-Xv-NuK"/>
                         <constraint firstItem="q2c-WY-cNh" firstAttribute="leading" secondItem="aPV-tX-OXA" secondAttribute="leading" constant="30" id="pXO-gw-RgA"/>
                         <constraint firstItem="620-hY-0qM" firstAttribute="top" secondItem="q2c-WY-cNh" secondAttribute="bottom" constant="15" id="xAs-4U-mVg"/>
+                        <constraint firstAttribute="bottom" secondItem="e5X-LA-CzI" secondAttribute="bottom" constant="15" id="zbN-of-ZJW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -149,11 +170,17 @@
         <designable name="ceG-8W-yi6">
             <size key="intrinsicContentSize" width="285" height="80"/>
         </designable>
+        <designable name="e5X-LA-CzI">
+            <size key="intrinsicContentSize" width="131" height="28"/>
+        </designable>
     </designables>
     <resources>
         <image name="canceljob_popup_icon" width="496" height="496.5"/>
         <image name="popup_noBtn" width="285" height="80"/>
         <image name="popup_yesBtn" width="285" height="80"/>
+        <namedColor name="PriceColor">
+            <color red="0.15700000524520874" green="0.55299997329711914" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TextfieldTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

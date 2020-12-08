@@ -615,7 +615,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.parentViewController = self
             cell.acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
+                if self.icStatus == "pending" || self.dlStatus == "pending" {
+                    self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
+                } else {
                 self.acceptRoute(lrID: self.routes[indexPath.row].lr_id)
+                }
             }).disposed(by: disposeBag)
             return cell
         }

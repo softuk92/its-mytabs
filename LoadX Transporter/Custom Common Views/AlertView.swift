@@ -19,6 +19,8 @@ public class AlertView: UIView, NibOwnerLoadable {
     @IBOutlet weak public var yes: UIButton!
     @IBOutlet weak public var no: UIButton!
     @IBOutlet weak public var ensure: UILabel!
+    @IBOutlet weak public var sendPaymentLink: UIButton!
+    @IBOutlet weak public var sendPaymentLinkHeight: NSLayoutConstraint!
     
     //MARK: - init
 //    required public init?(coder: NSCoder) {

@@ -63,7 +63,7 @@ class RouteDetailsViewController: UIViewController {
 
 extension RouteDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 240
+        return 255
     }
 }
 
@@ -78,7 +78,7 @@ extension RouteDetailsViewController: UITableViewDataSource {
         cell.backgroundView = nil
         cell.backgroundColor = nil
         cell.layer.shadowRadius = 10
-        cell.bindLabels(route: routeStopDetail[indexPath.row], isBooked: isBooked, allRoutes: routeStopDetail, isRouteStarted: isRouteStarted, index: indexPath.row)
+        cell.bindLabels(route: routeStopDetail[indexPath.row], isBooked: isBooked, allRoutes: routeStopDetail, isRouteStarted: isRouteStarted, index: indexPath.row, routeID: routeId)
         cell.isBooked = isBooked
         cell.parentViewController = self
 //        cell.seeStopDetails = {[weak self] (selectedCell) in

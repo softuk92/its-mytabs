@@ -145,8 +145,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         
         let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
         
-        let movingItem = paymentHistoryRow.moving_item
-        cell.moving_item.text = movingItem?.capitalized
+        if paymentHistoryRow.moving_item != nil {
+            cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
+        } else {
+            cell.moving_item.text = paymentHistoryRow.route_id ?? "null"
+        }
         
         let stringDate = paymentHistoryRow.pay_date
         

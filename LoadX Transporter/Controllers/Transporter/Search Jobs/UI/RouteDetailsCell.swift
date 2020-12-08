@@ -26,6 +26,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var btnView: UIView!
+    @IBOutlet weak var completeWidth: NSLayoutConstraint!
     
     private var disposeBag = DisposeBag()
     weak var parentViewController : UIViewController!
@@ -35,6 +36,11 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         super.awakeFromNib()
         customizedView()
     }
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     open var isBooked: Bool = false
     open var dataSource: RouteStopDetail! {
         didSet {
@@ -43,7 +49,8 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         }
     }
     
-    open func bindLabels(route: RouteStopDetail, isBooked:Bool = false, allRoutes: [RouteStopDetail] = [], isRouteStarted: String = "", index: Int = 0) {
+    open func bindLabels(route: RouteStopDetail, isBooked:Bool = false, allRoutes: [RouteStopDetail] = [], isRouteStarted: String = "", index: Int = 0, routeID: String = "") {
+        completeWidth.constant = (route.is_completed == "1") ? 54 : 0 
         stops.text = "Stop "+String(route.stop_no)
         routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
@@ -56,15 +63,15 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         }
         if !isBooked {
         name.text = "Customer Name:"
-        phone.text = route.customer_name
+            phone.text = route.customer_name.capitalized
         pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
         } else {
-        name.text = route.customer_name
+            name.text = route.customer_name.capitalized
         phone.text = route.phone_number
         pickup.text = route.lrh_postcode
         }
         time.text = route.lrh_arrival_time
-        bindActions(route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0), allRoutes: allRoutes, isRouteStarted: isRouteStarted, index: index)
+        bindActions(route: route, fullstopId: getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0), allRoutes: allRoutes, isRouteStarted: isRouteStarted, index: index, routeID: routeID)
     }
     
     func getStopId(company: String, stopId: Int) -> String {
@@ -81,7 +88,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         return fullId
     }
 
-    func bindActions(route: RouteStopDetail, fullstopId: String, allRoutes: [RouteStopDetail], isRouteStarted: String, index: Int) {
+    func bindActions(route: RouteStopDetail, fullstopId: String, allRoutes: [RouteStopDetail], isRouteStarted: String, index: Int, routeID: String) {
         seeDetails.rx.tap.subscribe(onNext: { [weak self] (_) in
             guard let self = self else { return }
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StopDetailsViewController") as? StopDetailsViewController {
@@ -91,6 +98,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
                 vc.allRoutes = allRoutes
                 vc.isRouteStarted = isRouteStarted
                 vc.routeIndex = index
+                vc.routeID = routeID
                 self.parentViewController.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)

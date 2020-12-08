@@ -503,10 +503,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             
                         } else {
                             SVProgressHUD.dismiss()
-                            let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                            print("Error \(response.result.error!)")
+                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                         }
                     }
                  else {

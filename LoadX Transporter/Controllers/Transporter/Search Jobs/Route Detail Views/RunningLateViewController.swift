@@ -15,6 +15,7 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonBackView: UIView!
     @IBOutlet weak var select: UIButton!
     @IBOutlet weak var send: UIButton!
     @IBOutlet weak var back: UIButton!
@@ -36,6 +37,8 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setupBtn() {
+//        buttonBackView.layer.borderColor = UIColor.black.cgColor
+//        buttonBackView.layer.borderWidth = 0.1
         select.rx.tap.subscribe(onNext: { [weak self] (_) in
             self?.blurView.isHidden = false
         }).disposed(by: disposeBag)
@@ -60,10 +63,12 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
             if error != nil {
                 
             }
+            print("transporter late running json \(String(describing: json))")
+            
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            print("transporter late running json \(String(describing: json))")
+            
         }
     }
     

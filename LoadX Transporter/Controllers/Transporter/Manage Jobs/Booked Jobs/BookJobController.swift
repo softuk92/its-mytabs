@@ -37,10 +37,15 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var ref_no_lbl: UILabel!
     @IBOutlet weak var contact_name_lbl: UILabel!
     @IBOutlet weak var contact_no_lbl: UILabel!
+    @IBOutlet weak var jobIdName: UILabel!
+    @IBOutlet weak var topLabel: UILabel!
     
     var ref_no: String?
     var contact_no: String?
     var contactName: String?
+    var isRoute: Bool = false
+    var lrhJobId = ""
+    var lrID = ""
     
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
@@ -98,6 +103,10 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
        }
     
     override func viewDidAppear(_ animated: Bool) {
+        if isRoute {
+        self.topLabel.text = "Stop Complete Proof"
+        self.jobIdName.text = "Route ID"
+        }
         self.ref_no_lbl.text = ref_no
         self.contact_name_lbl.text = contactName
         self.contact_no_lbl.text = contact_no
@@ -179,15 +188,23 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         if self.signature_Image.image != nil {
             signature_imagePicked = 1
         }
-        
-        completeJobData()
+        if isRoute {
+        completeJobData(url: main_URL+"api/completeRouteFromDashboard")
+        } else {
+        completeJobData(url: main_URL+"api/transporterCompleteJobData")
+        }
     }
     
-    func completeJobData() {
+    func completeJobData(url: String) {
         SVProgressHUD.show(withStatus: "Completing Job...")
-        if user_id != nil && jb_id != nil && receiverName.text != "" {
-            let updateBid_URL = main_URL+"api/transporterCompleteJobData"
-            let parameters = ["jb_id" : jb_id!, "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat, "del_long": long]
+        if user_id != nil && receiverName.text != "" {
+//            let updateBid_URL = main_URL+"api/transporterCompleteJobData"
+            var params = [String: Optional<String>]()
+            if isRoute {
+                params = ["user_id" : user_id!, "lrh_job_id" : lrhJobId, "lr_id" : lrID, "receivername" : self.receiverName.text!]
+            } else {
+                params = ["jb_id" : jb_id ?? "", "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat, "del_long": long]
+            }
            
             if imagePicked == 1 {
                 var image1 = myImage1.image
@@ -201,7 +218,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
             }
             Alamofire.upload(multipartFormData: {
                 (multipartFormData) in
-                for (key, value) in parameters {
+                for (key, value) in params {
                     multipartFormData.append(value!.data(using: .utf8)!, withName: key)
                 }
                 if self.imagePicked == 1 {
@@ -210,7 +227,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                 if self.signature_imagePicked == 1 {
                     multipartFormData.append(self.imageData2!, withName: "del_signature_img", fileName: "swift_file2.jpeg", mimeType: "image/jpeg")
                 }
-            }, to:updateBid_URL)
+            }, to:url)
             { (result) in
                 switch result {
                 case .success(let upload, _, _):
@@ -228,9 +245,15 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                             SVProgressHUD.dismiss()
                             if result == "1" {
                       //          self.performSegue(withIdentifier: "complete", sender: self)
+                                if self.isRoute {
+                                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteCompleted") as? SuccessController
+                                 
+                                    self.navigationController?.pushViewController(vc!, animated: true)
+                                } else {
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "completedJob") as? SuccessController
                          
                             self.navigationController?.pushViewController(vc!, animated: true)
+                                }
                             } else {
                                 self.present(showAlert(title: "Error", message: message), animated: true, completion: nil)
                             }

@@ -70,6 +70,7 @@
 		4E59299223E9CA95007A3C09 /* Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */; };
 		4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */; };
 		4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */; };
+		4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */; };
 		4E7C9BD125645D13003BC22B /* BookedJobsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */; };
 		4E818285241B92A8005D3EC9 /* VC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818284241B92A8005D3EC9 /* VC1.swift */; };
 		4E818287241B92BB005D3EC9 /* VC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818286241B92BB005D3EC9 /* VC2.swift */; };
@@ -261,6 +262,7 @@
 		4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_ViewController.swift; sourceTree = "<group>"; };
 		4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reach_Us_ViewController.swift; sourceTree = "<group>"; };
 		4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help_ViewController.swift; sourceTree = "<group>"; };
+		4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedJobsFunctions.swift; sourceTree = "<group>"; };
 		4E818284241B92A8005D3EC9 /* VC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1.swift; sourceTree = "<group>"; };
 		4E818286241B92BB005D3EC9 /* VC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC2.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */,
 				4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */,
 				4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */,
+				4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1202,6 +1205,7 @@
 				4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */,
 				8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */,
 				8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */,
+				4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */,
 				8DE8FAFF220074EE009309F8 /* SuccessController.swift in Sources */,
 				8D48C1FD2224257C00417EF5 /* CompletedJobsCell.swift in Sources */,
 				8D4385EA2224495200A3CE7F /* ActivityLogListCell.swift in Sources */,
@@ -1380,7 +1384,7 @@
 				CODE_SIGN_ENTITLEMENTS = "LoadX Transporter/CTS Move Transporter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4.1;
+				CURRENT_PROJECT_VERSION = 4.2;
 				DEVELOPMENT_TEAM = YDM486DL29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1392,7 +1396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.29;
+				MARKETING_VERSION = 3.32;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1413,7 +1417,7 @@
 				CODE_SIGN_ENTITLEMENTS = "LoadX Transporter/CTS Move Transporter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4.1;
+				CURRENT_PROJECT_VERSION = 4.2;
 				DEVELOPMENT_TEAM = YDM486DL29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1425,7 +1429,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.29;
+				MARKETING_VERSION = 3.32;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
