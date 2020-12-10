@@ -16,7 +16,6 @@ public class AlertViewWithDesciption: UIView, NibOwnerLoadable {
     @IBOutlet weak public var centerView: UIView!
     @IBOutlet weak public var imageView: UIImageView!
     @IBOutlet weak public var question: UILabel!
-    @IBOutlet weak public var yes: UIButton!
     @IBOutlet weak public var no: UIButton!
     
     //MARK: - init

@@ -17,6 +17,7 @@ class JobsInProgressCell: UITableViewCell {
     @IBOutlet weak var deliverDateIcon: UIImageView!
     @IBOutlet weak var deliveryDate_lbl: UILabel!
     @IBOutlet weak var jobCompleted_btn: UIButton!
+    @IBOutlet weak var businessCharges: UILabel!
    /* @IBOutlet weak var remianing_amount_lbl: UILabel!
     @IBOutlet weak var amount_view: UIView!
     @IBOutlet weak var customerInfo_view: UIView!

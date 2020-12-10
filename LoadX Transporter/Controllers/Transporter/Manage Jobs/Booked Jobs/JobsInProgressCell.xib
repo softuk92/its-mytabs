@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-A0-63q">
-                                <rect key="frame" x="90" y="45" width="70" height="51"/>
+                                <rect key="frame" x="90" y="45" width="70" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="gEr-Te-a8p"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkm-pv-2pN">
-                                <rect key="frame" x="301.5" y="63.5" width="32.5" height="14.5"/>
+                                <rect key="frame" x="301.5" y="53" width="32.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -78,14 +78,14 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location........................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfN-0c-OJD">
                                         <rect key="frame" x="28" y="0.0" width="291" height="25"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickDropLine" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-LV-UQm">
-                                <rect key="frame" x="15" y="135" width="15" height="25"/>
+                                <rect key="frame" x="15" y="131" width="15" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="Ivi-cN-53F"/>
                                 </constraints>
@@ -102,7 +102,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoff Location........................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78n-vK-VEX">
                                         <rect key="frame" x="28" y="0.0" width="291" height="25"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -116,13 +116,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Delivery Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da0-me-TX8">
-                                <rect key="frame" x="38" y="195" width="86" height="16"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                <rect key="frame" x="38" y="194.5" width="92.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syv-rZ-Obt">
-                                <rect key="frame" x="134" y="196" width="68" height="14.5"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <rect key="frame" x="140.5" y="195" width="74" height="16"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -169,6 +169,11 @@
                                     <action selector="deleteBtn:" destination="IZ3-NE-76X" eventType="touchUpInside" id="qfu-Ut-sZu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C + ULEZ Charges Inclusive : £24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8n-03-JPS">
+                                <rect key="frame" x="90" y="82.5" width="244" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
@@ -178,27 +183,30 @@
                             <constraint firstItem="vY4-MJ-boq" firstAttribute="leading" secondItem="hEe-79-UKk" secondAttribute="trailing" constant="10" id="9pq-92-3j5"/>
                             <constraint firstItem="Wz2-sL-Jnj" firstAttribute="bottom" secondItem="AWD-39-aan" secondAttribute="bottom" id="FIY-IP-ymq"/>
                             <constraint firstItem="wzP-k7-KWf" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" id="Fhf-1B-JpG"/>
+                            <constraint firstItem="q8n-03-JPS" firstAttribute="leading" secondItem="Tep-A0-63q" secondAttribute="leading" id="Fxt-zG-00f"/>
                             <constraint firstItem="YjU-LV-UQm" firstAttribute="centerX" secondItem="K1D-y7-yTf" secondAttribute="centerX" id="G3j-JC-PmY"/>
                             <constraint firstItem="AWD-39-aan" firstAttribute="top" secondItem="fLh-BX-mZG" secondAttribute="bottom" constant="24" id="HO9-b0-BD7"/>
+                            <constraint firstItem="q8n-03-JPS" firstAttribute="trailing" secondItem="Nkm-pv-2pN" secondAttribute="trailing" id="Hpa-rb-Mh6"/>
                             <constraint firstItem="AWD-39-aan" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" id="KbY-7d-gk8"/>
                             <constraint firstItem="Tep-A0-63q" firstAttribute="top" secondItem="vY4-MJ-boq" secondAttribute="bottom" constant="10" id="Ph7-BU-DYf"/>
                             <constraint firstItem="Wz2-sL-Jnj" firstAttribute="width" secondItem="GLA-Dr-fRe" secondAttribute="width" multiplier="0.485" id="PqC-8G-5xY"/>
                             <constraint firstItem="vY4-MJ-boq" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" constant="15" id="Q3b-s5-v9P"/>
                             <constraint firstItem="zdH-w5-pzs" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="10" id="RxI-bk-XAG"/>
-                            <constraint firstItem="Nkm-pv-2pN" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" constant="63.5" id="TAn-LX-eCT"/>
                             <constraint firstItem="Tep-A0-63q" firstAttribute="leading" secondItem="vY4-MJ-boq" secondAttribute="leading" id="Tu1-v3-e2A"/>
                             <constraint firstAttribute="bottom" secondItem="AWD-39-aan" secondAttribute="bottom" id="VX4-RM-agc"/>
+                            <constraint firstItem="q8n-03-JPS" firstAttribute="top" secondItem="Nkm-pv-2pN" secondAttribute="bottom" constant="15" id="WeB-gQ-a6Y"/>
                             <constraint firstAttribute="trailing" secondItem="zdH-w5-pzs" secondAttribute="trailing" constant="30" id="aw1-MR-RE6"/>
                             <constraint firstItem="fLh-BX-mZG" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="10" id="bkM-It-PXh"/>
                             <constraint firstItem="da0-me-TX8" firstAttribute="leading" secondItem="fLh-BX-mZG" secondAttribute="trailing" constant="8" id="eWc-ev-Odi"/>
                             <constraint firstItem="fLh-BX-mZG" firstAttribute="top" secondItem="i9K-Jd-nrU" secondAttribute="bottom" constant="19" id="fV3-O7-XiW"/>
                             <constraint firstItem="syv-rZ-Obt" firstAttribute="centerY" secondItem="da0-me-TX8" secondAttribute="centerY" id="gsV-3r-gCX"/>
-                            <constraint firstItem="YjU-LV-UQm" firstAttribute="top" secondItem="zdH-w5-pzs" secondAttribute="bottom" constant="4" id="jEq-fr-Kb6"/>
-                            <constraint firstItem="K1D-y7-yTf" firstAttribute="top" secondItem="YjU-LV-UQm" secondAttribute="bottom" constant="-10" id="jH6-Mb-3DR"/>
+                            <constraint firstItem="Nkm-pv-2pN" firstAttribute="centerY" secondItem="Tep-A0-63q" secondAttribute="centerY" id="igf-2d-2xl"/>
+                            <constraint firstItem="YjU-LV-UQm" firstAttribute="top" secondItem="zdH-w5-pzs" secondAttribute="bottom" id="jEq-fr-Kb6"/>
+                            <constraint firstItem="K1D-y7-yTf" firstAttribute="top" secondItem="YjU-LV-UQm" secondAttribute="bottom" id="jH6-Mb-3DR"/>
                             <constraint firstItem="syv-rZ-Obt" firstAttribute="leading" secondItem="da0-me-TX8" secondAttribute="trailing" constant="10" id="kvz-YO-m33"/>
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="trailing" secondItem="zdH-w5-pzs" secondAttribute="trailing" id="lZ7-PW-B5N"/>
                             <constraint firstAttribute="trailing" secondItem="wzP-k7-KWf" secondAttribute="trailing" id="nyd-jP-Mn4"/>
-                            <constraint firstItem="zdH-w5-pzs" firstAttribute="top" secondItem="Tep-A0-63q" secondAttribute="bottom" constant="10" id="oqI-5v-GOw"/>
+                            <constraint firstItem="zdH-w5-pzs" firstAttribute="top" secondItem="Tep-A0-63q" secondAttribute="bottom" constant="31" id="oqI-5v-GOw"/>
                             <constraint firstItem="hEe-79-UKk" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="10" id="piz-E1-K4f"/>
                             <constraint firstItem="hEe-79-UKk" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" constant="5" id="rYh-oY-m7L"/>
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="leading" secondItem="zdH-w5-pzs" secondAttribute="leading" id="s5N-S4-UYb"/>
@@ -221,6 +229,7 @@
             <viewLayoutGuide key="safeArea" id="6mB-1d-0bs"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="businessCharges" destination="q8n-03-JPS" id="P2C-k6-bjJ"/>
                 <outlet property="businessPatti" destination="wzP-k7-KWf" id="8wZ-mh-7l7"/>
                 <outlet property="cellbackground_view" destination="r9R-5V-3go" id="1Fr-Pk-BAe"/>
                 <outlet property="date" destination="syv-rZ-Obt" id="AUS-wP-Zek"/>

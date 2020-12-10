@@ -73,5 +73,9 @@ public func getAddress(street: String, route: String, city: String, postcode: St
             fullAddress = address2+" "+postcode
         }
     }
+    if street == "" && route == "" && postcode == "" && city != "" {
+        return city.capitalized
+    } else {
     return fullAddress
+    }
 }

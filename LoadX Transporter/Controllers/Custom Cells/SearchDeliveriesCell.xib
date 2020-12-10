@@ -34,6 +34,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="FKZ-wa-MhB"/>
                                     <constraint firstAttribute="height" constant="75" id="VCY-KS-OhQ"/>
+                                    <constraint firstAttribute="width" secondItem="L9r-P1-pCZ" secondAttribute="height" multiplier="1:1" id="fY6-QE-AjF"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -62,9 +63,8 @@
                                 <color key="textColor" name="PriceColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sssss" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RLl-ZJ-fez">
-                                <rect key="frame" x="204" y="50" width="137" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Recovery Truck" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLl-ZJ-fez">
+                                <rect key="frame" x="241" y="53.5" width="104" height="12"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -182,7 +182,7 @@
                             <constraint firstAttribute="bottom" secondItem="B6u-yR-lT9" secondAttribute="bottom" id="JJm-iZ-gMw"/>
                             <constraint firstItem="fx5-7H-CpZ" firstAttribute="centerX" secondItem="M7h-2j-z1D" secondAttribute="centerX" id="K1A-Be-4W3"/>
                             <constraint firstItem="Lde-Bz-aRI" firstAttribute="leading" secondItem="B6u-yR-lT9" secondAttribute="trailing" constant="12" id="KTE-0D-eRt"/>
-                            <constraint firstItem="RLl-ZJ-fez" firstAttribute="leading" secondItem="1BR-ge-MtI" secondAttribute="trailing" constant="54" id="OgG-re-vEe"/>
+                            <constraint firstAttribute="trailing" secondItem="RLl-ZJ-fez" secondAttribute="trailing" constant="10" id="LeC-Dk-Xl8"/>
                             <constraint firstAttribute="trailing" secondItem="gyD-UW-u8Q" secondAttribute="trailing" id="PBC-Yp-AGt"/>
                             <constraint firstItem="L9r-P1-pCZ" firstAttribute="top" secondItem="IDW-eC-z0W" secondAttribute="top" constant="10" id="QIn-2Z-UFe"/>
                             <constraint firstItem="fx5-7H-CpZ" firstAttribute="top" secondItem="M7h-2j-z1D" secondAttribute="bottom" id="RDl-Fe-Kb9"/>
@@ -190,6 +190,7 @@
                             <constraint firstItem="UC1-B9-hOm" firstAttribute="centerY" secondItem="D14-D8-2F5" secondAttribute="centerY" id="Up7-AR-F4B"/>
                             <constraint firstItem="D14-D8-2F5" firstAttribute="top" secondItem="fx5-7H-CpZ" secondAttribute="bottom" id="XS0-0w-5v1"/>
                             <constraint firstItem="Lde-Bz-aRI" firstAttribute="bottom" secondItem="B6u-yR-lT9" secondAttribute="bottom" id="bMD-Xt-jtj"/>
+                            <constraint firstItem="RLl-ZJ-fez" firstAttribute="centerY" secondItem="1BR-ge-MtI" secondAttribute="centerY" id="bV1-ty-4FK"/>
                             <constraint firstItem="M7h-2j-z1D" firstAttribute="leading" secondItem="L9r-P1-pCZ" secondAttribute="leading" id="dBa-xH-MZ9"/>
                             <constraint firstItem="B6u-yR-lT9" firstAttribute="leading" secondItem="IDW-eC-z0W" secondAttribute="leading" id="gZ5-2e-fZd"/>
                             <constraint firstItem="Gtk-21-UbG" firstAttribute="leading" secondItem="M7h-2j-z1D" secondAttribute="trailing" constant="8" id="hib-bn-ifQ"/>

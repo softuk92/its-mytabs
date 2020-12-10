@@ -302,7 +302,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             return 326
         }
-        return 280
+        return 311
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -389,9 +389,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if is_companyJob == "1" {
             cell.businessPatti.isHidden = false
             cell.widthBusiness.constant = 65
+            cell.businessCharges.isHidden = false
         } else {
             cell.businessPatti.isHidden = true
             cell.widthBusiness.constant = 0
+            cell.businessCharges.isHidden = true
         }
         
         let bookedJob_id = jobsInProgressRow.is_booked_job
@@ -454,13 +456,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.contact_person = self.jobsInProgressModel[indexPath.row].contact_person
             self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
             self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                    self.jobComplete_popview.layer.cornerRadius = 18
-                    self.tableView.alpha = 0.5
-                    self.view.addSubview(self.jobComplete_popview)
-                    self.jobComplete_popview.center = self.view.center
-                      })
+            self.showCompleteAlertView()
+//            UIView.animate(withDuration: 0.3, animations: {
+//                    self.jobComplete_popview.layer.cornerRadius = 18
+//                    self.tableView.alpha = 0.5
+//                    self.view.addSubview(self.jobComplete_popview)
+//                    self.jobComplete_popview.center = self.view.center
+//                      })
            
             }
         
@@ -469,7 +471,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-             UIView.animate(withDuration: 0.3, animations: {
+
+            UIView.animate(withDuration: 0.3, animations: {
                         self.jobCancel_popview.layer.cornerRadius = 18
                         self.tableView.alpha = 0.5
                         self.jobCancelReason.text = "Are you sure you want to cancel this job?"
@@ -520,6 +523,33 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
         
+    }
+    
+    func showCompleteAlertView() {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.question.text = "Has the job been completed?"
+        aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof                      "
+        aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            if let vc = self.sb.instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
+                vc.contact_no = self.contact_no
+                vc.ref_no = self.refference_no
+                vc.contactName = self.contact_person
+            self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }).disposed(by: disposeBag)
+
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

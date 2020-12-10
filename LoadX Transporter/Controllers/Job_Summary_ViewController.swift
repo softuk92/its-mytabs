@@ -82,6 +82,8 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let dropoffLift = jsonData[0]["dropoff_lift"].stringValue
         let pickupPropertyType = jsonData[0]["pickup_prop_type"].stringValue
         let dropoffPropertyType = jsonData[0]["dropoff_prop_type"].stringValue
+        let pickupHouseNo = jsonData[0]["pu_house_no"].stringValue
+        let dropoffHouseNo = jsonData[0]["do_house_no"].stringValue
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))

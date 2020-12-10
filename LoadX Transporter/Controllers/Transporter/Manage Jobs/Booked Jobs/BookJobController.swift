@@ -203,7 +203,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
             if isRoute {
                 params = ["user_id" : user_id!, "lrh_job_id" : lrhJobId, "lr_id" : lrID, "receivername" : self.receiverName.text!]
             } else {
-                params = ["jb_id" : jb_id ?? "", "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat, "del_long": long]
+                params = ["jb_id" : jb_id ?? "", "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat ?? "0.0", "del_long": long ?? "0.0"]
             }
            
             if imagePicked == 1 {

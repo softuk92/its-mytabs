@@ -302,6 +302,7 @@ class StopDetailsViewController: UIViewController {
         aView.question.text = "Have this stop been completed?"
         aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof     "
         aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
         
@@ -320,6 +321,7 @@ class StopDetailsViewController: UIViewController {
     func showArrivedAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.ensure.text = ""
+        aView.sendPaymentLink.isHidden = true
         aView.sendPaymentLinkHeight.constant = 0
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
@@ -340,6 +342,7 @@ class StopDetailsViewController: UIViewController {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.ensure.text = ""
         aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
         aView.question.text = "Are you running late?"
@@ -359,6 +362,7 @@ class StopDetailsViewController: UIViewController {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.ensure.text = "Please ensure you have informed the customer and upload images of the damage report before completing stop."
         aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
     
@@ -378,6 +382,7 @@ class StopDetailsViewController: UIViewController {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.ensure.text = "Please note: The customer may pay on drop off, you can always send a payment link if the customer wants to pay via card."
         aView.sendPaymentLinkHeight.constant = 35
+        aView.sendPaymentLink.isHidden = false
         aView.question.text = "Have you collected cash on this stop?"
 //        aView.sendPaymentLink.layer.cornerRadius = 25
 //        aView.sendPaymentLink.layer.masksToBounds = false

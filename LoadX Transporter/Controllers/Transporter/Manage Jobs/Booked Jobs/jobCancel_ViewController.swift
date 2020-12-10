@@ -58,10 +58,11 @@ class jobCancel_ViewController: UIViewController {
     }
     
         func deleteBtn() {
+            guard !textView.text.isEmpty else { return self.present(showAlert(title: "Alert", message: "Please enter cancel reason"), animated: true, completion: nil)}
             SVProgressHUD.show(withStatus: "Cancelling Job...")
-            if user_id != nil && jb_id != nil && textView.text != "" {
+//            if user_id != nil && jb_id != nil && !textView.text.isEmpty {
                 let updateBid_URL = main_URL+"api/transporterCancelJobData"
-                let parameters : Parameters = ["jb_id" : jb_id!, "user_id" : user_id!, "reason_to_cancel" : textView.text]
+            let parameters : Parameters = ["jb_id" : jb_id!, "user_id" : user_id!, "reason_to_cancel" : textView.text!]
                 if Connectivity.isConnectedToInternet() {
                     Alamofire.request(updateBid_URL, method : .post, parameters : parameters).responseJSON {
                         response in
@@ -96,17 +97,17 @@ class jobCancel_ViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
-            } else {
-                SVProgressHUD.dismiss()
-                let alert = UIAlertController(title: "Error!", message: "Please enter Reason of cancellation", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+//            } else {
+//                SVProgressHUD.dismiss()
+//                let alert = UIAlertController(title: "Error!", message: "Please enter Reason of cancellation", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }
         }
     
     func cancelRoute() {
         guard textView.text != "" else { return self.present(showAlert(title: "Alert", message: "Please enter cancel reason"), animated: true, completion: nil)}
-        APIManager.apiPost(serviceName: "api/cancelRoute", parameters: ["lr_id" : lr_id ?? "", "user_id" : user_id!, "reason_to_cancel" : textView.text]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/cancelRoute", parameters: ["lr_id" : lr_id ?? "", "user_id" : user_id!, "reason_to_cancel" : textView.text!]) { (data, json, error) in
             if error != nil {
                 
             }

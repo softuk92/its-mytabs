@@ -297,7 +297,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         }
                         
                         let customerName = jsonData[0]["user_name"].stringValue
-                        self.customer_name.text = user_name
+                        self.customer_name.text = customerName.capitalized
 //                        customerName.capitalized
                         self.customer_name2.text = user_name
 //                            customerName.capitalized

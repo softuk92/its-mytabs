@@ -359,27 +359,38 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
 ////                fullName_img.image = UIImage(named: "errorIcon")
 //                fullName.placeholderColor = UIColor.red
 //            }else
+        if fullName.text == "" {
+          //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
+                           
+            fullName.attributedPlaceholder = NSAttributedString(string: "Please enter full name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            
+        }
         if  email_address.text == "" {
           //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
                            
-            address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            email_address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
-        } else if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) != true {
+        }
+        if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) != true {
                 
-        address.attributedPlaceholder = NSAttributedString(string: "Please enter valid phone number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        phone_no.attributedPlaceholder = NSAttributedString(string: "Please enter 11 digit number start with 0 ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         
-           SVProgressHUD.showError(withStatus: "Please enter 11 digit number start with 0 ")
+//           SVProgressHUD.showError(withStatus: "Please enter 11 digit number start with 0 ")
                 
-            }else if self.address.text == "" {
+            }
+        if self.address.text == "" {
             address.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
            //  SVProgressHUD.showError(withStatus: "Please Enter Address ")
-        }else if self.van_type.text == "" {
+        }
+        if self.van_type.text == "" {
             van_type.attributedPlaceholder = NSAttributedString(string: "Enter Van Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             // SVProgressHUD.showError(withStatus: "Please Enter Van Type ")
-        }else if self.vehicle_reg_no.text == "" {
+        }
+        if self.vehicle_reg_no.text == "" {
             vehicle_reg_no.attributedPlaceholder = NSAttributedString(string: "Enter Vehicle Reg.No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             // SVProgressHUD.showError(withStatus: "Please Enter Vehicle Reg Number ")
-        }else{
+        }
+        if fullName.text != "" && email_address.text != "" && phone_no.text != "" && address.text != "" && van_type.text != "" && vehicle_reg_no.text != "" {
             registerTransporter()
         }
     

@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Montserrat-Light.otf">
             <string>Montserrat-Light</string>
         </array>
-        <array key="Ubuntu-B.ttf">
-            <string>Ubuntu-Bold</string>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
         </array>
         <array key="Ubuntu-L.ttf">
             <string>Ubuntu-Light</string>
-        </array>
-        <array key="Ubuntu-M.ttf">
-            <string>Ubuntu-Medium</string>
         </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentHistory" rowHeight="199" id="jwi-mg-XYH" customClass="PaymentHistoryCell" customModule="LoadX_Transporter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentHistory" rowHeight="216" id="jwi-mg-XYH" customClass="PaymentHistoryCell" customModule="LoadX_Transporter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="167"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jwi-mg-XYH" id="TIu-Vr-Zce">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="366" height="167"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aj0-GS-Ah8">
-                        <rect key="frame" x="10" y="10" width="330" height="130"/>
+                        <rect key="frame" x="10" y="10" width="346" height="147"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-r3-91L">
-                                <rect key="frame" x="85" y="8" width="237" height="20"/>
+                                <rect key="frame" x="85" y="8" width="253" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5db-54-mQT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid - Initial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cB4-DA-GNi">
-                                <rect key="frame" x="85" y="36" width="90" height="20"/>
+                                <rect key="frame" x="85" y="36" width="80" height="20"/>
                                 <color key="backgroundColor" red="0.21568627450980393" green="0.66666666666666663" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Lp9-na-URg"/>
+                                    <constraint firstAttribute="width" constant="80" id="Lp9-na-URg"/>
                                     <constraint firstAttribute="height" constant="20" id="mQF-xd-395"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="14"/>
-                                <color key="textColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -59,29 +57,31 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice #:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTg-yf-L3s">
-                                <rect key="frame" x="33" y="83.5" width="54" height="14.5"/>
-                                <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="12"/>
+                                <rect key="frame" x="33" y="83.5" width="52" height="14"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-NE-IZQ">
-                                <rect key="frame" x="92" y="83.5" width="67" height="14.5"/>
+                                <rect key="frame" x="90" y="83.5" width="69" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
-                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzX-VP-7SG">
-                                <rect key="frame" x="33" y="108.5" width="30" height="14.5"/>
-                                <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="12"/>
+                                <rect key="frame" x="33" y="108.5" width="28.5" height="14"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1to-u4-4T6">
-                                <rect key="frame" x="68" y="108.5" width="67" height="14.5"/>
+                                <rect key="frame" x="66.5" y="108.5" width="69" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
-                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaT-rT-GkW" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="200" y="85" width="130" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaT-rT-GkW" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="216" y="102" width="130" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.82956629991531372" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="505-fI-Tz5"/>
@@ -121,7 +121,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cB4-DA-GNi" firstAttribute="top" secondItem="RlR-r3-91L" secondAttribute="bottom" constant="8" symbolic="YES" id="0mT-4w-d7F"/>
                             <constraint firstItem="XzX-VP-7SG" firstAttribute="leading" secondItem="wB8-HU-4Ew" secondAttribute="trailing" constant="8" id="3Av-Ks-hdE"/>
@@ -150,6 +150,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Aj0-GS-Ah8" firstAttribute="leading" secondItem="TIu-Vr-Zce" secondAttribute="leading" constant="10" id="6lb-No-e37"/>
                     <constraint firstItem="Aj0-GS-Ah8" firstAttribute="top" secondItem="TIu-Vr-Zce" secondAttribute="top" constant="10" id="F7Z-U9-btK"/>
@@ -158,6 +159,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="mKQ-v3-ezD"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="cell_view" destination="Aj0-GS-Ah8" id="dmx-CR-lNH"/>
                 <outlet property="date_lbl" destination="XzX-VP-7SG" id="IQV-me-oss"/>
@@ -168,12 +170,20 @@
                 <outlet property="paid" destination="cB4-DA-GNi" id="Z2A-At-LYb"/>
                 <outlet property="viewInvocie_btn" destination="GaT-rT-GkW" id="aA6-Kb-e90"/>
             </connections>
-            <point key="canvasLocation" x="321.60000000000002" y="124.13793103448276"/>
+            <point key="canvasLocation" x="334.39999999999998" y="131.78410794602701"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="GaT-rT-GkW">
+            <size key="intrinsicContentSize" width="84" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bookJobDelivery_date" width="28" height="29"/>
         <image name="dashborad_invocieNo_icon" width="28" height="28"/>
         <image name="notfound" width="111.5" height="111"/>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

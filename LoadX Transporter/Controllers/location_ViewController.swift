@@ -54,7 +54,7 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
         detailView.layer.shadowRadius = 3.0
         mapViewX.layer.cornerRadius = 10.0
         mapViewX.delegate = self
-        mapViewX.settings.zoomGestures = false
+        mapViewX.settings.zoomGestures = true
         
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark   {

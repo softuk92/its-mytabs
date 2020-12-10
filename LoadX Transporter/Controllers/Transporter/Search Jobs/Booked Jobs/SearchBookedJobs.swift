@@ -483,7 +483,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                 do {
                     self.searchBookModel.removeAll()
                     if let jsonD = try JSONSerialization.jsonObject(with: data ?? Data(), options: .mutableContainers) as? NSArray {
-                  
+                        
                         if let j = jsonD[0] as? [String:Any] {
                             for (key, value) in j {
                                 if key == "result" {
@@ -692,13 +692,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         
-        cell.bidNowRow = { (selectedCell) in
+        cell.bidNowRow = {[weak self] (selectedCell) in
+            guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             if user_id != nil {
                 if self.icStatus == "pending" || self.dlStatus == "pending" {
-                    self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
-                } else if ic_status == "Reject" || dl_status == "Reject" || ic_status == "" || dl_status == "" {
+                    self.showApprovalAlert()
+//                    self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
+                } else if self.icStatus == "Reject" || self.dlStatus == "Reject" || self.icStatus == "" || self.dlStatus == "" {
                     let alert = UIAlertController(title: "Alert!", message: "Please upload your documents.", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Upload Documents", style: .default, handler: { (action: UIAlertAction!) in
                         
@@ -841,6 +843,18 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         return cell
+    }
+    
+    func showApprovalAlert() {
+        let aView = AlertViewWithDesciption(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+//        aView.imageView.image = UIImage(named: "popup_icon")
+        
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,10 +10,12 @@ import UIKit
 
 class SuccessController: UIViewController {
     
+    @IBOutlet weak var mainBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainBtn.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
