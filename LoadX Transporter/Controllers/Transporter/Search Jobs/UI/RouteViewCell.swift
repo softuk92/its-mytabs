@@ -21,7 +21,7 @@ open class RouteViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var routeDate: UILabel!
     @IBOutlet weak var acceptRoute: UIButton!
     @IBOutlet weak var innerView: UIView!
-    @IBOutlet weak var leftBtnView: UIView!
+    @IBOutlet weak var leftBtnView: UIView!    
 
     private var disposeBag = DisposeBag()
     weak var parentViewController : UIViewController!

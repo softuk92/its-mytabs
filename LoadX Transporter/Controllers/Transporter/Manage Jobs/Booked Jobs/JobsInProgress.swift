@@ -12,6 +12,7 @@ import SwiftyJSON
 import SVProgressHUD
 import IBAnimatable
 import RxSwift
+import SwiftMessages
 
 var businessJobs : Bool?
 
@@ -778,7 +779,12 @@ extension JobsInProgress {
             let msg = json?[0]["msg"].stringValue
             let result = json?[0]["result"].stringValue
             if result == "0" {
-                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
+                SwiftMessages.show {
+                    let view = MessageView.viewFromNib(layout: .centeredView)
+                    view.bodyLabel?.text = msg
+                    return view
+                }
+//                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
             } else {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = lrID /*self.lr_id*/

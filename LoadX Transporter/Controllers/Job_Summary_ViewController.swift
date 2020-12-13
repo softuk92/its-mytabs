@@ -88,6 +88,12 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))
         
+        if pickupHouseNo != "" {
+            info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
+        }
+        if dropoffHouseNo != "" {
+            info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
+        }
         if movingFrom_lbl != "" {
         info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
         }

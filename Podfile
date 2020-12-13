@@ -35,5 +35,6 @@ target 'LoadX Transporter' do
     pod 'IQKeyboardManagerSwift', '~> 6.5'
     pod 'KMPlaceholderTextView', '~> 1.4'
     pod 'YPImagePicker', '~> 4.4.0'
+    pod 'SwiftMessages'
     
 end

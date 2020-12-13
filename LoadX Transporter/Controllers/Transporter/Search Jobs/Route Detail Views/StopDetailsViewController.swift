@@ -180,6 +180,8 @@ class StopDetailsViewController: UIViewController {
             let movingFrom = json?[0]["moving_from"].stringValue
             let distance = json?[0]["lrh_distance"].stringValue
             let helper = json?[0]["helper"].stringValue
+            let pickupHouseNo = json?[0]["pick_up_house_no"].stringValue
+            let dropoffHouseNo = json?[0]["drop_off_house_no"].stringValue
             
             if desc != "", let summaryDesc = desc {
                 self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Description", detail: [MenuItemStruct.init(title: summaryDesc, value: "")]))
@@ -187,8 +189,14 @@ class StopDetailsViewController: UIViewController {
             
             if shipmentType == "Pickup Shipment" {
                 info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom ?? ""))
+                if pickupHouseNo != "", let pickup = pickupHouseNo {
+                    info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickup))
+                }
             } else {
                 info.append(MenuItemStruct.init(title: "Moving To", value: movingTo ?? ""))
+                if dropoffHouseNo != "", let dropoff = dropoffHouseNo {
+                    info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoff))
+                }
             }
             var noOfHelper = ""
             if helper == "0" {
@@ -196,7 +204,7 @@ class StopDetailsViewController: UIViewController {
             } else if helper == "1" {
                 noOfHelper = "Driver Only"
             } else {
-                noOfHelper = "Driver + \(helper ?? "") Helper"
+                noOfHelper = "Driver + \(helper ?? "") Helpers"
             }
             
             info.append(MenuItemStruct.init(title: "No of Helpers", value: noOfHelper))

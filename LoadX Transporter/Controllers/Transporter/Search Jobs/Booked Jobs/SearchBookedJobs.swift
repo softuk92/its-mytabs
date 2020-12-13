@@ -17,6 +17,7 @@ import GoogleMaps
 import GooglePlaces
 import CoreLocation
 import RxSwift
+import SwiftMessages
 
 var bookedPriceBool : Bool?
 

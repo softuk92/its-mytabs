@@ -14,6 +14,7 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var routeId: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressIcon: UIImageView!
     @IBOutlet weak var pickup: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var phone: UILabel!
@@ -27,6 +28,8 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var btnView: UIView!
     @IBOutlet weak var completeWidth: NSLayoutConstraint!
+    @IBOutlet weak var cashToBeCollectedView: UIView!
+    @IBOutlet weak var cashToBeCollectedViewHeight: NSLayoutConstraint!
     
     private var disposeBag = DisposeBag()
     weak var parentViewController : UIViewController!
@@ -50,10 +53,19 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
     }
     
     open func bindLabels(route: RouteStopDetail, isBooked:Bool = false, allRoutes: [RouteStopDetail] = [], isRouteStarted: String = "", index: Int = 0, routeID: String = "") {
+        if route.payment_type == "account" {
+            cashToBeCollectedView.isHidden = true
+            cashToBeCollectedViewHeight.constant = 0
+        }
+//        else {
+//            cashToBeCollectedView.isHidden = false
+//            cashToBeCollectedViewHeight.constant = 130
+//        }
         completeWidth.constant = (route.is_completed == "1") ? 54 : 0 
         stops.text = "Stop "+String(route.stop_no)
         routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)
         addressLabel.text = (route.lrh_type == "Pickup Shipment") ? "Pickup:" : "Dropoff:"
+        addressIcon.image = (route.lrh_type == "Pickup Shipment") ? UIImage.init(named: "pickUp_icon_new") : UIImage.init(named: "dropOff_new")
         price.text = "£"+String(format: "%.2f", Double(route.price) ?? 0.0)
         if route.pickup_lrh_stop_no != "N/A" && route.pickup_lrh_stop_no != "" {
             dropoffStopNumber.isHidden = false
