@@ -178,6 +178,8 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                                 UserDefaults.standard.set(self.driverEarning, forKey: "total_earning")
                                                           
                             }
+                            
+                            UserDefaults.standard.setValue(jsonData[0]["RoutingEarning"].stringValue, forKey: "routeEarning")
                            self.view.layoutIfNeeded()
                         } else {
                             SVProgressHUD.dismiss()

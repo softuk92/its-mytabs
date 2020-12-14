@@ -30,7 +30,7 @@
                         <rect key="frame" x="10" y="25" width="70" height="25"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSw-y5-Ufg">
-                                <rect key="frame" x="15.5" y="4.5" width="39" height="16"/>
+                                <rect key="frame" x="15.5" y="5" width="39" height="15.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                         <rect key="frame" x="10" y="50" width="366" height="181"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LS202J17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-i9-RlW">
-                                <rect key="frame" x="10" y="22" width="72" height="19.5"/>
+                                <rect key="frame" x="10" y="22" width="72.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,16 +87,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bw9-Cd-Xof">
-                                                <rect key="frame" x="45" y="6" width="83" height="28.5"/>
+                                                <rect key="frame" x="48" y="6" width="77" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mc C Williams" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpO-OO-piw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="14.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="14"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="078 6468 132" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-cP-FdJ">
-                                                        <rect key="frame" x="10" y="16.5" width="63" height="12"/>
+                                                        <rect key="frame" x="8" y="16" width="61.5" height="12"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -152,19 +152,19 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDY-zq-Xwq">
-                                <rect key="frame" x="201" y="18.5" width="103" height="27"/>
+                                <rect key="frame" x="204" y="18" width="100" height="27"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vOA-y1-2Dm">
-                                        <rect key="frame" x="12.5" y="6.5" width="78" height="13.5"/>
+                                        <rect key="frame" x="12.5" y="7" width="75" height="13"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETA:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-lO-UEZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="23" height="13.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="22.5" height="13"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="01:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43B-tu-2AL">
-                                                <rect key="frame" x="28" y="0.0" width="50" height="13.5"/>
+                                                <rect key="frame" x="27.5" y="0.0" width="47.5" height="13"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                 <color key="textColor" name="contactTextColor2"/>
                                                 <nil key="highlightedColor"/>
@@ -182,19 +182,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpn-nn-AuC">
-                                <rect key="frame" x="228" y="67" width="130" height="47.5"/>
+                                <rect key="frame" x="228" y="67" width="130" height="47"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2oj-Ta-oMm">
-                                        <rect key="frame" x="12.5" y="8" width="105" height="31.5"/>
+                                        <rect key="frame" x="12.5" y="8" width="105" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTc-J4-mgj">
-                                                <rect key="frame" x="48.5" y="0.0" width="8.5" height="14.5"/>
+                                                <rect key="frame" x="49" y="0.0" width="7" height="14"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="PriceColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Cash to be collected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mL-ef-NgS">
-                                                <rect key="frame" x="2" y="19.5" width="101" height="12"/>
+                                                <rect key="frame" x="6.5" y="19" width="92.5" height="12"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" name="TextColorSet2"/>
                                                 <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoff of Stop 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bl-5L-fAg">
-                                <rect key="frame" x="10" y="46.5" width="98" height="14.5"/>
+                                <rect key="frame" x="10" y="46" width="93" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>

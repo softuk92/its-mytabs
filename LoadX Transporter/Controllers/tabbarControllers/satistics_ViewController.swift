@@ -17,6 +17,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
 
     
     @IBOutlet weak var totalCompleted_view: UIView!
+    @IBOutlet weak var totalCompletedRoutesView: UIView!
+    @IBOutlet weak var routesEarning: UILabel!
     @IBOutlet weak var totalPrice_view: UIView!
     @IBOutlet weak var totalEarning: UILabel!
     @IBOutlet weak var totalCompletedJob_lbl: UILabel!
@@ -47,6 +49,16 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         if let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") {
         totalEarning.text = "£ \(totalEarningAmount)"
         }
+        if let routeEarning = UserDefaults.standard.string(forKey: "routeEarning") {
+            self.routesEarning.text = routeEarning
+        }
+        if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+            if isLoadxDrive == "0" {
+                self.totalCompletedRoutesView.isHidden = true
+            } else {
+                self.totalCompletedRoutesView.isHidden = false
+            }
+        }
         
         guard let totalCompletedJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
                totalCompletedJob_lbl.text =  totalCompletedJob
@@ -69,6 +81,13 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         totalPrice_view.layer.shadowOffset = CGSize(width: 2, height: 2)
         totalPrice_view.layer.shadowOpacity = 0.4
         totalPrice_view.layer.shadowRadius = 4.0
+        
+        totalCompletedRoutesView.layer.cornerRadius = 5
+        // shadow
+        totalCompletedRoutesView.layer.shadowColor = UIColor.black.cgColor
+        totalCompletedRoutesView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        totalCompletedRoutesView.layer.shadowOpacity = 0.4
+        totalCompletedRoutesView.layer.shadowRadius = 4.0
     }
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)

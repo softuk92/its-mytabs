@@ -158,6 +158,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             self.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
         }
+        getBookedJobs(url: "api/transporterInprogresJobs")
+        getRoutes()
     }
     
     func bindButtons() {
@@ -306,12 +308,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 311
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        UIView.animate(withDuration: 0.2) {
-            cell.transform = CGAffineTransform.identity
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+//        UIView.animate(withDuration: 0.2) {
+//            cell.transform = CGAffineTransform.identity
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Routes Table View

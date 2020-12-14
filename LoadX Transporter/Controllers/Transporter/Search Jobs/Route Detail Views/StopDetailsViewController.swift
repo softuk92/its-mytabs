@@ -271,10 +271,6 @@ class StopDetailsViewController: UIViewController {
             self.setArrivalButtons()
         }
         }
-        viewNextStop2.rx.tap.subscribe(onNext: {[weak self] (_) in
-            guard let self = self else { return }
-            self.setupRouteStartingBehaviour()
-        }).disposed(by: disposeBag)
 
         arrivedOrCashCollected.rx.tap.subscribe(onNext: { [weak self] (_) in
             guard let self = self else { return }
@@ -292,17 +288,19 @@ class StopDetailsViewController: UIViewController {
             self.showRunningLateAlertView()
         }).disposed(by: disposeBag)
         
-        viewNextStop.rx.tap.subscribe(onNext: {[weak self] (_) in
-            guard let self = self else { return }
-            self.setupRouteStartingBehaviour()
-        }).disposed(by: disposeBag)
-        
         reportDamage.rx.tap.subscribe(onNext: {[weak self] (_) in
             guard let self = self else { return }
             self.showDamageReportAlertView()
         }).disposed(by: disposeBag)
         
-        
+    }
+    
+    @IBAction func viewNextStp2(_ sender: UIButton) {
+        setupRouteStartingBehaviour()
+    }
+    
+    @IBAction func viewNextStp(_ sender: UIButton) {
+        setupRouteStartingBehaviour()
     }
     
     func showCompleteAlertView() {
@@ -417,16 +415,16 @@ class StopDetailsViewController: UIViewController {
         
     //view next stop
     func setupRouteStartingBehaviour() {
-        if self.routeIndex < self.allRoutes.count {
-            self.route = self.allRoutes[self.routeIndex+1]
+        if self.routeIndex < self.allRoutes.count-1 {
             self.routeIndex = self.routeIndex + 1
+            self.route = self.allRoutes[self.routeIndex]
             self.bindFields()
             self.getStopDetails()
             self.setupTwoButtons()
             if isRouteStarted == "1" {
             self.setArrivalButtons()
             }
-        } else if self.routeIndex == self.allRoutes.count {
+        } else if self.routeIndex == self.allRoutes.count-1 {
             self.navigationController?.popViewController(animated: true)
         }
     }

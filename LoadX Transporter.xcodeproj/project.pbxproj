@@ -648,6 +648,7 @@
 				8D61D3CC221D9D5600F215D4 /* Transporter */,
 				8D3E60F921F76432004EAB06 /* OnboardingController.swift */,
 				8D270CF521FB3A860016D6DD /* HomeViewController.swift */,
+				6D23536F22998DFD004C085F /* SearchJobController.swift */,
 				8DB4999D2220272A00D0887C /* RegisterViewController.swift */,
 				8D270CF721FB3CFB0016D6DD /* LoginViewController.swift */,
 				8D270D0C21FB6D7B0016D6DD /* ForgetPasswordController.swift */,
@@ -830,7 +831,6 @@
 				8D246F9922282E4F00E2B290 /* UserManaulController.swift */,
 				8D246FA82228450A00E2B290 /* FAQSTableViewController.swift */,
 				8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */,
-				6D23536F22998DFD004C085F /* SearchJobController.swift */,
 				6D2BCDE8229E9DF400C48CBF /* RegisterSuccessController.swift */,
 				4EFC62DE237EA6FC00BD32F3 /* SettingViewController.swift */,
 			);
