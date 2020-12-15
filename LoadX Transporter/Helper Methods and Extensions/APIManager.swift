@@ -57,7 +57,7 @@ class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandl
     }
 }
     
-    class func apiPostMultipart(serviceName: String, parameters: [String:Optional<String>], multipartImages: [MultipartData], completionHandler: @escaping (Data?, JSON?, Error?) -> ()) {
+    class func apiPostMultipart(serviceName: String, parameters: [String:Optional<String>], multipartImages: [MultipartData], completionHandler: @escaping (Data?, JSON?, Error?, Double?) -> ()) {
 //        if imagePicked == 1 {
 //            var image1 = myImage1.image
 //            image1 = image1?.resizeWithWidth(width: 500)
@@ -79,17 +79,18 @@ class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandl
                 
                 upload.uploadProgress(closure: { (Progress) in
                     print("Upload Progress: \(Progress.fractionCompleted)")
+                    completionHandler(nil, nil, nil, Progress.fractionCompleted)
                 })
                 
                 upload.responseJSON { response in
                     if let data = response.result.value{
                         let json = JSON(data)
-                        completionHandler(response.data,json,nil)
+                        completionHandler(response.data,json,nil, nil)
                     }
                 }
                 break
             case .failure(let encodingError):
-                completionHandler(nil,nil,encodingError)
+                completionHandler(nil,nil,encodingError, nil)
                 break
             }
         }

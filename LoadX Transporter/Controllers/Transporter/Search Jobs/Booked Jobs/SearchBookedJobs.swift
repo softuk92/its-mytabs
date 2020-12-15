@@ -234,6 +234,25 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         getProfileDetails()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        searchDeliveriesFunc {
+            if self.searchBookModel.isEmpty {
+                SVProgressHUD.dismiss()
+                self.tableView.reloadData()
+                self.routesTableView.isHidden = true
+                self.stackView.isHidden = false
+            } else {
+                SVProgressHUD.dismiss()
+                self.stackView.isHidden = true
+                self.routesTableView.isHidden = true
+                self.tableView.reloadData()
+            }
+        }
+        getRoutes()
+        bindButtons()
+        getProfileDetails()
+    }
+    
     func checkRouteAccess() {
         if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
             if isLoadxDrive == "0" {
@@ -847,7 +866,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func showApprovalAlert() {
-        let aView = AlertViewWithDesciption(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let aView = AlertViewWithDescription(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
 //        aView.imageView.image = UIImage(named: "popup_icon")
         

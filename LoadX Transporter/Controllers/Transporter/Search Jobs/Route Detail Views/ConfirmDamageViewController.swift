@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import KMPlaceholderTextView
 import YPImagePicker
+import SVProgressHUD
 
 class ConfirmDamageViewController: UIViewController {
     
@@ -101,9 +102,12 @@ class ConfirmDamageViewController: UIViewController {
             let imageData = image.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.2)
             input.append(MultipartData.init(data: imageData ?? Data(), paramName: "job_damage_image", fileName: image.description))
         }
-        APIManager.apiPostMultipart(serviceName: "api/transporterAddDamageReport", parameters: parameters, multipartImages: input) { (data, json, error) in
+        APIManager.apiPostMultipart(serviceName: "api/transporterAddDamageReport", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
             if error != nil {
 
+            }
+            if progress != nil {
+                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Uploading images to server")
             }
             
         }

@@ -784,6 +784,11 @@ extension JobsInProgress {
                 SwiftMessages.show {
                     let view = MessageView.viewFromNib(layout: .centeredView)
                     view.bodyLabel?.text = msg
+                    view.button?.setTitle("Okay", for: .normal)
+                    view.titleLabel?.isHidden = true
+                    view.iconImageView?.isHidden = true
+                    view.iconLabel?.isHidden = true
+                    view.center = self.view.center
                     return view
                 }
 //                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)

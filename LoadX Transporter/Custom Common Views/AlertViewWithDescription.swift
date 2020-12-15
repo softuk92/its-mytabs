@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 import RxSwift
 
-public class AlertViewWithDesciption: UIView, NibOwnerLoadable {
+public class AlertViewWithDescription: UIView, NibOwnerLoadable {
     
     //MARK: - IBOutlets
     @IBOutlet weak public var centerView: UIView!
