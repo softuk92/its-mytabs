@@ -12,7 +12,7 @@ import SwiftyJSON
 import SVProgressHUD
 import IBAnimatable
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -147,7 +147,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                  let jsonData : JSON = JSON(response.result.value!)
                                  print("Search Transporter Completed Job that is: \n \(jsonData)")
                               let result = jsonData[0]["result"].stringValue
-                              let message1 = jsonData[0]["message"].stringValue
+//                              let message1 = jsonData[0]["message"].stringValue
                               let totaljobs = jsonData[0]["totaljobs"].stringValue
                                 print("this is total complete job:\n\(totaljobs)")
                               let total_income = jsonData[0]["total_income"].doubleValue
@@ -318,8 +318,8 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
            
             if businessJobs == true {
             let completedJobsRow = completedJobsModelBusiness[indexPath.row]
-                let payment_type1 = completedJobsRow.payment_type
-                let due_amount_status = completedJobsRow.due_amount_status
+//                let payment_type1 = completedJobsRow.payment_type
+//                let due_amount_status = completedJobsRow.due_amount_status
                         
                /*  if payment_type1 == "full" {
                     if due_amount_status == "Pending" {
@@ -341,7 +341,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                 let stringDate = completedJobsRow.date
                 let convertedDate = self.convertDateFormatter(stringDate)
                 cell.date.text = convertedDate
-                let contactPerson = completedJobsRow.contact_person
+//                let contactPerson = completedJobsRow.contact_person
     //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
                 
                 let currentBid = completedJobsRow.current_bid
@@ -414,7 +414,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                 }
                 
     //            let driverGetPayment = completedJobsRow.driver_get_job_payment
-                let due_amount_status = completedJobsRow.due_amount_status
+//                let due_amount_status = completedJobsRow.due_amount_status
                 
               /*  if payment_type == "full" {
                     if due_amount_status == "Pending" {
@@ -457,7 +457,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                 let convertedDate = self.convertDateFormatter(stringDate)
                 cell.date.text = convertedDate
                 
-                let contactPerson = completedJobsRow.contact_person
+//                let contactPerson = completedJobsRow.contact_person
     //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
                 
                 let currentBid = completedJobsRow.current_bid
@@ -526,23 +526,28 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                     jobs_completed = true
     //                self.performSegue(withIdentifier: "detail", sender: self)
 
-                    let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-                    vc.bookedJobPrice = cell.price.text
-                    vc.showHouseNumber = true
-                    vc.pickupAdd = cell.pick_up.text
-                    vc.dropoffAdd = cell.drop_off.text
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    if #available(iOS 13.0, *) {
+                        let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                        vc.bookedJobPrice = cell.price.text
+                        vc.showHouseNumber = true
+                        vc.pickupAdd = cell.pick_up.text
+                        vc.dropoffAdd = cell.drop_off.text
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                     
                 } else {
                 del_id = self.completedJobsModel[indexPath.row].del_id
                 jobs_completed = true
                
-                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-                vc.bookedJobPrice = cell.price.text
-                    vc.showHouseNumber = true
-                    vc.pickupAdd = cell.pick_up.text
-                    vc.dropoffAdd = cell.drop_off.text
-                self.navigationController?.pushViewController(vc, animated: true)
+                    if #available(iOS 13.0, *) {
+                        let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                        vc.bookedJobPrice = cell.price.text
+                            vc.showHouseNumber = true
+                            vc.pickupAdd = cell.pick_up.text
+                            vc.dropoffAdd = cell.drop_off.text
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+              
             }
             }
             

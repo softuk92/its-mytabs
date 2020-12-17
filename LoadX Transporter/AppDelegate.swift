@@ -19,6 +19,7 @@ import DropDown
 import ZDCChat
 
 //var main_URL = "https://www.loadx.co.uk/"
+
 //test api
 var main_URL = "http://www.test.loadx.co.uk/"
 
@@ -27,7 +28,7 @@ enum VersionError: Error {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
      var window: UIWindow?
      let sb = UIStoryboard(name: "Main", bundle: nil)

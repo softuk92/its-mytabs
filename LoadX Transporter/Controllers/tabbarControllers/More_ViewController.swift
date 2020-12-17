@@ -17,7 +17,7 @@ import Cosmos
 import LabelSwitch
 import RxSwift
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class More_ViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
    
     @IBOutlet weak var userName: UILabel!
@@ -61,19 +61,20 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
       // Set the delegate to inform when the switch was triggered
 //        self.lableSwitch.delegate = self
         
+        if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 print("Dark mode")
             }
             else {
                 print("Light mode")
             }
-        
+                
         if UserDefaults.standard.bool(forKey: "dark") == true || UITraitCollection.current.userInterfaceStyle == .dark {
             self.lableSwitch.switchState.accept(true)
         } else {
             self.lableSwitch.switchState.accept(false)
         }
-        
+    
         lableSwitch.configureGesture()
         lableSwitch.switchState.skip(1).subscribe(onNext: { (value) in
             UIApplication.shared.windows.forEach { window in
@@ -81,6 +82,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                 UserDefaults.standard.set(value, forKey: "dark")
             }
         }).disposed(by: disposeBag)
+    }
         
     }
     

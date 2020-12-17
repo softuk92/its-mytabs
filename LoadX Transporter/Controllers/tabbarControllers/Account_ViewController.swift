@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class Account_ViewController: UIViewController {
 
     @IBOutlet var popUpView: UIView!

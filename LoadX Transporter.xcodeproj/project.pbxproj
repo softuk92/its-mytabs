@@ -71,6 +71,7 @@
 		4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */; };
 		4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */; };
 		4E7149DF2582C96100A5A0B7 /* AlertViewWithDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3F9141257D932400351B9A /* AlertViewWithDescription.xib */; };
+		4E72F311258BF5C200789022 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F310258BF5C200789022 /* R.generated.swift */; };
 		4E7C9BD125645D13003BC22B /* BookedJobsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */; };
 		4E818285241B92A8005D3EC9 /* VC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818284241B92A8005D3EC9 /* VC1.swift */; };
 		4E818287241B92BB005D3EC9 /* VC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818286241B92BB005D3EC9 /* VC2.swift */; };
@@ -263,6 +264,7 @@
 		4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reach_Us_ViewController.swift; sourceTree = "<group>"; };
 		4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help_ViewController.swift; sourceTree = "<group>"; };
 		4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		4E72F310258BF5C200789022 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedJobsFunctions.swift; sourceTree = "<group>"; };
 		4E818284241B92A8005D3EC9 /* VC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1.swift; sourceTree = "<group>"; };
 		4E818286241B92BB005D3EC9 /* VC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC2.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 		8D3E610C21F764B6004EAB06 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E72F310258BF5C200789022 /* R.generated.swift */,
 				8D3E60FE21F76435004EAB06 /* Assets.xcassets */,
 				BBE9402C24709EEF00DB58F3 /* splashScreenLight.gif */,
 				BBE9402D24709EF000DB58F3 /* splashScreenDark.gif */,
@@ -823,8 +826,8 @@
 				8D98C722222050E800420BFA /* SearchDeliveriesController.swift */,
 				8D48C206222438DB00417EF5 /* EditProfileController.swift */,
 				8D4385E2222447A200A3CE7F /* BidJobDetailController.swift */,
-				8D4385EB22244D6000A3CE7F /* SideMenuController.swift */,
 				8D246FA42228414000E2B290 /* PrivacyPolicyController.swift */,
+				8D4385EB22244D6000A3CE7F /* SideMenuController.swift */,
 				8D246FA62228417000E2B290 /* TermsAndConditionController.swift */,
 				8DE3AF2B22258C4000A41DC1 /* ContactUs.swift */,
 				8DE3AF2F2225A3C000A41DC1 /* TransporterPublicProfileController.swift */,
@@ -919,6 +922,7 @@
 			buildConfigurationList = 8D3E610621F76435004EAB06 /* Build configuration list for PBXNativeTarget "LoadX Transporter" */;
 			buildPhases = (
 				9999FC6EEC905464141B9D60 /* [CP] Check Pods Manifest.lock */,
+				4E72F30E258BF43100789022 /* R.swift */,
 				8D3E60F021F76432004EAB06 /* Sources */,
 				8D3E60F121F76432004EAB06 /* Frameworks */,
 				8D3E60F221F76432004EAB06 /* Resources */,
@@ -1074,6 +1078,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4E72F30E258BF43100789022 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		9999FC6EEC905464141B9D60 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1228,6 +1252,7 @@
 				8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */,
 				185139BE2562D3EC0053098B /* RouteDetailsCell.swift in Sources */,
 				4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */,
+				4E72F311258BF5C200789022 /* R.generated.swift in Sources */,
 				4E818289241B92CB005D3EC9 /* VC3.swift in Sources */,
 				4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */,
 				4E1948782565BF0400C3C3C8 /* StopDetailsViewController.swift in Sources */,

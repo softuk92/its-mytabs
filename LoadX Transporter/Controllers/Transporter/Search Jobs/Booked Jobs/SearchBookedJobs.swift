@@ -221,7 +221,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         tableView.register(UINib(nibName: "SearchDeliveriesCell", bundle: nil) , forCellReuseIdentifier: "allDeliveries")
         refresher = UIRefreshControl()
         refresher.tintColor = UIColor.white
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
         refresher.addTarget(self, action: #selector(SearchDeliveriesController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
         
@@ -231,25 +231,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         bindButtons()
         getRoutes()
-        getProfileDetails()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        searchDeliveriesFunc {
-            if self.searchBookModel.isEmpty {
-                SVProgressHUD.dismiss()
-                self.tableView.reloadData()
-                self.routesTableView.isHidden = true
-                self.stackView.isHidden = false
-            } else {
-                SVProgressHUD.dismiss()
-                self.stackView.isHidden = true
-                self.routesTableView.isHidden = true
-                self.tableView.reloadData()
-            }
-        }
-        getRoutes()
-        bindButtons()
         getProfileDetails()
     }
     
@@ -285,7 +266,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.stackView.isHidden = true
             } else {
             self?.stackView.isHidden = false
-            self?.tableView.isHidden = true
+//            self?.tableView.isHidden = true
             self?.noJobRecordFound_lable.text = "Currently no jobs available"
             }
         }).disposed(by: disposeBag)

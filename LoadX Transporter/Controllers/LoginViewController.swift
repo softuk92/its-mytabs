@@ -68,7 +68,7 @@ var isLoadxDriver: String?
 //var distance_map = ""
 //var vehicleType = ""
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate, GIDSignInDelegate {
     
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -131,7 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
         let components = calendar.dateComponents([.year, .month, .day], from: date)
     
-        let year =  components.year
+//        let year =  components.year
         let month = components.month
         let day = components.day
         
@@ -161,8 +161,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
         @objc func actionHandleAppleSignin() {
 
+            if #available(iOS 13.0, *) {
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
-
                 let request = appleIDProvider.createRequest()
 
                 request.requestedScopes = [.fullName, .email]
@@ -174,7 +174,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 authorizationController.presentationContextProvider = self
 
                 authorizationController.performRequests()
-
+            }
+            
             }
         
     //MARK: - Version Update Func

@@ -21,7 +21,7 @@ import SVProgressHUD
 import Cosmos
 import IBAnimatable
 import RxSwift
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -359,7 +359,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let stringDate = completedJobsRow.date
             let convertedDate = convertDateFormatter(stringDate)
             cell.date.text = convertedDate
-            let contactPerson = completedJobsRow.contact_person
+//            let contactPerson = completedJobsRow.contact_person
             //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
             
             let currentBid = completedJobsRow.current_bid
@@ -443,7 +443,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let convertedDate = convertDateFormatter(stringDate)
             cell.date.text = convertedDate
             
-            let contactPerson = completedJobsRow.contact_person
+//            let contactPerson = completedJobsRow.contact_person
             
             let currentBid = completedJobsRow.current_bid
             if completedJobsRow.transporter_share != "0" {
@@ -493,23 +493,28 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 del_id = self.completedJobsModelBusiness[indexPath.row].del_id
                 jobs_completed = true
                 
-                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-                vc.bookedJobPrice = cell.price.text
-                vc.showHouseNumber = true
-                vc.pickupAdd = cell.pick_up.text
-                vc.dropoffAdd = cell.drop_off.text
-                self.navigationController?.pushViewController(vc, animated: true)
+                if #available(iOS 13.0, *) {
+                    let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                    vc.bookedJobPrice = cell.price.text
+                    vc.showHouseNumber = true
+                    vc.pickupAdd = cell.pick_up.text
+                    vc.dropoffAdd = cell.drop_off.text
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
                 
             } else {
                 del_id = self.completedJobsModel[indexPath.row].del_id
                 jobs_completed = true
                 
-                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-                vc.bookedJobPrice = cell.price.text
-                vc.showHouseNumber = true
-                vc.pickupAdd = cell.pick_up.text
-                vc.dropoffAdd = cell.drop_off.text
-                self.navigationController?.pushViewController(vc, animated: true)
+                if #available(iOS 13.0, *) {
+                    let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                    vc.bookedJobPrice = cell.price.text
+                    vc.showHouseNumber = true
+                    vc.pickupAdd = cell.pick_up.text
+                    vc.dropoffAdd = cell.drop_off.text
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+               
             }
         }
         
@@ -547,23 +552,26 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             //            self.performSegue(withIdentifier: "detail", sender: self)
             //            jobPrice = self.completedJobsModelBusiness[indexPath.row]
             
-            let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-            vc.showHouseNumber = true
-            vc.pickupAdd = cell.pick_up.text
-            vc.dropoffAdd = cell.drop_off.text
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            if #available(iOS 13.0, *) {
+                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
             jobs_completed = true
             
             del_id = self.completedJobsModel[indexPath.row].del_id
             //        self.performSegue(withIdentifier: "detail", sender: self)
             
-            let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
-            vc.showHouseNumber = true
-            vc.pickupAdd = cell.pick_up.text
-            vc.dropoffAdd = cell.drop_off.text
-            self.navigationController?.pushViewController(vc, animated: true)
+            if #available(iOS 13.0, *) {
+                let vc = storyboard.instantiateViewController(identifier: "JobDetial_ViewController") as JobDetial_ViewController
+                vc.showHouseNumber = true
+                vc.pickupAdd = cell.pick_up.text
+                vc.dropoffAdd = cell.drop_off.text
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
         }
         }
