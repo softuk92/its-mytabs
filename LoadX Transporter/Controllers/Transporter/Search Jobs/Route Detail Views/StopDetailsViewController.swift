@@ -42,9 +42,10 @@ class StopDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var additionalInfoTableView: UITableView!
     @IBOutlet weak var viewNextStop2: UIButton!
-    @IBOutlet weak var arrivedOrCashCollected: UIButton!
+    @IBOutlet weak var arrived: UIButton!
+    @IBOutlet weak var complete: UIButton!
+    @IBOutlet weak var cashCollected: UIButton!
     @IBOutlet weak var runningLate: UIButton!
-    @IBOutlet weak var twoButtonsStackView: UIStackView!
     @IBOutlet weak var viewNextStop: UIButton!
     @IBOutlet weak var reportDamage: UIButton!
     @IBOutlet weak var bottomButtonView: UIView!
@@ -58,7 +59,7 @@ class StopDetailsViewController: UIViewController {
     var routeSummaryDetails = [RouteSummaryDetails]()
     private var items: [MenuItemStruct] = []
     var fullStopId: String!
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     var isBooked: Bool = false
     var isItem: Bool = false
     override func viewDidLoad() {
@@ -71,13 +72,15 @@ class StopDetailsViewController: UIViewController {
         bindFields()
         bindButtons()
         getStopDetails()
-        setupTwoButtons()
+        setupButtons()
         customizeUI()
     }
     
     func customizeUI() {
         viewNextStop2.layer.cornerRadius = 15
-        arrivedOrCashCollected.layer.cornerRadius = 15
+        arrived.layer.cornerRadius = 15
+        complete.layer.cornerRadius = 15
+        cashCollected.layer.cornerRadius = 15
         runningLate.layer.cornerRadius = 15
         viewNextStop.layer.cornerRadius = 15
         reportDamage.layer.cornerRadius = 15
@@ -145,7 +148,7 @@ class StopDetailsViewController: UIViewController {
             phone.text = route.customer_name.capitalized
         pickup.text = getAddress(street: route.street, route: route.route, city: route.city, postcode: route.post_code)
         } else {
-        name.text = route.customer_name
+            name.text = route.customer_name.capitalized
         phone.text = route.phone_number
         pickup.text = route.lrh_postcode
         }
@@ -239,60 +242,100 @@ class StopDetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
      }
     
-    func setupTwoButtons() {
+    func setupButtons() {
         if isRouteStarted == "0" {
-            self.arrivedOrCashCollected.isHidden = true
-            self.reportDamage.isHidden = true
-            self.bottomButtonView.isHidden = true
-        } else if route.is_completed == "1" {
-            self.arrivedOrCashCollected.isHidden = true
-            if route.is_damage == "1" {
-                self.reportDamage.isHidden = true
-                self.upperButtonView.isHidden = true
-            } else {
-                self.reportDamage.isHidden = false
-                self.upperButtonView.isHidden = false
-            }
-            self.bottomButtonView.isHidden = false
-            self.runningLate.isHidden = true
-            self.viewNextStop.isHidden = false
-            self.viewNextStop2.isHidden = true
+            hideShowButtonViews(upperView: true, bottomView: false)
+            hideShowButtons(arrived: true, cashCollected: true, complete: true, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
         } else {
-        if route.is_t_arrive == "0" {
-            self.arrivedOrCashCollected.isHidden = false
-            self.arrivedOrCashCollected.setTitle("ARRIVED ?", for: .normal)
-            if route.inform_running_late == "0" {
-                self.runningLate.isHidden = false
-                self.runningLate.setTitle("RUNNING LATE ?", for: .normal)
-            } else {
-                self.runningLate.isHidden = true
-            }
+        if route.lrh_type == "Pickup Shipment" {
+           pickupRouteBtns()
         } else {
-            self.setArrivalButtons()
+           dropoffRouteBtns()
         }
         }
-
-        arrivedOrCashCollected.rx.tap.subscribe(onNext: { [weak self] (_) in
-            guard let self = self else { return }
-            if self.arrivedOrCashCollected.titleLabel?.text == "CASH COLLECTED?" {
-            self.showCashCollectedAlertView()
-            } else if self.arrivedOrCashCollected.titleLabel?.text == "COMPLETE" {
-                self.showCompleteAlertView()
+    }
+    
+    func pickupRouteBtns() {
+        hideShowButtonViews(upperView: false, bottomView: false)
+        hideShowButtons(arrived: false, cashCollected: true, complete: true, runningLate: true, reportDamage: true, viewNextStop1: true, viewNextStop2: false)
+        
+        self.runningLate.isHidden = !(route.inform_running_late == "0" && route.is_t_arrive == "0")
+        if route.is_t_arrive == "1" {
+            if route.payment_type == "account" {
+                hideShowButtons(arrived: true, cashCollected: true, complete: false, runningLate: true, reportDamage: false, viewNextStop1: false, viewNextStop2: true)
             } else {
-            self.showArrivedAlertView()
+                if route.cash_received == "1" || route.cash_received == "2" || route.cash_received == "3" {
+                   hideShowButtons(arrived: true, cashCollected: true, complete: false, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+                } else {
+                    hideShowButtons(arrived: true, cashCollected: false, complete: true, runningLate: true, reportDamage: false, viewNextStop1: false, viewNextStop2: true)
+                }
             }
-        }).disposed(by: disposeBag)
+            self.reportDamage.isHidden = !(route.is_damage == "0")
+        }
+        if route.is_completed == "1" {
+            hideShowButtonViews(upperView: true, bottomView: false)
+            hideShowButtons(arrived: true, cashCollected: true, complete: true, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+        }
+    }
+    
+    func dropoffRouteBtns() {
+        hideShowButtonViews(upperView: false, bottomView: false)
+        hideShowButtons(arrived: false, cashCollected: true, complete: true, runningLate: true, reportDamage: true, viewNextStop1: true, viewNextStop2: false)
         
-        runningLate.rx.tap.subscribe(onNext: { [weak self] (_) in
-            guard let self = self else { return }
-            self.showRunningLateAlertView()
-        }).disposed(by: disposeBag)
+        self.runningLate.isHidden = !(route.inform_running_late == "0" && route.is_t_arrive == "0")
+        if route.is_t_arrive == "1" {
+            if route.payment_type == "account" {
+                hideShowButtons(arrived: true, cashCollected: true, complete: false, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+            } else {
+                if route.cash_received_at_pickup.lowercased() == "yes" {
+                    hideShowButtons(arrived: true, cashCollected: true, complete: false, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+                } else {
+                    hideShowButtons(arrived: true, cashCollected: false, complete: true, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+                }
+            }
+            
+        }
         
-        reportDamage.rx.tap.subscribe(onNext: {[weak self] (_) in
-            guard let self = self else { return }
-            self.showDamageReportAlertView()
-        }).disposed(by: disposeBag)
-        
+        if route.is_completed == "1" {
+            hideShowButtonViews(upperView: true, bottomView: false)
+            hideShowButtons(arrived: true, cashCollected: true, complete: true, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
+        }
+        self.reportDamage.isHidden = true
+    }
+    
+    func hideShowButtonViews(upperView: Bool, bottomView: Bool) {
+        self.bottomButtonView.isHidden = upperView
+        self.bottomButtonView.isHidden = bottomView
+    }
+    
+    func hideShowButtons(arrived: Bool, cashCollected: Bool, complete: Bool, runningLate: Bool, reportDamage: Bool, viewNextStop1: Bool, viewNextStop2: Bool) {
+        self.arrived.isHidden = arrived
+        self.cashCollected.isHidden = cashCollected
+        self.complete.isHidden = complete
+        self.runningLate.isHidden = runningLate
+        self.reportDamage.isHidden = reportDamage
+        self.viewNextStop.isHidden = viewNextStop1
+        self.viewNextStop2.isHidden = viewNextStop2
+    }
+    
+    @IBAction func arrivedAct(_ sender: UIButton) {
+        showArrivedAlertView()
+    }
+    
+    @IBAction func cashCollectedAct(_ sender: UIButton) {
+        showCashCollectedAlertView()
+    }
+    
+    @IBAction func completeRouteAct(_ sender: UIButton) {
+        showCompleteAlertView()
+    }
+    
+    @IBAction func runningLateAct(_ sender: UIButton) {
+        showRunningLateAlertView()
+    }
+    
+    @IBAction func reportDamageAct(_ sender: UIButton) {
+        showDamageReportAlertView()
     }
     
     @IBAction func viewNextStp2(_ sender: UIButton) {
@@ -302,116 +345,6 @@ class StopDetailsViewController: UIViewController {
     @IBAction func viewNextStp(_ sender: UIButton) {
         setupRouteStartingBehaviour()
     }
-    
-    func showCompleteAlertView() {
-        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.question.text = "Have this stop been completed?"
-        aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof     "
-        aView.sendPaymentLinkHeight.constant = 0
-        aView.sendPaymentLink.isHidden = true
-        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        aView.imageView.image = UIImage(named: "popup_icon")
-        
-        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.goToStopCompleteProofScene()
-        }).disposed(by: disposeBag)
-
-        aView.no.rx.tap.subscribe(onNext: { (_) in
-            aView.removeFromSuperview()
-        }).disposed(by: disposeBag)
-        
-        self.view.addSubview(aView)
-    }
-    
-    func showArrivedAlertView() {
-        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.ensure.text = ""
-        aView.sendPaymentLink.isHidden = true
-        aView.sendPaymentLinkHeight.constant = 0
-        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        aView.imageView.image = UIImage(named: "popup_icon")
-        aView.question.text = "Have you arrived at stop?"
-        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.driverArrived()
-        }).disposed(by: disposeBag)
-
-        aView.no.rx.tap.subscribe(onNext: { (_) in
-            aView.removeFromSuperview()
-        }).disposed(by: disposeBag)
-        
-        self.view.addSubview(aView)
-    }
-    
-    func showRunningLateAlertView() {
-        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.ensure.text = ""
-        aView.sendPaymentLinkHeight.constant = 0
-        aView.sendPaymentLink.isHidden = true
-        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        aView.imageView.image = UIImage(named: "popup_icon")
-        aView.question.text = "Are you running late?"
-        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.goToRunningLateScene()
-        }).disposed(by: disposeBag)
-
-        aView.no.rx.tap.subscribe(onNext: { (_) in
-            aView.removeFromSuperview()
-        }).disposed(by: disposeBag)
-        
-        self.view.addSubview(aView)
-    }
-    
-    func showDamageReportAlertView() {
-        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.ensure.text = "Please ensure you have informed the customer and upload images of the damage report before completing stop."
-        aView.sendPaymentLinkHeight.constant = 0
-        aView.sendPaymentLink.isHidden = true
-        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        aView.imageView.image = UIImage(named: "popup_icon")
-    
-        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.goToConfirmDamageScene()
-        }).disposed(by: disposeBag)
-
-        aView.no.rx.tap.subscribe(onNext: { (_) in
-            aView.removeFromSuperview()
-        }).disposed(by: disposeBag)
-        
-        self.view.addSubview(aView)
-    }
-    
-    func showCashCollectedAlertView() {
-        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.ensure.text = "Please note: The customer may pay on drop off, you can always send a payment link if the customer wants to pay via card."
-        aView.sendPaymentLinkHeight.constant = 35
-        aView.sendPaymentLink.isHidden = false
-        aView.question.text = "Have you collected cash on this stop?"
-//        aView.sendPaymentLink.layer.cornerRadius = 25
-//        aView.sendPaymentLink.layer.masksToBounds = false
-        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        aView.imageView.image = UIImage(named: "popup_icon")
-    
-        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.cashCollected(send: "1")
-        }).disposed(by: disposeBag)
-
-        aView.no.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.cashCollected(send: "2")
-        }).disposed(by: disposeBag)
-        
-        aView.sendPaymentLink.rx.tap.subscribe(onNext: { [weak self] (_) in
-            aView.removeFromSuperview()
-            self?.cashCollected(send: "3")
-        }).disposed(by: disposeBag)
-        
-        self.view.addSubview(aView)
-    }
         
     //view next stop
     func setupRouteStartingBehaviour() {
@@ -420,117 +353,9 @@ class StopDetailsViewController: UIViewController {
             self.route = self.allRoutes[self.routeIndex]
             self.bindFields()
             self.getStopDetails()
-            self.setupTwoButtons()
-            if isRouteStarted == "1" {
-            self.setArrivalButtons()
-            }
+            self.setupButtons()
         } else if self.routeIndex == self.allRoutes.count-1 {
             self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    //arrived and running late actions and API Calls
-    private func driverArrived() {
-        APIManager.apiPost(serviceName: "api/transporterArrive", parameters: ["lrh_id": route.lrh_id]) { [weak self] (data, json, error) in
-            guard let self = self else { return }
-            if error != nil {
-                
-            }
-            print("transporter arrived json \(String(describing: json))")
-            
-            let result = json?[0]["result"].stringValue
-            let msg = json?[0]["message"].stringValue
-            if result == "1" {
-            self.setArrivalButtons()
-            } else {
-            self.present(showAlert(title: "", message: msg ?? ""), animated: true, completion: nil)
-            }
-        }
-    }
-    
-    //cash collected
-    private func cashCollected(send: String) {
-        APIManager.apiPost(serviceName: "api/transporterCashCollect", parameters: ["lrh_id": route.lrh_id, "cash_received" : send]) { [weak self] (data, json, error) in
-            guard let self = self else { return }
-            if error != nil {
-                
-            }
-            print("transporter cash collected json \(String(describing: json))")
-            
-            let result = json?[0]["result"].stringValue
-            let msg = json?[0]["msg"].stringValue
-            if result == "1" {
-//          self.setArrivalButtons()
-            self.navigationController?.popViewController(animated: true)
-            } else {
-            self.present(showAlert(title: "", message: msg ?? ""), animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func goToRunningLateScene() {
-        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RunningLateViewController") as? RunningLateViewController {
-            vc.lrh_id = route.lrh_id
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func goToStopCompleteProofScene() {
-        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
-            vc.lrhJobId = route.lrh_job_id
-            vc.lrID = self.routeID ?? ""
-            vc.isRoute = true
-            vc.ref_no = fullStopId
-            vc.contactName = route.customer_name
-            vc.contact_no = route.phone_number
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func goToConfirmDamageScene() {
-        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ConfirmDamageViewController") as? ConfirmDamageViewController {
-            vc.lrhJobID = route.lrh_job_id
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func setArrivalButtons() {
-        if route.is_damage == "1" {
-            self.reportDamage.isHidden = true
-        } else {
-            self.reportDamage.isHidden = false
-        }
-        if route.lrh_type == "Pickup Shipment" {
-        self.runningLate.isHidden = true
-        self.viewNextStop2.isHidden = true
-        self.viewNextStop.isHidden = false
-        if route.cash_received == "1" {
-        self.arrivedOrCashCollected.isHidden = true
-        self.reportDamage.isHidden = false
-        } else {
-        self.arrivedOrCashCollected.isHidden = false
-        self.arrivedOrCashCollected.setTitle("CASH COLLECTED?", for: .normal)
-        }
-            
-        } else {
-            
-            if route.cash_received_at_pickup == "Yes" {
-                self.bottomButtonView.isHidden = true
-                self.reportDamage.isHidden = true
-                self.arrivedOrCashCollected.setTitle("COMPLETE", for: .normal)
-            } else {
-                self.bottomButtonView.isHidden = false
-                self.runningLate.isHidden = true
-                self.viewNextStop2.isHidden = true
-                self.viewNextStop.isHidden = false
-                if route.cash_received == "1" {
-                self.arrivedOrCashCollected.isHidden = true
-                self.reportDamage.isHidden = false
-                } else {
-                self.arrivedOrCashCollected.isHidden = false
-                self.arrivedOrCashCollected.setTitle("CASH COLLECTED?", for: .normal)
-                }
-            }
         }
     }
     

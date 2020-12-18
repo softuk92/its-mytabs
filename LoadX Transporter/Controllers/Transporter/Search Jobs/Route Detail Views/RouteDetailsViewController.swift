@@ -30,6 +30,10 @@ class RouteDetailsViewController: UIViewController {
         SVProgressHUD.dismiss()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getRouteDetails()
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self

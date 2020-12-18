@@ -503,7 +503,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             
                         } else {
                             SVProgressHUD.dismiss()
-                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+//                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                         }
                     }
                  else {

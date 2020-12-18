@@ -126,6 +126,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     var do_City_Route = ""
     var do_allAddress = ""
     var refresher: UIRefreshControl!
+    var routeTableViewRefresher: UIRefreshControl!
     let picker = UIDatePicker()
     var vehicleType = ""
     var searchCount : String?
@@ -219,19 +220,34 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         tableView.dataSource = self
         tableView.tableHeaderView?.frame.size = CGSize(width:tableView.frame.width, height: CGFloat(HEADER_HEIGHT))
         tableView.register(UINib(nibName: "SearchDeliveriesCell", bundle: nil) , forCellReuseIdentifier: "allDeliveries")
-        refresher = UIRefreshControl()
-        refresher.tintColor = UIColor.white
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
-        refresher.addTarget(self, action: #selector(SearchDeliveriesController.populate), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refresher)
         
         if #available(iOS 13.4, *) {
             picker.preferredDatePickerStyle = .wheels
         }
         
+        tableViewsRefreshControls()
         bindButtons()
         getRoutes()
         getProfileDetails()
+    }
+    
+    func tableViewsRefreshControls() {
+        refresher = UIRefreshControl()
+        refresher.tintColor = R.color.textfieldTextColor()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
+        refresher.addTarget(self, action: #selector(SearchDeliveriesController.populate), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refresher)
+        
+        routeTableViewRefresher = UIRefreshControl()
+        routeTableViewRefresher.tintColor = R.color.textfieldTextColor()
+        routeTableViewRefresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
+        routeTableViewRefresher.addTarget(self, action: #selector(refreshRouteData), for: UIControl.Event.valueChanged)
+        routesTableView.addSubview(routeTableViewRefresher)
+    }
+    
+    @objc func refreshRouteData() {
+        self.routeTableViewRefresher.endRefreshing()
+        getRoutes()
     }
     
     func checkRouteAccess() {
@@ -266,8 +282,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.stackView.isHidden = true
             } else {
             self?.stackView.isHidden = false
-//            self?.tableView.isHidden = true
-            self?.noJobRecordFound_lable.text = "Currently no jobs available"
+            self?.tableView.isHidden = false
+            self?.noJobRecordFound_lable.text = "Currently no job available"
             }
         }).disposed(by: disposeBag)
         
@@ -283,7 +299,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                 self?.routesTableView.isHidden = false
                 self?.stackView.isHidden = true
             } else {
-                self?.routesTableView.isHidden = true
+                self?.routesTableView.isHidden = false
                 self?.stackView.isHidden = false
                 self?.noJobRecordFound_lable.text = "Currently no routes available"
             }
@@ -499,11 +515,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     if result == "" {
                     self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data ?? Data())
                         DispatchQueue.main.async {
-                        self.tableView.isHidden = false
+//                        self.tableView.isHidden = false
+                            self.stackView.isHidden = true
                         }
                     } else {
                         DispatchQueue.main.async {
-                        self.tableView.isHidden = true
+//                        self.tableView.isHidden = true
+                            self.stackView.isHidden = false
                         }
                     }
                     SVProgressHUD.dismiss()
@@ -617,7 +635,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
                 if self.icStatus == "pending" || self.dlStatus == "pending" {
-                    self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
+                    self.showApprovalAlert(question: "Please wait for documents approval.")
+                } else if self.icStatus == "Reject" || self.dlStatus == "Reject" || self.icStatus == "" || self.dlStatus == "" {
+                    self.showApprovalAlert(question: "Please upload your documents.")
                 } else {
                 self.acceptRoute(lrID: self.routes[indexPath.row].lr_id)
                 }
@@ -699,18 +719,19 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             if user_id != nil {
                 if self.icStatus == "pending" || self.dlStatus == "pending" {
-                    self.showApprovalAlert()
+                    self.showApprovalAlert(question: "Please wait for documents approval.")
 //                    self.present(showAlert(title: "Alert!", message: "Please wait for documents approval"), animated: true, completion: nil)
                 } else if self.icStatus == "Reject" || self.dlStatus == "Reject" || self.icStatus == "" || self.dlStatus == "" {
-                    let alert = UIAlertController(title: "Alert!", message: "Please upload your documents.", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Upload Documents", style: .default, handler: { (action: UIAlertAction!) in
-                        
-                        self.performSegue(withIdentifier: "edit", sender: self)
-                    }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-                        print("Handle Cancel Logic here")
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+//                    let alert = UIAlertController(title: "Alert!", message: "Please upload your documents.", preferredStyle: UIAlertController.Style.alert)
+//                    alert.addAction(UIAlertAction(title: "Upload Documents", style: .default, handler: { (action: UIAlertAction!) in
+//
+//                        self.performSegue(withIdentifier: "edit", sender: self)
+//                    }))
+//                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+//                        print("Handle Cancel Logic here")
+//                    }))
+//                    self.present(alert, animated: true, completion: nil)
+                    self.showApprovalAlert(question: "Please upload your documents.")
                 } else {
                     if companyJob == "1" {
                         del_id = self.searchBookModel[indexPath.row].del_id
@@ -846,11 +867,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         return cell
     }
     
-    func showApprovalAlert() {
+    func showApprovalAlert(question: String) {
         let aView = AlertViewWithDescription(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
 //        aView.imageView.image = UIImage(named: "popup_icon")
-        
+        aView.question.text = question
         aView.no.rx.tap.subscribe(onNext: { (_) in
             aView.removeFromSuperview()
         }).disposed(by: disposeBag)
@@ -904,11 +925,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         SVProgressHUD.show(withStatus: "Search Jobs...")
         
         if selectCategory.text == "Small Van"{
-            self.vehicleType = "SWB Van"
+            self.vehicleType = "Small Van" //SWB Van"
         }else if selectCategory.text == "Medium Van"{
-            self.vehicleType = "MWB Van"
+            self.vehicleType = "Medium Van"  //"MWB Van"
         }else if selectCategory.text == "Large Van"{
-            self.vehicleType = "LWB Van"
+            self.vehicleType = "Large Van" //LWB Van"
         }else if selectCategory.text == "Luton Van"{
             self.vehicleType = "Luton Van"
         }else if selectCategory.text == "Rubbish Removal Truck"{
@@ -946,23 +967,30 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
 //                print("Search Jobs json Data is \(jsonData)")
                 let result = jsonData[0]["result"].stringValue
                 let message = jsonData[0]["message"].stringValue
+                SVProgressHUD.dismiss()
                 
                 if result == "0" {
-                    self.tableView.reloadData()
-                    if self.menuShowing == false{
+                    
+//                    self.tableView.reloadData()
+//                    if self.menuShowing == false{
+//                        self.stackView.isHidden = false
+//                    }else{
+//                        self.stackView.isHidden = true
+//                    }
+//                    self.tableView.backgroundView = nil
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                         self.stackView.isHidden = false
-                    }else{
-                        self.stackView.isHidden = true
+                        self.searchFilter.removeFromSuperview()
+                        self.searchFilter.isHidden = true
+                        self.searchFilter.alpha = 0.0
                     }
-                    self.tableView.backgroundView = nil
-                    SVProgressHUD.showError(withStatus: message)
                 } else {
                     let error = response.error
                     let data = response.data
                     if error == nil {
                         do {
                             self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data ?? Data())
-                            SVProgressHUD.dismiss()
                             
                             DispatchQueue.main.async {
                                 self.stackView.isHidden = true

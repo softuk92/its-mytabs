@@ -154,6 +154,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         if isRoute {
+            goToRoute()
             self.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
         } else {
             self.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
