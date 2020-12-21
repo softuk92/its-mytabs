@@ -139,9 +139,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             if isLoadxDrive == "0" {
                 self.pagerViewHeight.constant = 0
                 self.topPagerView.isHidden = true
+                self.view.layoutIfNeeded()
             } else {
                 self.pagerViewHeight.constant = 55
                 self.topPagerView.isHidden = false
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -161,6 +163,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         getBookedJobs(url: "api/transporterInprogresJobs")
         getRoutes()
+        checkRouteAccess()
     }
     
     func bindButtons() {

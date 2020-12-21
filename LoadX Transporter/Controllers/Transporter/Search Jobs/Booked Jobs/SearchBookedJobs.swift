@@ -145,6 +145,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("user ID is \(String(describing: user_id))")
         checkRouteAccess()
         //top tab bar view shadow
         topPagerView.layer.masksToBounds = false
@@ -231,6 +232,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         getProfileDetails()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+        getProfileDetails()
+    }
+    
     func tableViewsRefreshControls() {
         refresher = UIRefreshControl()
         refresher.tintColor = R.color.textfieldTextColor()
@@ -255,9 +261,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             if isLoadxDrive == "0" {
                 self.pagerViewHeight.constant = 0
                 self.topPagerView.isHidden = true
+                self.view.layoutIfNeeded()
             } else {
                 self.pagerViewHeight.constant = 55
                 self.topPagerView.isHidden = false
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -1066,6 +1074,10 @@ extension SearchBookedJobs {
             self.icStatus = json?[0]["ic_status"].stringValue.lowercased()
             self.dlStatus = json?[0]["dl_status"].stringValue.lowercased()
             
+            let isLoadx = json?[0]["is_loadx_driver"].stringValue
+            
+            UserDefaults.standard.setValue(isLoadx, forKey: "isLoadxDriver")
+            self.checkRouteAccess()
         }
     }
     

@@ -80,7 +80,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         checkRouteAccess()
         guard let completeJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
         completeJobCount_lbl.text = "(" + completeJob + ")"
-        //        self.title = "Completed Jobs"+" ("+userCompletedJobs+")"
+        //self.title = "Completed Jobs"+" ("+userCompletedJobs+")"
         stackView.isHidden = true
         getCompletedJobs(url: "api/transporterCompletedJobs")
         businessJobs = false
@@ -108,6 +108,10 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewWillAppear(_ animated: Bool) {
         darkMood()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkRouteAccess()
+    }
     func darkMood(){
         if switchCheck == true {
             noJob.textColor = UIColor.white
@@ -128,9 +132,11 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if isLoadxDrive == "0" {
                 self.pagerViewHeight.constant = 0
                 self.topPagerView.isHidden = true
+                self.view.layoutIfNeeded()
             } else {
                 self.pagerViewHeight.constant = 55
                 self.topPagerView.isHidden = false
+                self.view.layoutIfNeeded()
             }
         }
     }
