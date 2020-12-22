@@ -132,7 +132,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     var searchCount : String?
     var routeCount: String?
     var blurView: UIVisualEffectView?
-    
+    var isRoute: Bool = false
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var categoryBlurView: UIView!
@@ -196,22 +196,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         } else {
             
         }
-        
-        searchDeliveriesFunc {
-            
-            if self.searchBookModel.isEmpty {
-                SVProgressHUD.dismiss()
-                self.tableView.reloadData()
-                self.routesTableView.isHidden = true
-                self.stackView.isHidden = false
-            } else {
-                SVProgressHUD.dismiss()
-                self.stackView.isHidden = true
-                self.routesTableView.isHidden = true
-                self.tableView.reloadData()
-                
-            }
-        }
         //routes table view
         configureRoutesTableView()
         routeJobsBtn.alpha = 0.5
@@ -227,14 +211,33 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         tableViewsRefreshControls()
-        bindButtons()
-        getRoutes()
-        getProfileDetails()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
+        callAPIs()
+    }
+    
+    func callAPIs() {
+        getRoutes()
         getProfileDetails()
+        
+        searchDeliveriesFunc {
+            
+        
+            if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+                if isLoadxDrive == "0" {
+                    self.searchJobsBtnFunc()
+                } else {
+                    if !self.isRoute {
+                        self.searchJobsBtnFunc()
+                    } else {
+                        self.routeJobsBtnFunc()
+                    }
+                }
+            } else {
+                self.searchJobsBtnFunc()
+            }
+        }
     }
     
     func tableViewsRefreshControls() {
@@ -252,8 +255,18 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     @objc func refreshRouteData() {
+        callAPIs()
         self.routeTableViewRefresher.endRefreshing()
-        getRoutes()
+    }
+    
+    @objc func populate() {
+        pickupLocation.text = ""
+        dropOff.text = ""
+        selectCategory.text = ""
+        keywords.text = ""
+        pickup_radius.text = ""
+        callAPIs()
+        self.refresher.endRefreshing()
     }
     
     func checkRouteAccess() {
@@ -276,43 +289,52 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         routesTableView.register(cellType: RouteViewCell.self)
     }
     
-    func bindButtons() {
-        searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.routesTableView.isHidden = true
-            self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
-            self?.topLabel.text = "Search Jobs"
-            self?.routeJobsBtn.alpha = 0.5
-            self?.searchJobsBtn.alpha = 1.0
-            self?.searchCount_job_lbl.text = self?.searchCount ?? "(0)"
-            self?.searchBtn.isHidden = false
-            if (self?.searchBookModel.count ?? 0) > 0 {
-            self?.tableView.isHidden = false
-            self?.stackView.isHidden = true
-            } else {
-            self?.stackView.isHidden = false
-            self?.tableView.isHidden = false
-            self?.noJobRecordFound_lable.text = "Currently no job available"
-            }
-        }).disposed(by: disposeBag)
-        
-        routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.routeJobsBtn.alpha = 1.0
-            self?.searchJobsBtn.alpha = 0.5
-            self?.tableView.isHidden = true
-            self?.topLabel.text = "Search Routes"
-            self?.searchCount_job_lbl.text = self?.routeCount ?? "(0)"
-            self?.searchBtn.isHidden = true
-            self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
-            if (self?.routes.count ?? 0) > 0 {
-                self?.routesTableView.isHidden = false
-                self?.stackView.isHidden = true
-            } else {
-                self?.routesTableView.isHidden = false
-                self?.stackView.isHidden = false
-                self?.noJobRecordFound_lable.text = "Currently no routes available"
-            }
-        }).disposed(by: disposeBag)
-        
+    @IBAction func searchJobsAct(_ sender: Any) {
+        searchJobsBtnFunc()
+    }
+    
+    @IBAction func routesJobsAct(_ sender: Any) {
+        routeJobsBtnFunc()
+    }
+    
+    func searchJobsBtnFunc() {
+        isRoute = false
+        routesTableView.isHidden = true
+        tableView.reloadData()
+        setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+        topLabel.text = "Search Jobs"
+        routeJobsBtn.alpha = 0.5
+        searchJobsBtn.alpha = 1.0
+        searchCount_job_lbl.text = "(\(searchBookModel.count))"
+        searchBtn.isHidden = false
+        if (searchBookModel.count) > 0 {
+        tableView.isHidden = false
+        stackView.isHidden = true
+        } else {
+        stackView.isHidden = false
+        tableView.isHidden = false
+        noJobRecordFound_lable.text = "Currently no job available"
+        }
+    }
+    
+    func routeJobsBtnFunc() {
+        isRoute = true
+        routeJobsBtn.alpha = 1.0
+        searchJobsBtn.alpha = 0.5
+        tableView.isHidden = true
+        routesTableView.reloadData()
+        topLabel.text = "Search Routes"
+        searchCount_job_lbl.text = "(\(self.routes.count))"
+        searchBtn.isHidden = true
+        setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
+        if (routes.count) > 0 {
+            routesTableView.isHidden = false
+            stackView.isHidden = true
+        } else {
+            routesTableView.isHidden = false
+            stackView.isHidden = false
+            noJobRecordFound_lable.text = "Currently no routes available"
+        }
     }
     
     func getRoutes() {
@@ -324,7 +346,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
             do {
                 self.routes = try JSONDecoder().decode([Routes].self, from: data ?? Data())
-                print("Route json is \(String(describing: json))")
+//                print("Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
@@ -399,60 +421,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
     }
     
-    @objc func populate() {
-        pickupLocation.text = ""
-        dropOff.text = ""
-        selectCategory.text = ""
-        keywords.text = ""
-        pickup_radius.text = ""
-        searchDeliveriesFunc {
-            if  self.searchBookModel.isEmpty {
-                SVProgressHUD.dismiss()
-                self.tableView.reloadData()
-                self.stackView.isHidden = false
-            } else {
-                SVProgressHUD.dismiss()
-                self.stackView.isHidden = true
-                self.tableView.reloadData()
-            }
-        }
-        self.refresher.endRefreshing()
-    }
-    
     @IBAction func SearchFliter_back_Action(_ sender: Any) {
         self.searchFilter.removeFromSuperview()
         self.searchFilter.isHidden = true
         self.searchFilter.alpha = 0.0
-    }
-    
-    @IBAction func viewAll_job(_ sender: Any) {
-        
-        searchDeliveriesFunc {
-            
-            if self.searchBookModel.isEmpty {
-                SVProgressHUD.dismiss()
-                self.tableView.reloadData()
-                self.stackView.isHidden = false
-            } else {
-                SVProgressHUD.dismiss()
-                self.stackView.isHidden = true
-                self.tableView.reloadData()
-                
-            }
-        }
-        self.searchFilter.removeFromSuperview()
-        self.searchFilter.isHidden = true
-        self.searchFilter.alpha = 0.0
-    }
-    
-    @IBAction func searchFilterBtn(_ sender: Any) {
-        
-        if searchBookModel.count < 1 {
-            self.stackView.isHidden = false
-        }else{
-            self.stackView.isHidden = true
-        }
-        
     }
     
     //MARK: - Pickuplocation for UITEXTFIELD
@@ -518,25 +490,24 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                                 }
                             }
                         }
-                        
                     }
                     if result == "" {
                     self.searchBookModel = try JSONDecoder().decode([SearchBookedJobsModel].self, from: data ?? Data())
-                        DispatchQueue.main.async {
-//                        self.tableView.isHidden = false
-                            self.stackView.isHidden = true
-                        }
+//                        DispatchQueue.main.async {
+////                        self.tableView.isHidden = false
+//                            self.stackView.isHidden = true
+//                        }
                     } else {
-                        DispatchQueue.main.async {
-//                        self.tableView.isHidden = true
-                            self.stackView.isHidden = false
-                        }
+//                        DispatchQueue.main.async {
+////                        self.tableView.isHidden = true
+//                            self.stackView.isHidden = false
+//                        }
                     }
-                    SVProgressHUD.dismiss()
+//                    SVProgressHUD.dismiss()
                     
                     DispatchQueue.main.async {
                         completed()
-                        self.searchCount_job_lbl.text = "(" + String(self.searchBookModel.count) + ")"
+//                        self.searchCount_job_lbl.text = "(" + String(self.searchBookModel.count) + ")"
                         self.searchCount = "(" + String(self.searchBookModel.count) + ")"
                         SVProgressHUD.dismiss()
                     }
@@ -544,7 +515,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     SVProgressHUD.dismiss()
                     print(error)
                     DispatchQueue.main.async {
-                        self.stackView.isHidden = false
+//                        self.stackView.isHidden = false
                         //self.tableView.backgroundView = nil
                     }
                     
@@ -965,8 +936,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }else{
             SearchParameter = ["pickup_location" : pickupLocation.text!, "dropof_location" : dropOff.text!, "vehicle_type" : vehicleType, "del_date" : keywords.text! , "radious" : "", "latitude" : ""  , "longititude" : "" ]
         }
-        Alamofire.request(search_job_url, method : .post, parameters : SearchParameter).responseJSON {
+        Alamofire.request(search_job_url, method : .post, parameters : SearchParameter).responseJSON { [weak self]
             response in
+            guard let self = self else { return }
             if response.result.isSuccess {
                 SVProgressHUD.dismiss()
                 self.searchBookModel.removeAll()
@@ -989,6 +961,9 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         self.stackView.isHidden = false
+                        self.searchCount_job_lbl.text = "(0)"
+                        self.searchCount = "(0)"
+                        self.noJobRecordFound_lable.text = "Currently no job available"
                         self.searchFilter.removeFromSuperview()
                         self.searchFilter.isHidden = true
                         self.searchFilter.alpha = 0.0
@@ -1005,6 +980,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                                 self.searchFilter.removeFromSuperview()
                                 self.searchFilter.isHidden = true
                                 self.searchFilter.alpha = 0.0
+                                self.searchCount_job_lbl.text = "(\(self.searchBookModel.count))"
+                                self.searchCount = "(\(self.searchBookModel.count))"
                                 self.tableView.reloadData()
                             }
                             

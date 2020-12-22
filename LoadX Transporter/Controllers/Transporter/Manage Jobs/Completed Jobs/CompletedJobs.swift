@@ -36,6 +36,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     lazy var completedJobsModelBusiness = [CompletedJobsModelBusiness]()
     private var rowID : Int?
     var refresher: UIRefreshControl!
+    var routeTableViewRefresher: UIRefreshControl!
     var roundedPrice: Double = 0.0
     var completedJobs = false
     var completeJobPrice : String?
@@ -47,6 +48,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     let picker = UIDatePicker()
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     let sb = UIStoryboard(name: "Main", bundle: nil)
+    var isRoute = false
     
     //routes
     private let disposeBag = DisposeBag()
@@ -82,7 +84,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         completeJobCount_lbl.text = "(" + completeJob + ")"
         //self.title = "Completed Jobs"+" ("+userCompletedJobs+")"
         stackView.isHidden = true
-        getCompletedJobs(url: "api/transporterCompletedJobs")
+        
         businessJobs = false
         
         self.navigationController?.navigationBar.isHidden = true
@@ -93,24 +95,58 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CompletedJobsCell", bundle: nil) , forCellReuseIdentifier: "completedJobs")
         
+        //routes table view
+        configureRoutesTableView()
+        tableViewsRefreshControl()
+        routeJobsBtn.alpha = 0.5
+    }
+    
+    func callAPIs() {
+        getRoutes()
+        checkRouteAccess()
+        
+        getCompletedJobs(url: "api/transporterCompletedJobs") {
+            if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+                if isLoadxDrive == "0" {
+                    self.searchJobsBtnFunc()
+                } else {
+                    if !self.isRoute {
+                        self.searchJobsBtnFunc()
+                    } else {
+                        self.routesJobsBtnFunc()
+                    }
+                }
+            } else {
+                self.searchJobsBtnFunc()
+            }
+        }
+    }
+    
+    func tableViewsRefreshControl() {
         refresher = UIRefreshControl()
-        refresher.tintColor = UIColor.white
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refresher.tintColor = R.color.textfieldTextColor()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
         refresher.addTarget(self, action: #selector(CompletedJobs.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
         
-        //routes table view
-        configureRoutesTableView()
-        bindButtons()
-        getRoutes()
-        routeJobsBtn.alpha = 0.5
+        routeTableViewRefresher = UIRefreshControl()
+        routeTableViewRefresher.tintColor = R.color.textfieldTextColor()
+        routeTableViewRefresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
+        routeTableViewRefresher.addTarget(self, action: #selector(refreshRouteData), for: UIControl.Event.valueChanged)
+        routesTableView.addSubview(routeTableViewRefresher)
     }
+    
+    @objc func refreshRouteData() {
+        callAPIs()
+        self.routeTableViewRefresher.endRefreshing()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         darkMood()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        checkRouteAccess()
+     callAPIs()
     }
     func darkMood(){
         if switchCheck == true {
@@ -141,41 +177,48 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func bindButtons() {
-        searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.routesTableView.isHidden = true
-            self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
-            self?.topLabel.text = "Completed Jobs"
-            self?.routeJobsBtn.alpha = 0.5
-            self?.searchJobsBtn.alpha = 1.0
-            self?.completeJobCount_lbl.text = self?.searchCount ?? "(0)"
-            if (self?.completedJobsModel.count ?? 0) > 0 {
-            self?.tableView.isHidden = false
-            self?.stackView.isHidden = true
-            } else {
-            self?.stackView.isHidden = false
-            self?.tableView.isHidden = true
-            self?.noJob.text = "Currently no completed jobs"
-            }
-        }).disposed(by: disposeBag)
-        
-        routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.routeJobsBtn.alpha = 1.0
-            self?.searchJobsBtn.alpha = 0.5
-            self?.tableView.isHidden = true
-            self?.topLabel.text = "Completed Routes"
-            self?.completeJobCount_lbl.text = self?.routeCount ?? "(0)"
-            self?.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
-            if (self?.routes.count ?? 0) > 0 {
-                self?.routesTableView.isHidden = false
-                self?.stackView.isHidden = true
-            } else {
-                self?.routesTableView.isHidden = true
-                self?.stackView.isHidden = false
-                self?.noJob.text = "Currently no completed routes"
-            }
-        }).disposed(by: disposeBag)
-        
+    @IBAction func searchJobsAct(_ sender: Any) {
+        searchJobsBtnFunc()
+    }
+    
+    @IBAction func routesJobsAct(_ sender: Any) {
+        routesJobsBtnFunc()
+    }
+    
+    func searchJobsBtnFunc() {
+        isRoute = false
+        routesTableView.isHidden = true
+        setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+        topLabel.text = "Completed Jobs"
+        routeJobsBtn.alpha = 0.5
+        searchJobsBtn.alpha = 1.0
+        completeJobCount_lbl.text = "(\(completedJobsModel.count))"
+        if (completedJobsModel.count) > 0 {
+        tableView.isHidden = false
+        stackView.isHidden = true
+        } else {
+        stackView.isHidden = false
+        tableView.isHidden = true
+        noJob.text = "Currently no completed jobs"
+        }
+    }
+    
+    func routesJobsBtnFunc() {
+        isRoute = true
+        routeJobsBtn.alpha = 1.0
+        searchJobsBtn.alpha = 0.5
+        tableView.isHidden = true
+        topLabel.text = "Completed Routes"
+        completeJobCount_lbl.text = "(\(routes.count))"
+        setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
+        if (routes.count) > 0 {
+            routesTableView.isHidden = false
+            stackView.isHidden = true
+        } else {
+            routesTableView.isHidden = true
+            stackView.isHidden = false
+            noJob.text = "Currently no completed routes"
+        }
     }
     
     func getRoutes() {
@@ -187,7 +230,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             do {
                 self.routes = try JSONDecoder().decode([BookedRoute].self, from: data ?? Data())
-                print("completed Route json is \(String(describing: json))")
+//                print("completed Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
@@ -197,31 +240,11 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func filterList() {
-        //  tableView.sorted() { $0. > $1.fruitName } // sort the fruit by name
-        tableView.reloadData(); // notify the table view the data has changed
-    }
-    
-    @IBAction func search_btn(_ sender: Any) {
-        self.searchbool = true
-    }
-    
-    @IBAction func search_filter_action(_ sender: Any) {
-        if completedJobsModel.count == 0 {
-            stackView.isHidden = false
-        }else{
-            stackView.isHidden = true
-        }
-    }
-    
     @objc func populate() {
-        DispatchQueue.main.async {
-            self.getCompletedJobs(url: "api/transporterCompletedJobs")
-            self.refresher.endRefreshing()
-        }
+        callAPIs()
     }
     
-    func getCompletedJobs(url: String) {
+    func getCompletedJobs(url: String, completed: @escaping () -> ()) {
         guard Connectivity.isConnectedToInternet() else { return self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)}
         guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
@@ -253,6 +276,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 //print(self.completedJobsModelBusiness)
                                 
                                 DispatchQueue.main.async {
+                                    completed()
                                     self.stackView.isHidden = true
                                     self.tableView.reloadData()
                                 }
@@ -298,12 +322,12 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 260
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        UIView.animate(withDuration: 0.2) {
-            cell.transform = CGAffineTransform.identity
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+//        UIView.animate(withDuration: 0.2) {
+//            cell.transform = CGAffineTransform.identity
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Routes Table View

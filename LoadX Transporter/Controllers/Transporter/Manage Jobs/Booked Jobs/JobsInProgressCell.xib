@@ -38,7 +38,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY4-MJ-boq">
-                                <rect key="frame" x="90" y="15" width="121" height="20"/>
+                                <rect key="frame" x="90" y="15" width="120.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="dJi-ET-Hzl"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkm-pv-2pN">
-                                <rect key="frame" x="301.5" y="53" width="32.5" height="14.5"/>
+                                <rect key="frame" x="304.5" y="53" width="29.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -79,7 +79,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location........................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfN-0c-OJD">
                                         <rect key="frame" x="28" y="0.0" width="291" height="25"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -103,7 +103,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoff Location........................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78n-vK-VEX">
                                         <rect key="frame" x="28" y="0.0" width="291" height="25"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -116,12 +116,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Delivery Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da0-me-TX8">
-                                <rect key="frame" x="38" y="194.5" width="92.5" height="17"/>
+                                <rect key="frame" x="38" y="195" width="83" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syv-rZ-Obt">
-                                <rect key="frame" x="140.5" y="195" width="74" height="16"/>
+                                <rect key="frame" x="131" y="195.5" width="74.5" height="15.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C + ULEZ Charges Inclusive : £24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8n-03-JPS">
-                                <rect key="frame" x="90" y="82.5" width="244" height="14.5"/>
+                                <rect key="frame" x="90" y="82" width="244" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -250,10 +250,10 @@
     </objects>
     <designables>
         <designable name="AWD-39-aan">
-            <size key="intrinsicContentSize" width="82" height="30"/>
+            <size key="intrinsicContentSize" width="77" height="30"/>
         </designable>
         <designable name="Wz2-sL-Jnj">
-            <size key="intrinsicContentSize" width="105" height="30"/>
+            <size key="intrinsicContentSize" width="95" height="30"/>
         </designable>
     </designables>
     <resources>
@@ -266,12 +266,12 @@
         <namedColor name="PriceColor">
             <color red="0.15700000524520874" green="0.55299997329711914" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TextfieldTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="cellBackgroundcolor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

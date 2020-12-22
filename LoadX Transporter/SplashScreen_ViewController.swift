@@ -101,21 +101,22 @@ class SplashScreen_ViewController: UIViewController {
     
     //MARK: - Version Update Func
     /***************************************************************/
-   func isUpdateAvailable() throws -> Bool {
+   func isUpdateAvailable() -> Bool {
     
             guard let info = Bundle.main.infoDictionary,
                 let currentVersion = info["CFBundleShortVersionString"] as? String,
                 let identifier = info["CFBundleIdentifier"] as? String,
                 let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
-                    throw VersionError.invalidBundleInfo
+                return false
             }
     
     
-            let data = try Data(contentsOf: url)
-            guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
-                throw VersionError.invalidResponse
+            let data = try? Data(contentsOf: url)
+            guard let json = try? JSONSerialization.jsonObject(with: data ?? Data(), options: [.allowFragments]) as? [String: Any] else {
+                return false
+//                VersionError.invalidResponse
             }
-            if let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
+            if let result = (json?["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
                 print("previous version is \(version) && current version is \(currentVersion)")
                 let  DeviceCurrentVersion = Float(currentVersion)!
                 let  appStoreVersion = Float(version)!
@@ -123,7 +124,9 @@ class SplashScreen_ViewController: UIViewController {
                 return DeviceCurrentVersion > appStoreVersion
     //            return version != currentVersion
             }
-            throw VersionError.invalidResponse
+//            throw NSError.init(domain: "", code: 420, userInfo: [:])
+//    VersionError.invalidResponse
+    return false
         }
     /*
     // MARK: - Navigation

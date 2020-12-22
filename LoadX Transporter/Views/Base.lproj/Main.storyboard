@@ -908,6 +908,9 @@
                                                 <state key="normal" title="Jobs">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="searchJobsAct:" destination="a4j-rZ-Kc0" eventType="touchUpInside" id="irE-xd-kTc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLT-86-eVB">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="55"/>
@@ -915,6 +918,9 @@
                                                 <state key="normal" title="Routes">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="routesJobsAct:" destination="a4j-rZ-Kc0" eventType="touchUpInside" id="WXO-9Z-V8j"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1285,6 +1291,9 @@
                                                 <state key="normal" title="Jobs">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="searchJobsAct:" destination="UpP-2H-zVJ" eventType="touchUpInside" id="9Op-Qm-L49"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkC-BS-fCv">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="55"/>
@@ -1292,6 +1301,9 @@
                                                 <state key="normal" title="Routes">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="routesJobsAct:" destination="UpP-2H-zVJ" eventType="touchUpInside" id="4yG-e5-yvu"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -7824,6 +7836,9 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <state key="normal" title="Jobs">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="searchJobsAct:" destination="YHC-tB-dW7" eventType="touchUpInside" id="OmM-vk-COJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0B-gI-zyX">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="55"/>
@@ -7831,6 +7846,9 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <state key="normal" title="Routes">
                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="routesJobsAct:" destination="YHC-tB-dW7" eventType="touchUpInside" id="7T7-uU-sQH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

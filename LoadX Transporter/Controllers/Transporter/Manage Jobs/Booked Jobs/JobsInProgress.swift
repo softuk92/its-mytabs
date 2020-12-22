@@ -65,6 +65,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     lazy var jobsInProgressModel = [JobsInProgressModel]()
     var roundedPrice: Double = 0.0
     var refresher: UIRefreshControl!
+    var routeTableViewRefresher: UIRefreshControl!
     var bookedPrice : String?
     var imagePicker = UIImagePickerController()
     private var imagePicked = 0
@@ -82,7 +83,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         checkRouteAccess()
-      //  self.title = "Booked Jobs"+" ("+userInprogressJobs+")"
         self.popup_iconView.clipsToBounds = true
         self.popup_iconView.layer.cornerRadius = 18
         self.popup_iconView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
@@ -92,14 +92,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.Cancel_popup_iconView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
         
         stackView.isHidden = true
-//        searchBtn.isHidden = true
        
-        getBookedJobs(url: "api/transporterInprogresJobs")
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-//        tableView.backgroundColor = UIColor.white
-//        tableView.tableHeaderView = topView
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
@@ -108,29 +104,43 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.register(UINib(nibName: "JobsInProgressCell", bundle: nil) , forCellReuseIdentifier: "jobsInProgress")
         
-        refresher = UIRefreshControl()
-        refresher.tintColor = UIColor.white
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        refresher.addTarget(self, action: #selector(JobsInProgress.populate), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refresher)
-        
         guard let bookJob = UserDefaults.standard.string(forKey: "Book_job") else { return }
         book_job_lbl.text = "(" + bookJob + ")"
         
+//        getBookedJobs(url: "api/transporterInprogresJobs")
         //routes table view
         configureRoutesTableView()
-        bindButtons()
-        getRoutes()
+        tableViewsRefreshControl()
         routeJobsBtn.alpha = 0.5
         
         NotificationCenter.default.addObserver(self, selector: #selector(didSelect), name: NSNotification.Name(rawValue: "didSelect"), object: nil)
     }
     
+    func tableViewsRefreshControl() {
+        refresher = UIRefreshControl()
+        refresher.tintColor = R.color.textfieldTextColor()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
+        refresher.addTarget(self, action: #selector(JobsInProgress.populate), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refresher)
+        
+        routeTableViewRefresher = UIRefreshControl()
+        routeTableViewRefresher.tintColor = R.color.textfieldTextColor()
+        routeTableViewRefresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: R.color.textfieldTextColor() ?? .gray])
+        routeTableViewRefresher.addTarget(self, action: #selector(refreshRouteData), for: UIControl.Event.valueChanged)
+        routesTableView.addSubview(routeTableViewRefresher)
+    }
+    
+    @objc func refreshRouteData() {
+        callAPIs()
+        self.routeTableViewRefresher.endRefreshing()
+    }
+    
     @objc func didSelect(_ notification: Notification) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
-            self?.goToRoute()
-            self?.routesTableView.isHidden = false
-            self?.stackView.isHidden = true
+//            self?.goToRoute()
+//            self?.routesTableView.isHidden = false
+//            self?.stackView.isHidden = true
+            self?.callAPIs()
         }
     }
     
@@ -155,50 +165,67 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if isRoute {
-            goToRoute()
-            self.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
-        } else {
-            self.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
-        }
-        getBookedJobs(url: "api/transporterInprogresJobs")
-        getRoutes()
-        checkRouteAccess()
+        callAPIs()
     }
     
-    func bindButtons() {
-        searchJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.isRoute = false
-            self?.routesTableView.isHidden = true
-            self?.setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
-            self?.topLabel.text = "Booked Jobs"
-            self?.routeJobsBtn.alpha = 0.5
-            self?.searchJobsBtn.alpha = 1.0
-            self?.book_job_lbl.text = self?.searchCount ?? "(0)"
-            if (self?.jobsInProgressModel.count ?? 0) > 0 {
-            self?.tableView.isHidden = false
-            self?.stackView.isHidden = true
+    func callAPIs() {
+        getRoutes()
+        checkRouteAccess()
+
+        getBookedJobs(url: "api/transporterInprogresJobs") {
+            if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
+                if isLoadxDrive == "0" {
+                    self.searchJobsBtnFunc()
+                } else {
+                    if !self.isRoute {
+                        self.searchJobsBtnFunc()
+                    } else {
+                        self.routesJobsBtnFunc()
+                    }
+                }
             } else {
-            self?.stackView.isHidden = false
-            self?.tableView.isHidden = true
-            self?.noJob_lbl.text = "Currently no booked jobs"
+                self.searchJobsBtnFunc()
             }
-        }).disposed(by: disposeBag)
-        
-        routeJobsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
-            guard let self = self else { return }
-            self.isRoute = true
-            self.goToRoute()
-            if (self.routes.count) > 0 {
-                self.routesTableView.isHidden = false
-                self.stackView.isHidden = true
-            } else {
-                self.routesTableView.isHidden = true
-                self.stackView.isHidden = false
-                self.noJob_lbl.text = "Currently no booked routes"
-            }
-        }).disposed(by: disposeBag)
-        
+        }
+    }
+    
+    @IBAction func searchJobsAct(_ sender: Any) {
+        searchJobsBtnFunc()
+    }
+    
+    @IBAction func routesJobsAct(_ sender: Any) {
+        routesJobsBtnFunc()
+    }
+    
+    func searchJobsBtnFunc() {
+        isRoute = false
+        routesTableView.isHidden = true
+        setConstraints(leadingSearch: true, trailingSearch: true, leadingRoute: false, trailingRoute: false)
+        topLabel.text = "Booked Jobs"
+        routeJobsBtn.alpha = 0.5
+        searchJobsBtn.alpha = 1.0
+        book_job_lbl.text = "(\(jobsInProgressModel.count))"
+        if (jobsInProgressModel.count) > 0 {
+        tableView.isHidden = false
+        stackView.isHidden = true
+        } else {
+        stackView.isHidden = false
+        tableView.isHidden = true
+        noJob_lbl.text = "Currently no booked jobs"
+        }
+    }
+    
+    func routesJobsBtnFunc() {
+        self.isRoute = true
+        self.goToRoute()
+        if (self.routes.count) > 0 {
+            self.routesTableView.isHidden = false
+            self.stackView.isHidden = true
+        } else {
+            self.routesTableView.isHidden = true
+            self.stackView.isHidden = false
+            self.noJob_lbl.text = "Currently no booked routes"
+        }
     }
     
     func goToRoute() {
@@ -206,7 +233,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.searchJobsBtn.alpha = 0.5
         self.tableView.isHidden = true
         self.topLabel.text = "Booked Routes"
-        self.book_job_lbl.text = self.routeCount ?? "(0)"
+        self.book_job_lbl.text = "(\(self.routes.count))"
         self.setConstraints(leadingSearch: false, trailingSearch: false, leadingRoute: true, trailingRoute: true)
     }
     
@@ -219,7 +246,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             do {
                 self.routes = try JSONDecoder().decode([BookedRoute].self, from: data ?? Data())
-                print("Booked Route json is \(String(describing: json))")
+//                print("Booked Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
@@ -230,19 +257,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func populate() {
-        
-        DispatchQueue.main.async {
-//         if self.progressJobs == false {
-//            } else {
-//           self.getBookedJobs(url: "api/transporterInprogresJobsBusiness")
-//            }
-            self.getBookedJobs(url: "api/transporterInprogresJobs")
-            self.refresher.endRefreshing()
-            }
+        callAPIs()
+        self.refresher.endRefreshing()
     }
   
     
-    func getBookedJobs(url: String) {
+    func getBookedJobs(url: String, completed: @escaping () -> ()) {
         guard Connectivity.isConnectedToInternet() else { return self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)}
         guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
@@ -276,6 +296,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 //                                print(self.jobsInProgressModel)
 
                                 DispatchQueue.main.async {
+                                    completed()
 //                                    self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
                                     self.stackView.isHidden = true
 //                                    self.searchBtn.isHidden = true

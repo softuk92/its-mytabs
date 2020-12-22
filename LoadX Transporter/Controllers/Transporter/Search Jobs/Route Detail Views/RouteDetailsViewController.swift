@@ -23,7 +23,7 @@ class RouteDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         configureTableView()
-        getRouteDetails()
+//        getRouteDetails()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
