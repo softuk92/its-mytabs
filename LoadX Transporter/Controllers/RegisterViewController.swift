@@ -231,12 +231,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             
         }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        imageOne = 0
-        imageTwo = 0
-    }
-        
-    
     @IBAction func back_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }
@@ -399,8 +393,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
     //register function
     func registerTransporter() {
         
-        SVProgressHUD.show(withStatus: "Registering...")
         if imageOne == 1 && imageTwo == 2 {
+            SVProgressHUD.show(withStatus: "Registering...")
         if self.fullName.text != "" && self.phone_no.text != "" && self.email_address.text != "" && self.address.text != "" && self.van_type.text != "" && self.vehicle_reg_no.text != "" {
             var parameters : [String:String] = [:]
             let registerTransporter_URL = main_URL+"api/registerdriver"

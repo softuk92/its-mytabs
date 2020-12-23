@@ -28,6 +28,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     var d_item: String?
     let year = Calendar.current.component(.year, from: Date())
     var Posteddate: String?
+    var isJobNotBooked: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +89,15 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))
         
+        if isJobNotBooked != true {
         if pickupHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
         }
         if dropoffHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
         }
+        }
+        
         if movingFrom_lbl != "" {
         info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
         }
@@ -102,10 +106,10 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         if category == "Furniture and General Items" || category == "Furniture & General Items" {
-            if pickupLift != "" {
+            if pickupLift != "" && movingFrom_lbl.lowercased() != "ground floor" {
                 info.append(MenuItemStruct.init(title: "Lift at Pick Up", value: (pickupLift == "0") ? "No" : "Yes"))
             }
-            if dropoffLift != "" {
+            if dropoffLift != "" && movingTo_lbl.lowercased() != "ground floor" {
                 info.append(MenuItemStruct.init(title: "Lift at Drop Off", value: (dropoffLift == "0") ? "No" : "Yes"))
             }
         }

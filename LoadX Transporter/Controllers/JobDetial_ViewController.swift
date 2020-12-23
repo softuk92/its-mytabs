@@ -360,6 +360,7 @@ func setPager() {
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Job_Summary_ViewController" ) as! Job_Summary_ViewController
 //                vc.index = 1
+                vc.isJobNotBooked = selectSearchJob
                 vc.jsonData = self.jsonDataPArse
                 vc.jsonData_inventory = self.jsonDataPArse[1]
                 

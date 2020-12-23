@@ -140,7 +140,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            self?.goToRoute()
 //            self?.routesTableView.isHidden = false
 //            self?.stackView.isHidden = true
-            self?.callAPIs()
+//            self?.callAPIs()
         }
     }
     
