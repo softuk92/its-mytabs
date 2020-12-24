@@ -26,6 +26,12 @@ open class RouteBookedView: UITableViewCell, NibReusable {
     @IBOutlet weak var onYourWay: UILabel!
 
     private var disposeBag = DisposeBag()
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     weak var parentViewController : UIViewController!
     open var dataSource: BookedRoute! {
         didSet {
@@ -33,6 +39,9 @@ open class RouteBookedView: UITableViewCell, NibReusable {
             bindLabels(route: route)
         }
     }
+    
+    var startRouteAct : ((RouteBookedView) -> Void)?
+    var cancelRouteAct: ((RouteBookedView) -> Void)?
     
     open func bindLabels(route: BookedRoute) {
         stops.text = "No of Stops: \(route.lr_no_of_stops)"
@@ -75,6 +84,14 @@ open class RouteBookedView: UITableViewCell, NibReusable {
         innerView.layer.cornerRadius = 5
 //        leftBtnView.roundCorners(corners: [.bottomLeft], radius: 5)
 //        startRoute.roundCorners(corners: [.bottomRight], radius: 5)
+    }
+    
+    @IBAction func startRouteBtn(_ sender: Any) {
+        startRouteAct?(self)
+    }
+    
+    @IBAction func cancelRouteBtn(_ sender: Any) {
+        cancelRouteAct?(self)
     }
 
 }

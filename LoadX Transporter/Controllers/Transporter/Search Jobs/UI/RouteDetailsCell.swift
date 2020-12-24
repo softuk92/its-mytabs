@@ -56,11 +56,20 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
         if route.payment_type == "account" {
             cashToBeCollectedView.isHidden = true
             cashToBeCollectedViewHeight.constant = 0
+        } else {
+            if route.lrh_type == "Pickup Shipment" {
+            cashToBeCollectedView.isHidden = false
+            cashToBeCollectedViewHeight.constant = 130
+            } else {
+                if route.cash_received_at_pickup.lowercased() == "no" {
+                    cashToBeCollectedView.isHidden = false
+                    cashToBeCollectedViewHeight.constant = 130
+                } else {
+                    cashToBeCollectedView.isHidden = true
+                    cashToBeCollectedViewHeight.constant = 0
+                }
+            }
         }
-//        else {
-//            cashToBeCollectedView.isHidden = false
-//            cashToBeCollectedViewHeight.constant = 130
-//        }
         completeWidth.constant = (route.is_completed == "1") ? 54 : 0 
         stops.text = "Stop "+String(route.stop_no)
         routeId.text = getStopId(company: route.company, stopId: Int(route.lrh_job_id) ?? 0)

@@ -156,7 +156,7 @@ extension StopDetailsViewController {
             print("transporter arrived json \(String(describing: json))")
             
             let result = json?[0]["result"].stringValue
-            let msg = json?[0]["message"].stringValue
+            let msg = json?[0]["msg"].stringValue
             if result == "1" {
             self.hideShowButtonViews(upperView: false, bottomView: false)
             if self.route.lrh_type == "Pickup Shipment" {
@@ -197,6 +197,7 @@ extension StopDetailsViewController {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
             vc.lrhJobId = route.lrh_job_id
             vc.lrID = self.routeID ?? ""
+            vc.lrhId = route.lrh_id
             vc.isRoute = true
             vc.ref_no = fullStopId
             vc.contactName = route.customer_name

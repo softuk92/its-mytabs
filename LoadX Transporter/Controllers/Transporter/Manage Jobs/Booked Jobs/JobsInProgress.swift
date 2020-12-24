@@ -350,8 +350,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.layer.shadowRadius = 10
             cell.dataSource = routes[indexPath.row]
             cell.parentViewController = self
-            cell.cancelRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
+            cell.cancelRouteAct = {[weak self] (selectedCell) in
                 guard let self = self else { return }
+                let selectedIndex = self.tableView.indexPath(for: selectedCell)
+                self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
                 self.lr_id = self.routes[indexPath.row].lr_id
                 UIView.animate(withDuration: 0.3, animations: {
                     self.jobCancel_popview.layer.cornerRadius = 18
@@ -361,12 +363,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.view.addSubview(self.jobCancel_popview)
                     self.jobCancel_popview.center = self.view.center
                 })
-            }).disposed(by: disposeBag)
+            }
             
-            cell.startRoute.rx.tap.subscribe(onNext: {[weak self] (_) in
+            cell.startRouteAct = {[weak self] (selectedCell) in
                 guard let self = self else { return }
+                let selectedIndex = self.tableView.indexPath(for: selectedCell)
+                self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
                 self.startRoute(lrID: self.routes[indexPath.row].lr_id, isRouteStarted: self.routes[indexPath.row].is_route_started ?? "")
-            }).disposed(by: disposeBag)
+            }
             
             return cell
         }

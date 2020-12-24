@@ -21,12 +21,14 @@ public struct Routes : Decodable {
     let pu_country: String
     let pu_city: String
     let pu_post_code: String
+    let pu_town: String
     let do_route: String
     let do_street: String
     let do_state: String
     let do_country: String
     let do_city: String
     let do_post_code: String
+    let do_town: String
     let lr_total_price: Double?
     let lr_date: String
     let lr_total_distance: String?

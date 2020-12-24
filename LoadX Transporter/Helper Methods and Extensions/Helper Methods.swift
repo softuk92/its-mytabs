@@ -79,3 +79,47 @@ public func getAddress(street: String, route: String, city: String, postcode: St
     return fullAddress
     }
 }
+
+//get address
+public func getAddress(street: String, route: String, city: String, postcode: String, town: String) -> String {
+    var address1 = ""
+    var address2 = ""
+    var fullAddress = ""
+    if street != "" || route != "" {
+        address1 = street+" "+route+","
+    } else {
+        address1 = ""
+    }
+    if city != "" {
+        address2 = address1+" "+city+","
+    } else {
+        address2 = address1
+    }
+    if postcode != "" {
+        let spaceCount = postcode.filter{$0 == " "}.count
+        if spaceCount > 0 {
+            if let first = postcode.components(separatedBy: " ").first {
+                fullAddress = address2+" "+first
+            }
+        } else if spaceCount == 0 {
+            fullAddress = address2+" "+postcode
+        }
+    }
+    
+    if town != "" && postcode != "" {
+        let spaceCount = postcode.filter{$0 == " "}.count
+        if spaceCount > 0 {
+            if let first = postcode.components(separatedBy: " ").first {
+                fullAddress = town+", "+first
+            }
+        } else if spaceCount == 0 {
+            fullAddress = town+", "+postcode
+        }
+    }
+    if street == "" && route == "" && postcode == "" && city != "" {
+        return city.capitalized
+    } else {
+    return fullAddress
+    }
+
+}

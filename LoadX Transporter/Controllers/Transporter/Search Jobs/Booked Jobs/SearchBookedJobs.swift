@@ -617,16 +617,20 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.layer.shadowRadius = 10
             cell.dataSource = routes[indexPath.row]
             cell.parentViewController = self
-            cell.acceptRoute.rx.tap.subscribe(onNext: { [weak self] (_) in
+            
+            cell.acceptRouteAct = {[weak self] (selectedCell) in
                 guard let self = self else { return }
-                if self.icStatus == "pending" || self.dlStatus == "pending" {
+                let selectedIndex = self.tableView.indexPath(for: selectedCell)
+                self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+                if self.icStatus?.lowercased() == "pending" || self.dlStatus?.lowercased() == "pending" {
                     self.showApprovalAlert(question: "Please wait for documents approval.")
-                } else if self.icStatus == "Reject" || self.dlStatus == "Reject" || self.icStatus == "" || self.dlStatus == "" {
+                } else if self.icStatus?.lowercased() == "reject" || self.dlStatus?.lowercased() == "reject" || self.icStatus == "" || self.dlStatus == "" {
                     self.showApprovalAlert(question: "Please upload your documents.")
                 } else {
                 self.acceptRoute(lrID: self.routes[indexPath.row].lr_id)
                 }
-            }).disposed(by: disposeBag)
+            }
+        
             return cell
         }
         
@@ -1068,21 +1072,14 @@ extension SearchBookedJobs {
         APIManager.apiPost(serviceName: "api/getRouteJob", parameters: ["user_id" : user_id ?? "", "lr_id": lrID]) { [weak self] (data, json, error) in
             guard let self = self else { return }
             if error != nil {
-
+                self.present(showAlert(title: "Error", message: error?.localizedDescription ?? "Error Accepting Route"), animated: true, completion: nil)
             }
             let msg = json?[0]["msg"].stringValue
             let result = json?[0]["result"].stringValue
             if result == "1" {
                 self.tabBarController?.selectedIndex = 0
-//                if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController {
-//                    vc.selectedIndex = 0
-////                    vc.postData()
-////                    self.navigationController?.present(vc, animated: true, completion: nil)
-//                    self.appDelegate.window?.rootViewController = vc
-//
-//                }
             } else {
-//                self.present(showAlert(title: "Alert", message: msg ?? ""), animated: true, completion: nil)
+                self.present(showAlert(title: "Alert", message: msg ?? ""), animated: true, completion: nil)
             }
         }
         
