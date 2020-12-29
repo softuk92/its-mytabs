@@ -127,7 +127,7 @@ class TransporterDashboard: UIViewController {
         let month = components.month
         let day = components.day
         
-        if(month == 12 && day! < 30)  { //after sep 21 2019 app will active
+        if (month == 12 && day! <= 31) || (month == 1 && day! < 30)  { //after sep 21 2019 app will active
             //do nothing
         } else {
         DispatchQueue.main.async {
