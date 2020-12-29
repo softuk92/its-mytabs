@@ -421,12 +421,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if is_companyJob == "1" {
             cell.businessPatti.isHidden = false
             cell.widthBusiness.constant = 65
-            cell.businessCharges.isHidden = false
         } else {
             cell.businessPatti.isHidden = true
             cell.widthBusiness.constant = 0
-            cell.businessCharges.isHidden = true
         }
+        cell.businessCharges.isHidden = jobsInProgressRow.is_cz == "0"
         
         let bookedJob_id = jobsInProgressRow.is_booked_job
         
