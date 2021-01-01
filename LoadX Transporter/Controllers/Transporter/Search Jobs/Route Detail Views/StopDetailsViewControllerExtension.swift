@@ -31,6 +31,26 @@ extension StopDetailsViewController {
         self.view.addSubview(aView)
     }
     
+    func showPickupRouteCompleteAlert() {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.ensure.text = ""
+        aView.sendPaymentLink.isHidden = true
+        aView.sendPaymentLinkHeight.constant = 0
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        aView.question.text = "Have this stop been completed?"
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            aView.removeFromSuperview()
+            self?.pickupRouteCompleted()
+        }).disposed(by: disposeBag)
+
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
+    }
+    
     func showArrivedAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.ensure.text = ""
@@ -124,6 +144,25 @@ extension StopDetailsViewController {
         }
         
         self.view.addSubview(aView)
+    }
+    
+    func pickupRouteCompleted() {
+        APIManager.apiPost(serviceName: "api/markRouteStopCompleted", parameters: ["lrh_id" : route.lrh_id]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                
+            }
+            print("transporter pickup completed json \(String(describing: json))")
+            
+            let result = json?[0]["result"].stringValue
+            let msg = json?[0]["msg"].stringValue
+            if result == "1" {
+                self.complete.isHidden = true
+                self.reportDamage.isHidden = true
+            } else {
+            self.present(showAlert(title: "", message: msg ?? ""), animated: true, completion: nil)
+            }
+        }
     }
     
     //cash collected

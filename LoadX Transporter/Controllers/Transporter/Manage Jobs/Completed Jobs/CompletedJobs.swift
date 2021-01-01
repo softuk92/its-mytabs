@@ -81,7 +81,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         checkRouteAccess()
         guard let completeJob = UserDefaults.standard.string(forKey: "complete_job") else { return }
-        completeJobCount_lbl.text = "(" + completeJob + ")"
+//        completeJobCount_lbl.text = "(" + completeJob + ")"
         //self.title = "Completed Jobs"+" ("+userCompletedJobs+")"
         stackView.isHidden = true
         
@@ -137,8 +137,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func refreshRouteData() {
-        callAPIs()
         self.routeTableViewRefresher.endRefreshing()
+        callAPIs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -241,6 +241,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func populate() {
+        self.refresher.endRefreshing()
         callAPIs()
     }
     
@@ -282,11 +283,12 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 }
                             } else {
                                 self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data ?? Data())
-                                self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
+//                                self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
                                 self.searchCount = "(\(self.completedJobsModel.count))"
                                 SVProgressHUD.dismiss()
                                 
                                 DispatchQueue.main.async {
+                                    completed()
                                     self.stackView.isHidden = true
                                     self.tableView.reloadData()
                                 }

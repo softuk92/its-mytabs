@@ -61,13 +61,13 @@ open class RouteDetailsCell: UITableViewCell, NibReusable {
             cashToBeCollectedView.isHidden = false
             cashToBeCollectedViewHeight.constant = 130
             } else {
-                if route.cash_received_at_pickup.lowercased() == "no" {
+//                if route.cash_received_at_pickup.lowercased() == "no" {
                     cashToBeCollectedView.isHidden = false
                     cashToBeCollectedViewHeight.constant = 130
-                } else {
-                    cashToBeCollectedView.isHidden = true
-                    cashToBeCollectedViewHeight.constant = 0
-                }
+//                } else {
+//                    cashToBeCollectedView.isHidden = true
+//                    cashToBeCollectedViewHeight.constant = 0
+//                }
             }
         }
         completeWidth.constant = (route.is_completed == "1") ? 54 : 0 

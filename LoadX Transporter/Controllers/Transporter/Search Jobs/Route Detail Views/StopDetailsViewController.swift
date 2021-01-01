@@ -327,7 +327,11 @@ class StopDetailsViewController: UIViewController {
     }
     
     @IBAction func completeRouteAct(_ sender: UIButton) {
+        if route.lrh_type == "Pickup Shipment" {
+        showPickupRouteCompleteAlert()
+        } else {
         showCompleteAlertView()
+        }
     }
     
     @IBAction func runningLateAct(_ sender: UIButton) {
