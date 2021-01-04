@@ -40,11 +40,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refresher.addTarget(self, action: #selector(PaymentHistoryController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
+        guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
+              paymentTotal.text =  "£ (" + totalEarning + ")"
     }
-    override func viewWillAppear(_ animated: Bool) {
-         guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
-               paymentTotal.text =  "£ (" + totalEarning + ")"
-    }
+ 
     @objc func populate() {
         DispatchQueue.main.async {
         self.getPaymentHistory()
