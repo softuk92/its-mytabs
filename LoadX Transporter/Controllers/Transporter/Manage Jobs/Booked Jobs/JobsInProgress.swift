@@ -15,6 +15,9 @@ import RxSwift
 import SwiftMessages
 
 var businessJobs : Bool?
+var route_id: String?
+var is_route_started: String?
+var islastIndex: Int?
 
 class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
@@ -137,12 +140,16 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func didSelect(_ notification: Notification) {
         routesJobsBtnFunc()
-//        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
-//            self?.goToRoute()
-//            self?.routesTableView.isHidden = false
-//            self?.stackView.isHidden = true
-//            self?.callAPIs()
-//        }
+        if islastIndex == 1 {
+            
+        } else {
+        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+            vc.routeId = route_id
+            vc.isRouteStarted = is_route_started ?? ""
+            vc.isBooked = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        }
     }
     
     func checkRouteAccess() {
@@ -588,7 +595,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = self.routes[indexPath.row].lr_id
+                route_id = self.routes[indexPath.row].lr_id
                 vc.isRouteStarted = self.routes[indexPath.row].is_route_started ?? ""
+                is_route_started = self.routes[indexPath.row].is_route_started ?? ""
                 vc.isBooked = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }

@@ -74,6 +74,9 @@ class StopDetailsViewController: UIViewController {
         getStopDetails()
         setupButtons()
         customizeUI()
+        if self.routeIndex == self.allRoutes.count-1 {
+            islastIndex = 1
+        }
     }
     
     func customizeUI() {
