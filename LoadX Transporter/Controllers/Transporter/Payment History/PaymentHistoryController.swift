@@ -75,7 +75,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                             if error == nil {
                                 do {
                                     self.paymentHistoryModel = try JSONDecoder().decode([PaymentHistoryModel].self, from: data!)
-                                    self.filteredPaymentHistory = self.paymentHistoryModel.filter{$0.route_id == nil}
+                                    self.filteredPaymentHistory = self.paymentHistoryModel
+//                                        .filter{$0.route_id == nil}
                                     SVProgressHUD.dismiss()
                                     
                                     DispatchQueue.main.async {
@@ -147,7 +148,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         if paymentHistoryRow.moving_item != nil {
             cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
         } else {
-            cell.moving_item.text = paymentHistoryRow.route_id ?? "null"
+            cell.moving_item.text = "LR00\(paymentHistoryRow.route_id ?? "")"
         }
         
         let stringDate = paymentHistoryRow.pay_date
@@ -171,6 +172,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
             payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
 
+            if paymentHistoryRow.moving_item != nil {
             if booked_id == "1" {
 //            self.performSegue(withIdentifier: "showBooked", sender: self)
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoiceBookedJob") as? ShowInvoiceBookedJob
@@ -180,6 +182,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoice") as? ShowInvoice
             self.navigationController?.pushViewController(vc!, animated: true)
                 
+            }
+            } else {
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowRouteInvoiceViewController") as? ShowRouteInvoiceViewController {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         

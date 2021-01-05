@@ -136,12 +136,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func didSelect(_ notification: Notification) {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+        routesJobsBtnFunc()
+//        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
 //            self?.goToRoute()
 //            self?.routesTableView.isHidden = false
 //            self?.stackView.isHidden = true
 //            self?.callAPIs()
-        }
+//        }
     }
     
     func checkRouteAccess() {

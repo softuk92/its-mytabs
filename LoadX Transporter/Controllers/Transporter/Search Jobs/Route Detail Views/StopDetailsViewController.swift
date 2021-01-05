@@ -207,7 +207,13 @@ class StopDetailsViewController: UIViewController {
             } else if helper == "1" {
                 noOfHelper = "Driver Only"
             } else {
-                noOfHelper = "Driver + \(helper ?? "") Helpers"
+                let helper = Int(helper ?? "")
+                let helpers = (helper ?? 0) - 1
+                if helpers == 1 {
+                    noOfHelper = "Driver + \((helper ?? 0)-1) Helper"
+                } else {
+                    noOfHelper = "Driver + \((helper ?? 0)-1) Helpers"
+                }
             }
             
             info.append(MenuItemStruct.init(title: "No of Helpers", value: noOfHelper))

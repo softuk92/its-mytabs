@@ -10,6 +10,7 @@
 		1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800493E2555A2DC005EA70D /* Routes.storyboard */; };
 		18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824425F254ADD80005901AC /* UpdateAppViewController.swift */; };
 		182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B334225656B7700B8201A /* RouteStopDetail.swift */; };
+		1831A85525A462B9003F2206 /* ShowRouteInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */; };
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */; };
 		1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */; };
@@ -203,6 +204,7 @@
 		1800493E2555A2DC005EA70D /* Routes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		1824425F254ADD80005901AC /* UpdateAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppViewController.swift; sourceTree = "<group>"; };
 		182B334225656B7700B8201A /* RouteStopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopDetail.swift; sourceTree = "<group>"; };
+		1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteInvoiceViewController.swift; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryCell.swift; sourceTree = "<group>"; };
 		1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryCell.xib; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				8D48C2172224420600417EF5 /* PaymentHistoryController.swift */,
 				8D48C2162224420600417EF5 /* ShowInvoice.swift */,
 				6D657B06229C4C06002156C9 /* ShowInvoiceBookedJob.swift */,
+				1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */,
 			);
 			path = "Payment History";
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				8DEF4BA8225785BD00E6E069 /* SearchFreebieModel.swift in Sources */,
 				8D48C1F622240A1A00417EF5 /* ActiveJobsCell.swift in Sources */,
 				8D48C1F522240A1A00417EF5 /* ActiveJobs.swift in Sources */,
+				1831A85525A462B9003F2206 /* ShowRouteInvoiceViewController.swift in Sources */,
 				8D48C2182224420700417EF5 /* PaymentHistoryCell.swift in Sources */,
 				6D2BCDE9229E9DF400C48CBF /* RegisterSuccessController.swift in Sources */,
 				4E44137B24004A47005F8A18 /* AppInfo_ViewController.swift in Sources */,
