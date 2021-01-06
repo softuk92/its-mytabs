@@ -46,10 +46,11 @@ class SuccessController: UIViewController {
     }
     
     @IBAction func goToBookedRoutes(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
-        vc?.postData()
-        vc?.selectedIndex = 0
-    self.navigationController?.pushViewController(vc!, animated: true)
+        if islastIndex == 1 {
+            self.navigationController?.popToRootViewController(animated: true)
+        } else if let viewControllers = self.navigationController?.viewControllers {
+            self.navigationController?.popToViewController(viewControllers[1], animated: true)
+        }
     }
     
 }
