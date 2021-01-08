@@ -139,17 +139,17 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func didSelect(_ notification: Notification) {
-        routesJobsBtnFunc()
-        if islastIndex == 1 {
-            
-        } else {
-        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-            vc.routeId = route_id
-            vc.isRouteStarted = is_route_started ?? ""
-            vc.isBooked = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        }
+//        routesJobsBtnFunc()
+//        if islastIndex == 1 {
+//            
+//        } else {
+//        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+//            vc.routeId = route_id
+//            vc.isRouteStarted = is_route_started ?? ""
+//            vc.isBooked = true
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//        }
     }
     
     func checkRouteAccess() {

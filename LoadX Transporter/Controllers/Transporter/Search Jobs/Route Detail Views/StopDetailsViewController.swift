@@ -76,6 +76,8 @@ class StopDetailsViewController: UIViewController {
         customizeUI()
         if self.routeIndex == self.allRoutes.count-1 {
             islastIndex = 1
+        } else {
+            islastIndex = nil
         }
     }
     
