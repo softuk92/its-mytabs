@@ -280,8 +280,8 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
                         self.job_id_label.text = job_id2
                         self.job_id_label2.text = job_id2
-                        self.invoice_no.text = job_id2
-                        self.invoice_no2.text = job_id2
+                        self.invoice_no.text = job_id
+                        self.invoice_no2.text = job_id
                         if user_name != nil {
                         //    self.transporter_partner.text = user_name?.capitalized
 //                            self.transporter_partner2.text = user_name?.capitalized

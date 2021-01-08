@@ -21,6 +21,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     @IBOutlet weak var routesEarning: UILabel!
     @IBOutlet weak var totalPrice_view: UIView!
     @IBOutlet weak var totalEarning: UILabel!
+    @IBOutlet weak var totalOutstanding: UILabel!
     @IBOutlet weak var totalCompletedJob_lbl: UILabel!
     @IBOutlet weak var toDate_tf: AnimatableTextField!
     @IBOutlet weak var fromDate_tf: AnimatableTextField!
@@ -49,7 +50,10 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         if let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") {
         totalEarning.text = "£ \(totalEarningAmount)"
         }
-        if let routeEarning = UserDefaults.standard.string(forKey: "routeEarning") {
+        if let totalOutstandingAmount = UserDefaults.standard.string(forKey: "totalOutstanding") {
+            totalOutstanding.text = "£ \(totalOutstandingAmount)"
+        }
+        if let routeEarning = UserDefaults.standard.string(forKey: "totalRouteCompleted") {
             self.routesEarning.text = routeEarning
         }
         if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {

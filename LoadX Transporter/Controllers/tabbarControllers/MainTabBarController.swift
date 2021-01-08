@@ -179,6 +179,13 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                                                           
                             }
                             
+                            if let roundedPrice = Double(jsonData[0]["driverOutstanding"].stringValue)?.rounded(toPlaces: 2) {
+                         
+                                UserDefaults.standard.set(String(format: "%.2f", roundedPrice), forKey: "totalOutstanding")
+                                                          
+                            }
+                            
+                            UserDefaults.standard.setValue(jsonData[0]["User_Completed_Routes_sidebar_count"].stringValue, forKey: "totalRouteCompleted")
                             UserDefaults.standard.setValue(jsonData[0]["RoutingEarning"].stringValue, forKey: "routeEarning")
                            self.view.layoutIfNeeded()
                         } else {
