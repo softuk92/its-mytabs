@@ -801,7 +801,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             //self.performSegue(withIdentifier: "detail", sender: self)
             self.SearchListJob = true
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController
-            vc?.bookedJobPrice = self.bookedPrice
+            vc?.bookedJobPrice = cell.lowest_bid.text
+//                self.bookedPrice
             vc?.selectSearchJob = self.SearchListJob
             vc?.showHouseNumber = false
             vc?.pickupAdd = cell.pickupLabel.text
@@ -888,7 +889,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let doubleValue = Double(x)
             let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-            //        let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
+            //let resultInitialPrice2 = Double(currentBid2)! * Double(0.25)
             self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
             let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
             self.bookedPrice = "£"+"\(resultRemaining2)"
@@ -896,7 +897,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             
             self.SearchListJob = true
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController
-            vc?.bookedJobPrice = bookedPrice
+            vc?.bookedJobPrice = cell.lowest_bid.text
+//                bookedPrice
             vc?.selectSearchJob = SearchListJob
             vc?.pickupAdd = cell.pickupLabel.text
             vc?.dropoffAdd = cell.dropOffLabel.text

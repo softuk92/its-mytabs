@@ -22,7 +22,7 @@ public func convertDateFormatter(_ date: String) -> String
     let date = dateFormatter.date(from: date)
     
     dateFormatter.dateFormat = "dd-MMMM-yyyy"
-    return  dateFormatter.string(from: date!)
+    return  dateFormatter.string(from: date ?? Date())
     
 }
 
@@ -33,7 +33,7 @@ public func convertDateFormatter2(_ date: String) -> String
     let date = dateFormatter.date(from: date)
     
     dateFormatter.dateFormat = "dd-MMMM-yyyy"
-    return  dateFormatter.string(from: date!)
+    return  dateFormatter.string(from: date ?? Date())
     
 }
 
@@ -44,7 +44,7 @@ public func convertDateYearFirst(_ date: String) -> String
     let date = dateFormatter.date(from: date)
     
     dateFormatter.dateFormat = "dd-MMMM-yyyy"
-    return  dateFormatter.string(from: date!)
+    return  dateFormatter.string(from: date ?? Date())
     
 }
 

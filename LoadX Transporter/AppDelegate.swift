@@ -18,10 +18,10 @@ import IQKeyboardManagerSwift
 import DropDown
 import ZDCChat
 
-//var main_URL = "https://www.loadx.co.uk/"
+var main_URL = "https://www.loadx.co.uk/"
 
 //test api
-var main_URL = "http://www.test.loadx.co.uk/"
+//var main_URL = "http://www.test.loadx.co.uk/"
 
 enum VersionError: Error {
     case invalidResponse, invalidBundleInfo
