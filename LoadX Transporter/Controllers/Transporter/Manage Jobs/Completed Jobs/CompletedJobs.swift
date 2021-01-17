@@ -589,6 +589,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 vc.showHouseNumber = true
                 vc.pickupAdd = cell.pick_up.text
                 vc.dropoffAdd = cell.drop_off.text
+                vc.bookedJobPrice = cell.price.text
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
@@ -602,6 +603,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 vc.showHouseNumber = true
                 vc.pickupAdd = cell.pick_up.text
                 vc.dropoffAdd = cell.drop_off.text
+                vc.bookedJobPrice = cell.price.text
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
