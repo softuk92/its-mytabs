@@ -246,7 +246,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
     func fetchProfile() {
         print("fetch Profile")
-        SVProgressHUD.show(withStatus: "Logging In")
+        SVProgressHUD.show(withStatus: "Signing In")
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email, name, first_name, relationship_status"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil){
                 if let fbDetails = result as? NSDictionary {
@@ -347,7 +347,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginWithFacebookUserType() {
         if user_id != nil && user_type != nil {
-            SVProgressHUD.show(withStatus: "Logging in...")
+            SVProgressHUD.show(withStatus: "Signing in...")
             let parameters : Parameters = ["user_id" : user_id!, "user_type" : user_type!]
             let loginFb_URL = main_URL+"api/addusertype"
             Alamofire.request(loginFb_URL, method : .post, parameters : parameters).responseJSON {
@@ -409,7 +409,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     func userLogin() {
-        SVProgressHUD.show(withStatus: "Logging In...")
+        SVProgressHUD.show(withStatus: "Signing In...")
         if self.userName.text != "" && self._password.text != "" {
             let login_URL = main_URL+"api/loginapi"
             let parameters : Parameters = ["email" : self.userName.text!, "password" : self._password.text!, "token" : userToken ?? ""]
