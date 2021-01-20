@@ -304,13 +304,27 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         self.current_bid.text = "£"+jsonData[0]["current_bid"].stringValue
                         self.current_bid2.text = "£"+jsonData[0]["current_bid"].stringValue
                         let currentBid = jsonData[0]["current_bid"].stringValue
-                        let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-                        let doubleValue = Double(x)
-                        let finalPrice = getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0)
-                        self.current_bid.text = "£"+finalPrice
-                        self.current_bid2.text = "£"+finalPrice
-                        self.received_amount.text = "£"+finalPrice
-                        self.received_amount2.text = "£"+finalPrice
+                        let transporterShare = jsonData[0]["transporter_share"].stringValue
+                        if transporterShare != "0" {
+                            let str = Double(transporterShare) ?? 0.0
+                            self.current_bid.text = "£ "+String(format: "%.2f", str)
+                            self.current_bid2.text = "£ "+String(format: "%.2f", str)
+                            self.received_amount.text = "£ "+String(format: "%.2f", str)
+                            self.received_amount2.text = "£ "+String(format: "%.2f", str)
+                        } else {
+                            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+                            let  doubleValue = Double(x)
+                            let finalPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+                            self.current_bid.text = finalPrice
+                            self.current_bid2.text = finalPrice
+                            self.received_amount.text = finalPrice
+                            self.received_amount2.text = finalPrice
+                        }
+                                                
+//                        self.current_bid.text = "£"+finalPrice
+//                        self.current_bid2.text = "£"+finalPrice
+//                        self.received_amount.text = "£"+finalPrice
+//                        self.received_amount2.text = "£"+finalPrice
                         let date = jsonData[0]["pay_date"].stringValue
                         let stringDate = String(date.prefix(10))
                         
