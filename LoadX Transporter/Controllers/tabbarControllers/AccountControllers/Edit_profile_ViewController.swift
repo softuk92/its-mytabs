@@ -133,8 +133,8 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         
                     } else {
                         SVProgressHUD.dismiss()
-                        print("Error \(String(describing: response.result.error))")
-                        let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+//                        print("Error \(String(describing: response.result.error))")
+                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
@@ -162,8 +162,8 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                     
                 } else {
                     SVProgressHUD.dismiss()
-                    print("Error \(String(describing: response.result.error))")
-                    let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+//                    print("Error \(String(describing: response.result.error))")
+                    let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -244,7 +244,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         
                         let jsonData : JSON = JSON(response.result.value!)
-                        print("update Profle Data jsonData is \(jsonData)")
+//                        print("update Profle Data jsonData is \(jsonData)")
                       let result = jsonData[0]["result"].stringValue
                         if result == "1" {
 //                            SVProgressHUD.showSuccess(withStatus: "Profile updated successfully.")
@@ -259,7 +259,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                        print("Error \(response.result.error!)")
+//                        print("Error \(response.result.error!)")
                     }
                 }
             } else {
@@ -323,7 +323,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
        }
    func isValidEmail1(testStr:String) -> Bool {
            
-   print("validate emilId: \(testStr)")
+//   print("validate emilId: \(testStr)")
    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
    let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
    let result = emailTest.evaluate(with: testStr)
@@ -343,7 +343,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         
                         let jsonData : JSON = JSON(response.result.value!)
-                        print("transporter Profile jsonData is \(jsonData)")
+//                        print("transporter Profile jsonData is \(jsonData)")
                         let result = jsonData[0]["result"].stringValue
 //            self.fullName.text = jsonData[0]["user_name"].stringValue
                        
@@ -406,7 +406,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
 extension Edit_profile_ViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
+//        print("Place name: \(place.name)")
         dismiss(animated: true, completion: nil)
         self.adress_tf.text = place.formattedAddress
     }

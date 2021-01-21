@@ -82,7 +82,7 @@ class AppIntro_ViewController: UIViewController , BmoViewPagerDataSource {
 
 extension AppIntro_ViewController: BmoViewPagerDelegate {
     func bmoViewPagerDelegate(_ viewPager: BmoViewPager, pageChanged page: Int) {
-        print("page: \(page)")
+//        print("page: \(page)")
         pageControl.currentPage = page
         nextController = page
         if page == 3 {
