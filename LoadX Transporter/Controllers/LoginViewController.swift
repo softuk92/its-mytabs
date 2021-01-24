@@ -122,7 +122,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         _password.delegate = self
 //        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         if let token = FBSDKAccessToken.current() {
             fetchProfile()
             print("token is \(token)")
@@ -332,7 +332,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 } else {
                     SVProgressHUD.dismiss()
                     print("Error \(String(describing: response.result.error))")
-                    let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -390,7 +390,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 } else {
                     SVProgressHUD.dismiss()
                     print("Error \(String(describing: response.result.error))")
-                    let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

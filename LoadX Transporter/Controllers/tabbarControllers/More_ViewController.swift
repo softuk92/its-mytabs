@@ -312,16 +312,19 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                                 }
                             }else{
                                 SVProgressHUD.dismiss()
+                                if let name = UserDefaults.standard.string(forKey: "user_name") {
+                                    self.userName.text = name
+                                }
                                 print("Error \(String(describing: response.result.error))")
-                                let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+//                                let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+//                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                                self.present(alert, animated: true, completion: nil)
                             }
                         } else {
     //                        SVProgressHUD.dismiss()
                           
                             print("Error \(String(describing: response.result.error))")
-                            let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                            let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }
@@ -334,9 +337,9 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                 }
             } else {
     //            SVProgressHUD.dismiss()
-                let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Alert", message: "Please Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
             }
         }
 }
