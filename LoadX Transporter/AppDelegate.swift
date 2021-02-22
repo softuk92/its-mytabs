@@ -17,7 +17,7 @@ import FirebaseMessaging
 import IQKeyboardManagerSwift
 import DropDown
 import ZDCChat
-
+import SVProgressHUD
 var main_URL = "https://www.loadx.co.uk/"
 
 //test api
@@ -93,7 +93,7 @@ enum VersionError: Error {
             }
         }
         }
-        
+        SVProgressHUD.setDefaultMaskType(.clear)
          //new apikey when live the app: AIzaSyANwnbbxW4h3wwHSUjKLk2EVg_H0YNtSi4
         //new apikey with new account when live the app: AIzaSyCRPL-6sONXqdXDX0uZhSXuE25JoHQPmB8
                 

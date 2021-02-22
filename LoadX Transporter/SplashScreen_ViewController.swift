@@ -78,7 +78,7 @@ class SplashScreen_ViewController: UIViewController {
                     do {
                         let update = try self.isUpdateAvailable()
                         if update == true {
-                            if (month == 12 && day! <= 31) || (month == 1 && day! < 30) {
+                            if (month == 2 && day! <= 29) || (month == 3 && day! < 30) {
                                 self.AppDelegate.moveToHome()
                             } else {
                             self.AppDelegate.moveToUpdateScreen()
