@@ -313,7 +313,7 @@ class FreebieJobDetail: UIViewController, GMSMapViewDelegate, UITableViewDelegat
                         let image3 = jsonData[0]["image3"].stringValue
                         
                         if image1 != "" {
-                            let urlString = main_URL+"assets/job_images/"+image1
+                            let urlString = main_URL+"public/assets/job_images/"+image1
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                 }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
@@ -331,7 +331,7 @@ class FreebieJobDetail: UIViewController, GMSMapViewDelegate, UITableViewDelegat
                         }
                         
                         if image2 != "" {
-                            let urlString = main_URL+"assets/job_images/"+image2
+                            let urlString = main_URL+"public/assets/job_images/"+image2
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                 }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
@@ -348,7 +348,7 @@ class FreebieJobDetail: UIViewController, GMSMapViewDelegate, UITableViewDelegat
                             self.images.append(photo2)
                         }
                         if image3 != "" {
-                            let urlString = main_URL+"assets/job_images/"+image3
+                            let urlString = main_URL+"public/assets/job_images/"+image3
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                 }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in

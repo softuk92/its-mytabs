@@ -289,7 +289,7 @@ class SideMenuController: UITableViewController, UINavigationControllerDelegate,
                         let image1 = jsonData[0]["user_image_url"].stringValue
                       
                         if image1 != "" {
-                            let urlString = main_URL+"assets/user_profile_image/"+image1
+                            let urlString = main_URL+"public/assets/user_profile_image/"+image1
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                     //print(received, expected)
