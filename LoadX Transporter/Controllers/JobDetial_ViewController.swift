@@ -239,7 +239,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                          
                            } else {
                                SVProgressHUD.dismiss()
-                               let alert = UIAlertController(title: "Alert", message: "Please check your internet connection", preferredStyle: UIAlertController.Style.alert)
+                            let alert = UIAlertController(title: "Alert", message: response.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                self.present(alert, animated: true, completion: nil)
                                print("Error \(response.result.error!)")

@@ -662,6 +662,7 @@
 				8DB4999D2220272A00D0887C /* RegisterViewController.swift */,
 				8D270CF721FB3CFB0016D6DD /* LoginViewController.swift */,
 				8D270D0C21FB6D7B0016D6DD /* ForgetPasswordController.swift */,
+				6D2BCDE8229E9DF400C48CBF /* RegisterSuccessController.swift */,
 				8DE8FAFE220074EE009309F8 /* SuccessController.swift */,
 				4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */,
 				4EC8049623E31E0700540F9A /* location_ViewController.swift */,
@@ -843,7 +844,6 @@
 				8D246F9922282E4F00E2B290 /* UserManaulController.swift */,
 				8D246FA82228450A00E2B290 /* FAQSTableViewController.swift */,
 				8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */,
-				6D2BCDE8229E9DF400C48CBF /* RegisterSuccessController.swift */,
 				4EFC62DE237EA6FC00BD32F3 /* SettingViewController.swift */,
 			);
 			path = Transporter;
