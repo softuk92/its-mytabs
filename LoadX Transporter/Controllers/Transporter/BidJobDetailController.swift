@@ -460,7 +460,7 @@ class BidJobDetailController: UIViewController, GMSMapViewDelegate, UITableViewD
                         let image2 = jsonData[0]["image2"].stringValue
                         let image3 = jsonData[0]["image3"].stringValue
                                 if image1 != "" {
-                                    let urlString = main_URL+"assets/job_images/"+image1
+                                    let urlString = main_URL+"public/assets/job_images/"+image1
                                     if let url = URL(string: urlString) {
                                         SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                             //                        print(received, expected)
@@ -478,7 +478,7 @@ class BidJobDetailController: UIViewController, GMSMapViewDelegate, UITableViewD
                                 }
                                 
                                 if image2 != "" {
-                                    let urlString = main_URL+"assets/job_images/"+image2
+                                    let urlString = main_URL+"public/assets/job_images/"+image2
                                     if let url = URL(string: urlString) {
                                         SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                             //                        print(received, expected)
@@ -497,7 +497,7 @@ class BidJobDetailController: UIViewController, GMSMapViewDelegate, UITableViewD
                                 }
                         
                                 if image3 != "" {
-                                    let urlString = main_URL+"assets/job_images/"+image3
+                                    let urlString = main_URL+"public/assets/job_images/"+image3
                                     if let url = URL(string: urlString) {
                                         SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                             //                        print(received, expected)
@@ -836,7 +836,7 @@ class BidJobDetailController: UIViewController, GMSMapViewDelegate, UITableViewD
         let image_cell2 = viewAllBidsModel[indexPath.row].driver_license
         
         if image_cell1 != "" {
-            let urlString = main_URL+"assets/user_profile_image/"+image_cell1
+            let urlString = main_URL+"public/assets/user_profile_image/"+image_cell1
             if let url = URL(string: urlString) {
                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                     //                        print(received, expected)

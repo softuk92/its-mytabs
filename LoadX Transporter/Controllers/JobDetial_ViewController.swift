@@ -278,7 +278,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                     print(self.phoneNumber!)
                     
                 }else{
-                    let alert = UIAlertController(title: "Error", message: "Contact Number Api not working", preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Error", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

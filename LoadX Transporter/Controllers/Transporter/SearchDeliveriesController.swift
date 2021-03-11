@@ -433,7 +433,7 @@ class SearchDeliveriesController: UIViewController, UITableViewDataSource, UITab
         let image_cell3 = searchDeliveriesRow.image3
         
         if image_cell1 != nil && image_cell1 != "" {
-            let urlString = main_URL+"assets/job_images/"+image_cell1!
+            let urlString = main_URL+"public/assets/job_images/"+image_cell1!
             if let url = URL(string: urlString) {
                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                     //                        print(received, expected)
@@ -445,7 +445,7 @@ class SearchDeliveriesController: UIViewController, UITableViewDataSource, UITab
             }
             
         } else if image_cell2 != nil && image_cell2 != "" {
-            let urlString = main_URL+"assets/job_images/"+image_cell2!
+            let urlString = main_URL+"public/assets/job_images/"+image_cell2!
             if let url = URL(string: urlString) {
                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                     //                        print(received, expected)
@@ -456,7 +456,7 @@ class SearchDeliveriesController: UIViewController, UITableViewDataSource, UITab
                 }
             }
         } else if image_cell3 != nil && image_cell3 != "" {
-            let urlString = main_URL+"assets/job_images/"+image_cell3!
+            let urlString = main_URL+"public/assets/job_images/"+image_cell3!
             if let url = URL(string: urlString) {
                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                     //                        print(received, expected)

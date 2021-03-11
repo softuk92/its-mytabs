@@ -27,7 +27,7 @@ class OnboardingController: UIViewController {
     @IBOutlet weak var viewLine: UIView!
     let url = URL(string: "https://www.youtube.com/watch?v=ZRe1Q1fa4DU")
     var boolValue : Bool?
-    let url2 = URL(string: main_URL+"assets/user-manuals/transport-partner-manual.pdf")
+    let url2 = URL(string: main_URL+"public/assets/user-manuals/transport-partner-manual.pdf")
    
     var initial_deposite: String?
     

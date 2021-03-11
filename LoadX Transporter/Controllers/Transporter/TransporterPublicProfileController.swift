@@ -234,7 +234,7 @@ class TransporterPublicProfileController: UIViewController, UITableViewDelegate,
                         let image2 = jsonData[0]["van_img"].stringValue
                         let image3 = jsonData[0]["copy_driving_license"].stringValue
                         if image1 != "" {
-                            let urlString = main_URL+"assets/user_profile_image/"+image1
+                            let urlString = main_URL+"public/assets/user_profile_image/"+image1
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                 }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
@@ -253,7 +253,7 @@ class TransporterPublicProfileController: UIViewController, UITableViewDelegate,
                         }
                         
                         if image2 != "" {
-                            let urlString = main_URL+"assets/user_profile_image/"+image2
+                            let urlString = main_URL+"public/assets/user_profile_image/"+image2
                             if let url = URL(string: urlString) {
                                 SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                 }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in

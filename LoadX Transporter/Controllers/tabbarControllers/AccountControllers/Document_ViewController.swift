@@ -441,7 +441,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             }*/
                                     
                                     if image2 != "" {
-                                        let urlString = main_URL+"assets/user_profile_image/"+image2
+                                        let urlString = main_URL+"public/assets/user_profile_image/"+image2
                                         if let url = URL(string: urlString) {
                                             SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                                 //                        print(received, expected)
@@ -462,7 +462,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             }
                             
                             if image3 != "" {
-                                let urlString = main_URL+"assets/documents/"+image3
+                                let urlString = main_URL+"public/assets/documents/"+image3
                                 if let url = URL(string: urlString) {
                                     SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                         //                        print(received, expected)
@@ -482,7 +482,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             }
                             
                             if image4 != "" {
-                                let urlString = main_URL+"assets/documents/"+image4
+                                let urlString = main_URL+"public/assets/documents/"+image4
                                 if let url = URL(string: urlString) {
                                     SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                         //                        print(received, expected)

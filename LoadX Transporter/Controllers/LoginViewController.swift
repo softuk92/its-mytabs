@@ -465,7 +465,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         
                     } else {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: "Error", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
