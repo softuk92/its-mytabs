@@ -42,6 +42,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
     @IBOutlet var viewOfLocation: UIView!
     @IBOutlet var viewOfJobSummary: UIView!
     @IBOutlet var viewOfContact: UIView!
+    @IBOutlet weak var loaderView: UIView!
     
     var phoneNumber: String?
     
@@ -84,24 +85,27 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
         viewOfJobSummary.isHidden = true
         viewOfContact.isHidden = true
         // Do any additional setup after loading the view.
-        
+        SVProgressHUD.setDefaultMaskType(.custom)
+        SVProgressHUD.setDefaultStyle(.light)
     }
    
     func getDetailOfJob() {
            SVProgressHUD.show(withStatus: "Getting job details...")
+        loaderView.isHidden = false
            if del_id != nil {
                let jobDetail_URL = main_URL+"api/job_detail"
                let parameters : Parameters = ["del_id" : del_id!]
                if Connectivity.isConnectedToInternet() {
-                   Alamofire.request(jobDetail_URL, method : .post, parameters : parameters).responseJSON {
+                   Alamofire.request(jobDetail_URL, method : .post, parameters : parameters).responseJSON { [weak self]
                        response in
+                    guard let self = self else { return }
                        if response.result.isSuccess {
                            SVProgressHUD.dismiss()
-                           
+                        self.loaderView.isHidden = true
                     self.jsonDataPArse = JSON(response.result.value!)
-                        print("this is the job detial api result: \(self.jsonDataPArse)")
+//                        print("this is the job detial api result: \(self.jsonDataPArse)")
                         
-                        print("this is the job detial api inventory list result:-- \(self.jsonDataPArse[1])")
+//                        print("this is the job detial api inventory list result:-- \(self.jsonDataPArse[1])")
                         
                         self.movingItem_lbl.text = self.jsonDataPArse[0]["moving_item"].stringValue
                         self.price_lbl.text = self.bookedJobPrice
@@ -229,16 +233,19 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                    let editProfileData_URL = main_URL+"api/userProfileDetail"
                    let parameters : Parameters = ["user_id" : userId]
                    if Connectivity.isConnectedToInternet() {
-                       Alamofire.request(editProfileData_URL, method : .post, parameters : parameters).responseJSON {
+                       Alamofire.request(editProfileData_URL, method : .post, parameters : parameters).responseJSON { [weak self]
                            response in
+                        guard let self = self else { return }
                            if response.result.isSuccess {
                                SVProgressHUD.dismiss()
+                            self.loaderView.isHidden = true
                                
                              self.jsonPrfileData = JSON(response.result.value!)
                             print("show Profile Data is \(self.jsonPrfileData)")
                          
                            } else {
                                SVProgressHUD.dismiss()
+                            self.loaderView.isHidden = true
                             let alert = UIAlertController(title: "Alert", message: response.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                                self.present(alert, animated: true, completion: nil)
@@ -247,25 +254,30 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                        }
                    } else {
                        SVProgressHUD.dismiss()
+                    self.loaderView.isHidden = true
                        let alert = UIAlertController(title: "Error", message: "You are not connected to Internet", preferredStyle: UIAlertController.Style.alert)
                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                        self.present(alert, animated: true, completion: nil)
                    }
                } else {
                    SVProgressHUD.dismiss()
+                self.loaderView.isHidden = true
                    
                }
            }
     
     func get_contact_no(){
         SVProgressHUD.show(withStatus: "Please wait...")
+        loaderView.isHidden = false
         let url = main_URL+"api/get_phone_no"
         
         if Connectivity.isConnectedToInternet() {
-            Alamofire.request(url, method : .get, parameters : nil).responseJSON {
+            Alamofire.request(url, method : .get, parameters : nil).responseJSON { [weak self]
                 response in
+                guard let self = self else { return }
                 if  response.result.isSuccess {
                     SVProgressHUD.dismiss()
+                    self.loaderView.isHidden = true
                     let jsonData : JSON = JSON(response.result.value!)
                     print("Contact Number is :.......\(jsonData)")
                     
@@ -278,12 +290,16 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                     print(self.phoneNumber!)
                     
                 }else{
+                    SVProgressHUD.dismiss()
+                    self.loaderView.isHidden = true
                     let alert = UIAlertController(title: "Error", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
         }else{
+            SVProgressHUD.dismiss()
+            self.loaderView.isHidden = true
             let alert = UIAlertController(title: "Error", message: "You are not connected to Internet", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil) 
