@@ -127,6 +127,11 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
         info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         
+        if category == "Dedicated Van" {
+            if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
+                info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
+            }
+        }
         if category == "Vehicle Move" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
                 info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))

@@ -70,6 +70,7 @@
 		4E59299223E9CA95007A3C09 /* Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */; };
 		4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */; };
 		4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */; };
+		4E69145A260BD87B00352CAF /* location_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E691459260BD87B00352CAF /* location_ViewController.swift */; };
 		4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */; };
 		4E7149DF2582C96100A5A0B7 /* AlertViewWithDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3F9141257D932400351B9A /* AlertViewWithDescription.xib */; };
 		4E72F311258BF5C200789022 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72F310258BF5C200789022 /* R.generated.swift */; };
@@ -85,7 +86,6 @@
 		4EC4B295257C29CE00A03986 /* RunningLateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4B294257C29CE00A03986 /* RunningLateViewController.swift */; };
 		4EC5D908256C5BF100D8DDB3 /* RouteCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */; };
 		4EC5D909256C5BF100D8DDB3 /* RouteCompletedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */; };
-		4EC8049723E31E0700540F9A /* location_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049623E31E0700540F9A /* location_ViewController.swift */; };
 		4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */; };
 		4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */; };
 		4EC8049D23E31EAE00540F9A /* Contact_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8049C23E31EAE00540F9A /* Contact_ViewController.swift */; };
@@ -267,6 +267,7 @@
 		4E59299123E9CA95007A3C09 /* Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_ViewController.swift; sourceTree = "<group>"; };
 		4E59299323E9CAAF007A3C09 /* Reach_Us_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reach_Us_ViewController.swift; sourceTree = "<group>"; };
 		4E59299523E9CAC6007A3C09 /* Help_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help_ViewController.swift; sourceTree = "<group>"; };
+		4E691459260BD87B00352CAF /* location_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = location_ViewController.swift; sourceTree = "<group>"; };
 		4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		4E72F310258BF5C200789022 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4E7C9BD025645D13003BC22B /* BookedJobsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedJobsFunctions.swift; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		4EC4B294257C29CE00A03986 /* RunningLateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningLateViewController.swift; sourceTree = "<group>"; };
 		4EC5D906256C5BF100D8DDB3 /* RouteCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCompletedView.swift; sourceTree = "<group>"; };
 		4EC5D907256C5BF100D8DDB3 /* RouteCompletedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCompletedView.xib; sourceTree = "<group>"; };
-		4EC8049623E31E0700540F9A /* location_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = location_ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetial_ViewController.swift; sourceTree = "<group>"; };
 		4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job_Summary_ViewController.swift; sourceTree = "<group>"; };
 		4EC8049C23E31EAE00540F9A /* Contact_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ViewController.swift; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 				6D2BCDE8229E9DF400C48CBF /* RegisterSuccessController.swift */,
 				8DE8FAFE220074EE009309F8 /* SuccessController.swift */,
 				4EC8049A23E31E7100540F9A /* Job_Summary_ViewController.swift */,
-				4EC8049623E31E0700540F9A /* location_ViewController.swift */,
+				4E691459260BD87B00352CAF /* location_ViewController.swift */,
 				4EC8049C23E31EAE00540F9A /* Contact_ViewController.swift */,
 				4EC8049823E31E3300540F9A /* JobDetial_ViewController.swift */,
 			);
@@ -1185,6 +1185,7 @@
 				8D4385EC22244D6000A3CE7F /* SideMenuController.swift in Sources */,
 				8DC526222226F4990033D6CA /* TransporterProfileFeedbackModel.swift in Sources */,
 				8D98C723222050E800420BFA /* SearchDeliveriesController.swift in Sources */,
+				4E69145A260BD87B00352CAF /* location_ViewController.swift in Sources */,
 				BB16169A24BF3146008420A8 /* GeneralItemHeaderCell.swift in Sources */,
 				8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */,
 				8D48C21022243FD900417EF5 /* ReportAProblem.swift in Sources */,
@@ -1216,7 +1217,6 @@
 				8DD0DFD022048EB2009A7E52 /* ActiveJobsModel.swift in Sources */,
 				4EFE1A4125D70DE40044D701 /* CLocationManager.swift in Sources */,
 				4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */,
-				4EC8049723E31E0700540F9A /* location_ViewController.swift in Sources */,
 				4E3F9145257D949A00351B9A /* AlertViewWithDescription.swift in Sources */,
 				8D246FA02228362100E2B290 /* ViewAllQueriesCell.swift in Sources */,
 				8D246FA92228450A00E2B290 /* FAQSTableViewController.swift in Sources */,
@@ -1433,7 +1433,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.46;
+				MARKETING_VERSION = 3.48;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1466,7 +1466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.46;
+				MARKETING_VERSION = 3.48;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";

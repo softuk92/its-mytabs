@@ -21,7 +21,7 @@ import SVProgressHUD
 var main_URL = "https://www.loadx.co.uk/"
 
 //test api
-//var main_URL = "http://www.test.loadx.co.uk/"
+//var main_URL = "https://www.myloadx.com/"
 
 enum VersionError: Error {
     case invalidResponse, invalidBundleInfo
@@ -93,7 +93,8 @@ enum VersionError: Error {
             }
         }
         }
-        SVProgressHUD.setDefaultMaskType(.clear)
+        SVProgressHUD.setDefaultMaskType(.custom) 
+        SVProgressHUD.setDefaultStyle(.light)
          //new apikey when live the app: AIzaSyANwnbbxW4h3wwHSUjKLk2EVg_H0YNtSi4
         //new apikey with new account when live the app: AIzaSyCRPL-6sONXqdXDX0uZhSXuE25JoHQPmB8
                 
