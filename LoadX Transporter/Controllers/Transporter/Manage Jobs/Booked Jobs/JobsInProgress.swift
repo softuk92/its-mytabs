@@ -24,6 +24,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     private let disposeBag = DisposeBag()
     var routes = [BookedRoute]()
     var isRouteStarted = ""
+    let locationManager = CLocationManager.shared
     //route jobs
     //For Routes. Top view setup
     @IBOutlet weak var topPagerView: UIView!
@@ -85,6 +86,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         checkRouteAccess()
         self.popup_iconView.clipsToBounds = true
         self.popup_iconView.layer.cornerRadius = 18
@@ -812,7 +814,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 extension JobsInProgress {
     public func startRoute(lrID: String, isRouteStarted: String) {
-        APIManager.apiPost(serviceName: "api/startlRoute", parameters: ["lr_id": lrID]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/startlRoute", parameters: ["lr_id": lrID]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
             if error != nil {
                 
             }
@@ -831,6 +834,7 @@ extension JobsInProgress {
                 }
 //                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
             } else {
+                self.locationManager.startLocationUpdates()
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = lrID /*self.lr_id*/
                 vc.isRouteStarted = isRouteStarted

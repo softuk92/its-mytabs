@@ -72,9 +72,7 @@
 	<string>Capture image of your moving item that you want to show to Transporters</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Needs premission to communicate with Transporters</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>LoadX wants to know your location to search for nearest jobs </string>
-	<key>NSLocationUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>LoadX wants to know your location to search for nearest jobs </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>LoadX wants to know your location to search for nearest jobs </string>
@@ -91,6 +89,8 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

@@ -405,6 +405,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
 
     @IBAction func logIn(_ sender: Any) {
+//        CLocationManager.shared.startLocationUpdates()
         userLogin()
     }
     

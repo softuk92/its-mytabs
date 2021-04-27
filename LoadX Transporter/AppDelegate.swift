@@ -18,10 +18,10 @@ import IQKeyboardManagerSwift
 import DropDown
 import ZDCChat
 import SVProgressHUD
-var main_URL = "https://www.loadx.co.uk/"
+//var main_URL = "https://www.loadx.co.uk/"
 
 //test api
-//var main_URL = "https://www.myloadx.com/"
+var main_URL = "https://test.loadx.co.uk/"
 
 enum VersionError: Error {
     case invalidResponse, invalidBundleInfo
@@ -139,7 +139,7 @@ enum VersionError: Error {
         
          
         // this is for Live paypal integration
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "Ab04RiFx19BpvbWQ7e5qMRgzd7yJtC-UXBiwb0yygzUfy3U5NLnBsO_IZGIMfDlxR7QJzr08ynxI9xtj"])
+//        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "Ab04RiFx19BpvbWQ7e5qMRgzd7yJtC-UXBiwb0yygzUfy3U5NLnBsO_IZGIMfDlxR7QJzr08ynxI9xtj"])
         
         // this is for test paypal integration
 //        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentSandbox: "AZvmba7Zz0KuM4ooDZoq_Qdm0n7y48ScVWaqaK_GDfpqvLM5-teB529TgkqGzVw1uRgvnsIU5szPfEZl"])

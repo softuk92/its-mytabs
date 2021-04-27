@@ -85,6 +85,8 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let dropoffPropertyType = jsonData[0]["dropoff_prop_type"].stringValue
         let pickupHouseNo = jsonData[0]["pu_house_no"].stringValue
         let dropoffHouseNo = jsonData[0]["do_house_no"].stringValue
+        let workingHours = jsonData[0]["working_hours"].stringValue
+        let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))
@@ -147,6 +149,14 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
             }
         } else {
             info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
+        }
+        
+        if workingHours != "" && workingHours != "N/A" {
+            info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
+        }
+        
+        if extraHalfHours != "" && extraHalfHours != "N/A" {
+            info.append(MenuItemStruct.init(title: "Extra Charges", value: "£\(extraHalfHours)/half hour after booked time"))
         }
         
         if noOfPallate != "" && noOfPallate != "N/A" {
