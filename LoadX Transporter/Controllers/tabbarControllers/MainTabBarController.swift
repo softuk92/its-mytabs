@@ -48,7 +48,7 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
             let month = components.month
             let day = components.day
             
-        if(month == 12 && day == 9 && year == 2019) || (month == 12 && day == 10 && year == 2019) || (month == 12 && day == 11 && year == 2019)  {
+        if(month == 4 && day! <= 30) || (month == 5 && day! < 30)  {
             
             } else {
                 DispatchQueue.global().async {

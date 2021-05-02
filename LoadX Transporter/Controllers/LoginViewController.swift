@@ -135,7 +135,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         let month = components.month
         let day = components.day
         
-        if (month == 2 && day! <= 29) || (month == 3 && day! < 30) {
+        if (month == 4 && day! <= 30) || (month == 5 && day! < 30) {
             
             
         } else {

@@ -289,7 +289,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let result = jsonData[0]["result"].stringValue
 //                        let message = jsonData[0]["message"].stringValue
                         self.jobsInProgressModel.removeAll()
-                        if result == "0" {
+                        if result == "0" && self.leadingSearchJobs.isActive {
                             self.tableView.backgroundView = nil
                             self.stackView.isHidden = false
 //                            self.searchBtn.isHidden = false
@@ -315,13 +315,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 }
                             } catch {
                                 print(error)
-                                self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
+//                                self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
                             }
                         }
                     }
                     } else {
                         SVProgressHUD.dismiss()
-                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+//                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
                     }
                 }
     }
@@ -601,6 +601,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 vc.isRouteStarted = self.routes[indexPath.row].is_route_started ?? ""
                 is_route_started = self.routes[indexPath.row].is_route_started ?? ""
                 vc.isBooked = true
+//                self.locationManager.startLocationUpdates()
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
@@ -835,6 +836,9 @@ extension JobsInProgress {
 //                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
             } else {
                 self.locationManager.startLocationUpdates()
+                self.locationManager.delId = lrID
+                self.locationManager.tId = user_id
+                self.locationManager.transporterStatus = "Yes"
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
                 vc.routeId = lrID /*self.lr_id*/
                 vc.isRouteStarted = isRouteStarted

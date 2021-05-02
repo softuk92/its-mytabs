@@ -277,7 +277,8 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
 //                        self.invoice_no2.text = job_id
                         self.invoiceNo = job_id
                         let jobID2 = jsonData[0]["del_id"].stringValue
-                        let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
+//                        let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
+                        let job_id2 = "LX00"+jobID2
                         self.job_id_label.text = job_id2
                         self.job_id_label2.text = job_id2
                         self.invoice_no.text = job_id

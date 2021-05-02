@@ -701,7 +701,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
         }
         
-        
+        if let workingHours = searchDeliveriesRow.working_hours, workingHours != "" {
+            cell.hoursRequired.isHidden = false
+            cell.hoursRequired.text = "Working Hours Required: \(workingHours)"
+        } else {
+            cell.hoursRequired.isHidden = true
+        }
+
         cell.bidNowRow = {[weak self] (selectedCell) in
             guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)

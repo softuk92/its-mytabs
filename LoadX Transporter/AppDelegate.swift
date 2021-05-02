@@ -71,6 +71,7 @@ enum VersionError: Error {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DropDown.startListeningToKeyboard()
         window = UIWindow(frame: UIScreen.main.bounds)
+//        overrideSystemFont()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "TextfieldTextColor")
         application.isStatusBarHidden = true
@@ -152,6 +153,12 @@ enum VersionError: Error {
         
         return true
     }
+    
+    private func overrideSystemFont() {
+        let customFont = UIFont.CustomFont(regular: "Montserrat-Light", medium: "Montserrat-Regular", semibold: "Montserrat-SemiBold", bold: "Montserrat-Bold")
+        UIFont.overrideDefaultTypography(customFont: customFont)
+    }
+    
     
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in

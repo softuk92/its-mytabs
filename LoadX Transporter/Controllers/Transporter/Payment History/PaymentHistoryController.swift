@@ -160,7 +160,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         let jobID = paymentHistoryRow.payment_id ?? ""
-        let job_id = "LOADX"+String(self.year)+"JI"+jobID
+//        let job_id = "LOADX"+String(self.year)+"JI"+jobID
+        let job_id = "LX00"+jobID
         cell.invoiceNo.text = job_id
         let payment_type = paymentHistoryRow.payment_type
         if payment_type == "full" {

@@ -16,10 +16,9 @@ class CLocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = CLocationManager()
     let locationManager : CLLocationManager
     var locationInfoCallBack: ((_ info:LocationInformation)->())!
-    private var startTime : Date?
-    var tId: String?
-    var delId: String?
-    var transporterStatus: String?
+    var tId: String? = "74"
+    var delId: String? = "7"
+    var transporterStatus: String? = "Yes"
     let locationTimer = PublishSubject<CLLocationCoordinate2D>()
     let locationAPIError = PublishSubject<String>()
     
@@ -53,6 +52,8 @@ class CLocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func stop() {
+        transporterStatus = "No"
+        sendLocationToServer(lat: 0.0, lng: 0.0)
         locationManager.stopUpdatingLocation()
     }
 

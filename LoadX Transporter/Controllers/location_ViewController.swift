@@ -20,7 +20,8 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
     
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var mapViewX: GMSMapView!
-   
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    
     var long_dropoff : Double?
     var long_pickup : Double?
     var lat_pickup : Double?
@@ -56,6 +57,7 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
         mapViewX.delegate = self
         mapViewX.settings.zoomGestures = true
         
+        topViewHeight.constant = UIScreen.main.bounds.height - 270
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark   {
                do {

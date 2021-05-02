@@ -29,12 +29,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDW-eC-z0W">
                         <rect key="frame" x="10" y="10" width="355" height="216"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="L9r-P1-pCZ">
-                                <rect key="frame" x="10" y="10" width="75" height="75"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="L9r-P1-pCZ">
+                                <rect key="frame" x="10" y="10" width="1" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="FKZ-wa-MhB"/>
                                     <constraint firstAttribute="height" constant="75" id="VCY-KS-OhQ"/>
-                                    <constraint firstAttribute="width" secondItem="L9r-P1-pCZ" secondAttribute="height" multiplier="1:1" id="fY6-QE-AjF"/>
+                                    <constraint firstAttribute="width" secondItem="L9r-P1-pCZ" secondAttribute="height" multiplier="1:1" constant="-74" id="fY6-QE-AjF"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -50,12 +50,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSX-aa-Ccn">
-                                <rect key="frame" x="90" y="20" width="121" height="17"/>
+                                <rect key="frame" x="15" y="20" width="121" height="17"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BR-ge-MtI">
-                                <rect key="frame" x="90" y="51" width="60" height="17"/>
+                                <rect key="frame" x="15" y="51" width="60" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="dOL-Yc-s0p"/>
                                 </constraints>
@@ -76,8 +76,8 @@
                                     <constraint firstAttribute="width" constant="20" id="ipC-Ps-ODn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location.....hfjkdhfjkshdfjkdhsjkfhdjfsjdkfhdjkfhsj" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-21-UbG">
-                                <rect key="frame" x="38" y="97" width="300.5" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location.....hfjkdhfjkshdfjkdhsjkfhdjfsjdkfhdjkfhsj" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-21-UbG">
+                                <rect key="frame" x="38" y="97" width="315" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,8 +96,8 @@
                                     <constraint firstAttribute="width" constant="20" id="v9u-r6-K2L"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoff Location.....jfhdjkshfjkdhfjsfhdjfhsjfhdkjhsfsdaf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC1-B9-hOm">
-                                <rect key="frame" x="38" y="145" width="300.5" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoff Location.....jfhdjkshfjkdhfjsfhdjfhsjfhdkjhsfsdaf sss" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC1-B9-hOm">
+                                <rect key="frame" x="38" y="145" width="315" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -172,10 +172,18 @@
                                     <action selector="bidNowBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gti-V4-6Gs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Hours Required: 0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI8-2l-BKW">
+                                <rect key="frame" x="224.5" y="72.5" width="120.5" height="12"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iI8-2l-BKW" secondAttribute="trailing" constant="10" id="1F0-oT-obd"/>
                             <constraint firstItem="1BR-ge-MtI" firstAttribute="top" secondItem="fSX-aa-Ccn" secondAttribute="bottom" constant="14" id="3Dv-Es-g56"/>
+                            <constraint firstAttribute="trailing" secondItem="Gtk-21-UbG" secondAttribute="trailing" constant="2" id="9FB-aD-cmQ"/>
                             <constraint firstItem="Lde-Bz-aRI" firstAttribute="height" secondItem="B6u-yR-lT9" secondAttribute="height" id="BQ3-9c-3Hb"/>
                             <constraint firstItem="fSX-aa-Ccn" firstAttribute="top" secondItem="IDW-eC-z0W" secondAttribute="top" constant="20" id="Brs-RR-0Rb"/>
                             <constraint firstItem="UC1-B9-hOm" firstAttribute="trailing" secondItem="Gtk-21-UbG" secondAttribute="trailing" id="C76-zB-Vqa"/>
@@ -196,7 +204,9 @@
                             <constraint firstItem="Gtk-21-UbG" firstAttribute="leading" secondItem="M7h-2j-z1D" secondAttribute="trailing" constant="8" id="hib-bn-ifQ"/>
                             <constraint firstItem="D14-D8-2F5" firstAttribute="centerX" secondItem="fx5-7H-CpZ" secondAttribute="centerX" id="l25-Pm-Q6H"/>
                             <constraint firstItem="gyD-UW-u8Q" firstAttribute="top" secondItem="IDW-eC-z0W" secondAttribute="top" id="pay-gw-qFb"/>
-                            <constraint firstItem="fSX-aa-Ccn" firstAttribute="leading" secondItem="L9r-P1-pCZ" secondAttribute="trailing" constant="5" id="taK-cz-7g6"/>
+                            <constraint firstItem="iI8-2l-BKW" firstAttribute="top" secondItem="RLl-ZJ-fez" secondAttribute="bottom" constant="7" id="sYa-v6-Cqj"/>
+                            <constraint firstItem="fSX-aa-Ccn" firstAttribute="leading" secondItem="L9r-P1-pCZ" secondAttribute="trailing" constant="4" id="taK-cz-7g6"/>
+                            <constraint firstItem="Gtk-21-UbG" firstAttribute="top" secondItem="iI8-2l-BKW" secondAttribute="bottom" constant="12.5" id="uft-rS-p9L"/>
                             <constraint firstItem="1BR-ge-MtI" firstAttribute="leading" secondItem="fSX-aa-Ccn" secondAttribute="leading" id="vAr-MF-6DJ"/>
                             <constraint firstItem="Lde-Bz-aRI" firstAttribute="top" secondItem="B6u-yR-lT9" secondAttribute="top" id="w7N-iY-KNq"/>
                             <constraint firstItem="M7h-2j-z1D" firstAttribute="top" secondItem="L9r-P1-pCZ" secondAttribute="bottom" constant="12" id="wiH-tK-LOj"/>
@@ -229,6 +239,7 @@
                 <outlet property="deliverDate_lbl" destination="5XF-Or-h8m" id="0ih-Rl-4v2"/>
                 <outlet property="deliveryDateLabel" destination="ssA-pO-qba" id="a7l-Zt-Kqt"/>
                 <outlet property="dropOffLabel" destination="UC1-B9-hOm" id="LDj-yN-4my"/>
+                <outlet property="hoursRequired" destination="iI8-2l-BKW" id="BPV-yd-n9L"/>
                 <outlet property="image1" destination="L9r-P1-pCZ" id="SUt-5g-dvF"/>
                 <outlet property="innerView" destination="IDW-eC-z0W" id="PJu-LJ-6bc"/>
                 <outlet property="lowest_bid" destination="1BR-ge-MtI" id="qUm-k1-m59"/>

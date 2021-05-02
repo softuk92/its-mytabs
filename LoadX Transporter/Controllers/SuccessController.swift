@@ -47,6 +47,7 @@ class SuccessController: UIViewController {
     
     @IBAction func goToBookedRoutes(_ sender: Any) {
         if islastIndex == 1 {
+            CLocationManager.shared.stop()
             self.navigationController?.popToRootViewController(animated: true)
         } else if let viewControllers = self.navigationController?.viewControllers {
             self.navigationController?.popToViewController(viewControllers[1], animated: true)

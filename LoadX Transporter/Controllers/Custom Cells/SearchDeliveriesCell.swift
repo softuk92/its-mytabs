@@ -20,7 +20,7 @@ class SearchDeliveriesCell: UITableViewCell {
     @IBOutlet weak var lowest_bid: UILabel!
     @IBOutlet weak var quotes: UILabel!
     @IBOutlet weak var bidNowBtn: UIButton!
-                    
+    @IBOutlet weak var hoursRequired: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var businessPatti: UIImageView!
     @IBOutlet weak var postedDate_lbl: UILabel!

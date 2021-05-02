@@ -820,26 +820,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BqX-HZ-vzY">
-                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
-                                <color key="backgroundColor" name="Background_color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="2qE-jv-Jjg"/>
-                                    <constraint firstAttribute="width" constant="240" id="kJh-dh-9Ij"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-8A-UIc">
+                                <rect key="frame" x="68.5" y="264.5" width="238.5" height="108"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbM-F4-aSo">
+                                        <rect key="frame" x="0.0" y="0.0" width="238.5" height="90"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="75"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Prices, Anytime, All The Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNl-NS-R5i">
+                                        <rect key="frame" x="3.5" y="90" width="231.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qhb-Cy-Qic"/>
                         <color key="backgroundColor" name="Background_color"/>
                         <constraints>
-                            <constraint firstItem="BqX-HZ-vzY" firstAttribute="centerY" secondItem="MLF-xy-5b1" secondAttribute="centerY" id="01Q-Uz-nSh"/>
-                            <constraint firstItem="BqX-HZ-vzY" firstAttribute="centerX" secondItem="MLF-xy-5b1" secondAttribute="centerX" id="TC2-wD-OvY"/>
+                            <constraint firstItem="XXd-8A-UIc" firstAttribute="centerX" secondItem="MLF-xy-5b1" secondAttribute="centerX" id="GBv-Pf-eCL"/>
+                            <constraint firstItem="XXd-8A-UIc" firstAttribute="centerY" secondItem="MLF-xy-5b1" secondAttribute="centerY" constant="-15" id="j2R-2Z-xbs"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="imageView" destination="BqX-HZ-vzY" id="wZ8-Ey-ACZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhM-Iw-ngI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -857,7 +863,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="enG-Dy-7Zf">
-                                        <rect key="frame" x="95" y="12.5" width="131.5" height="20.5"/>
+                                        <rect key="frame" x="65" y="12.5" width="131.5" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booked Jobs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kew-1v-ALM">
                                                 <rect key="frame" x="0.0" y="0.0" width="103" height="20.5"/>
@@ -874,10 +880,10 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-3f-eM9" customClass="LogoView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="5" width="60" height="35"/>
+                                        <rect key="frame" x="15" y="5" width="30" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="2eA-oW-rrr"/>
+                                            <constraint firstAttribute="width" constant="30" id="2eA-oW-rrr"/>
                                             <constraint firstAttribute="height" constant="35" id="48R-xG-mut"/>
                                         </constraints>
                                     </view>
@@ -1244,7 +1250,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t7J-Ya-VVh">
-                                        <rect key="frame" x="95" y="12.5" width="159.5" height="20.5"/>
+                                        <rect key="frame" x="65" y="12.5" width="159.5" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Jobs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLw-Or-yZo">
                                                 <rect key="frame" x="0.0" y="0.0" width="131" height="20.5"/>
@@ -1261,11 +1267,11 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-Gz-Xxj" customClass="LogoView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="5" width="60" height="35"/>
+                                        <rect key="frame" x="15" y="5" width="30" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="235-ic-6NH"/>
-                                            <constraint firstAttribute="width" constant="60" id="J08-wY-Azz"/>
+                                            <constraint firstAttribute="width" constant="30" id="J08-wY-Azz"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1631,7 +1637,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xxI-Je-aVc">
-                                                <rect key="frame" x="95" y="12.5" width="43" height="20.5"/>
+                                                <rect key="frame" x="65" y="12.5" width="43" height="20.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6i-Xv-FtI">
                                                         <rect key="frame" x="0.0" y="0.0" width="43" height="20.5"/>
@@ -1642,11 +1648,11 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZm-9g-6do" customClass="LogoView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="5" width="60" height="35"/>
+                                                <rect key="frame" x="15" y="5" width="30" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="emF-N0-coJ"/>
-                                                    <constraint firstAttribute="width" constant="60" id="h7G-1y-dce"/>
+                                                    <constraint firstAttribute="width" constant="30" id="h7G-1y-dce"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1684,8 +1690,8 @@
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
-                                                <rect key="frame" x="149" y="54" width="120" height="20"/>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="154" y="54" width="120" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0zk-BQ-gH3"/>
@@ -3292,7 +3298,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-L8-j6o">
-                                        <rect key="frame" x="95" y="12.5" width="138" height="20.5"/>
+                                        <rect key="frame" x="65" y="12.5" width="138" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Earning " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utV-OZ-nzC">
                                                 <rect key="frame" x="0.0" y="0.0" width="109.5" height="20.5"/>
@@ -3309,11 +3315,11 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76x-jy-pNS" customClass="LogoView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="5" width="60" height="35"/>
+                                        <rect key="frame" x="15" y="5" width="30" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="BKK-7d-QvP"/>
-                                            <constraint firstAttribute="width" constant="60" id="XBQ-3m-la7"/>
+                                            <constraint firstAttribute="width" constant="30" id="XBQ-3m-la7"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -6410,8 +6416,14 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstAttribute="height" constant="45" id="tTo-9D-J4j"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy9-7X-oeO">
+                                        <rect key="frame" x="55" y="228.5" width="265" height="90"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="75"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2018-2020 LoadX LTD." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Img-rL-AP8">
-                                        <rect key="frame" x="81" y="352" width="213" height="22"/>
+                                        <rect key="frame" x="81" y="370.5" width="213" height="22"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -6424,7 +6436,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loadx Transporter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wap-Jp-V5x">
-                                        <rect key="frame" x="81" y="315" width="213" height="22"/>
+                                        <rect key="frame" x="109" y="333.5" width="157.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -6434,16 +6446,24 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <constraints>
                                     <constraint firstItem="Img-rL-AP8" firstAttribute="top" secondItem="Wap-Jp-V5x" secondAttribute="bottom" constant="15" id="3Qp-mt-D8k"/>
                                     <constraint firstItem="Wap-Jp-V5x" firstAttribute="centerX" secondItem="8Fv-AN-Vkv" secondAttribute="centerX" id="8Bl-Nx-D44"/>
-                                    <constraint firstItem="Img-rL-AP8" firstAttribute="leading" secondItem="Wap-Jp-V5x" secondAttribute="leading" id="D5C-iC-wNW"/>
+                                    <constraint firstItem="hy9-7X-oeO" firstAttribute="centerX" secondItem="X8H-ge-Je9" secondAttribute="centerX" id="Ijq-AC-hIX"/>
                                     <constraint firstItem="8Fv-AN-Vkv" firstAttribute="centerX" secondItem="X8H-ge-Je9" secondAttribute="centerX" id="MdU-aB-rY3"/>
                                     <constraint firstItem="8Fv-AN-Vkv" firstAttribute="centerY" secondItem="X8H-ge-Je9" secondAttribute="centerY" multiplier="0.75" id="Xkp-bf-Cqs"/>
                                     <constraint firstItem="dww-p0-luF" firstAttribute="top" secondItem="X8H-ge-Je9" secondAttribute="top" id="Yf5-7X-EF7"/>
+                                    <constraint firstItem="hy9-7X-oeO" firstAttribute="centerY" secondItem="X8H-ge-Je9" secondAttribute="centerY" constant="-60" id="bQf-9q-0UX"/>
                                     <constraint firstItem="dww-p0-luF" firstAttribute="leading" secondItem="X8H-ge-Je9" secondAttribute="leading" id="dQ1-Ag-MaX"/>
                                     <constraint firstAttribute="trailing" secondItem="dww-p0-luF" secondAttribute="trailing" id="eaS-82-q1T"/>
                                     <constraint firstItem="Wap-Jp-V5x" firstAttribute="top" secondItem="8Fv-AN-Vkv" secondAttribute="bottom" constant="15" id="h9D-i1-7zO"/>
+                                    <constraint firstItem="Wap-Jp-V5x" firstAttribute="top" secondItem="hy9-7X-oeO" secondAttribute="bottom" constant="15" id="ki8-fa-6Dd"/>
                                     <constraint firstItem="Img-rL-AP8" firstAttribute="centerX" secondItem="8Fv-AN-Vkv" secondAttribute="centerX" id="kmT-Ji-t2F"/>
-                                    <constraint firstItem="Img-rL-AP8" firstAttribute="trailing" secondItem="Wap-Jp-V5x" secondAttribute="trailing" id="ouS-fA-UTP"/>
+                                    <constraint firstItem="Wap-Jp-V5x" firstAttribute="centerX" secondItem="X8H-ge-Je9" secondAttribute="centerX" id="lU2-Fh-mgr"/>
+                                    <constraint firstItem="Img-rL-AP8" firstAttribute="centerX" secondItem="X8H-ge-Je9" secondAttribute="centerX" id="pA9-o5-C7Y"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="8Fv-AN-Vkv"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bIO-pl-GVd"/>
@@ -6692,7 +6712,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-8C-XH4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1T-gg-7oV">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
@@ -6725,10 +6745,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBE-Km-nrs">
-                                        <rect key="frame" x="10" y="55" width="355" height="220"/>
+                                        <rect key="frame" x="10" y="55" width="355" height="135"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA3-9b-s2I">
-                                                <rect key="frame" x="44.5" y="64.5" width="35" height="25"/>
+                                                <rect key="frame" x="44.5" y="35" width="35" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="0a9-Cu-5Uc"/>
                                                     <constraint firstAttribute="width" constant="35" id="czv-fU-5mp"/>
@@ -6739,7 +6759,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shV-11-eqW">
-                                                <rect key="frame" x="275.5" y="62" width="35" height="30"/>
+                                                <rect key="frame" x="275.5" y="32.5" width="35" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="GqR-k4-F4x"/>
                                                     <constraint firstAttribute="height" constant="30" id="vn4-RP-T44"/>
@@ -6749,27 +6769,27 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                     <action selector="phoneBtn_action:" destination="4Ml-8J-1Pf" eventType="touchUpInside" id="g9z-vJ-c6P"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobDetial_image" translatesAutoresizingMaskIntoConstraints="NO" id="nZ1-t6-eAJ">
-                                                <rect key="frame" x="127.5" y="37" width="100" height="80"/>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobDetial_image" translatesAutoresizingMaskIntoConstraints="NO" id="nZ1-t6-eAJ">
+                                                <rect key="frame" x="127.5" y="47.5" width="100" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Pg6-5j-GL5"/>
-                                                    <constraint firstAttribute="height" constant="80" id="au7-QW-vVn"/>
+                                                    <constraint firstAttribute="height" id="au7-QW-vVn"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-vt-4YI">
-                                                <rect key="frame" x="10" y="126" width="335" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Man and Van" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-vt-4YI">
+                                                <rect key="frame" x="10" y="27.5" width="335" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-2X-VAr">
-                                                <rect key="frame" x="10" y="131" width="335" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-2X-VAr">
+                                                <rect key="frame" x="10" y="51.5" width="335" height="18"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="PriceColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-pd-laj">
-                                                <rect key="frame" x="0.0" y="178" width="118.5" height="27"/>
+                                                <rect key="frame" x="0.0" y="93" width="118.5" height="27"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                 <state key="normal" title="Location">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -6779,7 +6799,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZy-py-Byo">
-                                                <rect key="frame" x="118.5" y="178" width="112.5" height="27"/>
+                                                <rect key="frame" x="118.5" y="93" width="112.5" height="27"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                 <state key="normal" title="Job Summary">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -6789,7 +6809,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbi-OW-wLb">
-                                                <rect key="frame" x="241" y="178" width="112" height="27"/>
+                                                <rect key="frame" x="241" y="93" width="112" height="27"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                 <state key="normal" title="User Information">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -6799,18 +6819,18 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgS-TH-O6z">
-                                                <rect key="frame" x="0.0" y="215" width="118.5" height="5"/>
+                                                <rect key="frame" x="0.0" y="130" width="118.5" height="5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="5" id="T0B-jT-qUU"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGA-8R-LlZ">
-                                                <rect key="frame" x="118.5" y="215" width="108.5" height="5"/>
+                                                <rect key="frame" x="118.5" y="130" width="108.5" height="5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zV-Is-lXG">
-                                                <rect key="frame" x="227" y="215" width="128" height="5"/>
+                                                <rect key="frame" x="227" y="130" width="128" height="5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                             </view>
                                         </subviews>
@@ -6819,7 +6839,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstItem="2zV-Is-lXG" firstAttribute="height" secondItem="HGA-8R-LlZ" secondAttribute="height" id="2Ff-Nk-aLG"/>
                                             <constraint firstItem="Mbi-OW-wLb" firstAttribute="centerY" secondItem="AZy-py-Byo" secondAttribute="centerY" id="2dg-l1-DCy"/>
                                             <constraint firstItem="o3z-2X-VAr" firstAttribute="top" secondItem="wWG-vt-4YI" secondAttribute="bottom" constant="5" id="4id-mK-nOL"/>
-                                            <constraint firstAttribute="height" constant="220" id="4wc-sD-Ybw"/>
+                                            <constraint firstAttribute="height" constant="135" id="4wc-sD-Ybw"/>
                                             <constraint firstItem="XgS-TH-O6z" firstAttribute="leading" secondItem="OBE-Km-nrs" secondAttribute="leading" id="5ZO-Ne-OKg"/>
                                             <constraint firstItem="XgS-TH-O6z" firstAttribute="width" secondItem="OBE-Km-nrs" secondAttribute="width" multiplier="0.333333" id="7ay-I9-HBo"/>
                                             <constraint firstItem="2zV-Is-lXG" firstAttribute="centerY" secondItem="HGA-8R-LlZ" secondAttribute="centerY" id="8fr-Bm-JJD"/>
@@ -6850,7 +6870,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstItem="wWG-vt-4YI" firstAttribute="leading" secondItem="OBE-Km-nrs" secondAttribute="leading" constant="10" id="w4x-U4-bkA"/>
                                             <constraint firstItem="o3z-2X-VAr" firstAttribute="trailing" secondItem="wWG-vt-4YI" secondAttribute="trailing" id="wdI-FD-hgM"/>
                                             <constraint firstItem="AZy-py-Byo" firstAttribute="centerY" secondItem="g6l-pd-laj" secondAttribute="centerY" id="xNs-IR-hNO"/>
-                                            <constraint firstItem="wWG-vt-4YI" firstAttribute="top" secondItem="nZ1-t6-eAJ" secondAttribute="bottom" constant="9" id="zNH-dq-cit"/>
+                                            <constraint firstItem="wWG-vt-4YI" firstAttribute="top" secondItem="nZ1-t6-eAJ" secondAttribute="bottom" constant="-20" id="zNH-dq-cit"/>
                                             <constraint firstItem="shV-11-eqW" firstAttribute="centerY" secondItem="OBE-Km-nrs" secondAttribute="centerY" multiplier="0.7" id="zyt-Ss-M6E"/>
                                         </constraints>
                                     </view>
@@ -6860,7 +6880,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="h1T-gg-7oV" firstAttribute="leading" secondItem="ehy-8C-XH4" secondAttribute="leading" id="230-ds-DfI"/>
                                     <constraint firstAttribute="trailing" secondItem="OBE-Km-nrs" secondAttribute="trailing" constant="10" id="6gk-Ot-QNG"/>
                                     <constraint firstAttribute="bottom" secondItem="OBE-Km-nrs" secondAttribute="bottom" constant="10" id="94G-KY-eCj"/>
-                                    <constraint firstAttribute="height" constant="285" id="Cvl-Cm-YIg"/>
+                                    <constraint firstAttribute="height" constant="200" id="Cvl-Cm-YIg"/>
                                     <constraint firstItem="OBE-Km-nrs" firstAttribute="leading" secondItem="ehy-8C-XH4" secondAttribute="leading" constant="10" id="HjO-fC-QJa"/>
                                     <constraint firstItem="OBE-Km-nrs" firstAttribute="top" secondItem="h1T-gg-7oV" secondAttribute="bottom" constant="10" id="N1U-2F-k7w"/>
                                     <constraint firstAttribute="trailing" secondItem="h1T-gg-7oV" secondAttribute="trailing" id="tNa-pf-n7S"/>
@@ -7115,7 +7135,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puR-g3-YcV">
-                                <rect key="frame" x="10" y="273.5" width="355" height="388.5"/>
+                                <rect key="frame" x="10" y="188.5" width="355" height="473.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickUp_icon_new" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-sh-Y8A">
                                         <rect key="frame" x="15" y="15" width="20" height="20"/>
@@ -7192,7 +7212,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKX-cD-1e4" customClass="GMSMapView">
-                                        <rect key="frame" x="18" y="130" width="319.5" height="233"/>
+                                        <rect key="frame" x="18" y="130" width="319.5" height="313"/>
                                         <color key="backgroundColor" name="Background_color"/>
                                     </view>
                                 </subviews>
@@ -7203,6 +7223,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="E2F-sf-tIh" firstAttribute="top" secondItem="Fbe-sh-Y8A" secondAttribute="bottom" id="AHZ-zc-Php"/>
                                     <constraint firstItem="oKX-cD-1e4" firstAttribute="top" secondItem="5FG-5v-g1C" secondAttribute="bottom" constant="13" id="DjQ-zF-VSd"/>
                                     <constraint firstAttribute="trailing" secondItem="0vO-25-okb" secondAttribute="trailing" constant="10" id="FCW-c8-vgK"/>
+                                    <constraint firstAttribute="height" constant="473.5" id="IYp-By-KKb"/>
                                     <constraint firstItem="NTB-Y4-hcu" firstAttribute="leading" secondItem="5GR-zN-tlQ" secondAttribute="trailing" constant="5" id="Ox2-KB-AT1"/>
                                     <constraint firstItem="Fbe-sh-Y8A" firstAttribute="leading" secondItem="puR-g3-YcV" secondAttribute="leading" constant="15" id="PpU-GU-W5G"/>
                                     <constraint firstAttribute="trailing" secondItem="5FG-5v-g1C" secondAttribute="trailing" id="SWF-4h-0uW"/>
@@ -7216,7 +7237,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="5GR-zN-tlQ" firstAttribute="top" secondItem="E2F-sf-tIh" secondAttribute="bottom" id="heq-TQ-hOz"/>
                                     <constraint firstItem="5FG-5v-g1C" firstAttribute="leading" secondItem="puR-g3-YcV" secondAttribute="leading" id="l3y-ru-0QG"/>
                                     <constraint firstItem="5FG-5v-g1C" firstAttribute="top" secondItem="5GR-zN-tlQ" secondAttribute="bottom" constant="17" id="mO4-ou-y0b"/>
-                                    <constraint firstItem="oKX-cD-1e4" firstAttribute="height" secondItem="puR-g3-YcV" secondAttribute="height" multiplier="0.6" id="mXx-03-1YZ"/>
+                                    <constraint firstItem="oKX-cD-1e4" firstAttribute="height" secondItem="puR-g3-YcV" secondAttribute="height" multiplier="0.6" constant="28.900000000000034" id="mXx-03-1YZ"/>
                                     <constraint firstItem="E2F-sf-tIh" firstAttribute="centerX" secondItem="Fbe-sh-Y8A" secondAttribute="centerX" id="rbS-tv-XL0"/>
                                 </constraints>
                             </view>
@@ -7226,7 +7247,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="puR-g3-YcV" secondAttribute="trailing" constant="10" id="MQZ-iB-DRS"/>
                             <constraint firstAttribute="bottom" secondItem="puR-g3-YcV" secondAttribute="bottom" constant="5" id="Swa-Ae-L67"/>
-                            <constraint firstItem="puR-g3-YcV" firstAttribute="height" secondItem="rdI-Jr-M42" secondAttribute="height" multiplier="0.582219" id="lXV-ev-XSl"/>
                             <constraint firstItem="puR-g3-YcV" firstAttribute="leading" secondItem="rdI-Jr-M42" secondAttribute="leading" constant="10" id="yqN-qk-XFv"/>
                         </constraints>
                     </view>
@@ -7237,22 +7257,23 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <outlet property="fuelCost_lbl" destination="hrM-gr-cpL" id="aOm-aN-5Rk"/>
                         <outlet property="mapViewX" destination="oKX-cD-1e4" id="Z6Q-IX-oyr"/>
                         <outlet property="pickUp_lbl" destination="0vO-25-okb" id="w2J-d0-jIg"/>
+                        <outlet property="topViewHeight" destination="IYp-By-KKb" id="57G-Aa-Yhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsG-CU-WIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4325.6000000000004" y="4931.7841079460277"/>
+            <point key="canvasLocation" x="4325.6000000000004" y="4869.7151424287858"/>
         </scene>
         <!--Job Summary View Controller-->
         <scene sceneID="OaZ-QE-3UI">
             <objects>
                 <viewController storyboardIdentifier="Job_Summary_ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cgs-Gt-adF" customClass="Job_Summary_ViewController" customModule="LoadX_Transporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="76j-oQ-94f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pD-iG-z4I">
-                                <rect key="frame" x="10" y="280" width="355" height="80"/>
+                                <rect key="frame" x="10" y="195" width="355" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roA-hx-YV0">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="31"/>
@@ -7284,14 +7305,14 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iaJ-aC-bJ3">
-                                <rect key="frame" x="10" y="360" width="355" height="890"/>
+                                <rect key="frame" x="10" y="275" width="355" height="325"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pen-LQ-A3p"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4pD-iG-z4I" firstAttribute="top" secondItem="pen-LQ-A3p" secondAttribute="top" constant="280" id="4wT-cx-HKy"/>
+                            <constraint firstItem="4pD-iG-z4I" firstAttribute="top" secondItem="pen-LQ-A3p" secondAttribute="top" constant="195" id="4wT-cx-HKy"/>
                             <constraint firstItem="pen-LQ-A3p" firstAttribute="trailing" secondItem="4pD-iG-z4I" secondAttribute="trailing" constant="10" id="7XY-c8-z3s"/>
                             <constraint firstAttribute="bottom" secondItem="iaJ-aC-bJ3" secondAttribute="bottom" id="8L5-CZ-ZFW"/>
                             <constraint firstAttribute="trailing" secondItem="iaJ-aC-bJ3" secondAttribute="trailing" constant="10" id="V49-17-ixO"/>
@@ -7300,7 +7321,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="iaJ-aC-bJ3" firstAttribute="top" secondItem="4pD-iG-z4I" secondAttribute="bottom" id="jXL-8W-Y7q"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="1250"/>
+                    <size key="freeformSize" width="375" height="600"/>
                     <connections>
                         <outlet property="jobDescrp_height" destination="PAV-J5-IOT" id="YIJ-61-aDd"/>
                         <outlet property="jobDesrpt_view" destination="4pD-iG-z4I" id="cqC-zZ-SM6"/>
@@ -7321,7 +7342,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2o6-ui-Xkj">
-                                <rect key="frame" x="10" y="280" width="355" height="362"/>
+                                <rect key="frame" x="10" y="195" width="355" height="447"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvM-Cy-BEe">
                                         <rect key="frame" x="0.0" y="10" width="355" height="40"/>
@@ -7497,7 +7518,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="2o6-ui-Xkj" firstAttribute="leading" secondItem="6Gk-YJ-20n" secondAttribute="leading" constant="10" id="9YU-0I-fKb"/>
                             <constraint firstItem="6Gk-YJ-20n" firstAttribute="trailing" secondItem="2o6-ui-Xkj" secondAttribute="trailing" constant="10" id="Oy0-wS-DfI"/>
                             <constraint firstItem="6Gk-YJ-20n" firstAttribute="bottom" secondItem="2o6-ui-Xkj" secondAttribute="bottom" constant="25" id="Sbx-9p-hj7"/>
-                            <constraint firstItem="2o6-ui-Xkj" firstAttribute="top" secondItem="6Gk-YJ-20n" secondAttribute="top" constant="280" id="wyk-tt-Oh0"/>
+                            <constraint firstItem="2o6-ui-Xkj" firstAttribute="top" secondItem="6Gk-YJ-20n" secondAttribute="top" constant="195" id="wyk-tt-Oh0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -7783,7 +7804,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1n9-1O-kCg">
-                                        <rect key="frame" x="95" y="11.5" width="134.5" height="22"/>
+                                        <rect key="frame" x="65" y="11.5" width="134.5" height="22"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Jobs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-4x-uPj">
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="22"/>
@@ -7811,10 +7832,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-gw-Ig7" customClass="LogoView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="5" width="60" height="35"/>
+                                        <rect key="frame" x="15" y="5" width="30" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="BQn-sx-ghD"/>
+                                            <constraint firstAttribute="width" constant="30" id="BQn-sx-ghD"/>
                                             <constraint firstAttribute="height" constant="35" id="Qdb-hy-mEv"/>
                                         </constraints>
                                     </view>
@@ -9137,13 +9158,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <rect key="frame" x="10" y="289" width="355" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice Detials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hv-LT-NUq">
-                                        <rect key="frame" x="20" y="5" width="310" height="20"/>
+                                        <rect key="frame" x="10" y="5" width="320" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GB-ph-yvR">
-                                        <rect key="frame" x="20" y="41.5" width="320" height="42"/>
+                                        <rect key="frame" x="10" y="41.5" width="330" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-2v-fNz">
                                                 <rect key="frame" x="0.0" y="5" width="160" height="20"/>
@@ -9155,13 +9176,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spR-93-TsG">
-                                                <rect key="frame" x="187" y="4" width="118" height="20"/>
+                                                <rect key="frame" x="187" y="4" width="128" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQh-HH-Mcc">
-                                                <rect key="frame" x="0.0" y="35" width="305" height="1.5"/>
+                                                <rect key="frame" x="0.0" y="35" width="315" height="1.5"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1.5" id="BAb-1D-yLW"/>
@@ -9183,7 +9204,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlw-ne-7JA">
-                                        <rect key="frame" x="20" y="83.5" width="320" height="35"/>
+                                        <rect key="frame" x="10" y="83.5" width="330" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB9-Ui-2Xn">
                                                 <rect key="frame" x="2" y="6" width="200" height="18"/>
@@ -9194,7 +9215,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFH-rR-2Yj">
-                                                <rect key="frame" x="150" y="7" width="156" height="24"/>
+                                                <rect key="frame" x="160" y="7" width="156" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="nMf-ZY-Fc3"/>
                                                     <constraint firstAttribute="width" constant="156" id="zCn-ym-49C"/>
@@ -9204,7 +9225,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l84-iH-agL">
-                                                <rect key="frame" x="2" y="34" width="304" height="1.5"/>
+                                                <rect key="frame" x="2" y="34" width="314" height="1.5"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1.5" id="GCE-b3-oOG"/>
@@ -9224,7 +9245,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqW-Ad-Dtq">
-                                        <rect key="frame" x="20" y="123.5" width="320" height="35"/>
+                                        <rect key="frame" x="10" y="123.5" width="330" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OV-o5-Ep4">
                                                 <rect key="frame" x="0.0" y="7" width="142.5" height="15"/>
@@ -9232,7 +9253,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amd-xf-OND">
-                                                <rect key="frame" x="273.5" y="4" width="32.5" height="28"/>
+                                                <rect key="frame" x="283.5" y="4" width="32.5" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
@@ -9257,11 +9278,11 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="1hv-LT-NUq" firstAttribute="top" secondItem="WtN-7c-xtA" secondAttribute="top" constant="5" id="6ub-W7-LtU"/>
                                     <constraint firstItem="Vlw-ne-7JA" firstAttribute="height" secondItem="2GB-ph-yvR" secondAttribute="height" multiplier="0.833333" id="89i-qk-zI3"/>
                                     <constraint firstItem="gqW-Ad-Dtq" firstAttribute="leading" secondItem="Vlw-ne-7JA" secondAttribute="leading" id="8Mz-uP-9CI"/>
-                                    <constraint firstItem="1hv-LT-NUq" firstAttribute="leading" secondItem="WtN-7c-xtA" secondAttribute="leading" constant="20" id="Qdo-6m-2zU"/>
+                                    <constraint firstItem="1hv-LT-NUq" firstAttribute="leading" secondItem="WtN-7c-xtA" secondAttribute="leading" constant="10" id="Qdo-6m-2zU"/>
                                     <constraint firstItem="2GB-ph-yvR" firstAttribute="top" secondItem="1hv-LT-NUq" secondAttribute="bottom" constant="16.5" id="RLi-5x-hik"/>
                                     <constraint firstAttribute="trailing" secondItem="1hv-LT-NUq" secondAttribute="trailing" constant="25" id="pne-C0-oit"/>
                                     <constraint firstItem="Vlw-ne-7JA" firstAttribute="leading" secondItem="2GB-ph-yvR" secondAttribute="leading" id="qFf-GX-uHg"/>
-                                    <constraint firstItem="2GB-ph-yvR" firstAttribute="leading" secondItem="WtN-7c-xtA" secondAttribute="leading" constant="20" id="rOQ-Oe-Gwr"/>
+                                    <constraint firstItem="2GB-ph-yvR" firstAttribute="leading" secondItem="WtN-7c-xtA" secondAttribute="leading" constant="10" id="rOQ-Oe-Gwr"/>
                                     <constraint firstItem="gqW-Ad-Dtq" firstAttribute="top" secondItem="Vlw-ne-7JA" secondAttribute="bottom" constant="5" id="uKb-Qe-wgn"/>
                                     <constraint firstAttribute="trailing" secondItem="2GB-ph-yvR" secondAttribute="trailing" constant="15" id="wQs-Em-6cJ"/>
                                     <constraint firstItem="gqW-Ad-Dtq" firstAttribute="trailing" secondItem="Vlw-ne-7JA" secondAttribute="trailing" id="yIy-Rn-QMr"/>
@@ -11616,6 +11637,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <outlet property="totalCompleted_view" destination="Ezi-T2-3gs" id="rPC-em-GP7"/>
                         <outlet property="totalEarning" destination="z35-62-Cs7" id="ZSU-MG-VXf"/>
                         <outlet property="totalOutstanding" destination="p1C-ld-lZs" id="VRH-cS-GsM"/>
+                        <outlet property="totalOutstandingView" destination="PTa-7d-4ZI" id="q5P-aK-1y2"/>
                         <outlet property="totalPrice_view" destination="5wX-NX-8fK" id="dpH-Ty-Sob"/>
                     </connections>
                 </viewController>
@@ -12937,13 +12959,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdb-JN-efn">
-                                <rect key="frame" x="25" y="70" width="147" height="21"/>
+                                <rect key="frame" x="25" y="70" width="147" height="67"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSS-e2-Xr8">
-                                <rect key="frame" x="25" y="105" width="160" height="135"/>
+                                <rect key="frame" x="25" y="151" width="160" height="135"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="39H-4N-sY1">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
@@ -12980,7 +13002,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DO-7A-R7q">
-                                <rect key="frame" x="200" y="105" width="160" height="135"/>
+                                <rect key="frame" x="200" y="151" width="160" height="135"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="P25-XK-ZvI">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
@@ -13015,27 +13037,27 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Satuts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iH6-QD-Pj2">
-                                <rect key="frame" x="47" y="252" width="116" height="21"/>
+                                <rect key="frame" x="47" y="298" width="116" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Satuts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4nd-hL-g98">
-                                <rect key="frame" x="222" y="252" width="116" height="21"/>
+                                <rect key="frame" x="222" y="298" width="116" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-Ng-Hmc">
-                                <rect key="frame" x="47" y="281" width="116" height="18"/>
+                                <rect key="frame" x="47" y="327" width="116" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf0-px-Q7W">
-                                <rect key="frame" x="222" y="281" width="116" height="18"/>
+                                <rect key="frame" x="222" y="327" width="116" height="18"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -13084,7 +13106,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLE-LK-FCB">
-                                <rect key="frame" x="25" y="575" width="325" height="40"/>
+                                <rect key="frame" x="25" y="552" width="325" height="40"/>
                                 <color key="backgroundColor" red="0.19201332330000001" green="0.1960351169" blue="0.2001755536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="I0x-mn-6Ye"/>
@@ -13110,6 +13132,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="xdb-JN-efn" firstAttribute="top" secondItem="Y8x-sw-URA" secondAttribute="bottom" constant="25" id="1we-Z5-z2Y"/>
                             <constraint firstItem="9DO-7A-R7q" firstAttribute="width" secondItem="oSS-e2-Xr8" secondAttribute="width" id="2mP-F7-El4"/>
                             <constraint firstItem="4nd-hL-g98" firstAttribute="top" secondItem="frl-aa-seh" secondAttribute="bottom" constant="12" id="2pf-RI-lQx"/>
+                            <constraint firstItem="gqI-YT-d18" firstAttribute="bottom" secondItem="LLE-LK-FCB" secondAttribute="bottom" constant="75" id="37G-6p-4me"/>
                             <constraint firstItem="oSS-e2-Xr8" firstAttribute="top" secondItem="xdb-JN-efn" secondAttribute="bottom" constant="14" id="5TN-da-6lE"/>
                             <constraint firstItem="XwQ-Ng-Hmc" firstAttribute="leading" secondItem="iH6-QD-Pj2" secondAttribute="leading" id="6DM-O9-0gL"/>
                             <constraint firstItem="QdZ-DN-ag8" firstAttribute="top" secondItem="IdO-g5-vSM" secondAttribute="bottom" constant="13" id="7bC-cP-q1H"/>
@@ -13127,7 +13150,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="iH6-QD-Pj2" firstAttribute="centerX" secondItem="gEt-gx-m2m" secondAttribute="centerX" id="YJB-iV-crn"/>
                             <constraint firstItem="Hf0-px-Q7W" firstAttribute="trailing" secondItem="4nd-hL-g98" secondAttribute="trailing" id="cjE-9A-Sa5"/>
                             <constraint firstItem="IdO-g5-vSM" firstAttribute="leading" secondItem="xdb-JN-efn" secondAttribute="leading" id="e74-0j-hyD"/>
-                            <constraint firstItem="LLE-LK-FCB" firstAttribute="top" secondItem="QdZ-DN-ag8" secondAttribute="bottom" constant="50" id="euy-yl-To5"/>
                             <constraint firstItem="oSS-e2-Xr8" firstAttribute="leading" secondItem="xdb-JN-efn" secondAttribute="leading" id="f2U-tX-Zfm"/>
                             <constraint firstItem="gqI-YT-d18" firstAttribute="trailing" secondItem="IdO-g5-vSM" secondAttribute="trailing" constant="210.5" id="gK0-bT-UJ3"/>
                             <constraint firstItem="iH6-QD-Pj2" firstAttribute="top" secondItem="gEt-gx-m2m" secondAttribute="bottom" constant="12" id="grX-jH-r7f"/>
@@ -13136,6 +13158,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="9DO-7A-R7q" firstAttribute="centerY" secondItem="oSS-e2-Xr8" secondAttribute="centerY" id="qaH-IR-FOF"/>
                             <constraint firstItem="Hf0-px-Q7W" firstAttribute="top" secondItem="4nd-hL-g98" secondAttribute="bottom" constant="8" id="sHO-xt-E8Y"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="IdO-g5-vSM"/>
+                                <exclude reference="QdZ-DN-ag8"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="dl_status" destination="XwQ-Ng-Hmc" id="iUr-xe-3Ls"/>
@@ -15959,6 +15987,9 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
         </designable>
         <designable name="UGn-6U-qqT">
             <size key="intrinsicContentSize" width="166" height="18.5"/>
+        </designable>
+        <designable name="WId-c3-qtD">
+            <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="X6V-RK-JSX">
             <size key="intrinsicContentSize" width="285" height="80"/>

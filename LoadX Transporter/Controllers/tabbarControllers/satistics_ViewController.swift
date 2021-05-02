@@ -25,7 +25,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     @IBOutlet weak var totalCompletedJob_lbl: UILabel!
     @IBOutlet weak var toDate_tf: AnimatableTextField!
     @IBOutlet weak var fromDate_tf: AnimatableTextField!
-    
+    @IBOutlet weak var totalOutstandingView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
     
@@ -72,26 +72,10 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.register(UINib(nibName: "CompletedJobsCell", bundle: nil) , forCellReuseIdentifier: "completedJobs")
     }
     override func viewWillAppear(_ animated: Bool) {
-        totalCompleted_view.layer.cornerRadius = 5
-        // shadow
-        totalCompleted_view.layer.shadowColor = UIColor.black.cgColor
-        totalCompleted_view.layer.shadowOffset = CGSize(width: 2, height: 2)
-        totalCompleted_view.layer.shadowOpacity = 0.4
-        totalCompleted_view.layer.shadowRadius = 4.0
-        
-        totalPrice_view.layer.cornerRadius = 5
-        // shadow
-        totalPrice_view.layer.shadowColor = UIColor.black.cgColor
-        totalPrice_view.layer.shadowOffset = CGSize(width: 2, height: 2)
-        totalPrice_view.layer.shadowOpacity = 0.4
-        totalPrice_view.layer.shadowRadius = 4.0
-        
-        totalCompletedRoutesView.layer.cornerRadius = 5
-        // shadow
-        totalCompletedRoutesView.layer.shadowColor = UIColor.black.cgColor
-        totalCompletedRoutesView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        totalCompletedRoutesView.layer.shadowOpacity = 0.4
-        totalCompletedRoutesView.layer.shadowRadius = 4.0
+        totalCompleted_view.applyShadowToView()
+        totalPrice_view.applyShadowToView()
+        totalCompletedRoutesView.applyShadowToView()
+        totalOutstandingView.applyShadowToView()
     }
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)

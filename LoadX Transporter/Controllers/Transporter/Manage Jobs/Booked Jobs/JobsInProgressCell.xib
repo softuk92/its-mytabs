@@ -31,14 +31,14 @@
                         <rect key="frame" x="12" y="15" width="359" height="281"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-79-UKk">
-                                <rect key="frame" x="10" y="5" width="70" height="70"/>
+                                <rect key="frame" x="7" y="5" width="0.0" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="00Z-Y5-006"/>
-                                    <constraint firstAttribute="width" constant="70" id="8f7-r6-tep"/>
+                                    <constraint firstAttribute="width" id="8f7-r6-tep"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY4-MJ-boq">
-                                <rect key="frame" x="90" y="15" width="120.5" height="20"/>
+                                <rect key="frame" x="17" y="15" width="121" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="dJi-ET-Hzl"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-A0-63q">
-                                <rect key="frame" x="90" y="45" width="70" height="30"/>
+                                <rect key="frame" x="17" y="45" width="70" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="gEr-Te-a8p"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkm-pv-2pN">
-                                <rect key="frame" x="304.5" y="53" width="29.5" height="14"/>
+                                <rect key="frame" x="301.5" y="53" width="32.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -116,12 +116,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Delivery Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da0-me-TX8">
-                                <rect key="frame" x="38" y="195" width="83" height="16.5"/>
+                                <rect key="frame" x="38" y="194.5" width="92.5" height="17"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syv-rZ-Obt">
-                                <rect key="frame" x="131" y="195.5" width="74.5" height="15.5"/>
+                                <rect key="frame" x="140.5" y="195" width="74" height="16"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C + ULEZ Charges Inclusive : £24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8n-03-JPS">
-                                <rect key="frame" x="90" y="82" width="244" height="14"/>
+                                <rect key="frame" x="17" y="82.5" width="317" height="14.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -207,7 +207,7 @@
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="trailing" secondItem="zdH-w5-pzs" secondAttribute="trailing" id="lZ7-PW-B5N"/>
                             <constraint firstAttribute="trailing" secondItem="wzP-k7-KWf" secondAttribute="trailing" id="nyd-jP-Mn4"/>
                             <constraint firstItem="zdH-w5-pzs" firstAttribute="top" secondItem="Tep-A0-63q" secondAttribute="bottom" constant="31" id="oqI-5v-GOw"/>
-                            <constraint firstItem="hEe-79-UKk" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="10" id="piz-E1-K4f"/>
+                            <constraint firstItem="hEe-79-UKk" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="7" id="piz-E1-K4f"/>
                             <constraint firstItem="hEe-79-UKk" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" constant="5" id="rYh-oY-m7L"/>
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="leading" secondItem="zdH-w5-pzs" secondAttribute="leading" id="s5N-S4-UYb"/>
                             <constraint firstAttribute="trailing" secondItem="Wz2-sL-Jnj" secondAttribute="trailing" id="thM-Uq-xX9"/>
@@ -250,10 +250,10 @@
     </objects>
     <designables>
         <designable name="AWD-39-aan">
-            <size key="intrinsicContentSize" width="77" height="30"/>
+            <size key="intrinsicContentSize" width="82" height="30"/>
         </designable>
         <designable name="Wz2-sL-Jnj">
-            <size key="intrinsicContentSize" width="95" height="30"/>
+            <size key="intrinsicContentSize" width="105" height="30"/>
         </designable>
     </designables>
     <resources>
