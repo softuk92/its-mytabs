@@ -553,6 +553,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 //
 //            let appleUserEmail = appleIDCredential.email
             let fullName = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
+            let user = appleIDCredential.user
             if appleIDCredential.email != nil {
                 UserDefaults.standard.setValue(fullName, forKey: "appleName")
                 UserDefaults.standard.setValue(appleIDCredential.email ?? "", forKey: "appleEmail")

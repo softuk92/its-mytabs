@@ -130,7 +130,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
         info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         
-        if category == "Dedicated Van" {
+        if category == "Dedicated Van" || category == "Man & Van" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
                 info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
             }
@@ -152,7 +152,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
             info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
         }
         
-        if workingHours != "" && workingHours != "N/A" {
+        if category == "Man & Van", workingHours != "" && workingHours != "N/A" {
             info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
         }
         

@@ -476,7 +476,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     func searchDeliveriesFunc(completed: @escaping () -> ()) {
         SVProgressHUD.show(withStatus: "Getting Jobs...")
-        let url = URL(string: main_URL+"api/SearchBookedJobs")
+        let url = URL(string: main_URL+"api/SearchBookedJobs?user_id=\(user_id ?? "")")
         
         URLSession.shared.dataTask(with: url!) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -701,9 +701,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
         }
         
+        if searchDeliveriesRow.moving_item == "Man and Van" {
         if let workingHours = searchDeliveriesRow.working_hours, workingHours != "" {
             cell.hoursRequired.isHidden = false
             cell.hoursRequired.text = "Working Hours Required: \(workingHours)"
+        } else {
+            cell.hoursRequired.isHidden = true
+        }
         } else {
             cell.hoursRequired.isHidden = true
         }

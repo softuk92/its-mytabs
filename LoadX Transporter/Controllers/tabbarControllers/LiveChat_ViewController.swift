@@ -24,7 +24,7 @@ class LiveChat_ViewController: UIViewController, WKNavigationDelegate {
        super.viewDidLoad()
 //        webView = WKWebView(frame: view.frame)
         
-       let url = URL(string: "https://tawk.to/chat/5eb295cba1bad90e54a22be7/default?$_tawk_sk=5ebbc54286b22af366d40bfb&$_tawk_tk=f0b922a1d473a077ec91ac875c0e508f&v=683")!
+       let url = URL(string: "https://tawk.to/chat/5eb295cba1bad90e54a22be7/default")!
         let requestObj = URLRequest(url: url)
     
 //        webView = WKWebView(frame: self.view.frame)

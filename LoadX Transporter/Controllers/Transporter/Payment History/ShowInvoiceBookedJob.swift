@@ -17,54 +17,24 @@ import MessageUI
 class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var parentView: UIView!
-    @IBOutlet weak var invoice_lbl: UILabel!
-    @IBOutlet weak var invoice_lbl2: UILabel!
     @IBOutlet weak var invoice_no: UILabel!
-    @IBOutlet weak var invoice_no2: UILabel!
-    @IBOutlet weak var issueDate_lbl: UILabel!
-    @IBOutlet weak var issueDate_lbl2: UILabel!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var date2: UILabel!
-    @IBOutlet weak var transporter_view: UIView!
-    @IBOutlet weak var transporter_view2: UIView!
-    @IBOutlet weak var customer_view: UIView!
-    @IBOutlet weak var customer_view2: UIView!
-    @IBOutlet weak var transporter_lbl: UILabel!
-    @IBOutlet weak var transporter_partner: UILabel!
-    @IBOutlet weak var transporter_partner2: UILabel!
-    @IBOutlet weak var customer_lbl: UILabel!
     @IBOutlet weak var customer_name: UILabel!
-    @IBOutlet weak var customer_name2: UILabel!
-    @IBOutlet weak var detial_view: UIView!
-    @IBOutlet weak var detial_view2: UIView!
-    
+    @IBOutlet weak var customer_email: UILabel!
+    @IBOutlet weak var customer_phone: UILabel!
+
     @IBOutlet var email_popup_view: UIView!
     @IBOutlet var phone_popupView: UIView!
     @IBOutlet var location_popupView: UIView!
     
-    @IBOutlet weak var customer_lbl2: UILabel!
-    @IBOutlet weak var transporter_lbl2: UILabel!
-    @IBOutlet weak var jobId_lbl2: UILabel!
     @IBOutlet weak var jobId_lbl: UILabel!
-    @IBOutlet weak var jobPrice_lbl2: UILabel!
-    @IBOutlet weak var jobprice_lbl: UILabel!
-    @IBOutlet weak var job_id_label: UILabel!
-    @IBOutlet weak var job_id_label2: UILabel!
-    @IBOutlet weak var current_bid: UILabel!
-    @IBOutlet weak var current_bid2: UILabel!
-    
-    @IBOutlet weak var recived_lbl2: UILabel!
-    @IBOutlet weak var recived_lbl: UILabel!
+    @IBOutlet weak var pickupAdd: UILabel!
+    @IBOutlet weak var dropoffAdd: UILabel!
     @IBOutlet weak var received_amount: UILabel!
-    @IBOutlet weak var received_amount2: UILabel!
-    
-    @IBOutlet weak var invoiceOutlet: UIButton!
-    @IBOutlet var popupView: UIView!
+    @IBOutlet weak var totalPrice: UILabel!
     
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
        
-       
-    
     let year = Calendar.current.component(.year, from: Date())
     var roundedPrice: Double = 0.0
     let pdfUrl = main_URL+"user/userdownloadinvoice/"
@@ -74,11 +44,12 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     
     @IBOutlet var phoneTab: UITapGestureRecognizer!
     @IBOutlet weak var cz_priceLbl: UILabel!
-    @IBOutlet weak var cz_priceLbl2: UILabel!
     
     @IBOutlet weak var callpopup_innerView: UIView!
     @IBOutlet weak var emial_innerView: UIView!
     @IBOutlet weak var search_innerView: UIView!
+    
+    @IBOutlet weak var scrollInvoiceView: UIScrollView!
     
     var phoneNumber: String?
    
@@ -86,7 +57,6 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
         super.viewDidLoad()
         
         self.title = "Invoice"
-        self.customer_lbl.text = "Billed To:"
         self.callpopup_innerView.clipsToBounds = true
         self.callpopup_innerView.layer.cornerRadius = 18
         self.callpopup_innerView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
@@ -179,16 +149,6 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
    
     
     @IBAction func email_btn_action(_ sender: Any) {
-//       if not working use this link https://stackoverflow.com/questions/25981422/how-to-open-mail-app-from-swift
-        
-//        let email = "info@loadx.co.uk"
-//        if let url = URL(string: "mailto:\(email)") {
-//          if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url)
-//          } else {
-//            UIApplication.shared.openURL(url)
-//          }
-//        }
         sendEmail()
     }
     
@@ -273,65 +233,57 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         self.paymentID = jsonData[0]["payment_id"].stringValue
                         self.finalURL = self.pdfUrl+jobID
                         let job_id = "LOADX"+String(self.year)+"JI"+jobID
-//                        self.invoice_no.text = job_id
-//                        self.invoice_no2.text = job_id
                         self.invoiceNo = job_id
                         let jobID2 = jsonData[0]["del_id"].stringValue
 //                        let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
                         let job_id2 = "LX00"+jobID2
-                        self.job_id_label.text = job_id2
-                        self.job_id_label2.text = job_id2
+                        self.jobId_lbl.text = job_id2
+                        
                         self.invoice_no.text = job_id
-                        self.invoice_no2.text = job_id
-                        if user_name != nil {
-                        //    self.transporter_partner.text = user_name?.capitalized
-//                            self.transporter_partner2.text = user_name?.capitalized
-                        }
                       
                         let cz_value = jsonData[0]["is_cz"].stringValue
                         if cz_value == "1" {
                             self.cz_priceLbl.isHidden = false
-                            self.cz_priceLbl2.isHidden = false
                         }else{
                             self.cz_priceLbl.isHidden = true
-                            self.cz_priceLbl2.isHidden = true
                         }
                         
-                        let customerName = jsonData[0]["user_name"].stringValue
-                        self.customer_name.text = customerName.capitalized
-//                        customerName.capitalized
-                        self.customer_name2.text = user_name
-//                            customerName.capitalized
-                        self.current_bid.text = "£"+jsonData[0]["current_bid"].stringValue
-                        self.current_bid2.text = "£"+jsonData[0]["current_bid"].stringValue
+                        let customerName = jsonData[0]["user_name"].stringValue.uppercased()
+                        let customerEmail = jsonData[0]["user_email"].stringValue.uppercased()
+                        let customerPhone = jsonData[0]["user_phone"].stringValue
+                        
+                        
+                        self.customer_name.text = customerName
+                        self.customer_email.text = customerEmail
+                        self.customer_phone.text = customerPhone
+                        self.pickupAdd.text = jsonData[0]["pick_up"].stringValue
+                        self.dropoffAdd.text = jsonData[0]["drop_off"].stringValue
+
                         let currentBid = jsonData[0]["current_bid"].stringValue
                         let transporterShare = jsonData[0]["transporter_share"].stringValue
                         if transporterShare != "0" {
                             let str = Double(transporterShare) ?? 0.0
-                            self.current_bid.text = "£ "+String(format: "%.2f", str)
-                            self.current_bid2.text = "£ "+String(format: "%.2f", str)
-                            self.received_amount.text = "£ "+String(format: "%.2f", str)
-                            self.received_amount2.text = "£ "+String(format: "%.2f", str)
+//                            self.current_bid.text = "£ "+String(format: "%.2f", str)
+//                            self.received_amount.text = "£ "+String(format: "%.2f", str)
                         } else {
                             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                             let  doubleValue = Double(x)
                             let finalPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
-                            self.current_bid.text = finalPrice
-                            self.current_bid2.text = finalPrice
-                            self.received_amount.text = finalPrice
-                            self.received_amount2.text = finalPrice
+//                            self.current_bid.text = finalPrice
+//                            self.received_amount.text = finalPrice
                         }
-                                                
-//                        self.current_bid.text = "£"+finalPrice
-//                        self.current_bid2.text = "£"+finalPrice
-//                        self.received_amount.text = "£"+finalPrice
-//                        self.received_amount2.text = "£"+finalPrice
+                
+                        if let totalPrice = Double(jsonData[0]["total_price"].stringValue) {
+                            self.received_amount.text = "£ "+String(format: "%.2f", totalPrice)
+                            self.totalPrice.text = "£ "+String(format: "%.2f", totalPrice)
+                        }
+                        
                         let date = jsonData[0]["pay_date"].stringValue
                         let stringDate = String(date.prefix(10))
                         
                         let convertedDate = self.convertDateFormater(stringDate)
                         self.date.text = convertedDate
-                        self.date2.text = convertedDate
+                        
                     } else {
                         SVProgressHUD.dismiss()
                         let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
@@ -366,8 +318,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBAction func downloadPDF(_ sender: Any) {
 //        openPDF()
         SVProgressHUD.show(withStatus: "Downloading...")
-//        invoiceOutlet.isHidden = true
-        createPdfFromView(aView: self.popupView, saveToDocumentsWithFileName: "LoadX Invoice "+invoiceNo+".pdf")
+        createPdfFromView(aView: self.scrollInvoiceView, saveToDocumentsWithFileName: "LoadX Invoice "+invoiceNo+".pdf")
     
     }
     
@@ -450,7 +401,7 @@ extension ShowInvoiceBookedJob : QLPreviewControllerDelegate, QLPreviewControlle
     }
     
     func previewControllerDidDismiss(_ controller: QLPreviewController) {
-        self.invoiceOutlet.isHidden = false
+        
     }
     
     
