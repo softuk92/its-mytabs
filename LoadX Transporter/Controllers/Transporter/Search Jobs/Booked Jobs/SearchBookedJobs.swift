@@ -476,9 +476,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     func searchDeliveriesFunc(completed: @escaping () -> ()) {
         SVProgressHUD.show(withStatus: "Getting Jobs...")
-        let url = URL(string: main_URL+"api/SearchBookedJobs?user_id=\(user_id ?? "")")
-        
-        URLSession.shared.dataTask(with: url!) { [weak self] (data, response, error) in
+    
+        APIManager.apiPost(serviceName: "api/SearchBookedJobs", parameters: ["user_id" : user_id ?? ""]) { [weak self] (data, response, error) in
             guard let self = self else { return }
             var result = ""
             var message = ""
@@ -527,7 +526,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     
                 }
             }
-        }.resume()
+        }
         
         
     }

@@ -12,7 +12,7 @@ import SwiftyJSON
 import SVProgressHUD
 import QuickLook
 import MessageUI
-
+import CoreGraphics
 
 class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -50,6 +50,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var search_innerView: UIView!
     
     @IBOutlet weak var scrollInvoiceView: UIScrollView!
+    @IBOutlet weak var scrollSubviw: UIView!
     
     var phoneNumber: String?
    
@@ -318,22 +319,60 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBAction func downloadPDF(_ sender: Any) {
 //        openPDF()
         SVProgressHUD.show(withStatus: "Downloading...")
-        createPdfFromView(aView: self.scrollInvoiceView, saveToDocumentsWithFileName: "LoadX Invoice "+invoiceNo+".pdf")
+        createPdfFromView(saveToDocumentsWithFileName: "LoadX Invoice "+invoiceNo+".pdf")
     
     }
     
-    func createPdfFromView(aView: UIView, saveToDocumentsWithFileName fileName: String)
+    func createPdfFromView(saveToDocumentsWithFileName fileName: String)
     {
         
+        let pageDimensions = scrollInvoiceView.bounds
+        let pageSize = pageDimensions.size
+            let totalSize = scrollInvoiceView.contentSize
+
+            let numberOfPagesThatFitHorizontally = Int(ceil(totalSize.width / pageSize.width))
+            let numberOfPagesThatFitVertically = Int(ceil(totalSize.height / pageSize.height))
+
+
         let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, aView.bounds, nil)
-        UIGraphicsBeginPDFPage()
-        
+        UIGraphicsBeginPDFContextToData(pdfData, pageDimensions, nil)
+        let savedContentOffset = scrollInvoiceView.contentOffset
+            let savedContentInset = scrollInvoiceView.contentInset
+
+        scrollInvoiceView.contentInset = UIEdgeInsets.zero
+
         guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
-        
-        aView.layer.render(in: pdfContext)
+        for indexHorizontal in 0 ..< numberOfPagesThatFitHorizontally
+                {
+                    for indexVertical in 0 ..< numberOfPagesThatFitVertically
+                    {
+
+                        UIGraphicsBeginPDFPage()
+
+                        let offsetHorizontal = CGFloat(indexHorizontal) * pageSize.width
+                        let offsetVertical = CGFloat(indexVertical) * pageSize.height
+
+                        scrollInvoiceView.contentOffset = CGPoint(x: offsetHorizontal, y: offsetVertical)
+
+                        pdfContext.translateBy(x: -offsetHorizontal, y: -offsetVertical)
+
+                        scrollInvoiceView.layer.render(in: pdfContext)
+                    }
+                }
+//        let pageDimensions = scrollSubviw.bounds
+//            let outputData = NSMutableData()
+//
+//            UIGraphicsBeginPDFContextToData(outputData, pageDimensions, nil)
+//            if let context = UIGraphicsGetCurrentContext() {
+//                UIGraphicsBeginPDFPage()
+//                view.layer.render(in: context)
+//            }
+//            UIGraphicsEndPDFContext()
+//        UIGraphicsBeginPDFPage()
+//        aView.layer.render(in: pdfContext)
         UIGraphicsEndPDFContext()
-        
+//        scrollInvoiceView.contentInset = savedContentInset
+//        scrollInvoiceView.contentOffset = savedContentOffset
         if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let documentsFileName = documentDirectories + "/" + fileName
             debugPrint(documentsFileName)
