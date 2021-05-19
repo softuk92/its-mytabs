@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.6470588235294118" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="NewBlueColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="7c1-ah-FVK"/>
                             <constraint firstItem="SSw-y5-Ufg" firstAttribute="centerY" secondItem="8pI-mV-FSE" secondAttribute="centerY" id="L3N-PA-aSl"/>
@@ -58,6 +58,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickUp_icon_new" translatesAutoresizingMaskIntoConstraints="NO" id="U4S-iG-Sru">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <color key="tintColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="s1S-eY-M7k"/>
                                             <constraint firstAttribute="width" constant="20" id="w39-Jv-vT9"/>
@@ -104,7 +105,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.23529411759999999" green="0.23921568630000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="NewBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="er1-UQ-eBb"/>
                                             <constraint firstItem="bw9-Cd-Xof" firstAttribute="centerX" secondItem="klr-er-OLN" secondAttribute="centerX" id="xDz-Ts-wdJ"/>
@@ -115,11 +116,12 @@
                                         <rect key="frame" x="193" y="0.0" width="173" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USa-zA-kyk">
-                                                <rect key="frame" x="159" y="17" width="6" height="8"/>
+                                                <rect key="frame" x="155" y="17" width="6" height="8"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="6" id="UZy-ZA-SCq"/>
                                                     <constraint firstAttribute="height" constant="8" id="jes-DP-cY6"/>
                                                 </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" backgroundImage="leftArrow"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7E-fk-ABq">
@@ -128,21 +130,21 @@
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="See Stop Details">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 </variation>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstItem="t7E-fk-ABq" firstAttribute="leading" secondItem="KIN-7f-lpL" secondAttribute="leading" id="Bwc-nq-eyC"/>
                                             <constraint firstItem="USa-zA-kyk" firstAttribute="centerY" secondItem="KIN-7f-lpL" secondAttribute="centerY" constant="1" id="DnM-YO-K07"/>
                                             <constraint firstAttribute="bottom" secondItem="t7E-fk-ABq" secondAttribute="bottom" id="R3Q-fT-eqF"/>
                                             <constraint firstAttribute="trailing" secondItem="t7E-fk-ABq" secondAttribute="trailing" id="UUy-2b-Nbg"/>
-                                            <constraint firstAttribute="trailing" secondItem="USa-zA-kyk" secondAttribute="trailing" constant="8" id="YTE-7k-OrJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="USa-zA-kyk" secondAttribute="trailing" constant="12" id="YTE-7k-OrJ"/>
                                             <constraint firstItem="t7E-fk-ABq" firstAttribute="top" secondItem="KIN-7f-lpL" secondAttribute="top" id="tCJ-4e-D73"/>
                                         </constraints>
                                     </view>
@@ -220,6 +222,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="complete" translatesAutoresizingMaskIntoConstraints="NO" id="npc-5M-pw0">
                                 <rect key="frame" x="312" y="0.0" width="54" height="54"/>
+                                <color key="tintColor" name="MehroonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="LKr-Or-6Nj"/>
                                     <constraint firstAttribute="height" constant="54" id="l8G-CN-8jl"/>
@@ -296,6 +299,12 @@
         </namedColor>
         <namedColor name="BackgroundColor2">
             <color red="0.875" green="0.89399999380111694" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MehroonColor">
+            <color red="0.77647058823529413" green="0.16470588235294117" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NewBlueColor">
+            <color red="0.12941176470588237" green="0.15294117647058825" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PriceColor">
             <color red="0.15700000524520874" green="0.55299997329711914" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

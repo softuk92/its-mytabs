@@ -47,8 +47,8 @@ public class CustomUISwitch: UIView, NibOwnerLoadable {
             self.leading.isActive = !isOn
 //            self.leadingLabel.isActive = !isOn
             self.label.text = isOn ? "ON" : "OFF"
-            self.thumbView.backgroundColor = isOn ? UIColor(red: 16/255, green: 174/255, blue: 2/255, alpha: 1.0) : UIColor(red: 143/255, green: 143/255, blue: 143/255, alpha: 1.0)
-            self.switchView.backgroundColor = isOn ? UIColor(red: 11/255, green: 100/255, blue: 1/255, alpha: 1.0) : UIColor.white
+            self.thumbView.backgroundColor = isOn ? /*UIColor(red: 16/255, green: 174/255, blue: 2/255, alpha: 1.0)*/R.color.mehroonColor() : UIColor(red: 143/255, green: 143/255, blue: 143/255, alpha: 1.0)
+            self.switchView.backgroundColor = isOn ? /*UIColor(red: 11/255, green: 100/255, blue: 1/255, alpha: 1.0)*/R.color.newBlueColor() : UIColor.white
             self.switchView.layer.borderWidth = isOn ? 0 : 1.0
             self.animate(animate: true)
             self.layoutIfNeeded()
