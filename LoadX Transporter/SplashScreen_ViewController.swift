@@ -118,10 +118,12 @@ class SplashScreen_ViewController: UIViewController {
             }
             if let result = (json?["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
                 print("previous version is \(version) && current version is \(currentVersion)")
-                let  DeviceCurrentVersion = Float(currentVersion)!
-                let  appStoreVersion = Float(version)!
+                if let DeviceCurrentVersion = Float(currentVersion), let appStoreVersion = Float(version) {
     
                 return DeviceCurrentVersion > appStoreVersion
+                } else {
+                    return false
+                }
     //            return version != currentVersion
             }
 //            throw NSError.init(domain: "", code: 420, userInfo: [:])

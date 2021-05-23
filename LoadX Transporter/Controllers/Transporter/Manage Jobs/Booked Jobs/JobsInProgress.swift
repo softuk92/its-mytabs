@@ -340,7 +340,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             return 326
         }
-        return 311
+        return 325
     }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
