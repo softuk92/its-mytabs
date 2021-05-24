@@ -21,6 +21,8 @@
 		185139BE2562D3EC0053098B /* RouteDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185139BC2562D3EC0053098B /* RouteDetailsCell.swift */; };
 		185139BF2562D3EC0053098B /* RouteDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185139BD2562D3EC0053098B /* RouteDetailsCell.xib */; };
 		185139C32562DA7F0053098B /* UI Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185139C22562DA7E0053098B /* UI Extensions.swift */; };
+		185870D1265B97BB00FA0887 /* JobDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185870D0265B97BB00FA0887 /* JobDetail.storyboard */; };
+		185870D5265BA91B00FA0887 /* JobPickupDropoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */; };
 		18624ED4255AE592000E1954 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624ED3255AE592000E1954 /* APIManager.swift */; };
 		18624EDB255AF0C9000E1954 /* RouteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624ED9255AF0C9000E1954 /* RouteViewCell.swift */; };
 		18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18624EDA255AF0C9000E1954 /* RouteViewCell.xib */; };
@@ -221,6 +223,8 @@
 		185139BC2562D3EC0053098B /* RouteDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsCell.swift; sourceTree = "<group>"; };
 		185139BD2562D3EC0053098B /* RouteDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteDetailsCell.xib; sourceTree = "<group>"; };
 		185139C22562DA7E0053098B /* UI Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI Extensions.swift"; sourceTree = "<group>"; };
+		185870D0265B97BB00FA0887 /* JobDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JobDetail.storyboard; sourceTree = "<group>"; };
+		185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPickupDropoffViewController.swift; sourceTree = "<group>"; };
 		18624ED3255AE592000E1954 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		18624ED9255AF0C9000E1954 /* RouteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewCell.swift; sourceTree = "<group>"; };
 		18624EDA255AF0C9000E1954 /* RouteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteViewCell.xib; sourceTree = "<group>"; };
@@ -472,6 +476,14 @@
 			path = "Report a Problem";
 			sourceTree = "<group>";
 		};
+		185870D3265BA8EA00FA0887 /* Job Detail Module */ = {
+			isa = PBXGroup;
+			children = (
+				185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */,
+			);
+			path = "Job Detail Module";
+			sourceTree = "<group>";
+		};
 		18624ED2255AE57F000E1954 /* Helper Methods and Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +678,7 @@
 		8D3E610921F7646C004EAB06 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				185870D3265BA8EA00FA0887 /* Job Detail Module */,
 				4E275CEA241AAABB00D05A24 /* App_intro_controllers */,
 				BB21E06A23DF68D5004DFE76 /* tabbarControllers */,
 				184C48E4252233280042AA94 /* Custom UI */,
@@ -722,6 +735,7 @@
 				8D3E60FB21F76432004EAB06 /* Main.storyboard */,
 				8D3E610021F76435004EAB06 /* LaunchScreen.storyboard */,
 				1800493E2555A2DC005EA70D /* Routes.storyboard */,
+				185870D0265B97BB00FA0887 /* JobDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1042,6 +1056,7 @@
 				8D3E610E21F76BC6004EAB06 /* Default-568h@2x.png in Resources */,
 				4E454B6223E48217009AFF47 /* Montserrat-Hairline.otf in Resources */,
 				8D3E611521F772C3004EAB06 /* Ubuntu-B.ttf in Resources */,
+				185870D1265B97BB00FA0887 /* JobDetail.storyboard in Resources */,
 				4EE97EA9263875EE009AE4A2 /* LogoViewDarkMode.xib in Resources */,
 				4E454B5B23E48217009AFF47 /* Montserrat-UltraLight.otf in Resources */,
 				8D3E611421F772C3004EAB06 /* Ubuntu-M.ttf in Resources */,
@@ -1215,6 +1230,7 @@
 				4EC8049D23E31EAE00540F9A /* Contact_ViewController.swift in Sources */,
 				1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */,
 				6D23537022998DFD004C085F /* SearchJobController.swift in Sources */,
+				185870D5265BA91B00FA0887 /* JobPickupDropoffViewController.swift in Sources */,
 				8D246F9A22282E4F00E2B290 /* UserManaulController.swift in Sources */,
 				18624ED4255AE592000E1954 /* APIManager.swift in Sources */,
 				8D3E60F821F76432004EAB06 /* AppDelegate.swift in Sources */,
