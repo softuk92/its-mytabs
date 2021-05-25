@@ -35,6 +35,8 @@
 		18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD1E49253DBE80008F881A /* ContactUsViewController.swift */; };
 		18B211E52566CFD20040C001 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B211E42566CFD20040C001 /* HeaderView.xib */; };
 		18B211E82566CFE10040C001 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B211E72566CFE10040C001 /* HeaderView.swift */; };
+		18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60945265D24BC00AC11DF /* JobStatus.swift */; };
+		18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
 		4E09083B256AFD3600A6B2BB /* RouteBookedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E090839256AFD3600A6B2BB /* RouteBookedView.swift */; };
@@ -237,6 +239,8 @@
 		18AD1E49253DBE80008F881A /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		18B211E42566CFD20040C001 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		18B211E72566CFE10040C001 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		18B60945265D24BC00AC11DF /* JobStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatus.swift; sourceTree = "<group>"; };
+		18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPickupDropoffViewControllerExtension.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		4E090839256AFD3600A6B2BB /* RouteBookedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBookedView.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				180049422555ABB7005EA70D /* Routes */,
+				18B60945265D24BC00AC11DF /* JobStatus.swift */,
 			);
 			path = "New Module";
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */,
+				18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */,
 			);
 			path = "Job Detail Module";
 			sourceTree = "<group>";
@@ -1269,6 +1275,7 @@
 				4EB47DC3258D434B00DC0447 /* StopDetailsViewControllerExtension.swift in Sources */,
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
 				4EE97EA6263875DE009AE4A2 /* LogoViewDarkMode.swift in Sources */,
+				18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
 				4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */,
 				18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */,
@@ -1287,6 +1294,7 @@
 				4E37809C257982B2002B18C8 /* AlertView.swift in Sources */,
 				4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */,
 				185139C32562DA7F0053098B /* UI Extensions.swift in Sources */,
+				18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */,
 				8D48C20C22243E3D00417EF5 /* ManageReviews.swift in Sources */,
 				4EE97E5526385EDC009AE4A2 /* LogoView.swift in Sources */,
 				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,

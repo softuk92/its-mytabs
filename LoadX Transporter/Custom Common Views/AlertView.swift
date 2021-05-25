@@ -28,6 +28,10 @@ public class AlertView: UIView, NibOwnerLoadable {
 //        self.loadNibContent()
 //    }
     
+    var yesCall: ((AlertView) -> Void)?
+    var noCall: ((AlertView) -> Void)?
+    var sendPaymentLinkCall: ((AlertView) -> Void)?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         loadNibContent()
@@ -46,5 +50,17 @@ public class AlertView: UIView, NibOwnerLoadable {
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
     }
+    
+    @IBAction func yesAct(_ sender: Any) {
+        yesCall?(self)
+    }
 
+    @IBAction func noAct(_ sender: Any) {
+        noCall?(self)
+    }
+    
+    @IBAction func sendPaymentLinkAct(_ sender: Any) {
+        sendPaymentLinkCall?(self)
+    }
+    
 }

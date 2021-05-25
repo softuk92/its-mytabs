@@ -11,7 +11,7 @@ import Alamofire
 import RxSwift
 
 class RunningLateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -21,12 +21,16 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var back: UIButton!
     
     var list = ["5 Minutes","10 Minutes","15 Minutes"]
+    var listToSend = ["5","10","15"]
+    
     private var disposeBag = DisposeBag()
-    var lrh_id: String = ""
+    var lrh_id: String?
+    var delId: String?
+    var indexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         blurView.isHidden = true
         innerView.layer.cornerRadius = 15
         tableView.register(UINib(nibName: "DropDownViewCell", bundle: nil) , forCellReuseIdentifier: "DropDownViewCell")
@@ -37,20 +41,21 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setupBtn() {
-//        buttonBackView.layer.borderColor = UIColor.black.cgColor
-//        buttonBackView.layer.borderWidth = 0.1
+        //        buttonBackView.layer.borderColor = UIColor.black.cgColor
+        //        buttonBackView.layer.borderWidth = 0.1
         select.rx.tap.subscribe(onNext: { [weak self] (_) in
             self?.blurView.isHidden = false
         }).disposed(by: disposeBag)
-
+        
         send.rx.tap.subscribe(onNext: { [weak self] (_) in
-            if self?.select.titleLabel?.text == "5 Minutes" {
-                self?.driverLateRunning(late: "5")
-            } else if self?.select.titleLabel?.text == "10 Minutes" {
-                self?.driverLateRunning(late: "10")
-            } else {
-                self?.driverLateRunning(late: "15")
+            guard let self = self, let indexPath = self.indexPath else { return }
+            
+            if let _ = self.lrh_id {
+                self.driverLateRunning(late: self.listToSend[indexPath.row])
+            } else if let _ = self.delId {
+                self.driverLateRunningFromJob(late: self.listToSend[indexPath.row])
             }
+            
         }).disposed(by: disposeBag)
         
         back.rx.tap.subscribe(onNext: { [weak self] (_) in
@@ -59,7 +64,23 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     private func driverLateRunning(late: String) {
+        guard let lrh_id = lrh_id else { return }
         APIManager.apiPost(serviceName: "api/transporterLateRunning", parameters: ["lrh_id": lrh_id, "late_running_time" : late]) { (data, json, error) in
+            if error != nil {
+                
+            }
+            print("transporter late running json \(String(describing: json))")
+            
+            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }
+    }
+    
+    private func driverLateRunningFromJob(late: String) {
+        guard let delId = delId else { return }
+        APIManager.apiPost(serviceName: "api/pickUpRunningLate", parameters: ["del_id": delId, "r_l_minute" : late]) { (data, json, error) in
             if error != nil {
                 
             }
@@ -78,13 +99,13 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
-               cell.selectionStyle = UITableViewCell.SelectionStyle.none
-               cell.backgroundView = nil
-               cell.backgroundColor = nil
-               
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+        
         cell.label.text = list[indexPath.row]
-               
-               return cell
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,7 +115,8 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.blurView.isHidden = true
         self.select.setTitle(self.list[indexPath.row], for: .normal)
+        self.indexPath = indexPath
     }
-  
-
+    
+    
 }

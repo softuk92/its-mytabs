@@ -49,8 +49,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet var popupView: UIView!
-//    @IBOutlet weak var searchBtn: UIButton!
+
     @IBOutlet var jobCancel_popview: UIView!
     @IBOutlet var jobCancelReason: UILabel!
     @IBOutlet var jobComplete_popview: UIView!
@@ -392,20 +391,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let jobsInProgressRow = jobsInProgressModel[indexPath.row]
         
-        cell.innerView.layer.cornerRadius = 10
-        cell.jobCompleted_btn.layer.cornerRadius = 10
-        cell.jobCompleted_btn.clipsToBounds = true
-        cell.jobCompleted_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
-               
-        cell.deletBtnOutlet.layer.cornerRadius = 10
-        cell.deletBtnOutlet.clipsToBounds = true
-        cell.deletBtnOutlet.layer.maskedCorners = [.layerMinXMaxYCorner]
-
-        let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
-        
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
-        
+        cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
         cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
         cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
@@ -413,17 +401,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
             let payment_type = jobsInProgressRow.payment_type
             if  payment_type == "full" {
-                if switchCheck == true {
                     cell.payment_method_lbl.text = "Account Job"
-                }else{
-                    cell.payment_method_lbl.text = "Account Job"
-                }
             }else{
-                if switchCheck == true {
-                     cell.payment_method_lbl.text = "Cash Job"
-                }else{
                     cell.payment_method_lbl.text = "Cash Job"
-                }
         }
 
         let is_companyJob = jobsInProgressRow.is_company_job
@@ -440,14 +420,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let bookedJob_id = jobsInProgressRow.is_booked_job
         
         if bookedJob_id == "1" {
-        cell.deletBtnOutlet.isHidden = false
+        cell.cancelJobBtn.isHidden = false
        
         let currentBid = jobsInProgressRow.current_bid
         let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
         let doubleValue = Double(x)
             cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
         } else {
-        cell.deletBtnOutlet.isHidden = true
+        cell.cancelJobBtn.isHidden = true
         }
         
         let currentBid = jobsInProgressRow.current_bid
@@ -456,117 +436,54 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
         self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
                 
-        cell.detailJobRow = {[weak self] (selectedCell) in
-            guard let self = self else { return }
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            protected = true
-            let bookedJob_id = jobsInProgressRow.is_booked_job
-            
-            if bookedJob_id == "1" {
-                bookedPriceBool = true
-                let currentBid2 = jobsInProgressRow.current_bid
-                let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-                let doubleValue = Double(x)
-                self.bookedPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid2) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
-                del_id = jobsInProgressRow.del_id
-                let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-                vc.bookedJobPrice = self.bookedPrice
-                vc.showHouseNumber = true
-                vc.pickupAdd = cell.pick_up.text
-                vc.dropoffAdd = cell.drop_off.text
-                self.navigationController?.pushViewController(vc, animated: true)
-//                self.performSegue(withIdentifier: "detail", sender: self)
-            } else {
-                del_id = jobsInProgressRow.del_id
-                let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-                vc.bookedJobPrice = self.bookedPrice
-                vc.showHouseNumber = true
-                vc.pickupAdd = cell.pick_up.text
-                vc.dropoffAdd = cell.drop_off.text
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+        cell.startJob = {[weak self] (selectedCell) in
+            guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
+//            self.goToJobDetail(indexPath: indexPath)
+            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
         }
         
-        cell.completeJobRow = {[weak self] (selectedCell) in
-            guard let self = self else { return }
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-           
-            jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-            self.contact_person = self.jobsInProgressModel[indexPath.row].contact_person
-            self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
-            self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
-            self.showCompleteAlertView()
-//            UIView.animate(withDuration: 0.3, animations: {
-//                    self.jobComplete_popview.layer.cornerRadius = 18
-//                    self.tableView.alpha = 0.5
-//                    self.view.addSubview(self.jobComplete_popview)
-//                    self.jobComplete_popview.center = self.view.center
-//                      })
-           
-            }
-        
-        cell.deleteRow = {[weak self] (selectedCell) in
+        cell.cancelJob = {[weak self] (selectedCell) in
             guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-
-            UIView.animate(withDuration: 0.3, animations: {
-                        self.jobCancel_popview.layer.cornerRadius = 18
-                        self.tableView.alpha = 0.5
-                        self.jobCancelReason.text = "Are you sure you want to cancel this job?"
-                        self.isCancel = true
-                        self.view.addSubview(self.jobCancel_popview)
-                        self.jobCancel_popview.center = self.view.center
-            })
-        }
-    
-        
-        cell.callRow = {[weak self] (selectedCell) in
-            guard let self = self else { return }
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            let callNumber = self.jobsInProgressModel[indexPath.row].contact_phone
-            if callNumber != "" {
-                if let url = URL(string: "tel://\(callNumber)"), UIApplication.shared.canOpenURL(url) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(url)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
-        }
-        
-        cell.emailRow = {[weak self] (selectedCell) in
-            guard let self = self else { return }
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            let email = self.jobsInProgressModel[indexPath.row].contact_mail
-            if let url = URL(string: "mailto:\(email)") {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
-            }
-        }
-        
-        cell.transporterProfileRow = {[weak self] (selectedCell) in
-            guard let self = self else { return }
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            transporter_id = self.jobsInProgressModel[indexPath.row].user_id
-            self.performSegue(withIdentifier: "transporter", sender: self)
+            self.presentCancelJobView()
         }
         
         return cell
         
     }
     
+    func presentCancelJobView() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            guard let self = self else { return }
+                    self.jobCancel_popview.layer.cornerRadius = 18
+                    self.tableView.alpha = 0.5
+                    self.jobCancelReason.text = "Are you sure you want to cancel this job?"
+                    self.isCancel = true
+                    self.view.addSubview(self.jobCancel_popview)
+                    self.jobCancel_popview.center = self.view.center
+        })
+
+    }
+    
+    func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
+        let jobDetailVC = JobPickupDropoffViewController.instantiate()
+            let rowData = self.jobsInProgressModel[indexPath.row]
+            let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
+            let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
+
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jobStatus: jobStatus)
+            self.navigationController?.pushViewController(jobDetailVC, animated: true)
+    }
+    
     func showCompleteAlertView() {
+        //            jb_id = self.jobsInProgressModel[indexPath.row].jb_id
+        //            self.contact_person = self.jobsInProgressModel[indexPath.row].contact_person
+        //            self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
+        //            self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
+        //            self.showCompleteAlertView()
+
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.question.text = "Has the job been completed?"
         aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof                      "
@@ -673,134 +590,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.alpha = 1
     }
     
-    
-    @IBOutlet weak var myImage1: UIImageView!
-    @IBOutlet weak var receiverName: UITextField!
-    @IBAction func selectImage(_ sender: UIButton) {
-        imagePick(sender: sender.tag)
-    }
-    
-    func imagePick(sender: Int) {
-        let optionMenu = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        //2
-        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.imagePicker.sourceType = .camera
-                self.imagePicked = sender
-                self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                print("Camera Not Available")
-            }
-        })
-        
-        let photoAction = UIAlertAction(title: "Photo Library", style: .default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            self.imagePicker.sourceType = .photoLibrary
-            self.imagePicked = sender
-            self.present(self.imagePicker, animated: true, completion: nil)
-        })
-        
-        //
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
-            print("Cancelled")
-        })
-        
-        optionMenu.addAction(cameraAction)
-        optionMenu.addAction(photoAction)
-        optionMenu.addAction(cancelAction)
-        optionMenu.popoverPresentationController?.sourceView = self.view;
-        optionMenu.popoverPresentationController?.sourceRect = CGRect(x: 100, y: 800, width: 1.0, height: 1.0)
-        
-        self.present(optionMenu, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let packedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        
-        if imagePicked == 1 {
-            self.myImage1.image = packedImage
-        }
-        
-        dismiss(animated: true)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func updateBtn(_ sender: Any) {
-        completeJobData()
-    }
-    
-    func completeJobData() {
-        SVProgressHUD.show(withStatus: "Completing Job...")
-        if user_id != nil && jb_id != nil {
-            let updateBid_URL = main_URL+"api/transporterCompleteJobData"
-            let parameters = ["jb_id" : jb_id!, "user_id" : user_id!, "receivername" : self.receiverName.text!]
-            if imagePicked == 1 {
-                var image1 = myImage1.image
-                image1 = image1?.resizeWithWidth(width: 500)
-                imageData1 = image1?.jpegData(compressionQuality: 0.2)
-            }
-            
-            Alamofire.upload(multipartFormData: {
-                (multipartFormData) in
-                for (key, value) in parameters {
-                    multipartFormData.append(value.data(using: .utf8)!, withName: key)
-                }
-                if self.imagePicked == 1 {
-                    multipartFormData.append(self.imageData1!, withName: "delprofimg", fileName: "swift_file1.jpeg", mimeType: "image/jpeg")
-                }
-            }, to:updateBid_URL)
-            { (result) in
-                switch result {
-                case .success(let upload, _, _):
-                    
-                    upload.uploadProgress(closure: { (Progress) in
-//                        print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
-                    
-                    upload.responseJSON { response in
-                        if response.result.value != nil {
-
-                            let jsonData : JSON = JSON(response.result.value!)
-                            print("JSON: \(jsonData)")
-                            let result = jsonData[0]["result"].stringValue
-                            let message = jsonData[0]["message"].stringValue
-                            SVProgressHUD.dismiss()
-                            if result == "1" {
-                                let vc = self.sb.instantiateViewController(withIdentifier: "completedJob") as! SuccessController
-                            self.navigationController?.pushViewController(vc, animated: true)
-                                
-                            } else {
-                                self.present(showAlert(title: "Alert", message: message), animated: true, completion: nil)
-                            }
-                        } else {
-                            SVProgressHUD.dismiss()
-                            self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
-                        }
-                    }
-                    
-                case .failure(let encodingError):
-                    //self.delegate?.showFailAlert()
-                    print(encodingError)
-                    SVProgressHUD.dismiss()
-                    self.present(showAlert(title: "Error", message: encodingError.localizedDescription), animated: true, completion: nil)
-                }
-            }
-        } else {
-            SVProgressHUD.dismiss()
-            self.present(showAlert(title: "Alert", message: "Please enter receiver name / upload proof image"), animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func crosssBtn(_ sender: Any) {
-        popupView.removeFromSuperview()
-        self.tableView.alpha = 1
-    }
-    
     //back function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
@@ -809,6 +598,28 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let vc = segue.destination as? JobDetailController {
             vc.bookedJobPrice = bookedPrice
+        }
+    }
+    
+    func checkJobStatus(delId: String, indexPath: IndexPath) {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/jobArrivalInfo", parameters: ["del_id": delId]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            SVProgressHUD.dismiss()
+        
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            }
+            guard let _ = json, let data = data else { return }
+            
+            do {
+                if let jobStatus = try JSONDecoder().decode([JobStatus].self, from: data).first {
+                self.goToJobDetail(indexPath: indexPath, jobStatus: jobStatus)
+                }
+            } catch {
+                showAlert(title: "Error", message: error.localizedDescription, viewController: self)
+            }
+            
         }
     }
 }

@@ -15,6 +15,12 @@ public func showAlert(title: String, message: String) -> UIAlertController {
     return alert
 }
 
+public func showAlert(title: String, message: String, viewController: UIViewController) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+    viewController.present(alert, animated: true, completion: nil)
+}
+
 public func convertDateFormatter(_ date: String) -> String
 {
     let dateFormatter = DateFormatter()
