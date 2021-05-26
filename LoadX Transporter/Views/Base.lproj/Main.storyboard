@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Bold.otf">
+        <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
         </array>
-        <array key="Montserrat-Light.otf">
+        <array key="Montserrat-Light.ttf">
             <string>Montserrat-Light</string>
         </array>
         <array key="Montserrat-Regular.otf">
@@ -903,7 +903,7 @@
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vTF-tt-Ud2">
-                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="513"/>
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-rF-5dT">
@@ -957,7 +957,7 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zog-td-lgW">
                                         <rect key="frame" x="0.0" y="48" width="187.5" height="7"/>
-                                        <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="7" id="hrJ-0J-z7i"/>
                                         </constraints>
@@ -989,7 +989,7 @@
                         <constraints>
                             <constraint firstItem="mpU-5N-Kc4" firstAttribute="top" secondItem="55C-wt-Ntf" secondAttribute="bottom" id="8JR-ZJ-E3r"/>
                             <constraint firstItem="qyW-rF-5dT" firstAttribute="centerY" secondItem="XRc-M8-Nwh" secondAttribute="centerY" id="AYH-TW-of8"/>
-                            <constraint firstItem="YbD-VC-9i9" firstAttribute="bottom" secondItem="vTF-tt-Ud2" secondAttribute="bottom" id="HYJ-dK-POM"/>
+                            <constraint firstItem="YbD-VC-9i9" firstAttribute="bottom" secondItem="vTF-tt-Ud2" secondAttribute="bottom" constant="5" id="HYJ-dK-POM"/>
                             <constraint firstItem="spv-Gw-DuF" firstAttribute="top" secondItem="mpU-5N-Kc4" secondAttribute="bottom" id="Uzn-lK-E8n"/>
                             <constraint firstItem="vTF-tt-Ud2" firstAttribute="top" secondItem="mpU-5N-Kc4" secondAttribute="bottom" id="XQW-yk-WsT"/>
                             <constraint firstItem="mpU-5N-Kc4" firstAttribute="leading" secondItem="YbD-VC-9i9" secondAttribute="leading" id="cLt-hc-gSn"/>
@@ -1038,17 +1038,17 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHE-KB-cCt">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completejob_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9qB-Q4-QmE">
-                                    <rect key="frame" x="122" y="20" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="20" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="0Kt-P6-sw9"/>
                                         <constraint firstAttribute="height" constant="60" id="S3R-IT-qyx"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure this job is complete?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmW-rR-s42">
-                                    <rect key="frame" x="15" y="90" width="274" height="35"/>
+                                    <rect key="frame" x="15" y="90" width="272" height="35"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -1072,10 +1072,10 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Rh-iQ-xJV">
-                            <rect key="frame" x="22" y="175" width="260" height="35"/>
+                            <rect key="frame" x="22" y="175" width="258" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-vd-aaY" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="1w1-Yn-PYB"/>
@@ -1095,7 +1095,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTE-zv-sbR" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="139" y="0.0" width="119" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="NO" backgroundImage="popup_noBtn">
@@ -1290,7 +1290,7 @@
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-K3-OJy">
-                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="513"/>
                                 <color key="backgroundColor" name="Background_color"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-zp-v0h">
@@ -1341,7 +1341,7 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbb-iA-6GE">
                                         <rect key="frame" x="0.0" y="48" width="187.5" height="7"/>
-                                        <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="7" id="WNb-h8-Gi7"/>
                                         </constraints>
@@ -1379,7 +1379,7 @@
                             <constraint firstItem="F2h-eH-gOB" firstAttribute="trailing" secondItem="QOn-K3-OJy" secondAttribute="trailing" id="FBY-fM-rqV"/>
                             <constraint firstItem="QOn-K3-OJy" firstAttribute="top" secondItem="4cZ-8I-DYX" secondAttribute="bottom" id="JQH-nW-J06"/>
                             <constraint firstItem="F2h-eH-gOB" firstAttribute="trailing" secondItem="X0S-dj-YD4" secondAttribute="trailing" id="OsY-Ga-8Sa"/>
-                            <constraint firstItem="F2h-eH-gOB" firstAttribute="bottom" secondItem="QOn-K3-OJy" secondAttribute="bottom" id="PJF-Hg-0lK"/>
+                            <constraint firstItem="F2h-eH-gOB" firstAttribute="bottom" secondItem="QOn-K3-OJy" secondAttribute="bottom" constant="5" id="PJF-Hg-0lK"/>
                             <constraint firstItem="pbf-zp-v0h" firstAttribute="centerY" secondItem="gd7-P0-bnN" secondAttribute="centerY" id="TeW-44-vUt"/>
                             <constraint firstItem="F2h-eH-gOB" firstAttribute="trailing" secondItem="4cZ-8I-DYX" secondAttribute="trailing" id="gb5-vw-IJi"/>
                             <constraint firstItem="wNr-rT-d0S" firstAttribute="top" secondItem="4cZ-8I-DYX" secondAttribute="bottom" id="kDN-Us-ygk"/>
@@ -11679,17 +11679,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h44-G1-V2o">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-T0-PR7">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="mz7-lB-ntq"/>
                                         <constraint firstAttribute="height" constant="60" id="voq-Yb-d3D"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable email notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-Ns-q3r">
-                                    <rect key="frame" x="30" y="83" width="238" height="44"/>
+                                    <rect key="frame" x="30" y="83" width="240" height="44"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11709,10 +11709,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4aC-So-8PO">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-FX-OXZ" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="4N2-JL-nGY"/>
@@ -11732,7 +11732,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-RQ-Eer" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -11776,17 +11776,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Ia-K4Y">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLY-UP-Ncu">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="5xU-4k-Isn"/>
                                         <constraint firstAttribute="height" constant="60" id="JBP-7j-Mho"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable mobile notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-bE-zeh">
-                                    <rect key="frame" x="20" y="80" width="260" height="50"/>
+                                    <rect key="frame" x="20" y="80" width="262" height="50"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11805,10 +11805,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-40-bMs">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-ra-EzO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Zq-1D-JZX"/>
@@ -11828,7 +11828,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Xt-I48" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">

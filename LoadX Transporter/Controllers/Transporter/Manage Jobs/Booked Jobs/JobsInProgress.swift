@@ -391,6 +391,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let jobsInProgressRow = jobsInProgressModel[indexPath.row]
         
+        if jobsInProgressRow.is_job_started == "0" {
+            cell.startJobBtn.isHidden = false
+        } else {
+            cell.startJobBtn.isHidden = true
+        }
+        
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
         cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
@@ -439,7 +445,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.startJob = {[weak self] (selectedCell) in
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
 //            self.goToJobDetail(indexPath: indexPath)
-            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
+            
+//            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
+            self.startBookedJob(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
         }
         
         cell.cancelJob = {[weak self] (selectedCell) in
@@ -465,16 +473,6 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.jobCancel_popview.center = self.view.center
         })
 
-    }
-    
-    func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
-        let jobDetailVC = JobPickupDropoffViewController.instantiate()
-            let rowData = self.jobsInProgressModel[indexPath.row]
-            let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
-            let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
-
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jobStatus: jobStatus)
-            self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
     
     func showCompleteAlertView() {
@@ -523,35 +521,33 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } else {
         
-        protected = true
-        let cell = tableView.cellForRow(at: indexPath) as! JobsInProgressCell
-        let bookedJob_id = self.jobsInProgressModel[indexPath.row].is_booked_job
-        
-        if bookedJob_id == "1" {
-            bookedPriceBool = true
-            let currentBid2 = self.jobsInProgressModel[indexPath.row].current_bid
-            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-            let doubleValue = Double(x)
-            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
-            self.bookedPrice = "£"+"\(resultRemaining2)"
-            del_id = self.jobsInProgressModel[indexPath.row].del_id
-            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-               vc.bookedJobPrice = bookedPrice
-            vc.showHouseNumber = true
-            vc.pickupAdd = cell.pick_up.text
-            vc.dropoffAdd = cell.drop_off.text
-        self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            del_id = self.jobsInProgressModel[indexPath.row].del_id
-            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-               vc.bookedJobPrice = bookedPrice
-            vc.showHouseNumber = true
-            vc.pickupAdd = cell.pick_up.text
-            vc.dropoffAdd = cell.drop_off.text
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let jobData = self.jobsInProgressModel[indexPath.row]
+        self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
+//        if bookedJob_id == "1" {
+//            bookedPriceBool = true
+//            let currentBid2 = self.jobsInProgressModel[indexPath.row].current_bid
+//            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+//            let doubleValue = Double(x)
+//            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
+//            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
+//            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
+//            self.bookedPrice = "£"+"\(resultRemaining2)"
+//            del_id = self.jobsInProgressModel[indexPath.row].del_id
+//            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+//               vc.bookedJobPrice = bookedPrice
+//            vc.showHouseNumber = true
+//            vc.pickupAdd = cell.pick_up.text
+//            vc.dropoffAdd = cell.drop_off.text
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        } else {
+//            del_id = self.jobsInProgressModel[indexPath.row].del_id
+//            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+//               vc.bookedJobPrice = bookedPrice
+//            vc.showHouseNumber = true
+//            vc.pickupAdd = cell.pick_up.text
+//            vc.dropoffAdd = cell.drop_off.text
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
         }
     }
     @IBAction func jocancel_noBtn_action(_ sender: Any) {
@@ -601,10 +597,34 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //start booked job
+    func startBookedJob(delId: String, indexPath: IndexPath) {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/startBookedJob", parameters: ["del_id": delId]) { [weak self] (_, json, error) in
+            guard let self = self else { SVProgressHUD.dismiss(); return }
+            SVProgressHUD.dismiss()
+        
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            }
+            guard let json = json else { return }
+            
+            let msg = json[0]["msg"].stringValue
+            let result = json[0]["result"].stringValue
+            
+            if result == "1" {
+                self.checkJobStatus(delId: delId, indexPath: indexPath)
+            } else {
+            showAlert(title: "Alert", message: msg, viewController: self)
+            }
+            
+        }
+    }
+    
     func checkJobStatus(delId: String, indexPath: IndexPath) {
         SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/jobArrivalInfo", parameters: ["del_id": delId]) { [weak self] (data, json, error) in
-            guard let self = self else { return }
+            guard let self = self else { SVProgressHUD.dismiss(); return }
             SVProgressHUD.dismiss()
         
             if error != nil {
@@ -621,6 +641,16 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
         }
+    }
+    
+    func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
+        let jobDetailVC = JobPickupDropoffViewController.instantiate()
+            let rowData = self.jobsInProgressModel[indexPath.row]
+            let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
+            let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
+
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jobStatus: jobStatus)
+            self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }
 

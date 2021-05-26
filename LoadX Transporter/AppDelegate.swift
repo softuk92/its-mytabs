@@ -71,7 +71,7 @@ enum VersionError: Error {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DropDown.startListeningToKeyboard()
         window = UIWindow(frame: UIScreen.main.bounds)
-//        overrideSystemFont()
+        overrideSystemFont()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "TextfieldTextColor")
         application.isStatusBarHidden = true

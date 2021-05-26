@@ -10,9 +10,11 @@ import UIKit
 import SVProgressHUD
 import Reusable
 import RxSwift
+import SwiftyJSON
 
 enum Status {
-    case Arrived
+    case PickupArrived
+    case DropoffArrived
     case RunningLate
     case UploadImages
     case LeavingForDropoff
@@ -29,11 +31,16 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var jobBookedFor: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var additionalDetailsTableView: UITableView!
-    @IBOutlet weak var jobDescriptionTableView: UITableView!
-    @IBOutlet weak var arrivedBtn: UIButton!
+    @IBOutlet weak var jobDescriptionTextView: UITextView!
+    @IBOutlet weak var pickupArrivedBtn: UIButton!
+    @IBOutlet weak var dropoffArrivedBtn: UIButton!
     @IBOutlet weak var runningLateBtn: UIButton!
     @IBOutlet weak var uploadImagesBtn: UIButton!
     @IBOutlet weak var leavingForDropoffBtn: UIButton!
+    @IBOutlet weak var jobCompletedBtn: UIButton!
+    @IBOutlet weak var upperButtonView: UIView!
+    @IBOutlet weak var bottomButtonView: UIView!
+    @IBOutlet weak var bottomButtonsStackView: UIStackView!
     
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
@@ -57,11 +64,27 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     var input: Input!
     private var disposeBag = DisposeBag()
     
+    var routeSummaryDetails = [RouteSummaryDetails]()
+    var items: [MenuItemStruct] = []
+    var jobDescription: String? {
+        didSet {
+            jobDescriptionTextView.text = jobDescription
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleView.roundCorners(corners: [.topLeft, .topRight], radius: 5)
         bindButtons()
+        setJobStatus()
+        configureTableView()
         setData(input: input)
+    }
+    
+    func configureTableView() {
+        additionalDetailsTableView.delegate = self
+        additionalDetailsTableView.dataSource = self
+        additionalDetailsTableView.register(cellType: JobSummaryCell.self)
     }
     
     func setConstraints(leadingAdditionalDetails: Bool, trailingAdditionalDetails: Bool, leadingJobDescription: Bool, trailingJobDescription: Bool) {
@@ -77,51 +100,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         additionalDetailsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.setConstraints(leadingAdditionalDetails: true, trailingAdditionalDetails: true, leadingJobDescription: false, trailingJobDescription: false)
             self?.additionalDetailsTableView.isHidden = false
-            self?.jobDescriptionTableView.isHidden = true
+            self?.jobDescriptionTextView.isHidden = true
         }).disposed(by: disposeBag)
         
         jobDescriptionBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.setConstraints(leadingAdditionalDetails: false, trailingAdditionalDetails: false, leadingJobDescription: true, trailingJobDescription: true)
             self?.additionalDetailsTableView.isHidden = true
-            self?.jobDescriptionTableView.isHidden = false
+            self?.jobDescriptionTextView.isHidden = false
         }).disposed(by: disposeBag)
-    }
-    
-    func setHiddenStatuses(arrived: Bool, runningLate: Bool, uploadImages: Bool, bottomButton: Bool) {
-        self.arrivedBtn.isHidden = arrived
-        self.runningLateBtn.isHidden = runningLate
-        self.uploadImagesBtn.isHidden = uploadImages
-        self.leavingForDropoffBtn.isHidden = bottomButton
-    }
-    
-    func setJobStatus() {
-        let status = input.jobStatus
-        if status.is_job_started == "0" {
-            setHiddenStatuses(arrived: true, runningLate: true, uploadImages: true, bottomButton: true)
-        } else {
-            if status.p_leaving_f_dropoff == "0" {
-                //pickup
-    
-            //check if driver is running late
-            self.runningLateBtn.isHidden = !(status.arrival_at_pickup == "0" && status.is_running_late == "0")
-            
-                //check is driver is arrived at pickup or not
-                if status.arrival_at_pickup == "0" {
-                    self.arrivedBtn.isHidden = false
-                    self.leavingForDropoffBtn.isHidden = false
-                    self.uploadImagesBtn.isHidden = true
-                } else {
-                    self.uploadImagesBtn.isHidden = false
-                    self.leavingForDropoffBtn.setTitle("Leaving for Dropoff", for: .normal)
-                    self.leavingForDropoffBtn.isHidden = false
-                }
-                
-            } else {
-                //dropoff
-                
-            }
-            
-        }
     }
     
     func setData(input: Input) {
@@ -159,13 +145,17 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             } else {
                 self.jobBookedFor.isHidden = true
             }
-            
+            self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1])
             SVProgressHUD.dismiss()
         })
     }
     
-    @IBAction func arrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at stop?", ensure: "", paymentLinkHeight: 0, status: .Arrived)
+    @IBAction func pickupArrivedAct(_ sender: Any) {
+        showAlertView(question: "Have you arrived at stop?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
+    }
+    
+    @IBAction func dropoffArrivedAct(_ sender: Any) {
+        showAlertView(question: "Have you arrived at stop?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
     }
     
     @IBAction func runningLateAct(_ sender: Any) {
@@ -177,6 +167,10 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func leavingForDropoffAct(_ sender: Any) {
+        
+    }
+    
+    @IBAction func jobCompletedAct(_ sender: Any) {
         
     }
     
@@ -196,12 +190,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             guard let self = self else { return }
             aView.removeFromSuperview()
             switch status {
-            case .Arrived:
-                return
+            case .PickupArrived:
+                self.pickupArrived()
+            case .DropoffArrived:
+                self.dropoffArrived()
             case .RunningLate:
                 self.goToRunningLateScene()
             case .LeavingForDropoff:
-                return
+                self.leavingForDropoff()
             case .UploadImages:
                 return
             }
@@ -219,4 +215,177 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         self.view.addSubview(aView)
     }
     
+}
+
+extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func getData(jsonData: JSON, jsonData_inventory: JSON) {
+        var info = [MenuItemStruct]()
+        let customData = jsonData_inventory.dictionary ?? [:]
+        let inventoryList = customData.map({ (key, value) -> MenuItemStruct in
+            return MenuItemStruct.init(title: key.replacingOccurrences(of: "_", with: " "), value: value.stringValue)
+        })
+        
+        let desc = jsonData[0]["description"].stringValue
+        if desc != "" {
+            jobDescription = desc
+//            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Description", detail: [MenuItemStruct.init(title: desc, value: "")]))
+        }
+        
+        if inventoryList.count > 0 {
+            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Inventory List", detail: inventoryList))
+        }
+        
+        let category = jsonData[0]["add_type"].stringValue
+        let jobID = "LX00"+jsonData[0]["del_id"].stringValue
+        let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
+        let pickUp_time = jsonData[0]["timeslot"].stringValue
+        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
+        let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
+        let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        let supermarketName_lbl = jsonData[0]["super_market_name"].stringValue
+        let movingFrom_lbl = jsonData[0]["moving_from"].stringValue
+        let movingTo_lbl = jsonData[0]["moving_to"].stringValue
+        let vehicleType_lbl = jsonData[0]["vehicle_type"].stringValue
+        let No_of_vehicle_lbl = jsonData[0]["no_of_vehicle"].stringValue
+        let noOfPallate = jsonData[0]["noOfPallet"].stringValue
+        let carMake = jsonData[0]["car_make"].stringValue
+        let carModel = jsonData[0]["car_model"].stringValue
+        let pickupLift = jsonData[0]["pickup_lift"].stringValue
+        let dropoffLift = jsonData[0]["dropoff_lift"].stringValue
+        let pickupPropertyType = jsonData[0]["pickup_prop_type"].stringValue
+        let dropoffPropertyType = jsonData[0]["dropoff_prop_type"].stringValue
+        let pickupHouseNo = jsonData[0]["pu_house_no"].stringValue
+        let dropoffHouseNo = jsonData[0]["do_house_no"].stringValue
+        let workingHours = jsonData[0]["working_hours"].stringValue
+        let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
+        
+        info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
+        info.append(MenuItemStruct.init(title: "Category", value: category))
+        
+//        if isJobNotBooked != true {
+        if pickupHouseNo != "" {
+            info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
+        }
+        if dropoffHouseNo != "" {
+            info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
+        }
+//        }
+        
+        if movingFrom_lbl != "" {
+        info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
+        }
+        if movingTo_lbl != "" {
+        info.append(MenuItemStruct.init(title: "Moving To", value: movingTo_lbl))
+        }
+        
+        if category == "Furniture and General Items" || category == "Furniture & General Items" {
+            if pickupLift != "" && movingFrom_lbl.lowercased() != "ground floor" {
+                info.append(MenuItemStruct.init(title: "Lift at Pick Up", value: (pickupLift == "0") ? "No" : "Yes"))
+            }
+            if dropoffLift != "" && movingTo_lbl.lowercased() != "ground floor" {
+                info.append(MenuItemStruct.init(title: "Lift at Drop Off", value: (dropoffLift == "0") ? "No" : "Yes"))
+            }
+        }
+        
+        if category == "Moving Home" || category == "House Move" {
+            if pickupPropertyType != "" {
+                info.append(MenuItemStruct.init(title: "Pickup Property Type", value: pickupPropertyType))
+            }
+            if dropoffPropertyType != "" {
+                info.append(MenuItemStruct.init(title: "Dropoff Property Type", value: dropoffPropertyType))
+            }
+        }
+        
+        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
+        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
+        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
+        
+        if category == "Dedicated Van" || category == "Man & Van" {
+            if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
+                info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
+            }
+        }
+        if category == "Vehicle Move" {
+            if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
+                info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
+            }
+            if carMake != "" {
+                info.append(MenuItemStruct.init(title: "Car Make", value: carMake))
+            }
+            if carModel != "" {
+                info.append(MenuItemStruct.init(title: "Car Model", value: carModel))
+            }
+            if vehicleOperational != "" {
+                info.append(MenuItemStruct.init(title: "Vehicle Operational", value: (vehicleOperational == "0") ? "No" : "Yes"))
+            }
+        } else {
+            info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
+        }
+        
+        if category == "Man & Van", workingHours != "" && workingHours != "N/A" {
+            info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
+        }
+        
+        if extraHalfHours != "" && extraHalfHours != "N/A" {
+            info.append(MenuItemStruct.init(title: "Extra Charges", value: "£\(extraHalfHours)/half hour after booked time"))
+        }
+        
+        if noOfPallate != "" && noOfPallate != "N/A" {
+            info.append(MenuItemStruct.init(title: "No Of Pallet", value: "\(noOfPallate) Pallet"))
+        }
+        
+        if No_of_vehicle_lbl != "" && No_of_vehicle_lbl != "N/A" {
+            info.append(MenuItemStruct.init(title: "No. of Vehicle", value: No_of_vehicle_lbl))
+        }
+        
+        if supermarketName_lbl != "" {
+            info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
+        }
+        self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
+        additionalDetailsTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
+        let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.additionalDetailsTableView.bounds.width, height: 50))
+        headerView.title.text = self.routeSummaryDetails[section].title
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+            if routeSummaryDetails.count > 1 {
+        return 50
+            } else {
+                return 0
+            }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.routeSummaryDetails.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.routeSummaryDetails[section].detail.count
+
+  }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+        if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value == "" {
+            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
+            cell.detail.isHidden = true
+        } else {
+            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+            cell.detail.isHidden = false
+        }
+        return cell
+        
+    }
+
 }

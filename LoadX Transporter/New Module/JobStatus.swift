@@ -12,7 +12,7 @@ struct JobStatus: Decodable {
     let is_job_started: String
     let arrival_at_pickup: String
     let job_completed: String
-    let is_running_late: String
+    let p_running_late: String
     let p_leaving_f_dropoff: String
     let d_arrived: String
     let result: String

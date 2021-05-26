@@ -38,4 +38,5 @@ struct JobsInProgressModel: Decodable  {
     let payment_type: String
     let pu_house_no: String?
     let do_house_no: String?
+    let is_job_started: String
 }
