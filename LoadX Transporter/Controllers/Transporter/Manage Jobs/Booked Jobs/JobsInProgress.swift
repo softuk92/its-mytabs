@@ -49,7 +49,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
-
+    
     @IBOutlet var jobCancel_popview: UIView!
     @IBOutlet var jobCancelReason: UILabel!
     @IBOutlet var jobComplete_popview: UIView!
@@ -96,7 +96,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.Cancel_popup_iconView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
         
         stackView.isHidden = true
-       
+        
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -111,7 +111,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let bookJob = UserDefaults.standard.string(forKey: "Book_job") else { return }
         book_job_lbl.text = "(" + bookJob + ")"
         
-//        getBookedJobs(url: "api/transporterInprogresJobs")
+        //        getBookedJobs(url: "api/transporterInprogresJobs")
         //routes table view
         configureRoutesTableView()
         tableViewsRefreshControl()
@@ -140,17 +140,17 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func didSelect(_ notification: Notification) {
-//        routesJobsBtnFunc()
-//        if islastIndex == 1 {
-//            
-//        } else {
-//        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-//            vc.routeId = route_id
-//            vc.isRouteStarted = is_route_started ?? ""
-//            vc.isBooked = true
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        }
+        //        routesJobsBtnFunc()
+        //        if islastIndex == 1 {
+        //
+        //        } else {
+        //        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+        //            vc.routeId = route_id
+        //            vc.isRouteStarted = is_route_started ?? ""
+        //            vc.isBooked = true
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }
+        //        }
     }
     
     func checkRouteAccess() {
@@ -180,7 +180,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func callAPIs() {
         getRoutes()
         checkRouteAccess()
-
+        
         getBookedJobs(url: "api/transporterInprogresJobs") {
             if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
                 if isLoadxDrive == "0" {
@@ -215,12 +215,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchJobsBtn.alpha = 1.0
         book_job_lbl.text = "(\(jobsInProgressModel.count))"
         if (jobsInProgressModel.count) > 0 {
-        tableView.isHidden = false
-        stackView.isHidden = true
+            tableView.isHidden = false
+            stackView.isHidden = true
         } else {
-        stackView.isHidden = false
-        tableView.isHidden = true
-        noJob_lbl.text = "Currently no booked jobs"
+            stackView.isHidden = false
+            tableView.isHidden = true
+            noJob_lbl.text = "Currently no booked jobs"
         }
     }
     
@@ -255,7 +255,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             do {
                 self.routes = try JSONDecoder().decode([BookedRoute].self, from: data ?? Data())
-//                print("Booked Route json is \(String(describing: json))")
+                //                print("Booked Route json is \(String(describing: json))")
                 self.routeCount = "(\(self.routes.count))"
                 self.routesTableView.reloadData()
                 self.routeJobsBtn.isUserInteractionEnabled = true
@@ -269,65 +269,65 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         callAPIs()
         self.refresher.endRefreshing()
     }
-  
+    
     
     func getBookedJobs(url: String, completed: @escaping () -> ()) {
         guard Connectivity.isConnectedToInternet() else { return self.present(showAlert(title: "Alert", message: "You are not connected to Internet"), animated: true, completion: nil)}
         guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
-            let bookedJobs_URL = main_URL+url
-            let parameters : Parameters = ["user_id" : user_id!]
-                Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON { [weak self]
-                    response in
-                    guard let self = self else { return }
-                    if response.result.isSuccess {
-                        SVProgressHUD.dismiss()
-                        
-                        let jsonData : JSON = JSON(response.result.value!)
-//                        print("Jobs In Progress jsonData is \(jsonData)")
-                        let result = jsonData[0]["result"].stringValue
-//                        let message = jsonData[0]["message"].stringValue
-                        self.jobsInProgressModel.removeAll()
-                        if result == "0" && self.leadingSearchJobs.isActive {
-                            self.tableView.backgroundView = nil
-                            self.stackView.isHidden = false
-//                            self.searchBtn.isHidden = false
-                            self.tableView.reloadData()
-                        } else {
-                        let error = response.error
-                        let data = response.data
-                        if error == nil {
-                            do {
-                                self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data ?? Data())
-                                self.searchCount = "(\(self.jobsInProgressModel.count))"
-                                self.book_job_lbl.text = "(\(self.jobsInProgressModel.count))"
-                                SVProgressHUD.dismiss()
-//                                print(self.jobsInProgressModel)
-
-                                DispatchQueue.main.async {
-                                    completed()
-//                                    self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
-                                    self.stackView.isHidden = true
-//                                    self.searchBtn.isHidden = true
-                                    self.tableView.reloadData()
-                                    self.routesTableView.reloadData()
-                                }
-                            } catch {
-                                print(error)
-//                                self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
+        let bookedJobs_URL = main_URL+url
+        let parameters : Parameters = ["user_id" : user_id!]
+        Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON { [weak self]
+            response in
+            guard let self = self else { return }
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+                
+                let jsonData : JSON = JSON(response.result.value!)
+                //                        print("Jobs In Progress jsonData is \(jsonData)")
+                let result = jsonData[0]["result"].stringValue
+                //                        let message = jsonData[0]["message"].stringValue
+                self.jobsInProgressModel.removeAll()
+                if result == "0" && self.leadingSearchJobs.isActive {
+                    self.tableView.backgroundView = nil
+                    self.stackView.isHidden = false
+                    //                            self.searchBtn.isHidden = false
+                    self.tableView.reloadData()
+                } else {
+                    let error = response.error
+                    let data = response.data
+                    if error == nil {
+                        do {
+                            self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data ?? Data())
+                            self.searchCount = "(\(self.jobsInProgressModel.count))"
+                            self.book_job_lbl.text = "(\(self.jobsInProgressModel.count))"
+                            SVProgressHUD.dismiss()
+                            //                                print(self.jobsInProgressModel)
+                            
+                            DispatchQueue.main.async {
+                                completed()
+                                //                                    self.tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
+                                self.stackView.isHidden = true
+                                //                                    self.searchBtn.isHidden = true
+                                self.tableView.reloadData()
+                                self.routesTableView.reloadData()
                             }
+                        } catch {
+                            print(error)
+                            //                                self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
                         }
                     }
-                    } else {
-                        SVProgressHUD.dismiss()
-//                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
-                    }
                 }
+            } else {
+                SVProgressHUD.dismiss()
+                //                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+            }
+        }
     }
     
     //MARK: - UITABLEVIEW Delegate methods
-       /***************************************************************/
-     
+    /***************************************************************/
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == routesTableView {
             return routes.count
@@ -342,12 +342,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 325
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-//        UIView.animate(withDuration: 0.2) {
-//            cell.transform = CGAffineTransform.identity
-//        }
-//    }
+    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //        cell.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+    //        UIView.animate(withDuration: 0.2) {
+    //            cell.transform = CGAffineTransform.identity
+    //        }
+    //    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Routes Table View
@@ -405,13 +405,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.date.text = convertDateFormatter(jobsInProgressRow.date)
         
-            let payment_type = jobsInProgressRow.payment_type
-            if  payment_type == "full" {
-                    cell.payment_method_lbl.text = "Account Job"
-            }else{
-                    cell.payment_method_lbl.text = "Cash Job"
+        let payment_type = jobsInProgressRow.payment_type
+        if  payment_type == "full" {
+            cell.payment_method_lbl.text = "Account Job"
+        }else{
+            cell.payment_method_lbl.text = "Cash Job"
         }
-
+        
         let is_companyJob = jobsInProgressRow.is_company_job
         
         if is_companyJob == "1" {
@@ -426,14 +426,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let bookedJob_id = jobsInProgressRow.is_booked_job
         
         if bookedJob_id == "1" {
-        cell.cancelJobBtn.isHidden = false
-       
-        let currentBid = jobsInProgressRow.current_bid
-        let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-        let doubleValue = Double(x)
+            cell.cancelJobBtn.isHidden = false
+            
+            let currentBid = jobsInProgressRow.current_bid
+            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+            let doubleValue = Double(x)
             cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
         } else {
-        cell.cancelJobBtn.isHidden = true
+            cell.cancelJobBtn.isHidden = true
         }
         
         let currentBid = jobsInProgressRow.current_bid
@@ -441,12 +441,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let doubleValue = Double(x)
         let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
         self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-                
+        
         cell.startJob = {[weak self] (selectedCell) in
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
-//            self.goToJobDetail(indexPath: indexPath)
+            //            self.goToJobDetail(indexPath: indexPath)
             
-//            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
+            //            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
             self.startBookedJob(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
         }
         
@@ -465,14 +465,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func presentCancelJobView() {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             guard let self = self else { return }
-                    self.jobCancel_popview.layer.cornerRadius = 18
-                    self.tableView.alpha = 0.5
-                    self.jobCancelReason.text = "Are you sure you want to cancel this job?"
-                    self.isCancel = true
-                    self.view.addSubview(self.jobCancel_popview)
-                    self.jobCancel_popview.center = self.view.center
+            self.jobCancel_popview.layer.cornerRadius = 18
+            self.tableView.alpha = 0.5
+            self.jobCancelReason.text = "Are you sure you want to cancel this job?"
+            self.isCancel = true
+            self.view.addSubview(self.jobCancel_popview)
+            self.jobCancel_popview.center = self.view.center
         })
-
+        
     }
     
     func showCompleteAlertView() {
@@ -481,7 +481,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         //            self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
         //            self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
         //            self.showCompleteAlertView()
-
+        
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.question.text = "Has the job been completed?"
         aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof                      "
@@ -497,10 +497,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 vc.contact_no = self.contact_no
                 vc.ref_no = self.refference_no
                 vc.contactName = self.contact_person
-            self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }).disposed(by: disposeBag)
-
+        
         aView.no.rx.tap.subscribe(onNext: { (_) in
             aView.removeFromSuperview()
         }).disposed(by: disposeBag)
@@ -516,59 +516,59 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 vc.isRouteStarted = self.routes[indexPath.row].is_route_started ?? ""
                 is_route_started = self.routes[indexPath.row].is_route_started ?? ""
                 vc.isBooked = true
-//                self.locationManager.startLocationUpdates()
+                //                self.locationManager.startLocationUpdates()
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-        
-        let jobData = self.jobsInProgressModel[indexPath.row]
-        self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
-//        if bookedJob_id == "1" {
-//            bookedPriceBool = true
-//            let currentBid2 = self.jobsInProgressModel[indexPath.row].current_bid
-//            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-//            let doubleValue = Double(x)
-//            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-//            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-//            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
-//            self.bookedPrice = "£"+"\(resultRemaining2)"
-//            del_id = self.jobsInProgressModel[indexPath.row].del_id
-//            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-//               vc.bookedJobPrice = bookedPrice
-//            vc.showHouseNumber = true
-//            vc.pickupAdd = cell.pick_up.text
-//            vc.dropoffAdd = cell.drop_off.text
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        } else {
-//            del_id = self.jobsInProgressModel[indexPath.row].del_id
-//            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-//               vc.bookedJobPrice = bookedPrice
-//            vc.showHouseNumber = true
-//            vc.pickupAdd = cell.pick_up.text
-//            vc.dropoffAdd = cell.drop_off.text
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+            
+            let jobData = self.jobsInProgressModel[indexPath.row]
+            self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
+            //        if bookedJob_id == "1" {
+            //            bookedPriceBool = true
+            //            let currentBid2 = self.jobsInProgressModel[indexPath.row].current_bid
+            //            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+            //            let doubleValue = Double(x)
+            //            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
+            //            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
+            //            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
+            //            self.bookedPrice = "£"+"\(resultRemaining2)"
+            //            del_id = self.jobsInProgressModel[indexPath.row].del_id
+            //            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+            //               vc.bookedJobPrice = bookedPrice
+            //            vc.showHouseNumber = true
+            //            vc.pickupAdd = cell.pick_up.text
+            //            vc.dropoffAdd = cell.drop_off.text
+            //        self.navigationController?.pushViewController(vc, animated: true)
+            //        } else {
+            //            del_id = self.jobsInProgressModel[indexPath.row].del_id
+            //            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
+            //               vc.bookedJobPrice = bookedPrice
+            //            vc.showHouseNumber = true
+            //            vc.pickupAdd = cell.pick_up.text
+            //            vc.dropoffAdd = cell.drop_off.text
+            //            self.navigationController?.pushViewController(vc, animated: true)
+            //        }
         }
     }
     @IBAction func jocancel_noBtn_action(_ sender: Any) {
-          self.jobCancel_popview.removeFromSuperview()
-         self.tableView.alpha = 1
+        self.jobCancel_popview.removeFromSuperview()
+        self.tableView.alpha = 1
         self.routesTableView.alpha = 1
     }
     @IBAction func jobCancel_YesBtn(_ sender: Any) {
         self.jobCancel_popview.removeFromSuperview()
-       self.tableView.alpha = 1
+        self.tableView.alpha = 1
         self.routesTableView.alpha = 1
         if isCancel {
-         let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
-        vc.jb_id = jb_id
+            let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
+            vc.jb_id = jb_id
             vc.isCancel = isCancel
-        self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
-           vc.lr_id = lr_id
+            vc.lr_id = lr_id
             vc.isCancel = isCancel
-           self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
     }
@@ -603,7 +603,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         APIManager.apiPost(serviceName: "api/startBookedJob", parameters: ["del_id": delId]) { [weak self] (_, json, error) in
             guard let self = self else { SVProgressHUD.dismiss(); return }
             SVProgressHUD.dismiss()
-        
+            
             if error != nil {
                 showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
             }
@@ -615,7 +615,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             if result == "1" {
                 self.checkJobStatus(delId: delId, indexPath: indexPath)
             } else {
-            showAlert(title: "Alert", message: msg, viewController: self)
+                showAlert(title: "Alert", message: msg, viewController: self)
             }
             
         }
@@ -626,7 +626,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         APIManager.apiPost(serviceName: "api/jobArrivalInfo", parameters: ["del_id": delId]) { [weak self] (data, json, error) in
             guard let self = self else { SVProgressHUD.dismiss(); return }
             SVProgressHUD.dismiss()
-        
+            
             if error != nil {
                 showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
             }
@@ -634,7 +634,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             do {
                 if let jobStatus = try JSONDecoder().decode([JobStatus].self, from: data).first {
-                self.goToJobDetail(indexPath: indexPath, jobStatus: jobStatus)
+                    self.goToJobDetail(indexPath: indexPath, jobStatus: jobStatus)
                 }
             } catch {
                 showAlert(title: "Error", message: error.localizedDescription, viewController: self)
@@ -645,12 +645,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
         let jobDetailVC = JobPickupDropoffViewController.instantiate()
-            let rowData = self.jobsInProgressModel[indexPath.row]
-            let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
-            let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
-
+        let rowData = self.jobsInProgressModel[indexPath.row]
+        let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
+        let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
+        
         jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jobStatus: jobStatus)
-            self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }
 
@@ -674,18 +674,18 @@ extension JobsInProgress {
                     view.center = self.view.center
                     return view
                 }
-//                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
+                //                self.present(showAlert(title: "Error", message: msg ?? "Error starting route"), animated: true, completion: nil)
             } else {
                 self.locationManager.startLocationUpdates()
                 self.locationManager.delId = lrID
                 self.locationManager.tId = user_id
                 self.locationManager.transporterStatus = "Yes"
-            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
-                vc.routeId = lrID /*self.lr_id*/
-                vc.isRouteStarted = isRouteStarted
-                vc.isBooked = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+                if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteDetailsViewController") as? RouteDetailsViewController {
+                    vc.routeId = lrID /*self.lr_id*/
+                    vc.isRouteStarted = isRouteStarted
+                    vc.isBooked = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }

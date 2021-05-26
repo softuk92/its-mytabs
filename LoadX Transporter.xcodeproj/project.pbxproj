@@ -40,6 +40,7 @@
 		18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
+		4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E060570265EE42100B70BFE /* UploadImagesViewController.swift */; };
 		4E09083B256AFD3600A6B2BB /* RouteBookedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E090839256AFD3600A6B2BB /* RouteBookedView.swift */; };
 		4E09083C256AFD3600A6B2BB /* RouteBookedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */; };
 		4E09083F256B001100A6B2BB /* RouteBooked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09083E256B001100A6B2BB /* RouteBooked.swift */; };
@@ -245,6 +246,7 @@
 		18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPickupDropoffViewControllerExtension.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		4E060570265EE42100B70BFE /* UploadImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImagesViewController.swift; sourceTree = "<group>"; };
 		4E090839256AFD3600A6B2BB /* RouteBookedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBookedView.swift; sourceTree = "<group>"; };
 		4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteBookedView.xib; sourceTree = "<group>"; };
 		4E09083E256B001100A6B2BB /* RouteBooked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBooked.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */,
 				18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */,
 				18168641265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift */,
+				4E060570265EE42100B70BFE /* UploadImagesViewController.swift */,
 			);
 			path = "Job Detail Module";
 			sourceTree = "<group>";
@@ -1253,6 +1256,7 @@
 				8DC526202226DBA40033D6CA /* AcceptBidCell.swift in Sources */,
 				4EFC62DF237EA6FC00BD32F3 /* SettingViewController.swift in Sources */,
 				4E275CEC241AAAE600D05A24 /* AppIntro_ViewController.swift in Sources */,
+				4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */,
 				18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */,
 				8DE44D412211B42A008CBEE0 /* SessionManager.swift in Sources */,
 				8D270CF621FB3A860016D6DD /* HomeViewController.swift in Sources */,

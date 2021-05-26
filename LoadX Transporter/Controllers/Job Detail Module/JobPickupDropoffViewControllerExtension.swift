@@ -29,6 +29,15 @@ extension JobPickupDropoffViewController {
             }
             guard let jsonData = json else { return }
             
+            let msg = jsonData[0]["msg"].stringValue
+            let result = jsonData[0]["result"].stringValue
+            
+            if result == "1" {
+                self.input.jobStatus.arrival_at_pickup = "1"
+                self.setJobStatus()
+            } else {
+                showAlert(title: "Alert", message: msg, viewController: self)
+            }
         }
     }
     
@@ -42,6 +51,15 @@ extension JobPickupDropoffViewController {
             }
             guard let jsonData = json else { return }
             
+            let msg = jsonData[0]["msg"].stringValue
+            let result = jsonData[0]["result"].stringValue
+            
+            if result == "1" {
+                self.input.jobStatus.d_arrived = "1"
+                self.setJobStatus()
+            } else {
+                showAlert(title: "Alert", message: msg, viewController: self)
+            }
         }
     }
     
@@ -55,6 +73,15 @@ extension JobPickupDropoffViewController {
             }
             guard let jsonData = json else { return }
             
+            let msg = jsonData[0]["msg"].stringValue
+            let result = jsonData[0]["result"].stringValue
+            
+            if result == "1" {
+                self.input.jobStatus.p_leaving_f_dropoff = "1"
+                self.setJobStatus()
+            } else {
+                showAlert(title: "Alert", message: msg, viewController: self)
+            }
         }
     }
     

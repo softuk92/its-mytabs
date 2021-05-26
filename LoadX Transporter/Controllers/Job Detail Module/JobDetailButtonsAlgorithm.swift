@@ -29,8 +29,12 @@ extension JobPickupDropoffViewController {
             //pick, dropoff
             let deliveryState = input.jobStatus.p_leaving_f_dropoff
             if deliveryState == "0" {
+                PickupOrDropOff.text = "Pickup"
+                address.text = input.pickupAddress
                 configurePickupActions()
             } else {
+                PickupOrDropOff.text = "Dropoff"
+                address.text = input.dropoffAddress
                 configureDropOffActions()
             }
         }

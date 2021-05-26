@@ -9,11 +9,11 @@
 import Foundation
 
 struct JobStatus: Decodable {
-    let is_job_started: String
-    let arrival_at_pickup: String
-    let job_completed: String
-    let p_running_late: String
-    let p_leaving_f_dropoff: String
-    let d_arrived: String
-    let result: String
+    var is_job_started: String
+    var arrival_at_pickup: String
+    var job_completed: String
+    var p_running_late: String
+    var p_leaving_f_dropoff: String
+    var d_arrived: String
+    var result: String
 }

@@ -53,12 +53,12 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var titleView: UIView!
     
     struct Input {
-        let pickupAddress: String?
-        let dropoffAddress: String?
+        let pickupAddress: String
+        let dropoffAddress: String
         let customerName: String
         let customerNumber: String
         let delId: String
-        let jobStatus: JobStatus
+        var jobStatus: JobStatus
     }
     
     var input: Input!
@@ -112,13 +112,13 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     func setData(input: Input) {
         SVProgressHUD.show()
-        if let pickupAdd = input.pickupAddress {
-            self.PickupOrDropOff.text = "Pickup"
-            self.address.text = pickupAdd
-        } else if let dropoffAdd = input.dropoffAddress {
-            self.PickupOrDropOff.text = "Dropoff"
-            self.address.text = dropoffAdd
-        }
+//        if let pickupAdd = input.pickupAddress {
+//            self.PickupOrDropOff.text = "Pickup"
+//            self.address.text = pickupAdd
+//        } else if let dropoffAdd = input.dropoffAddress {
+//            self.PickupOrDropOff.text = "Dropoff"
+//            self.address.text = dropoffAdd
+//        }
         self.customerName.text = input.customerName
         self.phoneNumber.text = input.customerNumber
         
