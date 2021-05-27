@@ -24,6 +24,8 @@ public class AlertViewWithDescription: UIView, NibOwnerLoadable {
 //        self.loadNibContent()
 //    }
     
+    var noActCall: ((AlertViewWithDescription) -> Void)?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         loadNibContent()
@@ -41,6 +43,10 @@ public class AlertViewWithDescription: UIView, NibOwnerLoadable {
         centerView.layer.shadowOffset = .zero
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
+    }
+    
+    @IBAction func noAct(_ sender: Any) {
+        noActCall?(self)
     }
 
 }

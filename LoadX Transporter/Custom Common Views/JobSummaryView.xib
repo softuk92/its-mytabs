@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobSummaryView" customModule="LoadX_Transporter" customModuleProvider="target">
+            <connections>
+                <outlet property="cashReceived" destination="SjM-Zz-UuL" id="Y0n-dm-1ZD"/>
+                <outlet property="centerView" destination="DQC-FX-5l3" id="Cfx-lL-kpL"/>
+                <outlet property="closed" destination="omz-69-vk6" id="3Cd-Gk-VKc"/>
+                <outlet property="completedTime" destination="Joi-e8-TRQ" id="Qb2-8L-C3t"/>
+                <outlet property="extraAmount" destination="gNr-TU-OBG" id="MwY-bM-wJ1"/>
+                <outlet property="extraAmountView" destination="Tfd-QW-dZP" id="Jhd-NR-Bxf"/>
+                <outlet property="extraTime" destination="Pz7-26-DZY" id="fNg-T6-1o2"/>
+                <outlet property="extraTimeView" destination="eBU-sb-ORh" id="rgL-bP-Qu6"/>
+                <outlet property="jobBookedFor" destination="qba-tC-12P" id="pMs-QS-ZaJ"/>
+                <outlet property="sendPaymentLink" destination="0qe-2B-cqI" id="Vep-up-nBw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="583"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQC-FX-5l3" userLabel="CenterView">
+                    <rect key="frame" x="15" y="163" width="298" height="257.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxR-yM-GcF">
+                            <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Summary" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ps-dc-a1o">
+                                    <rect key="frame" x="15" y="5" width="268" height="50"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="luc-it-GsL"/>
+                            <color key="backgroundColor" name="NewBlueColor"/>
+                            <constraints>
+                                <constraint firstItem="luc-it-GsL" firstAttribute="trailing" secondItem="7Ps-dc-a1o" secondAttribute="trailing" constant="15" id="J1j-pW-Rnc"/>
+                                <constraint firstItem="7Ps-dc-a1o" firstAttribute="leading" secondItem="luc-it-GsL" secondAttribute="leading" constant="15" id="OLo-Ze-ukd"/>
+                                <constraint firstItem="7Ps-dc-a1o" firstAttribute="centerY" secondItem="NxR-yM-GcF" secondAttribute="centerY" id="W4T-Ed-tUg"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="nCM-lp-QEj"/>
+                                <constraint firstItem="luc-it-GsL" firstAttribute="bottom" secondItem="7Ps-dc-a1o" secondAttribute="bottom" constant="5" id="wTd-qH-6pA"/>
+                                <constraint firstItem="7Ps-dc-a1o" firstAttribute="centerX" secondItem="NxR-yM-GcF" secondAttribute="centerX" id="wUk-lX-hr8"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tap-hU-8KK">
+                            <rect key="frame" x="15" y="75" width="268" height="92.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ztc-hp-s7C">
+                                    <rect key="frame" x="0.0" y="0.0" width="240.5" height="19"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Booked For:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-SP-XqN">
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="19"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="TextfieldTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qba-tC-12P">
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="19"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="MehroonColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vxs-Al-9zq">
+                                    <rect key="frame" x="0.0" y="27" width="240.5" height="16.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYH-wz-ihX">
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="TextfieldTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-e8-TRQ">
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="MehroonColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBU-sb-ORh">
+                                    <rect key="frame" x="0.0" y="51.5" width="187.5" height="16.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chG-yt-EmI">
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="TextfieldTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz7-26-DZY">
+                                            <rect key="frame" x="118" y="0.0" width="69.5" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="MehroonColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tfd-QW-dZP">
+                                    <rect key="frame" x="0.0" y="76" width="240.5" height="16.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-m8-SHw">
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="TextfieldTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNr-TU-OBG">
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" name="MehroonColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Joi-e8-TRQ" firstAttribute="leading" secondItem="qba-tC-12P" secondAttribute="leading" id="8yE-Fx-CF9"/>
+                                <constraint firstItem="Pz7-26-DZY" firstAttribute="leading" secondItem="Joi-e8-TRQ" secondAttribute="leading" id="ESq-wV-slx"/>
+                                <constraint firstItem="Vxs-Al-9zq" firstAttribute="top" secondItem="Tap-hU-8KK" secondAttribute="top" constant="27" id="KGj-54-mKV"/>
+                                <constraint firstItem="gNr-TU-OBG" firstAttribute="leading" secondItem="qba-tC-12P" secondAttribute="leading" id="tuL-e1-T8D"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-LA-Emx">
+                            <rect key="frame" x="15" y="197.5" width="268" height="35"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-Zz-UuL">
+                                    <rect key="frame" x="0.0" y="0.0" width="129" height="35"/>
+                                    <color key="backgroundColor" name="NewBlueColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="iY1-w6-A2U"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                    <state key="normal" title="Cash Received">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qe-2B-cqI">
+                                    <rect key="frame" x="139" y="0.0" width="129" height="35"/>
+                                    <color key="backgroundColor" name="MehroonColor"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
+                                    <state key="normal" title="Send Payment Link">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omz-69-vk6">
+                                    <rect key="frame" x="268" y="0.0" width="129" height="35"/>
+                                    <color key="backgroundColor" name="NewBlueColor"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                    <state key="normal" title="Close">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="omz-69-vk6" firstAttribute="height" secondItem="0qe-2B-cqI" secondAttribute="height" id="iyI-ak-Gcm"/>
+                                <constraint firstItem="omz-69-vk6" firstAttribute="width" secondItem="0qe-2B-cqI" secondAttribute="width" id="mwM-ki-OfE"/>
+                                <constraint firstItem="SjM-Zz-UuL" firstAttribute="height" secondItem="0qe-2B-cqI" secondAttribute="height" id="nZX-eF-T7o"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="NxR-yM-GcF" firstAttribute="top" secondItem="DQC-FX-5l3" secondAttribute="top" id="62i-EI-42Q"/>
+                        <constraint firstAttribute="trailing" secondItem="NxR-yM-GcF" secondAttribute="trailing" id="7oF-UU-xcU"/>
+                        <constraint firstItem="mB8-LA-Emx" firstAttribute="centerX" secondItem="DQC-FX-5l3" secondAttribute="centerX" id="F1f-Zv-hZj"/>
+                        <constraint firstAttribute="trailing" secondItem="mB8-LA-Emx" secondAttribute="trailing" constant="15" id="Hi7-4G-Jgi"/>
+                        <constraint firstAttribute="trailing" secondItem="Tap-hU-8KK" secondAttribute="trailing" constant="15" id="QrP-lG-zlk"/>
+                        <constraint firstItem="mB8-LA-Emx" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" constant="15" id="YlO-Wn-18J"/>
+                        <constraint firstItem="mB8-LA-Emx" firstAttribute="top" secondItem="Tap-hU-8KK" secondAttribute="bottom" constant="30" id="eQm-ne-eYf"/>
+                        <constraint firstItem="NxR-yM-GcF" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" id="lUq-BZ-Y2I"/>
+                        <constraint firstItem="Tap-hU-8KK" firstAttribute="top" secondItem="NxR-yM-GcF" secondAttribute="bottom" constant="15" id="qlJ-3o-d8l"/>
+                        <constraint firstAttribute="bottom" secondItem="mB8-LA-Emx" secondAttribute="bottom" constant="25" id="qwH-1i-JPp"/>
+                        <constraint firstItem="Tap-hU-8KK" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" constant="15" id="rfd-Y8-wYS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="DQC-FX-5l3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="3iV-Ix-eiS"/>
+                <constraint firstItem="DQC-FX-5l3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fXr-j8-Vxc"/>
+                <constraint firstItem="DQC-FX-5l3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vGv-PY-z2L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="117" y="66"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="MehroonColor">
+            <color red="0.77647058823529413" green="0.16470588235294117" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NewBlueColor">
+            <color red="0.12941176470588237" green="0.15294117647058825" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextfieldTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

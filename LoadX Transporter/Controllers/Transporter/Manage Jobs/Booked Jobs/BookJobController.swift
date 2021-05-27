@@ -47,6 +47,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     var lrhJobId = ""
     var lrID = ""
     var lrhId = ""
+    var jobId: String?
     
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     
@@ -204,7 +205,8 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
             if isRoute {
                 params = ["user_id" : user_id!, "lrh_job_id" : lrhJobId, "lr_id" : lrID, "receivername" : self.receiverName.text!]
             } else {
-                params = ["jb_id" : jb_id ?? "", "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat ?? "0.0", "del_long": long ?? "0.0"]
+                guard let jobId = jobId else { return }
+                params = ["jb_id" : jobId, "user_id" : user_id!, "receivername" : self.receiverName.text!, "del_lat" : lat ?? "0.0", "del_long": long ?? "0.0"]
             }
            
             if imagePicked == 1 {
@@ -251,6 +253,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                                  
                                     self.navigationController?.pushViewController(vc!, animated: true)
                                 } else {
+                                    
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "completedJob") as? SuccessController
                          
                             self.navigationController?.pushViewController(vc!, animated: true)

@@ -12,10 +12,16 @@ class SuccessController: UIViewController {
     
     @IBOutlet weak var mainBtn: UIButton!
     
+    var runningLateFromJob: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainBtn.layer.cornerRadius = 20
+        
+        if runningLateFromJob {
+            mainBtn.setTitle("Go Back to Job", for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +47,15 @@ class SuccessController: UIViewController {
     }
     
     @IBAction func dashboard_action(_ sender: Any) {
+        if runningLateFromJob {
+            for controller in self.navigationController?.viewControllers ?? [] {
+                if controller.isKind(of: JobPickupDropoffViewController.self) {
+                        self.navigationController?.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
+            return
+        }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
     self.navigationController?.pushViewController(vc!, animated: true)
     }

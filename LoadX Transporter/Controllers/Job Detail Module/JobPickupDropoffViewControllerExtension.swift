@@ -15,6 +15,10 @@ extension JobPickupDropoffViewController {
     func goToRunningLateScene() {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RunningLateViewController") as? RunningLateViewController {
             vc.delId = input.delId
+            vc.runningLateSuccess = {[weak self] (isSuccess) in
+                self?.input.jobStatus.p_running_late = "1"
+                self?.setJobStatus()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -82,6 +86,25 @@ extension JobPickupDropoffViewController {
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }
+        }
+    }
+    
+    func goToUploadDamageScene() {
+        if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "UploadImagesViewController") as? UploadImagesViewController {
+            vc.delId = input.delId
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func goToJobCompletedScene() {
+        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
+            let year = Calendar.current.component(.year, from: Date())
+            
+            vc.contact_no = input.customerNumber
+            vc.ref_no = "LOADX"+String(year)+"J"+input.delId
+            vc.contactName = input.customerName
+            vc.jobId = input.jbId
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

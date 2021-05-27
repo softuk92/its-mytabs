@@ -18,6 +18,7 @@ enum Status {
     case RunningLate
     case UploadImages
     case LeavingForDropoff
+    case jobCompleted
 }
 
 class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
@@ -29,6 +30,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var jobBookedFor: UILabel!
+    @IBOutlet weak var jobBookedForStackView: UIStackView!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var additionalDetailsTableView: UITableView!
     @IBOutlet weak var jobDescriptionTextView: UITextView!
@@ -58,6 +60,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let customerName: String
         let customerNumber: String
         let delId: String
+        let jbId: String
         var jobStatus: JobStatus
     }
     
@@ -140,10 +143,10 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             let workingHours = jsonData[0]["working_hours"].stringValue
             
             if workingHours != "" && workingHours != "N/A" {
-                self.jobBookedFor.isHidden = false
-                self.jobBookedFor.text = workingHours + "Hours"
+                self.jobBookedForStackView.isHidden = false
+                self.jobBookedFor.text = workingHours + " Hours"
             } else {
-                self.jobBookedFor.isHidden = true
+                self.jobBookedForStackView.isHidden = true
             }
             self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1])
             SVProgressHUD.dismiss()
@@ -151,11 +154,11 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func pickupArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at stop?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
+        showAlertView(question: "Have you arrived at pickup stop?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
     }
     
     @IBAction func dropoffArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at stop?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
+        showAlertView(question: "Have you arrived at dropoff stop?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
     }
     
     @IBAction func runningLateAct(_ sender: Any) {
@@ -163,15 +166,15 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func uploadImagesAct(_ sender: Any) {
-        
+        showAlertView(question: "Please ensure you have informed the customer and upload images of the damage report before completing stop.", ensure: "", paymentLinkHeight: 0, status: .UploadImages)
     }
     
     @IBAction func leavingForDropoffAct(_ sender: Any) {
-        
+        showAlertView(question: "Are you leaving for drop off location?", ensure: "", paymentLinkHeight: 0, status: .LeavingForDropoff)
     }
     
     @IBAction func jobCompletedAct(_ sender: Any) {
-        
+        showAlertView(question: "Has the job been completed?", ensure: "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof", paymentLinkHeight: 0, status: .jobCompleted)
     }
     
     @IBAction func backBtn_action(_ sender: Any) {
@@ -199,7 +202,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             case .LeavingForDropoff:
                 self.leavingForDropoff()
             case .UploadImages:
-                return
+                self.goToUploadDamageScene()
+            case .jobCompleted:
+                self.goToJobCompletedScene()
             }
         }
         
@@ -207,7 +212,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             aView.removeFromSuperview()
         }
         
-        aView.sendPaymentLinkCall = {[weak self] (_) in
+        aView.sendPaymentLinkCall = { [weak self] (_) in
             guard let self = self else { return }
             aView.removeFromSuperview()
         }
@@ -298,8 +303,9 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         }
         
         info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
-        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
+        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time.uppercased()))
         info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
+        timeEta.text = pickUp_time.uppercased()
         
         if category == "Dedicated Van" || category == "Man & Van" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {

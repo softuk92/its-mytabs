@@ -28,6 +28,8 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     var delId: String?
     var indexPath: IndexPath?
     
+    var runningLateSuccess: ((Bool) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,14 +67,14 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func driverLateRunning(late: String) {
         guard let lrh_id = lrh_id else { return }
-        APIManager.apiPost(serviceName: "api/transporterLateRunning", parameters: ["lrh_id": lrh_id, "late_running_time" : late]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/transporterLateRunning", parameters: ["lrh_id": lrh_id, "late_running_time" : late]) { [weak self] (data, json, error) in
             if error != nil {
                 
             }
             print("transporter late running json \(String(describing: json))")
             
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
-                self.navigationController?.pushViewController(vc, animated: true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             
         }
@@ -80,14 +82,15 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func driverLateRunningFromJob(late: String) {
         guard let delId = delId else { return }
-        APIManager.apiPost(serviceName: "api/pickUpRunningLate", parameters: ["del_id": delId, "r_l_minute" : late]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/pickUpRunningLate", parameters: ["del_id": delId, "r_l_minute" : late]) { [weak self] (data, json, error) in
             if error != nil {
                 
             }
             print("transporter late running json \(String(describing: json))")
             
             if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
-                self.navigationController?.pushViewController(vc, animated: true)
+                self?.runningLateSuccess?(true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             
         }

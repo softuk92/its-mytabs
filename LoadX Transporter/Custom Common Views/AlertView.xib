@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -59,7 +59,7 @@
                             <viewLayoutGuide key="safeArea" id="k9T-bE-Tym"/>
                             <color key="backgroundColor" name="NewBlueColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="135" id="CUv-x1-2Nu"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="135" id="CUv-x1-2Nu"/>
                                 <constraint firstItem="k9T-bE-Tym" firstAttribute="bottom" secondItem="7gE-A9-j5S" secondAttribute="bottom" constant="5" id="DbS-KC-zPh"/>
                                 <constraint firstItem="6Jl-mf-Oxg" firstAttribute="top" secondItem="Kqh-6o-uZg" secondAttribute="top" constant="20" id="IgH-aL-4qL"/>
                                 <constraint firstItem="7gE-A9-j5S" firstAttribute="leading" secondItem="k9T-bE-Tym" secondAttribute="leading" constant="15" id="Lj1-aI-1CV"/>
@@ -181,7 +181,7 @@
             <size key="intrinsicContentSize" width="285" height="80"/>
         </designable>
         <designable name="e5X-LA-CzI">
-            <size key="intrinsicContentSize" width="131" height="28"/>
+            <size key="intrinsicContentSize" width="138" height="28"/>
         </designable>
     </designables>
     <resources>

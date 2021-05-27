@@ -85,6 +85,8 @@
 		4E818287241B92BB005D3EC9 /* VC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818286241B92BB005D3EC9 /* VC2.swift */; };
 		4E818289241B92CB005D3EC9 /* VC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818288241B92CB005D3EC9 /* VC3.swift */; };
 		4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81828A241B9AA3005D3EC9 /* VC4.swift */; };
+		4E87C1DC266047CD007B6454 /* JobSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E87C1DB266047CD007B6454 /* JobSummaryView.xib */; };
+		4E87C1DF26604B5C007B6454 /* JobSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */; };
 		4E9A04B2263F3C5F0033A91D /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A04B1263F3C5F0033A91D /* UIFont + Extensions.swift */; };
 		4E9C534B2420C3DB00AFB8C8 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C534A2420C3DB00AFB8C8 /* Gif.swift */; };
 		4EA52ED922FB427F001E800D /* CompletedJobsModelBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */; };
@@ -292,6 +294,8 @@
 		4E818286241B92BB005D3EC9 /* VC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC2.swift; sourceTree = "<group>"; };
 		4E818288241B92CB005D3EC9 /* VC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC3.swift; sourceTree = "<group>"; };
 		4E81828A241B9AA3005D3EC9 /* VC4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC4.swift; sourceTree = "<group>"; };
+		4E87C1DB266047CD007B6454 /* JobSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryView.xib; sourceTree = "<group>"; };
+		4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryView.swift; sourceTree = "<group>"; };
 		4E9A04B1263F3C5F0033A91D /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		4E9C534A2420C3DB00AFB8C8 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		4EA52ED822FB427F001E800D /* CompletedJobsModelBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedJobsModelBusiness.swift; sourceTree = "<group>"; };
@@ -566,6 +570,8 @@
 				4E37809B257982B2002B18C8 /* AlertView.swift */,
 				4E3F9141257D932400351B9A /* AlertViewWithDescription.xib */,
 				4E3F9144257D949A00351B9A /* AlertViewWithDescription.swift */,
+				4E87C1DB266047CD007B6454 /* JobSummaryView.xib */,
+				4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */,
 			);
 			path = "Custom Common Views";
 			sourceTree = "<group>";
@@ -1054,6 +1060,7 @@
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
 				8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */,
+				4E87C1DC266047CD007B6454 /* JobSummaryView.xib in Resources */,
 				184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */,
 				BBE9402F24709EF000DB58F3 /* splashScreenDark.gif in Resources */,
 				8D61D3CE221DA1EC00F215D4 /* GoogleService-Info.plist in Resources */,
@@ -1319,6 +1326,7 @@
 				4E72F311258BF5C200789022 /* R.generated.swift in Sources */,
 				4E818289241B92CB005D3EC9 /* VC3.swift in Sources */,
 				4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */,
+				4E87C1DF26604B5C007B6454 /* JobSummaryView.swift in Sources */,
 				4E1948782565BF0400C3C3C8 /* StopDetailsViewController.swift in Sources */,
 				8D246FA32228388D00E2B290 /* ViewAllQueriesModel.swift in Sources */,
 			);

@@ -103,12 +103,13 @@ class UploadImagesViewController: UIViewController {
             let imageData = image.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.2)
             input.append(MultipartData.init(data: imageData ?? Data(), paramName: "job_damage_image", fileName: image.description))
         }
-        APIManager.apiPostMultipart(serviceName: "api/transporterAddDamageReport", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+        APIManager.apiPostMultipart(serviceName: "api/transporterAddDamageReport", parameters: parameters, multipartImages: input) { [weak self] (data, json, error, progress) in
+            guard let self = self else { return }
             if error != nil {
-
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
             }
             if progress != nil {
-                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Uploading images to server")
+                showSuccessAlert(question: "Uploaded Images Successfully", imageName: "success", viewController: self)
             }
             
         }

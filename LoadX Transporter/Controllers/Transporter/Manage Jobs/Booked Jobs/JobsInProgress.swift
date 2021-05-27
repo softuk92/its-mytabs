@@ -649,7 +649,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
         let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
         
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jobStatus: jobStatus)
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jbId: rowData.jb_id, jobStatus: jobStatus)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }
