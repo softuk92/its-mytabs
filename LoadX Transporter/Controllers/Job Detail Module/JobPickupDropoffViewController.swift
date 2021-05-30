@@ -18,6 +18,7 @@ enum Status {
     case RunningLate
     case UploadImages
     case LeavingForDropoff
+    case cashCollected
     case jobCompleted
 }
 
@@ -40,9 +41,12 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var uploadImagesBtn: UIButton!
     @IBOutlet weak var leavingForDropoffBtn: UIButton!
     @IBOutlet weak var jobCompletedBtn: UIButton!
+    @IBOutlet weak var cashCollectedBtn: UIButton!
+    @IBOutlet weak var viewJobSummaryBtn: UIButton!
     @IBOutlet weak var upperButtonView: UIView!
     @IBOutlet weak var bottomButtonView: UIView!
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
+    @IBOutlet weak var timeCounterLabel: UILabel!
     
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
@@ -59,6 +63,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let dropoffAddress: String
         let customerName: String
         let customerNumber: String
+        let addType: String
         let delId: String
         let jbId: String
         var jobStatus: JobStatus
@@ -66,6 +71,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     var input: Input!
     private var disposeBag = DisposeBag()
+    var jobSummaryMO: JobSummaryModel?
     
     var routeSummaryDetails = [RouteSummaryDetails]()
     var items: [MenuItemStruct] = []
@@ -75,6 +81,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         }
     }
     
+    var timer:Timer = Timer()
+    var startTime: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleView.roundCorners(corners: [.topLeft, .topRight], radius: 5)
@@ -82,6 +91,33 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         setJobStatus()
         configureTableView()
         setData(input: input)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer.invalidate()
+    }
+    
+    func setTimer() {
+        guard input.jobStatus.is_job_started == "1" else { timeCounterLabel.isHidden = true; return }
+        if input.addType == "Man & Van" || input.addType == "Man and Van" {
+            timeCounterLabel.isHidden = false
+            if let time = UserDefaults.standard.value(forKey: input.delId) as? Int, let previousDate = UserDefaults.standard.value(forKey: "previousTimerTime") as? Date {
+                let seconds = Date().seconds(from: previousDate)
+                
+                startTime = time+seconds
+                startTimer()
+            } else {
+                startTimer()
+            }
+        } else {
+            timeCounterLabel.isHidden = true
+        }
     }
     
     func configureTableView() {
@@ -115,13 +151,6 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     func setData(input: Input) {
         SVProgressHUD.show()
-//        if let pickupAdd = input.pickupAddress {
-//            self.PickupOrDropOff.text = "Pickup"
-//            self.address.text = pickupAdd
-//        } else if let dropoffAdd = input.dropoffAddress {
-//            self.PickupOrDropOff.text = "Dropoff"
-//            self.address.text = dropoffAdd
-//        }
         self.customerName.text = input.customerName
         self.phoneNumber.text = input.customerNumber
         
@@ -177,6 +206,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         showAlertView(question: "Has the job been completed?", ensure: "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof", paymentLinkHeight: 0, status: .jobCompleted)
     }
     
+    @IBAction func cashCollectedAct(_ sender: Any) {
+        showAlertView(question: "Have you collected cash?", ensure: "Please note: The customer may pay on drop off, you can always send a payment link if the customer wants to pay via card.", paymentLinkHeight: 35, status: .cashCollected)
+    }
+    
+    @IBAction func viewJobSummaryAct(_ sender: Any) {
+        viewJobSummary()
+    }
+    
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -203,6 +240,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
                 self.leavingForDropoff()
             case .UploadImages:
                 self.goToUploadDamageScene()
+            case .cashCollected:
+                self.CashReceivedOfJob()
             case .jobCompleted:
                 self.goToJobCompletedScene()
             }
@@ -215,11 +254,65 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         aView.sendPaymentLinkCall = { [weak self] (_) in
             guard let self = self else { return }
             aView.removeFromSuperview()
+            self.sendPaymentLink()
         }
         
         self.view.addSubview(aView)
     }
     
+    func viewJobSummaryAlert(input: JobSummaryModel) {
+        let summaryView = JobSummaryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        summaryView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        summaryView.setJobSummaryViews(input: input)
+        
+        summaryView.cashReceivedCall = {[weak self] (_) in
+            guard let self = self else { return }
+            summaryView.removeFromSuperview()
+            self.CashReceivedOfJob()
+        }
+        
+        summaryView.closeCall = { (_) in
+            summaryView.removeFromSuperview()
+        }
+        
+        summaryView.sendPaymentLinkCall = { [weak self] (_) in
+            guard let self = self else { return }
+            summaryView.removeFromSuperview()
+            self.sendPaymentLink()
+        }
+        
+        self.view.addSubview(summaryView)
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+    }
+    
+    @objc func timerCounter() -> Void
+        {
+        UserDefaults.standard.setValue(startTime, forKey: input.delId)
+        UserDefaults.standard.setValue(Date(), forKey: "previousTimerTime")
+        startTime = startTime + 1
+            let time = secondsToHoursMinutesSeconds(seconds: startTime)
+            let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+            timeCounterLabel.text = timeString
+        }
+        
+        func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int)
+        {
+            return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60))
+        }
+        
+        func makeTimeString(hours: Int, minutes: Int, seconds : Int) -> String
+        {
+            var timeString = ""
+            timeString += String(format: "%02d", hours)
+            timeString += " : "
+            timeString += String(format: "%02d", minutes)
+            timeString += " : "
+            timeString += String(format: "%02d", seconds)
+            return timeString
+        }
 }
 
 extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSource {

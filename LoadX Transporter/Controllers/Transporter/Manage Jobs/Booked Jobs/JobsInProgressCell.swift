@@ -24,6 +24,8 @@ class JobsInProgressCell: UITableViewCell {
     @IBOutlet weak var payment_method_lbl: UILabel!
     @IBOutlet weak var startJobBtn: UIButton!
     @IBOutlet weak var cancelJobBtn: UIButton!
+    @IBOutlet weak var jobBookedFor: UILabel!
+    @IBOutlet weak var jobBookedForView: UIStackView!
     
     var startJob: ((JobsInProgressCell) -> Void)?
     var cancelJob: ((JobsInProgressCell) -> Void)?
@@ -32,6 +34,15 @@ class JobsInProgressCell: UITableViewCell {
         super.awakeFromNib()
 
         customizeView()
+    }
+    
+    func setJobBookedForView(workingHours: String) {
+        if workingHours != "" || workingHours != "N/A" {
+            jobBookedForView.isHidden = false
+            jobBookedFor.text = workingHours
+        } else {
+            jobBookedForView.isHidden = true
+        }
     }
     
     func customizeView() {

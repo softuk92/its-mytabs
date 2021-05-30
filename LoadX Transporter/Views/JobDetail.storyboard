@@ -359,6 +359,43 @@
                                                                     <action selector="runningLateAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="ZWx-o1-bj1"/>
                                                                 </connections>
                                                             </button>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ewR-gq-Jyx">
+                                                                <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <color key="backgroundColor" name="NewBlueColor"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <state key="normal" title="View Job Summary">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="viewJobSummaryAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="dhU-8j-2xe"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31U-Os-Cv2">
+                                                                <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
+                                                                <color key="backgroundColor" name="NewBlueColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="Ty9-XI-HHk"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <state key="normal" title="CASH COLLECTED?">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="cashCollectedAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="WOh-pX-9QJ"/>
+                                                                </connections>
+                                                            </button>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-i4-sMe">
                                                                 <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
@@ -449,11 +486,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s5-X0-ruW">
+                                <rect key="frame" x="312" y="99" width="82" height="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" name="NewBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NJx-5b-JKC"/>
                         <color key="backgroundColor" name="Background_color"/>
                         <constraints>
+                            <constraint firstItem="0s5-X0-ruW" firstAttribute="top" secondItem="3w2-a1-wnC" secondAttribute="bottom" constant="10" id="8Aw-bV-BoN"/>
                             <constraint firstItem="NYH-ko-g8M" firstAttribute="leading" secondItem="0uQ-UR-gyy" secondAttribute="leading" id="AZU-5Z-DL8"/>
+                            <constraint firstItem="NJx-5b-JKC" firstAttribute="trailing" secondItem="0s5-X0-ruW" secondAttribute="trailing" constant="20" id="Cr2-p0-D6h"/>
+                            <constraint firstItem="0uQ-UR-gyy" firstAttribute="top" secondItem="0s5-X0-ruW" secondAttribute="bottom" constant="5" id="KjZ-Dp-QSG"/>
                             <constraint firstItem="NJx-5b-JKC" firstAttribute="bottom" secondItem="0uQ-UR-gyy" secondAttribute="bottom" constant="15" id="N8T-O4-n4b"/>
                             <constraint firstItem="0uQ-UR-gyy" firstAttribute="leading" secondItem="NJx-5b-JKC" secondAttribute="leading" constant="10" id="OSA-Br-f8P"/>
                             <constraint firstItem="0uQ-UR-gyy" firstAttribute="top" secondItem="NYH-ko-g8M" secondAttribute="bottom" id="QGx-Kp-Qq0"/>
@@ -471,6 +517,7 @@
                         <outlet property="address" destination="LQU-xF-kjt" id="1cy-qF-wy3"/>
                         <outlet property="bottomButtonView" destination="9ma-qE-7lg" id="9Iz-ly-nCa"/>
                         <outlet property="bottomButtonsStackView" destination="THc-mi-Tq6" id="9MW-nz-017"/>
+                        <outlet property="cashCollectedBtn" destination="31U-Os-Cv2" id="DiY-SJ-ct2"/>
                         <outlet property="customerName" destination="0Dn-4w-fyb" id="mI2-ZL-sss"/>
                         <outlet property="detailTabView" destination="Icm-q5-NKf" id="h6V-xF-yZX"/>
                         <outlet property="dropoffArrivedBtn" destination="qP0-5U-Sk3" id="azB-VU-W6f"/>
@@ -486,17 +533,19 @@
                         <outlet property="phoneNumber" destination="b5G-mS-2ks" id="oJb-SY-xtV"/>
                         <outlet property="pickupArrivedBtn" destination="BnP-jD-aeb" id="8c1-OQ-DYR"/>
                         <outlet property="runningLateBtn" destination="OAN-Gs-AbJ" id="oOf-Lt-uWJ"/>
+                        <outlet property="timeCounterLabel" destination="0s5-X0-ruW" id="9d6-CK-rUT"/>
                         <outlet property="timeEta" destination="NZw-Ix-0li" id="10V-MA-dfG"/>
                         <outlet property="titleView" destination="NYH-ko-g8M" id="hCe-Cp-eGo"/>
                         <outlet property="trailingAdditionalDetails" destination="xqM-uX-8l7" id="phc-La-HbV"/>
                         <outlet property="trailingJobDescription" destination="ou9-es-j8s" id="gJt-GY-fAa"/>
                         <outlet property="uploadImagesBtn" destination="L6m-i4-sMe" id="aFg-kp-ArM"/>
                         <outlet property="upperButtonView" destination="a47-va-txP" id="hVg-Ik-wfx"/>
+                        <outlet property="viewJobSummaryBtn" destination="ewR-gq-Jyx" id="4Ui-Iz-xf3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56h-to-1CT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="106"/>
+            <point key="canvasLocation" x="1437.68115942029" y="105.80357142857143"/>
         </scene>
         <!--Upload Images View Controller-->
         <scene sceneID="2eQ-YL-yXC">

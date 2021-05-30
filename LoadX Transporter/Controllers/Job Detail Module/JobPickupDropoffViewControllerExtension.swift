@@ -89,6 +89,71 @@ extension JobPickupDropoffViewController {
         }
     }
     
+    func sendPaymentLink() {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/sendPendingPaymentLinkToUser", parameters: ["del_id": input.delId]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            }
+            guard let jsonData = json else { return }
+            
+            let msg = jsonData[0]["msg"].stringValue
+            let result = jsonData[0]["result"].stringValue
+            
+            if result == "1" {
+                self.input.jobStatus.d_cash_received = "1"
+                self.setJobStatus()
+            } else {
+                showAlert(title: "Alert", message: msg, viewController: self)
+            }
+        }
+    }
+    
+    func CashReceivedOfJob() {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/bjDcashReceived", parameters: ["del_id": input.delId]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            }
+            guard let jsonData = json else { return }
+            
+            let msg = jsonData[0]["msg"].stringValue
+            let result = jsonData[0]["result"].stringValue
+            
+            if result == "1" {
+                self.input.jobStatus.d_cash_received = "1"
+                self.setJobStatus()
+            } else {
+                showAlert(title: "Alert", message: msg, viewController: self)
+            }
+        }
+    }
+    
+    func viewJobSummary() {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/getSummeryAfterJobComplete", parameters: ["del_id": input.delId]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            }
+            guard let _ = json, let data = data else { return }
+            
+            do {
+                if let jobSummaryMO = try JSONDecoder().decode([JobSummaryModel].self, from: data).first {
+                    self.jobSummaryMO = jobSummaryMO
+                    self.viewJobSummaryAlert(input: jobSummaryMO)
+                }
+            } catch {
+                showAlert(title: "Error", message: error.localizedDescription, viewController: self)
+            }
+        }
+    }
+    
     func goToUploadDamageScene() {
         if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "UploadImagesViewController") as? UploadImagesViewController {
             vc.delId = input.delId

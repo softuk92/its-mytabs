@@ -43,6 +43,16 @@ public class JobSummaryView: UIView, NibOwnerLoadable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setJobSummaryViews(input: JobSummaryModel) {
+        if input.jobExtratime == "" && input.extraCharges == "" {
+            self.extraTimeView.isHidden = true
+            self.extraAmountView.isHidden = true
+        } else {
+            self.extraTimeView.isHidden = false
+            self.extraAmountView.isHidden = false
+        }
+    }
+    
     
     private func customizeUI() {
         centerView.layer.shadowColor = UIColor.black.cgColor

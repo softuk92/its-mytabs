@@ -397,6 +397,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.startJobBtn.isHidden = true
         }
         
+        //setJobBookedFor Status {
+//        cell.setJobBookedForView(workingHours: jobsInProgressRow.working_hours)
+        
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
         cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
@@ -649,7 +652,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
         let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
         
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, delId: rowData.del_id, jbId: rowData.jb_id, jobStatus: jobStatus)
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, jobStatus: jobStatus)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }

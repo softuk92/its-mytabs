@@ -12,6 +12,7 @@ struct JobStatus: Decodable {
     var is_job_started: String
     var arrival_at_pickup: String
     var job_completed: String
+    var d_cash_received: String
     var p_running_late: String
     var p_leaving_f_dropoff: String
     var d_arrived: String

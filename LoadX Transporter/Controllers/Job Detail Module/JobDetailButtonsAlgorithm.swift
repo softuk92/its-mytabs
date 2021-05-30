@@ -49,7 +49,8 @@ extension JobPickupDropoffViewController {
                 bottomButtonView.isHidden = true
                 dropoffArrivedBtn.isHidden = true
                 uploadImagesBtn.isHidden = true
-                
+                cashCollectedBtn.isHidden = true
+                viewJobSummaryBtn.isHidden = true
                 pickupArrivedBtn.isHidden = false
                 
                 //show running late if running late is false
@@ -61,6 +62,8 @@ extension JobPickupDropoffViewController {
                 dropoffArrivedBtn.isHidden = true
                 runningLateBtn.isHidden = true
                 jobCompletedBtn.isHidden = true
+                cashCollectedBtn.isHidden = true
+                viewJobSummaryBtn.isHidden = true
                 
                 //show upload image
                 uploadImagesBtn.isHidden = false
@@ -79,10 +82,35 @@ extension JobPickupDropoffViewController {
                 uploadImagesBtn.isHidden = true
                 runningLateBtn.isHidden = true
                 pickupArrivedBtn.isHidden = true
+                cashCollectedBtn.isHidden = true
+                viewJobSummaryBtn.isHidden = true
                 
                 upperButtonView.isHidden = false
                 dropoffArrivedBtn.isHidden = false
                 
+            } else if status.d_cash_received == "0" {
+                if input.addType == "Man & Van" || input.addType == "Man and Van" {
+                    bottomButtonView.isHidden = true
+                    uploadImagesBtn.isHidden = true
+                    runningLateBtn.isHidden = true
+                    pickupArrivedBtn.isHidden = true
+                    dropoffArrivedBtn.isHidden = true
+                    upperButtonView.isHidden = false
+                    cashCollectedBtn.isHidden = true
+                    
+                    viewJobSummaryBtn.isHidden = false
+                    
+                } else {
+                bottomButtonView.isHidden = true
+                uploadImagesBtn.isHidden = true
+                runningLateBtn.isHidden = true
+                pickupArrivedBtn.isHidden = true
+                dropoffArrivedBtn.isHidden = true
+                viewJobSummaryBtn.isHidden = true
+                upperButtonView.isHidden = false
+                
+                cashCollectedBtn.isHidden = false
+                }
             } else {// if dropoffState == "arrivedAtDropOff" {
                 //show job complete
                 upperButtonView.isHidden = true

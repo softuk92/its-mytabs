@@ -38,7 +38,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQC-FX-5l3" userLabel="CenterView">
-                    <rect key="frame" x="15" y="163" width="298" height="257.5"/>
+                    <rect key="frame" x="15" y="140.5" width="298" height="302.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxR-yM-GcF">
                             <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
@@ -67,7 +67,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tap-hU-8KK">
-                            <rect key="frame" x="15" y="75" width="268" height="92.5"/>
+                            <rect key="frame" x="10" y="75" width="278" height="92.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ztc-hp-s7C">
                                     <rect key="frame" x="0.0" y="0.0" width="240.5" height="19"/>
@@ -145,42 +145,66 @@
                                 <constraint firstItem="gNr-TU-OBG" firstAttribute="leading" secondItem="qba-tC-12P" secondAttribute="leading" id="tuL-e1-T8D"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-LA-Emx">
-                            <rect key="frame" x="15" y="197.5" width="268" height="35"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-LA-Emx">
+                            <rect key="frame" x="15" y="197.5" width="268" height="80"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-Zz-UuL">
-                                    <rect key="frame" x="0.0" y="0.0" width="129" height="35"/>
-                                    <color key="backgroundColor" name="NewBlueColor"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HJy-KZ-9CR">
+                                    <rect key="frame" x="0.0" y="0.0" width="268" height="35"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-Zz-UuL">
+                                            <rect key="frame" x="0.0" y="0.0" width="129" height="35"/>
+                                            <color key="backgroundColor" name="NewBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="iY1-w6-A2U"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                            <state key="normal" title="Cash Received">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cashReceived:" destination="-1" eventType="touchUpInside" id="DN4-jm-0PE"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qe-2B-cqI">
+                                            <rect key="frame" x="139" y="0.0" width="129" height="35"/>
+                                            <color key="backgroundColor" name="MehroonColor"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
+                                            <state key="normal" title="Send Payment Link">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="sendPaymentLinkAct:" destination="-1" eventType="touchUpInside" id="Yxv-BL-JL7"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="iY1-w6-A2U"/>
+                                        <constraint firstItem="SjM-Zz-UuL" firstAttribute="height" secondItem="0qe-2B-cqI" secondAttribute="height" id="cJ5-BZ-GOu"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
-                                    <state key="normal" title="Cash Received">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qe-2B-cqI">
-                                    <rect key="frame" x="139" y="0.0" width="129" height="35"/>
-                                    <color key="backgroundColor" name="MehroonColor"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
-                                    <state key="normal" title="Send Payment Link">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omz-69-vk6">
-                                    <rect key="frame" x="268" y="0.0" width="129" height="35"/>
-                                    <color key="backgroundColor" name="NewBlueColor"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                    <state key="normal" title="Close">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-dC-eaI">
+                                    <rect key="frame" x="0.0" y="45" width="268" height="35"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omz-69-vk6">
+                                            <rect key="frame" x="75" y="0.0" width="118" height="35"/>
+                                            <color key="backgroundColor" name="NewBlueColor"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                            <state key="normal" title="Close">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="closeAct:" destination="-1" eventType="touchUpInside" id="174-9E-y4K"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="omz-69-vk6" secondAttribute="trailing" constant="75" id="82E-xR-fGO"/>
+                                        <constraint firstItem="omz-69-vk6" firstAttribute="top" secondItem="XPu-dC-eaI" secondAttribute="top" id="Irg-qd-RN1"/>
+                                        <constraint firstAttribute="bottom" secondItem="omz-69-vk6" secondAttribute="bottom" id="QQb-sg-EkY"/>
+                                        <constraint firstItem="omz-69-vk6" firstAttribute="leading" secondItem="XPu-dC-eaI" secondAttribute="leading" constant="75" id="qK6-He-fBL"/>
+                                    </constraints>
+                                </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="omz-69-vk6" firstAttribute="height" secondItem="0qe-2B-cqI" secondAttribute="height" id="iyI-ak-Gcm"/>
-                                <constraint firstItem="omz-69-vk6" firstAttribute="width" secondItem="0qe-2B-cqI" secondAttribute="width" id="mwM-ki-OfE"/>
-                                <constraint firstItem="SjM-Zz-UuL" firstAttribute="height" secondItem="0qe-2B-cqI" secondAttribute="height" id="nZX-eF-T7o"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -189,13 +213,13 @@
                         <constraint firstAttribute="trailing" secondItem="NxR-yM-GcF" secondAttribute="trailing" id="7oF-UU-xcU"/>
                         <constraint firstItem="mB8-LA-Emx" firstAttribute="centerX" secondItem="DQC-FX-5l3" secondAttribute="centerX" id="F1f-Zv-hZj"/>
                         <constraint firstAttribute="trailing" secondItem="mB8-LA-Emx" secondAttribute="trailing" constant="15" id="Hi7-4G-Jgi"/>
-                        <constraint firstAttribute="trailing" secondItem="Tap-hU-8KK" secondAttribute="trailing" constant="15" id="QrP-lG-zlk"/>
                         <constraint firstItem="mB8-LA-Emx" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" constant="15" id="YlO-Wn-18J"/>
+                        <constraint firstItem="Tap-hU-8KK" firstAttribute="centerX" secondItem="DQC-FX-5l3" secondAttribute="centerX" id="cD6-Yr-nLv"/>
                         <constraint firstItem="mB8-LA-Emx" firstAttribute="top" secondItem="Tap-hU-8KK" secondAttribute="bottom" constant="30" id="eQm-ne-eYf"/>
                         <constraint firstItem="NxR-yM-GcF" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" id="lUq-BZ-Y2I"/>
                         <constraint firstItem="Tap-hU-8KK" firstAttribute="top" secondItem="NxR-yM-GcF" secondAttribute="bottom" constant="15" id="qlJ-3o-d8l"/>
                         <constraint firstAttribute="bottom" secondItem="mB8-LA-Emx" secondAttribute="bottom" constant="25" id="qwH-1i-JPp"/>
-                        <constraint firstItem="Tap-hU-8KK" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" constant="15" id="rfd-Y8-wYS"/>
+                        <constraint firstItem="Tap-hU-8KK" firstAttribute="leading" secondItem="DQC-FX-5l3" secondAttribute="leading" constant="10" id="rfd-Y8-wYS"/>
                     </constraints>
                 </view>
             </subviews>

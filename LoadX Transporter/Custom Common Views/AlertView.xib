@@ -124,7 +124,7 @@
                             <color key="textColor" name="TextfieldTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-LA-CzI" customClass="AnimatableButton" customModule="IBAnimatable">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-LA-CzI" customClass="AnimatableButton" customModule="IBAnimatable">
                             <rect key="frame" x="54" y="212" width="170" height="35"/>
                             <color key="backgroundColor" name="PriceColor"/>
                             <constraints>
@@ -181,7 +181,7 @@
             <size key="intrinsicContentSize" width="285" height="80"/>
         </designable>
         <designable name="e5X-LA-CzI">
-            <size key="intrinsicContentSize" width="138" height="28"/>
+            <size key="intrinsicContentSize" width="131" height="28"/>
         </designable>
     </designables>
     <resources>
