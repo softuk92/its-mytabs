@@ -22,6 +22,11 @@ enum Status {
     case jobCompleted
 }
 
+enum PaymentType {
+    case Account
+    case Cash
+}
+
 class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     static var sceneStoryboard: UIStoryboard = UIStoryboard(name: "JobDetail", bundle: nil)
     
@@ -43,6 +48,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var jobCompletedBtn: UIButton!
     @IBOutlet weak var cashCollectedBtn: UIButton!
     @IBOutlet weak var viewJobSummaryBtn: UIButton!
+    @IBOutlet weak var sendPaymentLinkBtn: UIButton!
     @IBOutlet weak var upperButtonView: UIView!
     @IBOutlet weak var bottomButtonView: UIView!
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
@@ -66,6 +72,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let addType: String
         let delId: String
         let jbId: String
+        let paymentType: PaymentType
         var jobStatus: JobStatus
     }
     
@@ -214,6 +221,10 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         viewJobSummary()
     }
     
+    @IBAction func sendPaymentLinkAct(_ sender: Any) {
+        sendPaymentLinkAlert()
+    }
+    
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -260,10 +271,27 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         self.view.addSubview(aView)
     }
     
-    func viewJobSummaryAlert(input: JobSummaryModel) {
+    func sendPaymentLinkAlert() {
+        let aView = PaymentLinkView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        
+        aView.sendPaymentLinkCall = { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            self.sendPaymentLink()
+        }
+        
+        aView.noCall = { (_) in
+            aView.removeFromSuperview()
+        }
+        
+        self.view.addSubview(aView)
+    }
+    
+    func viewJobSummaryAlert(summaryMO: JobSummaryModel) {
         let summaryView = JobSummaryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         summaryView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
-        summaryView.setJobSummaryViews(input: input)
+        summaryView.setJobSummaryViews(input: summaryMO, paymentType: input.paymentType)
         
         summaryView.cashReceivedCall = {[weak self] (_) in
             guard let self = self else { return }

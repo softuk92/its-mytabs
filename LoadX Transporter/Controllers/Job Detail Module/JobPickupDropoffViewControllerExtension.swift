@@ -146,7 +146,7 @@ extension JobPickupDropoffViewController {
             do {
                 if let jobSummaryMO = try JSONDecoder().decode([JobSummaryModel].self, from: data).first {
                     self.jobSummaryMO = jobSummaryMO
-                    self.viewJobSummaryAlert(input: jobSummaryMO)
+                    self.viewJobSummaryAlert(summaryMO: jobSummaryMO)
                 }
             } catch {
                 showAlert(title: "Error", message: error.localizedDescription, viewController: self)

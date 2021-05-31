@@ -46,6 +46,7 @@ extension JobPickupDropoffViewController {
             
             if pickupState == "0" { //does not arrive at pickup
                 upperButtonView.isHidden = false
+                sendPaymentLinkBtn.isHidden = true
                 bottomButtonView.isHidden = true
                 dropoffArrivedBtn.isHidden = true
                 uploadImagesBtn.isHidden = true
@@ -57,6 +58,7 @@ extension JobPickupDropoffViewController {
                 runningLateBtn.isHidden = !(status.p_running_late == "0")
             } else { //if pickupState == "arrivedAtPickup"
                 upperButtonView.isHidden = false
+                sendPaymentLinkBtn.isHidden = true
                 bottomButtonView.isHidden = false
                 pickupArrivedBtn.isHidden = true
                 dropoffArrivedBtn.isHidden = true
@@ -81,6 +83,7 @@ extension JobPickupDropoffViewController {
                 bottomButtonView.isHidden = true
                 uploadImagesBtn.isHidden = true
                 runningLateBtn.isHidden = true
+                sendPaymentLinkBtn.isHidden = true
                 pickupArrivedBtn.isHidden = true
                 cashCollectedBtn.isHidden = true
                 viewJobSummaryBtn.isHidden = true
@@ -97,6 +100,7 @@ extension JobPickupDropoffViewController {
                     dropoffArrivedBtn.isHidden = true
                     upperButtonView.isHidden = false
                     cashCollectedBtn.isHidden = true
+                    sendPaymentLinkBtn.isHidden = true
                     
                     viewJobSummaryBtn.isHidden = false
                     
@@ -109,9 +113,15 @@ extension JobPickupDropoffViewController {
                 viewJobSummaryBtn.isHidden = true
                 upperButtonView.isHidden = false
                 
+                    if input.paymentType == .Account {
+                        sendPaymentLinkBtn.isHidden = false
+                        cashCollectedBtn.isHidden = true
+                    } else {
                 cashCollectedBtn.isHidden = false
+                        sendPaymentLinkBtn.isHidden = true
+                    }
                 }
-            } else {// if dropoffState == "arrivedAtDropOff" {
+            } else {// if dropoffState == "arrivedAtDropOff" and cash collected/send payment link {
                 //show job complete
                 upperButtonView.isHidden = true
                 bottomButtonView.isHidden = false

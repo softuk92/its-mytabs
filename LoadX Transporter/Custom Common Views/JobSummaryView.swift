@@ -43,7 +43,7 @@ public class JobSummaryView: UIView, NibOwnerLoadable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setJobSummaryViews(input: JobSummaryModel) {
+    func setJobSummaryViews(input: JobSummaryModel, paymentType: PaymentType) {
         if input.jobExtratime == "" && input.extraCharges == "" {
             self.extraTimeView.isHidden = true
             self.extraAmountView.isHidden = true
@@ -51,6 +51,8 @@ public class JobSummaryView: UIView, NibOwnerLoadable {
             self.extraTimeView.isHidden = false
             self.extraAmountView.isHidden = false
         }
+        
+        cashReceived.isHidden = paymentType == .Account
     }
     
     

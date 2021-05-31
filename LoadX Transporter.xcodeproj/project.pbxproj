@@ -15,6 +15,8 @@
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
 		1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */; };
 		1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */; };
+		1848DB182664D58D00DA71B2 /* PaymentLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848DB172664D58C00DA71B2 /* PaymentLinkView.xib */; };
+		1848DB1B2664D63C00DA71B2 /* PaymentLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848DB1A2664D63C00DA71B2 /* PaymentLinkView.swift */; };
 		184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48E5252233440042AA94 /* CustomUISwitch.swift */; };
 		184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184C48E6252233440042AA94 /* CustomUISwitch.xib */; };
 		184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C48EA2523525C0042AA94 /* DropDownViewCell.swift */; };
@@ -226,6 +228,8 @@
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryCell.swift; sourceTree = "<group>"; };
 		1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryCell.xib; sourceTree = "<group>"; };
+		1848DB172664D58C00DA71B2 /* PaymentLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentLinkView.xib; sourceTree = "<group>"; };
+		1848DB1A2664D63C00DA71B2 /* PaymentLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLinkView.swift; sourceTree = "<group>"; };
 		184C48E5252233440042AA94 /* CustomUISwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
 		184C48E6252233440042AA94 /* CustomUISwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomUISwitch.xib; sourceTree = "<group>"; };
 		184C48EA2523525C0042AA94 /* DropDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownViewCell.swift; sourceTree = "<group>"; };
@@ -581,6 +585,8 @@
 				4E3F9144257D949A00351B9A /* AlertViewWithDescription.swift */,
 				4E87C1DB266047CD007B6454 /* JobSummaryView.xib */,
 				4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */,
+				1848DB172664D58C00DA71B2 /* PaymentLinkView.xib */,
+				1848DB1A2664D63C00DA71B2 /* PaymentLinkView.swift */,
 			);
 			path = "Custom Common Views";
 			sourceTree = "<group>";
@@ -1099,6 +1105,7 @@
 				8D48C20D22243E3D00417EF5 /* ManageReviewsCell.xib in Resources */,
 				8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */,
 				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
+				1848DB182664D58D00DA71B2 /* PaymentLinkView.xib in Resources */,
 				18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */,
 				4EE97E5226385DDE009AE4A2 /* LogoView.xib in Resources */,
 				4E7149DF2582C96100A5A0B7 /* AlertViewWithDescription.xib in Resources */,
@@ -1193,6 +1200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC8049B23E31E7100540F9A /* Job_Summary_ViewController.swift in Sources */,
+				1848DB1B2664D63C00DA71B2 /* PaymentLinkView.swift in Sources */,
 				4E6672D42663A01700DB9CB9 /* Date + Extension.swift in Sources */,
 				4EEDA45F25631CEA00E7F212 /* Helper Methods.swift in Sources */,
 				BBECC6092497F9B500BF6334 /* InventoryList_TableViewCell.swift in Sources */,

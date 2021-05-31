@@ -304,7 +304,6 @@ class StopDetailsViewController: UIViewController {
                     hideShowButtons(arrived: true, cashCollected: false, complete: true, runningLate: true, reportDamage: true, viewNextStop1: false, viewNextStop2: true)
                 }
             }
-            
         }
         
         if route.is_completed == "1" {
