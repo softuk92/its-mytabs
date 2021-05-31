@@ -197,8 +197,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             }
             if let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
                 print("previous version is \(version) && current version is \(currentVersion)")
-                let  DeviceCurrentVersion = Float(currentVersion)!
-                let  appStoreVersion = Float(version)!
+                let  DeviceCurrentVersion = Float(currentVersion) ?? 0.0
+                let  appStoreVersion = Float(version) ?? 0.0
     
                 return DeviceCurrentVersion > appStoreVersion
     //            return version != currentVersion
