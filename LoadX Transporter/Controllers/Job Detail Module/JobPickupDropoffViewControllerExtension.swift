@@ -105,6 +105,8 @@ extension JobPickupDropoffViewController {
             if result == "1" {
                 self.input.jobStatus.d_cash_received = "1"
                 self.setJobStatus()
+                self.timer.invalidate()
+                UserDefaults.standard.removeObject(forKey: self.input.delId)
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }
@@ -127,6 +129,8 @@ extension JobPickupDropoffViewController {
             if result == "1" {
                 self.input.jobStatus.d_cash_received = "1"
                 self.setJobStatus()
+                self.timer.invalidate()
+                UserDefaults.standard.removeObject(forKey: self.input.delId)
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }

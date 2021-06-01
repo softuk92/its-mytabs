@@ -233,6 +233,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
         aView.imageView.image = UIImage(named: "popup_icon")
+        aView.imageView.tintColor = R.color.mehroonColor()
         aView.question.text = question
         aView.ensure.text = ensure
         aView.sendPaymentLinkHeight.constant = paymentLinkHeight
@@ -386,7 +387,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let workingHours = jsonData[0]["working_hours"].stringValue
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
         
-        info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
+//        info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))
         
 //        if isJobNotBooked != true {
