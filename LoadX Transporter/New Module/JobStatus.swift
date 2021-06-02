@@ -16,5 +16,6 @@ struct JobStatus: Decodable {
     var p_running_late: String
     var p_leaving_f_dropoff: String
     var d_arrived: String
+    var is_img_uploaded: String
     var result: String
 }
