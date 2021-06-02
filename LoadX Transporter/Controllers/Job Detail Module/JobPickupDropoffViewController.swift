@@ -53,7 +53,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var bottomButtonView: UIView!
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
     @IBOutlet weak var timeCounterLabel: UILabel!
-    
+    @IBOutlet weak var cashToBeCollectedView: UIStackView!
+    @IBOutlet weak var cashToBeCollected: UILabel!
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
     @IBOutlet weak var leadingJobDescription: NSLayoutConstraint!
@@ -74,6 +75,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let jbId: String
         let paymentType: PaymentType
         var jobStatus: JobStatus
+        let jobPrice: String
     }
     
     var input: Input!
@@ -102,7 +104,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setTimer()
+        if input.jobStatus.arrival_at_pickup == "1" {
+            setTimer()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -160,7 +164,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         SVProgressHUD.show()
         self.customerName.text = input.customerName
         self.phoneNumber.text = input.customerNumber
-        
+        self.cashToBeCollected.text = input.jobPrice
         self.getJobDetails(delId: input.delId)
     }
     
@@ -179,10 +183,10 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             let workingHours = jsonData[0]["working_hours"].stringValue
             
             if workingHours != "" && workingHours != "N/A" {
-                self.jobBookedForStackView.isHidden = false
+//                self.jobBookedForStackView.isHidden = false
                 self.jobBookedFor.text = workingHours + " Hours"
             } else {
-                self.jobBookedForStackView.isHidden = true
+//                self.jobBookedForStackView.isHidden = true
             }
             self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1])
             SVProgressHUD.dismiss()
@@ -367,7 +371,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let jobID = "LX00"+jsonData[0]["del_id"].stringValue
         let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
         let pickUp_time = jsonData[0]["timeslot"].stringValue
-        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
+//        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
         let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
         let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         let supermarketName_lbl = jsonData[0]["super_market_name"].stringValue
@@ -426,7 +430,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         
         info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
         info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time.uppercased()))
-        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
+//        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         timeEta.text = pickUp_time.uppercased()
         
         if category == "Dedicated Van" || category == "Man & Van" {

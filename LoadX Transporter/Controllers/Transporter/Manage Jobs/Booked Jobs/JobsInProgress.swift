@@ -450,7 +450,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            self.goToJobDetail(indexPath: indexPath)
             
             //            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
-            self.startBookedJob(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
+            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
         }
         
         cell.cancelJob = {[weak self] (selectedCell) in
@@ -476,6 +476,29 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.jobCancel_popview.center = self.view.center
         })
         
+    }
+    
+    func showStartJobAlertView(delId: String, indexPath: IndexPath) {
+ 
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.question.text = "Start job?"
+        aView.ensure.text = ""
+        aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            self.startBookedJob(delId: delId, indexPath: indexPath)
+        }).disposed(by: disposeBag)
+        
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
     }
     
     func showCompleteAlertView() {
@@ -525,32 +548,23 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             
             let jobData = self.jobsInProgressModel[indexPath.row]
+            
+            if jobData.is_job_started == "1" {
             self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
-            //        if bookedJob_id == "1" {
-            //            bookedPriceBool = true
-            //            let currentBid2 = self.jobsInProgressModel[indexPath.row].current_bid
-            //            let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-            //            let doubleValue = Double(x)
-            //            let resultInitialPrice2 = Double(currentBid2)! * Double(doubleValue!/100)
-            //            self.roundedPrice = Double(resultInitialPrice2).rounded(toPlaces: 2)
-            //            let resultRemaining2 = Double(currentBid2)! - self.roundedPrice
-            //            self.bookedPrice = "£"+"\(resultRemaining2)"
-            //            del_id = self.jobsInProgressModel[indexPath.row].del_id
-            //            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-            //               vc.bookedJobPrice = bookedPrice
-            //            vc.showHouseNumber = true
-            //            vc.pickupAdd = cell.pick_up.text
-            //            vc.dropoffAdd = cell.drop_off.text
-            //        self.navigationController?.pushViewController(vc, animated: true)
-            //        } else {
-            //            del_id = self.jobsInProgressModel[indexPath.row].del_id
-            //            let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as! JobDetial_ViewController
-            //               vc.bookedJobPrice = bookedPrice
-            //            vc.showHouseNumber = true
-            //            vc.pickupAdd = cell.pick_up.text
-            //            vc.dropoffAdd = cell.drop_off.text
-            //            self.navigationController?.pushViewController(vc, animated: true)
-            //        }
+            } else {
+                        let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
+                    let price = "£ "+"\(getDoubleValue(currentBid: Double(jobData.current_bid) ?? 0.0, doubleValue: percentage ?? 0.0))"
+          
+                        del_id = self.jobsInProgressModel[indexPath.row].del_id
+            if let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController {
+                           vc.bookedJobPrice = price
+                        vc.showHouseNumber = true
+            
+                        vc.pickupAdd = "\(jobData.pu_house_no ?? "") \(jobData.pick_up)"
+                        vc.dropoffAdd = "\(jobData.do_house_no ?? "") \(jobData.drop_off)"
+                        self.navigationController?.pushViewController(vc, animated: true)
+        }
+            }
         }
     }
     @IBAction func jocancel_noBtn_action(_ sender: Any) {
@@ -652,7 +666,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
         let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
         
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: rowData.payment_type == "full" ? .Account : .Cash, jobStatus: jobStatus)
+        let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
+        let jobPrice = "£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid) ?? 0.0, doubleValue: percentage ?? 0.0))"
+        
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: rowData.payment_type == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }

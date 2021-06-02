@@ -39,6 +39,7 @@ extension JobPickupDropoffViewController {
             if result == "1" {
                 self.input.jobStatus.arrival_at_pickup = "1"
                 self.setJobStatus()
+                self.setTimer()
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }

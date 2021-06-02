@@ -37,7 +37,7 @@ class JobsInProgressCell: UITableViewCell {
     }
     
     func setJobBookedForView(workingHours: String?) {
-        if let workingHours = workingHours, workingHours != "" || workingHours != "N/A" {
+        if let workingHours = workingHours, workingHours != "" && workingHours != "N/A" {
             jobBookedForView.isHidden = false
             jobBookedFor.text = workingHours + " Hours"
         } else {

@@ -31,10 +31,18 @@ extension JobPickupDropoffViewController {
         if deliveryState == "0" {
             PickupOrDropOff.text = "Pickup"
             address.text = input.pickupAddress
+            cashToBeCollectedView.isHidden = true
+            if input.addType == "Man & Van" || input.addType == "Man and Van" {
+            jobBookedForStackView.isHidden = false
+            } else {
+                jobBookedForStackView.isHidden = true
+            }
             configurePickupActions()
         } else {
             PickupOrDropOff.text = "Dropoff"
             address.text = input.dropoffAddress
+            cashToBeCollectedView.isHidden = false
+            jobBookedForStackView.isHidden = true
             configureDropOffActions()
         }
     }
