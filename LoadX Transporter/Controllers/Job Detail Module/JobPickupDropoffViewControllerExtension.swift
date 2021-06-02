@@ -160,8 +160,13 @@ extension JobPickupDropoffViewController {
     
     func goToUploadDamageScene() {
         if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "UploadImagesViewController") as? UploadImagesViewController {
+            vc.modalPresentationStyle = .fullScreen
             vc.delId = input.delId
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc.imageUploadedCallBack = {[weak self] (_) in
+                self?.input.jobStatus.is_img_uploaded = "1"
+                self?.setJobStatus()
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
     
