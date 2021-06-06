@@ -61,7 +61,12 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
         }).disposed(by: disposeBag)
         
         back.rx.tap.subscribe(onNext: { [weak self] (_) in
-            self?.navigationController?.popViewController(animated: true)
+            guard let self = self else { return }
+            if let _ = self.delId {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+            self.navigationController?.popViewController(animated: true)
+            }
         }).disposed(by: disposeBag)
     }
     
@@ -88,10 +93,14 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
             }
             print("transporter late running json \(String(describing: json))")
             
-            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
+            
+            self?.dismiss(animated: true, completion: { [weak self] in
                 self?.runningLateSuccess?(true)
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
+            })
+//            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
+//                self?.runningLateSuccess?(true)
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//            }
             
         }
     }

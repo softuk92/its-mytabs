@@ -55,6 +55,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var timeCounterLabel: UILabel!
     @IBOutlet weak var cashToBeCollectedView: UIStackView!
     @IBOutlet weak var cashToBeCollected: UILabel!
+    @IBOutlet weak var disclaimerView: UIView!
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
     @IBOutlet weak var leadingJobDescription: NSLayoutConstraint!
@@ -227,6 +228,18 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     @IBAction func sendPaymentLinkAct(_ sender: Any) {
         sendPaymentLinkAlert()
+    }
+    
+    @IBAction func showDislcaimerSceneAct(_ sender: Any) {
+        showDisclimerScene()
+    }
+    
+    func showDisclimerScene() {
+            if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "DisclaimerViewController") as? DisclaimerViewController {
+                vc.modalPresentationStyle = .fullScreen
+                vc.jobId = input.delId
+                self.navigationController?.present(vc, animated: true, completion: nil)
+            }
     }
     
     @IBAction func backBtn_action(_ sender: Any) {

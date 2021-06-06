@@ -40,4 +40,5 @@ struct JobsInProgressModel: Decodable  {
     let do_house_no: String?
     let is_job_started: String
     let working_hours: String?
+    let timeslot: String?
 }

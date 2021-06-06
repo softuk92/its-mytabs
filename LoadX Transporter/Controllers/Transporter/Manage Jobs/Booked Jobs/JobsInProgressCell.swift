@@ -26,6 +26,7 @@ class JobsInProgressCell: UITableViewCell {
     @IBOutlet weak var cancelJobBtn: UIButton!
     @IBOutlet weak var jobBookedFor: UILabel!
     @IBOutlet weak var jobBookedForView: UIStackView!
+    @IBOutlet weak var pickupTime: UILabel!
     
     var startJob: ((JobsInProgressCell) -> Void)?
     var cancelJob: ((JobsInProgressCell) -> Void)?
@@ -36,10 +37,14 @@ class JobsInProgressCell: UITableViewCell {
         customizeView()
     }
     
-    func setJobBookedForView(workingHours: String?) {
+    func setJobBookedForView(workingHours: String?, category: String) {
+        if category == "Man & Van" || category == "Man and Van" {
         if let workingHours = workingHours, workingHours != "" && workingHours != "N/A" {
             jobBookedForView.isHidden = false
             jobBookedFor.text = workingHours + " Hours"
+        } else {
+            jobBookedForView.isHidden = true
+        }
         } else {
             jobBookedForView.isHidden = true
         }

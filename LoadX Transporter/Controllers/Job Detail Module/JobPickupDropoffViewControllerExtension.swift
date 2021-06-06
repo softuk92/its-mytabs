@@ -19,7 +19,8 @@ extension JobPickupDropoffViewController {
                 self?.input.jobStatus.p_running_late = "1"
                 self?.setJobStatus()
             }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
     

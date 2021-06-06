@@ -19,15 +19,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobsInProgress" rowHeight="174" id="IZ3-NE-76X" customClass="JobsInProgressCell" customModule="LoadX_Transporter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="383" height="333"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobsInProgress" rowHeight="209" id="IZ3-NE-76X" customClass="JobsInProgressCell" customModule="LoadX_Transporter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="368"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IZ3-NE-76X" id="r9R-5V-3go">
-                <rect key="frame" x="0.0" y="0.0" width="383" height="333"/>
+                <rect key="frame" x="0.0" y="0.0" width="383" height="368"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLA-Dr-fRe">
-                        <rect key="frame" x="12" y="15" width="359" height="303"/>
+                        <rect key="frame" x="12" y="15" width="359" height="338"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Man And Van" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY4-MJ-boq">
                                 <rect key="frame" x="12" y="15" width="89.5" height="20"/>
@@ -88,7 +88,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="WZE-pd-hBj">
-                                <rect key="frame" x="9" y="200" width="267" height="16"/>
+                                <rect key="frame" x="9" y="203" width="279" height="16"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookJobDelivery_date" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-BX-mZG">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -97,13 +97,13 @@
                                             <constraint firstAttribute="height" constant="16" id="E0i-Vy-fnt"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Delivery Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da0-me-TX8">
-                                        <rect key="frame" x="25" y="0.0" width="83" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Delivery Date:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da0-me-TX8">
+                                        <rect key="frame" x="25" y="0.0" width="87" height="16"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syv-rZ-Obt">
-                                        <rect key="frame" x="117" y="0.0" width="150" height="16"/>
+                                        <rect key="frame" x="121" y="0.0" width="158" height="16"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" name="TextfieldTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="acG-tq-uT0">
-                                <rect key="frame" x="0.0" y="258" width="359" height="45"/>
+                                <rect key="frame" x="0.0" y="293" width="359" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWD-39-aan" customClass="AnimatableButton" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="45"/>
@@ -161,7 +161,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C + ULEZ Charges Inclusive : £24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8n-03-JPS">
-                                <rect key="frame" x="10" y="222" width="329" height="29"/>
+                                <rect key="frame" x="10" y="258" width="329" height="28"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -234,6 +234,29 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="KEJ-RD-nt2">
+                                <rect key="frame" x="9" y="234" width="262.5" height="16"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockTime" translatesAutoresizingMaskIntoConstraints="NO" id="BQN-pH-JA0">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="2gs-dL-JBf"/>
+                                            <constraint firstAttribute="height" constant="16" id="eYx-1I-vco"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Pickup Time:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5N-Om-SyN">
+                                        <rect key="frame" x="25" y="0.0" width="81.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4pm to 8pm" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJV-Di-OCo">
+                                        <rect key="frame" x="115.5" y="0.0" width="147" height="16"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" name="TextfieldTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
@@ -241,18 +264,20 @@
                             <constraint firstItem="i9K-Jd-nrU" firstAttribute="top" secondItem="zdH-w5-pzs" secondAttribute="bottom" constant="19" id="0uo-IE-Qpp"/>
                             <constraint firstItem="vY4-MJ-boq" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="12" id="1dO-Mr-TvU"/>
                             <constraint firstAttribute="trailing" secondItem="q8n-03-JPS" secondAttribute="trailing" constant="20" id="3pX-7C-Dnt"/>
+                            <constraint firstItem="q8n-03-JPS" firstAttribute="top" secondItem="KEJ-RD-nt2" secondAttribute="bottom" constant="8" id="BIi-Jt-uIY"/>
                             <constraint firstItem="wzP-k7-KWf" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" id="Fhf-1B-JpG"/>
                             <constraint firstItem="YjU-LV-UQm" firstAttribute="centerX" secondItem="K1D-y7-yTf" secondAttribute="centerX" id="G3j-JC-PmY"/>
-                            <constraint firstItem="WZE-pd-hBj" firstAttribute="top" secondItem="i9K-Jd-nrU" secondAttribute="bottom" constant="12" id="JgG-Pa-3kO"/>
+                            <constraint firstItem="WZE-pd-hBj" firstAttribute="top" secondItem="i9K-Jd-nrU" secondAttribute="bottom" constant="15" id="JgG-Pa-3kO"/>
                             <constraint firstItem="wzP-k7-KWf" firstAttribute="leading" secondItem="dFW-n8-t1m" secondAttribute="trailing" constant="15" id="OLz-Lc-b2w"/>
                             <constraint firstItem="vY4-MJ-boq" firstAttribute="top" secondItem="GLA-Dr-fRe" secondAttribute="top" constant="15" id="Q3b-s5-v9P"/>
                             <constraint firstItem="zdH-w5-pzs" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" constant="8" id="RxI-bk-XAG"/>
+                            <constraint firstItem="KEJ-RD-nt2" firstAttribute="top" secondItem="WZE-pd-hBj" secondAttribute="bottom" constant="15" id="TfB-pZ-6Bf"/>
                             <constraint firstItem="acG-tq-uT0" firstAttribute="top" secondItem="q8n-03-JPS" secondAttribute="bottom" constant="7" id="UTy-ci-axT"/>
                             <constraint firstItem="eZy-KR-GgV" firstAttribute="top" secondItem="vY4-MJ-boq" secondAttribute="bottom" constant="15" id="UW3-6Q-NPX"/>
+                            <constraint firstItem="KEJ-RD-nt2" firstAttribute="leading" secondItem="vY4-MJ-boq" secondAttribute="leading" constant="-3" id="Yhj-na-CGa"/>
                             <constraint firstAttribute="trailing" secondItem="zdH-w5-pzs" secondAttribute="trailing" constant="30" id="aw1-MR-RE6"/>
                             <constraint firstAttribute="trailing" secondItem="acG-tq-uT0" secondAttribute="trailing" id="bLA-1t-Svm"/>
                             <constraint firstItem="dFW-n8-t1m" firstAttribute="centerY" secondItem="vY4-MJ-boq" secondAttribute="centerY" id="cSG-eC-yUA"/>
-                            <constraint firstItem="q8n-03-JPS" firstAttribute="top" secondItem="WZE-pd-hBj" secondAttribute="bottom" constant="6" id="cUH-k7-KWg"/>
                             <constraint firstItem="WZE-pd-hBj" firstAttribute="leading" secondItem="vY4-MJ-boq" secondAttribute="leading" constant="-3" id="f5e-Vv-goa"/>
                             <constraint firstItem="acG-tq-uT0" firstAttribute="leading" secondItem="GLA-Dr-fRe" secondAttribute="leading" id="gfg-Et-Xty"/>
                             <constraint firstItem="YjU-LV-UQm" firstAttribute="top" secondItem="zdH-w5-pzs" secondAttribute="bottom" id="jEq-fr-Kb6"/>
@@ -294,10 +319,11 @@
                 <outlet property="moving_item" destination="vY4-MJ-boq" id="kaZ-hd-JdO"/>
                 <outlet property="payment_method_lbl" destination="Nkm-pv-2pN" id="laz-Da-PJA"/>
                 <outlet property="pick_up" destination="XfN-0c-OJD" id="rDY-vp-7km"/>
+                <outlet property="pickupTime" destination="OJV-Di-OCo" id="eSx-OP-wxR"/>
                 <outlet property="startJobBtn" destination="Wz2-sL-Jnj" id="P1m-3Z-1Wn"/>
                 <outlet property="widthBusiness" destination="Mho-MM-RxD" id="mgg-Sr-tjm"/>
             </connections>
-            <point key="canvasLocation" x="100" y="169.56521739130437"/>
+            <point key="canvasLocation" x="78" y="166"/>
         </tableViewCell>
     </objects>
     <designables>
@@ -311,6 +337,7 @@
     <resources>
         <image name="bookJobDelivery_date" width="28" height="29"/>
         <image name="businessJob_Lbl_new" width="145" height="145.5"/>
+        <image name="clockTime" width="44" height="44"/>
         <image name="dropOff_new" width="22" height="32.5"/>
         <image name="pickDropLine" width="4.5" height="61.5"/>
         <image name="pickUp_icon_new" width="22" height="33"/>

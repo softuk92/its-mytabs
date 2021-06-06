@@ -339,7 +339,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             return 326
         }
-        return 325
+        return 345
     }
     
     //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -398,7 +398,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         //setJobBookedFor Status
-        cell.setJobBookedForView(workingHours: jobsInProgressRow.working_hours)
+        cell.setJobBookedForView(workingHours: jobsInProgressRow.working_hours, category: jobsInProgressRow.add_type)
         
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
@@ -407,7 +407,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
         cell.date.text = convertDateFormatter(jobsInProgressRow.date)
-        
+        cell.pickupTime.text = jobsInProgressRow.timeslot?.uppercased()
         let payment_type = jobsInProgressRow.payment_type
         if  payment_type == "full" {
             cell.payment_method_lbl.text = "Account Job"

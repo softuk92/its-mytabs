@@ -54,6 +54,7 @@ extension JobPickupDropoffViewController {
         
         if pickupState == "0" { //does not arrive at pickup
             upperButtonView.isHidden = false
+            disclaimerView.isHidden = false
             sendPaymentLinkBtn.isHidden = true
             bottomButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = true
@@ -69,6 +70,7 @@ extension JobPickupDropoffViewController {
         } else { //if pickupState == "arrivedAtPickup"
             upperButtonView.isHidden = false
             sendPaymentLinkBtn.isHidden = true
+            disclaimerView.isHidden = false
             bottomButtonView.isHidden = false
             pickupArrivedBtn.isHidden = true
             dropoffArrivedBtn.isHidden = true
@@ -98,11 +100,13 @@ extension JobPickupDropoffViewController {
             pickupArrivedBtn.isHidden = true
             cashCollectedBtn.isHidden = true
             viewJobSummaryBtn.isHidden = true
+            disclaimerView.isHidden = false
             
             upperButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = false
             
         } else if status.d_cash_received == "0" {
+            disclaimerView.isHidden = false
             if input.addType == "Man & Van" || input.addType == "Man and Van" {
                 bottomButtonView.isHidden = true
                 uploadImagesBtn.isHidden = true
@@ -134,6 +138,7 @@ extension JobPickupDropoffViewController {
             }
         } else {// if dropoffState == "arrivedAtDropOff" and cash collected/send payment link {
             //show job complete
+            disclaimerView.isHidden = true
             upperButtonView.isHidden = true
             bottomButtonView.isHidden = false
             runningLateBtn.isHidden = true

@@ -43,7 +43,7 @@
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
 		4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249D126616B16005D1CFE /* JobSummaryModel.swift */; };
-		4E0249E72661AE17005D1CFE /* TimerCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249E62661AE17005D1CFE /* TimerCount.swift */; };
+		4E0249E72661AE17005D1CFE /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */; };
 		4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E060570265EE42100B70BFE /* UploadImagesViewController.swift */; };
 		4E09083B256AFD3600A6B2BB /* RouteBookedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E090839256AFD3600A6B2BB /* RouteBookedView.swift */; };
 		4E09083C256AFD3600A6B2BB /* RouteBookedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */; };
@@ -256,7 +256,7 @@
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		4E0249D126616B16005D1CFE /* JobSummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryModel.swift; sourceTree = "<group>"; };
-		4E0249E62661AE17005D1CFE /* TimerCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCount.swift; sourceTree = "<group>"; };
+		4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		4E060570265EE42100B70BFE /* UploadImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImagesViewController.swift; sourceTree = "<group>"; };
 		4E090839256AFD3600A6B2BB /* RouteBookedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBookedView.swift; sourceTree = "<group>"; };
 		4E09083A256AFD3600A6B2BB /* RouteBookedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteBookedView.xib; sourceTree = "<group>"; };
@@ -507,7 +507,7 @@
 				18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */,
 				18168641265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift */,
 				4E060570265EE42100B70BFE /* UploadImagesViewController.swift */,
-				4E0249E62661AE17005D1CFE /* TimerCount.swift */,
+				4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */,
 			);
 			path = "Job Detail Module";
 			sourceTree = "<group>";
@@ -1254,7 +1254,7 @@
 				4E9C534B2420C3DB00AFB8C8 /* Gif.swift in Sources */,
 				4E3F9148257D9B7500351B9A /* ConfirmDamageViewController.swift in Sources */,
 				8D4385EC22244D6000A3CE7F /* SideMenuController.swift in Sources */,
-				4E0249E72661AE17005D1CFE /* TimerCount.swift in Sources */,
+				4E0249E72661AE17005D1CFE /* DisclaimerViewController.swift in Sources */,
 				8DC526222226F4990033D6CA /* TransporterProfileFeedbackModel.swift in Sources */,
 				8D98C723222050E800420BFA /* SearchDeliveriesController.swift in Sources */,
 				4E69145A260BD87B00352CAF /* location_ViewController.swift in Sources */,
