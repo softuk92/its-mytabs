@@ -21,11 +21,13 @@ public func showAlert(title: String, message: String, viewController: UIViewCont
     viewController.present(alert, animated: true, completion: nil)
 }
 
-func showSuccessAlert(question: String, imageName: String = "popup_icon", viewController: UIViewController) {
+func showSuccessAlert(question: String, imageName: String = "popup_icon", closeButtonColor: UIColor = R.color.mehroonColor() ?? .blue, viewController: UIViewController) {
     let aView = AlertViewWithDescription(frame: CGRect(x: 0, y: 0, width: viewController.view.frame.width, height: viewController.view.frame.height))
     aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
     aView.imageView.image = UIImage(named: imageName)
+    aView.imageView.tintColor = R.color.mehroonColor()
     aView.question.text = question
+    aView.no.backgroundColor = closeButtonColor
     aView.noActCall = { (_) in
         aView.removeFromSuperview()
         viewController.navigationController?.popViewController(animated: true)

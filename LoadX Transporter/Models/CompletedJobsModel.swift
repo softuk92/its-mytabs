@@ -37,5 +37,5 @@ struct CompletedJobsModel: Decodable  {
     let do_house_no : String?
     let pu_house_no: String?
     let transporter_share: String
-    
+    let working_hours: String?
 }

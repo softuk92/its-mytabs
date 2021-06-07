@@ -28,7 +28,7 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var signature_Image: UIImageView!
     
     var jobId: String?
-        
+    var customerName: String?
     private var signature_imagePicked = 0
     private var imageData1 : Data?
     private var imageData2 : Data?
@@ -46,6 +46,9 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func setDisclaimerText() {
+        if let customerName = customerName {
+            receiverName.text = customerName
+        }
         disclaimerLabel.text = "Disclaimer \n\nWe are contracted to deliver your goods as entrusted to us as per our Standard Terms & Conditions. \n\nAny additional work, such as moving items in or around the property, disassembling/reassembling items or furniture, removing/refitting doors (for ease of access), \("squeezing") large items through narrows doors/corridors, etc is undertaken at your own risk, and we are under no obligation to carry out such work, upon your insistence, we have agreed to carry out this work, which is contrary to our Standard Terms & Conditions. \n\nAny damage caused to furniture, doors, walls or property under these circumstances is your sole responsibility and neither the Transporter nor LoadX can be held responsible for such damage."
     }
     
@@ -118,7 +121,15 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
                             SVProgressHUD.dismiss()
                             if result == "1" {
                       
-                            self.dismiss(animated: true, completion: nil)
+                                if let vc = UIStoryboard.init(name: "JobDetail", bundle: nil).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
+                                    vc.modalPresentationStyle = .fullScreen
+                                    vc.buttonText = "Back to Job"
+                                    vc.ensureText = "Disclaimer has been submitted."
+                                    self.navigationController?.present(vc, animated: true, completion: { [weak self] in
+                                        guard let self = self else { return }
+                                        
+                                    })
+                                }
                             } else {
                                 self.present(showAlert(title: "Error", message: message), animated: true, completion: nil)
                             }

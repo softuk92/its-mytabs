@@ -360,6 +360,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         if businessJobs == true {
             let completedJobsRow = completedJobsModelBusiness[indexPath.row]
+            cell.setJobBookedForView(workingHours: completedJobsRow.working_hours, category: completedJobsRow.add_type)
             let payment_type1 = completedJobsRow.payment_type
             let due_amount_status = completedJobsRow.due_amount_status
             if payment_type1 == "full" || payment_type1 == "Full" {
@@ -414,6 +415,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } else {
             
             let completedJobsRow = completedJobsModel[indexPath.row]
+            cell.setJobBookedForView(workingHours: completedJobsRow.working_hours, category: completedJobsRow.add_type)
             let payment_type = completedJobsRow.payment_type
             if payment_type != "" {
                     cell.payment_type_lbl.text = "Account Job"

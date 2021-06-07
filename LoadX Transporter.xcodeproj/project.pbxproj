@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800493E2555A2DC005EA70D /* Routes.storyboard */; };
 		18168642265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18168641265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift */; };
+		1819CB3D266E05CE00BDECC0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819CB3B266E05CE00BDECC0 /* AlertView.swift */; };
+		1819CB43266E06BF00BDECC0 /* AlertIfCashReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819CB41266E06BF00BDECC0 /* AlertIfCashReceived.swift */; };
+		1819CB44266E06BF00BDECC0 /* AlertIfCashReceived.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1819CB42266E06BF00BDECC0 /* AlertIfCashReceived.xib */; };
 		18244260254ADD80005901AC /* UpdateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824425F254ADD80005901AC /* UpdateAppViewController.swift */; };
 		182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B334225656B7700B8201A /* RouteStopDetail.swift */; };
 		1831A85525A462B9003F2206 /* ShowRouteInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */; };
@@ -32,6 +35,7 @@
 		18624EE1255AFC1F000E1954 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624EE0255AFC1F000E1954 /* Routes.swift */; };
 		18624EE5255AFE5D000E1954 /* GetAllRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624EE4255AFE5D000E1954 /* GetAllRoutes.swift */; };
 		18633DB6255044C5002913FC /* AppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18633DB5255044C5002913FC /* AppleButton.swift */; };
+		186B536A266E535F00B9FC6A /* JobSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B5369266E535F00B9FC6A /* JobSuccessController.swift */; };
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
@@ -57,7 +61,6 @@
 		4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E228E0E23F16F7E00A12947 /* Document_ViewController.swift */; };
 		4E275CEC241AAAE600D05A24 /* AppIntro_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E275CEB241AAAE600D05A24 /* AppIntro_ViewController.swift */; };
 		4E3780992579818E002B18C8 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3780982579818E002B18C8 /* AlertView.xib */; };
-		4E37809C257982B2002B18C8 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37809B257982B2002B18C8 /* AlertView.swift */; };
 		4E3BEDBF2564750700483100 /* RouteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */; };
 		4E3F9145257D949A00351B9A /* AlertViewWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F9144257D949A00351B9A /* AlertViewWithDescription.swift */; };
 		4E3F9148257D9B7500351B9A /* ConfirmDamageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F9147257D9B7500351B9A /* ConfirmDamageViewController.swift */; };
@@ -222,6 +225,9 @@
 		11671A8BD3F9DD7EA0DECA52 /* Pods-LoadX Transporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.release.xcconfig"; sourceTree = "<group>"; };
 		1800493E2555A2DC005EA70D /* Routes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		18168641265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailButtonsAlgorithm.swift; sourceTree = "<group>"; };
+		1819CB3B266E05CE00BDECC0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		1819CB41266E06BF00BDECC0 /* AlertIfCashReceived.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIfCashReceived.swift; sourceTree = "<group>"; };
+		1819CB42266E06BF00BDECC0 /* AlertIfCashReceived.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertIfCashReceived.xib; sourceTree = "<group>"; };
 		1824425F254ADD80005901AC /* UpdateAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppViewController.swift; sourceTree = "<group>"; };
 		182B334225656B7700B8201A /* RouteStopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopDetail.swift; sourceTree = "<group>"; };
 		1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteInvoiceViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 		18624EE0255AFC1F000E1954 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		18624EE4255AFE5D000E1954 /* GetAllRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllRoutes.swift; sourceTree = "<group>"; };
 		18633DB5255044C5002913FC /* AppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleButton.swift; sourceTree = "<group>"; };
+		186B5369266E535F00B9FC6A /* JobSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSuccessController.swift; sourceTree = "<group>"; };
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
@@ -271,7 +278,6 @@
 		4E228E0E23F16F7E00A12947 /* Document_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document_ViewController.swift; sourceTree = "<group>"; };
 		4E275CEB241AAAE600D05A24 /* AppIntro_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntro_ViewController.swift; sourceTree = "<group>"; };
 		4E3780982579818E002B18C8 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
-		4E37809B257982B2002B18C8 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		4E3BEDBE2564750700483100 /* RouteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsViewController.swift; sourceTree = "<group>"; };
 		4E3F9141257D932400351B9A /* AlertViewWithDescription.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewWithDescription.xib; sourceTree = "<group>"; };
 		4E3F9144257D949A00351B9A /* AlertViewWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewWithDescription.swift; sourceTree = "<group>"; };
@@ -508,6 +514,7 @@
 				18168641265E2E110015A2C7 /* JobDetailButtonsAlgorithm.swift */,
 				4E060570265EE42100B70BFE /* UploadImagesViewController.swift */,
 				4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */,
+				186B5369266E535F00B9FC6A /* JobSuccessController.swift */,
 			);
 			path = "Job Detail Module";
 			sourceTree = "<group>";
@@ -579,8 +586,10 @@
 		4E3780972579817A002B18C8 /* Custom Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				1819CB41266E06BF00BDECC0 /* AlertIfCashReceived.swift */,
+				1819CB42266E06BF00BDECC0 /* AlertIfCashReceived.xib */,
+				1819CB3B266E05CE00BDECC0 /* AlertView.swift */,
 				4E3780982579818E002B18C8 /* AlertView.xib */,
-				4E37809B257982B2002B18C8 /* AlertView.swift */,
 				4E3F9141257D932400351B9A /* AlertViewWithDescription.xib */,
 				4E3F9144257D949A00351B9A /* AlertViewWithDescription.swift */,
 				4E87C1DB266047CD007B6454 /* JobSummaryView.xib */,
@@ -1079,6 +1088,7 @@
 				184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */,
 				BBE9402F24709EF000DB58F3 /* splashScreenDark.gif in Resources */,
 				8D61D3CE221DA1EC00F215D4 /* GoogleService-Info.plist in Resources */,
+				1819CB44266E06BF00BDECC0 /* AlertIfCashReceived.xib in Resources */,
 				8D48C2192224420700417EF5 /* PaymentHistoryCell.xib in Resources */,
 				4E454B6323E48217009AFF47 /* Montserrat-Thin.ttf in Resources */,
 				8D98C72A222058CC00420BFA /* SearchDeliveriesCell.xib in Resources */,
@@ -1232,6 +1242,7 @@
 				8D4385E3222447A200A3CE7F /* BidJobDetailController.swift in Sources */,
 				4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */,
 				8D48C2122224419200417EF5 /* JobDetailController.swift in Sources */,
+				1819CB43266E06BF00BDECC0 /* AlertIfCashReceived.swift in Sources */,
 				8D270CF821FB3CFB0016D6DD /* LoginViewController.swift in Sources */,
 				4E55003C23E01FC80004A700 /* MainTabBarController.swift in Sources */,
 				8D48C20522242B8200417EF5 /* JobsInProgress.swift in Sources */,
@@ -1299,6 +1310,7 @@
 				18624EE1255AFC1F000E1954 /* Routes.swift in Sources */,
 				8D48C21B2224420700417EF5 /* PaymentHistoryController.swift in Sources */,
 				4E9A04B2263F3C5F0033A91D /* UIFont + Extensions.swift in Sources */,
+				186B536A266E535F00B9FC6A /* JobSuccessController.swift in Sources */,
 				4E09083B256AFD3600A6B2BB /* RouteBookedView.swift in Sources */,
 				8D48C1FF2224257C00417EF5 /* CompletedJobs.swift in Sources */,
 				8DD94F9B221316F7005EC61E /* PaymentHistoryModel.swift in Sources */,
@@ -1309,6 +1321,7 @@
 				8D4385E92224495200A3CE7F /* ActivityLogList.swift in Sources */,
 				4EB47DC3258D434B00DC0447 /* StopDetailsViewControllerExtension.swift in Sources */,
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
+				1819CB3D266E05CE00BDECC0 /* AlertView.swift in Sources */,
 				4EE97EA6263875DE009AE4A2 /* LogoViewDarkMode.swift in Sources */,
 				18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
@@ -1326,7 +1339,6 @@
 				4EC4B295257C29CE00A03986 /* RunningLateViewController.swift in Sources */,
 				BBED7FA324B50CBA00D65DC7 /* InventoryCell.swift in Sources */,
 				18633DB6255044C5002913FC /* AppleButton.swift in Sources */,
-				4E37809C257982B2002B18C8 /* AlertView.swift in Sources */,
 				4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */,
 				185139C32562DA7F0053098B /* UI Extensions.swift in Sources */,
 				18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */,

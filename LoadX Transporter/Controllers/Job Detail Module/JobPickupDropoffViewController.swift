@@ -27,6 +27,11 @@ enum PaymentType {
     case Cash
 }
 
+enum MovingTo {
+    case pickup
+    case dropoff
+}
+
 class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     static var sceneStoryboard: UIStoryboard = UIStoryboard(name: "JobDetail", bundle: nil)
     
@@ -189,17 +194,17 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             } else {
 //                self.jobBookedForStackView.isHidden = true
             }
-            self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1])
+            self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1], movingTo: (self.input.jobStatus.p_leaving_f_dropoff == "0") ? .pickup : .dropoff)
             SVProgressHUD.dismiss()
         })
     }
     
     @IBAction func pickupArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at pickup stop?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
+        showAlertView(question: "Have you arrived at pickup?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
     }
     
     @IBAction func dropoffArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at dropoff stop?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
+        showAlertView(question: "Have you arrived at dropoff?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
     }
     
     @IBAction func runningLateAct(_ sender: Any) {
@@ -207,11 +212,11 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func uploadImagesAct(_ sender: Any) {
-        showAlertView(question: "Please ensure you have informed the customer and upload images of the damage report before completing stop.", ensure: "", paymentLinkHeight: 0, status: .UploadImages)
+        showAlertView(question: "Upload Image", ensure: "Please upload images according to the need or requirements.", paymentLinkHeight: 0, status: .UploadImages)
     }
     
     @IBAction func leavingForDropoffAct(_ sender: Any) {
-        showAlertView(question: "Are you leaving for drop off location?", ensure: "", paymentLinkHeight: 0, status: .LeavingForDropoff)
+        showAlertView(question: "Has this pickup been completed?", ensure: "", paymentLinkHeight: 0, status: .LeavingForDropoff)
     }
     
     @IBAction func jobCompletedAct(_ sender: Any) {
@@ -219,7 +224,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func cashCollectedAct(_ sender: Any) {
-        showAlertView(question: "Have you collected cash?", ensure: "Please note: The customer may pay on drop off, you can always send a payment link if the customer wants to pay via card.", paymentLinkHeight: 35, status: .cashCollected)
+        showCashReceivedAlert()
     }
     
     @IBAction func viewJobSummaryAct(_ sender: Any) {
@@ -238,6 +243,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "DisclaimerViewController") as? DisclaimerViewController {
                 vc.modalPresentationStyle = .fullScreen
                 vc.jobId = input.delId
+                vc.customerName = input.customerName.capitalized
                 self.navigationController?.present(vc, animated: true, completion: nil)
             }
     }
@@ -361,9 +367,19 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         }
 }
 
+extension JobPickupDropoffViewController: JobDetailSetupDelegate {
+    func setView() {
+        input.jobStatus.is_img_uploaded = "1"
+        setJobStatus()
+    }
+    
+}
+
 extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func getData(jsonData: JSON, jsonData_inventory: JSON) {
+    //tableview data
+    func getData(jsonData: JSON, jsonData_inventory: JSON, movingTo: MovingTo = .pickup) {
+        routeSummaryDetails.removeAll()
         var info = [MenuItemStruct]()
         let customData = jsonData_inventory.dictionary ?? [:]
         let inventoryList = customData.map({ (key, value) -> MenuItemStruct in
@@ -404,17 +420,14 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let workingHours = jsonData[0]["working_hours"].stringValue
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
         
-//        info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         info.append(MenuItemStruct.init(title: "Category", value: category))
         
-//        if isJobNotBooked != true {
         if pickupHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
         }
         if dropoffHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
         }
-//        }
         
         if movingFrom_lbl != "" {
         info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
@@ -442,9 +455,6 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         }
         
         info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
-        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time.uppercased()))
-//        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
-        timeEta.text = pickUp_time.uppercased()
         
         if category == "Dedicated Van" || category == "Man & Van" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
@@ -465,7 +475,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
                 info.append(MenuItemStruct.init(title: "Vehicle Operational", value: (vehicleOperational == "0") ? "No" : "Yes"))
             }
         } else {
-            info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
+            info.append(MenuItemStruct.init(title: "Number of Helpers", value: no_of_hepler))
         }
         
         if category == "Man & Van", workingHours != "" && workingHours != "N/A" {
@@ -488,6 +498,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
             info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
         }
         self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
+        timeEta.text = pickUp_time.uppercased()
         additionalDetailsTableView.reloadData()
     }
     

@@ -33,6 +33,8 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var receivedAmount: UILabel!
      @IBOutlet weak var user_Icon_img: UIImageView!*/
     @IBOutlet weak var delete_btn: UIButton!
+    @IBOutlet weak var jobBookedFor: UILabel!
+    @IBOutlet weak var jobBookedForView: UIStackView!
     
     var deleteRow: ((CompletedJobsCell) -> Void)?
     var transporterProfileRow: ((CompletedJobsCell) -> Void)?
@@ -46,10 +48,18 @@ class CompletedJobsCell: UITableViewCell {
 //        self.cellBackground_view.dropShadow(color: .black, offSet: CGSize(width: -1, height: 1))
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    func setJobBookedForView(workingHours: String?, category: String) {
+        if category == "Man & Van" || category == "Man and Van" {
+        if let workingHours = workingHours, workingHours != "" && workingHours != "N/A" {
+            jobBookedForView.isHidden = false
+            jobBookedFor.text = workingHours + " Hours"
+        } else {
+            jobBookedForView.isHidden = true
+        }
+        } else {
+            jobBookedForView.isHidden = true
+        }
     }
     
     @objc func viewDetails(sender: UITapGestureRecognizer) {

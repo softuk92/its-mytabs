@@ -12,6 +12,10 @@ import KMPlaceholderTextView
 import YPImagePicker
 import SVProgressHUD
 
+protocol JobDetailSetupDelegate: class {
+    func setView()
+}
+
 class UploadImagesViewController: UIViewController {
     
     @IBOutlet weak var selectImages: UIButton!
@@ -29,6 +33,9 @@ class UploadImagesViewController: UIViewController {
     private var images = [UIImage]()
     var delId : String?
     var imageUploadedCallBack : ((UploadImagesViewController) -> Void)?
+    var parentVC : JobPickupDropoffViewController?
+    
+    var customerName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +52,9 @@ class UploadImagesViewController: UIViewController {
     }
     
     func configureUI() {
+        if let customerName = customerName {
+            receiversName.text = customerName
+        }
         submit.isEnabled = false
         desc.layer.cornerRadius = 5
         desc.layer.borderWidth = 0.1
@@ -116,13 +126,15 @@ class UploadImagesViewController: UIViewController {
             }
             if progress != nil {
                 SVProgressHUD.dismiss()
-                self.dismiss(animated: true, completion: { [weak self] in
-                    guard let self = self else { return }
-                    self.imageUploadedCallBack?(self)
-                })
-                
-//                self.navigationController?.popViewController(animated: true)
-//                showSuccessAlert(question: "Uploaded Images Successfully", imageName: "success", viewController: self)
+                if let vc = UIStoryboard.init(name: "JobDetail", bundle: .main).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.buttonText = "Back to Job"
+                    vc.ensureText = "Images Submitted Successfully."
+                    vc.delegate = self.parentVC
+                    self.dismiss(animated: true) { [weak self] in
+                        self?.parentVC?.present(vc, animated: true, completion: nil)
+                    }
+                }
             }
             
         }

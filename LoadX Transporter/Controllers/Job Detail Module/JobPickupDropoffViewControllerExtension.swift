@@ -133,6 +133,7 @@ extension JobPickupDropoffViewController {
                 self.setJobStatus()
                 self.timer.invalidate()
                 UserDefaults.standard.removeObject(forKey: self.input.delId)
+                showSuccessAlert(question: "Cash collected successfully.", closeButtonColor: R.color.newBlueColor() ?? .blue, viewController: self)
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }
@@ -164,6 +165,8 @@ extension JobPickupDropoffViewController {
         if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "UploadImagesViewController") as? UploadImagesViewController {
             vc.modalPresentationStyle = .fullScreen
             vc.delId = input.delId
+            vc.customerName = input.customerName.capitalized
+            vc.parentVC = self
             vc.imageUploadedCallBack = {[weak self] (_) in
                 self?.input.jobStatus.is_img_uploaded = "1"
                 self?.setJobStatus()
@@ -174,14 +177,35 @@ extension JobPickupDropoffViewController {
     
     func goToJobCompletedScene() {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
-            let year = Calendar.current.component(.year, from: Date())
-            
             vc.contact_no = input.customerNumber
-            vc.ref_no = "LOADX"+String(year)+"J"+input.delId
-            vc.contactName = input.customerName
+            vc.ref_no = "LX00"+input.delId
+            vc.contactName = input.customerName.capitalized
             vc.jobId = input.jbId
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func showCashReceivedAlert() {
+        let aView = AlertIfCashReceived(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        
+        aView.sendPaymentLinkCall = { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            self.sendPaymentLink()
+        }
+        
+        aView.cashReceivedCall = { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            self.CashReceivedOfJob()
+        }
+        
+        aView.closeCall = { (_) in
+            aView.removeFromSuperview()
+        }
+        
+        self.view.addSubview(aView)
     }
     
 }

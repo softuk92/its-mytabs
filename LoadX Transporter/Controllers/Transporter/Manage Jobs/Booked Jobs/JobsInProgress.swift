@@ -481,7 +481,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func showStartJobAlertView(delId: String, indexPath: IndexPath) {
  
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.question.text = "Start job?"
+        aView.question.text = "Are you sure you want to start this job?"
         aView.ensure.text = ""
         aView.sendPaymentLinkHeight.constant = 0
         aView.sendPaymentLink.isHidden = true

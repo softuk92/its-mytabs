@@ -26,23 +26,25 @@ extension JobPickupDropoffViewController {
     }
     
     private func configureJobActions() {
+        
+        //hide job booked for if the job is of Man and Van
+        if input.addType == "Man & Van" || input.addType == "Man and Van" {
+        jobBookedForStackView.isHidden = false
+        } else {
+            jobBookedForStackView.isHidden = true
+        }
+        
         //pick, dropoff
         let deliveryState = input.jobStatus.p_leaving_f_dropoff
         if deliveryState == "0" {
             PickupOrDropOff.text = "Pickup"
             address.text = input.pickupAddress
             cashToBeCollectedView.isHidden = true
-            if input.addType == "Man & Van" || input.addType == "Man and Van" {
-            jobBookedForStackView.isHidden = false
-            } else {
-                jobBookedForStackView.isHidden = true
-            }
             configurePickupActions()
         } else {
             PickupOrDropOff.text = "Dropoff"
             address.text = input.dropoffAddress
             cashToBeCollectedView.isHidden = false
-            jobBookedForStackView.isHidden = true
             configureDropOffActions()
         }
     }
@@ -69,9 +71,9 @@ extension JobPickupDropoffViewController {
             runningLateBtn.isHidden = !(status.p_running_late == "0" || status.p_running_late == "")
         } else { //if pickupState == "arrivedAtPickup"
             upperButtonView.isHidden = false
+            bottomButtonView.isHidden = false
             sendPaymentLinkBtn.isHidden = true
             disclaimerView.isHidden = false
-            bottomButtonView.isHidden = false
             pickupArrivedBtn.isHidden = true
             dropoffArrivedBtn.isHidden = true
             runningLateBtn.isHidden = true
@@ -81,7 +83,7 @@ extension JobPickupDropoffViewController {
             
             //show upload image
             uploadImagesBtn.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
-            upperButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
+            bottomButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
             //show leaving for drop off
             leavingForDropoffBtn.isHidden = false
         }
