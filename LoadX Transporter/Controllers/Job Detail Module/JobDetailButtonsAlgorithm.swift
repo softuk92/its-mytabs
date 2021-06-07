@@ -65,6 +65,7 @@ extension JobPickupDropoffViewController {
             leavingForDropoffBtn.isHidden = true
             viewJobSummaryBtn.isHidden = true
             pickupArrivedBtn.isHidden = false
+            disclaimerView.isHidden = true
             
             //show running late if running late is false
             bottomButtonView.isHidden = !(status.p_running_late == "0" || status.p_running_late == "")
@@ -73,7 +74,6 @@ extension JobPickupDropoffViewController {
             upperButtonView.isHidden = false
             bottomButtonView.isHidden = false
             sendPaymentLinkBtn.isHidden = true
-            disclaimerView.isHidden = false
             pickupArrivedBtn.isHidden = true
             dropoffArrivedBtn.isHidden = true
             runningLateBtn.isHidden = true
@@ -86,6 +86,7 @@ extension JobPickupDropoffViewController {
             bottomButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
             //show leaving for drop off
             leavingForDropoffBtn.isHidden = false
+            disclaimerView.isHidden = false
         }
     }
     
@@ -102,7 +103,7 @@ extension JobPickupDropoffViewController {
             pickupArrivedBtn.isHidden = true
             cashCollectedBtn.isHidden = true
             viewJobSummaryBtn.isHidden = true
-            disclaimerView.isHidden = false
+            disclaimerView.isHidden = true
             
             upperButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = false

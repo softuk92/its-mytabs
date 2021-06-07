@@ -17,6 +17,7 @@ class JobSuccessController: UIViewController {
     
     var ensureText: String?
     var buttonText: String?
+    var isFromImagesVC: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,10 @@ class JobSuccessController: UIViewController {
     
     @IBAction func okayAct(_ sender: Any) {
         self.dismiss(animated: true) { [weak self] in
-            self?.delegate?.setView()
+            guard let self = self else { return }
+            if self.isFromImagesVC {
+            self.delegate?.setView()
+            } 
         }
     }
 

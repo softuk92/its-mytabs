@@ -113,6 +113,11 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         if input.jobStatus.arrival_at_pickup == "1" {
             setTimer()
         }
+        
+        if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
+            disclaimerView.isHidden = true
+        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

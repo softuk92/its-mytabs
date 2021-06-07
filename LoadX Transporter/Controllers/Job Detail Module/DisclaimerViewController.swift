@@ -32,6 +32,8 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
     private var signature_imagePicked = 0
     private var imageData1 : Data?
     private var imageData2 : Data?
+    var parentVC: JobPickupDropoffViewController?
+    var isPickup: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,15 +122,21 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
                             let message = jsonData[0]["message"].stringValue
                             SVProgressHUD.dismiss()
                             if result == "1" {
-                      
+                                
+                                if self.isPickup {
+                                UserDefaults.standard.setValue(true, forKey: self.jobId!+"pickup")
+                                } else {
+                                UserDefaults.standard.setValue(true, forKey: self.jobId!+"dropoff")
+                                }
+                                
                                 if let vc = UIStoryboard.init(name: "JobDetail", bundle: nil).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
                                     vc.modalPresentationStyle = .fullScreen
-                                    vc.buttonText = "Back to Job"
+                                    vc.buttonText = "Okay"
                                     vc.ensureText = "Disclaimer has been submitted."
-                                    self.navigationController?.present(vc, animated: true, completion: { [weak self] in
+                                    self.dismiss(animated: true) { [weak self] in
                                         guard let self = self else { return }
-                                        
-                                    })
+                                        self.parentVC?.present(vc, animated: true, completion: nil)
+                                    }
                                 }
                             } else {
                                 self.present(showAlert(title: "Error", message: message), animated: true, completion: nil)
