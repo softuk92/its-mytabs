@@ -211,6 +211,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             } else {
                 self.jobBookedForStackView.isHidden = true
             }
+            } else {
+                self.jobBookedForStackView.isHidden = true
             }
             self.jsonData = jsonData
             self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1], movingTo: (self.input.jobStatus.p_leaving_f_dropoff == "0") ? .pickup : .dropoff)
