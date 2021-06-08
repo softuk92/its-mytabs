@@ -44,6 +44,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var jobBookedForStackView: UIStackView!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var additionalDetailsTableView: UITableView!
+    @IBOutlet weak var descriptionInventoryTableView: UITableView!
     @IBOutlet weak var jobDescriptionTextView: UITextView!
     @IBOutlet weak var pickupArrivedBtn: UIButton!
     @IBOutlet weak var dropoffArrivedBtn: UIButton!
@@ -70,6 +71,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var additionalDetailsBtn: UIButton!
     @IBOutlet weak var jobDescriptionBtn: UIButton!
     @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var locationImage: UIImageView!
     
     struct Input {
         let pickupAddress: String
@@ -87,8 +89,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     var input: Input!
     private var disposeBag = DisposeBag()
     var jobSummaryMO: JobSummaryModel?
-    
+    var jsonData: JSON?
     var routeSummaryDetails = [RouteSummaryDetails]()
+    var descriptionInventoryDetails = [RouteSummaryDetails]()
     var items: [MenuItemStruct] = []
     var jobDescription: String? {
         didSet {
@@ -146,6 +149,11 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         additionalDetailsTableView.delegate = self
         additionalDetailsTableView.dataSource = self
         additionalDetailsTableView.register(cellType: JobSummaryCell.self)
+        additionalDetailsTableView.tableFooterView = UIView()
+        descriptionInventoryTableView.delegate = self
+        descriptionInventoryTableView.dataSource = self
+        descriptionInventoryTableView.register(cellType: JobSummaryCell.self)
+        descriptionInventoryTableView.tableFooterView = UIView()
     }
     
     func setConstraints(leadingAdditionalDetails: Bool, trailingAdditionalDetails: Bool, leadingJobDescription: Bool, trailingJobDescription: Bool) {
@@ -161,12 +169,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         additionalDetailsBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.setConstraints(leadingAdditionalDetails: true, trailingAdditionalDetails: true, leadingJobDescription: false, trailingJobDescription: false)
             self?.additionalDetailsTableView.isHidden = false
+            self?.descriptionInventoryTableView.isHidden = true
             self?.jobDescriptionTextView.isHidden = true
         }).disposed(by: disposeBag)
         
         jobDescriptionBtn.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.setConstraints(leadingAdditionalDetails: false, trailingAdditionalDetails: false, leadingJobDescription: true, trailingJobDescription: true)
             self?.additionalDetailsTableView.isHidden = true
+            self?.descriptionInventoryTableView.isHidden = false
             self?.jobDescriptionTextView.isHidden = false
         }).disposed(by: disposeBag)
     }
@@ -193,12 +203,16 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             self.jobId.text = "LX00"+(jsonData[0]["del_id"].stringValue)
             let workingHours = jsonData[0]["working_hours"].stringValue
             
-            if workingHours != "" && workingHours != "N/A" {
-//                self.jobBookedForStackView.isHidden = false
+            //hide job booked for if the job is of Man and Van
+            if self.input.addType == "Man & Van" || self.input.addType == "Man and Van" {
+            if workingHours != "0" && workingHours != "" && workingHours != "N/A" {
+                self.jobBookedForStackView.isHidden = false
                 self.jobBookedFor.text = workingHours + " Hours"
             } else {
-//                self.jobBookedForStackView.isHidden = true
+                self.jobBookedForStackView.isHidden = true
             }
+            }
+            self.jsonData = jsonData
             self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1], movingTo: (self.input.jobStatus.p_leaving_f_dropoff == "0") ? .pickup : .dropoff)
             SVProgressHUD.dismiss()
         })
@@ -249,6 +263,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
                 vc.modalPresentationStyle = .fullScreen
                 vc.jobId = input.delId
                 vc.customerName = input.customerName.capitalized
+                vc.parentVC = self
+                vc.isPickup = PickupOrDropOff.text == "Pickup"
                 self.navigationController?.present(vc, animated: true, completion: nil)
             }
     }
@@ -372,9 +388,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         }
 }
 
-extension JobPickupDropoffViewController: JobDetailSetupDelegate {
+extension JobPickupDropoffViewController: JobDetailSetupDelegate, RunningLateDelegate {
     func setView() {
         input.jobStatus.is_img_uploaded = "1"
+        setJobStatus()
+    }
+    
+    func driverRunningLate() {
+        input.jobStatus.p_running_late = "1"
         setJobStatus()
     }
     
@@ -385,6 +406,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
     //tableview data
     func getData(jsonData: JSON, jsonData_inventory: JSON, movingTo: MovingTo = .pickup) {
         routeSummaryDetails.removeAll()
+        descriptionInventoryDetails.removeAll()
         var info = [MenuItemStruct]()
         let customData = jsonData_inventory.dictionary ?? [:]
         let inventoryList = customData.map({ (key, value) -> MenuItemStruct in
@@ -394,15 +416,21 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let desc = jsonData[0]["description"].stringValue
         if desc != "" {
             jobDescription = desc
-//            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Description", detail: [MenuItemStruct.init(title: desc, value: "")]))
+            descriptionInventoryDetails.append(RouteSummaryDetails.init(title: "Description:", detail: [MenuItemStruct.init(title: desc, value: "")]))
+        } else {
+            descriptionInventoryDetails.append(RouteSummaryDetails.init(title: "Description:", detail: [MenuItemStruct.init(title: "N/A", value: "")]))
         }
         
+//        var inventoryList = [MenuItemStruct]()
+//        inventoryList.append(MenuItemStruct.init(title: "Hello", value: "1"))
+//        inventoryList.append(MenuItemStruct.init(title: "Hello", value: "2"))
+//        inventoryList.append(MenuItemStruct.init(title: "Hello", value: "3"))
         if inventoryList.count > 0 {
-            self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Inventory List", detail: inventoryList))
+            descriptionInventoryDetails.append(RouteSummaryDetails.init(title: "Inventory List:", detail: inventoryList))
         }
         
         let category = jsonData[0]["add_type"].stringValue
-        let jobID = "LX00"+jsonData[0]["del_id"].stringValue
+
         let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
         let pickUp_time = jsonData[0]["timeslot"].stringValue
 //        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
@@ -428,38 +456,56 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         info.append(MenuItemStruct.init(title: "Category", value: category))
         
         if pickupHouseNo != "" {
+            if movingTo == .pickup {
             info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
+            }
         }
         if dropoffHouseNo != "" {
+            if movingTo == .dropoff {
             info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
+            }
         }
         
         if movingFrom_lbl != "" {
+            if movingTo == .pickup {
         info.append(MenuItemStruct.init(title: "Moving From", value: movingFrom_lbl))
+            }
         }
         if movingTo_lbl != "" {
+            if movingTo == .dropoff {
         info.append(MenuItemStruct.init(title: "Moving To", value: movingTo_lbl))
+            }
         }
         
         if category == "Furniture and General Items" || category == "Furniture & General Items" {
             if pickupLift != "" && movingFrom_lbl.lowercased() != "ground floor" {
+                if movingTo == .pickup {
                 info.append(MenuItemStruct.init(title: "Lift at Pick Up", value: (pickupLift == "0") ? "No" : "Yes"))
+                }
             }
             if dropoffLift != "" && movingTo_lbl.lowercased() != "ground floor" {
+                if movingTo == .dropoff {
                 info.append(MenuItemStruct.init(title: "Lift at Drop Off", value: (dropoffLift == "0") ? "No" : "Yes"))
+                }
             }
         }
         
         if category == "Moving Home" || category == "House Move" {
             if pickupPropertyType != "" {
+                if movingTo == .pickup {
                 info.append(MenuItemStruct.init(title: "Pickup Property Type", value: pickupPropertyType))
+                }
             }
             if dropoffPropertyType != "" {
+                if movingTo == .dropoff {
                 info.append(MenuItemStruct.init(title: "Dropoff Property Type", value: dropoffPropertyType))
+                }
             }
         }
         
+        if movingTo == .pickup {
         info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
+        }
         
         if category == "Dedicated Van" || category == "Man & Van" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
@@ -505,48 +551,83 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
         timeEta.text = pickUp_time.uppercased()
         additionalDetailsTableView.reloadData()
+        descriptionInventoryTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
-        let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.additionalDetailsTableView.bounds.width, height: 50))
-        headerView.title.text = self.routeSummaryDetails[section].title
+        if tableView == additionalDetailsTableView {
+        let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: additionalDetailsTableView.bounds.width, height: 50))
+        headerView.title.text = routeSummaryDetails[section].title
         return headerView
+        } else {
+            let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: descriptionInventoryTableView.bounds.width, height: 50))
+            headerView.title.text = descriptionInventoryDetails[section].title
+            return headerView
+        }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-            if routeSummaryDetails.count > 1 {
-        return 50
+        if tableView == additionalDetailsTableView {
+            return 0
+        } else {
+            if descriptionInventoryDetails.count > 1 {
+                if section == 0 {
+                    return 0
+                } else if section == 1 {
+                     return 50
+                    }
             } else {
                 return 0
             }
+        }
+            return 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.routeSummaryDetails.count
+        if tableView == additionalDetailsTableView {
+        return routeSummaryDetails.count
+        } else {
+        return descriptionInventoryDetails.count
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.routeSummaryDetails[section].detail.count
-
+        if tableView == additionalDetailsTableView {
+            return routeSummaryDetails[section].detail.count
+        } else {
+            return descriptionInventoryDetails[section].detail.count
+        }
   }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == additionalDetailsTableView {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
         cell.backgroundColor = nil
-        if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value == "" {
-            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
-            cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
-            cell.detail.isHidden = true
-        } else {
-            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
-            cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+       
+            cell.title.text = routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = routeSummaryDetails[indexPath.section].detail[indexPath.row].value
             cell.detail.isHidden = false
-        }
-        return cell
         
+        return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            if descriptionInventoryDetails[indexPath.section].detail[indexPath.row].value == "" {
+                cell.title.text = descriptionInventoryDetails[indexPath.section].detail[indexPath.row].title
+                cell.title.font = UIFont(name: "Montserrat-Light", size: 14)
+                cell.detail.isHidden = true
+            } else {
+                cell.title.text = descriptionInventoryDetails[indexPath.section].detail[indexPath.row].title
+                cell.detail.text = descriptionInventoryDetails[indexPath.section].detail[indexPath.row].value
+                cell.detail.isHidden = false
+            }
+            return cell
+        }
     }
 
 }

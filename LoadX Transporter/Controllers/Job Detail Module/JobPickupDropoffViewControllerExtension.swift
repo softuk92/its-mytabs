@@ -15,6 +15,7 @@ extension JobPickupDropoffViewController {
     func goToRunningLateScene() {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RunningLateViewController") as? RunningLateViewController {
             vc.delId = input.delId
+            vc.parentVC = self
             vc.runningLateSuccess = {[weak self] (isSuccess) in
                 self?.input.jobStatus.p_running_late = "1"
                 self?.setJobStatus()

@@ -27,13 +27,6 @@ extension JobPickupDropoffViewController {
     
     private func configureJobActions() {
         
-        //hide job booked for if the job is of Man and Van
-        if input.addType == "Man & Van" || input.addType == "Man and Van" {
-        jobBookedForStackView.isHidden = false
-        } else {
-            jobBookedForStackView.isHidden = true
-        }
-        
         //pick, dropoff
         let deliveryState = input.jobStatus.p_leaving_f_dropoff
         if deliveryState == "0" {
@@ -41,11 +34,20 @@ extension JobPickupDropoffViewController {
             address.text = input.pickupAddress
             cashToBeCollectedView.isHidden = true
             configurePickupActions()
+            if let json = jsonData {
+                getData(jsonData: json, jsonData_inventory: json[1], movingTo: .pickup)
+            }
+            locationImage.image = R.image.pickUp_icon_new()
+            locationImage.tintColor = R.color.mehroonColor()
         } else {
             PickupOrDropOff.text = "Dropoff"
             address.text = input.dropoffAddress
             cashToBeCollectedView.isHidden = false
             configureDropOffActions()
+            if let json = jsonData {
+                getData(jsonData: json, jsonData_inventory: json[1], movingTo: .dropoff)
+            }
+            locationImage.image = R.image.dropOff_new()
         }
     }
     
@@ -86,7 +88,11 @@ extension JobPickupDropoffViewController {
             bottomButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
             //show leaving for drop off
             leavingForDropoffBtn.isHidden = false
+            if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
+                disclaimerView.isHidden = true
+            } else {
             disclaimerView.isHidden = false
+            }
         }
     }
     
@@ -103,13 +109,18 @@ extension JobPickupDropoffViewController {
             pickupArrivedBtn.isHidden = true
             cashCollectedBtn.isHidden = true
             viewJobSummaryBtn.isHidden = true
+            leavingForDropoffBtn.isHidden = true
             disclaimerView.isHidden = true
             
             upperButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = false
             
         } else if status.d_cash_received == "0" {
+            if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
+                disclaimerView.isHidden = true
+            } else {
             disclaimerView.isHidden = false
+            }
             if input.addType == "Man & Van" || input.addType == "Man and Van" {
                 bottomButtonView.isHidden = true
                 uploadImagesBtn.isHidden = true
@@ -119,6 +130,7 @@ extension JobPickupDropoffViewController {
                 upperButtonView.isHidden = false
                 cashCollectedBtn.isHidden = true
                 sendPaymentLinkBtn.isHidden = true
+                leavingForDropoffBtn.isHidden = true
                 
                 viewJobSummaryBtn.isHidden = false
                 
@@ -129,6 +141,7 @@ extension JobPickupDropoffViewController {
                 pickupArrivedBtn.isHidden = true
                 dropoffArrivedBtn.isHidden = true
                 viewJobSummaryBtn.isHidden = true
+                leavingForDropoffBtn.isHidden = true
                 upperButtonView.isHidden = false
                 
                 if input.paymentType == .Account {
@@ -143,6 +156,7 @@ extension JobPickupDropoffViewController {
             //show job complete
             disclaimerView.isHidden = true
             upperButtonView.isHidden = true
+            uploadImagesBtn.isHidden = true
             bottomButtonView.isHidden = false
             runningLateBtn.isHidden = true
             leavingForDropoffBtn.isHidden = true

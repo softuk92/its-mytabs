@@ -700,8 +700,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
         }
         
-        if searchDeliveriesRow.moving_item == "Man and Van" {
-        if let workingHours = searchDeliveriesRow.working_hours, workingHours != "" {
+        if searchDeliveriesRow.moving_item == "Man and Van" || searchDeliveriesRow.moving_item == "Man & Van" {
+        if let workingHours = searchDeliveriesRow.working_hours, workingHours != "", workingHours != "0" {
             cell.hoursRequired.isHidden = false
             cell.hoursRequired.text = "Working Hours Required: \(workingHours)"
         } else {

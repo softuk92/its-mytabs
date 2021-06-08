@@ -30,7 +30,7 @@ func showSuccessAlert(question: String, imageName: String = "popup_icon", closeB
     aView.no.backgroundColor = closeButtonColor
     aView.noActCall = { (_) in
         aView.removeFromSuperview()
-        viewController.navigationController?.popViewController(animated: true)
+//        viewController.navigationController?.popViewController(animated: true)
     }
     viewController.view.addSubview(aView)
 }

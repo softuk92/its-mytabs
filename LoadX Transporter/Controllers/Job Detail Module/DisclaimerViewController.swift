@@ -128,7 +128,6 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
                                 } else {
                                 UserDefaults.standard.setValue(true, forKey: self.jobId!+"dropoff")
                                 }
-                                
                                 if let vc = UIStoryboard.init(name: "JobDetail", bundle: nil).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
                                     vc.modalPresentationStyle = .fullScreen
                                     vc.buttonText = "Okay"

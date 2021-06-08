@@ -8,16 +8,22 @@
 
 import UIKit
 
+protocol RunningLateDelegate: class {
+    func driverRunningLate()
+}
+
 class JobSuccessController: UIViewController {
 
     @IBOutlet weak var ensure: UILabel!
     @IBOutlet weak var okayBtn: UIButton!
     
     weak var delegate: JobDetailSetupDelegate?
+    weak var runninglateDelegate: RunningLateDelegate?
     
     var ensureText: String?
     var buttonText: String?
     var isFromImagesVC: Bool = true
+    var forRunningLate: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +42,10 @@ class JobSuccessController: UIViewController {
             guard let self = self else { return }
             if self.isFromImagesVC {
             self.delegate?.setView()
-            } 
+            }
+            if self.forRunningLate {
+            self.runninglateDelegate?.driverRunningLate()
+            }
         }
     }
 

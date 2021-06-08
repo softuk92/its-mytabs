@@ -29,6 +29,7 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
     var indexPath: IndexPath?
     
     var runningLateSuccess: ((Bool) -> Void)?
+    var parentVC : JobPickupDropoffViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,14 +94,16 @@ class RunningLateViewController: UIViewController, UITableViewDelegate, UITableV
             }
             print("transporter late running json \(String(describing: json))")
             
-            
-            self?.dismiss(animated: true, completion: { [weak self] in
-                self?.runningLateSuccess?(true)
-            })
-//            if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LateTimeSubmitted") as? SuccessController {
-//                self?.runningLateSuccess?(true)
-//                self?.navigationController?.pushViewController(vc, animated: true)
-//            }
+            if let vc = UIStoryboard.init(name: "JobDetail", bundle: .main).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
+                vc.modalPresentationStyle = .fullScreen
+                vc.buttonText = "Back to Job"
+                vc.ensureText = "Late time submitted successfully."
+                vc.runninglateDelegate = self?.parentVC
+                vc.forRunningLate = true
+                self?.dismiss(animated: true) { [weak self] in
+                    self?.parentVC?.present(vc, animated: true, completion: nil)
+                }
+            }
             
         }
     }

@@ -32,6 +32,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var dropoffAdd: UILabel!
     @IBOutlet weak var received_amount: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
+    @IBOutlet weak var jobDescription: UILabel!
     
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
        
@@ -264,14 +265,14 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         let transporterShare = jsonData[0]["transporter_share"].stringValue
                         if transporterShare != "0" {
                             let str = Double(transporterShare) ?? 0.0
-//                            self.current_bid.text = "£ "+String(format: "%.2f", str)
-//                            self.received_amount.text = "£ "+String(format: "%.2f", str)
+                            self.totalPrice.text = "£ "+String(format: "%.2f", str)
+                            self.received_amount.text = "£ "+String(format: "%.2f", str)
                         } else {
                             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-                            let  doubleValue = Double(x)
+                            let doubleValue = Double(x)
                             let finalPrice = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
-//                            self.current_bid.text = finalPrice
-//                            self.received_amount.text = finalPrice
+                            self.totalPrice.text = finalPrice
+                            self.received_amount.text = finalPrice
                         }
                 
                         if let totalPrice = Double(jsonData[0]["total_price"].stringValue) {
@@ -279,6 +280,11 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                             self.totalPrice.text = "£ "+String(format: "%.2f", totalPrice)
                         }
                         
+                        let jobDescription = jsonData[0]["description"].stringValue
+                        
+                        if jobDescription != "" {
+                        self.jobDescription.text = jobDescription
+                        }
                         let date = jsonData[0]["pay_date"].stringValue
                         let stringDate = String(date.prefix(10))
                         

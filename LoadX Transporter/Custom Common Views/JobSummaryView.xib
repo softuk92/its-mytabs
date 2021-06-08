@@ -185,7 +185,7 @@
                                     <rect key="frame" x="0.0" y="45" width="268" height="35"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omz-69-vk6">
-                                            <rect key="frame" x="75" y="0.0" width="118" height="35"/>
+                                            <rect key="frame" x="90" y="0.0" width="88" height="35"/>
                                             <color key="backgroundColor" systemColor="systemRedColor"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                             <state key="normal" title="Close">
@@ -199,10 +199,10 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="omz-69-vk6" secondAttribute="trailing" constant="75" id="82E-xR-fGO"/>
+                                        <constraint firstAttribute="trailing" secondItem="omz-69-vk6" secondAttribute="trailing" constant="90" id="82E-xR-fGO"/>
                                         <constraint firstItem="omz-69-vk6" firstAttribute="top" secondItem="XPu-dC-eaI" secondAttribute="top" id="Irg-qd-RN1"/>
                                         <constraint firstAttribute="bottom" secondItem="omz-69-vk6" secondAttribute="bottom" id="QQb-sg-EkY"/>
-                                        <constraint firstItem="omz-69-vk6" firstAttribute="leading" secondItem="XPu-dC-eaI" secondAttribute="leading" constant="75" id="qK6-He-fBL"/>
+                                        <constraint firstItem="omz-69-vk6" firstAttribute="leading" secondItem="XPu-dC-eaI" secondAttribute="leading" constant="90" id="qK6-He-fBL"/>
                                     </constraints>
                                 </view>
                             </subviews>

@@ -192,8 +192,12 @@
                                                 <rect key="frame" x="0.0" y="248" width="394" height="370"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
-                                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="N/A" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-ge-Ted">
+                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TH3-NG-eXe">
                                                 <rect key="frame" x="0.0" y="248" width="394" height="370"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="N/A" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-ge-Ted">
+                                                <rect key="frame" x="0.0" y="249" width="394" height="369"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -282,6 +286,7 @@
                                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                                         <constraints>
                                             <constraint firstItem="iIW-jv-4gw" firstAttribute="top" secondItem="Icm-q5-NKf" secondAttribute="bottom" constant="5" id="3OO-pK-udQ"/>
+                                            <constraint firstItem="TH3-NG-eXe" firstAttribute="leading" secondItem="4GP-wH-pdB" secondAttribute="leading" id="48b-iQ-GVB"/>
                                             <constraint firstItem="OvT-Ey-TUe" firstAttribute="leading" secondItem="hTM-iN-WVg" secondAttribute="leading" id="FCC-O9-Xe0"/>
                                             <constraint firstItem="Icm-q5-NKf" firstAttribute="top" secondItem="mmH-dR-9aH" secondAttribute="bottom" constant="15" id="FcJ-eF-QDh"/>
                                             <constraint firstItem="mmH-dR-9aH" firstAttribute="top" secondItem="OvT-Ey-TUe" secondAttribute="bottom" constant="15" id="NcZ-f9-xwL"/>
@@ -290,8 +295,10 @@
                                             <constraint firstItem="Icm-q5-NKf" firstAttribute="leading" secondItem="4GP-wH-pdB" secondAttribute="leading" id="PVP-D5-vqE"/>
                                             <constraint firstItem="iIW-jv-4gw" firstAttribute="leading" secondItem="4GP-wH-pdB" secondAttribute="leading" id="ZQU-EW-JwW"/>
                                             <constraint firstAttribute="trailing" secondItem="mmH-dR-9aH" secondAttribute="trailing" constant="10" id="eDz-dX-veJ"/>
+                                            <constraint firstItem="TH3-NG-eXe" firstAttribute="top" secondItem="Icm-q5-NKf" secondAttribute="bottom" constant="5" id="gaK-hj-cm0"/>
                                             <constraint firstAttribute="trailing" secondItem="iO2-wG-P97" secondAttribute="trailing" constant="9" id="hEB-7m-OxD"/>
                                             <constraint firstAttribute="trailing" secondItem="Icm-q5-NKf" secondAttribute="trailing" id="hXE-wP-ycF"/>
+                                            <constraint firstAttribute="trailing" secondItem="TH3-NG-eXe" secondAttribute="trailing" id="jbm-RA-Fo9"/>
                                             <constraint firstAttribute="bottom" secondItem="8gn-ge-Ted" secondAttribute="bottom" id="jib-w7-bDj"/>
                                             <constraint firstItem="OvT-Ey-TUe" firstAttribute="top" secondItem="iO2-wG-P97" secondAttribute="bottom" constant="10" id="lIP-su-vaX"/>
                                             <constraint firstAttribute="bottom" secondItem="iIW-jv-4gw" secondAttribute="bottom" id="lYS-CV-cg8"/>
@@ -301,12 +308,18 @@
                                             <constraint firstItem="hTM-iN-WVg" firstAttribute="top" secondItem="4GP-wH-pdB" secondAttribute="top" constant="22" id="vlU-Tl-VPX"/>
                                             <constraint firstAttribute="trailing" secondItem="iIW-jv-4gw" secondAttribute="trailing" id="wWc-kZ-7oo"/>
                                             <constraint firstItem="8gn-ge-Ted" firstAttribute="top" secondItem="Icm-q5-NKf" secondAttribute="bottom" constant="5" id="xIb-hy-JS9"/>
+                                            <constraint firstAttribute="bottom" secondItem="TH3-NG-eXe" secondAttribute="bottom" id="zwu-ng-w0t"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="8gn-ge-Ted"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="THc-mi-Tq6">
                                         <rect key="frame" x="0.0" y="628" width="394" height="90"/>
@@ -320,7 +333,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-nF-s8g">
                                                                 <rect key="frame" x="0.0" y="0.0" width="189.5" height="40"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="LEAVING FOR DROPOFF">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,7 +350,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnP-jD-aeb">
                                                                 <rect key="frame" x="204.5" y="0.0" width="189.5" height="40"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="ARRIVED?">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -354,7 +367,7 @@
                                                                 <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="ARRIVED?">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -371,7 +384,7 @@
                                                                 <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="SEND PAYMENT LINK?">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -388,7 +401,7 @@
                                                                 <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" name="NewBlueColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="VIEW JOB SUMMARY">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -407,7 +420,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="Ty9-XI-HHk"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="CASH COLLECTED?">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -440,12 +453,12 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAN-Gs-AbJ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="192" height="40"/>
                                                                 <color key="backgroundColor" name="MehroonColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="g3M-vp-r3W"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="RUNNING LATE?">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -459,16 +472,16 @@
                                                                     <action selector="runningLateAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="ZWx-o1-bj1"/>
                                                                 </connections>
                                                             </button>
-                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-i4-sMe">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
-                                                                <color key="backgroundColor" name="NewBlueColor"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-i4-sMe">
+                                                                <rect key="frame" x="202" y="0.0" width="192" height="40"/>
+                                                                <color key="backgroundColor" red="0.4823529411764706" green="0.82745098039215681" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="1wn-Ex-joz"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="UPLOAD IMAGES">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -480,10 +493,10 @@
                                                                 </connections>
                                                             </button>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9AW-eQ-dEk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
+                                                                <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" name="MehroonColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="JOB COMPLETED?">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -518,7 +531,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTO-kA-Hgv">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
                                                                 <color key="backgroundColor" name="MehroonColor"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="DISCLAIMER">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -584,6 +597,7 @@
                         <outlet property="cashToBeCollected" destination="skX-ga-4EL" id="HWp-yG-9uX"/>
                         <outlet property="cashToBeCollectedView" destination="hie-cL-Hr5" id="uGN-78-fgC"/>
                         <outlet property="customerName" destination="0Dn-4w-fyb" id="mI2-ZL-sss"/>
+                        <outlet property="descriptionInventoryTableView" destination="TH3-NG-eXe" id="ywA-1w-MY0"/>
                         <outlet property="detailTabView" destination="Icm-q5-NKf" id="h6V-xF-yZX"/>
                         <outlet property="disclaimerView" destination="u13-Pm-MkE" id="VkA-bE-gqP"/>
                         <outlet property="dropoffArrivedBtn" destination="qP0-5U-Sk3" id="azB-VU-W6f"/>
@@ -596,6 +610,7 @@
                         <outlet property="leadingAdditionalDetails" destination="jsF-hI-DY8" id="DNz-yG-wL8"/>
                         <outlet property="leadingJobDescription" destination="VpL-7u-zoB" id="g7S-L2-Xo5"/>
                         <outlet property="leavingForDropoffBtn" destination="Jxm-nF-s8g" id="68h-Rg-GbJ"/>
+                        <outlet property="locationImage" destination="gDZ-eC-EAe" id="6ud-JC-DwE"/>
                         <outlet property="phoneNumber" destination="b5G-mS-2ks" id="oJb-SY-xtV"/>
                         <outlet property="pickupArrivedBtn" destination="BnP-jD-aeb" id="8c1-OQ-DYR"/>
                         <outlet property="runningLateBtn" destination="OAN-Gs-AbJ" id="oOf-Lt-uWJ"/>
