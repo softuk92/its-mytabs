@@ -152,8 +152,8 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
             info.append(MenuItemStruct.init(title: "No. of Helpers", value: no_of_hepler))
         }
         
-        if category == "Man & Van", workingHours != "" && workingHours != "N/A" {
-            info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
+        if category == "Man & Van", workingHours != "" && workingHours != "N/A" && workingHours != "0" {
+            info.append(MenuItemStruct.init(title: "Job Booked For", value: workingHours+"Hours"))
         }
         
         if extraHalfHours != "" && extraHalfHours != "N/A" {

@@ -321,7 +321,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if tableView == routesTableView {
             return 260
         }
-        return 260
+        return 280
     }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
