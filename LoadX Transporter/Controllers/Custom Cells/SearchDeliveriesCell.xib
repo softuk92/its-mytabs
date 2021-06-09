@@ -43,6 +43,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessJob_Lbl_new" translatesAutoresizingMaskIntoConstraints="NO" id="gyD-UW-u8Q">
                                 <rect key="frame" x="301" y="0.0" width="54" height="54"/>
+                                <color key="tintColor" name="MehroonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="24E-JO-OI0"/>
                                     <constraint firstAttribute="height" constant="54" id="VUC-8n-97r"/>
