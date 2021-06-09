@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,31 +24,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-fP-h9O">
-                        <rect key="frame" x="5" y="10" width="316" height="39"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                        <rect key="frame" x="15" y="10" width="306" height="39"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                         <color key="textColor" name="TextfieldTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-QI-m9L">
-                        <rect key="frame" x="286.5" y="10" width="34.5" height="39"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                        <rect key="frame" x="279" y="10" width="32" height="39"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                         <color key="textColor" name="TextfieldTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwM-Zy-RIe">
+                        <rect key="frame" x="15" y="58" width="296" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="8t0-uP-Efc"/>
+                        </constraints>
+                    </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="1ql-QI-m9L" secondAttribute="trailing" constant="5" id="K3e-Pf-Tcw"/>
+                    <constraint firstAttribute="trailing" secondItem="1ql-QI-m9L" secondAttribute="trailing" constant="15" id="K3e-Pf-Tcw"/>
                     <constraint firstAttribute="bottom" secondItem="Io8-fP-h9O" secondAttribute="bottom" constant="10" id="M8I-0c-moU"/>
+                    <constraint firstAttribute="bottom" secondItem="iwM-Zy-RIe" secondAttribute="bottom" id="Pp5-hR-SxM"/>
+                    <constraint firstAttribute="trailing" secondItem="iwM-Zy-RIe" secondAttribute="trailing" constant="15" id="QVE-dJ-LKj"/>
                     <constraint firstItem="Io8-fP-h9O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SDm-UR-gF7"/>
                     <constraint firstAttribute="bottom" secondItem="1ql-QI-m9L" secondAttribute="bottom" constant="10" id="Xly-2G-TAM"/>
-                    <constraint firstItem="Io8-fP-h9O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="mBY-PD-4rj"/>
+                    <constraint firstItem="Io8-fP-h9O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mBY-PD-4rj"/>
+                    <constraint firstItem="iwM-Zy-RIe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="npd-cn-ETV"/>
                     <constraint firstAttribute="trailing" secondItem="Io8-fP-h9O" secondAttribute="trailing" constant="5" id="sS8-sK-Nl8"/>
                     <constraint firstItem="1ql-QI-m9L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xN3-wB-u4f"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="detail" destination="1ql-QI-m9L" id="Kfq-Vd-dUU"/>
                 <outlet property="title" destination="Io8-fP-h9O" id="163-4h-5ye"/>
@@ -61,8 +70,5 @@
         <namedColor name="TextfieldTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

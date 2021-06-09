@@ -136,7 +136,11 @@ extension FAQSTableViewController:UITableViewDelegate,myProtocolr{
         if cellData.isExpanded{
             return UITableView.automaticDimension
         }
+        if indexPath.row == 4 {
+         return 120
+        } else {
         return 100
+        }
     }
     
 }

@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-W7-WcJ">
-                    <rect key="frame" x="25" y="162" width="278" height="259"/>
+                    <rect key="frame" x="25" y="161.5" width="278" height="260"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-BD-VkA">
                             <rect key="frame" x="0.0" y="0.0" width="278" height="135"/>
@@ -85,20 +85,25 @@
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="0.0"/>
+                                    <integer key="value" value="17"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="sendPaymentLinkAct:" destination="-1" eventType="touchUpInside" id="Inw-ey-bVB"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-bt-N0V">
-                            <rect key="frame" x="54" y="212" width="170" height="32"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-bt-N0V" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <rect key="frame" x="54" y="212" width="170" height="33"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                             <state key="normal" title="Close">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="17"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="noAct:" destination="-1" eventType="touchUpInside" id="8fl-Kk-mWU"/>
                             </connections>
@@ -134,7 +139,10 @@
     </objects>
     <designables>
         <designable name="7X8-79-gcf">
-            <size key="intrinsicContentSize" width="131" height="28"/>
+            <size key="intrinsicContentSize" width="138" height="28"/>
+        </designable>
+        <designable name="Y83-bt-N0V">
+            <size key="intrinsicContentSize" width="45" height="33"/>
         </designable>
     </designables>
     <resources>

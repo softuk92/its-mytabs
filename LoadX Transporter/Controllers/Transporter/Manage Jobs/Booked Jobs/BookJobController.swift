@@ -112,9 +112,9 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         self.ref_no_lbl.text = ref_no
         self.contact_name_lbl.text = user_name
         self.contact_no_lbl.text = contact_no
-        if let customerName = contactName {
-            receiverName.text = customerName
-        }
+//        if let customerName = contactName {
+//            receiverName.text = customerName
+//        }
     }
     @IBAction func clear_btn(_ sender: Any) {
         signatureView.clear()

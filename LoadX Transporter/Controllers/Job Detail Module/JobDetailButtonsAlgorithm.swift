@@ -40,7 +40,7 @@ extension JobPickupDropoffViewController {
             locationImage.image = R.image.pickUp_icon_new()
             locationImage.tintColor = R.color.mehroonColor()
         } else {
-            PickupOrDropOff.text = "Dropoff"
+            PickupOrDropOff.text = "Drop off"
             address.text = input.dropoffAddress
             cashToBeCollectedView.isHidden = false
             configureDropOffActions()

@@ -105,16 +105,20 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     let switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
-    let categoryList = ["Car", "Small Van",
+//    let categoryList = ["Car", "Small Van",
+//                        "Medium Van",
+//                        "Large Van",
+//                        "Luton Van",
+//                        "Rubbish Removal Truck",
+//                        "3.5 Ton Vehicle Recovery Truck",
+//                        "7.5 Ton Vehicle Recovery Truck",
+//                        "7.5 Ton Truck",
+//                        "Container Truck",
+//                        "Other"]
+    let categoryList = ["Van Type", "Small Van",
                         "Medium Van",
                         "Large Van",
-                        "Luton Van",
-                        "Rubbish Removal Truck",
-                        "3.5 Ton Vehicle Recovery Truck",
-                        "7.5 Ton Vehicle Recovery Truck",
-                        "7.5 Ton Truck",
-                        "Container Truck",
-                        "Other"]
+                        "Luton Van"]
     let radiusList = ["20 Miles", "40 Miles", "60 Miles", "80 Miles", "100 Miles"]
     
     var pageNumber = 1
@@ -703,7 +707,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         if searchDeliveriesRow.moving_item == "Man and Van" || searchDeliveriesRow.moving_item == "Man & Van" {
         if let workingHours = searchDeliveriesRow.working_hours, workingHours != "", workingHours != "0" {
             cell.hoursRequired.isHidden = false
-            cell.hoursRequired.text = "Working Hours Required: \(workingHours)"
+            cell.hoursRequired.text = "Job Booked For: \(workingHours) Hours"
         } else {
             cell.hoursRequired.isHidden = true
         }

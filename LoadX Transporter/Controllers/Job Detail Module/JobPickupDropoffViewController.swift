@@ -109,6 +109,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         setJobStatus()
         configureTableView()
         setData(input: input)
+        phoneNumberAct()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,6 +127,18 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         timer.invalidate()
+    }
+    
+    func phoneNumberAct() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(phoneNumberTapped(_:)))
+        phoneNumber.isUserInteractionEnabled = true
+        phoneNumber.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func phoneNumberTapped(_ sender: UITapGestureRecognizer) {
+        if let url = URL(string: "tel://\(input.customerNumber)") {
+            UIApplication.shared.canOpenURL(url)
+         }
     }
     
     func setTimer() {
@@ -225,7 +238,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func dropoffArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at dropoff?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
+        showAlertView(question: "Have you arrived at drop off?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
     }
     
     @IBAction func runningLateAct(_ sender: Any) {
@@ -500,7 +513,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
             }
             if dropoffPropertyType != "" {
                 if movingTo == .dropoff {
-                info.append(MenuItemStruct.init(title: "Dropoff Property Type", value: dropoffPropertyType))
+                info.append(MenuItemStruct.init(title: "Drop Off Property Type", value: dropoffPropertyType))
                 }
             }
         }
@@ -532,7 +545,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         }
         
         if category == "Man & Van", workingHours != "" && workingHours != "N/A" {
-            info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
+//            info.append(MenuItemStruct.init(title: "Working Hours Required", value: workingHours))
         }
         
         if extraHalfHours != "" && extraHalfHours != "N/A" {
