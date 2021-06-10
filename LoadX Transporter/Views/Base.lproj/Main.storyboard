@@ -2951,16 +2951,16 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Gn-e6d">
-                            <rect key="frame" x="10" y="115" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="115" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Invoice # :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-BL-I7Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadX2019J19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9D-cO-Uyh">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="160" id="23G-08-tI0"/>
                                     </constraints>
@@ -2971,16 +2971,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rny-5E-TQA">
-                            <rect key="frame" x="10" y="149.5" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="150" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Issued Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-w7-qMa">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNE-UU-pqb">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -2988,7 +2988,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="b82-ao-lbL">
-                            <rect key="frame" x="10" y="184" width="353" height="90"/>
+                            <rect key="frame" x="10" y="185" width="353" height="90"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftI-0m-Gpn">
                                     <rect key="frame" x="0.0" y="0.0" width="161.5" height="90"/>
@@ -3050,7 +3050,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUu-I1-LJ5">
-                            <rect key="frame" x="15" y="481" width="348" height="44"/>
+                            <rect key="frame" x="15" y="482" width="348" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-KZ-hcV">
                                     <rect key="frame" x="0.0" y="7" width="150" height="24"/>
@@ -3080,7 +3080,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pki-kC-GnF">
-                            <rect key="frame" x="10" y="289" width="353" height="183"/>
+                            <rect key="frame" x="10" y="290" width="353" height="183"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tT7-kE-32E">
                                     <rect key="frame" x="5" y="0.0" width="348" height="44"/>
@@ -3209,7 +3209,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-Ea-LjK">
-                                            <rect key="frame" x="194" y="6" width="135" height="25.5"/>
+                                            <rect key="frame" x="194" y="6" width="135" height="25"/>
                                             <fontDescription key="fontDescription" name="Ubuntu-Light" family="Ubuntu" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -3245,7 +3245,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEm-ar-nfc">
-                            <rect key="frame" x="10" y="540" width="353" height="2"/>
+                            <rect key="frame" x="10" y="541" width="353" height="2"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dk0-aq-1P3">
                                     <rect key="frame" x="0.0" y="0.0" width="263" height="2"/>
@@ -10465,7 +10465,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-H5-6Qg">
-                            <rect key="frame" x="15" y="110" width="309" height="96"/>
+                            <rect key="frame" x="15" y="110" width="309" height="75"/>
                             <string key="text">We're always working hard to optimize our app with the latest technologies and best new features. Please update LoadX Transporter application to enjoy those.</string>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11705,17 +11705,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h44-G1-V2o">
-                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-T0-PR7">
-                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="mz7-lB-ntq"/>
                                         <constraint firstAttribute="height" constant="60" id="voq-Yb-d3D"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable email notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-Ns-q3r">
-                                    <rect key="frame" x="30" y="83" width="240" height="44"/>
+                                    <rect key="frame" x="30" y="83" width="238" height="44"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11735,10 +11735,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4aC-So-8PO">
-                            <rect key="frame" x="20" y="175" width="262" height="35"/>
+                            <rect key="frame" x="20" y="175" width="260" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-FX-OXZ" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="4N2-JL-nGY"/>
@@ -11758,7 +11758,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-RQ-Eer" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -11802,17 +11802,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Ia-K4Y">
-                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLY-UP-Ncu">
-                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="5xU-4k-Isn"/>
                                         <constraint firstAttribute="height" constant="60" id="JBP-7j-Mho"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable mobile notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-bE-zeh">
-                                    <rect key="frame" x="20" y="80" width="262" height="50"/>
+                                    <rect key="frame" x="20" y="80" width="260" height="50"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -11831,10 +11831,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-40-bMs">
-                            <rect key="frame" x="20" y="175" width="262" height="35"/>
+                            <rect key="frame" x="20" y="175" width="260" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-ra-EzO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Zq-1D-JZX"/>
@@ -11854,7 +11854,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Xt-I48" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -13551,12 +13551,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Deliveries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6n-kR-nfC">
-                                        <rect key="frame" x="83.5" y="358.5" width="208" height="29.5"/>
+                                        <rect key="frame" x="95" y="358.5" width="185.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for deliveries in your area or across the country." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y51-m2-TSu">
-                                        <rect key="frame" x="40" y="413" width="295" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="295" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -13607,12 +13607,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Completion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-Bs-dxj">
-                                        <rect key="frame" x="81" y="358.5" width="193.5" height="29.5"/>
+                                        <rect key="frame" x="92" y="358.5" width="171.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete the job and get paid on the same day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olP-e3-cYJ">
-                                        <rect key="frame" x="40" y="413" width="275" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="275" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -15845,6 +15845,170 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
             <point key="canvasLocation" x="4998" y="6150"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="0IF-hv-yh7">
+            <size key="intrinsicContentSize" width="60.5" height="19"/>
+        </designable>
+        <designable name="257-6y-Ght">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="2BA-4V-VRr">
+            <size key="intrinsicContentSize" width="174" height="21.5"/>
+        </designable>
+        <designable name="4wz-VO-Nn1">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="5BL-Xt-I48">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="7GF-nj-Pl0">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="7On-b6-1nB">
+            <size key="intrinsicContentSize" width="65.5" height="19"/>
+        </designable>
+        <designable name="C2K-AJ-z3b">
+            <size key="intrinsicContentSize" width="143.5" height="17"/>
+        </designable>
+        <designable name="H7M-mu-B97">
+            <size key="intrinsicContentSize" width="30" height="31"/>
+        </designable>
+        <designable name="Hx4-ra-EzO">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="J1Z-hw-plO">
+            <size key="intrinsicContentSize" width="30" height="32"/>
+        </designable>
+        <designable name="JMr-jC-tdV">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+        <designable name="LUy-0O-VEd">
+            <size key="intrinsicContentSize" width="20.5" height="18.5"/>
+        </designable>
+        <designable name="Mix-dG-50Y">
+            <size key="intrinsicContentSize" width="109" height="19"/>
+        </designable>
+        <designable name="PZH-LN-gdd">
+            <size key="intrinsicContentSize" width="88" height="18.5"/>
+        </designable>
+        <designable name="R2D-rX-BFd">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="RPx-IU-t3H">
+            <size key="intrinsicContentSize" width="31" height="31"/>
+        </designable>
+        <designable name="Sd6-lV-u6x">
+            <size key="intrinsicContentSize" width="30" height="32"/>
+        </designable>
+        <designable name="UGn-6U-qqT">
+            <size key="intrinsicContentSize" width="149.5" height="18"/>
+        </designable>
+        <designable name="WId-c3-qtD">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="X6V-RK-JSX">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="XEc-NW-5tM">
+            <size key="intrinsicContentSize" width="72.5" height="18"/>
+        </designable>
+        <designable name="Yh6-D2-w7r">
+            <size key="intrinsicContentSize" width="94.5" height="19"/>
+        </designable>
+        <designable name="Ypz-H0-p0a">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="ZDh-QP-DUd">
+            <size key="intrinsicContentSize" width="30" height="32"/>
+        </designable>
+        <designable name="ZGV-Er-xnf">
+            <size key="intrinsicContentSize" width="114" height="19"/>
+        </designable>
+        <designable name="aHv-Gf-nnF">
+            <size key="intrinsicContentSize" width="102.5" height="19"/>
+        </designable>
+        <designable name="aKu-la-rV0">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="b2m-00-8hT">
+            <size key="intrinsicContentSize" width="170" height="20"/>
+        </designable>
+        <designable name="bGW-qd-z1F">
+            <size key="intrinsicContentSize" width="132" height="24"/>
+        </designable>
+        <designable name="bx3-ey-jix">
+            <size key="intrinsicContentSize" width="35" height="33"/>
+        </designable>
+        <designable name="dw7-Jl-o7q">
+            <size key="intrinsicContentSize" width="68" height="19"/>
+        </designable>
+        <designable name="fAA-BO-aE5">
+            <size key="intrinsicContentSize" width="55.5" height="19"/>
+        </designable>
+        <designable name="fh1-Hm-GB2">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="gcX-Wg-WpX">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="h7d-z0-szC">
+            <size key="intrinsicContentSize" width="83.5" height="19"/>
+        </designable>
+        <designable name="hpN-HR-vwA">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="kXB-JA-2g9">
+            <size key="intrinsicContentSize" width="195" height="19"/>
+        </designable>
+        <designable name="l3l-FX-OXZ">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="lTE-zv-sbR">
+            <size key="intrinsicContentSize" width="30" height="32"/>
+        </designable>
+        <designable name="mv7-yQ-9zU">
+            <size key="intrinsicContentSize" width="123" height="19"/>
+        </designable>
+        <designable name="oFO-Xt-4bm">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="oqS-mv-y2k">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="pjE-6K-ER5">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+        <designable name="qrs-6z-Cew">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="r42-My-QiM">
+            <size key="intrinsicContentSize" width="70.5" height="19"/>
+        </designable>
+        <designable name="rAh-td-T27">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="rnZ-vd-aaY">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+        <designable name="sZS-8V-WpS">
+            <size key="intrinsicContentSize" width="65.5" height="19"/>
+        </designable>
+        <designable name="tuA-1E-sy6">
+            <size key="intrinsicContentSize" width="97" height="17"/>
+        </designable>
+        <designable name="wEZ-RQ-Eer">
+            <size key="intrinsicContentSize" width="285" height="80"/>
+        </designable>
+        <designable name="yFs-ep-MKf">
+            <size key="intrinsicContentSize" width="124.5" height="19"/>
+        </designable>
+        <designable name="yhC-ol-Sk5">
+            <size key="intrinsicContentSize" width="38" height="18.5"/>
+        </designable>
+        <designable name="ysy-Ok-FOy">
+            <size key="intrinsicContentSize" width="145" height="18"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Account_Edit" width="70" height="67"/>
         <image name="Account_documnt" width="67.5" height="70"/>

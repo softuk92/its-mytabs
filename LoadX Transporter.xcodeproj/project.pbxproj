@@ -1525,7 +1525,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1558,7 +1558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
