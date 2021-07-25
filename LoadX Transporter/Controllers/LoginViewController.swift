@@ -453,10 +453,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                             userDefaults.set(true, forKey: "userLoggedIn")
                             userDefaults.synchronize()
                           
-                                
                                 self.AppDelegate.moveToHome()
-                             
-                                
+
                             } else {
                                 let alert = UIAlertController(title: "Alert", message: "Wrong Email or Password", preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))

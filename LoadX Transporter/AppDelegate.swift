@@ -21,7 +21,7 @@ import SVProgressHUD
 //var main_URL = "https://www.loadx.co.uk/"
 
 //test api
-var main_URL = "https://test.loadx.co.uk/"
+var main_URL = AppUtility.shared.country == .Pakistan ? "https://www.loadx.pk/" : "https://test.loadx.co.uk/"
 
 enum VersionError: Error {
     case invalidResponse, invalidBundleInfo
@@ -207,10 +207,17 @@ enum VersionError: Error {
     }
     func moveToLogInVC() {
         if #available(iOS 13.0, *) {
+            if AppUtility.shared.country == .Pakistan {
+                let login = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerPk") as! LoginViewControllerPk
+                let nvc: UINavigationController = UINavigationController(rootViewController: login)
+                self.window?.rootViewController = nvc
+                self.window?.makeKeyAndVisible()
+            } else {
             let login = self.sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             let nvc: UINavigationController = UINavigationController(rootViewController: login)
             self.window?.rootViewController = nvc
             self.window?.makeKeyAndVisible()
+            }
         } else {
             // Fallback on earlier versions
         }
