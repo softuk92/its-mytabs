@@ -12,7 +12,7 @@ target 'LoadX Transporter' do
     pod 'GooglePlaces', '= 3.0.3'
    	pod 'BmoViewPager'
     pod 'SwiftSignatureView', '= 2.2.3'
-    pod 'GoogleSignIn'
+    pod 'GoogleSignIn', '= 5.0.2'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'SideMenu', '5.0.3'

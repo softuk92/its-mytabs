@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="156" id="KGk-i7-Jjw" customClass="TransportAvailabilityCell" customModule="LoadX_Transporter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="156"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="444" height="156"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0k-Jj-MWQ" customClass="CustomizedView" customModule="LoadX_Transporter">
+                        <rect key="frame" x="9" y="9" width="426" height="138"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-gW-lU1">
+                                <rect key="frame" x="10" y="10" width="406" height="118"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SNa-Py-GtW">
+                                        <rect key="frame" x="0.0" y="0.0" width="406" height="29.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="XTp-ga-4DC">
+                                                <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="YZJ-1W-MYH"/>
+                                                    <constraint firstAttribute="height" constant="20" id="avb-oD-HmZ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bedford Truck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xp-oH-i6V">
+                                                <rect key="frame" x="30" y="6" width="376" height="18"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jMO-v7-utG">
+                                        <rect key="frame" x="0.0" y="29.5" width="406" height="29.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="drop_off_image" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-y0-Bkb">
+                                                <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="bM0-aS-oB7"/>
+                                                    <constraint firstAttribute="height" constant="20" id="qLa-P2-imA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premier Park Road, London NW10 7NZ, UK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHL-js-KJN">
+                                                <rect key="frame" x="30" y="7" width="376" height="16"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-Gz-qgu">
+                                        <rect key="frame" x="0.0" y="59" width="406" height="29.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="dropOff_new" translatesAutoresizingMaskIntoConstraints="NO" id="Ug0-aF-HQm">
+                                                <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="aPl-lm-wGT"/>
+                                                    <constraint firstAttribute="width" constant="20" id="hxq-lI-tHb"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kensworth, Dunstable LU6 3QL, UK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiu-ha-9ep">
+                                                <rect key="frame" x="30" y="7" width="376" height="16"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xkd-ak-j5i">
+                                        <rect key="frame" x="0.0" y="88.5" width="406" height="29.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="bookJobDelivery_date" translatesAutoresizingMaskIntoConstraints="NO" id="6GS-GU-MAE">
+                                                <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Fd6-Bl-Hae"/>
+                                                    <constraint firstAttribute="width" constant="20" id="o8M-fB-qKm"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="Availability Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwd-vS-bKx">
+                                                <rect key="frame" x="30" y="7.5" width="99.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-December-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-ES-NpC">
+                                                <rect key="frame" x="139.5" y="7" width="266.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="cellBackgroundcolor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="48Q-gW-lU1" secondAttribute="trailing" constant="10" id="Aof-9M-wKH"/>
+                            <constraint firstItem="48Q-gW-lU1" firstAttribute="top" secondItem="x0k-Jj-MWQ" secondAttribute="top" constant="10" id="bvV-5V-EOf"/>
+                            <constraint firstItem="48Q-gW-lU1" firstAttribute="leading" secondItem="x0k-Jj-MWQ" secondAttribute="leading" constant="10" id="ghr-d1-gpU"/>
+                            <constraint firstAttribute="bottom" secondItem="48Q-gW-lU1" secondAttribute="bottom" constant="10" id="tqK-hb-Cg0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawShadow" value="YES"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" name="PriceColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowAlpha">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="Background_color"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="x0k-Jj-MWQ" secondAttribute="trailing" constant="9" id="Gki-3L-6VB"/>
+                    <constraint firstAttribute="bottom" secondItem="x0k-Jj-MWQ" secondAttribute="bottom" constant="9" id="HbV-UD-gtq"/>
+                    <constraint firstItem="x0k-Jj-MWQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="cyP-GA-vpX"/>
+                    <constraint firstItem="x0k-Jj-MWQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="yWC-68-k0E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="shadowView" destination="x0k-Jj-MWQ" id="Ck2-zq-eNJ"/>
+            </connections>
+            <point key="canvasLocation" x="118.84057971014494" y="127.90178571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bookJobDelivery_date" width="28" height="29"/>
+        <image name="dropOff_new" width="22" height="32.5"/>
+        <image name="drop_off_image" width="12.5" height="17.5"/>
+        <namedColor name="Background_color">
+            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PriceColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cellBackgroundcolor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
