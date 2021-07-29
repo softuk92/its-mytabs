@@ -29,6 +29,9 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         checkForUpdate()
+        
+        phoneNumber.text = "02020202020"
+        password.text = "12345"
         }
     
     func checkForUpdate() {
@@ -94,7 +97,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
         SVProgressHUD.show(withStatus: "Signing In...")
         if phoneNumber.text != "" && password.text != "" {
             AuthAPIs.login(phone: phoneNumber.text ?? "", password: password.text ?? "") { (data, json, error) in
-                guard let jsonData = json, error != nil else { SVProgressHUD.dismiss(); showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self); return }
+                guard let jsonData = json, error == nil else { SVProgressHUD.dismiss(); showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self); return }
                 SVProgressHUD.dismiss()
                 let result = jsonData[0]["result"].stringValue
                 let message = jsonData[0]["message"].stringValue
