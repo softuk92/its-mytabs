@@ -13,8 +13,8 @@ import SwiftyJSON
 class AuthAPIs {
     
     static func login(phone: String, password: String, completion: @escaping (Data?, JSON?, Error?) -> ()) {
-        APIManager.apiPost(serviceName: main_URL+AppConstants.login, parameters: ["phone_no" : phone, "password": password]) { (data, json, error) in
-            completion(data, json, nil)
+        APIManager.apiPost(serviceName: AppConstants.login, parameters: ["phone_no" : phone, "password": password]) { (data, json, error) in
+            completion(data, json, error)
         }
     }
 }
