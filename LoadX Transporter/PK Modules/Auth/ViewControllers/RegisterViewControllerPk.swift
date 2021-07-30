@@ -37,16 +37,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     @IBOutlet weak var innerVehiclesListView: UIView!
     @IBOutlet weak var tableview: UITableView!
     
-    var list = ["Car","Small Van",
-                "Medium Van",
-                "Large Van",
-                "Luton Van",
-                "Rubbish Removal Truck",
-                "3.5 Ton Vehicle Recovery Truck",
-                "7.5 Ton Vehicle Recovery Truck",
-                "7.5 Ton Truck",
-                "Container Truck",
-                "Other"]
+    var list : [VehiclesMO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +49,16 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         tableview.backgroundView = nil
         tableview.backgroundColor = UIColor.clear
         self.innerVehiclesListView.layer.cornerRadius = 10
+        
+        AppUtility.shared.getVehiclesList { [weak self] (result) in
+            switch result {
+            case .success(let vehicles):
+                self?.list = vehicles
+                self?.tableview.reloadData()
+            case .failure(_):
+                return
+            }
+        }
     }
     
     
@@ -241,7 +242,7 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
         cell?.layer.cornerRadius = 10
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
-        cell?.lblJobNature.text = self.list[indexPath.row]
+        cell?.lblJobNature.text = self.list[indexPath.row].vehicle_name
         if indexPath.row == 10 {
             cell?.bottomLineView.isHidden = true
         }
@@ -254,7 +255,7 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedValue = self.list[indexPath.row]
+        let selectedValue = self.list[indexPath.row].vehicle_name
         self.van_type.text = selectedValue
         vehiclesListView.isHidden = true
         

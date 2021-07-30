@@ -16,11 +16,16 @@ public enum CurrentCountry {
     case Pakistan
 }
 
+struct VehiclesMO: Decodable {
+    let vt_id: String
+    let vehicle_name: String
+}
+
 class AppUtility: NSObject, CLLocationManagerDelegate {
     
     static let shared = AppUtility()
     private var disposeBag = DisposeBag()
-    
+    private var vehicles = [VehiclesMO]()
     private override init() {
         super.init()
     }
@@ -39,8 +44,38 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
         return "Rs. " // Locale.current.regionCode?.lowercased() == "pk" ? "Rs. " : "£"
     }
     
-    func getVehiclesList() {
+    func getVehiclesList(completion:@escaping (Result<[VehiclesMO], Error>) -> Void) {
+            
+        //return vehicle if already fetched
+        guard vehicles.isEmpty else {
+            completion(.success(vehicles))
+            return
+        }
         
+        //fetch vehicles from server
+        APIManager.apiGet(serviceName: main_URL+"api/getVehicleList", parameters: [:]) { [unowned self] (data, json, error) in
+            //handle error
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            //data is snil
+            guard let data = data else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "Data is nil"])))
+                return
+            }
+            
+            //parse data
+            do {
+                let vehiclesList = try JSONDecoder().decode([VehiclesMO].self, from: data)
+                self.vehicles = vehiclesList
+                completion(.success(vehiclesList))
+            }catch {
+                completion(.failure(error))
+            }
+            
+        }
     }
 
 }

@@ -77,6 +77,10 @@ class ForgetPasswordControllerPk: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
