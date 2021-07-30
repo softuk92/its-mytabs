@@ -22,7 +22,7 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
         let view = UIView()
         view.backgroundColor = R.color.background_color()
         tableView.backgroundView = view
-        tableView.rowHeight = 200
+        tableView.rowHeight = 250
     }
     
     @IBAction func backButtonTap(sender: Any){
@@ -30,9 +30,9 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
     }
     
     @IBAction func addButtonTapped(sender: Any){
-        let sb = R.storyboard.transporterAvailability()
-        let showVC = sb.instantiateViewController(withIdentifier: "Account_ViewController") as? Account_ViewController
-       self.navigationController?.pushViewController(showVC!, animated: true)
+//        let sb = R.storyboard.transporterAvailability()
+        let showVC = PostAvailabilityFormViewController.instantiate()
+       self.navigationController?.pushViewController(showVC, animated: true)
     }
 
 }
