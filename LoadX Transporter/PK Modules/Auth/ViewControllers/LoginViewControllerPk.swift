@@ -141,7 +141,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func forget_pass_action(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgetPasswordController") as! ForgetPasswordController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgetPasswordControllerPk") as! ForgetPasswordControllerPk
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -16,6 +16,8 @@
 		182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B334225656B7700B8201A /* RouteStopDetail.swift */; };
 		1831A85525A462B9003F2206 /* ShowRouteInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */; };
 		1837E44125065B1700FF0D17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837E44025065B1700FF0D17 /* Extensions.swift */; };
+		183DDC7D26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DDC7C26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift */; };
+		183DDC8026B4326200BDCCF8 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183DDC7F26B4326200BDCCF8 /* SuccessVC.swift */; };
 		1843EC77253F0B3600D44EA5 /* JobSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */; };
 		1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */; };
 		1848DB182664D58D00DA71B2 /* PaymentLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848DB172664D58C00DA71B2 /* PaymentLinkView.xib */; };
@@ -241,6 +243,8 @@
 		182B334225656B7700B8201A /* RouteStopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopDetail.swift; sourceTree = "<group>"; };
 		1831A85425A462B9003F2206 /* ShowRouteInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteInvoiceViewController.swift; sourceTree = "<group>"; };
 		1837E44025065B1700FF0D17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		183DDC7C26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewControllerPk.swift; sourceTree = "<group>"; };
+		183DDC7F26B4326200BDCCF8 /* SuccessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		1843EC75253F0B3600D44EA5 /* JobSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryCell.swift; sourceTree = "<group>"; };
 		1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryCell.xib; sourceTree = "<group>"; };
 		1848DB172664D58C00DA71B2 /* PaymentLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentLinkView.xib; sourceTree = "<group>"; };
@@ -624,6 +628,7 @@
 				4E3964E82695CE2A00A67E44 /* Auth */,
 				4E3964692695C23D00A67E44 /* AppUtility.swift */,
 				4EF136BE269DD1C90085AA4C /* WebServicesClient.swift */,
+				183DDC7F26B4326200BDCCF8 /* SuccessVC.swift */,
 			);
 			path = "PK Modules";
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				4E9A3010269CE0A900671ACB /* LoginViewControllerPk.swift */,
 				4E9A3013269CE0B600671ACB /* RegisterViewControllerPk.swift */,
 				4E9A3016269CE0C200671ACB /* OTPViewControllerPk.swift */,
+				183DDC7C26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1411,6 +1417,8 @@
 				8D48C20C22243E3D00417EF5 /* ManageReviews.swift in Sources */,
 				4E96FC4F26A59ED40074DE53 /* AppConstants.swift in Sources */,
 				4EE97E5526385EDC009AE4A2 /* LogoView.swift in Sources */,
+				183DDC7D26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift in Sources */,
+				183DDC8026B4326200BDCCF8 /* SuccessVC.swift in Sources */,
 				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,
 				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,

@@ -21,21 +21,26 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
     static let shared = AppUtility()
     private var disposeBag = DisposeBag()
     
-    //check current Country
-    var country : CurrentCountry {
-        if Locale.current.regionCode?.lowercased() == "pk" {
-            return .Pakistan
-        } else {
-            return .UnitedKingdom
-        }
-    }
-    
-    var currencySymbol : String {
-        return Locale.current.regionCode?.lowercased() == "pk" ? "Rs. " : "£"
-    }
-    
     private override init() {
         super.init()
+    }
+    
+    //check current Country
+    var country : CurrentCountry = .Pakistan
+//        {
+//        if Locale.current.regionCode?.lowercased() == "pk" {
+//            return .Pakistan
+//        } else {
+//            return .UnitedKingdom
+//        }
+//    }
+    
+    var currencySymbol : String {
+        return "Rs. " // Locale.current.regionCode?.lowercased() == "pk" ? "Rs. " : "£"
+    }
+    
+    func getVehiclesList() {
+        
     }
 
 }
