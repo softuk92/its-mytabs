@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Reusable
+class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBased{
+    static let sceneStoryboard = R.storyboard.transporterAvailability()
 
-class TransporterAvailabilityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(cellType: TransportAvailabilityCell.self)
@@ -19,6 +23,16 @@ class TransporterAvailabilityViewController: UIViewController {
         view.backgroundColor = R.color.background_color()
         tableView.backgroundView = view
         tableView.rowHeight = 200
+    }
+    
+    @IBAction func backButtonTap(sender: Any){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func addButtonTapped(sender: Any){
+        let sb = R.storyboard.transporterAvailability()
+        let showVC = sb.instantiateViewController(withIdentifier: "Account_ViewController") as? Account_ViewController
+       self.navigationController?.pushViewController(showVC!, animated: true)
     }
 
 }

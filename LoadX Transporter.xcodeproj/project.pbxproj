@@ -214,6 +214,7 @@
 		8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA222577ADD00E6E069 /* FreebieJobDetail.swift */; };
 		8DEF4BA622577C2A00E6E069 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEF4BA522577C2A00E6E069 /* MapKit.framework */; };
 		8DEF4BA8225785BD00E6E069 /* SearchFreebieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */; };
+		8DF49C6A26B436EC0060F608 /* PostAvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */; };
 		8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */; };
 		8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */; };
 		8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */; };
@@ -450,6 +451,7 @@
 		8DEF4BA422577C1700E6E069 /* CTS Move Transporter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CTS Move Transporter.entitlements"; sourceTree = "<group>"; };
 		8DEF4BA522577C2A00E6E069 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFreebieModel.swift; sourceTree = "<group>"; };
+		8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFreebiesCell.xib; sourceTree = "<group>"; };
 		8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesCell.swift; sourceTree = "<group>"; };
 		8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesController.swift; sourceTree = "<group>"; };
@@ -1021,6 +1023,7 @@
 				8DC0949026B2BB3400106AC1 /* TransporterAvailabilityViewController.swift */,
 				8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */,
 				8DC0948826B2A71A00106AC1 /* TransportAvailabilityCell.xib */,
+				8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */,
 			);
 			path = "Post Availbility ";
 			sourceTree = "<group>";
@@ -1439,6 +1442,7 @@
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,
 				8D33199C2211D84F00BCB339 /* UserModel.swift in Sources */,
 				8DC0948926B2A71A00106AC1 /* TransportAvailabilityCell.swift in Sources */,
+				8DF49C6A26B436EC0060F608 /* PostAvailabilityFormViewController.swift in Sources */,
 				4E53828523F410E200A73E96 /* ChangePassword_ViewController.swift in Sources */,
 				8DD0DFDA2204A387009A7E52 /* JobsInProgressModel.swift in Sources */,
 				4EF136BF269DD1C90085AA4C /* WebServicesClient.swift in Sources */,
