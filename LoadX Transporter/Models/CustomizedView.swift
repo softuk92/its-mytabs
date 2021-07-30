@@ -26,14 +26,8 @@ import UIKit
              configureBorderColor(color: borderColor)
         }
     }
-    @IBInspectable public var drawShadow: Bool = false{
-        didSet{
-            guard drawShadow else {return}
-            applyShadow(color: shadowColor,shadowAlpha: shadowAlpha)
-        }
-    }
+ 
     @IBInspectable public var shadowColor: UIColor = UIColor.clear
-    @IBInspectable public var shadowAlpha: Float = 10
     
     override public func awakeFromNib() {
         configureUI()
@@ -53,9 +47,6 @@ import UIKit
     private func configureBorderColor(color:UIColor){
         self.layer.borderColor = borderColor.cgColor
     }
-    
-    private func applyShadow(color:UIColor,shadowAlpha:Float){
-      //  self.layer.applySketchShadow(color: color, alpha: shadowAlpha, blur: 10, spread: 0)
-    }
-    
 }
+
+

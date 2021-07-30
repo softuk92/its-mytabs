@@ -24,6 +24,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var feedback_stars: UILabel!
+    @IBOutlet weak var availabilityButton: UIButton!
+
     
     
     let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -90,6 +92,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
            transporter_id = user_id
             tapGesture()
         }
+    
+   
       
         func tapGesture(){
             let optionMenu = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
@@ -243,6 +247,12 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBAction func help_action(_ sender: Any) {
         let showVC = sb.instantiateViewController(withIdentifier: "Help_ViewController") as? Help_ViewController
     self.navigationController?.pushViewController(showVC!, animated: true)
+    }
+    
+    @IBAction func availabilityTap(_ sender: Any) {
+        let sb = UIStoryboard(name: "TransporterAvailability", bundle: nil)
+        let showVC = sb.instantiateViewController(withIdentifier: "TransporterAvailabilityViewController") as? TransporterAvailabilityViewController
+       self.navigationController?.pushViewController(showVC!, animated: true)
     }
     @IBAction func invite_transporter_action(_ sender: Any) {
        

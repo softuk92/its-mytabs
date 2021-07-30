@@ -47,3 +47,14 @@ extension UIView {
     
 }
 
+
+// Shadow Extension
+extension UIView{
+    func bottomShadow(color:UIColor, alpha: Float = 0.7) {
+        layer.masksToBounds = false
+        layer.shadowRadius = 2.5
+        layer.shadowOpacity = alpha
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = CGSize(width: 0 , height:3)
+    }
+}

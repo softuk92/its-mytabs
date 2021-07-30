@@ -194,6 +194,10 @@
 		8D98C72A222058CC00420BFA /* SearchDeliveriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D98C728222058CC00420BFA /* SearchDeliveriesCell.xib */; };
 		8DA2AD8D22774CD00050FC70 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */; };
 		8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4999D2220272A00D0887C /* RegisterViewController.swift */; };
+		8DC0948926B2A71A00106AC1 /* TransportAvailabilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */; };
+		8DC0948A26B2A71A00106AC1 /* TransportAvailabilityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC0948826B2A71A00106AC1 /* TransportAvailabilityCell.xib */; };
+		8DC0948F26B2BAEC00106AC1 /* TransporterAvailability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC0948E26B2BAEC00106AC1 /* TransporterAvailability.storyboard */; };
+		8DC0949126B2BB3400106AC1 /* TransporterAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0949026B2BB3400106AC1 /* TransporterAvailabilityViewController.swift */; };
 		8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC526192226D2F80033D6CA /* HelperFunctions.swift */; };
 		8DC5261F2226DBA40033D6CA /* AcceptBidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC5261C2226DBA30033D6CA /* AcceptBidCell.xib */; };
 		8DC526202226DBA40033D6CA /* AcceptBidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC5261D2226DBA40033D6CA /* AcceptBidCell.swift */; };
@@ -212,6 +216,7 @@
 		8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA222577ADD00E6E069 /* FreebieJobDetail.swift */; };
 		8DEF4BA622577C2A00E6E069 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEF4BA522577C2A00E6E069 /* MapKit.framework */; };
 		8DEF4BA8225785BD00E6E069 /* SearchFreebieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */; };
+		8DF49C6A26B436EC0060F608 /* PostAvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */; };
 		8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */; };
 		8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */; };
 		8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */; };
@@ -427,6 +432,10 @@
 		8D98C728222058CC00420BFA /* SearchDeliveriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDeliveriesCell.xib; sourceTree = "<group>"; };
 		8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
 		8DB4999D2220272A00D0887C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportAvailabilityCell.swift; sourceTree = "<group>"; };
+		8DC0948826B2A71A00106AC1 /* TransportAvailabilityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportAvailabilityCell.xib; sourceTree = "<group>"; };
+		8DC0948E26B2BAEC00106AC1 /* TransporterAvailability.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransporterAvailability.storyboard; sourceTree = "<group>"; };
+		8DC0949026B2BB3400106AC1 /* TransporterAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterAvailabilityViewController.swift; sourceTree = "<group>"; };
 		8DC526192226D2F80033D6CA /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		8DC5261C2226DBA30033D6CA /* AcceptBidCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AcceptBidCell.xib; sourceTree = "<group>"; };
 		8DC5261D2226DBA40033D6CA /* AcceptBidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptBidCell.swift; sourceTree = "<group>"; };
@@ -446,6 +455,7 @@
 		8DEF4BA422577C1700E6E069 /* CTS Move Transporter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CTS Move Transporter.entitlements"; sourceTree = "<group>"; };
 		8DEF4BA522577C2A00E6E069 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFreebieModel.swift; sourceTree = "<group>"; };
+		8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFreebiesCell.xib; sourceTree = "<group>"; };
 		8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesCell.swift; sourceTree = "<group>"; };
 		8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesController.swift; sourceTree = "<group>"; };
@@ -625,6 +635,7 @@
 		4E3964682695C20F00A67E44 /* PK Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8DC0948D26B2BAAC00106AC1 /* Post Availbility  */,
 				4E3964E82695CE2A00A67E44 /* Auth */,
 				4E3964692695C23D00A67E44 /* AppUtility.swift */,
 				4EF136BE269DD1C90085AA4C /* WebServicesClient.swift */,
@@ -1011,6 +1022,18 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		8DC0948D26B2BAAC00106AC1 /* Post Availbility  */ = {
+			isa = PBXGroup;
+			children = (
+				8DC0948E26B2BAEC00106AC1 /* TransporterAvailability.storyboard */,
+				8DC0949026B2BB3400106AC1 /* TransporterAvailabilityViewController.swift */,
+				8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */,
+				8DC0948826B2A71A00106AC1 /* TransportAvailabilityCell.xib */,
+				8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */,
+			);
+			path = "Post Availbility ";
+			sourceTree = "<group>";
+		};
 		8DF9F0F122566EDE00137495 /* Freebie Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,12 +1196,14 @@
 				8D3E611421F772C3004EAB06 /* Ubuntu-M.ttf in Resources */,
 				8D48C1FE2224257C00417EF5 /* CompletedJobsCell.xib in Resources */,
 				18B211E52566CFD20040C001 /* HeaderView.xib in Resources */,
+				8DC0948A26B2A71A00106AC1 /* TransportAvailabilityCell.xib in Resources */,
 				4E454B6023E48217009AFF47 /* Montserrat-ExtraBold.otf in Resources */,
 				8DC5261F2226DBA40033D6CA /* AcceptBidCell.xib in Resources */,
 				1843EC78253F0B3600D44EA5 /* JobSummaryCell.xib in Resources */,
 				8D3E60FF21F76435004EAB06 /* Assets.xcassets in Resources */,
 				BBE9402E24709EF000DB58F3 /* splashScreenLight.gif in Resources */,
 				BB16A98823D8298D0041EA4E /* Asset 47@3x.png in Resources */,
+				8DC0948F26B2BAEC00106AC1 /* TransporterAvailability.storyboard in Resources */,
 				8D48C20D22243E3D00417EF5 /* ManageReviewsCell.xib in Resources */,
 				8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */,
 				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
@@ -1401,6 +1426,7 @@
 				4E9A3014269CE0B600671ACB /* RegisterViewControllerPk.swift in Sources */,
 				1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */,
 				4E59299623E9CAC6007A3C09 /* Help_ViewController.swift in Sources */,
+				8DC0949126B2BB3400106AC1 /* TransporterAvailabilityViewController.swift in Sources */,
 				8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */,
 				8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */,
 				4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */,
@@ -1423,6 +1449,8 @@
 				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,
 				8D33199C2211D84F00BCB339 /* UserModel.swift in Sources */,
+				8DC0948926B2A71A00106AC1 /* TransportAvailabilityCell.swift in Sources */,
+				8DF49C6A26B436EC0060F608 /* PostAvailabilityFormViewController.swift in Sources */,
 				4E53828523F410E200A73E96 /* ChangePassword_ViewController.swift in Sources */,
 				8DD0DFDA2204A387009A7E52 /* JobsInProgressModel.swift in Sources */,
 				4EF136BF269DD1C90085AA4C /* WebServicesClient.swift in Sources */,

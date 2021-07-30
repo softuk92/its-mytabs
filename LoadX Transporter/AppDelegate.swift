@@ -12,7 +12,6 @@ import GooglePlaces
 import GoogleSignIn
 import UserNotifications
 import Firebase
-import FirebaseInstanceID
 import FirebaseMessaging
 import IQKeyboardManagerSwift
 import DropDown
