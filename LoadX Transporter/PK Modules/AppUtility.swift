@@ -53,7 +53,7 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
         }
         
         //fetch vehicles from server
-        APIManager.apiGet(serviceName: main_URL+"api/getVehicleList", parameters: [:]) { [unowned self] (data, json, error) in
+        APIManager.apiGet(serviceName: "api/getVehicleList", parameters: [:]) { [unowned self] (data, json, error) in
             //handle error
             if let error = error {
                 completion(.failure(error))

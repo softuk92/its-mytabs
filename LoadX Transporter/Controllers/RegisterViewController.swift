@@ -611,15 +611,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UINavigatio
             self.present(self.imagePicker, animated: true, completion: nil)
         })
         
-//        let documentAction = UIAlertAction(title: "Document", style: .default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//            self.licensePicked = 2
-//            let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
-//            importMenu.delegate = self
-//            importMenu.modalPresentationStyle = .formSheet
-//            self.present(importMenu, animated: true, completion: nil)
-//        })
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Cancelled")

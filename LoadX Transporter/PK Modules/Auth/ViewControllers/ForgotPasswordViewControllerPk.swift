@@ -48,9 +48,7 @@ class ForgetPasswordControllerPk: UIViewController {
                         let message = jsonData[0]["message"].stringValue
                         
                         if result == "false" && message == "All fields are required." {
-                            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+                            showAlert(title: "Alert!", message: message, viewController: self)
                         } else {
                             
                             let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC

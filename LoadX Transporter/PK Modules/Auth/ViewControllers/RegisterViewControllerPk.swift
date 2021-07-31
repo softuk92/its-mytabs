@@ -38,6 +38,8 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     @IBOutlet weak var tableview: UITableView!
     
     var list : [VehiclesMO] = []
+    var imageSelector: ImageSelector!
+    var cnicImageSelection : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +61,16 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
                 return
             }
         }
+        
+        cnicFrontBtn.clipsToBounds = true
+        cnicFrontBtn.layer.cornerRadius = 10
+        cnicFrontBtn.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        cnicBackBtn.clipsToBounds = true
+        cnicBackBtn.layer.cornerRadius = 10
+        cnicBackBtn.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
+        imageSelector = ImageSelector()
+        imageSelector.delegate = self
     }
     
     
@@ -110,7 +122,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         let filter = GMSAutocompleteFilter()
         filter.type = .noFilter
         
-        filter.country = "UK"
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
         
         autocompleteController.autocompleteFilter = filter
         present(autocompleteController, animated: true, completion: nil)
@@ -149,12 +161,12 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             fullName.attributedPlaceholder = NSAttributedString(string: "Please enter full name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
         }
-        if  email_address.text == "" {
-            //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
-            
-            email_address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            
-        }
+//        if  email_address.text == "" {
+//            //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
+//
+//            email_address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+//
+//        }
         if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) != true {
             
             phone_no.attributedPlaceholder = NSAttributedString(string: "Please enter 11 digit number start with 0 ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
@@ -180,18 +192,47 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         
     }
     
+    @IBAction func cnicFrontAct(_ sender: Any) {
+        cnicImageSelection = 1
+        imageSelector.showOptions(viewController: self)
+    }
+    
+    @IBAction func cnicBackAct(_ sender: Any) {
+        cnicImageSelection = 2
+        imageSelector.showOptions(viewController: self)
+    }
+    
     //register function
     func registerTransporter() {
         
+        guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
+
+        var input = [MultipartData]()
+        if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
+            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "id-card-front-side", fileName: cnicFrontImg.description))
+        }
+        if let cnicBackImageData = cnicBackImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
+            input.append(MultipartData.init(data: cnicBackImageData, paramName: "id-card-back-side", fileName: cnicBackImg.description))
+        }
         
-        //                parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text!, "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "cmb_id" : cmb_id, "cmd_id" : cmd_id, "car_model_manual" : self.enterCarModel.text ?? ""]
-        //
+        APIManager.apiPostMultipart(serviceName: "api/registerdriver", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+            if error != nil {
+                showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
+            }
+            if progress != nil {
+                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Uploading images to server")
+            } else {
+                SVProgressHUD.dismiss()
+            }
+            
+            
+        }
     }
     
     @available(iOS 13.0, *)
     @IBAction func login_btn(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "LoginViewControllerPk") as! LoginViewControllerPk
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -243,7 +284,7 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
         cell?.lblJobNature.text = self.list[indexPath.row].vehicle_name
-        if indexPath.row == 10 {
+        if indexPath.row == 11 {
             cell?.bottomLineView.isHidden = true
         }
         return cell!
@@ -263,3 +304,14 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
     
 }
 
+extension RegisterViewControllerPk: ImageSelectorDelegate {
+    
+    func imageSelector(didSelectImage image: UIImage?, imgName: String?) {
+        if cnicImageSelection == 1 {
+            cnicFrontimage.image = image
+        } else if cnicImageSelection == 2 {
+            cnicBackimage.image = image
+        }
+    }
+    
+}

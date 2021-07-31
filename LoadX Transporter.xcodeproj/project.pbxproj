@@ -101,6 +101,7 @@
 		4E87C1DF26604B5C007B6454 /* JobSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */; };
 		4E96FC0226A58E630074DE53 /* AuthAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96FC0126A58E630074DE53 /* AuthAPIs.swift */; };
 		4E96FC4F26A59ED40074DE53 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96FC4E26A59ED40074DE53 /* AppConstants.swift */; };
+		4E97FB7726B4A79F0048185C /* ImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E97FB7626B4A79F0048185C /* ImageSelector.swift */; };
 		4E9A04B2263F3C5F0033A91D /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A04B1263F3C5F0033A91D /* UIFont + Extensions.swift */; };
 		4E9A3011269CE0A900671ACB /* LoginViewControllerPk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A3010269CE0A900671ACB /* LoginViewControllerPk.swift */; };
 		4E9A3014269CE0B600671ACB /* RegisterViewControllerPk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A3013269CE0B600671ACB /* RegisterViewControllerPk.swift */; };
@@ -334,6 +335,7 @@
 		4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryView.swift; sourceTree = "<group>"; };
 		4E96FC0126A58E630074DE53 /* AuthAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIs.swift; sourceTree = "<group>"; };
 		4E96FC4E26A59ED40074DE53 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		4E97FB7626B4A79F0048185C /* ImageSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelector.swift; sourceTree = "<group>"; };
 		4E9A04B1263F3C5F0033A91D /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		4E9A3010269CE0A900671ACB /* LoginViewControllerPk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPk.swift; sourceTree = "<group>"; };
 		4E9A3013269CE0B600671ACB /* RegisterViewControllerPk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerPk.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 		18624ED2255AE57F000E1954 /* Helper Methods and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4E97FB7626B4A79F0048185C /* ImageSelector.swift */,
 				4EFE1A4025D70DE40044D701 /* CLocationManager.swift */,
 				18624ED3255AE592000E1954 /* APIManager.swift */,
 				185139C22562DA7E0053098B /* UI Extensions.swift */,
@@ -1464,6 +1467,7 @@
 				4E228E0F23F16F7E00A12947 /* Document_ViewController.swift in Sources */,
 				4E87C1DF26604B5C007B6454 /* JobSummaryView.swift in Sources */,
 				4E1948782565BF0400C3C3C8 /* StopDetailsViewController.swift in Sources */,
+				4E97FB7726B4A79F0048185C /* ImageSelector.swift in Sources */,
 				8D246FA32228388D00E2B290 /* ViewAllQueriesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
