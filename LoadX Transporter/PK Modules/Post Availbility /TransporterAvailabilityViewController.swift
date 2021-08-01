@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Reusable
+import SVProgressHUD
 class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBased{
     static let sceneStoryboard = R.storyboard.transporterAvailability()
 
@@ -29,15 +30,13 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
     func fetchData()  {
         guard let userId = user_id else { return }
         let params : Parameters = ["transporter_id": userId]
-        
+        SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/transporterPostedAvailabilityList", parameters: params) {[weak self] data,json,error in
-            
             guard let self = self, let data = data else {return}
-            
             let decodedModel = try? JSONDecoder().decode([TransporterAvailability].self, from: data)
-            
             self.dataSource = decodedModel ?? []
             self.tableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -46,13 +45,15 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
     }
     
     @IBAction func addButtonTapped(sender: Any){
-//        let sb = R.storyboard.transporterAvailability()
         let showVC = PostAvailabilityFormViewController.instantiate()
+        showVC.dataPosted = { [weak self] in
+            self?.fetchData()
+        }
        self.navigationController?.pushViewController(showVC, animated: true)
     }
 
 }
-extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewDataSource{
+extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewDataSource,TableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -62,9 +63,20 @@ extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewD
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: TransportAvailabilityCell.self)
         let data = dataSource [indexPath.row]
         cell.setData(data: data)
+        cell.cellDelegate = self
         return cell
     }
     
-    
+    func didTapButton(cell: UITableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else {return}
+        let model = dataSource[indexPath.row]
+       let id = model.paID
+        let param = ["pa_id":id]
+        APIManager.apiPost(serviceName: "api/postAvailabilityDelete", parameters: param) { [weak self]data, json, error in
+            if error == nil{
+                self?.fetchData()
+            }
+        }
+    }
 }
 

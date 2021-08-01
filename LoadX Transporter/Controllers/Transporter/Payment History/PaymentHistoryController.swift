@@ -15,6 +15,12 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paymentTotal: UILabel!
+    @IBOutlet weak var invoiceBgView: UIView!
+    @IBOutlet weak var pendingPaymentBgView: UIView!
+    @IBOutlet weak var submitPayment: UIView!
+
+
+
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
     let year = Calendar.current.component(.year, from: Date())
@@ -51,6 +57,20 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         self.refresher.endRefreshing()
         }
     }
+    
+    @IBAction func didTapInvoice(sender: UIButton){
+        invoiceBgView.isHidden = false
+        pendingPaymentBgView.isHidden = true
+        submitPayment.isHidden = true
+        getPaymentHistory()
+    }
+    
+    @IBAction func didTapPendingPayments(sender: UIButton){
+        invoiceBgView.isHidden = true
+        pendingPaymentBgView.isHidden = false
+        submitPayment.isHidden = false
+    }
+    
     
     func getPaymentHistory() {
         SVProgressHUD.show(withStatus: "Getting details...")
@@ -117,8 +137,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // return filteredPaymentHistory.count
-        return 3
+        return filteredPaymentHistory.count
+       // return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
