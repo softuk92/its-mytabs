@@ -10,6 +10,8 @@ import UIKit
 import Reusable
 import GoogleMaps
 import GooglePlaces
+import Alamofire
+import SVProgressHUD
 class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased {
     @IBOutlet weak var dateTF: UITextField!
     @IBOutlet weak var availableLocationTF: UITextField!
@@ -21,19 +23,26 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
     @IBOutlet weak var availableLocationView: UIView!
     @IBOutlet weak var endLocationView: UIView!
     var picker = UIDatePicker()
+    var dataPosted: (()->(Void))?
 
+var openDestination = 0
     static var sceneStoryboard: UIStoryboard = R.storyboard.transporterAvailability()
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 23
-        createDatePicker()
+        
         
     }
     
     @IBAction func openDestinationButtonTapped(sender: UIButton){
         let isSelected = sender.isSelected
         sender.isSelected = !isSelected
-        endLocationView.isHidden = !isSelected
+        self.openDestination = sender.isSelected == true ? 1:0
+        UIView.animate(withDuration: 0.5) {[weak self] in
+            guard let self = self else {return}
+            self.endLocationView.isHidden = !isSelected
+        }
+
     }
     
     @IBAction func backButtonTapped(sender: UIButton){
@@ -43,12 +52,9 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
     /***************************************************************/
     func createDatePicker() {
         picker = UIDatePicker(frame:CGRect(x: 0 , y: self.view.bounds.height-200, width: self.view.bounds.width, height: 200))
-
-        
-        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        
+    
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolbar.setItems([done], animated: false)
         dateTF.inputAccessoryView = toolbar
@@ -63,7 +69,7 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
     }
     
     @IBAction func textDidChanged(sender: UITextField)  {
-        
+        createDatePicker()
     }
     
     @objc func donePressed() {
@@ -75,12 +81,28 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
     }
     
     @IBAction func submitButtonTap(sender: UIButton){
-        let isSelected = sender.isSelected
-        sender.isSelected = !isSelected
-        self.endLocationView.isHidden = !isSelected
+
+        let endDestination = openDestination == 0 ? endLocationTF.text  ?? "" : ""
+        guard let date = self.dateTF.text, let startP = self.availableLocationTF.text ,let userId = user_id else {return}
+        let params: Parameters = ["pa_date":date,"start_point":startP,"end_point":endDestination,"transporter_id":userId,"end_point_checkbox":openDestination]
         
-      // guard let date = self.dateTF.text, let to
-        
+        SVProgressHUD.show()
+
+        APIManager.apiPost(serviceName: "api/transporterPostAvailabilityAPI", parameters: params) {[weak self] data, json, error in
+            if error ==  nil{
+                self?.reloadData()
+            }
+            else{
+                print(error?.localizedDescription)
+            }
+            SVProgressHUD.dismiss()
+
+        }
+    }
+    
+    func reloadData() {
+        dataPosted?()
+        self.navigationController?.popViewController(animated: true)
     }
     
     

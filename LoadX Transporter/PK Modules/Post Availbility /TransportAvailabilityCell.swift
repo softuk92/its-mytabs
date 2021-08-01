@@ -8,6 +8,10 @@
 
 import UIKit
 import Reusable
+protocol TableViewDelegate: AnyObject{
+    func didTapButton(cell:UITableViewCell)
+}
+
 class TransportAvailabilityCell: UITableViewCell,NibReusable {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var vanType: UILabel!
@@ -15,6 +19,7 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
     @IBOutlet weak var endPoint: UILabel!
     @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var status: UILabel!
+    weak var cellDelegate:TableViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +37,7 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
         endPoint.text = data.endPoint
         availability.text = data.taDate
         status.text = data.status
+        cellDelegate?.didTapButton(cell: self)
     }
     
 }
