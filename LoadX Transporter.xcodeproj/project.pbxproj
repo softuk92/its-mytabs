@@ -189,6 +189,9 @@
 		8D48C21B2224420700417EF5 /* PaymentHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48C2172224420600417EF5 /* PaymentHistoryController.swift */; };
 		8D61D3CE221DA1EC00F215D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D61D3CD221DA1EC00F215D4 /* GoogleService-Info.plist */; };
 		8D64CE38220DCD4A0044DABE /* ExpiredJobsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D64CE37220DCD4A0044DABE /* ExpiredJobsModel.swift */; };
+		8D952D1326B5F4C00022BEEF /* EarningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D952D1126B5F4C00022BEEF /* EarningTableViewCell.swift */; };
+		8D952D1426B5F4C00022BEEF /* EarningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D952D1226B5F4C00022BEEF /* EarningTableViewCell.xib */; };
+		8D952D1726B6CF420022BEEF /* TransporterAvailiblity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D952D1626B6CF420022BEEF /* TransporterAvailiblity.swift */; };
 		8D98C723222050E800420BFA /* SearchDeliveriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D98C722222050E800420BFA /* SearchDeliveriesController.swift */; };
 		8D98C7252220543B00420BFA /* SearchDelivariesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D98C7242220543B00420BFA /* SearchDelivariesModel.swift */; };
 		8D98C729222058CC00420BFA /* SearchDeliveriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D98C727222058CC00420BFA /* SearchDeliveriesCell.swift */; };
@@ -428,6 +431,9 @@
 		8D48C2172224420600417EF5 /* PaymentHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryController.swift; sourceTree = "<group>"; };
 		8D61D3CD221DA1EC00F215D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D64CE37220DCD4A0044DABE /* ExpiredJobsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiredJobsModel.swift; sourceTree = "<group>"; };
+		8D952D1126B5F4C00022BEEF /* EarningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningTableViewCell.swift; sourceTree = "<group>"; };
+		8D952D1226B5F4C00022BEEF /* EarningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningTableViewCell.xib; sourceTree = "<group>"; };
+		8D952D1626B6CF420022BEEF /* TransporterAvailiblity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterAvailiblity.swift; sourceTree = "<group>"; };
 		8D98C722222050E800420BFA /* SearchDeliveriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeliveriesController.swift; sourceTree = "<group>"; };
 		8D98C7242220543B00420BFA /* SearchDelivariesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelivariesModel.swift; sourceTree = "<group>"; };
 		8D98C727222058CC00420BFA /* SearchDeliveriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeliveriesCell.swift; sourceTree = "<group>"; };
@@ -999,6 +1005,14 @@
 			path = Transporter;
 			sourceTree = "<group>";
 		};
+		8D952D1526B6CD030022BEEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D952D1626B6CF420022BEEF /* TransporterAvailiblity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8D98C726222056DB00420BFA /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,7 +1042,10 @@
 		8DC0948D26B2BAAC00106AC1 /* Post Availbility  */ = {
 			isa = PBXGroup;
 			children = (
+				8D952D1526B6CD030022BEEF /* Model */,
 				8DC0948E26B2BAEC00106AC1 /* TransporterAvailability.storyboard */,
+				8D952D1126B5F4C00022BEEF /* EarningTableViewCell.swift */,
+				8D952D1226B5F4C00022BEEF /* EarningTableViewCell.xib */,
 				8DC0949026B2BB3400106AC1 /* TransporterAvailabilityViewController.swift */,
 				8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */,
 				8DC0948826B2A71A00106AC1 /* TransportAvailabilityCell.xib */,
@@ -1168,6 +1185,7 @@
 				184C48ED2523525C0042AA94 /* DropDownViewCell.xib in Resources */,
 				4E454B6123E48217009AFF47 /* Montserrat-SemiBold.otf in Resources */,
 				8D48C1F722240A1A00417EF5 /* ActiveJobsCell.xib in Resources */,
+				8D952D1426B5F4C00022BEEF /* EarningTableViewCell.xib in Resources */,
 				8D270D1121FB86C90016D6DD /* client_590790755826-9u7kq1p0ecc71gtp8f42ol6hf16ho4eh.apps.googleusercontent.com.plist in Resources */,
 				8D3E610221F76435004EAB06 /* LaunchScreen.storyboard in Resources */,
 				BB16169C24BF31E2008420A8 /* GeneralItemHeaderCell.xib in Resources */,
@@ -1397,6 +1415,7 @@
 				8DE44D412211B42A008CBEE0 /* SessionManager.swift in Sources */,
 				8D270CF621FB3A860016D6DD /* HomeViewController.swift in Sources */,
 				4E3BEDBF2564750700483100 /* RouteDetailsViewController.swift in Sources */,
+				8D952D1726B6CF420022BEEF /* TransporterAvailiblity.swift in Sources */,
 				8DD0DFD022048EB2009A7E52 /* ActiveJobsModel.swift in Sources */,
 				4E9A3017269CE0C200671ACB /* OTPViewControllerPk.swift in Sources */,
 				4EFE1A4125D70DE40044D701 /* CLocationManager.swift in Sources */,
@@ -1432,6 +1451,7 @@
 				8DC0949126B2BB3400106AC1 /* TransporterAvailabilityViewController.swift in Sources */,
 				8DC5261A2226D2F80033D6CA /* HelperFunctions.swift in Sources */,
 				8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */,
+				8D952D1326B5F4C00022BEEF /* EarningTableViewCell.swift in Sources */,
 				4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */,
 				8DE8FAFF220074EE009309F8 /* SuccessController.swift in Sources */,
 				8D48C1FD2224257C00417EF5 /* CompletedJobsCell.swift in Sources */,

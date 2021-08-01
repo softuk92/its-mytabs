@@ -89,6 +89,9 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
            
            let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
            toolbar.setItems([done], animated: false)
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
           
         toDate_tf.inputAccessoryView = toolbar
         toDate_tf.inputView = picker

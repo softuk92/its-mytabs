@@ -32,7 +32,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "PaymentHistoryCell", bundle: nil) , forCellReuseIdentifier: "paymentHistory")
+        //tableView.register(UINib(nibName: "PaymentHistoryCell", bundle: nil) , forCellReuseIdentifier: "paymentHistory")
+        tableView.register(cellType: EarningTableViewCell.self)
         
        // paymentTotal.text = driverEarning
         refresher = UIRefreshControl()
@@ -116,7 +117,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPaymentHistory.count
+       // return filteredPaymentHistory.count
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,65 +133,72 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "paymentHistory") as! PaymentHistoryCell
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.backgroundView = nil
-        cell.backgroundColor = nil
         
-        cell.cell_view.layer.cornerRadius = 10
-        cell.viewInvocie_btn.clipsToBounds = true
-        cell.viewInvocie_btn.layer.cornerRadius = 10
-        cell.viewInvocie_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
         
-      
         
-        let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
+        let cell:EarningTableViewCell = tableView.dequeueReusableCell(for: indexPath, cellType: EarningTableViewCell.self)
         
-        if paymentHistoryRow.moving_item != nil {
-            cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
-        } else {
-            cell.moving_item.text = "LR00\(paymentHistoryRow.route_id ?? "")"
-        }
         
-        let stringDate = paymentHistoryRow.pay_date
-        
-        if (stringDate?.contains("am")) != nil || ((stringDate?.contains("pm")) != nil) {
-            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate?.dropLast(2) ?? ""))
-        } else {
-        cell.job_posted_date.text = self.convertDateFormatter(stringDate)
-        }
-        
-        let jobID = paymentHistoryRow.payment_id ?? ""
-        let job_id = "LOADX"+String(self.year)+"JI"+jobID
-//        let job_id = "LX00"+jobID
-        cell.invoiceNo.text = job_id
-        let payment_type = paymentHistoryRow.payment_type
-        if payment_type == "full" {
-            cell.paid.text = "Received"
-        }
-        cell.viewInvoiceRow = { (selectedCell) in
-            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
-            payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
-
-            if paymentHistoryRow.moving_item != nil {
-            if booked_id == "1" {
-//            self.performSegue(withIdentifier: "showBooked", sender: self)
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoiceBookedJob") as? ShowInvoiceBookedJob
-                self.navigationController?.pushViewController(vc!, animated: true)
-            } else {
-//            self.performSegue(withIdentifier: "invoice", sender: self)
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoice") as? ShowInvoice
-            self.navigationController?.pushViewController(vc!, animated: true)
-                
-            }
-            } else {
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowRouteInvoiceViewController") as? ShowRouteInvoiceViewController {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-        }
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "paymentHistory") as! PaymentHistoryCell
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//        cell.backgroundView = nil
+//        cell.backgroundColor = nil
+//
+//        cell.cell_view.layer.cornerRadius = 10
+//        cell.viewInvocie_btn.clipsToBounds = true
+//        cell.viewInvocie_btn.layer.cornerRadius = 10
+//        cell.viewInvocie_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+//
+//
+//
+//        let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
+//
+//        if paymentHistoryRow.moving_item != nil {
+//            cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
+//        } else {
+//            cell.moving_item.text = "LR00\(paymentHistoryRow.route_id ?? "")"
+//        }
+//
+//        let stringDate = paymentHistoryRow.pay_date
+//
+//        if (stringDate?.contains("am")) != nil || ((stringDate?.contains("pm")) != nil) {
+//            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate?.dropLast(2) ?? ""))
+//        } else {
+//        cell.job_posted_date.text = self.convertDateFormatter(stringDate)
+//        }
+//
+//        let jobID = paymentHistoryRow.payment_id ?? ""
+//        let job_id = "LOADX"+String(self.year)+"JI"+jobID
+////        let job_id = "LX00"+jobID
+//        cell.invoiceNo.text = job_id
+//        let payment_type = paymentHistoryRow.payment_type
+//        if payment_type == "full" {
+//            cell.paid.text = "Received"
+//        }
+//        cell.viewInvoiceRow = { (selectedCell) in
+//            let selectedIndex = self.tableView.indexPath(for: selectedCell)
+//            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+//            let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
+//            payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
+//
+//            if paymentHistoryRow.moving_item != nil {
+//            if booked_id == "1" {
+////            self.performSegue(withIdentifier: "showBooked", sender: self)
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoiceBookedJob") as? ShowInvoiceBookedJob
+//                self.navigationController?.pushViewController(vc!, animated: true)
+//            } else {
+////            self.performSegue(withIdentifier: "invoice", sender: self)
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoice") as? ShowInvoice
+//            self.navigationController?.pushViewController(vc!, animated: true)
+//
+//            }
+//            } else {
+//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowRouteInvoiceViewController") as? ShowRouteInvoiceViewController {
+//                    self.navigationController?.pushViewController(vc, animated: true)
+//                }
+//            }
+//        }
         
         return cell
         
