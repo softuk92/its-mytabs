@@ -384,6 +384,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         }
         
+        //simple jobs table view
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobsInProgress") as! JobsInProgressCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
@@ -391,7 +392,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let jobsInProgressRow = jobsInProgressModel[indexPath.row]
         
-        if jobsInProgressRow.is_job_started == "0" {
+        if jobsInProgressRow.is_job_started == nil || jobsInProgressRow.is_job_started == "0" {
             cell.startJobBtn.isHidden = false
         } else {
             cell.startJobBtn.isHidden = true
@@ -399,20 +400,31 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //setJobBookedFor Status
         cell.setJobBookedForView(workingHours: jobsInProgressRow.working_hours, category: jobsInProgressRow.add_type)
+        cell.setData(model: jobsInProgressRow)
         
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
-        cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
+        cell.jobId.text = "LX000"+(jobsInProgressRow.del_id)
         cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
         cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
         cell.date.text = convertDateFormatter(jobsInProgressRow.date)
         cell.pickupTime.text = jobsInProgressRow.timeslot?.uppercased()
+        
+        if AppUtility.shared.country == .Pakistan {
+            let payment_type = jobsInProgressRow.job_payment_type
+            if  payment_type == "full" {
+                cell.payment_method_lbl.text = "Account Job"
+            }else{
+                cell.payment_method_lbl.text = "Cash Job"
+            }
+        } else {
         let payment_type = jobsInProgressRow.payment_type
         if  payment_type == "full" {
             cell.payment_method_lbl.text = "Account Job"
         }else{
             cell.payment_method_lbl.text = "Cash Job"
+        }
         }
         
         let is_companyJob = jobsInProgressRow.is_company_job
@@ -424,14 +436,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.businessPatti.isHidden = true
             cell.widthBusiness.constant = 0
         }
-        cell.businessCharges.isHidden = jobsInProgressRow.is_cz == "0"
+        cell.businessCharges.isHidden = AppUtility.shared.country == .Pakistan ? true : (jobsInProgressRow.is_cz == "0")
         
         let bookedJob_id = jobsInProgressRow.is_booked_job
         
         if bookedJob_id == "1" {
             cell.cancelJobBtn.isHidden = false
             
-            let currentBid = jobsInProgressRow.current_bid
+            let currentBid = jobsInProgressRow.current_bid ?? "0"
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let doubleValue = Double(x)
             cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
@@ -439,11 +451,13 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.cancelJobBtn.isHidden = true
         }
         
-        let currentBid = jobsInProgressRow.current_bid
-        let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-        let doubleValue = Double(x)
-        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
+//        if !(AppUtility.shared.country == .Pakistan) {
+//        let currentBid = jobsInProgressRow.current_bid ?? "0"
+//        let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
+//        let doubleValue = Double(x)
+//        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
+//        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
+//        }
         
         cell.startJob = {[weak self] (selectedCell) in
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
@@ -553,7 +567,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
             } else {
                         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
-                    let price = "£ "+"\(getDoubleValue(currentBid: Double(jobData.current_bid) ?? 0.0, doubleValue: percentage ?? 0.0))"
+                let price = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(jobData.transporter_share ?? "")?.withCommas() ?? "0")) : ("£ "+"\(getDoubleValue(currentBid: Double(jobData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
           
                         del_id = self.jobsInProgressModel[indexPath.row].del_id
             if let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController {
@@ -667,7 +681,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
         
         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
-        let jobPrice = "£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid) ?? 0.0, doubleValue: percentage ?? 0.0))"
+        let jobPrice = "£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))"
         
         jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: rowData.payment_type == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)

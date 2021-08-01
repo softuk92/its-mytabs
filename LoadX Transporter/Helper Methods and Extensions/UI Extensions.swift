@@ -58,3 +58,11 @@ extension UIView{
         layer.shadowOffset = CGSize(width: 0 , height:3)
     }
 }
+
+extension Int {
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self))!
+    }
+}

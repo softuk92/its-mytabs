@@ -15,7 +15,7 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var drop_off: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var receivedAmount: UILabel!
+    @IBOutlet weak var receivedAmountStatus: UILabel!
     
     @IBOutlet weak var businessPatti: UIImageView!
     @IBOutlet weak var widthBusiness: NSLayoutConstraint!
@@ -26,15 +26,19 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var completion_dateView: UIView!
     @IBOutlet weak var completionDate_Lbl: UILabel!
     @IBOutlet weak var cellBackground_view: UIView!
-    /*@IBOutlet weak var Revice_amount_view: UIView!
-    @IBOutlet weak var driver_view: UIView!
-    @IBOutlet weak var payment_type_icon: UIImageView!
-    @IBOutlet weak var driver_name: UIButton!
-    @IBOutlet weak var receivedAmount: UILabel!
-     @IBOutlet weak var user_Icon_img: UIImageView!*/
+
     @IBOutlet weak var delete_btn: UIButton!
     @IBOutlet weak var jobBookedFor: UILabel!
     @IBOutlet weak var jobBookedForView: UIStackView!
+    
+    @IBOutlet weak var receivedAmountView: UIStackView!
+    @IBOutlet weak var receivedAmount: UILabel!
+    @IBOutlet weak var transporterShareView: UIStackView!
+    @IBOutlet weak var transporterShare: UILabel!
+    @IBOutlet weak var loadxShareView: UIStackView!
+    @IBOutlet weak var loadxShare: UILabel!
+    @IBOutlet weak var jobPriceView: UIStackView!
+    @IBOutlet weak var contactPerson: UILabel!
     
     var deleteRow: ((CompletedJobsCell) -> Void)?
     var transporterProfileRow: ((CompletedJobsCell) -> Void)?
@@ -45,9 +49,30 @@ class CompletedJobsCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CompletedJobsCell.viewDetails))
         moving_item.isUserInteractionEnabled = true
         moving_item.addGestureRecognizer(tap)
-//        self.cellBackground_view.dropShadow(color: .black, offSet: CGSize(width: -1, height: 1))
+        
+        setupViews()
+    }
+    
+    func setupViews() {
+        if AppUtility.shared.country == .Pakistan {
+            receivedAmountView.isHidden = false
+            transporterShareView.isHidden = false
+            loadxShareView.isHidden = false
+            jobPriceView.isHidden = true
+        } else {
+            receivedAmountView.isHidden = true
+            transporterShareView.isHidden = true
+            loadxShareView.isHidden = true
+            jobPriceView.isHidden = false
+        }
     }
 
+    func setData(model: CompletedJobsModel) {
+        receivedAmount.text = AppUtility.shared.currencySymbol+(model.price?.withCommas() ?? "0")
+        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporter_share)?.withCommas() ?? "0")
+        loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
+        contactPerson.text = model.contact_person.capitalized
+    }
 
     func setJobBookedForView(workingHours: String?, category: String) {
         if category == "Man & Van" || category == "Man and Van" {
@@ -73,10 +98,5 @@ class CompletedJobsCell: UITableViewCell {
     @IBAction func deleteBtn(_ sender: Any) {
         deleteRow?(self)
     }
-    
-    @IBAction func getTransporterProfile(_ sender: Any) {
-        transporterProfileRow?(self)
-    }
-    
 
 }

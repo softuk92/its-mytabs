@@ -24,8 +24,8 @@ class SearchDeliveriesCell: UITableViewCell {
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var businessPatti: UIImageView!
     @IBOutlet weak var postedDate_lbl: UILabel!
-   
-   
+    @IBOutlet weak var distanceStackView: UIStackView!
+    @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var deliverDate_lbl: UILabel!
     @IBOutlet weak var Dates_View: UIView!
     
@@ -38,7 +38,17 @@ class SearchDeliveriesCell: UITableViewCell {
         moving_item.isUserInteractionEnabled = true
         moving_item.addGestureRecognizer(tap)
 //        self.innerView.dropShadow(color: .black, offSet: CGSize(width: -1, height: 1))
+        
+        if AppUtility.shared.country == .Pakistan {
+            distanceStackView.isHidden = false
+            quotes.isHidden = true
+        } else {
+            distanceStackView.isHidden = true
+            quotes.isHidden = false
+        }
     }
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -28,6 +28,15 @@ class JobsInProgressCell: UITableViewCell {
     @IBOutlet weak var jobBookedForView: UIStackView!
     @IBOutlet weak var pickupTime: UILabel!
     
+    @IBOutlet weak var receivedAmountView: UIStackView!
+    @IBOutlet weak var receivedAmount: UILabel!
+    @IBOutlet weak var transporterShareView: UIStackView!
+    @IBOutlet weak var transporterShare: UILabel!
+    @IBOutlet weak var loadxShareView: UIStackView!
+    @IBOutlet weak var loadxShare: UILabel!
+    @IBOutlet weak var jobPriceView: UIStackView!
+    @IBOutlet weak var pickupTimeView: UIStackView!
+    
     var startJob: ((JobsInProgressCell) -> Void)?
     var cancelJob: ((JobsInProgressCell) -> Void)?
     
@@ -35,6 +44,29 @@ class JobsInProgressCell: UITableViewCell {
         super.awakeFromNib()
 
         customizeView()
+        setupViews()
+    }
+    
+    func setupViews() {
+        if AppUtility.shared.country == .Pakistan {
+            receivedAmountView.isHidden = false
+            transporterShareView.isHidden = false
+            loadxShareView.isHidden = false
+            jobPriceView.isHidden = true
+            pickupTimeView.isHidden = true
+        } else {
+            receivedAmountView.isHidden = true
+            transporterShareView.isHidden = true
+            loadxShareView.isHidden = true
+            jobPriceView.isHidden = false
+            pickupTimeView.isHidden = false
+        }
+    }
+    
+    func setData(model: JobsInProgressModel) {
+        receivedAmount.text = AppUtility.shared.currencySymbol+(model.price?.withCommas() ?? "0")
+        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporter_share ?? "")?.withCommas() ?? "0")
+        loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
     }
     
     func setJobBookedForView(workingHours: String?, category: String) {

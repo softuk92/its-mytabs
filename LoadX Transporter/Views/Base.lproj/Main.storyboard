@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1702,8 +1702,8 @@
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
-                                                <rect key="frame" x="154" y="30" width="120" height="20"/>
+                                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="149" y="30" width="120" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0zk-BQ-gH3"/>
@@ -2993,16 +2993,16 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Gn-e6d">
-                            <rect key="frame" x="10" y="115" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="115" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Invoice # :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-BL-I7Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadX2019J19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9D-cO-Uyh">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="160" id="23G-08-tI0"/>
                                     </constraints>
@@ -3013,16 +3013,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rny-5E-TQA">
-                            <rect key="frame" x="10" y="149.5" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="150" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Issued Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-w7-qMa">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNE-UU-pqb">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -3030,7 +3030,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="b82-ao-lbL">
-                            <rect key="frame" x="10" y="184" width="353" height="90"/>
+                            <rect key="frame" x="10" y="185" width="353" height="90"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftI-0m-Gpn">
                                     <rect key="frame" x="0.0" y="0.0" width="161.5" height="90"/>
@@ -3092,7 +3092,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUu-I1-LJ5">
-                            <rect key="frame" x="15" y="481" width="348" height="44"/>
+                            <rect key="frame" x="15" y="482" width="348" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-KZ-hcV">
                                     <rect key="frame" x="0.0" y="7" width="150" height="24"/>
@@ -3122,7 +3122,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pki-kC-GnF">
-                            <rect key="frame" x="10" y="289" width="353" height="183"/>
+                            <rect key="frame" x="10" y="290" width="353" height="183"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tT7-kE-32E">
                                     <rect key="frame" x="5" y="0.0" width="348" height="44"/>
@@ -3251,7 +3251,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-Ea-LjK">
-                                            <rect key="frame" x="194" y="6" width="135" height="25.5"/>
+                                            <rect key="frame" x="194" y="6" width="135" height="25"/>
                                             <fontDescription key="fontDescription" name="Ubuntu-Light" family="Ubuntu" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -3287,7 +3287,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEm-ar-nfc">
-                            <rect key="frame" x="10" y="540" width="353" height="2"/>
+                            <rect key="frame" x="10" y="541" width="353" height="2"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dk0-aq-1P3">
                                     <rect key="frame" x="0.0" y="0.0" width="263" height="2"/>
@@ -3398,7 +3398,7 @@
                                 <rect key="frame" x="0.0" y="45" width="375" height="573"/>
                                 <color key="backgroundColor" name="Background_color"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="AEx-9N-RNm">
-                                    <rect key="frame" x="0.0" y="93.000000346790671" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="100" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTM-c6-VtY" customClass="CustomizedView" customModule="LoadX_Transporter" customModuleProvider="target">
@@ -3437,7 +3437,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eWL-nN-gv4">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eWL-nN-gv4" id="GPj-cT-YBA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -4682,7 +4682,7 @@
                                 <color key="backgroundColor" name="Background_color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="70" id="mgd-tq-19n" customClass="HeadTableViewCell" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mgd-tq-19n" id="hUE-Qs-egs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -4736,7 +4736,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="footerCell" rowHeight="100" id="YUE-Se-2vq" customClass="FooterTableViewCell" customModule="LoadX_Transporter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94.5" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="98" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YUE-Se-2vq" id="qTE-Lv-u1R">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -6678,7 +6678,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="jV6-OK-vYb">
-                                <rect key="frame" x="5.5" y="587" width="139" height="40"/>
+                                <rect key="frame" x="4.5" y="587" width="141" height="40"/>
                                 <color key="pageIndicatorTintColor" systemColor="labelColor"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.82956629989999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
@@ -6728,12 +6728,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSu-LS-7MS">
-                                        <rect key="frame" x="113" y="358.5" width="149.5" height="29.5"/>
+                                        <rect key="frame" x="123" y="358.5" width="129" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit your details along with your documents." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ij-2O-CTx">
-                                        <rect key="frame" x="40" y="413" width="295" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="295" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -6784,12 +6784,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtT-nh-clS">
-                                        <rect key="frame" x="141.5" y="358.5" width="92.5" height="29.5"/>
+                                        <rect key="frame" x="144.5" y="358.5" width="86" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get jobs according to your vehicle type and load capacity." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAo-TJ-T9x">
-                                        <rect key="frame" x="40" y="413" width="295" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="295" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -6894,14 +6894,14 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                     <constraint firstAttribute="height" id="au7-QW-vVn"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Man and Van" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-vt-4YI">
-                                                <rect key="frame" x="10" y="27.5" width="335" height="19"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-vt-4YI">
+                                                <rect key="frame" x="10" y="27.5" width="335" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-2X-VAr">
-                                                <rect key="frame" x="10" y="51.5" width="335" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-2X-VAr">
+                                                <rect key="frame" x="10" y="32.5" width="335" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="PriceColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7021,11 +7021,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="0CR-E0-9dQ" firstAttribute="bottom" secondItem="L2k-Zj-ety" secondAttribute="bottom" id="WGh-EI-iYe"/>
                             <constraint firstItem="0CR-E0-9dQ" firstAttribute="trailing" secondItem="L2k-Zj-ety" secondAttribute="trailing" id="czY-dV-TJB"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="L2k-Zj-ety"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="V9i-2g-8kV"/>
                     <connections>
@@ -8514,7 +8509,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <color key="textColor" red="0.45098039220000002" green="0.4549019608" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-8S-XJF">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-8S-XJF">
                                             <rect key="frame" x="0.0" y="55" width="337.5" height="477"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
@@ -10555,7 +10550,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-H5-6Qg">
-                            <rect key="frame" x="15" y="110" width="309" height="96"/>
+                            <rect key="frame" x="15" y="110" width="309" height="75"/>
                             <string key="text">We're always working hard to optimize our app with the latest technologies and best new features. Please update LoadX Transporter application to enjoy those.</string>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -12650,7 +12645,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobNatureCell" rowHeight="65" id="JqF-VM-A6H" customClass="JobNatureCell" customModule="LoadX_Transporter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="24.5" width="335" height="65"/>
+                                                        <rect key="frame" x="0.0" y="28" width="335" height="65"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JqF-VM-A6H" id="jpU-GR-RXc">
                                                             <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
@@ -13641,12 +13636,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Deliveries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6n-kR-nfC">
-                                        <rect key="frame" x="83.5" y="358.5" width="208" height="29.5"/>
+                                        <rect key="frame" x="95" y="358.5" width="185.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for deliveries in your area or across the country." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y51-m2-TSu">
-                                        <rect key="frame" x="40" y="413" width="295" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="295" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -13697,12 +13692,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Completion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-Bs-dxj">
-                                        <rect key="frame" x="81" y="358.5" width="193.5" height="29.5"/>
+                                        <rect key="frame" x="92" y="358.5" width="171.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete the job and get paid on the same day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olP-e3-cYJ">
-                                        <rect key="frame" x="40" y="413" width="275" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="275" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -15935,167 +15930,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
             <point key="canvasLocation" x="4998" y="6150"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="0IF-hv-yh7">
-            <size key="intrinsicContentSize" width="60.5" height="19"/>
-        </designable>
-        <designable name="257-6y-Ght">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="2BA-4V-VRr">
-            <size key="intrinsicContentSize" width="174" height="21.5"/>
-        </designable>
-        <designable name="4wz-VO-Nn1">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="5BL-Xt-I48">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="7GF-nj-Pl0">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="7On-b6-1nB">
-            <size key="intrinsicContentSize" width="65.5" height="19"/>
-        </designable>
-        <designable name="C2K-AJ-z3b">
-            <size key="intrinsicContentSize" width="143.5" height="17"/>
-        </designable>
-        <designable name="H7M-mu-B97">
-            <size key="intrinsicContentSize" width="30" height="31"/>
-        </designable>
-        <designable name="Hx4-ra-EzO">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="J1Z-hw-plO">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="JMr-jC-tdV">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="LUy-0O-VEd">
-            <size key="intrinsicContentSize" width="20.5" height="18.5"/>
-        </designable>
-        <designable name="Mix-dG-50Y">
-            <size key="intrinsicContentSize" width="109" height="19"/>
-        </designable>
-        <designable name="PZH-LN-gdd">
-            <size key="intrinsicContentSize" width="88" height="18.5"/>
-        </designable>
-        <designable name="R2D-rX-BFd">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="RPx-IU-t3H">
-            <size key="intrinsicContentSize" width="31" height="31"/>
-        </designable>
-        <designable name="Sd6-lV-u6x">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="UGn-6U-qqT">
-            <size key="intrinsicContentSize" width="149.5" height="18"/>
-        </designable>
-        <designable name="X6V-RK-JSX">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="XEc-NW-5tM">
-            <size key="intrinsicContentSize" width="72.5" height="18"/>
-        </designable>
-        <designable name="Yh6-D2-w7r">
-            <size key="intrinsicContentSize" width="94.5" height="19"/>
-        </designable>
-        <designable name="Ypz-H0-p0a">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="ZDh-QP-DUd">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="ZGV-Er-xnf">
-            <size key="intrinsicContentSize" width="114" height="19"/>
-        </designable>
-        <designable name="aHv-Gf-nnF">
-            <size key="intrinsicContentSize" width="102.5" height="19"/>
-        </designable>
-        <designable name="aKu-la-rV0">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="b2m-00-8hT">
-            <size key="intrinsicContentSize" width="170" height="20"/>
-        </designable>
-        <designable name="bGW-qd-z1F">
-            <size key="intrinsicContentSize" width="132" height="24"/>
-        </designable>
-        <designable name="bx3-ey-jix">
-            <size key="intrinsicContentSize" width="35" height="33"/>
-        </designable>
-        <designable name="dw7-Jl-o7q">
-            <size key="intrinsicContentSize" width="68" height="19"/>
-        </designable>
-        <designable name="fAA-BO-aE5">
-            <size key="intrinsicContentSize" width="55.5" height="19"/>
-        </designable>
-        <designable name="fh1-Hm-GB2">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="gcX-Wg-WpX">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="h7d-z0-szC">
-            <size key="intrinsicContentSize" width="83.5" height="19"/>
-        </designable>
-        <designable name="hpN-HR-vwA">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="kXB-JA-2g9">
-            <size key="intrinsicContentSize" width="195" height="19"/>
-        </designable>
-        <designable name="l3l-FX-OXZ">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="lTE-zv-sbR">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="mv7-yQ-9zU">
-            <size key="intrinsicContentSize" width="123" height="19"/>
-        </designable>
-        <designable name="oFO-Xt-4bm">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="oqS-mv-y2k">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="pjE-6K-ER5">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="qrs-6z-Cew">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="r42-My-QiM">
-            <size key="intrinsicContentSize" width="70.5" height="19"/>
-        </designable>
-        <designable name="rAh-td-T27">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="rnZ-vd-aaY">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="sZS-8V-WpS">
-            <size key="intrinsicContentSize" width="65.5" height="19"/>
-        </designable>
-        <designable name="tuA-1E-sy6">
-            <size key="intrinsicContentSize" width="97" height="17"/>
-        </designable>
-        <designable name="wEZ-RQ-Eer">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="yFs-ep-MKf">
-            <size key="intrinsicContentSize" width="124.5" height="19"/>
-        </designable>
-        <designable name="yhC-ol-Sk5">
-            <size key="intrinsicContentSize" width="38" height="18.5"/>
-        </designable>
-        <designable name="ysy-Ok-FOy">
-            <size key="intrinsicContentSize" width="145" height="18"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Account_Edit" width="70" height="67"/>
         <image name="Account_documnt" width="67.5" height="70"/>

@@ -24,12 +24,10 @@ struct CompletedJobsModel: Decodable  {
     let long_dropoff: String
     let distance: String
     let add_type: String
-    let totalbid: String
-    let current_bid: String
+    let current_bid: String?
     let contact_person: String
     let contact_phone: String
     let date: String
-    let min_bid: String
     let is_company_job: String
     let driver_get_job_payment: String
     let payment_type: String
@@ -38,4 +36,7 @@ struct CompletedJobsModel: Decodable  {
     let pu_house_no: String?
     let transporter_share: String
     let working_hours: String?
+    let loadx_share: String?
+    let price: Int?
+    let job_payment_type: String?
 }

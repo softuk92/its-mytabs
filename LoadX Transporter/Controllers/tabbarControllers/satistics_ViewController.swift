@@ -451,7 +451,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
 //                let contactPerson = completedJobsRow.contact_person
     //            cell.driver_name.setTitle(contactPerson.capitalized, for: .normal)
                 
-                let currentBid = completedJobsRow.current_bid
+                let currentBid = completedJobsRow.current_bid ?? "0"
                 let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                 let doubleValue = Double(x)
                 let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)

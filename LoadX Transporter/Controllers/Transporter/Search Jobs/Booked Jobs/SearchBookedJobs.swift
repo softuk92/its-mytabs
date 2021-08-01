@@ -115,7 +115,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
 //                        "7.5 Ton Truck",
 //                        "Container Truck",
 //                        "Other"]
-    let categoryList = ["Van Type", "Small Van",
+    var categoryList = ["Van Type", "Small Van",
                         "Medium Van",
                         "Large Van",
                         "Luton Van"]
@@ -215,6 +215,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         tableViewsRefreshControls()
+        
+        AppUtility.shared.getVehiclesList { [weak self] (result) in
+            switch result {
+            case .success(let vehicles):
+                self?.categoryList = vehicles.map{$0.vehicle_name}
+            case .failure(let error):
+                return
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -445,7 +454,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         autocompleteController.delegate = self
         let filter = GMSAutocompleteFilter()
         filter.type = .noFilter
-        filter.country = "UK"
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
+        
         autocompleteController.autocompleteFilter = filter
         locationPicked = sender.tag
         present(autocompleteController, animated: true, completion: nil)
@@ -457,7 +467,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         autocompleteController.delegate = self
         let filter = GMSAutocompleteFilter()
         filter.type = .noFilter
-        filter.country = "UK"
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
+        
         autocompleteController.autocompleteFilter = filter
         locationPicked = sender.tag
         present(autocompleteController, animated: true, completion: nil)
@@ -655,6 +666,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         let searchDeliveriesRow = searchBookModel[indexPath.row]
         
+        cell.distance.text = "\(searchDeliveriesRow.distance)KM"
+        
         if searchDeliveriesRow.add_type == "Mercedes-Benz S-Class" {
             print("search job: \(searchDeliveriesRow)")
         }
@@ -693,12 +706,17 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         if searchDeliveriesRow.transporter_share != "0" {
             let str = Double(searchDeliveriesRow.transporter_share) ?? 0.0
-            cell.lowest_bid.text = "£ "+String(format: "%.2f", str)
+            if AppUtility.shared.country == .Pakistan {
+                let price = Int(searchDeliveriesRow.transporter_share)?.withCommas() ?? ""
+                cell.lowest_bid.text = AppUtility.shared.currencySymbol+String(price)
+            } else {
+                cell.lowest_bid.text = AppUtility.shared.currencySymbol+String(format: "%.0f", str)
+            }
         } else {
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let  doubleValue = Double(x)
             if currentBid != "NoBid" {
-                cell.lowest_bid.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+                cell.lowest_bid.text = AppUtility.shared.currencySymbol+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
             } else {
                 cell.lowest_bid.text = "N/A"
             }
@@ -1073,8 +1091,13 @@ extension SearchBookedJobs {
             if error != nil {
                 
             }
+            if AppUtility.shared.country == .Pakistan {
+                self.icStatus = json?[0]["cnic_frontside_status"].stringValue.lowercased()
+                self.dlStatus = json?[0]["cnic_backside_status"].stringValue.lowercased()
+            } else {
             self.icStatus = json?[0]["ic_status"].stringValue.lowercased()
             self.dlStatus = json?[0]["dl_status"].stringValue.lowercased()
+            }
             
             let isLoadx = json?[0]["is_loadx_driver"].stringValue
             

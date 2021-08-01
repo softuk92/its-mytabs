@@ -18,7 +18,12 @@ public func getDoubleValue(currentBid: Double, doubleValue: Double) -> String {
 //    if String(resultRemaining).contains(".0") {
 //        return String(format: "%.1f", resultRemaining)
 //    } else {
+    if AppUtility.shared.country == .Pakistan {
+        let price = Int(resultRemaining).withCommas()
+        return String(price)
+    } else {
         return String(format: "%.2f", resultRemaining)
+    }
 //    }
 }
 
@@ -27,7 +32,12 @@ public func getDoubleValue2(currentBid: Double, doubleValue: Double) -> String {
     
     let resultRemaining = currentBid - resultInitialPrice.rounded(toPlaces: 2)
     
-    return String(format: "%.2f", resultRemaining)
+    if AppUtility.shared.country == .Pakistan {
+        let price = Int(resultRemaining).withCommas()
+        return String(price)
+    } else {
+        return String(format: "%.2f", resultRemaining)
+    }
 }
 
 extension UITextField {

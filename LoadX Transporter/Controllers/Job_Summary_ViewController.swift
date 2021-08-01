@@ -66,7 +66,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         
         let category = jsonData[0]["add_type"].stringValue
 //        let jobID = "LOADX"+String(year)+"J"+(del_id ?? "")
-        let jobID = "LX00"+(del_id ?? "")
+        let jobID = "LX000"+(del_id ?? "")
         let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
         let pickUp_time = jsonData[0]["timeslot"].stringValue
         let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)

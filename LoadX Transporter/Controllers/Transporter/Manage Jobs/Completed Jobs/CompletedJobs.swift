@@ -91,6 +91,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: CGFloat(HEADER_HEIGHT))
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CompletedJobsCell", bundle: nil) , forCellReuseIdentifier: "completedJobs")
@@ -283,7 +285,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 }
                             } else {
                                 self.completedJobsModel = try JSONDecoder().decode([CompletedJobsModel].self, from: data ?? Data())
-//                                self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
+                                self.completeJobCount_lbl.text = "(\(self.completedJobsModel.count))"
                                 self.searchCount = "(\(self.completedJobsModel.count))"
                                 SVProgressHUD.dismiss()
                                 
@@ -295,6 +297,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                             }
                         } catch {
                             SVProgressHUD.dismiss()
+                            print(error)
                             self.present(showAlert(title: "Error", message: error.localizedDescription), animated: true, completion: nil)
                         }
                     }
@@ -321,7 +324,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if tableView == routesTableView {
             return 260
         }
-        return 280
+        return UITableView.automaticDimension
     }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -365,23 +368,23 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let due_amount_status = completedJobsRow.due_amount_status
             if payment_type1 == "full" || payment_type1 == "Full" {
                 if due_amount_status == "Pending" {
-                    cell.receivedAmount.text = "Pending"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
+                    cell.receivedAmountStatus.text = "Pending"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#F6AD4E")
                     
                 } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
             } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                cell.receivedAmount.text = "Received"
-                cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                cell.receivedAmountStatus.text = "Received"
+                cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
             } else if payment_type1 == "initial" || payment_type1 == "Initial" {
                 if due_amount_status == "Pending" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
             }
             
@@ -397,6 +400,9 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             let currentBid = completedJobsRow.current_bid
             
+            if AppUtility.shared.country == .Pakistan {
+                cell.price.text = AppUtility.shared.currencySymbol+(Int(completedJobsRow.transporter_share)?.withCommas() ?? "0")
+            } else {
             if completedJobsRow.transporter_share != "0" {
                 let str = Double(completedJobsRow.transporter_share) ?? 0.0
                 cell.price.text = "£ "+String(format: "%.2f", str)
@@ -412,10 +418,34 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }else{
                     cell.payment_type_lbl.text = "Cash Job"
             }
+            }
         } else {
             
             let completedJobsRow = completedJobsModel[indexPath.row]
+            cell.setData(model: completedJobsRow)
             cell.setJobBookedForView(workingHours: completedJobsRow.working_hours, category: completedJobsRow.add_type)
+            if AppUtility.shared.country == .Pakistan {
+                let payment_type = completedJobsRow.job_payment_type
+                if payment_type != "" {
+                        cell.payment_type_lbl.text = "Account Job"
+                }else{
+                        cell.payment_type_lbl.text = "Cash Job"
+                }
+                let is_companyJob = completedJobsRow.is_company_job
+                
+                if is_companyJob == "1" {
+                    cell.businessPatti.isHidden = false
+                    cell.widthBusiness.constant = 82
+                    if switchCheck == true {
+                        cell.payment_type_lbl.text = "Account Job"
+                    }else{
+                        cell.payment_type_lbl.text = "Account Job"
+                    }
+                } else {
+                    cell.businessPatti.isHidden = true
+                    cell.widthBusiness.constant = 0
+                }
+            } else {
             let payment_type = completedJobsRow.payment_type
             if payment_type != "" {
                     cell.payment_type_lbl.text = "Account Job"
@@ -436,6 +466,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 cell.businessPatti.isHidden = true
                 cell.widthBusiness.constant = 0
             }
+            }
             
             let due_amount_status = completedJobsRow.due_amount_status
             
@@ -448,23 +479,23 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             if payment_type2 == "full" || payment_type2 == "Full" {
                 if due_amount_status == "Pending" {
-                    cell.receivedAmount.text = "Pending"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#F6AD4E")
+                    cell.receivedAmountStatus.text = "Pending"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#F6AD4E")
                     
                 } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
             } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                cell.receivedAmount.text = "Received"
-                cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                cell.receivedAmountStatus.text = "Received"
+                cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
             } else if payment_type2 == "initial" || payment_type2 == "Initial" {
                 if due_amount_status == "Pending" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmount.text = "Received"
-                    cell.receivedAmount.textColor = UIColor.init(hexString: "#4A9B4B")
+                    cell.receivedAmountStatus.text = "Received"
+                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
                 }
             }
             
@@ -479,6 +510,9 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
 //            let contactPerson = completedJobsRow.contact_person
             
+            if AppUtility.shared.country == .Pakistan {
+                cell.price.text = AppUtility.shared.currencySymbol+(Int(completedJobsRow.transporter_share)?.withCommas() ?? "0")
+            } else {
             let currentBid = completedJobsRow.current_bid
             if completedJobsRow.transporter_share != "0" {
                 let str = Double(completedJobsRow.transporter_share) ?? 0.0
@@ -486,7 +520,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             } else {
                 let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                 let  doubleValue = Double(x)
-                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+                cell.price.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid ?? "0") ?? 0.0, doubleValue: doubleValue ?? 0.0))"
+            }
             }
         }
         

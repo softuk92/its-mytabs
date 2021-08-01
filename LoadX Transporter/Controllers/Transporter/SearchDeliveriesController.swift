@@ -202,7 +202,8 @@ class SearchDeliveriesController: UIViewController, UITableViewDataSource, UITab
         autocompleteController.delegate = self
         let filter = GMSAutocompleteFilter()
         filter.type = .noFilter
-        filter.country = "UK"
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
+        
         autocompleteController.autocompleteFilter = filter
         locationPicked = sender.tag
         present(autocompleteController, animated: true, completion: nil)
