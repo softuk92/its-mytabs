@@ -30,7 +30,7 @@ class SuccessVC: UIViewController {
     }
     
     @IBAction func mainBtnAct (_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
 }

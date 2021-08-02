@@ -37,5 +37,6 @@ target 'LoadX Transporter' do
     pod 'YPImagePicker', '~> 4.4.0'
     pod 'SwiftMessages'
     pod 'R.swift'
+    pod 'OTPFieldView'
     
 end
