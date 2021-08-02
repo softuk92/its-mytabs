@@ -10,13 +10,35 @@ import UIKit
 
 class ContactUsViewController: UIViewController {
 
+    @IBOutlet weak var callUsBtn: UIButton!
+    @IBOutlet weak var emailBtn: UIButton!
+    
+    let pakNumber: String = "(+92)4238938836"
+    let otherNumber: String = "02080570111"
+    let pakEmail: String = "info@loadx.pk"
+    let otherEmail: String = "info@loadx.co.uk"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
+    }
+    
+    func setupUI() {
+        
+        if AppUtility.shared.country == .Pakistan {
+            callUsBtn.setTitle(pakNumber, for: .normal)
+            emailBtn.setTitle(pakEmail, for: .normal)
+        } else {
+            callUsBtn.setTitle(otherNumber, for: .normal)
+            emailBtn.setTitle(otherEmail, for: .normal)
+        }
+        
     }
     
     @IBAction func callUs(_ sender: UIButton) {
-           if let url = URL(string: "tel://\(02080570111)"), UIApplication.shared.canOpenURL(url) {
+        let phoneN = AppUtility.shared.country == .Pakistan ? pakNumber : otherNumber
+           if let url = URL(string: "tel://\(phoneN)"), UIApplication.shared.canOpenURL(url) {
                if #available(iOS 10, *) {
                    UIApplication.shared.open(url)
                } else {
@@ -27,8 +49,7 @@ class ContactUsViewController: UIViewController {
        }
        
        @IBAction func openEmail(_ sender: Any) {
-           
-           let email = "info@loadx.co.uk"
+        let email = AppUtility.shared.country == .Pakistan ? pakEmail : otherEmail
            if let url = URL(string: "mailto:\(email)") {
                if #available(iOS 10.0, *) {
                    UIApplication.shared.open(url)

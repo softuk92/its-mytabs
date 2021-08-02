@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -3025,16 +3025,16 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Gn-e6d">
-                            <rect key="frame" x="10" y="115" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="115" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Invoice # :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-BL-I7Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadX2019J19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9D-cO-Uyh">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="160" id="23G-08-tI0"/>
                                     </constraints>
@@ -3045,16 +3045,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rny-5E-TQA">
-                            <rect key="frame" x="10" y="149.5" width="269.5" height="19.5"/>
+                            <rect key="frame" x="10" y="150" width="265.5" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Issued Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-w7-qMa">
-                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNE-UU-pqb">
-                                    <rect key="frame" x="109.5" y="0.0" width="160" height="19.5"/>
+                                    <rect key="frame" x="105.5" y="0.0" width="160" height="20"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -3062,7 +3062,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="b82-ao-lbL">
-                            <rect key="frame" x="10" y="184" width="353" height="90"/>
+                            <rect key="frame" x="10" y="185" width="353" height="90"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftI-0m-Gpn">
                                     <rect key="frame" x="0.0" y="0.0" width="161.5" height="90"/>
@@ -3124,7 +3124,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUu-I1-LJ5">
-                            <rect key="frame" x="15" y="481" width="348" height="44"/>
+                            <rect key="frame" x="15" y="482" width="348" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-KZ-hcV">
                                     <rect key="frame" x="0.0" y="7" width="150" height="24"/>
@@ -3154,7 +3154,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pki-kC-GnF">
-                            <rect key="frame" x="10" y="289" width="353" height="183"/>
+                            <rect key="frame" x="10" y="290" width="353" height="183"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tT7-kE-32E">
                                     <rect key="frame" x="5" y="0.0" width="348" height="44"/>
@@ -3283,7 +3283,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-Ea-LjK">
-                                            <rect key="frame" x="194" y="6" width="135" height="25.5"/>
+                                            <rect key="frame" x="194" y="6" width="135" height="25"/>
                                             <fontDescription key="fontDescription" name="Ubuntu-Light" family="Ubuntu" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -3319,7 +3319,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEm-ar-nfc">
-                            <rect key="frame" x="10" y="540" width="353" height="2"/>
+                            <rect key="frame" x="10" y="541" width="353" height="2"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dk0-aq-1P3">
                                     <rect key="frame" x="0.0" y="0.0" width="263" height="2"/>
@@ -7757,7 +7757,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 <color key="textColor" name="contactTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in touch with us on any ofthe below, we'd love to hear from you! " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-Cx-AG7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in touch with us on any of the below, we'd love to hear from you! " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-Cx-AG7">
                                 <rect key="frame" x="20" y="110.5" width="335" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="hHE-P0-Qm2"/>
@@ -7994,6 +7994,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="P1U-cM-kp7" firstAttribute="top" secondItem="9cA-It-Kyu" secondAttribute="bottom" constant="20" id="uBa-80-FiT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="callUsBtn" destination="Wlx-8J-U7v" id="wVw-gs-2uH"/>
+                        <outlet property="emailBtn" destination="Mq2-K2-00E" id="SQP-eb-EKw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hL3-m3-4yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -10638,7 +10642,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-H5-6Qg">
-                            <rect key="frame" x="15" y="110" width="309" height="96"/>
+                            <rect key="frame" x="15" y="110" width="309" height="75"/>
                             <string key="text">We're always working hard to optimize our app with the latest technologies and best new features. Please update LoadX Transporter application to enjoy those.</string>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -11975,17 +11979,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Ia-K4Y">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLY-UP-Ncu">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="5xU-4k-Isn"/>
                                         <constraint firstAttribute="height" constant="60" id="JBP-7j-Mho"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable mobile notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-bE-zeh">
-                                    <rect key="frame" x="20" y="80" width="260" height="50"/>
+                                    <rect key="frame" x="20" y="80" width="262" height="50"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -12004,10 +12008,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-40-bMs">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-ra-EzO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Zq-1D-JZX"/>
@@ -12027,7 +12031,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Xt-I48" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -12998,7 +13002,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8x-sw-URA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="0.0" width="380" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="474-oA-PKE">
                                         <rect key="frame" x="25" y="10" width="25" height="25"/>
@@ -13029,113 +13033,134 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdb-JN-efn">
-                                <rect key="frame" x="25" y="70" width="147" height="67"/>
+                                <rect key="frame" x="25" y="70" width="146.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSS-e2-Xr8">
-                                <rect key="frame" x="25" y="151" width="160" height="135"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="M7R-0B-fO2">
+                                <rect key="frame" x="20" y="120.5" width="340" height="190"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="39H-4N-sY1">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="91" id="aQ6-cV-iZs"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="gLx-xX-hw1" appends="YES" id="QBU-Am-qNO"/>
-                                        </connections>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-gx-m2m">
-                                        <rect key="frame" x="0.0" y="91" width="160" height="44"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
-                                        <color key="tintColor" name="NewBlueColor"/>
-                                        <state key="normal" title="Driving License  " backgroundImage="signUp_imgSelect_btn">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="licenseBtn:" destination="ae0-qW-1E6" eventType="touchUpInside" id="UDa-y7-YN3"/>
-                                            <action selector="selectImage4:" destination="dvK-Ps-XWR" eventType="touchUpInside" id="kf9-ci-qss"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DJL-BE-E2L">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="190"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSS-e2-Xr8">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="135"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="39H-4N-sY1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="91" id="aQ6-cV-iZs"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="gLx-xX-hw1" appends="YES" id="QBU-Am-qNO"/>
+                                                        </connections>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-gx-m2m">
+                                                        <rect key="frame" x="0.0" y="91" width="160" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="160" id="fEK-oU-sev"/>
+                                                            <constraint firstAttribute="height" constant="44" id="iag-cR-CRA"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                                                        <color key="tintColor" name="NewBlueColor"/>
+                                                        <state key="normal" title="Driving License  " backgroundImage="signUp_imgSelect_btn">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectImage4:" destination="dvK-Ps-XWR" eventType="touchUpInside" id="kf9-ci-qss"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="39H-4N-sY1" firstAttribute="leading" secondItem="oSS-e2-Xr8" secondAttribute="leading" id="BQ9-q3-tQt"/>
+                                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="leading" secondItem="39H-4N-sY1" secondAttribute="leading" id="IgQ-3B-CNv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gEt-gx-m2m" secondAttribute="bottom" id="NFn-ch-zOe"/>
+                                                    <constraint firstAttribute="trailing" secondItem="39H-4N-sY1" secondAttribute="trailing" id="OQx-8P-GAi"/>
+                                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="top" secondItem="39H-4N-sY1" secondAttribute="bottom" id="Vzj-Bo-v1s"/>
+                                                    <constraint firstAttribute="height" constant="135" id="ZZZ-HH-Fih"/>
+                                                    <constraint firstItem="39H-4N-sY1" firstAttribute="top" secondItem="oSS-e2-Xr8" secondAttribute="top" id="dFs-FE-M1I"/>
+                                                    <constraint firstAttribute="width" constant="160" id="oae-MT-WbP"/>
+                                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="trailing" secondItem="39H-4N-sY1" secondAttribute="trailing" id="swx-gU-Qv2"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDG-kP-5hc">
+                                                <rect key="frame" x="0.0" y="145" width="160" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-Ng-Hmc">
+                                                <rect key="frame" x="0.0" y="172.5" width="160" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dnj-LT-4SF">
+                                        <rect key="frame" x="180" y="0.0" width="160" height="190"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJU-Hx-VwR">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="135"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="c2t-tl-Azx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="91" id="Qr8-Lp-7Py"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="rmE-DR-H7k" appends="YES" id="RWP-o5-lB3"/>
+                                                        </connections>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-Lv-6Az">
+                                                        <rect key="frame" x="0.0" y="91" width="160" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="160" id="eEQ-1S-n6n"/>
+                                                            <constraint firstAttribute="height" constant="44" id="z3f-KU-ut2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                                                        <color key="tintColor" name="NewBlueColor"/>
+                                                        <state key="normal" title="Insurance Copy" backgroundImage="signUp_imgSelect_btn">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectImage3:" destination="dvK-Ps-XWR" eventType="touchUpInside" id="tw1-30-kD8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="135" id="6gp-UF-nVu"/>
+                                                    <constraint firstItem="aGm-Lv-6Az" firstAttribute="leading" secondItem="c2t-tl-Azx" secondAttribute="leading" id="7QH-am-UP2"/>
+                                                    <constraint firstAttribute="width" constant="160" id="JSe-hH-gPy"/>
+                                                    <constraint firstItem="c2t-tl-Azx" firstAttribute="leading" secondItem="EJU-Hx-VwR" secondAttribute="leading" id="MJS-R6-015"/>
+                                                    <constraint firstItem="aGm-Lv-6Az" firstAttribute="top" secondItem="c2t-tl-Azx" secondAttribute="bottom" id="crx-Sr-nDv"/>
+                                                    <constraint firstItem="c2t-tl-Azx" firstAttribute="top" secondItem="EJU-Hx-VwR" secondAttribute="top" id="fKT-LT-dhi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="c2t-tl-Azx" secondAttribute="trailing" id="gCn-gt-sKb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aGm-Lv-6Az" secondAttribute="bottom" id="i1r-1y-7nt"/>
+                                                    <constraint firstItem="aGm-Lv-6Az" firstAttribute="trailing" secondItem="c2t-tl-Azx" secondAttribute="trailing" id="jAb-tW-S8r"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7R-zd-kpp">
+                                                <rect key="frame" x="0.0" y="145" width="160" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-2D-wTA">
+                                                <rect key="frame" x="0.0" y="172.5" width="160" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="39H-4N-sY1" firstAttribute="leading" secondItem="oSS-e2-Xr8" secondAttribute="leading" id="BQ9-q3-tQt"/>
-                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="leading" secondItem="39H-4N-sY1" secondAttribute="leading" id="IgQ-3B-CNv"/>
-                                    <constraint firstAttribute="bottom" secondItem="gEt-gx-m2m" secondAttribute="bottom" id="NFn-ch-zOe"/>
-                                    <constraint firstAttribute="trailing" secondItem="39H-4N-sY1" secondAttribute="trailing" id="OQx-8P-GAi"/>
-                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="top" secondItem="39H-4N-sY1" secondAttribute="bottom" id="Vzj-Bo-v1s"/>
-                                    <constraint firstAttribute="height" constant="135" id="ZZZ-HH-Fih"/>
-                                    <constraint firstItem="39H-4N-sY1" firstAttribute="top" secondItem="oSS-e2-Xr8" secondAttribute="top" id="dFs-FE-M1I"/>
-                                    <constraint firstAttribute="width" constant="160" id="oae-MT-WbP"/>
-                                    <constraint firstItem="gEt-gx-m2m" firstAttribute="trailing" secondItem="39H-4N-sY1" secondAttribute="trailing" id="swx-gU-Qv2"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DO-7A-R7q">
-                                <rect key="frame" x="200" y="151" width="160" height="135"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp_image_upload" translatesAutoresizingMaskIntoConstraints="NO" id="P25-XK-ZvI">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="91"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="91" id="qf5-sX-Jgm"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="rmE-DR-H7k" appends="YES" id="z2A-iM-NA5"/>
-                                        </connections>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frl-aa-seh">
-                                        <rect key="frame" x="0.0" y="91" width="160" height="44"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
-                                        <color key="tintColor" name="NewBlueColor"/>
-                                        <state key="normal" title="Insurance Copy" backgroundImage="signUp_imgSelect_btn">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="insuranceBtn:" destination="ae0-qW-1E6" eventType="touchUpInside" id="Wu9-ow-I3k"/>
-                                            <action selector="selectImage3:" destination="dvK-Ps-XWR" eventType="touchUpInside" id="e4F-q1-BI4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="frl-aa-seh" firstAttribute="top" secondItem="P25-XK-ZvI" secondAttribute="bottom" id="I2J-nB-0qB"/>
-                                    <constraint firstAttribute="trailing" secondItem="P25-XK-ZvI" secondAttribute="trailing" id="JBY-fh-ZHs"/>
-                                    <constraint firstAttribute="trailing" secondItem="frl-aa-seh" secondAttribute="trailing" id="Ny1-c3-dlK"/>
-                                    <constraint firstItem="frl-aa-seh" firstAttribute="leading" secondItem="9DO-7A-R7q" secondAttribute="leading" id="UAW-Bl-x6o"/>
-                                    <constraint firstItem="P25-XK-ZvI" firstAttribute="leading" secondItem="9DO-7A-R7q" secondAttribute="leading" id="a72-4E-tyW"/>
-                                    <constraint firstAttribute="bottom" secondItem="frl-aa-seh" secondAttribute="bottom" id="h40-4t-pxJ"/>
-                                    <constraint firstItem="P25-XK-ZvI" firstAttribute="top" secondItem="9DO-7A-R7q" secondAttribute="top" id="mGl-e0-d6o"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Satuts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iH6-QD-Pj2">
-                                <rect key="frame" x="47" y="298" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Satuts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4nd-hL-g98">
-                                <rect key="frame" x="222" y="298" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-Ng-Hmc">
-                                <rect key="frame" x="47" y="327" width="116" height="18"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf0-px-Q7W">
-                                <rect key="frame" x="222" y="327" width="116" height="18"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Van Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-g5-vSM">
                                 <rect key="frame" x="25" y="356.5" width="139.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -13180,7 +13205,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLE-LK-FCB">
-                                <rect key="frame" x="25" y="552" width="325" height="40"/>
+                                <rect key="frame" x="25" y="552" width="330" height="40"/>
                                 <color key="backgroundColor" name="NewBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="I0x-mn-6Ye"/>
@@ -13204,33 +13229,19 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <constraints>
                             <constraint firstItem="xdb-JN-efn" firstAttribute="leading" secondItem="gqI-YT-d18" secondAttribute="leading" constant="25" id="1po-2W-jJo"/>
                             <constraint firstItem="xdb-JN-efn" firstAttribute="top" secondItem="Y8x-sw-URA" secondAttribute="bottom" constant="25" id="1we-Z5-z2Y"/>
-                            <constraint firstItem="9DO-7A-R7q" firstAttribute="width" secondItem="oSS-e2-Xr8" secondAttribute="width" id="2mP-F7-El4"/>
-                            <constraint firstItem="4nd-hL-g98" firstAttribute="top" secondItem="frl-aa-seh" secondAttribute="bottom" constant="12" id="2pf-RI-lQx"/>
                             <constraint firstItem="gqI-YT-d18" firstAttribute="bottom" secondItem="LLE-LK-FCB" secondAttribute="bottom" constant="75" id="37G-6p-4me"/>
-                            <constraint firstItem="oSS-e2-Xr8" firstAttribute="top" secondItem="xdb-JN-efn" secondAttribute="bottom" constant="14" id="5TN-da-6lE"/>
-                            <constraint firstItem="XwQ-Ng-Hmc" firstAttribute="leading" secondItem="iH6-QD-Pj2" secondAttribute="leading" id="6DM-O9-0gL"/>
                             <constraint firstItem="QdZ-DN-ag8" firstAttribute="top" secondItem="IdO-g5-vSM" secondAttribute="bottom" constant="13" id="7bC-cP-q1H"/>
                             <constraint firstItem="LLE-LK-FCB" firstAttribute="leading" secondItem="gqI-YT-d18" secondAttribute="leading" constant="25" id="Dun-mn-tiw"/>
+                            <constraint firstItem="M7R-0B-fO2" firstAttribute="leading" secondItem="gqI-YT-d18" secondAttribute="leading" constant="20" id="EvV-wG-cDr"/>
+                            <constraint firstItem="gqI-YT-d18" firstAttribute="trailing" secondItem="M7R-0B-fO2" secondAttribute="trailing" constant="20" id="IP7-uD-YUe"/>
                             <constraint firstItem="QdZ-DN-ag8" firstAttribute="leading" secondItem="IdO-g5-vSM" secondAttribute="leading" id="JjT-j5-oZB"/>
-                            <constraint firstItem="XwQ-Ng-Hmc" firstAttribute="top" secondItem="iH6-QD-Pj2" secondAttribute="bottom" constant="8" id="LKf-Qf-0tp"/>
-                            <constraint firstItem="Hf0-px-Q7W" firstAttribute="leading" secondItem="4nd-hL-g98" secondAttribute="leading" id="Lcp-ns-WPr"/>
-                            <constraint firstItem="9DO-7A-R7q" firstAttribute="height" secondItem="oSS-e2-Xr8" secondAttribute="height" id="N2P-W8-Cty"/>
-                            <constraint firstItem="IdO-g5-vSM" firstAttribute="top" secondItem="XwQ-Ng-Hmc" secondAttribute="bottom" constant="57.5" id="ND2-yk-9W3"/>
+                            <constraint firstItem="M7R-0B-fO2" firstAttribute="top" secondItem="xdb-JN-efn" secondAttribute="bottom" constant="30" id="KqT-Zf-if9"/>
                             <constraint firstItem="Y8x-sw-URA" firstAttribute="top" secondItem="gqI-YT-d18" secondAttribute="top" id="Od5-eN-XWq"/>
                             <constraint firstItem="Y8x-sw-URA" firstAttribute="leading" secondItem="bSr-Y7-5sI" secondAttribute="leading" id="Q7F-rx-amy"/>
-                            <constraint firstItem="9DO-7A-R7q" firstAttribute="leading" secondItem="oSS-e2-Xr8" secondAttribute="trailing" constant="15" id="Rqs-XX-Q9O"/>
-                            <constraint firstItem="4nd-hL-g98" firstAttribute="centerX" secondItem="frl-aa-seh" secondAttribute="centerX" id="RrI-qj-KyY"/>
                             <constraint firstItem="gqI-YT-d18" firstAttribute="trailing" secondItem="Y8x-sw-URA" secondAttribute="trailing" id="VAM-BB-lj3"/>
-                            <constraint firstItem="iH6-QD-Pj2" firstAttribute="centerX" secondItem="gEt-gx-m2m" secondAttribute="centerX" id="YJB-iV-crn"/>
-                            <constraint firstItem="Hf0-px-Q7W" firstAttribute="trailing" secondItem="4nd-hL-g98" secondAttribute="trailing" id="cjE-9A-Sa5"/>
                             <constraint firstItem="IdO-g5-vSM" firstAttribute="leading" secondItem="xdb-JN-efn" secondAttribute="leading" id="e74-0j-hyD"/>
-                            <constraint firstItem="oSS-e2-Xr8" firstAttribute="leading" secondItem="xdb-JN-efn" secondAttribute="leading" id="f2U-tX-Zfm"/>
                             <constraint firstItem="gqI-YT-d18" firstAttribute="trailing" secondItem="IdO-g5-vSM" secondAttribute="trailing" constant="210.5" id="gK0-bT-UJ3"/>
-                            <constraint firstItem="iH6-QD-Pj2" firstAttribute="top" secondItem="gEt-gx-m2m" secondAttribute="bottom" constant="12" id="grX-jH-r7f"/>
                             <constraint firstItem="gqI-YT-d18" firstAttribute="trailing" secondItem="LLE-LK-FCB" secondAttribute="trailing" constant="25" id="j2M-Cf-0eZ"/>
-                            <constraint firstItem="XwQ-Ng-Hmc" firstAttribute="trailing" secondItem="iH6-QD-Pj2" secondAttribute="trailing" id="jPh-yt-ruT"/>
-                            <constraint firstItem="9DO-7A-R7q" firstAttribute="centerY" secondItem="oSS-e2-Xr8" secondAttribute="centerY" id="qaH-IR-FOF"/>
-                            <constraint firstItem="Hf0-px-Q7W" firstAttribute="top" secondItem="4nd-hL-g98" secondAttribute="bottom" constant="8" id="sHO-xt-E8Y"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -13241,8 +13252,8 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     </view>
                     <connections>
                         <outlet property="dl_status" destination="XwQ-Ng-Hmc" id="iUr-xe-3Ls"/>
-                        <outlet property="ic_status" destination="Hf0-px-Q7W" id="fVM-rd-o0q"/>
-                        <outlet property="insurance_img" destination="P25-XK-ZvI" id="nK1-KK-ga7"/>
+                        <outlet property="ic_status" destination="e7q-2D-wTA" id="ypJ-fR-Puj"/>
+                        <outlet property="insurance_img" destination="c2t-tl-Azx" id="BFf-fY-7pq"/>
                         <outlet property="license_img" destination="39H-4N-sY1" id="x80-ae-v12"/>
                         <outlet property="van_img" destination="9J9-HH-ygX" id="RG1-O2-p2w"/>
                     </connections>
@@ -13724,12 +13735,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Deliveries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6n-kR-nfC">
-                                        <rect key="frame" x="83.5" y="358.5" width="208" height="29.5"/>
+                                        <rect key="frame" x="95" y="358.5" width="185.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for deliveries in your area or across the country." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y51-m2-TSu">
-                                        <rect key="frame" x="40" y="413" width="295" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="295" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -13780,12 +13791,12 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Completion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-Bs-dxj">
-                                        <rect key="frame" x="81" y="358.5" width="193.5" height="29.5"/>
+                                        <rect key="frame" x="92" y="358.5" width="171.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete the job and get paid on the same day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olP-e3-cYJ">
-                                        <rect key="frame" x="40" y="413" width="275" height="43.5"/>
+                                        <rect key="frame" x="40" y="411.5" width="275" height="42"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>

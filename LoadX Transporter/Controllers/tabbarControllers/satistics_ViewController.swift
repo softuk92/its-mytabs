@@ -48,10 +48,10 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         if let totalEarningAmount = UserDefaults.standard.string(forKey: "total_earning") {
-        totalEarning.text = "£ \(totalEarningAmount)"
+            totalEarning.text = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(Double(totalEarningAmount)!).withCommas())) : "£ \(totalEarningAmount)"
         }
         if let totalOutstandingAmount = UserDefaults.standard.string(forKey: "totalOutstanding") {
-            totalOutstanding.text = "£ \(totalOutstandingAmount)"
+            totalOutstanding.text = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(Double(totalOutstandingAmount)!).withCommas())) : "£ \(totalOutstandingAmount)"
         }
         if let routeEarning = UserDefaults.standard.string(forKey: "totalRouteCompleted") {
             self.routesEarning.text = routeEarning
@@ -149,7 +149,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                                 
                                 
                                 if result == "0" {
-                                    self.totalEarning.text = "£0.00"
+                                    self.totalEarning.text = AppUtility.shared.country == .Pakistan ? "\(AppUtility.shared.currencySymbol)0" : "£0.00"
                                     self.totalCompletedJob_lbl.text = "0"
                                    self.completedJobsModel.removeAll()
                                     
@@ -163,9 +163,9 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
                              //     self.total_income_count.text = "0"
                               } else {
                                     if total_income == 0 {
-                                        self.totalEarning.text = "£0.00"
+                                        self.totalEarning.text = AppUtility.shared.country == .Pakistan ? "\(AppUtility.shared.currencySymbol)0" : "£0.00"
                                     } else {
-                                    self.totalEarning.text = "£" + "\(totalIncome)"
+                                    self.totalEarning.text = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(totalIncome).withCommas())) : "£ \(totalIncome)"
                                     }
                                     self.totalCompletedJob_lbl.text =  totaljobs
                                     self.stackView.isHidden = true

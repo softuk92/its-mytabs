@@ -24,6 +24,9 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     @IBOutlet weak var dl_status: UILabel!
     @IBOutlet weak var ic_status: UILabel!
     
+    @IBOutlet weak var insuranceImageView: UIView!
+    @IBOutlet weak var licenseBtn: UIButton!
+    
     var imagePicker = UIImagePickerController()
     private var imagePicked = 0
     private var imageData1 : Data?
@@ -45,6 +48,14 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
         imagePicker.allowsEditing = false
         profileDetail()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupUI() {
+        if AppUtility.shared.country == .Pakistan {
+            insuranceImageView.isHidden = true
+        } else {
+            insuranceImageView.isHidden = false
+        }
     }
     
     @IBAction func back_action(_ sender: Any) {
