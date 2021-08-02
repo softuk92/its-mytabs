@@ -14,8 +14,13 @@ class SplashScreen_ViewController: UIViewController {
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
     let date = Date()
     let calendar = Calendar.current
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var largestPlatform: UIView!
+    
     override func viewDidLoad() {
+        
+        if !(AppUtility.shared.country == .Pakistan) {
+            largestPlatform.isHidden = true
+        }
         
 //        if #available(iOS 13.0, *) {
 //            if UITraitCollection.current.userInterfaceStyle == .dark {
