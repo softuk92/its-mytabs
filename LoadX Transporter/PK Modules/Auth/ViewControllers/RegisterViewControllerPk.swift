@@ -161,12 +161,12 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             fullName.attributedPlaceholder = NSAttributedString(string: "Please enter full name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
         }
-//        if  email_address.text == "" {
-//            //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
-//
-//            email_address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//
-//        }
+        //        if  email_address.text == "" {
+        //            //  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
+        //
+        //            email_address.attributedPlaceholder = NSAttributedString(string: "Please enter full email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        //
+        //        }
         if self.phone_no.text == "" || phone_no.text?.count != 11 || (self.phone_no.text?.hasPrefix("0")) != true {
             
             phone_no.attributedPlaceholder = NSAttributedString(string: "Please enter 11 digit number start with 0 ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
@@ -187,7 +187,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             // SVProgressHUD.showError(withStatus: "Please Enter Vehicle Reg Number ")
         }
         if fullName.text != "" && email_address.text != "" && phone_no.text != "" && address.text != "" && van_type.text != "" && vehicle_reg_no.text != "" {
-            registerTransporter()
+            registerForOTP()
         }
         
     }
@@ -203,11 +203,37 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     }
     
     //register function
+    func registerForOTP() {
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/userRegisterAPI", parameters: ["user_number": self.phone_no.text!]) { [weak self] (data, json, error) in
+            SVProgressHUD.dismiss()
+            guard error == nil else {showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self!); return }
+            guard let self = self else { return }
+            
+            let OtpNumber = json?[0]["OTP"].stringValue
+            let registeredUser = json?[0]["register_user"].stringValue
+            
+            if registeredUser == "0" {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OTPViewControllerPk") as! OTPViewControllerPk
+                vc.otpNumber = OtpNumber
+                vc.phoneNumber = self.phone_no.text
+                vc.dismissCallBack = { [weak self] (isOTPEntered) in
+                    if isOTPEntered{
+                        self?.registerTransporter()
+                    }
+                }
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                showAlert(title: "", message: "User already registered.", viewController: self)
+            }
+        }
+    }
+    
     func registerTransporter() {
-        
+        SVProgressHUD.show()
         guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
-        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
-
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1"]
+        
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
             input.append(MultipartData.init(data: cnicFrontImageData, paramName: "id-card-front-side", fileName: cnicFrontImg.description))
@@ -217,16 +243,28 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         }
         
         APIManager.apiPostMultipart(serviceName: "api/registerdriver", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+            SVProgressHUD.dismiss()
             if error != nil {
                 showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
             }
             if progress != nil {
-                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Uploading images to server")
+                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Registering...")
             } else {
                 SVProgressHUD.dismiss()
             }
             
+            guard let json = json else { return }
+            let result = json[0]["result"].stringValue
+            let message = json[0]["message"].stringValue
             
+            if result == "true" {
+                let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
+                vc?.titleStr = "SUCCESS"
+                vc?.subtitleStr = "Your Login detials have been sent to your email address."
+            self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                showAlert(title: "Alert", message: message, viewController: self)
+            }
         }
     }
     

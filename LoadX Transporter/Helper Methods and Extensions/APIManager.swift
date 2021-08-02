@@ -95,31 +95,5 @@ class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandl
             }
         }
     }
-
-    
-    
-    class func apiPost2(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (Data?, JSON?, NSError?) -> ()) {
-  
-    
-    Alamofire.request(main_URL+serviceName,method: .post, parameters: parameters)
-            .validate(contentType: ["application/x-www-form-urlencoded"])
-        .responseJSON { (response) in
-            
-            switch(response.result) {
-            case .success(_):
-                if let data = response.result.value{
-                    let json = JSON(data)
-                    completionHandler(response.data,json,nil)
-                }
-                break
-                
-            case .failure(_):
-                completionHandler(nil,nil,response.result.error as NSError?)
-                break
-            }
-        }
-        
-        
-    }
     
 }
