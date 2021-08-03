@@ -216,13 +216,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         tableViewsRefreshControls()
         
+        if AppUtility.shared.country == .Pakistan {
         AppUtility.shared.getVehiclesList { [weak self] (result) in
             switch result {
             case .success(let vehicles):
                 self?.categoryList = vehicles.map{$0.vehicle_name}
-            case .failure(let error):
+            case .failure(_):
                 return
             }
+        }
         }
     }
     

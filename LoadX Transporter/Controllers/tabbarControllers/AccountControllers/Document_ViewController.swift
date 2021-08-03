@@ -26,6 +26,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     
     @IBOutlet weak var insuranceImageView: UIView!
     @IBOutlet weak var licenseBtn: UIButton!
+    @IBOutlet weak var uploadDocument: UILabel!
     
     var imagePicker = UIImagePickerController()
     private var imagePicked = 0
@@ -43,6 +44,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -53,8 +55,11 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     func setupUI() {
         if AppUtility.shared.country == .Pakistan {
             insuranceImageView.isHidden = true
+            licenseBtn.setTitle("Select Image", for: .normal)
+            uploadDocument.text = "Upload Truck Image"
         } else {
             insuranceImageView.isHidden = false
+            uploadDocument.text = "Upload Document"
         }
     }
     

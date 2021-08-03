@@ -57,7 +57,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var vanTypeDropDown: UIView!
     let dropDown1 = DropDown()
-    let list = ["Car","Small Van",
+    var list = ["Car","Small Van",
        "Medium Van",
        "Large Van",
        "Luton Van",
@@ -111,6 +111,18 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
         
         profileDetail()
         getCarsMake()
+        
+        if AppUtility.shared.country == .Pakistan {
+            AppUtility.shared.getVehiclesList { [weak self] (result) in
+                switch result {
+                case .success(let vehicles):
+                    self?.list = vehicles.map{$0.vehicle_name}
+                case .failure(_):
+                    return
+                }
+                
+            }
+        }
     }
     
     func getCarsMake() {

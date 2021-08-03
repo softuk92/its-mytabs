@@ -30,9 +30,9 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isHidden = true
         checkForUpdate()
         
-        phoneNumber.text = "02020202020"
+        phoneNumber.text = "03125656256"
         password.text = "12345"
-        }
+    }
     
     func checkForUpdate() {
         let components = calendar.dateComponents([.year, .month, .day], from: date)
