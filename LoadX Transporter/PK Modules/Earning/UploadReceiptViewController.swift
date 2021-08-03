@@ -43,13 +43,12 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         }
         let params:Parameters = ["user_id":id,"pay_checkbox":checkBooks]
 
-        
+        SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/uploadReceipt", parameters: params) {[weak self] data, json, error in
             guard let self = self else {return}
-            if error != nil{
+            if error == nil{
                 if let json = json{
                     self.dataSource = UploadReceipt(json: json)
-                    print(self.dataSource)
                     self.populateData()
                 }
             }

@@ -271,12 +271,13 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UploadReceiptViewController.instantiate()
-        vc.paymentsToPay = paymentsToPay
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = UploadReceiptViewController.instantiate()
+//        vc.paymentsToPay = paymentsToPay
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapButton(cell: UITableViewCell) {
-       
+        guard let path = tableView.indexPath(for: cell) else {return}
+        paymentsToPay.append(pendingPaymentsDataSource[path.row])
     }
     func convertDateFormatter(_ date: String?) -> String
     {
@@ -290,9 +291,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func didTapAmount(sender: Any){
-        guard let path = tableView.indexPath(for: cell) else {return}
-        let model = pendingPaymentsDataSource[path.row]
-        paymentsToPay.append(model)
+        let vc = UploadReceiptViewController.instantiate()
+        vc.paymentsToPay = paymentsToPay
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
