@@ -11,6 +11,12 @@ import Reusable
  
 class EarningTableViewCell: UITableViewCell, NibReusable{
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var vehiclType: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var jobId: UILabel!
+
+    @IBOutlet weak var loadXShare: UILabel!
+    weak var cellDelegate:TableViewDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         shadowView.bottomShadow(color: UIColor.black)
@@ -22,10 +28,14 @@ class EarningTableViewCell: UITableViewCell, NibReusable{
     
     @IBAction func didTabButton(sender: UIButton){
         sender.isSelected = !sender.isSelected
+        cellDelegate?.didTapButton(cell: self)
     }
    // @IBOutlet weak var shadowView: UIView!
-    func populateData( )  {
-        
+    func populateData(data:PayToLoadXItme)  {
+        self.vehiclType.text = data.vehicleType
+        self.dateLabel.text = data.date
+        self.loadXShare.text = data.loadxShare
+        self.jobId.text = data.jobID
     }
 
     

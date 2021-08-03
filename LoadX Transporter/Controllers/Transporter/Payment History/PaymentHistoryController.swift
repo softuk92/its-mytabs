@@ -11,17 +11,24 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
-class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource,TableViewDelegate {
+    
+    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paymentTotal: UILabel!
     @IBOutlet weak var invoiceBgView: UIView!
     @IBOutlet weak var pendingPaymentBgView: UIView!
-    @IBOutlet weak var submitPayment: UIView!
+    @IBOutlet weak var submitPaymentView: UIView!
+    @IBOutlet weak var paymentButton: UIButton!
+
 
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
-    var pendingPaymentsDataSource = [PaymentHistoryModel]()
+    var pendingPaymentsDataSource = [PayToLoadXItme]()
+    var paymentsToPay = [PayToLoadXItme]()
+
+    var totalPayableToLoadX = ""
     let year = Calendar.current.component(.year, from: Date())
     var refresher: UIRefreshControl!
     var paymentHistory: String?
@@ -50,7 +57,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         tableView.addSubview(refresher)
         guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
               paymentTotal.text =  "£ (" + totalEarning + ")"
-        self.submitPayment.isHidden = true
+        self.submitPaymentView.isHidden = true
     }
  
     @objc func populate() {
@@ -64,7 +71,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         showInvoiceData = true
         invoiceBgView.isHidden = false
         pendingPaymentBgView.isHidden = true
-        submitPayment.isHidden = true
+        submitPaymentView.isHidden = true
         getPaymentHistory()
     }
     
@@ -72,7 +79,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         showInvoiceData = false
         invoiceBgView.isHidden = true
         pendingPaymentBgView.isHidden = false
-        submitPayment.isHidden = false
+        submitPaymentView.isHidden = false
         getPendingPayments()
     }
     
@@ -82,16 +89,21 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         let params = ["user_id":id]
+        SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/payToLoadxList", parameters: params) { [weak self]data, json, error in
             guard let self = self else {return}
             if error == nil{
-                print(json)
-                for item in json{}
-                print(data)
-                
-                
-                self.tableView.reloadData()
+                if let json = json{
+                    let payToLoadX = PayToLoadX(json: json)
+                    self.totalPayableToLoadX = String(payToLoadX.totalPendingPayToLoadx)
+                    self.pendingPaymentsDataSource = payToLoadX.jobLists
+                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+(Int(self.totalPayableToLoadX)?.withCommas() ?? "")
+                    
+                    self.paymentButton.setTitle(totolPayabale, for: .normal)
+                    self.tableView.reloadData()
+                }
             }
+            SVProgressHUD.dismiss()
         }
     }
     func getPaymentHistory() {
@@ -185,7 +197,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         }
         else {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EarningTableViewCell.self)
-            
+            let data = pendingPaymentsDataSource[indexPath.row]
+            cell.cellDelegate = self
+            cell.populateData(data: data)
             return cell
         }
         
@@ -258,9 +272,12 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UploadReceiptViewController.instantiate()
+        vc.paymentsToPay = paymentsToPay
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+    func didTapButton(cell: UITableViewCell) {
+       
+    }
     func convertDateFormatter(_ date: String?) -> String
     {
         let dateFormatter = DateFormatter()
@@ -270,6 +287,12 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.dateFormat = "dd-MMMM-yyyy"
         return  dateFormatter.string(from: date ?? Date())
         
+    }
+    
+    @IBAction func didTapAmount(sender: Any){
+        guard let path = tableView.indexPath(for: cell) else {return}
+        let model = pendingPaymentsDataSource[path.row]
+        paymentsToPay.append(model)
     }
     
 }

@@ -235,7 +235,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="ccj-3t-ckh" id="Wqf-4T-hB6"/>
+                <outlet property="jobId" destination="bbo-Tc-2oX" id="r0Z-ck-2Es"/>
+                <outlet property="loadXShare" destination="XgG-dx-bGd" id="BWt-Ob-1aB"/>
                 <outlet property="shadowView" destination="Mnu-bu-RjP" id="ezA-Z6-5t0"/>
+                <outlet property="vehiclType" destination="NUX-NQ-zPX" id="job-Tw-tt6"/>
             </connections>
             <point key="canvasLocation" x="62.318840579710148" y="207.25446428571428"/>
         </tableViewCell>
