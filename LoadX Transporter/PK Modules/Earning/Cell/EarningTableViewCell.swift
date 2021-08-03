@@ -24,6 +24,9 @@ class EarningTableViewCell: UITableViewCell, NibReusable{
         sender.isSelected = !sender.isSelected
     }
    // @IBOutlet weak var shadowView: UIView!
+    func populateData( )  {
+        
+    }
 
     
 }

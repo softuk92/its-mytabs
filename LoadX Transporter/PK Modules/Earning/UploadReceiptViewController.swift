@@ -7,12 +7,11 @@
 //
 
 import UIKit
-
-class UploadReceiptViewController: UIViewController {
+import Reusable
+class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
+    static var sceneStoryboard: UIStoryboard = R.storyboard.earning()
     @IBOutlet weak var shadowView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-// Do any additional setup after loading the view.
     }
-
 }

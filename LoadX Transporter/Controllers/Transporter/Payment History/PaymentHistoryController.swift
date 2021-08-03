@@ -19,14 +19,15 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var pendingPaymentBgView: UIView!
     @IBOutlet weak var submitPayment: UIView!
 
-
-
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
+    var pendingPaymentsDataSource = [PaymentHistoryModel]()
     let year = Calendar.current.component(.year, from: Date())
     var refresher: UIRefreshControl!
     var paymentHistory: String?
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
+    var showInvoiceData = true
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.register(UINib(nibName: "PaymentHistoryCell", bundle: nil) , forCellReuseIdentifier: "paymentHistory")
+        tableView.register(UINib(nibName: "PaymentHistoryCell", bundle: nil) , forCellReuseIdentifier: "paymentHistory")
         tableView.register(cellType: EarningTableViewCell.self)
         
        // paymentTotal.text = driverEarning
@@ -49,6 +50,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         tableView.addSubview(refresher)
         guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
               paymentTotal.text =  "£ (" + totalEarning + ")"
+        self.submitPayment.isHidden = true
     }
  
     @objc func populate() {
@@ -59,6 +61,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func didTapInvoice(sender: UIButton){
+        showInvoiceData = true
         invoiceBgView.isHidden = false
         pendingPaymentBgView.isHidden = true
         submitPayment.isHidden = true
@@ -66,12 +69,31 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func didTapPendingPayments(sender: UIButton){
+        showInvoiceData = false
         invoiceBgView.isHidden = true
         pendingPaymentBgView.isHidden = false
         submitPayment.isHidden = false
+        getPendingPayments()
     }
     
-    
+    func getPendingPayments() {
+       
+        guard let id = user_id else {
+            return
+        }
+        let params = ["user_id":id]
+        APIManager.apiPost(serviceName: "api/payToLoadxList", parameters: params) { [weak self]data, json, error in
+            guard let self = self else {return}
+            if error == nil{
+                print(json)
+                for item in json{}
+                print(data)
+                
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
     func getPaymentHistory() {
         SVProgressHUD.show(withStatus: "Getting details...")
         if user_id != nil {
@@ -137,8 +159,13 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPaymentHistory.count
-       // return 3
+        if showInvoiceData{
+            return filteredPaymentHistory.count
+        }
+        else{
+            return pendingPaymentsDataSource.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -153,75 +180,85 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if showInvoiceData{
+            return self.createInvoicesCell(tableView, cellForRowAt: indexPath)
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EarningTableViewCell.self)
+            
+            return cell
+        }
         
+    }
+    
+    
+    func createInvoicesCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        
-        let cell:EarningTableViewCell = tableView.dequeueReusableCell(for: indexPath, cellType: EarningTableViewCell.self)
-        
-        
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "paymentHistory") as! PaymentHistoryCell
-//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-//        cell.backgroundView = nil
-//        cell.backgroundColor = nil
-//
-//        cell.cell_view.layer.cornerRadius = 10
-//        cell.viewInvocie_btn.clipsToBounds = true
-//        cell.viewInvocie_btn.layer.cornerRadius = 10
-//        cell.viewInvocie_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
-//
-//
-//
-//        let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
-//
-//        if paymentHistoryRow.moving_item != nil {
-//            cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
-//        } else {
-//            cell.moving_item.text = "LR00\(paymentHistoryRow.route_id ?? "")"
-//        }
-//
-//        let stringDate = paymentHistoryRow.pay_date
-//
-//        if (stringDate?.contains("am")) != nil || ((stringDate?.contains("pm")) != nil) {
-//            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate?.dropLast(2) ?? ""))
-//        } else {
-//        cell.job_posted_date.text = self.convertDateFormatter(stringDate)
-//        }
-//
-//        let jobID = paymentHistoryRow.payment_id ?? ""
-//        let job_id = "LOADX"+String(self.year)+"JI"+jobID
-////        let job_id = "LX00"+jobID
-//        cell.invoiceNo.text = job_id
-//        let payment_type = paymentHistoryRow.payment_type
-//        if payment_type == "full" {
-//            cell.paid.text = "Received"
-//        }
-//        cell.viewInvoiceRow = { (selectedCell) in
-//            let selectedIndex = self.tableView.indexPath(for: selectedCell)
-//            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-//            let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
-//            payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
-//
-//            if paymentHistoryRow.moving_item != nil {
-//            if booked_id == "1" {
-////            self.performSegue(withIdentifier: "showBooked", sender: self)
-//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoiceBookedJob") as? ShowInvoiceBookedJob
-//                self.navigationController?.pushViewController(vc!, animated: true)
-//            } else {
-////            self.performSegue(withIdentifier: "invoice", sender: self)
-//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoice") as? ShowInvoice
-//            self.navigationController?.pushViewController(vc!, animated: true)
-//
-//            }
-//            } else {
-//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowRouteInvoiceViewController") as? ShowRouteInvoiceViewController {
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                }
-//            }
-//        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "paymentHistory") as! PaymentHistoryCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundView = nil
+        cell.backgroundColor = nil
+
+        cell.cell_view.layer.cornerRadius = 10
+        cell.viewInvocie_btn.clipsToBounds = true
+        cell.viewInvocie_btn.layer.cornerRadius = 10
+        cell.viewInvocie_btn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+
+
+
+        let paymentHistoryRow = filteredPaymentHistory[indexPath.row]
+
+        if paymentHistoryRow.moving_item != nil {
+            cell.moving_item.text = paymentHistoryRow.moving_item?.capitalized
+        } else {
+            cell.moving_item.text = "LR00\(paymentHistoryRow.route_id ?? "")"
+        }
+
+        let stringDate = paymentHistoryRow.pay_date
+
+        if (stringDate?.contains("am")) != nil || ((stringDate?.contains("pm")) != nil) {
+            cell.job_posted_date.text = self.convertDateFormatter(String(stringDate?.dropLast(2) ?? ""))
+        } else {
+        cell.job_posted_date.text = self.convertDateFormatter(stringDate)
+        }
+
+        let jobID = paymentHistoryRow.payment_id ?? ""
+        let job_id = "LOADX"+String(self.year)+"JI"+jobID
+//        let job_id = "LX00"+jobID
+        cell.invoiceNo.text = job_id
+        let payment_type = paymentHistoryRow.payment_type
+        if payment_type == "full" {
+            cell.paid.text = "Received"
+        }
+        cell.viewInvoiceRow = { (selectedCell) in
+            let selectedIndex = self.tableView.indexPath(for: selectedCell)
+            self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+            let booked_id = self.filteredPaymentHistory[indexPath.row].is_booked_job
+            payment_id = self.filteredPaymentHistory[indexPath.row].payment_id
+
+            if paymentHistoryRow.moving_item != nil {
+            if booked_id == "1" {
+//            self.performSegue(withIdentifier: "showBooked", sender: self)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoiceBookedJob") as? ShowInvoiceBookedJob
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+//            self.performSegue(withIdentifier: "invoice", sender: self)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowInvoice") as? ShowInvoice
+            self.navigationController?.pushViewController(vc!, animated: true)
+
+            }
+            } else {
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowRouteInvoiceViewController") as? ShowRouteInvoiceViewController {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
         return cell
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UploadReceiptViewController.instantiate()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func convertDateFormatter(_ date: String?) -> String

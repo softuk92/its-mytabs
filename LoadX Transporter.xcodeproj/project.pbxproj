@@ -200,6 +200,7 @@
 		8D98C7252220543B00420BFA /* SearchDelivariesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D98C7242220543B00420BFA /* SearchDelivariesModel.swift */; };
 		8D98C729222058CC00420BFA /* SearchDeliveriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D98C727222058CC00420BFA /* SearchDeliveriesCell.swift */; };
 		8D98C72A222058CC00420BFA /* SearchDeliveriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D98C728222058CC00420BFA /* SearchDeliveriesCell.xib */; };
+		8D9C098326B92F3500D58742 /* PayToLoadX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C098226B92F3500D58742 /* PayToLoadX.swift */; };
 		8DA2AD8D22774CD00050FC70 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */; };
 		8DB4999E2220272A00D0887C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4999D2220272A00D0887C /* RegisterViewController.swift */; };
 		8DC0948926B2A71A00106AC1 /* TransportAvailabilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */; };
@@ -446,6 +447,7 @@
 		8D98C7242220543B00420BFA /* SearchDelivariesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelivariesModel.swift; sourceTree = "<group>"; };
 		8D98C727222058CC00420BFA /* SearchDeliveriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeliveriesCell.swift; sourceTree = "<group>"; };
 		8D98C728222058CC00420BFA /* SearchDeliveriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDeliveriesCell.xib; sourceTree = "<group>"; };
+		8D9C098226B92F3500D58742 /* PayToLoadX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayToLoadX.swift; sourceTree = "<group>"; };
 		8DA2AD8C22774CD00050FC70 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
 		8DB4999D2220272A00D0887C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8DC0948726B2A71A00106AC1 /* TransportAvailabilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportAvailabilityCell.swift; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 		8D952D1526B6CD030022BEEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8D9C098126B92EFE00D58742 /* Earning */,
 				8D952D1626B6CF420022BEEF /* TransporterAvailiblity.swift */,
 			);
 			path = Model;
@@ -1092,6 +1095,14 @@
 				1843EC76253F0B3600D44EA5 /* JobSummaryCell.xib */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		8D9C098126B92EFE00D58742 /* Earning */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C098226B92F3500D58742 /* PayToLoadX.swift */,
+			);
+			path = Earning;
 			sourceTree = "<group>";
 		};
 		8DC0948D26B2BAAC00106AC1 /* Post Availbility  */ = {
@@ -1388,6 +1399,7 @@
 				6D657B07229C4C06002156C9 /* ShowInvoiceBookedJob.swift in Sources */,
 				BBF12A22243C8F4700CD5FA0 /* SplashScreen_ViewController.swift in Sources */,
 				8D48C1EE2224062800417EF5 /* TransporterDashboard.swift in Sources */,
+				8D9C098326B92F3500D58742 /* PayToLoadX.swift in Sources */,
 				8DD0DFE32204AACD009A7E52 /* CompletedJobsModel.swift in Sources */,
 				18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */,
 				BB560F2A246C38F800F1AA23 /* LiveChat_ViewController.swift in Sources */,
