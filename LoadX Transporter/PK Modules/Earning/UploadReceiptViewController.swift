@@ -10,6 +10,8 @@ import UIKit
 import Reusable
 import Alamofire
 import SVProgressHUD
+import SwiftyJSON
+
 class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     static var sceneStoryboard: UIStoryboard = R.storyboard.earning()
     @IBOutlet weak var shadowView: UIView!
@@ -18,15 +20,17 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     @IBOutlet weak var accHolder: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var messageTV: UITextView!
-
+    @IBOutlet weak var receiptImage: UIImageView!
     @IBOutlet weak var uploadButtonView: UIView!
 
     var paymentsToPay = [PayToLoadXItme]()
     var dataSource: UploadReceipt?
-   
+    var imageSelector: ImageSelector!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageSelector = ImageSelector()
+        imageSelector.delegate = self
         shadowView.bottomShadow(color: UIColor.black)
         uploadButtonView.clipsToBounds = true
         uploadButtonView.layer.cornerRadius = 10
@@ -34,26 +38,29 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         fetechData()
     }
     
+    
+    
     func fetechData()  {
         guard let id = user_id else {return}
-        var checkBooks = [String]()
+        var checkBox = [String]()
         for model in paymentsToPay{
-            let checkBox = "\(model.loadxShare)/\(model.delID)"
-            checkBooks.append(checkBox)
+            let checkBoxx = "\(model.loadxShare)/\(model.delID)"
+            checkBox.append(checkBoxx)
         }
-        let params:Parameters = ["user_id":id,"pay_checkbox":checkBooks]
+        let params:Parameters = ["user_id":id,"pay_checkbox":"\(checkBox)"]
 
         SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/uploadReceipt", parameters: params) {[weak self] data, json, error in
             guard let self = self else {return}
+            SVProgressHUD.dismiss()
             if error == nil{
                 if let json = json{
                     self.dataSource = UploadReceipt(json: json)
                     self.populateData()
                 }
             }
+
             
-            SVProgressHUD.dismiss()
         }
     }
     
@@ -62,13 +69,61 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         bankName.text = dataSource?.bankName.capitalized
         accNo.text = dataSource?.accNo
         accHolder.text = dataSource?.accHolder
-        self.totalAmount.text = dataSource?.totalAmountToPay.withCommas()
+        self.totalAmount.text = AppUtility.shared.currencySymbol+(dataSource?.totalAmountToPay.withCommas() ?? "")
     }
     
     @IBAction func didTapBack(sender: UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func uploadTapped(sender: UIButton){
-        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    @IBAction func uploadReceipt(_ sender: Any) {
+        imageSelector.showOptions(viewController: self)
+    }
+    
+    func uploadReceipt() {
+        guard let receiptImg = receiptImage.image, let userId = user_id else { return }
+        let jobIds = dataSource?.jobLists.map{$0.jobIDS} ?? []
+        let parameters = ["user_id" : userId, "del_id" : "\(jobIds)", "description" : self.messageTV.text!]
+        SVProgressHUD.show()
+        
+        var input = [MultipartData]()
+        if let receiptimageData = receiptImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
+            input.append(MultipartData.init(data: receiptimageData, paramName: " receipt_prof_img", fileName: receiptImg.description))
+        }
+        
+        APIManager.apiPostMultipart(serviceName: "api/transporterUploadedReceipt", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
+            }
+            if progress != nil {
+                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Uploading Receipt...")
+            } else {
+                SVProgressHUD.dismiss()
+            }
+            
+            guard let json = json else { return }
+            let result = json[0]["result"].stringValue
+            let message = json[0]["message"].stringValue
+            
+            if result == "true" {
+                let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
+                vc?.titleStr = "SUCCESS"
+                vc?.subtitleStr = "Receipt Uploaded successfully."
+            self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                showAlert(title: "Alert", message: message, viewController: self)
+            }
+        }
+    }
+}
+
+extension UploadReceiptViewController: ImageSelectorDelegate {
+    func imageSelector(didSelectImage image: UIImage?, imgName: String?) {
+        receiptImage.image = image
     }
 }

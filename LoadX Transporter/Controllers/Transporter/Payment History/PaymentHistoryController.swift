@@ -13,16 +13,16 @@ import SVProgressHUD
 
 class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource,TableViewDelegate {
     
-    
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paymentTotal: UILabel!
     @IBOutlet weak var invoiceBgView: UIView!
     @IBOutlet weak var pendingPaymentBgView: UIView!
     @IBOutlet weak var submitPaymentView: UIView!
     @IBOutlet weak var paymentButton: UIButton!
-
-
+    @IBOutlet weak var headView: UIView!
+    @IBOutlet weak var totalEarning: UILabel!
+    @IBOutlet weak var headViewHeight: NSLayoutConstraint!
+    
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
     var pendingPaymentsDataSource = [PayToLoadXItme]()
@@ -40,7 +40,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         print("year is \(year)")
 //        self.title = "Payment History"
-       
+        headView.bottomShadow(color: .black)
+        headView.layer.cornerRadius = 5
         getPaymentHistory()
 //        w.backgroundView = UIImageView(image: UIImage(named: "background.png"))
         tableView.separatorStyle = .none
@@ -55,8 +56,12 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refresher.addTarget(self, action: #selector(PaymentHistoryController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
-        guard let totalEarning = UserDefaults.standard.string(forKey: "total_earning") else { return }
-              paymentTotal.text =  "£ (" + totalEarning + ")"
+        if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
+            paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
+        }
+        if !(AppUtility.shared.country == .Pakistan) {
+            headViewHeight.constant = 0
+        }
         self.submitPaymentView.isHidden = true
     }
  
@@ -98,7 +103,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                     self.totalPayableToLoadX = String(payToLoadX.totalPendingPayToLoadx)
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
                     let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+(Int(self.totalPayableToLoadX)?.withCommas() ?? "")
-                    
+                    self.totalEarning.text = "Pending Loadx Share"
+                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+(Int(self.totalPayableToLoadX)?.withCommas() ?? "")+")"
                     self.paymentButton.setTitle(totolPayabale, for: .normal)
                     self.tableView.reloadData()
                 }
@@ -108,6 +114,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     func getPaymentHistory() {
         SVProgressHUD.show(withStatus: "Getting details...")
+        if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
+            paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
+        }
         if user_id != nil {
             let paymentHistory_URL = main_URL+"api/transporterPaymentHistoryList"
             let parameters : Parameters = ["user_id" : user_id!]
@@ -275,9 +284,13 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 //        vc.paymentsToPay = paymentsToPay
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
-    func didTapButton(cell: UITableViewCell) {
-        guard let path = tableView.indexPath(for: cell) else {return}
+    func didTapButton(cell: UITableViewCell, selected: Bool?) {
+        guard let path = tableView.indexPath(for: cell), let selection = selected else {return}
+        if selection {
         paymentsToPay.append(pendingPaymentsDataSource[path.row])
+        } else {
+        paymentsToPay.remove(at: path.row)
+        }
     }
     func convertDateFormatter(_ date: String?) -> String
     {

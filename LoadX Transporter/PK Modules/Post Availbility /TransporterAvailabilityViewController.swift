@@ -67,7 +67,7 @@ extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewD
         return cell
     }
     
-    func didTapButton(cell: UITableViewCell) {
+    func didTapButton(cell: UITableViewCell, selected: Bool?) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let model = dataSource[indexPath.row]
        let id = model.paID

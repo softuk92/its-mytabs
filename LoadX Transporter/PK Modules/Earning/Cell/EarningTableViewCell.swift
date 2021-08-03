@@ -28,7 +28,7 @@ class EarningTableViewCell: UITableViewCell, NibReusable{
     
     @IBAction func didTabButton(sender: UIButton){
         sender.isSelected = !sender.isSelected
-        cellDelegate?.didTapButton(cell: self)
+        cellDelegate?.didTapButton(cell: self, selected: sender.isSelected)
     }
    // @IBOutlet weak var shadowView: UIView!
     func populateData(data:PayToLoadXItme)  {

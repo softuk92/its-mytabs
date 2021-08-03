@@ -9,7 +9,7 @@
 import UIKit
 import Reusable
 protocol TableViewDelegate: AnyObject{
-    func didTapButton(cell:UITableViewCell)
+    func didTapButton(cell:UITableViewCell, selected: Bool?)
 }
 
 class TransportAvailabilityCell: UITableViewCell,NibReusable {
@@ -37,7 +37,7 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
         endPoint.text = data.endPoint
         availability.text = data.taDate
         status.text = data.status
-        cellDelegate?.didTapButton(cell: self)
+        cellDelegate?.didTapButton(cell: self, selected: nil)
     }
     
 }

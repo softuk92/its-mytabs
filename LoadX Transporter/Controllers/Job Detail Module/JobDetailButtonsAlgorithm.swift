@@ -121,7 +121,7 @@ extension JobPickupDropoffViewController {
             } else {
             disclaimerView.isHidden = false
             }
-            if input.addType == "Man & Van" || input.addType == "Man and Van" {
+            if (input.addType == "Man & Van" || input.addType == "Man and Van") && !(AppUtility.shared.country == .Pakistan) {
                 bottomButtonView.isHidden = true
                 uploadImagesBtn.isHidden = true
                 runningLateBtn.isHidden = true
