@@ -260,9 +260,10 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                       let result = jsonData[0]["result"].stringValue
                         if result == "1" {
 //                            SVProgressHUD.showSuccess(withStatus: "Profile updated successfully.")
-                            let alert = UIAlertController(title: "", message: "Profile updated successfully.", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+//                            let alert = UIAlertController(title: "", message: "Profile updated successfully.", preferredStyle: UIAlertController.Style.alert)
+//                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                            self.present(alert, animated: true, completion: nil)
+                            showSuccessAlert(question: "Profile Updated Successfully", viewController: self)
                             UserDefaults.standard.set(self.carMakeField.text ?? "", forKey: "carMake")
                             UserDefaults.standard.set(self.carModelField.text ?? "", forKey: "carModel")
                         }
@@ -318,7 +319,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
            autocompleteController.delegate = self
            let filter = GMSAutocompleteFilter()
            filter.type = .noFilter
-           filter.country = "UK"
+           filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
            autocompleteController.autocompleteFilter = filter
            present(autocompleteController, animated: true, completion: nil)
        }
