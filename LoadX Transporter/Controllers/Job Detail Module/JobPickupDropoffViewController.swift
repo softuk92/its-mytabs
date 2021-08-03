@@ -142,7 +142,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     func setTimer() {
-        guard input.jobStatus.is_job_started == "1" else { timeCounterLabel.isHidden = true; return }
+        guard input.jobStatus.is_job_started == "1", !(AppUtility.shared.country == .Pakistan) else { timeCounterLabel.isHidden = true; return }
         if input.addType == "Man & Van" || input.addType == "Man and Van" {
             timeCounterLabel.isHidden = false
             if let time = UserDefaults.standard.value(forKey: input.delId) as? Int, let previousDate = UserDefaults.standard.value(forKey: "previousTimerTime") as? Date {

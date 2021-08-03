@@ -86,7 +86,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             guard let self = self else {return}
             if error == nil{
                 print(json)
-                for item in json{}
+//                for item in json{}
                 print(data)
                 
                 

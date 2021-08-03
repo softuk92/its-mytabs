@@ -34,6 +34,13 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var jobDescription: UILabel!
     
+    @IBOutlet weak var officeAddress1: UILabel!
+    @IBOutlet weak var officeAddress2: UILabel!
+    @IBOutlet weak var officeAddress3: UILabel!
+    @IBOutlet weak var officeAddress4: UILabel!
+    @IBOutlet weak var companyReg: UILabel!
+    @IBOutlet weak var vatNumber: UILabel!
+    
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
        
     let year = Calendar.current.component(.year, from: Date())
@@ -73,6 +80,15 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
         
         showInvoice()
         get_contact_no()
+        
+        if AppUtility.shared.country == .Pakistan {
+            officeAddress1.text = "LOADX LTD"
+            officeAddress2.text = "92 AIRLINE SOCIETY,"
+            officeAddress3.text = "LAHORE PAKISTAN"
+            officeAddress4.text = "54000"
+            companyReg.isHidden = true
+            vatNumber.isHidden = true
+        }
      
     }
     
@@ -238,7 +254,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         self.invoiceNo = job_id
                         let jobID2 = jsonData[0]["del_id"].stringValue
 //                        let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
-                        let job_id2 = "LX00"+jobID2
+                        let job_id2 = "LX000"+jobID2
                         self.jobId_lbl.text = job_id2
                         
                         self.invoice_no.text = job_id
@@ -264,9 +280,15 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         let currentBid = jsonData[0]["current_bid"].stringValue
                         let transporterShare = jsonData[0]["transporter_share"].stringValue
                         if transporterShare != "0" {
+                            if AppUtility.shared.country == .Pakistan {
+                            let price = AppUtility.shared.currencySymbol+(Int(transporterShare)?.withCommas() ?? "")
+                            self.totalPrice.text = price
+                            self.received_amount.text = price
+                            } else {
                             let str = Double(transporterShare) ?? 0.0
                             self.totalPrice.text = "£ "+String(format: "%.2f", str)
                             self.received_amount.text = "£ "+String(format: "%.2f", str)
+                            }
                         } else {
                             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
                             let doubleValue = Double(x)
@@ -275,7 +297,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                             self.received_amount.text = finalPrice
                         }
                 
-                        if let totalPrice = Double(jsonData[0]["total_price"].stringValue) {
+                        if let totalPrice = Double(jsonData[0]["total_price"].stringValue), !(AppUtility.shared.country == .Pakistan) {
                             self.received_amount.text = "£ "+String(format: "%.2f", totalPrice)
                             self.totalPrice.text = "£ "+String(format: "%.2f", totalPrice)
                         }
