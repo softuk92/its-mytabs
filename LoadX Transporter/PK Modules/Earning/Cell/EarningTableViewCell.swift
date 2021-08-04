@@ -34,7 +34,7 @@ class EarningTableViewCell: UITableViewCell, NibReusable{
     func populateData(data:PayToLoadXItme)  {
         self.vehiclType.text = data.vehicleType
         self.dateLabel.text = data.date
-        self.loadXShare.text = data.loadxShare
+        self.loadXShare.text = AppUtility.shared.currencySymbol+(Int(data.loadxShare)?.withCommas() ?? "")
         self.jobId.text = data.jobID
     }
 

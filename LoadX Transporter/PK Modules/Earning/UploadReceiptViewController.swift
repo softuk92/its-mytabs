@@ -77,7 +77,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     }
     
     @IBAction func uploadTapped(sender: UIButton){
-        
+        uploadReceipt()
     }
     
     @IBAction func uploadReceipt(_ sender: Any) {
@@ -110,7 +110,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
             let result = json[0]["result"].stringValue
             let message = json[0]["message"].stringValue
             
-            if result == "true" {
+            if result == "1" {
                 let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
                 vc?.titleStr = "SUCCESS"
                 vc?.subtitleStr = "Receipt Uploaded successfully."

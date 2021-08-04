@@ -55,7 +55,7 @@ struct UploadReceipt {
         self.accHolder = json?[0]["acc_holder"].string ?? ""
         self.totalAmountToPay = json?[0]["total_amount_to_pay"].intValue ?? 0
         self.jobLists = []
-        if let json = json?[0]["job_ids"]{
+        if let json = json?[0]["job_lists"]{
             for item in json{
                 let item = JobList(json: item.1)
                 self.jobLists.append(item)

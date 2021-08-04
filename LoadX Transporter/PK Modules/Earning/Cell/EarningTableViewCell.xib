@@ -35,20 +35,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cBM-t6-L4R">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="419"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="edj-ZL-gGh">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="edj-ZL-gGh">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="163.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Bedford Truck" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUX-NQ-zPX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="163.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="202" height="163.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyW-z3-PFB">
-                                                        <rect key="frame" x="192" y="0.0" width="182" height="163.5"/>
+                                                        <rect key="frame" x="212" y="0.0" width="162" height="163.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="LX00073" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbo-Tc-2oX">
-                                                                <rect key="frame" x="10" y="0.0" width="172" height="163.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="163.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                                         <constraints>
                                                             <constraint firstItem="bbo-Tc-2oX" firstAttribute="top" secondItem="DyW-z3-PFB" secondAttribute="top" id="67p-rg-1u7"/>
                                                             <constraint firstAttribute="trailing" secondItem="bbo-Tc-2oX" secondAttribute="trailing" id="a7P-AH-Huh"/>
-                                                            <constraint firstItem="bbo-Tc-2oX" firstAttribute="leading" secondItem="DyW-z3-PFB" secondAttribute="leading" constant="10" id="p0R-XJ-mrG"/>
+                                                            <constraint firstItem="bbo-Tc-2oX" firstAttribute="leading" secondItem="DyW-z3-PFB" secondAttribute="leading" id="p0R-XJ-mrG"/>
                                                             <constraint firstAttribute="bottom" secondItem="bbo-Tc-2oX" secondAttribute="bottom" id="sUy-wY-o4a"/>
                                                         </constraints>
                                                     </view>
@@ -66,19 +66,20 @@
                                                     <constraint firstAttribute="trailing" secondItem="DyW-z3-PFB" secondAttribute="trailing" id="WAh-eJ-WKq"/>
                                                     <constraint firstItem="DyW-z3-PFB" firstAttribute="top" secondItem="edj-ZL-gGh" secondAttribute="top" id="oLN-J6-vFE"/>
                                                     <constraint firstAttribute="bottom" secondItem="DyW-z3-PFB" secondAttribute="bottom" id="sDj-7t-QwW"/>
+                                                    <constraint firstItem="NUX-NQ-zPX" firstAttribute="width" secondItem="edj-ZL-gGh" secondAttribute="width" multiplier="0.54" id="sMP-kX-zgU"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-HL-n9h">
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-HL-n9h">
                                                 <rect key="frame" x="0.0" y="178.5" width="374" height="205.5"/>
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fo-5y-TJA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="205.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="205.5"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVb-xC-6xT">
-                                                                <rect key="frame" x="0.0" y="92" width="182" height="21.5"/>
+                                                                <rect key="frame" x="0.0" y="92" width="205.5" height="21.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Loadex Fee (Pending)" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJt-5W-eQG">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -101,29 +102,29 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-nt-wQS">
-                                                        <rect key="frame" x="192" y="0.0" width="182" height="205.5"/>
+                                                        <rect key="frame" x="211.5" y="0.0" width="162.5" height="205.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="RS 23112" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-dx-bGd">
-                                                                <rect key="frame" x="10" y="0.0" width="172" height="205.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="205.5"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="XgG-dx-bGd" firstAttribute="leading" secondItem="AIH-nt-wQS" secondAttribute="leading" id="7KL-WW-iyb"/>
                                                             <constraint firstItem="XgG-dx-bGd" firstAttribute="top" secondItem="AIH-nt-wQS" secondAttribute="top" id="9qq-sd-e5r"/>
                                                             <constraint firstAttribute="trailing" secondItem="XgG-dx-bGd" secondAttribute="trailing" id="DN3-QZ-LsP"/>
                                                             <constraint firstAttribute="bottom" secondItem="XgG-dx-bGd" secondAttribute="bottom" id="bbP-Mb-WuP"/>
                                                             <constraint firstItem="XgG-dx-bGd" firstAttribute="top" secondItem="AIH-nt-wQS" secondAttribute="top" id="h5M-LR-0Pz"/>
-                                                            <constraint firstItem="XgG-dx-bGd" firstAttribute="leading" secondItem="AIH-nt-wQS" secondAttribute="leading" constant="10" id="hZ0-SO-cRE"/>
                                                             <constraint firstAttribute="bottom" secondItem="XgG-dx-bGd" secondAttribute="bottom" id="qyc-xC-7GL"/>
                                                             <constraint firstAttribute="trailing" secondItem="XgG-dx-bGd" secondAttribute="trailing" id="rcx-yh-nqC"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="6fo-5y-TJA" firstAttribute="width" secondItem="3DL-HL-n9h" secondAttribute="width" multiplier="0.55" id="4Wb-PM-lJZ"/>
                                                     <constraint firstItem="6fo-5y-TJA" firstAttribute="leading" secondItem="3DL-HL-n9h" secondAttribute="leading" id="7vK-IX-Rlu"/>
-                                                    <constraint firstItem="AIH-nt-wQS" firstAttribute="leading" secondItem="6fo-5y-TJA" secondAttribute="trailing" id="JyW-St-1bd"/>
                                                     <constraint firstItem="6fo-5y-TJA" firstAttribute="top" secondItem="3DL-HL-n9h" secondAttribute="top" id="UAQ-Al-lby"/>
                                                     <constraint firstAttribute="bottom" secondItem="6fo-5y-TJA" secondAttribute="bottom" id="VY0-1O-kAy"/>
                                                 </constraints>

@@ -100,11 +100,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             if error == nil{
                 if let json = json{
                     let payToLoadX = PayToLoadX(json: json)
-                    self.totalPayableToLoadX = String(payToLoadX.totalPendingPayToLoadx)
+                    self.totalPayableToLoadX = payToLoadX.totalPendingPayToLoadx.withCommas()
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
-                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+(Int(self.totalPayableToLoadX)?.withCommas() ?? "")
+                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+self.totalPayableToLoadX
                     self.totalEarning.text = "Pending Loadx Share"
-                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+(Int(self.totalPayableToLoadX)?.withCommas() ?? "")+")"
+                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+self.totalPayableToLoadX+")"
                     self.paymentButton.setTitle(totolPayabale, for: .normal)
                     self.tableView.reloadData()
                 }
@@ -289,8 +289,16 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         if selection {
         paymentsToPay.append(pendingPaymentsDataSource[path.row])
         } else {
-        paymentsToPay.remove(at: path.row)
+            let pendingPaymentDS = pendingPaymentsDataSource[path.row]
+            paymentsToPay.removeAll(where: { (item) -> Bool in
+                item.loadxShare == pendingPaymentDS.loadxShare
+            })
         }
+        let payableAmount = paymentsToPay.reduce(0) { (result, item) -> Int in
+            return result + (Int(item.loadxShare) ?? 0)
+        }
+        let totalAmount = payableAmount == 0 ? totalPayableToLoadX : payableAmount.withCommas()
+        paymentButton.setTitle("PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+totalAmount, for: .normal)
     }
     func convertDateFormatter(_ date: String?) -> String
     {
