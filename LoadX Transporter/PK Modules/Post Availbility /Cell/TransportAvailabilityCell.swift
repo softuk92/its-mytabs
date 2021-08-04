@@ -37,6 +37,9 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
         endPoint.text = data.endPoint
         availability.text = data.taDate
         status.text = data.status
+    }
+    
+    @IBAction func didTapButton(sender: Any){
         cellDelegate?.didTapButton(cell: self, selected: nil)
     }
     

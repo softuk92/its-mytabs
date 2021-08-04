@@ -69,8 +69,21 @@ extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewD
     
     func didTapButton(cell: UITableViewCell, selected: Bool?) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
-        let model = dataSource[indexPath.row]
-       let id = model.paID
+        let model =  dataSource[indexPath.row]
+        let alert = UIAlertController(title: "Delete!", message: "Are you sure to delete the record?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self]action in
+            guard let self = self else {return}
+            self.deletePayment(model: model)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cance", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deletePayment(model: TransporterAvailability){
+        SVProgressHUD.show()
+        let id = model.paID
         let param = ["pa_id":id]
         APIManager.apiPost(serviceName: "api/postAvailabilityDelete", parameters: param) { [weak self]data, json, error in
             if error == nil{

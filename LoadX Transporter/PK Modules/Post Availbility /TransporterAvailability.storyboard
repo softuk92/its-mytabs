@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -226,13 +226,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Entera location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="euG-6L-VOR">
-                                                        <rect key="frame" x="8" y="25.5" width="97" height="35"/>
+                                                        <rect key="frame" x="8" y="25.5" width="309" height="35"/>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="pKz-jZ-ujx"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                        <connections>
+                                                            <action selector="availableLocationAct:" destination="uf9-Hv-fSx" eventType="editingDidBegin" id="LgO-rC-GUM"/>
+                                                        </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iys-Dw-Pks">
                                                         <rect key="frame" x="5" y="60.5" width="315" height="1"/>
@@ -250,6 +253,7 @@
                                                     <constraint firstItem="euG-6L-VOR" firstAttribute="top" secondItem="s8h-z6-QdZ" secondAttribute="bottom" constant="5" id="Kp7-Xu-4Ep"/>
                                                     <constraint firstItem="iys-Dw-Pks" firstAttribute="top" secondItem="euG-6L-VOR" secondAttribute="bottom" id="Pzg-jK-j7r"/>
                                                     <constraint firstItem="euG-6L-VOR" firstAttribute="leading" secondItem="xdw-vG-GmE" secondAttribute="leading" constant="8" id="boD-Wr-jXg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="euG-6L-VOR" secondAttribute="trailing" constant="8" id="f32-LT-YJa"/>
                                                     <constraint firstItem="s8h-z6-QdZ" firstAttribute="top" secondItem="xdw-vG-GmE" secondAttribute="top" id="jx3-YB-QzO"/>
                                                     <constraint firstAttribute="bottom" secondItem="iys-Dw-Pks" secondAttribute="bottom" id="p8b-i5-c3i"/>
                                                 </constraints>
@@ -264,13 +268,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bsk-Hn-vr1">
-                                                        <rect key="frame" x="8" y="25.5" width="100.5" height="35"/>
+                                                        <rect key="frame" x="8" y="25.5" width="309" height="35"/>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="Pzg-ZF-YHg"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                        <connections>
+                                                            <action selector="endLocationAct:" destination="uf9-Hv-fSx" eventType="editingDidBegin" id="LuZ-Vg-oX0"/>
+                                                        </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvW-LM-WHg">
                                                         <rect key="frame" x="5" y="60.5" width="315" height="1"/>
@@ -288,6 +295,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="XvW-LM-WHg" secondAttribute="bottom" id="TSq-j4-u87"/>
                                                     <constraint firstItem="lcU-qU-vMe" firstAttribute="leading" secondItem="3in-mC-0XI" secondAttribute="leading" constant="8" id="cGg-0x-EXN"/>
                                                     <constraint firstItem="Bsk-Hn-vr1" firstAttribute="top" secondItem="lcU-qU-vMe" secondAttribute="bottom" constant="5" id="eKy-lq-1Rz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Bsk-Hn-vr1" secondAttribute="trailing" constant="8" id="iI8-UT-zO9"/>
                                                     <constraint firstItem="lcU-qU-vMe" firstAttribute="top" secondItem="3in-mC-0XI" secondAttribute="top" id="p6G-sR-LXV"/>
                                                     <constraint firstItem="XvW-LM-WHg" firstAttribute="top" secondItem="Bsk-Hn-vr1" secondAttribute="bottom" id="tGT-Cn-c3H"/>
                                                 </constraints>

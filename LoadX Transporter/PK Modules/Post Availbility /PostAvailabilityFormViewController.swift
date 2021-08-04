@@ -111,7 +111,7 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
         let endDestination = openDestination == 0 ? (endLocationTF.text ?? "") : ""
         guard let date = self.dateTF.text, let startP = self.availableLocationTF.text ,let userId = user_id else {return}
         let params: Parameters = ["pa_date":date,"start_point":startP,"end_point":endDestination,"transporter_id":userId,"end_point_checkbox":openDestination]
-        
+        guard date.count > 0, startP.count > 0 else {return}
         SVProgressHUD.show()
 
         APIManager.apiPost(serviceName: "api/transporterPostAvailabilityAPI", parameters: params) {[weak self] data, json, error in
