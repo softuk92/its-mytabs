@@ -24,14 +24,40 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
     @IBOutlet weak var endLocationView: UIView!
     var picker = UIDatePicker()
     var dataPosted: (()->(Void))?
-
-var openDestination = 0
+    
+    var openDestination = 0
     static var sceneStoryboard: UIStoryboard = R.storyboard.transporterAvailability()
+    var autocompleteController : GMSAutocompleteViewController = GMSAutocompleteViewController()
+    var isAvailableLocationTapped: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 23
         
+        setupAutoCompleteController()
+    }
         
+    func setupAutoCompleteController() {
+        autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark   {
+                // self.traitCollection.userInterfaceStyle == .dark
+                autocompleteController.primaryTextColor = UIColor.white
+                autocompleteController.secondaryTextColor = UIColor.lightGray
+                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
+                autocompleteController.tableCellBackgroundColor = UIColor.darkGray
+            } else {
+                autocompleteController.primaryTextColor = UIColor.black
+                autocompleteController.secondaryTextColor = UIColor.lightGray
+                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
+                autocompleteController.tableCellBackgroundColor = UIColor.white
+            }
+        }
+        let filter = GMSAutocompleteFilter()
+        filter.type = .noFilter
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
+        autocompleteController.autocompleteFilter = filter
     }
     
     @IBAction func openDestinationButtonTapped(sender: UIButton){
@@ -82,7 +108,7 @@ var openDestination = 0
     
     @IBAction func submitButtonTap(sender: UIButton){
 
-        let endDestination = openDestination == 0 ? endLocationTF.text  ?? "" : ""
+        let endDestination = openDestination == 0 ? (endLocationTF.text ?? "") : ""
         guard let date = self.dateTF.text, let startP = self.availableLocationTF.text ,let userId = user_id else {return}
         let params: Parameters = ["pa_date":date,"start_point":startP,"end_point":endDestination,"transporter_id":userId,"end_point_checkbox":openDestination]
         
@@ -106,30 +132,14 @@ var openDestination = 0
     }
     
     
-    @IBAction func address_btn(_ sender: Any) {
-        let autocompleteController = GMSAutocompleteViewController()
-        if #available(iOS 13.0, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark   {
-                // self.traitCollection.userInterfaceStyle == .dark
-                autocompleteController.primaryTextColor = UIColor.white
-                autocompleteController.secondaryTextColor = UIColor.lightGray
-                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
-                autocompleteController.tableCellBackgroundColor = UIColor.darkGray
-            } else {
-                autocompleteController.primaryTextColor = UIColor.black
-                autocompleteController.secondaryTextColor = UIColor.lightGray
-                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
-                autocompleteController.tableCellBackgroundColor = UIColor.white
-            }
-        }
-        autocompleteController.delegate = self
-        let filter = GMSAutocompleteFilter()
-        filter.type = .noFilter
-        
-        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
-        
-        autocompleteController.autocompleteFilter = filter
-        present(autocompleteController, animated: true, completion: nil)
+    @IBAction func availableLocationAct(_ sender: Any) {
+        isAvailableLocationTapped = true
+        self.present(autocompleteController, animated: true, completion: nil)
+    }
+    
+    @IBAction func endLocationAct(_ sender: Any) {
+        isAvailableLocationTapped = false
+        self.present(autocompleteController, animated: true, completion: nil)
     }
 
 }
@@ -143,7 +153,11 @@ extension PostAvailabilityFormViewController: GMSAutocompleteViewControllerDeleg
         
         print("Place name: \(String(describing: place.name))")
         dismiss(animated: true, completion: nil)
+        if isAvailableLocationTapped {
         self.availableLocationTF.text = place.formattedAddress
+        } else {
+        self.endLocationTF.text = place.formattedAddress
+        }
         
     }
     
