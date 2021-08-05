@@ -30,6 +30,7 @@ class SuccessVC: UIViewController {
     }
     
     @IBAction func mainBtnAct (_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("refresh"), object: nil)
         self.navigationController?.popToRootViewController(animated: true)
     }
 

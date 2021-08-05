@@ -63,6 +63,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             headViewHeight.constant = 0
         }
         self.submitPaymentView.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData(notification:)), name: Notification.Name("refresh"), object: nil)
     }
  
     @objc func populate() {
@@ -85,6 +87,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         invoiceBgView.isHidden = true
         pendingPaymentBgView.isHidden = false
         submitPaymentView.isHidden = false
+        getPendingPayments()
+    }
+    
+    @objc func refreshData(notification: Notification) {
         getPendingPayments()
     }
     

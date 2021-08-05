@@ -15,6 +15,8 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var notFoundView: UIView!
+    
     var dataSource = [TransporterAvailability]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,7 @@ class TransporterAvailabilityViewController: UIViewController, StoryboardSceneBa
             guard let self = self, let data = data else {return}
             let decodedModel = try? JSONDecoder().decode([TransporterAvailability].self, from: data)
             self.dataSource = decodedModel ?? []
+            self.notFoundView.isHidden = !(self.dataSource.isEmpty)
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
         }
@@ -70,15 +73,29 @@ extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewD
     func didTapButton(cell: UITableViewCell, selected: Bool?) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let model =  dataSource[indexPath.row]
-        let alert = UIAlertController(title: "Delete!", message: "Are you sure to delete the record?", preferredStyle: .alert)
+        showAlertView(question: "Are you sure you want to delete this record?", ensure: "", model: model)
+    }
+    
+    func showAlertView(question: String, ensure: String, model: TransporterAvailability) {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
+        aView.imageView.tintColor = R.color.mehroonColor()
+        aView.question.text = question
+        aView.ensure.text = ensure
+        aView.sendPaymentLinkHeight.constant = 0
         
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self]action in
-            guard let self = self else {return}
+        aView.yesCall = {[weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
             self.deletePayment(model: model)
-        }))
+        }
         
-        alert.addAction(UIAlertAction(title: "Cance", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        aView.noCall = { (_) in
+            aView.removeFromSuperview()
+        }
+        
+        self.view.addSubview(aView)
     }
     
     func deletePayment(model: TransporterAvailability){

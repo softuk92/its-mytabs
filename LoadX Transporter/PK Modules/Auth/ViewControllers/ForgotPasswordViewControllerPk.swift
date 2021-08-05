@@ -52,6 +52,8 @@ class ForgetPasswordControllerPk: UIViewController {
                         } else {
                             
                             let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
+                            vc?.titleStr = "SUCCESS"
+                            vc?.subtitleStr = "Your login details have been sent to your email/phone number."
                         self.navigationController?.pushViewController(vc!, animated: true)
                         }
                     } else {
