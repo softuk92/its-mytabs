@@ -94,7 +94,7 @@ enum VersionError: Error {
         }
         }
         SVProgressHUD.setDefaultMaskType(.custom)
-        SVProgressHUD.setDefaultStyle(.light)
+        SVProgressHUD.setDefaultStyle(.dark)
          //new apikey when live the app: AIzaSyANwnbbxW4h3wwHSUjKLk2EVg_H0YNtSi4
         //new apikey with new account when live the app: AIzaSyCRPL-6sONXqdXDX0uZhSXuE25JoHQPmB8
                 

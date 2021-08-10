@@ -71,7 +71,13 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let pickUp_time = jsonData[0]["timeslot"].stringValue
         let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
         let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
-        let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        var no_of_hepler : String = ""
+        if AppUtility.shared.country == .Pakistan {
+        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "0") ? "No Helper" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        } else {
+        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        }
+//        let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         let supermarketName_lbl = jsonData[0]["super_market_name"].stringValue
         let movingFrom_lbl = jsonData[0]["moving_from"].stringValue
         let movingTo_lbl = jsonData[0]["moving_to"].stringValue
@@ -90,15 +96,26 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
+        if !(AppUtility.shared.country == .Pakistan) {
         info.append(MenuItemStruct.init(title: "Category", value: category))
+        }
         
         if isJobNotBooked != true {
+            if AppUtility.shared.country == .Pakistan {
+                if pickupHouseNo != "" {
+                    info.append(MenuItemStruct.init(title: "Pickup Doot/Unit No.", value: pickupHouseNo))
+                }
+                if dropoffHouseNo != "" {
+                    info.append(MenuItemStruct.init(title: "Drop Off Doot/Unit No.", value: dropoffHouseNo))
+                }
+            } else {
         if pickupHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
         }
         if dropoffHouseNo != "" {
             info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
         }
+            }
         }
         
         if movingFrom_lbl != "" {

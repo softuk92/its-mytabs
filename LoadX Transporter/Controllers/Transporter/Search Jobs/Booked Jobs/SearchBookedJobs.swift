@@ -150,7 +150,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user ID is \(String(describing: user_id))")
-        checkRouteAccess()
+//        checkRouteAccess()
         //top tab bar view shadow
         topPagerView.layer.masksToBounds = false
         topPagerView.layer.shadowOpacity = 0.5

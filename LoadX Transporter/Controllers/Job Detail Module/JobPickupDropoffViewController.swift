@@ -254,7 +254,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func jobCompletedAct(_ sender: Any) {
-        showAlertView(question: "Has the job been completed?", ensure: "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof", paymentLinkHeight: 0, status: .jobCompleted)
+//        showAlertView(question: "Has the job been completed?", ensure: "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof", paymentLinkHeight: 0, status: .jobCompleted)
+        self.goToJobCompletedScene()
     }
     
     @IBAction func cashCollectedAct(_ sender: Any) {
@@ -450,7 +451,12 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let pickUp_time = jsonData[0]["timeslot"].stringValue
 //        let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
         let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
-        let no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        var no_of_hepler : String = ""
+        if AppUtility.shared.country == .Pakistan {
+        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "0") ? "No Helper" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        } else {
+        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        }
         let supermarketName_lbl = jsonData[0]["super_market_name"].stringValue
         let movingFrom_lbl = jsonData[0]["moving_from"].stringValue
         let movingTo_lbl = jsonData[0]["moving_to"].stringValue
@@ -468,8 +474,9 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let workingHours = jsonData[0]["working_hours"].stringValue
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
         
+        if !(AppUtility.shared.country == .Pakistan) {
         info.append(MenuItemStruct.init(title: "Category", value: category))
-        
+        }
         if pickupHouseNo != "" {
             if movingTo == .pickup {
             info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))

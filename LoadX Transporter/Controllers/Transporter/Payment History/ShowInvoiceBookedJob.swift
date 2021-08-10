@@ -40,6 +40,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var officeAddress4: UILabel!
     @IBOutlet weak var companyReg: UILabel!
     @IBOutlet weak var vatNumber: UILabel!
+    @IBOutlet weak var financeEmail: UILabel!
     
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
        
@@ -86,6 +87,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
             officeAddress2.text = "92 AIRLINE SOCIETY,"
             officeAddress3.text = "LAHORE PAKISTAN"
             officeAddress4.text = "54000"
+            financeEmail.text = "FINANCE@LOADX.PK"
             companyReg.isHidden = true
             vatNumber.isHidden = true
         }

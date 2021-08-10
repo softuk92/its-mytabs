@@ -130,7 +130,7 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
                                 }
                                 if let vc = UIStoryboard.init(name: "JobDetail", bundle: nil).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
                                     vc.modalPresentationStyle = .fullScreen
-                                    vc.buttonText = "Okay"
+                                    vc.buttonText = "Back to Job"
                                     vc.ensureText = "Disclaimer has been submitted."
                                     self.dismiss(animated: true) { [weak self] in
                                         guard let self = self else { return }

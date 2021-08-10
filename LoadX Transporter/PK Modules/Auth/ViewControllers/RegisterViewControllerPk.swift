@@ -174,10 +174,10 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             //           SVProgressHUD.showError(withStatus: "Please enter 11 digit number start with 0 ")
             
         }
-        if self.address.text == "" {
-            address.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            //  SVProgressHUD.showError(withStatus: "Please Enter Address ")
-        }
+//        if self.address.text == "" {
+//            address.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+//            //  SVProgressHUD.showError(withStatus: "Please Enter Address ")
+//        }
         if self.van_type.text == "" {
             van_type.attributedPlaceholder = NSAttributedString(string: "Enter Van Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             // SVProgressHUD.showError(withStatus: "Please Enter Van Type ")
@@ -186,7 +186,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             vehicle_reg_no.attributedPlaceholder = NSAttributedString(string: "Enter Vehicle Reg.No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             // SVProgressHUD.showError(withStatus: "Please Enter Vehicle Reg Number ")
         }
-        if fullName.text != "" && email_address.text != "" && phone_no.text != "" && address.text != "" && van_type.text != "" && vehicle_reg_no.text != "" {
+        if fullName.text != "" && email_address.text != "" && phone_no.text != "" && van_type.text != "" && vehicle_reg_no.text != "" {
             registerForOTP()
         }
         
@@ -232,7 +232,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     func registerTransporter() {
         
         guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
-        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "taddress" : self.address.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1"]
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1"]
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
