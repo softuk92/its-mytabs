@@ -27,6 +27,7 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
     var driverEarning = ""
     var ic_status = "Pending"
     var dl_status = "Pending"
+    var goToBookedJob: Bool = false
     
     @IBOutlet var updateView: UIView!
     
@@ -69,6 +70,13 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                     }
                 }
             }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if goToBookedJob {
+            self.selectedIndex = 0
+        }
     }
     
     func postData() {

@@ -37,6 +37,7 @@ extension SearchBookedJobs {
                         self.present(showAlert(title: "Alert", message: "Email is incorrect."), animated: true, completion: nil)
                     } else {
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
+                        vc?.goToBookedJobs = true
                         self.navigationController?.pushViewController(vc!, animated: true)
                     }
                 } else {
@@ -69,6 +70,7 @@ extension SearchBookedJobs {
                         self.present(showAlert(title: "Alert", message: message), animated: true, completion: nil)
                     } else {
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
+                        vc?.goToBookedJobs = true
                         self.navigationController?.pushViewController(vc!, animated: true)
                     }
                 } else {

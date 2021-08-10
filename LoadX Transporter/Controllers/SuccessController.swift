@@ -13,6 +13,7 @@ class SuccessController: UIViewController {
     @IBOutlet weak var mainBtn: UIButton!
     
     var runningLateFromJob: Bool = false
+    var goToBookedJobs: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +57,15 @@ class SuccessController: UIViewController {
                 }
             return
         }
+        if goToBookedJobs {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
+            vc?.goToBookedJob = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+            return
+        }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
-    self.navigationController?.pushViewController(vc!, animated: true)
+        self.navigationController?.pushViewController(vc!, animated: true)
+
     }
     
     @IBAction func goToBookedRoutes(_ sender: Any) {
