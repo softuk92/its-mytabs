@@ -284,7 +284,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                 SVProgressHUD.dismiss()
                 
                 let jsonData : JSON = JSON(response.result.value!)
-                //                        print("Jobs In Progress jsonData is \(jsonData)")
+                print("Jobs In Progress jsonData is \(jsonData)")
                 let result = jsonData[0]["result"].stringValue
                 //                        let message = jsonData[0]["message"].stringValue
                 self.jobsInProgressModel.removeAll()

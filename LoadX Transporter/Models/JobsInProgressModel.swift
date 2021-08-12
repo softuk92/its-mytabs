@@ -43,4 +43,5 @@ struct JobsInProgressModel: Decodable  {
     let loadx_share: String?
     let transporter_share: String?
     let price: Int?
+    let formated_job_id : String?
 }

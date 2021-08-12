@@ -66,14 +66,15 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         
         let category = jsonData[0]["add_type"].stringValue
 //        let jobID = "LOADX"+String(year)+"J"+(del_id ?? "")
-        let jobID = "LX000"+(del_id ?? "")
+        let jobID = jsonData[0]["formated_job_id"].stringValue
         let pickUp_date = convertDateFormatter(jsonData[0]["date"].stringValue)
         let pickUp_time = jsonData[0]["timeslot"].stringValue
         let Posteddate = convertDateFormatter(jsonData[0]["job_posted_date"].stringValue)
         let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
         var no_of_hepler : String = ""
         if AppUtility.shared.country == .Pakistan {
-        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "0") ? "No Helper" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        let helper = jsonData[0]["no_of_helper"].stringValue
+        no_of_hepler = (helper == "0") ? "No Helper" : (helper == "1" ? "1 Helper" : "\(helper) Helpers")
         } else {
         no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         }

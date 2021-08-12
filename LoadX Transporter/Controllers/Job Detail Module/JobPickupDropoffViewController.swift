@@ -453,7 +453,8 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let vehicleOperational = jsonData[0]["is_car_operational"].stringValue
         var no_of_hepler : String = ""
         if AppUtility.shared.country == .Pakistan {
-        no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "0") ? "No Helper" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
+        let helper = jsonData[0]["no_of_helper"].stringValue
+        no_of_hepler = (helper == "0") ? "No Helper" : (helper == "1" ? "1 Helper" : "\(helper) Helpers")
         } else {
         no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         }
