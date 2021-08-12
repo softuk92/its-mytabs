@@ -470,11 +470,16 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             let due_amount_status = completedJobsRow.due_amount_status
             
+            
             let payment_type2 = completedJobsRow.payment_type
+            if AppUtility.shared.country == .Pakistan {
+                cell.payment_type_lbl.text = completedJobsRow.job_payment_type
+            } else {
             if payment_type2 == "full"  {
                 cell.payment_type_lbl.text = "Account Job"
             }else{
                 cell.payment_type_lbl.text = "Cash Job"
+            }
             }
             
             if payment_type2 == "full" || payment_type2 == "Full" {

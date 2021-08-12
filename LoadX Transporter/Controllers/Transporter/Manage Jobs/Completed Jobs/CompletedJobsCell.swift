@@ -35,10 +35,12 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var receivedAmount: UILabel!
     @IBOutlet weak var transporterShareView: UIStackView!
     @IBOutlet weak var transporterShare: UILabel!
+    @IBOutlet weak var transporterShareTitle: UILabel!
     @IBOutlet weak var loadxShareView: UIStackView!
     @IBOutlet weak var loadxShare: UILabel!
     @IBOutlet weak var jobPriceView: UIStackView!
     @IBOutlet weak var contactPerson: UILabel!
+    @IBOutlet weak var loadxShareStatus: UILabel!
     
     var deleteRow: ((CompletedJobsCell) -> Void)?
     var transporterProfileRow: ((CompletedJobsCell) -> Void)?
@@ -50,15 +52,34 @@ class CompletedJobsCell: UITableViewCell {
         moving_item.isUserInteractionEnabled = true
         moving_item.addGestureRecognizer(tap)
         
-        setupViews()
     }
     
-    func setupViews() {
+    func setupViews(paymentType: String, dueAmountStatus: String, lxShareStatus: String) {
         if AppUtility.shared.country == .Pakistan {
-            receivedAmountView.isHidden = false
-            transporterShareView.isHidden = false
-            loadxShareView.isHidden = false
             jobPriceView.isHidden = true
+            if paymentType.lowercased() == "full" {
+                if (dueAmountStatus.lowercased() == "pending" || dueAmountStatus.lowercased() == "paid") && lxShareStatus.lowercased() == "pending" {
+                    loadxShareView.isHidden = true
+                    transporterShareView.isHidden = false
+                    receivedAmountView.isHidden = true
+                    loadxShareStatus.isHidden = true
+                    transporterShareTitle.text = "Job Price"
+                }
+                if dueAmountStatus.lowercased() == "paid" && lxShareStatus.lowercased() == "paid" {
+                    receivedAmountView.isHidden = false
+                    transporterShareView.isHidden = false
+                    loadxShareView.isHidden = false
+                    loadxShareStatus.isHidden = false
+                    loadxShareStatus.text = lxShareStatus
+                }
+            }
+            if paymentType.lowercased() == "initial" {
+                    loadxShareView.isHidden = true
+                    transporterShareView.isHidden = false
+                    receivedAmountView.isHidden = true
+                    loadxShareStatus.isHidden = true
+                    transporterShareTitle.text = "Job Price"
+            }
         } else {
             receivedAmountView.isHidden = true
             transporterShareView.isHidden = true
@@ -72,6 +93,7 @@ class CompletedJobsCell: UITableViewCell {
         transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporter_share)?.withCommas() ?? "0")
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
         contactPerson.text = model.contact_person.capitalized
+        setupViews(paymentType: model.payment_type, dueAmountStatus: model.due_amount_status, lxShareStatus: (model.loadx_share_status ?? ""))
     }
 
     func setJobBookedForView(workingHours: String?, category: String) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,9 +20,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertIfCashReceived" customModule="LoadX_Transporter" customModuleProvider="target">
             <connections>
+                <outlet property="cashReceivedBtn" destination="ceG-8W-yi6" id="IaM-MS-RDg"/>
                 <outlet property="centerView" destination="aPV-tX-OXA" id="Bso-7M-wTv"/>
+                <outlet property="closeButton" destination="e5X-LA-CzI" id="uZA-2S-7Yh"/>
+                <outlet property="closeButtonView" destination="SBu-c9-lA7" id="Ryc-jx-5qx"/>
                 <outlet property="ensure" destination="q2c-WY-cNh" id="qcj-hL-IBd"/>
                 <outlet property="imageView" destination="6Jl-mf-Oxg" id="FIw-in-Jvl"/>
+                <outlet property="paymentLinkBtn" destination="N7c-b6-djo" id="2Oh-zJ-DNa"/>
                 <outlet property="question" destination="7gE-A9-j5S" id="u1F-T6-6ru"/>
             </connections>
         </placeholder>
@@ -32,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPV-tX-OXA">
-                    <rect key="frame" x="25" y="134" width="278" height="315.5"/>
+                    <rect key="frame" x="25" y="134.5" width="278" height="314"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqh-6o-uZg">
                             <rect key="frame" x="0.0" y="0.0" width="278" height="135"/>
@@ -69,93 +73,109 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="620-hY-0qM">
-                            <rect key="frame" x="6.5" y="210.5" width="265" height="35"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="R9I-7a-2lt">
+                            <rect key="frame" x="6.5" y="209" width="265" height="90"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceG-8W-yi6" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="35"/>
-                                    <color key="backgroundColor" name="NewBlueColor"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="620-hY-0qM">
+                                    <rect key="frame" x="0.0" y="0.0" width="265" height="35"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceG-8W-yi6" customClass="AnimatableButton" customModule="IBAnimatable">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="35"/>
+                                            <color key="backgroundColor" name="NewBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="125" id="CpE-Cd-3Mo"/>
+                                                <constraint firstAttribute="height" constant="35" id="wNg-Zf-igs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                            <state key="normal" title="CASH RECEIVED">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="17"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="cashReceivedAct:" destination="-1" eventType="touchUpInside" id="vjh-LL-FdB"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7c-b6-djo" customClass="AnimatableButton" customModule="IBAnimatable">
+                                            <rect key="frame" x="140" y="0.0" width="125" height="35"/>
+                                            <color key="backgroundColor" name="MehroonColor"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                            <state key="normal" title="SEND PAYMENT LINK">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="17"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="sendPaymentLinkAct:" destination="-1" eventType="touchUpInside" id="RIQ-mA-g8Z"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="125" id="CpE-Cd-3Mo"/>
-                                        <constraint firstAttribute="height" constant="35" id="wNg-Zf-igs"/>
+                                        <constraint firstItem="ceG-8W-yi6" firstAttribute="height" secondItem="N7c-b6-djo" secondAttribute="height" id="bW5-I6-vWz"/>
+                                        <constraint firstItem="ceG-8W-yi6" firstAttribute="width" secondItem="N7c-b6-djo" secondAttribute="width" id="vcX-oH-jDh"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                    <state key="normal" title="CASH RECEIVED">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="17"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="cashReceivedAct:" destination="-1" eventType="touchUpInside" id="vjh-LL-FdB"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7c-b6-djo" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="125" height="35"/>
-                                    <color key="backgroundColor" name="MehroonColor"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                    <state key="normal" title="SEND PAYMENT LINK">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="17"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="sendPaymentLinkAct:" destination="-1" eventType="touchUpInside" id="RIQ-mA-g8Z"/>
-                                    </connections>
-                                </button>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBu-c9-lA7">
+                                    <rect key="frame" x="82.5" y="55" width="100" height="35"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-LA-CzI" customClass="AnimatableButton" customModule="IBAnimatable">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="OGn-kd-ueP"/>
+                                                <constraint firstAttribute="width" constant="100" id="Sav-pC-WIy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                            <state key="normal" title="CLOSE">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="17"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="closeAct:" destination="-1" eventType="touchUpInside" id="al7-RC-Og6"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="e5X-LA-CzI" secondAttribute="bottom" id="8RA-uT-kU3"/>
+                                        <constraint firstItem="e5X-LA-CzI" firstAttribute="leading" secondItem="SBu-c9-lA7" secondAttribute="leading" id="DPP-lQ-dLB"/>
+                                        <constraint firstAttribute="height" secondItem="e5X-LA-CzI" secondAttribute="height" id="VQC-q4-xyy"/>
+                                        <constraint firstItem="e5X-LA-CzI" firstAttribute="top" secondItem="SBu-c9-lA7" secondAttribute="top" id="Zeb-yB-ijC"/>
+                                        <constraint firstAttribute="trailing" secondItem="e5X-LA-CzI" secondAttribute="trailing" id="u9e-Ho-y8D"/>
+                                    </constraints>
+                                </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="ceG-8W-yi6" firstAttribute="height" secondItem="N7c-b6-djo" secondAttribute="height" id="bW5-I6-vWz"/>
-                                <constraint firstItem="ceG-8W-yi6" firstAttribute="width" secondItem="N7c-b6-djo" secondAttribute="width" id="vcX-oH-jDh"/>
-                            </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please note: The customer may want to pay via card, you can send them a payment link to do so." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2c-WY-cNh" userLabel="ensure">
-                            <rect key="frame" x="10" y="147" width="258" height="43.5"/>
+                            <rect key="frame" x="10" y="147" width="258" height="42"/>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                             <color key="textColor" name="TextfieldTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-LA-CzI" customClass="AnimatableButton" customModule="IBAnimatable">
-                            <rect key="frame" x="89" y="265.5" width="100" height="35"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="OGn-kd-ueP"/>
-                                <constraint firstAttribute="width" constant="100" id="Sav-pC-WIy"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                            <state key="normal" title="CLOSE">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="17"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="closeAct:" destination="-1" eventType="touchUpInside" id="al7-RC-Og6"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="620-hY-0qM" firstAttribute="centerX" secondItem="aPV-tX-OXA" secondAttribute="centerX" id="66U-0S-ocV"/>
                         <constraint firstAttribute="trailing" secondItem="Kqh-6o-uZg" secondAttribute="trailing" id="AP6-2T-s2E"/>
+                        <constraint firstItem="R9I-7a-2lt" firstAttribute="top" secondItem="q2c-WY-cNh" secondAttribute="bottom" constant="20" id="CA9-Zy-sSZ"/>
+                        <constraint firstItem="R9I-7a-2lt" firstAttribute="centerX" secondItem="aPV-tX-OXA" secondAttribute="centerX" id="Hz1-Zq-lPP"/>
                         <constraint firstItem="Kqh-6o-uZg" firstAttribute="top" secondItem="aPV-tX-OXA" secondAttribute="top" id="Iiy-sh-360"/>
                         <constraint firstItem="Kqh-6o-uZg" firstAttribute="leading" secondItem="aPV-tX-OXA" secondAttribute="leading" id="QsC-oG-fKx"/>
                         <constraint firstItem="q2c-WY-cNh" firstAttribute="top" secondItem="Kqh-6o-uZg" secondAttribute="bottom" constant="12" id="VA5-eF-dS2"/>
                         <constraint firstAttribute="trailing" secondItem="q2c-WY-cNh" secondAttribute="trailing" constant="10" id="ag1-nx-3ph"/>
-                        <constraint firstItem="e5X-LA-CzI" firstAttribute="top" secondItem="620-hY-0qM" secondAttribute="bottom" constant="20" id="l93-Wk-0vd"/>
-                        <constraint firstItem="e5X-LA-CzI" firstAttribute="centerX" secondItem="620-hY-0qM" secondAttribute="centerX" id="nho-Xv-NuK"/>
+                        <constraint firstAttribute="bottom" secondItem="R9I-7a-2lt" secondAttribute="bottom" constant="15" id="iRM-X0-cdv"/>
                         <constraint firstItem="q2c-WY-cNh" firstAttribute="leading" secondItem="aPV-tX-OXA" secondAttribute="leading" constant="10" id="pXO-gw-RgA"/>
-                        <constraint firstItem="620-hY-0qM" firstAttribute="top" secondItem="q2c-WY-cNh" secondAttribute="bottom" constant="20" id="xAs-4U-mVg"/>
-                        <constraint firstAttribute="bottom" secondItem="e5X-LA-CzI" secondAttribute="bottom" constant="15" id="zbN-of-ZJW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -179,7 +199,7 @@
             <size key="intrinsicContentSize" width="86" height="26"/>
         </designable>
         <designable name="e5X-LA-CzI">
-            <size key="intrinsicContentSize" width="44" height="28"/>
+            <size key="intrinsicContentSize" width="43" height="28"/>
         </designable>
     </designables>
     <resources>

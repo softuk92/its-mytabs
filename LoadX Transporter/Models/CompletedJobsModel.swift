@@ -39,4 +39,5 @@ struct CompletedJobsModel: Decodable  {
     let loadx_share: String?
     let price: Int?
     let job_payment_type: String?
+    let loadx_share_status: String?
 }

@@ -17,20 +17,36 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     @IBOutlet weak public var imageView: UIImageView!
     @IBOutlet weak public var question: UILabel!
     @IBOutlet weak public var ensure: UILabel!
+    @IBOutlet weak public var cashReceivedBtn: UIButton!
+    @IBOutlet weak public var paymentLinkBtn: UIButton!
+    @IBOutlet weak public var closeButton: UIButton!
+    @IBOutlet weak public var closeButtonView: UIView!
     
     var cashReceivedCall: ((AlertIfCashReceived) -> Void)?
     var closeCall: ((AlertIfCashReceived) -> Void)?
     var sendPaymentLinkCall: ((AlertIfCashReceived) -> Void)?
+    
+    public var setViewForPakistan: Bool = false
     
     //MARK: - init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         loadNibContent()
         customizeUI()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
+        if setViewForPakistan {
+            closeButtonView.isHidden = true
+            cashReceivedBtn.backgroundColor = R.color.mehroonColor()
+            paymentLinkBtn.backgroundColor = .darkGray
+            paymentLinkBtn.setTitle("CLOSE", for: .normal)
+        }
     }
     
     
@@ -51,7 +67,11 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     }
     
     @IBAction func sendPaymentLinkAct(_ sender: Any) {
+        if setViewForPakistan {
+        closeCall?(self)
+        } else {
         sendPaymentLinkCall?(self)
+        }
     }
     
 }

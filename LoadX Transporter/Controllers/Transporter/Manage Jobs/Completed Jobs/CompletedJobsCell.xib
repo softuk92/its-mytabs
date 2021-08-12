@@ -142,19 +142,19 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uJo-js-WdR">
-                                <rect key="frame" x="15" y="49" width="235" height="156"/>
+                                <rect key="frame" x="15" y="49" width="235.5" height="156"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="wqp-yA-8y1">
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="16.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHS-ac-IrY">
-                                                <rect key="frame" x="0.0" y="0.0" width="115" height="16.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHS-ac-IrY">
+                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAc-j0-wsN">
-                                                <rect key="frame" x="155" y="0.0" width="16.5" height="16.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAc-j0-wsN">
+                                                <rect key="frame" x="155.5" y="0.0" width="16" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="PriceColor"/>
                                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="£0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZi-qR-lTr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="£0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZi-qR-lTr">
                                                 <rect key="frame" x="155.5" y="0.0" width="16" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="PriceColor"/>
@@ -225,16 +225,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="60b-Qi-K3x">
-                                        <rect key="frame" x="0.0" y="106" width="235" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="106" width="235.5" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p13-Zv-T4Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="115" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Job" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5S-Di-BVG">
-                                                <rect key="frame" x="155" y="0.0" width="80" height="23.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Job" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5S-Di-BVG">
+                                                <rect key="frame" x="155.5" y="0.0" width="80" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -242,16 +242,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-Yd-8Kc">
-                                        <rect key="frame" x="0.0" y="139.5" width="204.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="139.5" width="205" height="16.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Booked For:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZv-i1-xU1">
-                                                <rect key="frame" x="0.0" y="0.0" width="115" height="16.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-3V-mbL">
-                                                <rect key="frame" x="155" y="0.0" width="49.5" height="16.5"/>
+                                                <rect key="frame" x="155.5" y="0.0" width="49.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -264,6 +264,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="HiW-4M-XtV" firstAttribute="trailing" secondItem="wqp-yA-8y1" secondAttribute="trailing" id="09b-Xq-F49"/>
+                                    <constraint firstItem="SZi-qR-lTr" firstAttribute="leading" secondItem="dAc-j0-wsN" secondAttribute="leading" id="2eG-93-86c"/>
                                     <constraint firstItem="hz2-3U-CcF" firstAttribute="trailing" secondItem="wqp-yA-8y1" secondAttribute="trailing" id="Cwf-rS-2vF"/>
                                     <constraint firstItem="pFD-fi-Qtu" firstAttribute="trailing" secondItem="wqp-yA-8y1" secondAttribute="trailing" id="JjM-jC-fUc"/>
                                     <constraint firstItem="P5S-Di-BVG" firstAttribute="leading" secondItem="dAc-j0-wsN" secondAttribute="leading" id="UcJ-aE-G8X"/>
@@ -298,6 +299,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgM-ox-y4i">
+                                <rect key="frame" x="298" y="102.5" width="32" height="15.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.60784313725490191" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="cellBackgroundcolor"/>
                         <constraints>
@@ -312,6 +319,7 @@
                             <constraint firstItem="qAj-Rp-rIE" firstAttribute="top" secondItem="65y-QN-8KR" secondAttribute="bottom" id="9EH-CG-pbi"/>
                             <constraint firstItem="56S-X7-LeD" firstAttribute="height" secondItem="Yme-Um-oVv" secondAttribute="height" id="AkT-Wg-Lsx"/>
                             <constraint firstItem="lvd-PN-Db2" firstAttribute="centerY" secondItem="g6r-q3-eTA" secondAttribute="centerY" id="Bja-PE-8gt"/>
+                            <constraint firstAttribute="trailing" secondItem="cgM-ox-y4i" secondAttribute="trailing" constant="25" id="Cze-SI-rg5"/>
                             <constraint firstItem="qAj-Rp-rIE" firstAttribute="centerX" secondItem="WN6-Kg-tZw" secondAttribute="centerX" id="EPh-KW-Iti"/>
                             <constraint firstItem="Cf2-It-yZp" firstAttribute="top" secondItem="Op0-Bm-Bcf" secondAttribute="top" id="HDQ-Sc-ZuT"/>
                             <constraint firstItem="Y1W-Nq-FII" firstAttribute="centerY" secondItem="56S-X7-LeD" secondAttribute="centerY" id="N2j-5T-1lT"/>
@@ -335,6 +343,7 @@
                             <constraint firstAttribute="trailing" secondItem="Hyt-kV-cMU" secondAttribute="trailing" constant="50" id="rrj-2Y-cCw"/>
                             <constraint firstAttribute="trailing" secondItem="Cf2-It-yZp" secondAttribute="trailing" id="sOo-cl-Rau"/>
                             <constraint firstAttribute="bottom" secondItem="56S-X7-LeD" secondAttribute="bottom" id="uGs-IM-uc6"/>
+                            <constraint firstItem="cgM-ox-y4i" firstAttribute="centerY" secondItem="pFD-fi-Qtu" secondAttribute="centerY" id="vBG-rg-vns"/>
                             <constraint firstAttribute="trailing" secondItem="lvd-PN-Db2" secondAttribute="trailing" constant="10" id="yNY-lQ-xX8"/>
                             <constraint firstItem="lvd-PN-Db2" firstAttribute="leading" secondItem="g6r-q3-eTA" secondAttribute="trailing" constant="8" id="ydv-RG-LBW"/>
                             <constraint firstItem="uJo-js-WdR" firstAttribute="top" secondItem="Hyt-kV-cMU" secondAttribute="bottom" constant="12" id="zSk-Hx-Zh4"/>
@@ -363,6 +372,7 @@
                 <outlet property="jobBookedForView" destination="eKS-Yd-8Kc" id="ds3-xJ-rdg"/>
                 <outlet property="jobPriceView" destination="HiW-4M-XtV" id="Df0-uY-BXb"/>
                 <outlet property="loadxShare" destination="guA-Ar-ZiZ" id="dZu-Vq-dRs"/>
+                <outlet property="loadxShareStatus" destination="cgM-ox-y4i" id="tlh-EO-K80"/>
                 <outlet property="loadxShareView" destination="pFD-fi-Qtu" id="lce-h6-GPs"/>
                 <outlet property="moving_item" destination="Hyt-kV-cMU" id="gck-Ib-pR6"/>
                 <outlet property="payment_type_lbl" destination="P5S-Di-BVG" id="xzN-Gv-4SD"/>
@@ -372,6 +382,7 @@
                 <outlet property="receivedAmountStatus" destination="431-UX-fTB" id="V5D-6h-LaZ"/>
                 <outlet property="receivedAmountView" destination="wqp-yA-8y1" id="WOL-tE-i4s"/>
                 <outlet property="transporterShare" destination="SZi-qR-lTr" id="170-dQ-ima"/>
+                <outlet property="transporterShareTitle" destination="ghE-ga-KLX" id="oyr-NP-4xj"/>
                 <outlet property="transporterShareView" destination="hz2-3U-CcF" id="zax-Zy-fwZ"/>
                 <outlet property="widthBusiness" destination="1mk-G6-biQ" id="yTK-kj-APt"/>
             </connections>

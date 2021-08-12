@@ -69,9 +69,15 @@ extension JobPickupDropoffViewController {
             pickupArrivedBtn.isHidden = false
             disclaimerView.isHidden = true
             
-            //show running late if running late is false
+            //show running late if running late is false and if country is not Pakistan
+            if AppUtility.shared.country == .Pakistan {
+                bottomButtonView.isHidden = true
+                runningLateBtn.isHidden = true
+            } else {
             bottomButtonView.isHidden = !(status.p_running_late == "0" || status.p_running_late == "")
             runningLateBtn.isHidden = !(status.p_running_late == "0" || status.p_running_late == "")
+            }
+            
         } else { //if pickupState == "arrivedAtPickup"
             upperButtonView.isHidden = false
             bottomButtonView.isHidden = false

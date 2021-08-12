@@ -86,7 +86,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
         viewOfContact.isHidden = true
         // Do any additional setup after loading the view.
         SVProgressHUD.setDefaultMaskType(.custom)
-        SVProgressHUD.setDefaultStyle(.light)
+        SVProgressHUD.setDefaultStyle(.dark)
     }
    
     func getDetailOfJob() {

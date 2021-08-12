@@ -189,6 +189,9 @@ extension JobPickupDropoffViewController {
     func showCashReceivedAlert() {
         let aView = AlertIfCashReceived(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        if AppUtility.shared.country == .Pakistan {
+            aView.setViewForPakistan = true
+        }
         
         aView.sendPaymentLinkCall = { [weak self] (_) in
             guard let self = self else { return }
