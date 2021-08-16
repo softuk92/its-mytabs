@@ -42,8 +42,8 @@ class OTPViewControllerPk: UIViewController, UINavigationControllerDelegate {
     func setupOtpView(){
             self.otpTextFieldView.fieldsCount = 4
             self.otpTextFieldView.fieldBorderWidth = 1
-            self.otpTextFieldView.defaultBorderColor = UIColor.black
-            self.otpTextFieldView.filledBorderColor = UIColor.black
+        self.otpTextFieldView.defaultBorderColor = UIColor.init(hexString: "323232")
+            self.otpTextFieldView.filledBorderColor = UIColor.init(hexString: "323232")
             self.otpTextFieldView.displayType = .square
             self.otpTextFieldView.fieldSize = 60
             self.otpTextFieldView.separatorSpace = 20
