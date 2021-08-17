@@ -70,6 +70,12 @@ extension TransporterAvailabilityViewController:UITableViewDelegate,UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "TransporterPublicProfile", bundle: nil)
+        let showVC = sb.instantiateViewController(withIdentifier: "TransporterPublicProfileViewController") as? TransporterPublicProfileViewController
+       self.navigationController?.pushViewController(showVC!, animated: true)
+    }
+    
     func didTapButton(cell: UITableViewCell, selected: Bool?) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let model =  dataSource[indexPath.row]

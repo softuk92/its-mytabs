@@ -38,6 +38,9 @@
 		18624EE5255AFE5D000E1954 /* GetAllRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18624EE4255AFE5D000E1954 /* GetAllRoutes.swift */; };
 		18633DB6255044C5002913FC /* AppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18633DB5255044C5002913FC /* AppleButton.swift */; };
 		186B536A266E535F00B9FC6A /* JobSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B5369266E535F00B9FC6A /* JobSuccessController.swift */; };
+		188FC35C26CBC77D00271B49 /* TransporterPublicProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188FC35B26CBC77C00271B49 /* TransporterPublicProfile.storyboard */; };
+		188FC35F26CBC79600271B49 /* TransporterPublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC35E26CBC79600271B49 /* TransporterPublicProfileViewController.swift */; };
+		188FC36226CBF08D00271B49 /* TransporterProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC36126CBF08D00271B49 /* TransporterProfileModel.swift */; };
 		1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC57251B7DD700B964C9 /* FAQSCell.swift */; };
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
@@ -279,6 +282,9 @@
 		18624EE4255AFE5D000E1954 /* GetAllRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllRoutes.swift; sourceTree = "<group>"; };
 		18633DB5255044C5002913FC /* AppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleButton.swift; sourceTree = "<group>"; };
 		186B5369266E535F00B9FC6A /* JobSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSuccessController.swift; sourceTree = "<group>"; };
+		188FC35B26CBC77C00271B49 /* TransporterPublicProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransporterPublicProfile.storyboard; sourceTree = "<group>"; };
+		188FC35E26CBC79600271B49 /* TransporterPublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterPublicProfileViewController.swift; sourceTree = "<group>"; };
+		188FC36126CBF08D00271B49 /* TransporterProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterProfileModel.swift; sourceTree = "<group>"; };
 		1890DC57251B7DD700B964C9 /* FAQSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSCell.swift; sourceTree = "<group>"; };
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
@@ -602,6 +608,16 @@
 			path = "Route Data Models";
 			sourceTree = "<group>";
 		};
+		188FC35A26CBC76400271B49 /* Public Profile */ = {
+			isa = PBXGroup;
+			children = (
+				188FC35B26CBC77C00271B49 /* TransporterPublicProfile.storyboard */,
+				188FC35E26CBC79600271B49 /* TransporterPublicProfileViewController.swift */,
+				188FC36126CBF08D00271B49 /* TransporterProfileModel.swift */,
+			);
+			path = "Public Profile";
+			sourceTree = "<group>";
+		};
 		3DA0DBBD6B0B73C84F222B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +687,7 @@
 		4E3964682695C20F00A67E44 /* PK Modules */ = {
 			isa = PBXGroup;
 			children = (
+				188FC35A26CBC76400271B49 /* Public Profile */,
 				8D23103526B7ED9F0042BFB6 /* Earning */,
 				4E31506426B7101B0001D63E /* Jobs Group */,
 				8DC0948D26B2BAAC00106AC1 /* Post Availbility  */,
@@ -1250,6 +1267,7 @@
 				8D48C1F722240A1A00417EF5 /* ActiveJobsCell.xib in Resources */,
 				8D952D1426B5F4C00022BEEF /* EarningTableViewCell.xib in Resources */,
 				8D270D1121FB86C90016D6DD /* client_590790755826-9u7kq1p0ecc71gtp8f42ol6hf16ho4eh.apps.googleusercontent.com.plist in Resources */,
+				188FC35C26CBC77D00271B49 /* TransporterPublicProfile.storyboard in Resources */,
 				8D3E610221F76435004EAB06 /* LaunchScreen.storyboard in Resources */,
 				BB16169C24BF31E2008420A8 /* GeneralItemHeaderCell.xib in Resources */,
 				1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */,
@@ -1397,6 +1415,7 @@
 				184C48EC2523525C0042AA94 /* DropDownViewCell.swift in Sources */,
 				4E31506826B7105A0001D63E /* SearchJobsCellPk.swift in Sources */,
 				6D657B07229C4C06002156C9 /* ShowInvoiceBookedJob.swift in Sources */,
+				188FC35F26CBC79600271B49 /* TransporterPublicProfileViewController.swift in Sources */,
 				BBF12A22243C8F4700CD5FA0 /* SplashScreen_ViewController.swift in Sources */,
 				8D48C1EE2224062800417EF5 /* TransporterDashboard.swift in Sources */,
 				8D9C098326B92F3500D58742 /* PayToLoadX.swift in Sources */,
@@ -1528,6 +1547,7 @@
 				4EC4B295257C29CE00A03986 /* RunningLateViewController.swift in Sources */,
 				BBED7FA324B50CBA00D65DC7 /* InventoryCell.swift in Sources */,
 				18633DB6255044C5002913FC /* AppleButton.swift in Sources */,
+				188FC36226CBF08D00271B49 /* TransporterProfileModel.swift in Sources */,
 				4E4282C623EC760D00DDA5CF /* satistics_ViewController.swift in Sources */,
 				185139C32562DA7F0053098B /* UI Extensions.swift in Sources */,
 				18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */,

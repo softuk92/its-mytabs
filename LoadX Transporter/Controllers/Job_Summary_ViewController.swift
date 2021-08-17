@@ -14,7 +14,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: UITableView!
     var routeSummaryDetails = [RouteSummaryDetails]()
-    private var items: [MenuItemStruct] = []
+//    private var items: [MenuItemStruct] = []
     
     @IBOutlet weak var jobDesrpt_view: UIView!
     

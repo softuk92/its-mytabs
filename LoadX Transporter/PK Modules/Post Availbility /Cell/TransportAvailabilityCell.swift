@@ -19,6 +19,8 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
     @IBOutlet weak var endPoint: UILabel!
     @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var vanImage: UIImageView!
+    
     weak var cellDelegate:TableViewDelegate?
 
     override func awakeFromNib() {
@@ -37,6 +39,7 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
         endPoint.text = data.endPoint
         availability.text = data.taDate
         status.text = data.status
+        vanImage.sd_setImage(with: URL(string: data.vanImg), placeholderImage: R.image.notfound(), options: .continueInBackground, completed: nil)
     }
     
     @IBAction func didTapButton(sender: Any){
