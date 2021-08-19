@@ -10,6 +10,12 @@ import UIKit
 import Cosmos
 import SVProgressHUD
 
+enum ShowProfileData {
+    case AboutMe
+    case Statistics
+    case Reviews
+}
+
 class TransporterPublicProfileViewController: UIViewController {
 
     @IBOutlet weak var topView: UIView!
@@ -19,13 +25,22 @@ class TransporterPublicProfileViewController: UIViewController {
     @IBOutlet weak var transporterName: UILabel!
     @IBOutlet weak var transporterRating: CosmosView!
     @IBOutlet weak var transporterRatingLabel: UILabel!
-        
+    
+    @IBOutlet weak var aboutMeView: UIView!
+    @IBOutlet weak var aboutMeBtn: UIButton!
+    @IBOutlet weak var statisticsView: UIView!
+    @IBOutlet weak var statisticsBtn: UIButton!
+    @IBOutlet weak var reviewsView: UIView!
+    @IBOutlet weak var reviewsBtn: UIButton!
+    
     var profileMO : TransporterProfileModel?
     var showAboutMe: Bool = true
     var showStatistics: Bool = false
     var showReviews: Bool = false
     
-    var routeSummaryDetails = [RouteSummaryDetails]()
+    var aboutMeData = [RouteSummaryDetails]()
+    var statisticsData = [RouteSummaryDetails]()
+    var showProfileData : ShowProfileData = .AboutMe
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +71,8 @@ class TransporterPublicProfileViewController: UIViewController {
             
             do {
                 if let profileData = try JSONDecoder().decode([TransporterProfileModel].self, from: data).first {
-                    var info = [MenuItemStruct]()
+                    var aboutMeInfo = [MenuItemStruct]()
+                    var statisticsInfo = [MenuItemStruct]()
                     
                     self.profileMO = profileData
                     
@@ -65,9 +81,24 @@ class TransporterPublicProfileViewController: UIViewController {
                     self.transporterRating.rating = Double(profileData.avgfdbck)
                     self.transporterRatingLabel.text = "    \(profileData.avgfdbck)/5"
                     
+                    //aboutMe Data
                     if profileData.aboutMe != "" {
-                        self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Description", detail: [MenuItemStruct.init(title: profileData.aboutMe, value: "")]))
+                        self.aboutMeData.append(RouteSummaryDetails.init(title: "", detail: [MenuItemStruct.init(title: profileData.aboutMe, value: "")]))
                     }
+                    
+                    aboutMeInfo.append(MenuItemStruct.init(title: "Vehicle Type", value: profileData.vanType))
+                    aboutMeInfo.append(MenuItemStruct.init(title: "Vehicle Reg. Number", value: profileData.truckRegistration))
+                    
+                    aboutMeInfo.append(MenuItemStruct.init(title: "Member Since", value: convertDateFormatter(profileData.joinDate)))
+                    aboutMeInfo.append(MenuItemStruct.init(title: "Payment Option", value: profileData.paymentOption))
+                    
+                    self.aboutMeData.append(RouteSummaryDetails.init(title: "Additional Information:", detail: aboutMeInfo))
+                    
+                    //statistics Data
+                    statisticsInfo.append(MenuItemStruct.init(title: "Jobs Done", value: "\(profileData.jobsDone)"))
+                    statisticsInfo.append(MenuItemStruct.init(title: "On Time", value: "\(profileData.totalCountOnTimeYes)"))
+                    statisticsInfo.append(MenuItemStruct.init(title: "On Budget", value: "\(profileData.totalCountOnBudgetYes)"))
+                    self.statisticsData.append(RouteSummaryDetails.init(title: "", detail: statisticsInfo))
                     
                     self.tableView.reloadData()
                 }
@@ -82,43 +113,91 @@ class TransporterPublicProfileViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func aboutMeAct(_ sender: Any) {
+        showTappedView(showAboutMe: true, showStatistics: false, showReviews: false)
+        
+    }
+    
+    @IBAction func statisticsAct(_ sender: Any) {
+        showTappedView(showAboutMe: false, showStatistics: true, showReviews: false)
+    }
+    
+    @IBAction func reviewsAct(_ sender: Any) {
+        showTappedView(showAboutMe: false, showStatistics: false, showReviews: true)
+    }
+    
+    func showTappedView(showAboutMe: Bool, showStatistics: Bool, showReviews: Bool) {
+        aboutMeView.isHidden = !showAboutMe
+        statisticsView.isHidden = !showStatistics
+        reviewsView.isHidden = !showReviews
+        showProfileData = (showAboutMe == true) ? .AboutMe : (showStatistics == true ? .Statistics : .Reviews)
+    }
+    
 }
 
 extension TransporterPublicProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 50))
-        headerView.title.text = self.routeSummaryDetails[section].title
-        return headerView
+        headerView.title.text = self.aboutMeData[section].title
+        return showProfileData == .AboutMe ? headerView : nil
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        return 50
+        return showProfileData == .AboutMe ? (section == 0 ? 0 : 50) : 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.routeSummaryDetails.count
+        showProfileData == .AboutMe ? aboutMeData.count : (showProfileData == .Statistics ? statisticsData.count : 0)
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.routeSummaryDetails[section].detail.count
+        return showProfileData == .AboutMe ? aboutMeData[section].detail.count : (showProfileData == .Statistics ? statisticsData[section].detail.count : 0)
   }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.backgroundView = nil
-        cell.backgroundColor = nil
-        if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value == "" {
-            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
-            cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
-            cell.detail.isHidden = true
-        } else {
-            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
-            cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+        switch showProfileData {
+        case .AboutMe:
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            if aboutMeData[indexPath.section].detail[indexPath.row].value == "" {
+                cell.title.text = aboutMeData[indexPath.section].detail[indexPath.row].title
+                cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
+                cell.detail.isHidden = true
+                cell.bottomView.isHidden = true
+            } else {
+                cell.title.text = aboutMeData[indexPath.section].detail[indexPath.row].title
+                cell.detail.text = aboutMeData[indexPath.section].detail[indexPath.row].value
+                cell.detail.isHidden = false
+                cell.bottomView.isHidden = false
+            }
+            return cell
+
+        case .Statistics:
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            cell.title.text = statisticsData[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = statisticsData[indexPath.section].detail[indexPath.row].value
             cell.detail.isHidden = false
+            
+            return cell
+
+        case .Reviews:
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            cell.title.text = aboutMeData[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = aboutMeData[indexPath.section].detail[indexPath.row].value
+            cell.detail.isHidden = false
+            
+            return cell
         }
-        return cell
     }
     
 }

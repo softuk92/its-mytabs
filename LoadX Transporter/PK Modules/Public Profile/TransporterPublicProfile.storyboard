@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -123,6 +123,9 @@
                                                                 <state key="normal" title="About Me">
                                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="aboutMeAct:" destination="YHE-yo-56g" eventType="touchUpInside" id="1xy-dW-CKL"/>
+                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pr2-hY-hlO">
                                                                 <rect key="frame" x="0.0" y="48" width="131.5" height="2"/>
@@ -143,6 +146,9 @@
                                                                 <state key="normal" title="Statistics">
                                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="statisticsAct:" destination="YHE-yo-56g" eventType="touchUpInside" id="AMd-E7-LW4"/>
+                                                                </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3w-t4-SI4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="131.5" height="2"/>
@@ -162,6 +168,9 @@
                                                                 <state key="normal" title="Reviews">
                                                                     <color key="titleColor" name="TextfieldTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="reviewsAct:" destination="YHE-yo-56g" eventType="touchUpInside" id="FMi-km-0ZA"/>
+                                                                </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXM-bJ-4v6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="131.5" height="2"/>
@@ -230,8 +239,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutMeBtn" destination="qfP-FR-yO3" id="Ngg-FL-yTo"/>
+                        <outlet property="aboutMeView" destination="pr2-hY-hlO" id="p2C-LR-4hJ"/>
                         <outlet property="bottomView" destination="Jof-cl-Zti" id="okJ-Lo-Evg"/>
                         <outlet property="profileImage" destination="dUm-YU-0Ud" id="CIF-f2-30f"/>
+                        <outlet property="reviewsBtn" destination="26Y-pP-ccT" id="BAx-tn-Jbj"/>
+                        <outlet property="reviewsView" destination="SXM-bJ-4v6" id="TJ6-Bq-XkS"/>
+                        <outlet property="statisticsBtn" destination="wA4-K6-sDo" id="3gm-1I-kRY"/>
+                        <outlet property="statisticsView" destination="N3w-t4-SI4" id="Z6f-Ki-Vuy"/>
                         <outlet property="tableView" destination="3St-p3-wb5" id="WAc-Hc-Cle"/>
                         <outlet property="topView" destination="6VQ-fl-y9L" id="Fdz-6V-7kQ"/>
                         <outlet property="transporterName" destination="Gck-sO-kY4" id="1sI-tB-kOx"/>
