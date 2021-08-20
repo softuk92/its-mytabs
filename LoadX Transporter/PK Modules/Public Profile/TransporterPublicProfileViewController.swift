@@ -96,8 +96,8 @@ class TransporterPublicProfileViewController: UIViewController {
                     
                     //statistics Data
                     statisticsInfo.append(MenuItemStruct.init(title: "Jobs Done", value: "\(profileData.jobsDone)"))
-                    statisticsInfo.append(MenuItemStruct.init(title: "On Time", value: "\(profileData.totalCountOnTimeYes)"))
-                    statisticsInfo.append(MenuItemStruct.init(title: "On Budget", value: "\(profileData.totalCountOnBudgetYes)"))
+                    statisticsInfo.append(MenuItemStruct.init(title: "On Time", value: "\(profileData.totalCountOnTimeYes)%"))
+                    statisticsInfo.append(MenuItemStruct.init(title: "On Budget", value: "\(profileData.totalCountOnBudgetYes)%"))
                     self.statisticsData.append(RouteSummaryDetails.init(title: "", detail: statisticsInfo))
                     
                     self.tableView.reloadData()
@@ -131,6 +131,7 @@ class TransporterPublicProfileViewController: UIViewController {
         statisticsView.isHidden = !showStatistics
         reviewsView.isHidden = !showReviews
         showProfileData = (showAboutMe == true) ? .AboutMe : (showStatistics == true ? .Statistics : .Reviews)
+        tableView.reloadData()
     }
     
 }
@@ -184,7 +185,7 @@ extension TransporterPublicProfileViewController: UITableViewDelegate, UITableVi
             cell.title.text = statisticsData[indexPath.section].detail[indexPath.row].title
             cell.detail.text = statisticsData[indexPath.section].detail[indexPath.row].value
             cell.detail.isHidden = false
-            
+            cell.bottomView.isHidden = false
             return cell
 
         case .Reviews:

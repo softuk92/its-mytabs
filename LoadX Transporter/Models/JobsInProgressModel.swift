@@ -44,4 +44,6 @@ struct JobsInProgressModel: Decodable  {
     let transporter_share: String?
     let price: Int?
     let formated_job_id : String?
+    let receiver_phone: String?
+    let receiver_name: String?
 }

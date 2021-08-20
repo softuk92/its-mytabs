@@ -683,7 +683,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
         let jobPrice = AppUtility.shared.country == .Pakistan ? AppUtility.shared.currencySymbol+((rowData.price ?? 0).withCommas()) : ("£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
         let paymentType = AppUtility.shared.country == .Pakistan ? rowData.job_payment_type : rowData.payment_type
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, receiverName: rowData.receiver_name?.capitalized ?? "", receiverNumber: rowData.receiver_phone ?? "", addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }

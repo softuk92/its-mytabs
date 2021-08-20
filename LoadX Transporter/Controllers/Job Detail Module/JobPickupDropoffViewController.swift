@@ -78,6 +78,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         let dropoffAddress: String
         let customerName: String
         let customerNumber: String
+        let receiverName: String
+        let receiverNumber: String
         let addType: String
         let delId: String
         let jbId: String
@@ -196,8 +198,6 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     func setData(input: Input) {
         SVProgressHUD.show()
-        self.customerName.text = input.customerName
-        self.phoneNumber.text = input.customerNumber
         self.cashToBeCollected.text = input.jobPrice
         self.getJobDetails(delId: input.delId)
     }
