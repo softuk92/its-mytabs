@@ -39,6 +39,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var jobId: UILabel!
     @IBOutlet weak var timeEta: UILabel!
     @IBOutlet weak var customerName: UILabel!
+    @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var jobBookedFor: UILabel!
     @IBOutlet weak var jobBookedForStackView: UIStackView!
