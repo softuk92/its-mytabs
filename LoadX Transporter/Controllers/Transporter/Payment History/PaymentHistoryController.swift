@@ -207,7 +207,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
 					//summary
 					//pendingLoadXshare is missing form api
-					self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
+					let loadXShare = payToLoadX.jobLists.reduce(0) { result, item in
+						result + (Int(item.loadxShare) ?? 0)
+					}
+					self.pendingLoadXShare.text = "Rs. " + "\(loadXShare)"
 					//pendingTransporterShare is missing form api
 					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
 					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"

@@ -33,9 +33,9 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         imageSelector = ImageSelector()
         imageSelector.delegate = self
         shadowView.bottomShadow(color: UIColor.black)
-        uploadButtonView.clipsToBounds = true
+        //uploadButtonView.clipsToBounds = true
         uploadButtonView.layer.cornerRadius = 10
-        uploadButtonView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+//        uploadButtonView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         fetechData()
     }
     
