@@ -11,9 +11,43 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
+extension UIView {
+
+	/*
+	func dropShadow(color: UIColor = UIColor(named: "shadowColor")!) {
+	   layer.masksToBounds = false
+	   layer.shadowColor = color.cgColor
+	   layer.shadowOpacity = 0.5
+	   layer.shadowOffset = CGSize(width: -1, height: 1)
+	   layer.shadowRadius = 1
+	   layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+	   layer.shouldRasterize = true
+	   layer.rasterizationScale = UIScreen.main.scale
+   }*/
+}
+
+class PendingPaymentHeaderView: UIView {
+	let title = UILabel()
+
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+
+		title.frame = CGRect(x: 24, y: 0, width: frame.size.width-48, height: frame.size.height)
+		title.textAlignment = .center
+		title.font = UIFont(name: "Montserrat-Light", size: 13)
+		title.numberOfLines = 2
+		self.addSubview(title)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
 class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource,TableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableShadowView: UIView!
     @IBOutlet weak var paymentTotal: UILabel!
     @IBOutlet weak var invoiceBgView: UIView!
     @IBOutlet weak var pendingPaymentBgView: UIView!
@@ -22,6 +56,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var totalEarning: UILabel!
     @IBOutlet weak var headViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var pendingLoadXShare: UILabel!
+    @IBOutlet weak var pendingTransporterShare: UILabel!
+    @IBOutlet weak var balance: UILabel!
     
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
@@ -34,7 +71,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     var paymentHistory: String?
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     var showInvoiceData = true
-
+	var pendingPaymentHeaderView: PendingPaymentHeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +100,16 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             headViewHeight.constant = 0
         }
         self.submitPaymentView.isHidden = true
-        
+
+		//add shadow
+		tableShadowView.backgroundColor = R.color.backgroundColor1()
+		tableShadowView.layer.cornerRadius = 6
+		tableShadowView.layer.shadowOpacity = 0.8
+		tableShadowView.layer.shadowOffset = CGSize(width: 0, height: 3)
+		tableShadowView.layer.shadowRadius = 4
+		tableShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
+
+		pendingPaymentHeaderView = PendingPaymentHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 64))
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData(notification:)), name: Notification.Name("refresh"), object: nil)
     }
  
@@ -80,6 +126,8 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         pendingPaymentBgView.isHidden = true
         submitPaymentView.isHidden = true
         getPaymentHistory()
+		hideShadow(for: tableView)
+		tableView.tableHeaderView = nil
     }
     
     @IBAction func didTapPendingPayments(sender: UIButton){
@@ -88,20 +136,39 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         pendingPaymentBgView.isHidden = false
         submitPaymentView.isHidden = false
         getPendingPayments()
+		showShadow(for: tableView)
+		tableView.tableHeaderView = pendingPaymentHeaderView
     }
+
+	private func showShadow(for tableView: UITableView) {
+//		tableView.layer.shadowColor = UIColor.black.cgColor
+//		tableView.dropShadow(color: UIColor(named: "shadowColor")!, offSet: .zero, radius: 2)
+
+		tableView.layer.borderWidth = 1
+		tableView.layer.borderColor = R.color.mehroonColor()?.cgColor
+		tableView.layer.cornerRadius = 6
+
+		tableShadowView.isHidden = false
+	}
+
+	private func hideShadow(for tableView: UITableView) {
+		tableView.layer.borderWidth = 0
+//		tableView.layer.shadowColor = UIColor.clear.cgColor
+		tableShadowView.isHidden = true
+	}
     
     @objc func refreshData(notification: Notification) {
         getPendingPayments()
     }
-    
+   /*
     func getPendingPayments() {
-       
+
         guard let id = user_id else {
             return
         }
         let params = ["user_id":id]
         SVProgressHUD.show()
-        APIManager.apiPost(serviceName: "api/payToLoadxList", parameters: params) { [weak self]data, json, error in
+        APIManager.apiPost(serviceName: "api/payToLoadxList", parameters: params) { [weak self] data, json, error in
             guard let self = self else {return}
             if error == nil{
                 if let json = json{
@@ -117,7 +184,43 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             }
             SVProgressHUD.dismiss()
         }
+    } */
+
+    func getPendingPayments() {
+       
+        guard let id = user_id else {
+            return
+        }
+        let params = ["transporter_id":id]
+        SVProgressHUD.show()
+        APIManager.apiPost(serviceName: "api/getAllPaytoLoadxJobsList", parameters: params) { [weak self] data, json, error in
+            guard let self = self else {return}
+            if error == nil{
+                if let json = json{
+                    let payToLoadX = PayToLoadX(json: json)
+					self.totalPayableToLoadX = payToLoadX.summary.balance.withCommas()
+                    self.pendingPaymentsDataSource = payToLoadX.jobLists
+                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+self.totalPayableToLoadX
+                    self.totalEarning.text = "Pending Loadx Share"
+                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+self.totalPayableToLoadX+")"
+                    self.paymentButton.setTitle(totolPayabale, for: .normal)
+
+					//header
+					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
+					//summary
+					//pendingLoadXshare is missing form api
+					self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
+					//pendingTransporterShare is missing form api
+					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
+					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
+
+					self.tableView.reloadData()
+                }
+            }
+            SVProgressHUD.dismiss()
+        }
     }
+
     func getPaymentHistory() {
         SVProgressHUD.show(withStatus: "Getting details...")
         if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
@@ -184,7 +287,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showInvoiceData{
             return filteredPaymentHistory.count
@@ -192,11 +295,14 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         else{
             return pendingPaymentsDataSource.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 167
+		if showInvoiceData {
+			return 167
+		}else {
+			return 84
+		}
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -215,11 +321,29 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             let data = pendingPaymentsDataSource[indexPath.row]
             cell.cellDelegate = self
             cell.populateData(data: data)
+			addCornerRadius(for: cell, indexPath: indexPath)
             return cell
         }
-        
     }
-    
+
+	private func addCornerRadius(for cell: EarningTableViewCell, indexPath: IndexPath) {
+		//if single cell round all corners
+		if pendingPaymentsDataSource.count == 1{
+			cell.setRoundedCorners(corners: .allCorners, radius: 5)
+		}
+		//round corner on top
+		else if indexPath.row == 0 {
+			cell.setRoundedCorners(corners: [.topRight, .topLeft], radius: 5)
+		}
+		//round corners at bottom
+		else if indexPath.row == pendingPaymentsDataSource.count - 1 {
+			cell.setRoundedCorners(corners: [.bottomRight, .bottomLeft], radius: 5)
+		}
+		//no round corners
+		else {
+			cell.setRoundedCorners(corners: .allCorners, radius: 0)
+		}
+	}
     
     func createInvoicesCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
