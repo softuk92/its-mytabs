@@ -384,6 +384,7 @@
 		6DFAC4C22293087400556D30 /* SearchBookedJobs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookedJobs.swift; sourceTree = "<group>"; };
 		6DFAC4C422930B5100556D30 /* SearchBookedJobsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookedJobsModel.swift; sourceTree = "<group>"; };
 		73AF5CBF90E444DDC6590D79 /* Pods-CTS Move Transporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTS Move Transporter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTS Move Transporter/Pods-CTS Move Transporter.debug.xcconfig"; sourceTree = "<group>"; };
+		89ED404726D7D359004C2CED /* EarningTableViewCell copy.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "EarningTableViewCell copy.xib"; sourceTree = "<group>"; };
 		8D1616B921FF328E0014070E /* VKCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKCheckBox.swift; sourceTree = "<group>"; };
 		8D23103626B7EE5C0042BFB6 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
 		8D23103826B7EE770042BFB6 /* Earning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Earning.storyboard; sourceTree = "<group>"; };
@@ -810,6 +811,7 @@
 			isa = PBXGroup;
 			children = (
 				8D952D1226B5F4C00022BEEF /* EarningTableViewCell.xib */,
+				89ED404726D7D359004C2CED /* EarningTableViewCell copy.xib */,
 				8D952D1126B5F4C00022BEEF /* EarningTableViewCell.swift */,
 			);
 			path = Cell;
