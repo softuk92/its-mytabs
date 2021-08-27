@@ -51,6 +51,8 @@
 		18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
+		18E007FE26D91B82002D455B /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E007FC26D91B82002D455B /* ReviewsCell.swift */; };
+		18E007FF26D91B82002D455B /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E007FD26D91B82002D455B /* ReviewsCell.xib */; };
 		4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249D126616B16005D1CFE /* JobSummaryModel.swift */; };
 		4E0249E72661AE17005D1CFE /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */; };
 		4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E060570265EE42100B70BFE /* UploadImagesViewController.swift */; };
@@ -297,6 +299,8 @@
 		18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPickupDropoffViewControllerExtension.swift; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		18E007FC26D91B82002D455B /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
+		18E007FD26D91B82002D455B /* ReviewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		4E0249D126616B16005D1CFE /* JobSummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryModel.swift; sourceTree = "<group>"; };
 		4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		4E060570265EE42100B70BFE /* UploadImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImagesViewController.swift; sourceTree = "<group>"; };
@@ -1039,6 +1043,8 @@
 				8D48C20922243E3C00417EF5 /* ManageReviews.swift */,
 				8D48C20B22243E3D00417EF5 /* ManageReviewsCell.swift */,
 				8D48C20A22243E3D00417EF5 /* ManageReviewsCell.xib */,
+				18E007FC26D91B82002D455B /* ReviewsCell.swift */,
+				18E007FD26D91B82002D455B /* ReviewsCell.xib */,
 			);
 			path = Reviews;
 			sourceTree = "<group>";
@@ -1325,6 +1331,7 @@
 				4E7149DF2582C96100A5A0B7 /* AlertViewWithDescription.xib in Resources */,
 				4E19487D2565C8C300C3C3C8 /* RouteInventoryCell.xib in Resources */,
 				4EC5D909256C5BF100D8DDB3 /* RouteCompletedView.xib in Resources */,
+				18E007FF26D91B82002D455B /* ReviewsCell.xib in Resources */,
 				4E454B5F23E48217009AFF47 /* Montserrat-Bold.otf in Resources */,
 				8D23103926B7EE770042BFB6 /* Earning.storyboard in Resources */,
 				8D3E60FD21F76432004EAB06 /* Main.storyboard in Resources */,
@@ -1525,6 +1532,7 @@
 				18624EE1255AFC1F000E1954 /* Routes.swift in Sources */,
 				8D48C21B2224420700417EF5 /* PaymentHistoryController.swift in Sources */,
 				4E9A04B2263F3C5F0033A91D /* UIFont + Extensions.swift in Sources */,
+				18E007FE26D91B82002D455B /* ReviewsCell.swift in Sources */,
 				186B536A266E535F00B9FC6A /* JobSuccessController.swift in Sources */,
 				4E09083B256AFD3600A6B2BB /* RouteBookedView.swift in Sources */,
 				8D48C1FF2224257C00417EF5 /* CompletedJobs.swift in Sources */,
