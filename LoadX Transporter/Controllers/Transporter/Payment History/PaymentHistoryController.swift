@@ -126,8 +126,6 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         pendingPaymentBgView.isHidden = true
         submitPaymentView.isHidden = true
         getPaymentHistory()
-		hideShadow(for: tableView)
-		tableView.tableHeaderView = nil
     }
     
     @IBAction func didTapPendingPayments(sender: UIButton){
@@ -136,8 +134,6 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         pendingPaymentBgView.isHidden = false
         submitPaymentView.isHidden = false
         getPendingPayments()
-		showShadow(for: tableView)
-		tableView.tableHeaderView = pendingPaymentHeaderView
     }
 
 	private func showShadow(for tableView: UITableView) {
@@ -186,6 +182,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         }
     } */
 
+	var balanceAmount = 0
     func getPendingPayments() {
        
         guard let id = user_id else {
@@ -198,6 +195,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             if error == nil{
                 if let json = json{
                     let payToLoadX = PayToLoadX(json: json)
+					self.balanceAmount = payToLoadX.summary.balance
 					self.totalPayableToLoadX = payToLoadX.summary.balance.withCommas()
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
                     let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+self.totalPayableToLoadX
@@ -213,6 +211,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					//pendingTransporterShare is missing form api
 					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
 					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
+
+
+					self.showShadow(for: self.tableView)
+					self.tableView.tableHeaderView = self.pendingPaymentHeaderView
 
 					self.tableView.reloadData()
                 }
@@ -230,8 +232,13 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
             let paymentHistory_URL = main_URL+"api/transporterPaymentHistoryList"
             let parameters : Parameters = ["user_id" : user_id!]
             if Connectivity.isConnectedToInternet() {
-                Alamofire.request(paymentHistory_URL, method : .post, parameters : parameters).responseJSON {
+                Alamofire.request(paymentHistory_URL, method : .post, parameters : parameters).responseJSON { [weak self]
                     response in
+					guard let self = self else {return}
+
+					self.hideShadow(for: self.tableView)
+					self.tableView.tableHeaderView = nil
+
                     if response.result.isSuccess {
                         SVProgressHUD.dismiss()
                         
@@ -442,9 +449,14 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func didTapAmount(sender: Any){
-        let vc = UploadReceiptViewController.instantiate()
-        vc.paymentsToPay = paymentsToPay
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//        let vc = UploadReceiptViewController.instantiate()
+//        vc.paymentsToPay = paymentsToPay
+//        self.navigationController?.pushViewController(vc, animated: true)
+
+		let vc = PaymentTypeViewController.instantiate()
+		vc.amount = balanceAmount
+		vc.paymentsToPay = paymentsToPay
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
     
 }
