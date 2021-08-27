@@ -31,7 +31,6 @@ struct PayToLoadX {
 		let summaryData = dataArray.removeLast()
 		summary = PendingJobsSummary(json: summaryData)
 		jobLists = dataArray.map{PayToLoadXItme(json: $0)}
-		jobLists = jobLists + jobLists + jobLists + jobLists
 	}
 }
 

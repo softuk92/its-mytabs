@@ -26,6 +26,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     var paymentsToPay = [PayToLoadXItme]()
     var dataSource: UploadReceipt?
     var imageSelector: ImageSelector!
+	var paymentMethod = PaymentMethod.debitCard
 
     override func viewDidLoad() {
         super.viewDidLoad()
