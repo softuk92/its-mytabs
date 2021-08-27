@@ -32,7 +32,8 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.estimatedRowHeight = 180.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: "ManageReviewsCell", bundle: nil) , forCellReuseIdentifier: "manageReviews")
+//        tableView.register(UINib(nibName: "ManageReviewsCell", bundle: nil) , forCellReuseIdentifier: "manageReviews")
+        tableView.register(cellType: ReviewsCell.self)
         
         refresher = UIRefreshControl()
         refresher.tintColor = UIColor.white
