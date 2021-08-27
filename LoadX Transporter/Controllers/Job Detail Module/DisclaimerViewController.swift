@@ -51,7 +51,11 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
         if let customerName = customerName {
             receiverName.text = customerName
         }
+        if AppUtility.shared.country == .Pakistan {
+        disclaimerLabel.text = "Disclaimer \n\nThis page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our services and the choices you have associated with that data.\n\nBy using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise deﬁned in this privacy policy, terms used in this privacy policy have the same meanings as in our terms and conditions.\n\nThe terms our, us, we and Service refer to LoadX on this page.\n\n1. What personal information do we collect?\n\nWe process different types of information for various purposes to provide and improve our Service to you."
+        } else {
         disclaimerLabel.text = "Disclaimer \n\nWe are contracted to deliver your goods as entrusted to us as per our Standard Terms & Conditions. \n\nAny additional work, such as moving items in or around the property, disassembling/reassembling items or furniture, removing/refitting doors (for ease of access), \("squeezing") large items through narrows doors/corridors, etc is undertaken at your own risk, and we are under no obligation to carry out such work, upon your insistence, we have agreed to carry out this work, which is contrary to our Standard Terms & Conditions. \n\nAny damage caused to furniture, doors, walls or property under these circumstances is your sole responsibility and neither the Transporter nor LoadX can be held responsible for such damage."
+        }
     }
     
     @IBAction func clear_btn(_ sender: Any) {

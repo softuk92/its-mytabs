@@ -34,6 +34,7 @@ extension JobPickupDropoffViewController {
             address.text = input.pickupAddress
             cashToBeCollectedView.isHidden = true
             customerName.text = input.customerName
+            customerNameLabel.text = "Customer Name:"
             phoneNumber.text = input.customerNumber
             configurePickupActions()
             if let json = jsonData {
@@ -46,6 +47,7 @@ extension JobPickupDropoffViewController {
             address.text = input.dropoffAddress
             cashToBeCollectedView.isHidden = false
             customerName.text = input.receiverName
+            customerNameLabel.text = "Receiver Name:"
             phoneNumber.text = input.receiverNumber
             configureDropOffActions()
             if let json = jsonData {

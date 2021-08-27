@@ -16,7 +16,7 @@ import GoogleMaps
 import GooglePlaces
 
 class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
-
+    
     
     @IBOutlet weak var fullName_tf: AnimatableTextField!
     @IBOutlet weak var email_address_tf: AnimatableTextField!
@@ -28,12 +28,6 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var vanType_tableView: UITableView!
     @IBOutlet weak var dropdown_popupView: UIView!
-    
-    
-     @IBOutlet weak var viewOfPop: UIView!
-     @IBOutlet weak var innerViewPop: UIView!
-     
-     @IBOutlet weak var tableview: UITableView!
     
     @IBOutlet weak var carMakeModelView: UIView!
     @IBOutlet weak var carMakeViewHeight: NSLayoutConstraint!
@@ -56,23 +50,29 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var carModelButton: UIButton!
     
     @IBOutlet weak var vanTypeDropDown: UIView!
+    
+    @IBOutlet weak var addressStackView: UIStackView!
+    @IBOutlet weak var vanImageView: UIImageView!
+    @IBOutlet weak var vanImgBtn: UIButton!
+    
     let dropDown1 = DropDown()
     var list = ["Car","Small Van",
-       "Medium Van",
-       "Large Van",
-       "Luton Van",
-       "Rubbish Removal Truck",
-       "3.5 Ton Vehicle Recovery Truck",
-       "7.5 Ton Vehicle Recovery Truck",
-       "7.5 Ton Truck",
-       "Container Truck",
-       "Other"]
+                "Medium Van",
+                "Large Van",
+                "Luton Van",
+                "Rubbish Removal Truck",
+                "3.5 Ton Vehicle Recovery Truck",
+                "7.5 Ton Vehicle Recovery Truck",
+                "7.5 Ton Truck",
+                "Container Truck",
+                "Other"]
     
     var carsMake = [CarMakeModel]()
     var carModels = [CarModel]()
     var cmb_id: String = "0"
     var cmd_id: String = "0"
     var car_model_manual: String = ""
+    var imageSelector: ImageSelector!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,12 +83,12 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
         }
         
         aboutMe.layer.cornerRadius = 5
-        aboutMe.layer.borderWidth = 1
-        aboutMe.layer.borderColor = UIColor.black.cgColor
+        aboutMe.layer.borderWidth = 0.6
+        aboutMe.layer.borderColor = UIColor.gray.cgColor
         vanType_tableView.delegate = self
         vanType_tableView.dataSource = self
         vanType_tableView.reloadData()
-
+        
         enterCarModel.isHidden = true
         
         carMakeBlurView.isHidden = true
@@ -113,6 +113,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
         getCarsMake()
         
         if AppUtility.shared.country == .Pakistan {
+            addressStackView.isHidden = true
             AppUtility.shared.getVehiclesList { [weak self] (result) in
                 switch result {
                 case .success(let vehicles):
@@ -123,80 +124,86 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                 
             }
         }
+        imageSelector = ImageSelector()
+        imageSelector.delegate = self
     }
     
     func getCarsMake() {
-                let getcallCarsURL = main_URL+"api/getAllCarMake"
-                Alamofire.request(getcallCarsURL, method : .get).responseJSON {
-                    response in
-
-                    if response.result.isSuccess {
-                        SVProgressHUD.dismiss()
-                        let jsonData : JSON = JSON(response.result.value!)
-//                        print("cars make json is \(jsonData)")
-                        if let data = response.data {
-                            do {
-                            self.carsMake = try JSONDecoder().decode([CarMakeModel].self, from: data)
-                                self.carMakeTableView.reloadData()
-                            } catch {
-                            print("car make model error")
-                            }
-                        }
-                        
-                    } else {
-                        SVProgressHUD.dismiss()
-//                        print("Error \(String(describing: response.result.error))")
-                        let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+        let getcallCarsURL = main_URL+"api/getAllCarMake"
+        Alamofire.request(getcallCarsURL, method : .get).responseJSON {
+            response in
+            
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+                let jsonData : JSON = JSON(response.result.value!)
+                //                        print("cars make json is \(jsonData)")
+                if let data = response.data {
+                    do {
+                        self.carsMake = try JSONDecoder().decode([CarMakeModel].self, from: data)
+                        self.carMakeTableView.reloadData()
+                    } catch {
+                        print("car make model error")
                     }
                 }
+                
+            } else {
+                SVProgressHUD.dismiss()
+                //                        print("Error \(String(describing: response.result.error))")
+                let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+    }
     
     func getCarsMakeModel(cmb_id: String) {
-            let getcallCarsURL = main_URL+"api/getAllCarModel"
+        let getcallCarsURL = main_URL+"api/getAllCarModel"
         let parameter: Parameters = ["cmb_id" : cmb_id]
-            Alamofire.request(getcallCarsURL, method : .post, parameters: parameter).responseJSON {
-                response in
-
-                if response.result.isSuccess {
-                    SVProgressHUD.dismiss()
-                    let jsonData : JSON = JSON(response.result.value!)
-//                    print("cars make model json is \(jsonData)")
-                    if let data = response.data {
-                        do {
-                        self.carModels = try JSONDecoder().decode([CarModel].self, from: data)
-                            self.carModelTableView.reloadData()
-                        } catch {
-                        print("car model error")
-                        }
-                    }
-                    
-                } else {
-                    SVProgressHUD.dismiss()
-//                    print("Error \(String(describing: response.result.error))")
-                    let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-    }
-        
-    @IBAction private func btnCross_Pressed(_ sender : UIButton) {
-    //        HomeViewController
-            self.dropdown_popupView.isHidden = true
-
-        }
-        
-        @IBAction private func btnShowPop(_ sender : UIButton) {
-            //        HomeViewController
-            self.dropdown_popupView.isHidden = false
+        Alamofire.request(getcallCarsURL, method : .post, parameters: parameter).responseJSON {
+            response in
             
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+                let jsonData : JSON = JSON(response.result.value!)
+                //                    print("cars make model json is \(jsonData)")
+                if let data = response.data {
+                    do {
+                        self.carModels = try JSONDecoder().decode([CarModel].self, from: data)
+                        self.carModelTableView.reloadData()
+                    } catch {
+                        print("car model error")
+                    }
+                }
+                
+            } else {
+                SVProgressHUD.dismiss()
+                //                    print("Error \(String(describing: response.result.error))")
+                let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription ?? "", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+    }
+    
+    @IBAction func vanImageSelectAct(_ sender: Any) {
+        imageSelector.showOptions(viewController: self)
+    }
+    
+    @IBAction private func btnCross_Pressed(_ sender : UIButton) {
+        //        HomeViewController
+        self.dropdown_popupView.isHidden = true
         
+    }
+    
+    @IBAction private func btnShowPop(_ sender : UIButton) {
+        //        HomeViewController
+        self.dropdown_popupView.isHidden = false
+        
+    }
+    
     
     @IBAction func back_action(_ sender: Any) {
-       self.navigationController!.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
     }
     
     @IBAction func carMakeBlurPop(_ sender: Any) {
@@ -205,42 +212,34 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func carModelBlurPop(_ sender: Any) {
         if carModels.count > 0 {
-        self.carModelBlurView.isHidden = false
+            self.carModelBlurView.isHidden = false
         }
     }
-     
+    
     @IBAction func updateBtn_action(_ sender: Any) {
         
-//        let isValidateName = validateName(name: fullName_tf.text!)
-              
-//              let temp = self.email_address_tf.text!
-//              let x = isValidEmail1(testStr: temp)
-              
         if (fullName_tf.text == "") {
-//                      SVProgressHUD.showError(withStatus: "")
-                      fullName_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Full Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                     
+            fullName_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Full Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            
         }else if  email_address_tf.text == "" {
-//                  SVProgressHUD.showError(withStatus: "Please Enter Correct email Address")
-                                 
-                  email_address_tf.attributedPlaceholder = NSAttributedString(string: "Enter Full Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                  
-              } else if self.phoneNo_tf.text == "" || phoneNo_tf.text?.count != 11 && (phoneNo_tf.text?.hasPrefix("0"))!{
-                  phoneNo_tf.attributedPlaceholder = NSAttributedString(string: "Contact Phone No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//                   SVProgressHUD.showError(withStatus: "Please Enter Contact Phone No")
-              }else if self.adress_tf.text == "" {
-                  adress_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//                   SVProgressHUD.showError(withStatus: "Please Enter Address ")
-              }else if self.van_type_tf.text == "" {
-                  van_type_tf.attributedPlaceholder = NSAttributedString(string: "Enter Van Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//                   SVProgressHUD.showError(withStatus: "Please Enter Van Type ")
-              }else if self.vanRegNo_tf.text == "" {
-                  vanRegNo_tf.attributedPlaceholder = NSAttributedString(string: "Enter Vehicle Reg. No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//                   SVProgressHUD.showError(withStatus: "Please Enter Vehicle Reg Number ")
-              }else{
-                 updateprofileData()
-              }
-
+            email_address_tf.attributedPlaceholder = NSAttributedString(string: "Enter Full Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            
+        } else if self.phoneNo_tf.text == "" || phoneNo_tf.text?.count != 11 && (phoneNo_tf.text?.hasPrefix("0"))!{
+            phoneNo_tf.attributedPlaceholder = NSAttributedString(string: "Contact Phone No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            /*}else if self.adress_tf.text == "" {
+             adress_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+             */
+        } else if self.van_type_tf.text == "" {
+            van_type_tf.attributedPlaceholder = NSAttributedString(string: "Enter Van Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        }else if self.vanRegNo_tf.text == "" {
+            vanRegNo_tf.attributedPlaceholder = NSAttributedString(string: "Enter Vehicle Reg. No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        }else{
+            if AppUtility.shared.country == .Pakistan {
+                updateProfileDataPK()
+            } else {
+                updateprofileData()
+            }
+        }
     }
     
     func updateprofileData() {
@@ -256,13 +255,13 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         
                         let jsonData : JSON = JSON(response.result.value!)
-//                        print("update Profle Data jsonData is \(jsonData)")
-                      let result = jsonData[0]["result"].stringValue
+                        //                        print("update Profle Data jsonData is \(jsonData)")
+                        let result = jsonData[0]["result"].stringValue
                         if result == "1" {
-//                            SVProgressHUD.showSuccess(withStatus: "Profile updated successfully.")
-//                            let alert = UIAlertController(title: "", message: "Profile updated successfully.", preferredStyle: UIAlertController.Style.alert)
-//                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-//                            self.present(alert, animated: true, completion: nil)
+                            //                            SVProgressHUD.showSuccess(withStatus: "Profile updated successfully.")
+                            //                            let alert = UIAlertController(title: "", message: "Profile updated successfully.", preferredStyle: UIAlertController.Style.alert)
+                            //                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                            //                            self.present(alert, animated: true, completion: nil)
                             showSuccessAlert(question: "Profile Updated Successfully", viewController: self)
                             UserDefaults.standard.set(self.carMakeField.text ?? "", forKey: "carMake")
                             UserDefaults.standard.set(self.carModelField.text ?? "", forKey: "carModel")
@@ -272,7 +271,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         let alert = UIAlertController(title: "Alert", message: response.result.error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-//                        print("Error \(response.result.error!)")
+                        //                        print("Error \(response.result.error!)")
                     }
                 }
             } else {
@@ -288,60 +287,96 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    //MARK: - Select Vehicle Drop Down
-      /***************************************************************/
-      
-      func textFieldDidBeginEditing(_ textField: UITextField) {
-          if textField == van_type_tf {
-              dropDown1.show()
-              self.view.endEditing(true)
-          }
-      }
-    //MARK: - Pickuplocation for UITEXTFIELD
-       /***************************************************************/
-       
-    @IBAction func address_btn(_ sender: Any) {
-           let autocompleteController = GMSAutocompleteViewController()
-        if #available(iOS 13.0, *) {
-                   if UITraitCollection.current.userInterfaceStyle == .dark   {
-                      // self.traitCollection.userInterfaceStyle == .dark
-                     autocompleteController.primaryTextColor = UIColor.white
-                     autocompleteController.secondaryTextColor = UIColor.lightGray
-                     autocompleteController.tableCellSeparatorColor = UIColor.lightGray
-                     autocompleteController.tableCellBackgroundColor = UIColor.darkGray
-                  } else {
-                     autocompleteController.primaryTextColor = UIColor.black
-                     autocompleteController.secondaryTextColor = UIColor.lightGray
-                     autocompleteController.tableCellSeparatorColor = UIColor.lightGray
-                     autocompleteController.tableCellBackgroundColor = UIColor.white
-                  }
-               }
-           autocompleteController.delegate = self
-           let filter = GMSAutocompleteFilter()
-           filter.type = .noFilter
-           filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
-           autocompleteController.autocompleteFilter = filter
-           present(autocompleteController, animated: true, completion: nil)
-       }
-    //MARK: - validation of email and username
-             /***************************************************************/
+    
+    func updateProfileDataPK() {
+        guard let selectedVanImage = vanImageView.image, fullName_tf.text != "" && phoneNo_tf.text != "" else { return }
+        let parameters = ["tname" : fullName_tf.text!, "tphone" : phoneNo_tf.text!, "taddress" : adress_tf.text!, "vantype" : van_type_tf.text!, "registration-number" : vanRegNo_tf.text!, "user_id" : user_id!, "aboutme" : aboutMe.text ?? "", "cmb_id" : cmb_id, "cmd_id" : cmd_id, "car_model_manual" : enterCarModel.text ?? ""]
         
+        
+        SVProgressHUD.show()
+        var input = [MultipartData]()
+        if let imageData = selectedVanImage.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
+            input.append(MultipartData.init(data: imageData, paramName: "vanimage", fileName: selectedVanImage.description))
+        }
+        
+        APIManager.apiPostMultipart(serviceName: "api/transporterUpdateProfileData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
+            }
+            if progress != nil {
+                SVProgressHUD.showProgress(Float(progress ?? 0), status: "Updating...")
+            } else {
+                SVProgressHUD.dismiss()
+            }
+            
+            guard let json = json else { return }
+            let result = json[0]["result"].stringValue
+            let message = json[0]["message"].stringValue
+            
+            if result == "true" || result == "1" {
+                showSuccessAlert(question: "Profile Updated Successfully", viewController: self)
+                UserDefaults.standard.set(self.carMakeField.text ?? "", forKey: "carMake")
+                UserDefaults.standard.set(self.carModelField.text ?? "", forKey: "carModel")
+            } else {
+                showAlert(title: "Alert", message: message, viewController: self)
+            }
+        }
+    }
+    //MARK: - Select Vehicle Drop Down
+    /***************************************************************/
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == van_type_tf {
+            dropDown1.show()
+            self.view.endEditing(true)
+        }
+    }
+    //MARK: - Pickuplocation for UITEXTFIELD
+    /***************************************************************/
+    
+    @IBAction func address_btn(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark   {
+                // self.traitCollection.userInterfaceStyle == .dark
+                autocompleteController.primaryTextColor = UIColor.white
+                autocompleteController.secondaryTextColor = UIColor.lightGray
+                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
+                autocompleteController.tableCellBackgroundColor = UIColor.darkGray
+            } else {
+                autocompleteController.primaryTextColor = UIColor.black
+                autocompleteController.secondaryTextColor = UIColor.lightGray
+                autocompleteController.tableCellSeparatorColor = UIColor.lightGray
+                autocompleteController.tableCellBackgroundColor = UIColor.white
+            }
+        }
+        autocompleteController.delegate = self
+        let filter = GMSAutocompleteFilter()
+        filter.type = .noFilter
+        filter.country = AppUtility.shared.country == .Pakistan ? "PK" : "UK"
+        autocompleteController.autocompleteFilter = filter
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    //MARK: - validation of email and username
+    /***************************************************************/
+    
     public func validateName(name: String) ->Bool {
-          // Length be 18 characters max and 3 characters minimum, you can always modify.
-          let nameRegex = "^[A-Za-z]{3,25}$"
-          let trimmedString = name.trimmingCharacters(in: .whitespaces)
-          let validateName = NSPredicate(format: "SELF MATCHES %@", nameRegex)
-          let isValidateName = validateName.evaluate(with: trimmedString)
-          return isValidateName
-       }
-   func isValidEmail1(testStr:String) -> Bool {
-           
-//   print("validate emilId: \(testStr)")
-   let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-   let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-   let result = emailTest.evaluate(with: testStr)
-   return result
-   }
+        // Length be 18 characters max and 3 characters minimum, you can always modify.
+        let nameRegex = "^[A-Za-z]{3,25}$"
+        let trimmedString = name.trimmingCharacters(in: .whitespaces)
+        let validateName = NSPredicate(format: "SELF MATCHES %@", nameRegex)
+        let isValidateName = validateName.evaluate(with: trimmedString)
+        return isValidateName
+    }
+    func isValidEmail1(testStr:String) -> Bool {
+        
+        //   print("validate emilId: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let result = emailTest.evaluate(with: testStr)
+        return result
+    }
     
     
     func profileDetail() {
@@ -356,18 +391,18 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         
                         let jsonData : JSON = JSON(response.result.value!)
-//                        print("transporter Profile jsonData is \(jsonData)")
+                        print("transporter Profile jsonData is \(jsonData)")
                         let result = jsonData[0]["result"].stringValue
-//            self.fullName.text = jsonData[0]["user_name"].stringValue
-                       
-                        if result != "0" {
+                        //            self.fullName.text = jsonData[0]["user_name"].stringValue
                         
-                        self.fullName_tf.text = jsonData[0]["user_name"].stringValue
-                        self.email_address_tf.text = jsonData[0]["user_email"].stringValue
-                        self.aboutMe.text = jsonData[0]["about_me"].stringValue
-                        self.phoneNo_tf.text = jsonData[0]["user_phone"].stringValue
-                        self.adress_tf.text = jsonData[0]["user_address"].stringValue
-                        let vanType = jsonData[0]["van_type"].stringValue
+                        if result != "0" {
+                            
+                            self.fullName_tf.text = jsonData[0]["user_name"].stringValue
+                            self.email_address_tf.text = jsonData[0]["user_email"].stringValue
+                            self.aboutMe.text = jsonData[0]["about_me"].stringValue
+                            self.phoneNo_tf.text = jsonData[0]["user_phone"].stringValue
+                            self.adress_tf.text = jsonData[0]["user_address"].stringValue
+                            let vanType = jsonData[0]["van_type"].stringValue
                             if vanType != "" {
                                 if vanType == "SWB Van" {
                                     self.van_type_tf.text = "Small Van"
@@ -392,26 +427,26 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                                 self.view.layoutIfNeeded()
                             }
                             
-                        self.vanRegNo_tf.text = jsonData[0]["truck_registration"].stringValue
-                         
+                            self.vanRegNo_tf.text = jsonData[0]["truck_registration"].stringValue
+                            
+                        }
+                        //                        else {
+                        //                        SVProgressHUD.dismiss()
+                        //                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+                        //                    }
                     }
-//                        else {
-//                        SVProgressHUD.dismiss()
-//                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
-//                    }
+                    else {
+                        SVProgressHUD.dismiss()
+                        self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+                    }
                 }
-             else {
+            }else {
                 SVProgressHUD.dismiss()
-                self.present(showAlert(title: "Error", message: response.result.error?.localizedDescription ?? ""), animated: true, completion: nil)
+                let alert = UIAlertController(title: "Error", message: "Internet connection is missing", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
-            }else {
-            SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Error", message: "Internet connection is missing", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
     }
 }
 //MARK: - GMSAutocomplete for Google Autocomplete
@@ -419,7 +454,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
 extension Edit_profile_ViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-//        print("Place name: \(place.name)")
+        //        print("Place name: \(place.name)")
         dismiss(animated: true, completion: nil)
         self.adress_tf.text = place.formattedAddress
     }
@@ -446,7 +481,7 @@ extension Edit_profile_ViewController: GMSAutocompleteViewControllerDelegate {
 
 //MARK: UITableViewDelegate
 extension Edit_profile_ViewController: UITableViewDataSource , UITableViewDelegate  {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -464,42 +499,42 @@ extension Edit_profile_ViewController: UITableViewDataSource , UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == carMakeTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
-                   cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                   cell.backgroundView = nil
-                   cell.backgroundColor = nil
-                   
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            
             cell.label.text = carsMake[indexPath.row].cmb_name
-                   
-                   return cell
+            
+            return cell
         } else if tableView == carModelTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownViewCell") as! DropDownViewCell
-                   cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                   cell.backgroundView = nil
-                   cell.backgroundColor = nil
-                   
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.backgroundView = nil
+            cell.backgroundColor = nil
+            
             cell.label.text = carModels[indexPath.row].cmd_model
-                   
-                   return cell
+            
+            return cell
         }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
         cell?.layer.cornerRadius = 10
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
-            cell?.lblJobNature.text = self.list[indexPath.row]
+        cell?.lblJobNature.text = self.list[indexPath.row]
         if indexPath.row == 10 {
             cell?.bottomLineView.isHidden = true
         }
-            return cell!
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == carMakeTableView || tableView == carModelTableView {
             return 40
         } else {
-        return 50
+            return 50
         }
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == carMakeTableView {
             self.carMakeBlurView.isHidden = true
@@ -524,17 +559,25 @@ extension Edit_profile_ViewController: UITableViewDataSource , UITableViewDelega
             let selectedValue = self.list[indexPath.row]
             self.van_type_tf.text = selectedValue
             dropdown_popupView.isHidden = true
-        
-        if selectedValue == "Car" {
-            self.carMakeViewHeight.constant = 100
-            self.carMakeModelView.isHidden = false
-            self.view.layoutIfNeeded()
-        } else {
-            self.carMakeViewHeight.constant = 0
-            self.carMakeModelView.isHidden = true
-            self.view.layoutIfNeeded()
-        }
+            
+            if selectedValue == "Car" {
+                self.carMakeViewHeight.constant = 100
+                self.carMakeModelView.isHidden = false
+                self.view.layoutIfNeeded()
+            } else {
+                self.carMakeViewHeight.constant = 0
+                self.carMakeModelView.isHidden = true
+                self.view.layoutIfNeeded()
+            }
         }
         
     }
+}
+
+extension Edit_profile_ViewController: ImageSelectorDelegate {
+    
+    func imageSelector(didSelectImage image: UIImage?, imgName: String?) {
+        vanImageView.image = image
+    }
+    
 }
