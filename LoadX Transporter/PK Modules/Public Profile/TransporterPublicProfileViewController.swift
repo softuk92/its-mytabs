@@ -59,6 +59,7 @@ class TransporterPublicProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cellType: JobSummaryCell.self)
+        tableView.register(cellType: ReviewsCell.self)
     }
     
     func getProfileData() {
@@ -148,11 +149,11 @@ extension TransporterPublicProfileViewController: UITableViewDelegate, UITableVi
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        showProfileData == .AboutMe ? aboutMeData.count : (showProfileData == .Statistics ? statisticsData.count : 0)
+        showProfileData == .AboutMe ? aboutMeData.count : (showProfileData == .Statistics ? statisticsData.count : 1)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showProfileData == .AboutMe ? aboutMeData[section].detail.count : (showProfileData == .Statistics ? statisticsData[section].detail.count : 0)
+        return showProfileData == .AboutMe ? aboutMeData[section].detail.count : (showProfileData == .Statistics ? statisticsData[section].detail.count : (profileMO?.driverFeedback.count ?? 0))
   }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -189,13 +190,17 @@ extension TransporterPublicProfileViewController: UITableViewDelegate, UITableVi
             return cell
 
         case .Reviews:
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: JobSummaryCell.self)
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ReviewsCell.self)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundView = nil
             cell.backgroundColor = nil
-            cell.title.text = aboutMeData[indexPath.section].detail[indexPath.row].title
-            cell.detail.text = aboutMeData[indexPath.section].detail[indexPath.row].value
-            cell.detail.isHidden = false
+            
+            let allReviews = profileMO?.driverFeedback[indexPath.row]
+            
+            cell.userName.text = allReviews?.senderName.capitalized
+            cell.ratingDescription.text = allReviews?.driverFeedbackDescription
+            cell.rating.rating = Double(allReviews?.feedBackStar ?? "") ?? 0.0
+            cell.date.text = "on " + convertDateFormatter(allReviews?.feedDate ?? "")
             
             return cell
         }

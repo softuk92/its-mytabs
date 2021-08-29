@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VQ-fl-y9L" userLabel="TopView">
-                                <rect key="frame" x="10" y="94" width="394" height="180"/>
+                                <rect key="frame" x="10" y="99" width="394" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Iu3-bK-hoh">
                                         <rect key="frame" x="20" y="30" width="344" height="85"/>
@@ -206,7 +206,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jof-cl-Zti">
-                                <rect key="frame" x="10" y="276" width="394" height="500"/>
+                                <rect key="frame" x="10" y="284" width="394" height="500"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3St-p3-wb5">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="500"/>
@@ -229,12 +229,12 @@
                         <constraints>
                             <constraint firstItem="6VQ-fl-y9L" firstAttribute="leading" secondItem="AJu-7f-xs1" secondAttribute="leading" constant="10" id="EBg-0h-APf"/>
                             <constraint firstItem="AJu-7f-xs1" firstAttribute="trailing" secondItem="Jof-cl-Zti" secondAttribute="trailing" constant="10" id="Mkr-tK-21k"/>
-                            <constraint firstItem="6VQ-fl-y9L" firstAttribute="top" secondItem="ZGp-1E-dBz" secondAttribute="bottom" constant="5" id="Tfl-Ka-BfN"/>
+                            <constraint firstItem="6VQ-fl-y9L" firstAttribute="top" secondItem="ZGp-1E-dBz" secondAttribute="bottom" constant="10" id="Tfl-Ka-BfN"/>
                             <constraint firstItem="AJu-7f-xs1" firstAttribute="trailing" secondItem="ZGp-1E-dBz" secondAttribute="trailing" id="av9-5P-qlj"/>
                             <constraint firstItem="ZGp-1E-dBz" firstAttribute="leading" secondItem="Qta-eU-HyP" secondAttribute="leading" id="bbc-Vj-n2I"/>
                             <constraint firstItem="Jof-cl-Zti" firstAttribute="leading" secondItem="AJu-7f-xs1" secondAttribute="leading" constant="10" id="nvf-uP-NPc"/>
                             <constraint firstItem="ZGp-1E-dBz" firstAttribute="top" secondItem="AJu-7f-xs1" secondAttribute="top" id="qUz-gu-hcW"/>
-                            <constraint firstItem="Jof-cl-Zti" firstAttribute="top" secondItem="6VQ-fl-y9L" secondAttribute="bottom" constant="2" id="tWq-RY-dr0"/>
+                            <constraint firstItem="Jof-cl-Zti" firstAttribute="top" secondItem="6VQ-fl-y9L" secondAttribute="bottom" constant="5" id="tWq-RY-dr0"/>
                             <constraint firstItem="AJu-7f-xs1" firstAttribute="trailing" secondItem="6VQ-fl-y9L" secondAttribute="trailing" constant="10" id="vaV-tD-eqH"/>
                         </constraints>
                     </view>
@@ -259,6 +259,11 @@
             <point key="canvasLocation" x="59" y="111"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="436-x7-Goc">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="back_arrow" width="16" height="16"/>
         <image name="notfound" width="111.5" height="111"/>
