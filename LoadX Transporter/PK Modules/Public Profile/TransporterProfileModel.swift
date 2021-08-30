@@ -9,40 +9,57 @@
 import Foundation
 
 struct TransporterProfileModel: Decodable {
-        let userID, userName, userEmail, userPhone: String
-        let userImageURL, vanImg, joinDate, truckRegistration: String
-        let cnicFront, cnicBack, experience, cnicBacksideStatus: String
-        let cnicFrontsideStatus: String
-        let jobsDone: Int
-        let vanType, paymentOption, aboutMe: String
-        let driverCompletedJobs, avgfdbck, totalCountOnBudgetYes, totalCountOnTimeYes: Int
-        let driverID: String
-//        let driverFeedback: []
+    let avgfdbck: Int
+    let vanType, userPhone, cnicBacksideStatus, joinDate: String
+    let userName, truckRegistration: String
+    let totalCountOnBudgetYes, jobsDone: Int
+    let cnicFront, vanImg, cnicBack, aboutMe: String
+    let experience, userImageURL: String
+    let totalCountOnTimeYes: Int
+    let driverID: String
+    let driverFeedback: [DriverFeedback]
+    let userID, cnicFrontsideStatus, paymentOption: String
+    let driverCompletedJobs: Int
+    let userEmail: String
 
-        enum CodingKeys: String, CodingKey {
-            case userID = "user_id"
-            case userName = "user_name"
-            case userEmail = "user_email"
-            case userPhone = "user_phone"
-            case userImageURL = "user_image_url"
-            case vanImg = "van_img"
-            case joinDate = "join_date"
-            case truckRegistration = "truck_registration"
-            case cnicFront = "cnic_front"
-            case cnicBack = "cnic_back"
-            case experience
-            case cnicBacksideStatus = "cnic_backside_status"
-            case cnicFrontsideStatus = "cnic_frontside_status"
-            case jobsDone = "jobs_done"
-            case vanType = "van_type"
-            case paymentOption = "payment_option"
-            case aboutMe = "about_me"
-            case driverCompletedJobs = "driver_completed_jobs"
-            case avgfdbck
-            case totalCountOnBudgetYes = "total_count_on_budget_yes"
-            case totalCountOnTimeYes = "total_count_on_time_yes"
-            case driverID = "driver_id"
-//            case driverFeedback = "driver_feedback"
-        }
-    
+    enum CodingKeys: String, CodingKey {
+        case avgfdbck
+        case vanType = "van_type"
+        case userPhone = "user_phone"
+        case cnicBacksideStatus = "cnic_backside_status"
+        case joinDate = "join_date"
+        case userName = "user_name"
+        case truckRegistration = "truck_registration"
+        case totalCountOnBudgetYes = "total_count_on_budget_yes"
+        case jobsDone = "jobs_done"
+        case cnicFront = "cnic_front"
+        case vanImg = "van_img"
+        case cnicBack = "cnic_back"
+        case aboutMe = "about_me"
+        case experience
+        case userImageURL = "user_image_url"
+        case totalCountOnTimeYes = "total_count_on_time_yes"
+        case driverID = "driver_id"
+        case driverFeedback = "driver_feedback"
+        case userID = "user_id"
+        case cnicFrontsideStatus = "cnic_frontside_status"
+        case paymentOption = "payment_option"
+        case driverCompletedJobs = "driver_completed_jobs"
+        case userEmail = "user_email"
+    }
 }
+
+// MARK: - DriverFeedback
+struct DriverFeedback: Codable {
+    let feedBackStar, jobTitle, feedDate, senderName: String
+    let driverFeedbackDescription: String
+
+    enum CodingKeys: String, CodingKey {
+        case feedBackStar = "feed_back_star"
+        case jobTitle = "job_title"
+        case feedDate = "feed_date"
+        case senderName = "sender_name"
+        case driverFeedbackDescription = "description"
+    }
+}
+

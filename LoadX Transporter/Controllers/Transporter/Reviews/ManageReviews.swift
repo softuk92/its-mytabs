@@ -16,6 +16,9 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //    @IBOutlet weak var noReview_lbl: UILabel!
     @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var errorView: UIStackView!
+    
     lazy var allReviewsModel = [AllReviewsModel]()
     var refresher: UIRefreshControl!
     
@@ -26,14 +29,12 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
         self.title = "Reviews"
         getAllReviews()
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
-        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 180.0
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.register(UINib(nibName: "ManageReviewsCell", bundle: nil) , forCellReuseIdentifier: "manageReviews")
         tableView.register(cellType: ReviewsCell.self)
+        tableView.bottomShadow(color: .black)
         
         refresher = UIRefreshControl()
         refresher.tintColor = UIColor.white
@@ -72,6 +73,7 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         self.allReviewsModel.removeAll()
                         if result == "0" {
                             self.tableView.isHidden = true
+                            self.errorView.isHidden = false
                         } else {
                             let error = response.error
                             let data = response.data
@@ -81,8 +83,11 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                     SVProgressHUD.dismiss()
                                     
                                     DispatchQueue.main.async {
+                                        self.tableViewHeight.constant = CGFloat(self.allReviewsModel.count * 125)
+                                        self.errorView.isHidden = true
                                         self.tableView.isHidden = false
                                         self.tableView.reloadData()
+                                        self.view.layoutIfNeeded()
                                     }
                                     
                                 } catch {
@@ -132,58 +137,20 @@ class ManageReviews: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "manageReviews") as! ManageReviewsCell
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ReviewsCell.self)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
         cell.backgroundColor = nil
         
-        if switchCheck == true {
-            tableView.backgroundColor = UIColor.black
-            cell.innerView.backgroundColor = UIColor.darkGray
-            cell.feed_date.textColor = UIColor.white
-            
-            cell.job_description.textColor = UIColor.white
-            cell.job_title.textColor = UIColor.white
-            cell.transporter_name.textColor = UIColor.white
-            cell.feed_date_icon.image = UIImage(named: "deliveryDateDark")
-            cell.feedback_stars.textColor = UIColor.black
-        }else{
-            
-        }
-        
-        
         let allReviews = allReviewsModel[indexPath.row]
-
-        let transporterName = allReviews.user_name
-        cell.transporter_name.text = transporterName.capitalized
-        cell.job_title.text = allReviews.job_title
-//        = allReviews.description
-        let string2 = allReviews.description.replacingOccurrences(of: "'", with: "")
-         cell.job_description.text = string2
-        let stringDate = allReviews.feed_date
-        let convertedDate = self.convertDateFormatter(stringDate)
-        cell.feed_date.text = "Date: " + convertedDate
         
-        let feedbackStars = allReviews.feed_back_star
-        
-        if feedbackStars == "null" {
-            cell.feedback_stars.text = "null"
-            cell.cosmosView.rating = 0.0
-        } else {
-            cell.feedback_stars.text = allReviews.feed_back_star/*+".0"*/
-            cell.cosmosView.rating = Double(feedbackStars)!
-        }
+        cell.userName.text = allReviews.user_name.capitalized
+        cell.ratingDescription.text = allReviews.description
+        cell.rating.rating = Double(allReviews.feed_back_star) ?? 0.0
+        cell.date.text = "on " + convertDateFormatter(allReviews.feed_date)
         
         return cell
-    }
-    
-    func convertDateFormatter(_ date: String) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "dd-MMM-yyyy"
-        return  dateFormatter.string(from: date!)
         
     }
+
 }
