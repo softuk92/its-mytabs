@@ -14,6 +14,9 @@ class EarningTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var vehiclType: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var jobId: UILabel!
+    @IBOutlet weak var jobType: UILabel!
+    @IBOutlet weak var jobTypeView: UIView!
+    @IBOutlet weak var bottomBorder: UIView!
 
     @IBOutlet weak var loadXShare: UILabel!
     weak var cellDelegate:TableViewDelegate?
@@ -37,8 +40,18 @@ class EarningTableViewCell: UITableViewCell, NibReusable {
       //  self.vehiclType.text = data.vehicleType
 		self.vehiclType.text = data.vehicle
         self.dateLabel.text = data.date
-        self.loadXShare.text = AppUtility.shared.currencySymbol+(Int(data.loadxShare)?.withCommas() ?? "")
+
+		let formattedPrice = data.price.withCommas()
+        self.loadXShare.text = AppUtility.shared.currencySymbol+formattedPrice
        // self.jobId.text = data.jobID
+		switch data.jType {
+		case .loadXShare:
+			self.jobType.text = "LoadX Share"
+			self.jobTypeView.backgroundColor = UIColor(hexString: "#EABD00")
+		case .transporterShare:
+			self.jobType.text = "Transporter Share"
+			self.jobTypeView.backgroundColor = UIColor(hexString: "#11AD04")
+		}
     }
 
 

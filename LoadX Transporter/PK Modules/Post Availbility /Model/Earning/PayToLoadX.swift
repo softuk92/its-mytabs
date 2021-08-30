@@ -14,7 +14,7 @@ struct PayToLoadX {
 //    let totalPendingPayToLoadx: Int
 	let summary: PendingJobsSummary
     var jobLists: [PayToLoadXItme] = []
-
+//	var totalPrice
 	/*init(json: JSON?) {
         self.totalPendingPayToLoadx = json?[0]["total_pending_pay_to_loadx"].intValue ?? 0
         self.jobLists = []
@@ -25,6 +25,12 @@ struct PayToLoadX {
             }
         }
     }*/
+	var loadXShare: Int {
+		jobLists.filter{$0.jType == .loadXShare}.reduce(0){$0+$1.price}
+	}
+	var transporterShare: Int {
+		jobLists.filter{$0.jType == .transporterShare}.reduce(0){$0+$1.price}
+	}
 
 	init(json: JSON?) {
 		var dataArray = json?.array ?? []
@@ -50,21 +56,49 @@ struct PendingJobsSummary {
 	}
 }
 
+enum TransactionType: String {
+	case loadXShare = "LoadX Share"
+	case transporterShare = "Transporter Share"
+}
+
+enum TransactionStatus: String {
+	case loadXFeePending = "Loadx Fee (Pending)"
+	case transporterSharePending = "Transporter Share (Pending)"
+}
+
 // MARK: - PayToLoadXJobs
 struct PayToLoadXItme{
-    let delID, jobID, vehicleType, date: String
-    let loadxShare, buttonHeading: String
-	let vehicle, jType, jTypeStatus: String
+    let delID, jobID, vehicleType, date, buttonHeading, vehicle: String
+	let loadxShare, transporterShare: Int
+	let jType: TransactionType
+	private let jTypeStatus: TransactionStatus
+	var price: Int {
+		switch jType {
+		case .loadXShare:
+			return loadxShare
+		case .transporterShare:
+			return transporterShare
+		}
+	}
     init(json: JSON) {
         delID = json["del_id"].string  ?? ""
         jobID = json["job_id"].string  ?? ""
         vehicleType = json["vehicle_type"].string  ?? ""
         date = json["date"].string  ?? ""
-        loadxShare = json["loadx_share"].string  ?? ""
+		let loadxShare = json["loadx_share"].string  ?? ""
+		self.loadxShare = Int(loadxShare) ?? 0
+		let transporterShare = json["transporter_share"].string  ?? ""
+		self.transporterShare = Int(transporterShare) ?? 0
         buttonHeading = json["button_heading"].string  ?? ""
-        vehicle = json["Svehicle"].string  ?? ""
-		jType = json["j_type"].string  ?? ""
-		jTypeStatus = json["j_type_status"].string  ?? ""
+		if let vehicle = json["SVehivle"].string, !vehicle.isEmpty {
+			self.vehicle = vehicle
+		}else {
+			vehicle = json["Svehicle"].string  ?? ""
+		}
+		let jType = json["j_type"].string  ?? ""
+		self.jType = TransactionType(rawValue: jType) ?? .loadXShare
+		let jTypeStatus = json["j_type_status"].string  ?? ""
+		self.jTypeStatus = TransactionStatus(rawValue: jTypeStatus) ?? .loadXFeePending
     }
 }
 

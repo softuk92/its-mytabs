@@ -205,16 +205,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 
 					//header
 					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
-					//summary
-					//pendingLoadXshare is missing form api
-					let loadXShare = payToLoadX.jobLists.reduce(0) { result, item in
-						result + (Int(item.loadxShare) ?? 0)
-					}
-					self.pendingLoadXShare.text = "Rs. " + "\(loadXShare)"
-					//pendingTransporterShare is missing form api
-					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.summary.balance)"
-					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
 
+					//summary
+					self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.loadXShare)"
+					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare)"
+					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
 
 					self.showShadow(for: self.tableView)
 					self.tableView.tableHeaderView = self.pendingPaymentHeaderView
@@ -344,14 +339,17 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 		//round corner on top
 		else if indexPath.row == 0 {
 			cell.setRoundedCorners(corners: [.topRight, .topLeft], radius: 5)
+			cell.bottomBorder.isHidden = false
 		}
 		//round corners at bottom
 		else if indexPath.row == pendingPaymentsDataSource.count - 1 {
 			cell.setRoundedCorners(corners: [.bottomRight, .bottomLeft], radius: 5)
+			cell.bottomBorder.isHidden = true
 		}
 		//no round corners
 		else {
 			cell.setRoundedCorners(corners: .allCorners, radius: 0)
+			cell.bottomBorder.isHidden = false
 		}
 	}
     
