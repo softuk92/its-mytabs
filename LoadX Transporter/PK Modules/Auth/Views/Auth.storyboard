@@ -192,8 +192,8 @@
                                                             <constraint firstAttribute="height" constant="48" id="7mK-ey-nIw"/>
                                                             <constraint firstAttribute="width" constant="200" id="ZpE-5K-JFI"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="LOGIN">
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                                        <state key="normal" title="Login">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -1165,8 +1165,8 @@
                                                             <constraint firstAttribute="height" constant="48" id="7Hl-J5-Enx"/>
                                                             <constraint firstAttribute="width" constant="200" id="dQa-tW-cus"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="SUBMIT">
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                                        <state key="normal" title="Submit">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -1194,7 +1194,7 @@
                                                                         <fragment content="Resen">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <font key="NSFont" size="14" name="Montserrat-Regular"/>
+                                                                                <font key="NSFont" size="14" name="Montserrat-Medium"/>
                                                                                 <font key="NSOriginalFont" size="17" name="ArialMT"/>
                                                                                 <integer key="NSUnderline" value="1"/>
                                                                             </attributes>
@@ -1202,14 +1202,14 @@
                                                                         <fragment content="d">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <font key="NSFont" size="14" name="Montserrat-Regular"/>
+                                                                                <font key="NSFont" size="14" name="Montserrat-Medium"/>
                                                                                 <integer key="NSUnderline" value="1"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                         <fragment content=" Code">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <font key="NSFont" size="14" name="Montserrat-Regular"/>
+                                                                                <font key="NSFont" size="14" name="Montserrat-Medium"/>
                                                                                 <font key="NSOriginalFont" size="17" name="ArialMT"/>
                                                                                 <integer key="NSUnderline" value="1"/>
                                                                             </attributes>
@@ -1515,8 +1515,8 @@
                                             <constraint firstAttribute="width" constant="200" id="V0o-Na-ePh"/>
                                             <constraint firstAttribute="height" constant="48" id="wOa-Rl-3Bg"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                        <state key="normal" title="SEND">
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                        <state key="normal" title="Send">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

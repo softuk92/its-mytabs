@@ -29,21 +29,21 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0k-Jj-MWQ" customClass="CustomizedView" customModule="LoadX_Transporter" customModuleProvider="target">
                         <rect key="frame" x="9" y="9" width="426" height="282"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-gW-lU1">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-gW-lU1">
                                 <rect key="frame" x="10" y="10" width="406" height="262"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SNa-Py-GtW">
-                                        <rect key="frame" x="0.0" y="0.0" width="406" height="95.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="406" height="102"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="XTp-ga-4DC">
-                                                <rect key="frame" x="0.0" y="7.5" width="80" height="80"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="truckImage" translatesAutoresizingMaskIntoConstraints="NO" id="XTp-ga-4DC">
+                                                <rect key="frame" x="0.0" y="11" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="ENg-uw-p2l"/>
                                                     <constraint firstAttribute="height" constant="80" id="avb-oD-HmZ"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PFO-9G-iZ3">
-                                                <rect key="frame" x="90" y="26.5" width="316" height="42.5"/>
+                                                <rect key="frame" x="90" y="30.5" width="316" height="41.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bedford Truck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xp-oH-i6V">
                                                         <rect key="frame" x="0.0" y="0.0" width="316" height="20"/>
@@ -52,17 +52,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wji-KF-scC">
-                                                        <rect key="frame" x="0.0" y="25" width="316" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="25" width="316" height="16.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puk-Zk-zpZ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="17.5"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="16.5"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g21-wO-4zp">
-                                                                <rect key="frame" x="57.5" y="0.0" width="258.5" height="17.5"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                                <rect key="frame" x="54.5" y="0.0" width="261.5" height="16.5"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                 <color key="textColor" systemColor="systemGreenColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -73,65 +73,66 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jMO-v7-utG">
-                                        <rect key="frame" x="0.0" y="115.5" width="406" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="117" width="406" height="26"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="drop_off_image" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-y0-Bkb">
-                                                <rect key="frame" x="0.0" y="1.5" width="20" height="20"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="pickUp_icon_new" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-y0-Bkb">
+                                                <rect key="frame" x="0.0" y="3" width="20" height="20"/>
+                                                <color key="tintColor" name="MehroonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="bM0-aS-oB7"/>
                                                     <constraint firstAttribute="height" constant="20" id="qLa-P2-imA"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premier Park Road, London NW10 7NZ, UK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHL-js-KJN">
-                                                <rect key="frame" x="30" y="4" width="376" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="30" y="5.5" width="376" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                <color key="textColor" red="0.42745098039215684" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-Gz-qgu">
-                                        <rect key="frame" x="0.0" y="159" width="406" height="24"/>
+                                        <rect key="frame" x="0.0" y="158" width="406" height="25.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="dropOff_new" translatesAutoresizingMaskIntoConstraints="NO" id="Ug0-aF-HQm">
-                                                <rect key="frame" x="0.0" y="2" width="20" height="20"/>
+                                                <rect key="frame" x="0.0" y="2.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="aPl-lm-wGT"/>
                                                     <constraint firstAttribute="width" constant="20" id="hxq-lI-tHb"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kensworth, Dunstable LU6 3QL, UK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiu-ha-9ep">
-                                                <rect key="frame" x="30" y="4.5" width="376" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="30" y="5" width="376" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                <color key="textColor" red="0.42745098040000001" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xkd-ak-j5i">
-                                        <rect key="frame" x="0.0" y="203" width="406" height="59"/>
+                                        <rect key="frame" x="0.0" y="198.5" width="406" height="63.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="bookJobDelivery_date" translatesAutoresizingMaskIntoConstraints="NO" id="6GS-GU-MAE">
-                                                <rect key="frame" x="0.0" y="19.5" width="20" height="20"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Fd6-Bl-Hae"/>
                                                     <constraint firstAttribute="width" constant="20" id="o8M-fB-qKm"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="Availability Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwd-vS-bKx">
-                                                <rect key="frame" x="30" y="22.5" width="88.5" height="14"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                <rect key="frame" x="30" y="24" width="96" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-December-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-ES-NpC">
-                                                <rect key="frame" x="128.5" y="21.5" width="232.5" height="15.5"/>
+                                                <rect key="frame" x="136" y="24" width="225" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3L-3i-I1f" userLabel="con" customClass="CustomizedView" customModule="LoadX_Transporter" customModuleProvider="target">
-                                                <rect key="frame" x="371" y="9.5" width="35" height="40"/>
+                                                <rect key="frame" x="371" y="11.5" width="35" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="256" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4e-jk-3aW">
                                                         <rect key="frame" x="8.5" y="10" width="18" height="20"/>
@@ -206,8 +207,8 @@
         <image name="bookJobDelivery_date" width="28" height="29"/>
         <image name="delete_Icon_new" width="43.5" height="54"/>
         <image name="dropOff_new" width="22" height="32.5"/>
-        <image name="drop_off_image" width="12.5" height="17.5"/>
-        <image name="notfound" width="111.5" height="111"/>
+        <image name="pickUp_icon_new" width="22" height="33"/>
+        <image name="truckImage" width="206" height="140"/>
         <namedColor name="Background_color">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
