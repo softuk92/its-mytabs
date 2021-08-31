@@ -198,10 +198,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.balanceAmount = payToLoadX.summary.balance
 					self.totalPayableToLoadX = payToLoadX.summary.balance.withCommas()
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
-                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+self.totalPayableToLoadX
+
                     self.totalEarning.text = "Pending Loadx Share"
                     self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+self.totalPayableToLoadX+")"
-                    self.paymentButton.setTitle(totolPayabale, for: .normal)
+//                    self.paymentButton.setTitle(totolPayabale, for: .normal)
 
 					//header
 					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
@@ -210,6 +210,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.loadXShare)"
 					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare)"
 					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
+
+					//payment button title
+					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Pay Now " : "Request for Payment "
+					let buttonTitle = titlePrefix + AppUtility.shared.currencySymbol+self.totalPayableToLoadX
+					self.paymentButton.setTitle(buttonTitle, for: .normal)
 
 					self.showShadow(for: self.tableView)
 					self.tableView.tableHeaderView = self.pendingPaymentHeaderView
@@ -224,6 +229,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     func getPaymentHistory() {
         SVProgressHUD.show(withStatus: "Getting details...")
         if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
+			self.totalEarning.text = "Total Earning"
             paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
         }
         if user_id != nil {
@@ -422,6 +428,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 //        vc.paymentsToPay = paymentsToPay
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
+
     func didTapButton(cell: UITableViewCell, selected: Bool?) {
         guard let path = tableView.indexPath(for: cell), let selection = selected else {return}
         if selection {
@@ -432,11 +439,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                 item.loadxShare == pendingPaymentDS.loadxShare
             })
         }
-        let payableAmount = paymentsToPay.reduce(0) { (result, item) -> Int in
-            return result + (Int(item.loadxShare) ?? 0)
-        }
-        let totalAmount = payableAmount == 0 ? totalPayableToLoadX : payableAmount.withCommas()
-        paymentButton.setTitle("PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+totalAmount, for: .normal)
+//        let payableAmount = paymentsToPay.reduce(0) { (result, item) -> Int in
+//            return result + (Int(item.loadxShare) ?? 0)
+//        }
+//        let totalAmount = payableAmount == 0 ? totalPayableToLoadX : payableAmount.withCommas()
+//        paymentButton.setTitle("PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+totalAmount, for: .normal)
     }
     func convertDateFormatter(_ date: String?) -> String
     {

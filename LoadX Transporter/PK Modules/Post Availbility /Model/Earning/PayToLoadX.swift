@@ -40,17 +40,23 @@ struct PayToLoadX {
 	}
 }
 
+enum BalanceType: String {
+	case transporterToLoadX = "transporter_to_loadx"
+	case loadXToTransporter = "loadX_to_transporter"
+}
+
 struct PendingJobsSummary {
 	let balance: Int
 	let balanceDetail: String
-	let balanceType: String
+	let balanceType: BalanceType
 	let weekNo: String
 	let weekRange: String
 
 	init(json: JSON) {
 		balance = json["balance"].intValue
 		balanceDetail = json["balance_detail"].stringValue
-		balanceType = json["balance_type"].stringValue
+		let balanceType = json["balance_type"].stringValue
+		self.balanceType = BalanceType(rawValue: balanceType) ?? .loadXToTransporter
 		weekNo = json["week_no"].stringValue
 		weekRange = json["week_no_w_range"].stringValue
 	}

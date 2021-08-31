@@ -50,14 +50,14 @@
                                             <constraint firstItem="NUX-NQ-zPX" firstAttribute="width" secondItem="edj-ZL-gGh" secondAttribute="width" multiplier="0.54" id="sMP-kX-zgU"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-HL-n9h">
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-HL-n9h">
                                         <rect key="frame" x="0.0" y="231" width="404" height="216"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVb-xC-6xT">
-                                                <rect key="frame" x="0.0" y="0.0" width="142" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="232.5" height="216"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Loadex Fee (Pending)" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJt-5W-eQG">
-                                                        <rect key="frame" x="3" y="3" width="136" height="210"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" text="Loadex Fee (Pending)" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJt-5W-eQG">
+                                                        <rect key="frame" x="3" y="3" width="226.5" height="210"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -76,28 +76,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="AIH-nt-wQS">
-                                                <rect key="frame" x="148" y="0.0" width="139" height="216"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="RS 23112" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-dx-bGd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="139" height="216"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
-                                                        <color key="textColor" red="0.42745098039215684" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="XgG-dx-bGd" firstAttribute="leading" secondItem="AIH-nt-wQS" secondAttribute="leading" id="7KL-WW-iyb"/>
-                                                    <constraint firstItem="XgG-dx-bGd" firstAttribute="top" secondItem="AIH-nt-wQS" secondAttribute="top" id="9qq-sd-e5r"/>
-                                                    <constraint firstAttribute="trailing" secondItem="XgG-dx-bGd" secondAttribute="trailing" id="DN3-QZ-LsP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="XgG-dx-bGd" secondAttribute="bottom" id="bbP-Mb-WuP"/>
-                                                    <constraint firstItem="XgG-dx-bGd" firstAttribute="top" secondItem="AIH-nt-wQS" secondAttribute="top" id="h5M-LR-0Pz"/>
-                                                    <constraint firstAttribute="bottom" secondItem="XgG-dx-bGd" secondAttribute="bottom" id="qyc-xC-7GL"/>
-                                                    <constraint firstAttribute="trailing" secondItem="XgG-dx-bGd" secondAttribute="trailing" id="rcx-yh-nqC"/>
-                                                </constraints>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 December 2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccj-3t-ckh">
-                                                <rect key="frame" x="293" y="0.0" width="111" height="216"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="255" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="755" text="RS 23112" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-dx-bGd">
+                                                <rect key="frame" x="238.5" y="0.0" width="53" height="216"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                                <color key="textColor" red="0.42745098039215684" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="20 December 2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ccj-3t-ckh">
+                                                <rect key="frame" x="297.5" y="0.0" width="106.5" height="216"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" red="0.42745098039215684" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>

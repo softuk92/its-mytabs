@@ -28,6 +28,7 @@ class CardSelectionView: UIView {
 
 		button.setImage(R.image.unchecked(), for: .normal)
 		button.setImage(R.image.checked(), for: .selected)
+		icon.image = R.image.unchecked()
 
 		let tap = UITapGestureRecognizer(target: self, action: #selector(actTap))
 		self.addGestureRecognizer(tap)
@@ -80,6 +81,8 @@ class PaymentTypeViewController: UIViewController {
 
 	var paymentMethod = PaymentMethod.bankTranser {
 		didSet {
+			payNow.isEnabled = true
+			payNow.setTitleColor(.white, for: .normal)
 			switch paymentMethod {
 			case .debitCard:
 				debitCardView.select()
@@ -101,7 +104,7 @@ class PaymentTypeViewController: UIViewController {
 
 
 		//payment method selection
-		paymentMethod = .bankTranser
+//		paymentMethod = .bankTranser
 
 
 		debitCardView.actionCallback = { [weak self] in
@@ -115,6 +118,7 @@ class PaymentTypeViewController: UIViewController {
 		//set paynow title
 		let buttonTitle = attributedTitle(text1: "Pay Now ", text2: "(Rs. \(amount))")
 		payNow.setAttributedTitle(buttonTitle, for: .normal)
+		payNow.isEnabled = false
 //		payNow.titleLabel?.attributedText = buttonTitle
 //		payNow.titleLabel?.text = buttonTitle.string
 
