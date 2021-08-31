@@ -32,6 +32,7 @@ class TransporterPublicProfileViewController: UIViewController {
     @IBOutlet weak var statisticsBtn: UIButton!
     @IBOutlet weak var reviewsView: UIView!
     @IBOutlet weak var reviewsBtn: UIButton!
+    @IBOutlet weak var noReviewsFound: UIStackView!
     
     var profileMO : TransporterProfileModel?
     var showAboutMe: Bool = true
@@ -115,15 +116,18 @@ class TransporterPublicProfileViewController: UIViewController {
     }
     
     @IBAction func aboutMeAct(_ sender: Any) {
+        noReviewsFound.isHidden = true
         showTappedView(showAboutMe: true, showStatistics: false, showReviews: false)
         
     }
     
     @IBAction func statisticsAct(_ sender: Any) {
+        noReviewsFound.isHidden = true
         showTappedView(showAboutMe: false, showStatistics: true, showReviews: false)
     }
     
     @IBAction func reviewsAct(_ sender: Any) {
+        noReviewsFound.isHidden = ((profileMO?.driverFeedback.count ?? 0) > 0)
         showTappedView(showAboutMe: false, showStatistics: false, showReviews: true)
     }
     

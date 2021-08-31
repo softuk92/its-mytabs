@@ -87,30 +87,57 @@
                                             <constraint firstItem="E0F-l9-zxO" firstAttribute="top" secondItem="bfe-Pv-lpR" secondAttribute="bottom" constant="1" id="Etv-Zj-K7n"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYD-Ny-Ucc">
-                                        <rect key="frame" x="334" y="762" width="50" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7o-vQ-Gia">
+                                        <rect key="frame" x="324" y="752" width="60" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYD-Ny-Ucc">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                <state key="normal" backgroundImage="Add"/>
+                                                <connections>
+                                                    <action selector="addButtonTappedWithSender:" destination="wYy-PB-aua" eventType="touchUpInside" id="bO1-bf-vf0"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusBtnNew" translatesAutoresizingMaskIntoConstraints="NO" id="MUQ-Is-G87">
+                                                <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFO-YN-lck">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                <connections>
+                                                    <action selector="addButtonTappedWithSender:" destination="wYy-PB-aua" eventType="touchUpInside" id="wc4-aj-9ax"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="0y7-w1-GHS"/>
-                                            <constraint firstAttribute="height" constant="50" id="L8A-3w-ygh"/>
+                                            <constraint firstAttribute="bottom" secondItem="UFO-YN-lck" secondAttribute="bottom" id="0FJ-QZ-ij5"/>
+                                            <constraint firstItem="MUQ-Is-G87" firstAttribute="leading" secondItem="L7o-vQ-Gia" secondAttribute="leading" constant="20" id="0cy-9O-jhO"/>
+                                            <constraint firstAttribute="bottom" secondItem="bYD-Ny-Ucc" secondAttribute="bottom" id="1hk-Yg-anD"/>
+                                            <constraint firstAttribute="trailing" secondItem="MUQ-Is-G87" secondAttribute="trailing" constant="20" id="8Pw-VZ-0Vu"/>
+                                            <constraint firstAttribute="height" constant="60" id="B8A-r5-qX1"/>
+                                            <constraint firstItem="bYD-Ny-Ucc" firstAttribute="leading" secondItem="L7o-vQ-Gia" secondAttribute="leading" id="Deo-M9-OmV"/>
+                                            <constraint firstAttribute="width" constant="60" id="EZ1-Ji-5m1"/>
+                                            <constraint firstItem="UFO-YN-lck" firstAttribute="leading" secondItem="L7o-vQ-Gia" secondAttribute="leading" id="JyE-SN-zp0"/>
+                                            <constraint firstAttribute="trailing" secondItem="bYD-Ny-Ucc" secondAttribute="trailing" id="RVA-6L-dMo"/>
+                                            <constraint firstItem="UFO-YN-lck" firstAttribute="top" secondItem="L7o-vQ-Gia" secondAttribute="top" id="Sd4-fN-qU8"/>
+                                            <constraint firstAttribute="trailing" secondItem="UFO-YN-lck" secondAttribute="trailing" id="Uhr-eK-HJX"/>
+                                            <constraint firstAttribute="bottom" secondItem="MUQ-Is-G87" secondAttribute="bottom" constant="20" id="Vng-Zd-Kk1"/>
+                                            <constraint firstItem="MUQ-Is-G87" firstAttribute="top" secondItem="L7o-vQ-Gia" secondAttribute="top" constant="20" id="leJ-U0-Td1"/>
+                                            <constraint firstItem="bYD-Ny-Ucc" firstAttribute="top" secondItem="L7o-vQ-Gia" secondAttribute="top" id="xVo-6u-h6J"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="Add"/>
-                                        <connections>
-                                            <action selector="addButtonTappedWithSender:" destination="wYy-PB-aua" eventType="touchUpInside" id="bO1-bf-vf0"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="bYD-Ny-Ucc" secondAttribute="bottom" constant="40" id="06G-9p-XPL"/>
+                                    <constraint firstAttribute="bottom" secondItem="L7o-vQ-Gia" secondAttribute="bottom" constant="40" id="4ph-ED-8JB"/>
                                     <constraint firstItem="fiL-7p-jbm" firstAttribute="leading" secondItem="mAx-sz-tPK" secondAttribute="leading" id="9YS-ne-CFa"/>
                                     <constraint firstItem="fiL-7p-jbm" firstAttribute="top" secondItem="mAx-sz-tPK" secondAttribute="top" id="BNR-f0-3l2"/>
                                     <constraint firstAttribute="bottom" secondItem="IHe-yM-VRB" secondAttribute="bottom" id="Kmu-VZ-Q3G"/>
                                     <constraint firstItem="xE9-nn-Q8F" firstAttribute="centerX" secondItem="mAx-sz-tPK" secondAttribute="centerX" id="dyP-iL-XK5"/>
                                     <constraint firstItem="xE9-nn-Q8F" firstAttribute="centerY" secondItem="mAx-sz-tPK" secondAttribute="centerY" id="jtT-x3-TRr"/>
                                     <constraint firstAttribute="trailing" secondItem="fiL-7p-jbm" secondAttribute="trailing" id="kqu-Pe-fjb"/>
+                                    <constraint firstAttribute="trailing" secondItem="L7o-vQ-Gia" secondAttribute="trailing" constant="30" id="mDE-IK-Xsm"/>
                                     <constraint firstItem="IHe-yM-VRB" firstAttribute="leading" secondItem="mAx-sz-tPK" secondAttribute="leading" id="qJr-bz-FT5"/>
                                     <constraint firstItem="IHe-yM-VRB" firstAttribute="top" secondItem="fiL-7p-jbm" secondAttribute="bottom" id="vPK-A2-aiN"/>
-                                    <constraint firstAttribute="trailing" secondItem="bYD-Ny-Ucc" secondAttribute="trailing" constant="30" id="wcD-gD-25r"/>
                                     <constraint firstAttribute="trailing" secondItem="IHe-yM-VRB" secondAttribute="trailing" id="x0W-da-yHV"/>
                                 </constraints>
                             </view>
@@ -126,7 +153,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Trq-Rq-sJo"/>
                     <connections>
-                        <outlet property="addButton" destination="bYD-Ny-Ucc" id="cvI-JN-QD4"/>
+                        <outlet property="addButton" destination="UFO-YN-lck" id="Vp7-ik-dd8"/>
                         <outlet property="notFoundView" destination="xE9-nn-Q8F" id="mxS-b9-2Hz"/>
                         <outlet property="tableView" destination="IHe-yM-VRB" id="Llg-T0-Wf3"/>
                     </connections>
@@ -421,11 +448,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="190" height="192"/>
+        <image name="Add" width="191" height="191"/>
         <image name="back_arrow" width="16" height="16"/>
         <image name="bookJobDelivery_date" width="28" height="29"/>
         <image name="checkFill" width="24" height="24"/>
         <image name="noDataFound" width="642" height="548.5"/>
+        <image name="plusBtnNew" width="72" height="70"/>
         <image name="square" width="24" height="24"/>
         <namedColor name="Background_color">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
