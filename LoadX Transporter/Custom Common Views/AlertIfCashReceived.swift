@@ -25,15 +25,12 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     var cashReceivedCall: ((AlertIfCashReceived) -> Void)?
     var closeCall: ((AlertIfCashReceived) -> Void)?
     var sendPaymentLinkCall: ((AlertIfCashReceived) -> Void)?
-    
-    public var setViewForPakistan: Bool = false
-    
+        
     //MARK: - init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         loadNibContent()
         customizeUI()
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +38,7 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     }
     
     func setupUI() {
-        if setViewForPakistan {
+        if AppUtility.shared.country == .Pakistan {
             closeButtonView.isHidden = true
             cashReceivedBtn.backgroundColor = R.color.mehroonColor()
             paymentLinkBtn.backgroundColor = .darkGray
@@ -56,6 +53,7 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
         centerView.layer.shadowOffset = .zero
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
+        setupUI()
     }
     
     @IBAction func cashReceivedAct(_ sender: Any) {
@@ -67,7 +65,7 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     }
     
     @IBAction func sendPaymentLinkAct(_ sender: Any) {
-        if setViewForPakistan {
+        if AppUtility.shared.country == .Pakistan {
         closeCall?(self)
         } else {
         sendPaymentLinkCall?(self)

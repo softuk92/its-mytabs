@@ -138,6 +138,7 @@ class PaymentTypeViewController: UIViewController {
 		let vc = UploadReceiptViewController.instantiate()
 		vc.paymentMethod = paymentMethod
 		vc.paymentsToPay = paymentsToPay
+        vc.amount = amount.withCommas()
 		self.navigationController?.pushViewController(vc, animated: true)
 	}
 

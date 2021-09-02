@@ -256,7 +256,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         self.invoiceNo = job_id
                         let jobID2 = jsonData[0]["del_id"].stringValue
 //                        let job_id2 = "LOADX"+String(self.year)+"J"+jobID2
-                        let job_id2 = "LX000"+jobID2
+                        let job_id2 = "LX00"+jobID2
                         self.jobId_lbl.text = job_id2
                         
                         self.invoice_no.text = job_id
@@ -269,7 +269,7 @@ class ShowInvoiceBookedJob: UIViewController, MFMailComposeViewControllerDelegat
                         }
                         
                         let customerName = jsonData[0]["user_name"].stringValue.uppercased()
-                        let customerEmail = jsonData[0]["user_email"].stringValue.uppercased()
+                        let customerEmail = (jsonData[0]["user_email"].stringValue.uppercased() == "") ? "N/A" : jsonData[0]["user_email"].stringValue.uppercased()
                         let customerPhone = jsonData[0]["user_phone"].stringValue
                         
                         

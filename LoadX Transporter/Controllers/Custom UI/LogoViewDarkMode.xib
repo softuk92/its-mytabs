@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,49 +16,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogoViewDarkMode" customModule="LoadX_Transporter" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="226" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="229" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="VvV-Sb-aLu">
-                    <rect key="frame" x="10" y="2" width="206" height="64.5"/>
+                    <rect key="frame" x="10" y="0.0" width="209" height="58"/>
                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="55"/>
                     <color key="textColor" name="TextfieldTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Prices, Anytime, All The Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="QTP-Ai-OjE">
-                    <rect key="frame" x="10" y="65" width="206" height="13"/>
-                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
-                    <color key="textColor" systemColor="systemGrayColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Big Or Small, We Move All" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="QTP-Ai-OjE">
+                    <rect key="frame" x="10" y="62" width="209" height="18"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                    <color key="textColor" name="TextfieldTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VvV-Sb-aLu" secondAttribute="trailing" constant="10" id="0Hu-4w-hQQ"/>
+                <constraint firstAttribute="trailing" secondItem="VvV-Sb-aLu" secondAttribute="trailing" constant="10" id="0Hu-4w-hQQ"/>
+                <constraint firstItem="VvV-Sb-aLu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1bI-TE-g3g"/>
                 <constraint firstItem="QTP-Ai-OjE" firstAttribute="centerX" secondItem="VvV-Sb-aLu" secondAttribute="centerX" id="6i7-t1-6bK"/>
-                <constraint firstItem="VvV-Sb-aLu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="MXi-Xl-VXf"/>
-                <constraint firstItem="VvV-Sb-aLu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="OmO-xo-y7n"/>
+                <constraint firstItem="VvV-Sb-aLu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="MXi-Xl-VXf"/>
                 <constraint firstItem="QTP-Ai-OjE" firstAttribute="trailing" secondItem="VvV-Sb-aLu" secondAttribute="trailing" id="WAV-cZ-ZsN"/>
                 <constraint firstItem="VvV-Sb-aLu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZfT-vF-Oaj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QTP-Ai-OjE" secondAttribute="bottom" constant="10" id="g9V-Ds-Lgl"/>
+                <constraint firstAttribute="bottom" secondItem="QTP-Ai-OjE" secondAttribute="bottom" constant="10" id="g9V-Ds-Lgl"/>
+                <constraint firstItem="QTP-Ai-OjE" firstAttribute="top" secondItem="VvV-Sb-aLu" secondAttribute="bottom" constant="4" id="rDW-BF-lfr"/>
                 <constraint firstItem="QTP-Ai-OjE" firstAttribute="leading" secondItem="VvV-Sb-aLu" secondAttribute="leading" id="tcy-iZ-oaH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="QTP-Ai-OjE"/>
-                </mask>
-            </variation>
-            <point key="canvasLocation" x="205.79710144927537" y="89.732142857142847"/>
+            <point key="canvasLocation" x="207.97101449275365" y="96.428571428571431"/>
         </view>
     </objects>
     <resources>
         <namedColor name="TextfieldTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

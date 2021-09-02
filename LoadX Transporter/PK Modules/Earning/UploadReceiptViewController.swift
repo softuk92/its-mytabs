@@ -22,12 +22,13 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     @IBOutlet weak var messageTV: UITextView!
     @IBOutlet weak var receiptImage: UIImageView!
     @IBOutlet weak var uploadButtonView: UIView!
-
+    
     var paymentsToPay = [PayToLoadXItme]()
     var dataSource: UploadReceipt?
     var imageSelector: ImageSelector!
 	var paymentMethod = PaymentMethod.debitCard
-
+    var amount: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageSelector = ImageSelector()
@@ -36,12 +37,15 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         //uploadButtonView.clipsToBounds = true
         uploadButtonView.layer.cornerRadius = 10
 //        uploadButtonView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        fetechData()
+//        fetechData()
+        if let amountP = amount {
+            totalAmount.text = "Rs. "+amountP
+        }
     }
     
     
     
-    func fetechData()  {
+    func fetechData() {
         guard let id = user_id else {return}
         var checkBox = [String]()
         for model in paymentsToPay{
@@ -87,8 +91,8 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     
     func uploadReceipt() {
         guard let receiptImg = receiptImage.image, let userId = user_id else { return }
-        let jobIds = dataSource?.jobLists.map{$0.jobIDS} ?? []
-        let parameters = ["user_id" : userId, "del_id" : "\(jobIds)", "description" : self.messageTV.text!]
+//        let jobIds = dataSource?.jobLists.map{$0.jobIDS} ?? []
+        let parameters = ["transporter_id" : userId, "send_req" : "1", "description" : self.messageTV.text!]
         SVProgressHUD.show()
         
         var input = [MultipartData]()
@@ -96,7 +100,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
             input.append(MultipartData.init(data: receiptimageData, paramName: " receipt_prof_img", fileName: receiptImg.description))
         }
         
-        APIManager.apiPostMultipart(serviceName: "api/transporterUploadedReceipt", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+        APIManager.apiPostMultipart(serviceName: "api/sendPaymentRequestData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
             SVProgressHUD.dismiss()
             if error != nil {
                 showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
@@ -113,8 +117,9 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
             
             if result == "1" {
                 let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
-                vc?.titleStr = "SUCCESS"
-                vc?.subtitleStr = "Receipt Uploaded successfully."
+                vc?.titleStr = "Success"
+                vc?.subtitleStr = "Thanks for the payment. Your request is in progress. We will inform you within 24 hours."
+                vc?.btnTitle = "Dashboard"
             self.navigationController?.pushViewController(vc!, animated: true)
             } else {
                 showAlert(title: "Alert", message: message, viewController: self)

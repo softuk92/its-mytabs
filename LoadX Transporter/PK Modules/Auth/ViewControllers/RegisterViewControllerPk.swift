@@ -230,9 +230,8 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     }
     
     func registerTransporter() {
-        
         guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
-        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1"]
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1", "t_type" : "1", "company_name" : "driver"]
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {

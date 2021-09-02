@@ -16,6 +16,7 @@ class SuccessVC: UIViewController {
     
     var titleStr: String?
     var subtitleStr: String?
+    var btnTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,18 @@ class SuccessVC: UIViewController {
             successSubtitle.text = subtitleStr
         }
         
+        if btnTitle == "Dashboard" {
+            mainBtn.setTitle("Dashboard", for: .normal)
+        }
+        
     }
     
-    @IBAction func mainBtnAct (_ sender: Any) {
+    @IBAction func mainBtnAct(_ sender: Any) {
+        if btnTitle == "Dashboard" {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
+            self.navigationController?.pushViewController(vc!, animated: true)
+            return
+        }
         NotificationCenter.default.post(name: Notification.Name("refresh"), object: nil)
         self.navigationController?.popToRootViewController(animated: true)
     }

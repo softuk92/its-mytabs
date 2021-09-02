@@ -151,7 +151,7 @@
             <color red="0.77647058823529413" green="0.16470588235294117" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NewBlueColor">
-            <color red="0.12941176470588237" green="0.15294117647058825" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.15294117647058825" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextfieldTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

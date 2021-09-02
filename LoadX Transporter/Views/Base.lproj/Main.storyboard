@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1076,10 +1076,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHE-KB-cCt">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completejob_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9qB-Q4-QmE">
-                                    <rect key="frame" x="122" y="20" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="20" width="60" height="60"/>
                                     <color key="tintColor" name="MehroonColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="0Kt-P6-sw9"/>
@@ -1087,7 +1087,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure this job is complete?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmW-rR-s42">
-                                    <rect key="frame" x="15" y="90" width="274" height="35"/>
+                                    <rect key="frame" x="15" y="90" width="272" height="35"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -1111,10 +1111,10 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Rh-iQ-xJV">
-                            <rect key="frame" x="22" y="175" width="260" height="35"/>
+                            <rect key="frame" x="22" y="175" width="258" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-vd-aaY" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119" height="35"/>
                                     <color key="backgroundColor" name="MehroonColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="1w1-Yn-PYB"/>
@@ -1135,7 +1135,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTE-zv-sbR" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="139" y="0.0" width="119" height="35"/>
                                     <color key="backgroundColor" name="NewBlueColor"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="NO">
@@ -1734,8 +1734,8 @@
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
-                                                <rect key="frame" x="149" y="30" width="120" height="20"/>
+                                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WId-c3-qtD" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="154" y="30" width="120" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0zk-BQ-gH3"/>
@@ -3498,7 +3498,7 @@
                                 <rect key="frame" x="12" y="117" width="351" height="489"/>
                                 <color key="backgroundColor" name="Background_color"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="AEx-9N-RNm">
-                                    <rect key="frame" x="0.0" y="0.0" width="351" height="168"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="188"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="azq-Ce-bWv">
@@ -3587,7 +3587,7 @@
                                         <constraint firstItem="xTM-c6-VtY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="azq-Ce-bWv" secondAttribute="bottom" constant="32" id="FZf-nw-FPq"/>
                                         <constraint firstItem="azq-Ce-bWv" firstAttribute="top" secondItem="AEx-9N-RNm" secondAttribute="top" constant="16" id="GHn-tk-QQJ"/>
                                         <constraint firstItem="Df7-8Q-8cS" firstAttribute="bottom" secondItem="azq-Ce-bWv" secondAttribute="bottom" id="Iiv-6g-SsL"/>
-                                        <constraint firstItem="xTM-c6-VtY" firstAttribute="bottom" secondItem="AEx-9N-RNm" secondAttribute="bottom" id="Ope-UC-llf"/>
+                                        <constraint firstItem="xTM-c6-VtY" firstAttribute="bottom" secondItem="AEx-9N-RNm" secondAttribute="bottom" constant="-20" id="Ope-UC-llf"/>
                                         <constraint firstItem="Df7-8Q-8cS" firstAttribute="top" secondItem="azq-Ce-bWv" secondAttribute="top" id="PrG-eY-3fM"/>
                                         <constraint firstAttribute="trailing" secondItem="xTM-c6-VtY" secondAttribute="trailing" constant="32" id="RR9-et-Gyn"/>
                                         <constraint firstItem="Df7-8Q-8cS" firstAttribute="leading" secondItem="azq-Ce-bWv" secondAttribute="trailing" constant="12" id="avk-Ci-7gA"/>
@@ -7196,11 +7196,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="0CR-E0-9dQ" firstAttribute="bottom" secondItem="L2k-Zj-ety" secondAttribute="bottom" id="WGh-EI-iYe"/>
                             <constraint firstItem="0CR-E0-9dQ" firstAttribute="trailing" secondItem="L2k-Zj-ety" secondAttribute="trailing" id="czY-dV-TJB"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="L2k-Zj-ety"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="V9i-2g-8kV"/>
                     <connections>
@@ -8612,7 +8607,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" All Categories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0y-m1-ZLE" customClass="iOSDropDown" customModule="LoadX_Transporter" customModuleProvider="target">
                             <rect key="frame" x="20" y="163" width="335" height="30"/>
-                            <color key="tintColor" red="0.83529411764705885" green="0.84313725490196079" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" name="TextfieldTextColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="X8m-wc-EXh"/>
                             </constraints>
@@ -8700,7 +8695,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Limit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-xh-gke" customClass="iOSDropDown" customModule="LoadX_Transporter" customModuleProvider="target">
                             <rect key="frame" x="20" y="384" width="335" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" red="0.83705823479999997" green="0.8430265736" blue="0.86093159029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" name="TextfieldTextColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="K3M-ym-gjC"/>
                             </constraints>
@@ -9804,7 +9799,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DLm-TE-xHx">
-                                                <rect key="frame" x="30" y="626.5" width="245.5" height="59"/>
+                                                <rect key="frame" x="50" y="626.5" width="245.5" height="59"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-0p-nhg">
                                                         <rect key="frame" x="0.0" y="5.5" width="147" height="48"/>
@@ -9912,7 +9907,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstAttribute="trailing" secondItem="WVD-ZC-NJH" secondAttribute="trailing" constant="12" id="Mft-fq-CMr"/>
                                             <constraint firstItem="XLT-c6-Ily" firstAttribute="leading" secondItem="aVI-eM-4JX" secondAttribute="leading" id="Rak-Yq-scu"/>
                                             <constraint firstItem="WVD-ZC-NJH" firstAttribute="top" secondItem="WtN-7c-xtA" secondAttribute="bottom" constant="10" id="S1Y-yu-ivw"/>
-                                            <constraint firstItem="DLm-TE-xHx" firstAttribute="centerX" secondItem="Bi1-3x-MAu" secondAttribute="centerX" constant="-35" id="SG5-TQ-nYK"/>
+                                            <constraint firstItem="DLm-TE-xHx" firstAttribute="centerX" secondItem="Bi1-3x-MAu" secondAttribute="centerX" constant="-15" id="SG5-TQ-nYK"/>
                                             <constraint firstItem="NdN-Ie-vp1" firstAttribute="top" secondItem="6Tn-Am-6Z9" secondAttribute="bottom" id="SQs-IO-eS6"/>
                                             <constraint firstItem="OV4-al-ZON" firstAttribute="top" secondItem="TGM-dW-NfG" secondAttribute="bottom" constant="15" id="Sav-C7-qe2"/>
                                             <constraint firstItem="Y7H-bs-HCd" firstAttribute="leading" secondItem="Bi1-3x-MAu" secondAttribute="leading" constant="10" id="T1g-uU-hyk"/>
@@ -16323,170 +16318,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
             <point key="canvasLocation" x="4998" y="6150"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="0IF-hv-yh7">
-            <size key="intrinsicContentSize" width="60.5" height="19"/>
-        </designable>
-        <designable name="257-6y-Ght">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="2BA-4V-VRr">
-            <size key="intrinsicContentSize" width="174" height="21.5"/>
-        </designable>
-        <designable name="4wz-VO-Nn1">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="5BL-Xt-I48">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="7GF-nj-Pl0">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="7On-b6-1nB">
-            <size key="intrinsicContentSize" width="65.5" height="19"/>
-        </designable>
-        <designable name="C2K-AJ-z3b">
-            <size key="intrinsicContentSize" width="143.5" height="17"/>
-        </designable>
-        <designable name="H7M-mu-B97">
-            <size key="intrinsicContentSize" width="30" height="31"/>
-        </designable>
-        <designable name="Hx4-ra-EzO">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="J1Z-hw-plO">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="JMr-jC-tdV">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="LUy-0O-VEd">
-            <size key="intrinsicContentSize" width="20.5" height="18.5"/>
-        </designable>
-        <designable name="Mix-dG-50Y">
-            <size key="intrinsicContentSize" width="109" height="19"/>
-        </designable>
-        <designable name="P3t-HN-HWu">
-            <size key="intrinsicContentSize" width="96.5" height="19"/>
-        </designable>
-        <designable name="PZH-LN-gdd">
-            <size key="intrinsicContentSize" width="88" height="18.5"/>
-        </designable>
-        <designable name="R2D-rX-BFd">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="RPx-IU-t3H">
-            <size key="intrinsicContentSize" width="31" height="31"/>
-        </designable>
-        <designable name="Sd6-lV-u6x">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="UGn-6U-qqT">
-            <size key="intrinsicContentSize" width="149.5" height="18"/>
-        </designable>
-        <designable name="WId-c3-qtD">
-            <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="X6V-RK-JSX">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="XEc-NW-5tM">
-            <size key="intrinsicContentSize" width="72.5" height="18"/>
-        </designable>
-        <designable name="Yh6-D2-w7r">
-            <size key="intrinsicContentSize" width="94.5" height="19"/>
-        </designable>
-        <designable name="Ypz-H0-p0a">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="ZDh-QP-DUd">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="ZGV-Er-xnf">
-            <size key="intrinsicContentSize" width="114" height="19"/>
-        </designable>
-        <designable name="aHv-Gf-nnF">
-            <size key="intrinsicContentSize" width="102.5" height="19"/>
-        </designable>
-        <designable name="aKu-la-rV0">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="b2m-00-8hT">
-            <size key="intrinsicContentSize" width="170" height="20"/>
-        </designable>
-        <designable name="bGW-qd-z1F">
-            <size key="intrinsicContentSize" width="132" height="24"/>
-        </designable>
-        <designable name="bx3-ey-jix">
-            <size key="intrinsicContentSize" width="35" height="33"/>
-        </designable>
-        <designable name="dw7-Jl-o7q">
-            <size key="intrinsicContentSize" width="68" height="19"/>
-        </designable>
-        <designable name="fh1-Hm-GB2">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="gcX-Wg-WpX">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="h7d-z0-szC">
-            <size key="intrinsicContentSize" width="83.5" height="19"/>
-        </designable>
-        <designable name="hpN-HR-vwA">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="kXB-JA-2g9">
-            <size key="intrinsicContentSize" width="195" height="19"/>
-        </designable>
-        <designable name="l3l-FX-OXZ">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="lLc-IM-uay">
-            <size key="intrinsicContentSize" width="110.5" height="19"/>
-        </designable>
-        <designable name="lTE-zv-sbR">
-            <size key="intrinsicContentSize" width="30" height="32"/>
-        </designable>
-        <designable name="oFO-Xt-4bm">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="oqS-mv-y2k">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="pjE-6K-ER5">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="qrs-6z-Cew">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="r42-My-QiM">
-            <size key="intrinsicContentSize" width="70.5" height="19"/>
-        </designable>
-        <designable name="rAh-td-T27">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="rnZ-vd-aaY">
-            <size key="intrinsicContentSize" width="33" height="32"/>
-        </designable>
-        <designable name="sZS-8V-WpS">
-            <size key="intrinsicContentSize" width="65.5" height="19"/>
-        </designable>
-        <designable name="tuA-1E-sy6">
-            <size key="intrinsicContentSize" width="97" height="17"/>
-        </designable>
-        <designable name="wEZ-RQ-Eer">
-            <size key="intrinsicContentSize" width="285" height="80"/>
-        </designable>
-        <designable name="yhC-ol-Sk5">
-            <size key="intrinsicContentSize" width="38" height="18.5"/>
-        </designable>
-        <designable name="ysy-Ok-FOy">
-            <size key="intrinsicContentSize" width="145" height="18"/>
-        </designable>
-        <designable name="z8o-Ho-7z9">
-            <size key="intrinsicContentSize" width="55.5" height="19"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Account_Edit" width="71" height="68"/>
         <image name="Account_documnt" width="68" height="71"/>

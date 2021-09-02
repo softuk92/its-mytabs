@@ -47,10 +47,10 @@ class EarningTableViewCell: UITableViewCell, NibReusable {
 		switch data.jType {
 		case .loadXShare:
 			self.jobType.text = "LoadX Share"
-			self.jobTypeView.backgroundColor = UIColor(hexString: "#EABD00")
+			self.jobTypeView.backgroundColor = UIColor(hexString: "#11AD04")
 		case .transporterShare:
 			self.jobType.text = "Transporter Share"
-			self.jobTypeView.backgroundColor = UIColor(hexString: "#11AD04")
+			self.jobTypeView.backgroundColor = UIColor(hexString: "#EABD00")
 		}
     }
 

@@ -404,7 +404,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let movingItem = jobsInProgressRow.moving_item
         cell.moving_item.text = movingItem.capitalized
-        cell.jobId.text = "LX000"+(jobsInProgressRow.del_id)
+        cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
         cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
         cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
         
@@ -683,7 +683,22 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
         let jobPrice = AppUtility.shared.country == .Pakistan ? AppUtility.shared.currencySymbol+((rowData.price ?? 0).withCommas()) : ("£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
         let paymentType = AppUtility.shared.country == .Pakistan ? rowData.job_payment_type : rowData.payment_type
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, receiverName: rowData.receiver_name?.capitalized ?? "", receiverNumber: rowData.receiver_phone ?? "", addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
+        let receiverName : String?
+        let receiverNumber : String?
+        
+        if let receiverN = rowData.receiver_name, receiverN != "" {
+            receiverName = receiverN.capitalized
+        } else {
+            receiverName = rowData.contact_person.capitalized
+        }
+        
+        if let receiverNum = rowData.receiver_phone, receiverNum != "" {
+            receiverNumber = receiverNum
+        } else {
+            receiverNumber = rowData.contact_phone
+        }
+        
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, receiverName: receiverName ?? "", receiverNumber: receiverNumber ?? "", addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }

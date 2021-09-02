@@ -72,6 +72,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     var switchCheck = UserDefaults.standard.bool(forKey: "mySwitch")
     var showInvoiceData = true
 	var pendingPaymentHeaderView: PendingPaymentHeaderView!
+    var requestToLoadx : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,8 +213,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
 
 					//payment button title
-					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Pay Now " : "Request for Payment "
-					let buttonTitle = titlePrefix + AppUtility.shared.currencySymbol+self.totalPayableToLoadX
+					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Request for Payment " : "Pay Now "
+					let buttonTitle = titlePrefix + "(\(AppUtility.shared.currencySymbol+self.totalPayableToLoadX))"
+                    self.requestToLoadx = (payToLoadX.summary.balanceType == .loadXToTransporter)
 					self.paymentButton.setTitle(buttonTitle, for: .normal)
 
 					self.showShadow(for: self.tableView)
@@ -460,11 +462,42 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 //        let vc = UploadReceiptViewController.instantiate()
 //        vc.paymentsToPay = paymentsToPay
 //        self.navigationController?.pushViewController(vc, animated: true)
-
+        if let request = requestToLoadx, request == true {
+            requestForPayment()
+        } else {
 		let vc = PaymentTypeViewController.instantiate()
 		vc.amount = balanceAmount
 		vc.paymentsToPay = paymentsToPay
 		self.navigationController?.pushViewController(vc, animated: true)
+        }
 	}
+    
+    func requestForPayment() {
+        guard let userId = user_id else { return }
+        let parameters = ["transporter_id" : userId, "send_req" : "1", "description" : ""]
+        SVProgressHUD.show()
+        
+        APIManager.apiPostMultipart(serviceName: "api/sendPaymentRequestData", parameters: parameters, multipartImages: []) { (data, json, error, progress) in
+            SVProgressHUD.dismiss()
+            if error != nil {
+                showAlert(title: "Error", message: error!.localizedDescription, viewController: self)
+            }
+
+            guard let json = json else { return }
+            let result = json[0]["result"].stringValue
+            let message = json[0]["msg"].stringValue
+            
+            if result == "1" {
+                let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
+                vc?.titleStr = "Success"
+                vc?.subtitleStr = "We've received your request. Your payment wil be transferred within 24 hours."
+                vc?.btnTitle = "Dashboard"
+            self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                showSuccessAlert(question: message, viewController: self)
+//                showAlert(title: "Alert", message: message, viewController: self)
+            }
+        }
+    }
     
 }
