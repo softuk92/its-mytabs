@@ -134,7 +134,8 @@ extension JobPickupDropoffViewController {
                 self.setJobStatus()
                 self.timer.invalidate()
                 UserDefaults.standard.removeObject(forKey: self.input.delId)
-                showSuccessAlert(question: "Cash collected successfully.", closeButtonColor: R.color.newBlueColor() ?? .blue, viewController: self)
+//                showSuccessAlert(question: "Cash collected successfully.", closeButtonColor: R.color.newBlueColor() ?? .blue, viewController: self)
+                self.goToJobCompletedScene()
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }

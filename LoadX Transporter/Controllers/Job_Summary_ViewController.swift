@@ -104,10 +104,10 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         if isJobNotBooked != true {
             if AppUtility.shared.country == .Pakistan {
                 if pickupHouseNo != "" {
-                    info.append(MenuItemStruct.init(title: "Pickup Doot/Unit No.", value: pickupHouseNo))
+                    info.append(MenuItemStruct.init(title: "Pickup Door/Unit No.", value: pickupHouseNo))
                 }
                 if dropoffHouseNo != "" {
-                    info.append(MenuItemStruct.init(title: "Drop Off Doot/Unit No.", value: dropoffHouseNo))
+                    info.append(MenuItemStruct.init(title: "Drop Off Door/Unit No.", value: dropoffHouseNo))
                 }
             } else {
         if pickupHouseNo != "" {
@@ -189,11 +189,11 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         if supermarketName_lbl != "" {
             info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
         }
-        self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
+        self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Job Summary", detail: info))
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?   {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 50))
         headerView.title.text = self.routeSummaryDetails[section].title
         return headerView

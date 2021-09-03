@@ -41,6 +41,7 @@ class CompletedJobsCell: UITableViewCell {
     @IBOutlet weak var jobPriceView: UIStackView!
     @IBOutlet weak var contactPerson: UILabel!
     @IBOutlet weak var loadxShareStatus: UILabel!
+    @IBOutlet weak var jobId: UILabel!
     
     var deleteRow: ((CompletedJobsCell) -> Void)?
     var transporterProfileRow: ((CompletedJobsCell) -> Void)?
@@ -94,6 +95,7 @@ class CompletedJobsCell: UITableViewCell {
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
         contactPerson.text = model.contact_person.capitalized
         setupViews(paymentType: model.payment_type, dueAmountStatus: model.due_amount_status, lxShareStatus: (model.loadx_share_status ?? ""))
+        jobId.text = "LX00\(model.del_id)"
     }
 
     func setJobBookedForView(workingHours: String?, category: String) {

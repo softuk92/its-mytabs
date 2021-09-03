@@ -208,9 +208,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
 
 					//summary
-					self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.loadXShare)"
-					self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare)"
-					self.balance.text = "Rs. " + "\(payToLoadX.summary.balance)"
+                    self.pendingLoadXShare.text = "Rs. " + "\(payToLoadX.loadXShare.withCommas())"
+                    self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare.withCommas())"
+                    self.balance.text = "Rs. " + "\(payToLoadX.summary.balance.withCommas())"
 
 					//payment button title
 					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Request for Payment " : "Pay Now "
@@ -312,7 +312,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		if showInvoiceData {
-			return 167
+			return 180
 		}else {
 			return 84
 		}

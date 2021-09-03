@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import SafariServices
 
-class Help_ViewController: UIViewController {
+class Help_ViewController: UIViewController, SFSafariViewControllerDelegate {
 
      let sb = UIStoryboard(name: "Main", bundle: nil)
+    
+    let termsAndConditionsURL = URL(string: "https://www.loadx.pk/terms-and-conditions/app")
+    let privacyPolicyURL = URL(string: "https://www.loadx.pk/privacy-policy/app")
+    let faqUrl = URL(string: "https://www.loadx.pk/transporter-faq/app")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,18 +28,33 @@ class Help_ViewController: UIViewController {
     }
     
     @IBAction func privacy_action(_ sender: Any) {
-        let showVC = sb.instantiateViewController(withIdentifier: "PrivacyPolicyController") as? PrivacyPolicyController
-        self.navigationController?.pushViewController(showVC!, animated: true)
+        if let url = privacyPolicyURL {
+            let vc = SFSafariViewController.init(url: url)
+            present(vc, animated: true)
+        }
+//
+//        let showVC = sb.instantiateViewController(withIdentifier: "PrivacyPolicyController") as? PrivacyPolicyController
+//        self.navigationController?.pushViewController(showVC!, animated: true)
     }
     
     @IBAction func terms_action(_ sender: Any) {
-        let showVC = sb.instantiateViewController(withIdentifier: "TermsAndConditionController") as? TermsAndConditionController
-        self.navigationController?.pushViewController(showVC!, animated: true)
+        if let url = termsAndConditionsURL {
+            let vc = SFSafariViewController.init(url: url)
+            present(vc, animated: true)
+        }
+        
+//        let showVC = sb.instantiateViewController(withIdentifier: "TermsAndConditionController") as? TermsAndConditionController
+//        self.navigationController?.pushViewController(showVC!, animated: true)
     }
 
     @IBAction func Faqs_Action(_ sender: Any) {
-        let showVC = sb.instantiateViewController(withIdentifier: "FAQSTableViewController") as? FAQSTableViewController
-        self.navigationController?.pushViewController(showVC!, animated: true)
+        if let url = faqUrl {
+            let vc = SFSafariViewController.init(url: url)
+            present(vc, animated: true)
+        }
+//
+//        let showVC = sb.instantiateViewController(withIdentifier: "FAQSTableViewController") as? FAQSTableViewController
+//        self.navigationController?.pushViewController(showVC!, animated: true)
     }
     
     @IBAction func Appintro_Action(_ sender: Any) {

@@ -21,11 +21,18 @@ struct VehiclesMO: Decodable {
     let vehicle_name: String
 }
 
+struct BankList: Decodable {
+    let bank_id: String
+    let bank_name: String
+}
+
 class AppUtility: NSObject, CLLocationManagerDelegate {
     
     static let shared = AppUtility()
     private var disposeBag = DisposeBag()
     private var vehicles = [VehiclesMO]()
+    private var bankList = [BankList]()
+    
     private override init() {
         super.init()
     }
@@ -77,5 +84,39 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
             
         }
     }
+    
+//    func getBankList(completion:@escaping (Result<[BankList], Error>) -> Void) {
+//
+//        //return vehicle if already fetched
+//        guard bankList.isEmpty else {
+//            completion(.success(banks))
+//            return
+//        }
+//
+//        //fetch vehicles from server
+//        APIManager.apiGet(serviceName: "api/getVehicleList", parameters: [:]) { [unowned self] (data, json, error) in
+//            //handle error
+//            if let error = error {
+//                completion(.failure(error))
+//                return
+//            }
+//
+//            //data is snil
+//            guard let data = data else {
+//                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "Data is nil"])))
+//                return
+//            }
+//
+//            //parse data
+//            do {
+//                let vehiclesList = try JSONDecoder().decode([VehiclesMO].self, from: data)
+//                self.vehicles = vehiclesList
+//                completion(.success(vehiclesList))
+//            }catch {
+//                completion(.failure(error))
+//            }
+//
+//        }
+//    }
 
 }

@@ -39,7 +39,8 @@ class TransportAvailabilityCell: UITableViewCell,NibReusable {
         endPoint.text = data.endPoint
         availability.text = data.taDate
         status.text = data.status
-        vanImage.sd_setImage(with: URL(string: data.vanImg), placeholderImage: R.image.truckImage(), options: .continueInBackground, completed: nil)
+        let imageUrl = main_URL+"public/assets/documents/"+data.vanImg
+        vanImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: R.image.truckImage(), options: .continueInBackground, completed: nil)
     }
     
     @IBAction func didTapButton(sender: Any){

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,36 +112,36 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-yR-lT9">
-                                <rect key="frame" x="0.0" y="174" width="223" height="42"/>
+                                <rect key="frame" x="0.0" y="174" width="231" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XF-Or-h8m">
-                                        <rect key="frame" x="131.5" y="5" width="71.5" height="14"/>
+                                        <rect key="frame" x="137.5" y="5" width="71.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssA-pO-qba">
-                                        <rect key="frame" x="138.5" y="21" width="57.5" height="12"/>
+                                        <rect key="frame" x="144.5" y="21" width="57.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-no-I9K">
-                                        <rect key="frame" x="111" y="4.5" width="1.5" height="33"/>
+                                        <rect key="frame" x="115" y="11" width="1.5" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1.5" id="EEX-iH-Znk"/>
-                                            <constraint firstAttribute="height" constant="33" id="SZ9-p3-eZj"/>
+                                            <constraint firstAttribute="height" constant="20" id="SZ9-p3-eZj"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQT-Fn-bjJ">
-                                        <rect key="frame" x="22.5" y="5" width="66.5" height="14"/>
+                                        <rect key="frame" x="24.5" y="5" width="66.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-Jan-2019" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwR-zp-mkV">
-                                        <rect key="frame" x="27" y="21" width="57.5" height="12"/>
+                                        <rect key="frame" x="29" y="21" width="57.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -215,7 +215,7 @@
                             <constraint firstItem="UC1-B9-hOm" firstAttribute="trailing" secondItem="Gtk-21-UbG" secondAttribute="trailing" id="C76-zB-Vqa"/>
                             <constraint firstAttribute="bottom" secondItem="B6u-yR-lT9" secondAttribute="bottom" id="JJm-iZ-gMw"/>
                             <constraint firstItem="fx5-7H-CpZ" firstAttribute="centerX" secondItem="M7h-2j-z1D" secondAttribute="centerX" id="K1A-Be-4W3"/>
-                            <constraint firstItem="Lde-Bz-aRI" firstAttribute="leading" secondItem="B6u-yR-lT9" secondAttribute="trailing" constant="12" id="KTE-0D-eRt"/>
+                            <constraint firstItem="Lde-Bz-aRI" firstAttribute="leading" secondItem="B6u-yR-lT9" secondAttribute="trailing" constant="4" id="KTE-0D-eRt"/>
                             <constraint firstAttribute="trailing" secondItem="RLl-ZJ-fez" secondAttribute="trailing" constant="10" id="LeC-Dk-Xl8"/>
                             <constraint firstAttribute="trailing" secondItem="gyD-UW-u8Q" secondAttribute="trailing" id="PBC-Yp-AGt"/>
                             <constraint firstItem="qaO-sc-nL2" firstAttribute="top" secondItem="fSX-aa-Ccn" secondAttribute="bottom" constant="12" id="PWy-Ky-tpD"/>

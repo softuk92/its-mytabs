@@ -23,7 +23,8 @@ class PaymentHistoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.cell_view.layer.cornerRadius = 5
+        cell_view.layer.cornerRadius = 5
+        cell_view.bottomShadow(color: .black)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

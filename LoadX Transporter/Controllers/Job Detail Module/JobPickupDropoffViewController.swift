@@ -63,6 +63,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var cashToBeCollectedView: UIStackView!
     @IBOutlet weak var cashToBeCollected: UILabel!
     @IBOutlet weak var disclaimerView: UIView!
+    @IBOutlet weak var topDisclaimerBtn: UIButton!
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
     @IBOutlet weak var leadingJobDescription: NSLayoutConstraint!
@@ -247,7 +248,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func uploadImagesAct(_ sender: Any) {
-        showAlertView(question: "Upload Image", ensure: "Please upload images according to the need or requirements.", paymentLinkHeight: 0, status: .UploadImages)
+//        showAlertView(question: "Upload Image", ensure: "Please upload images according to the need or requirements.", paymentLinkHeight: 0, status: .UploadImages)
+        goToUploadDamageScene()
     }
     
     @IBAction func leavingForDropoffAct(_ sender: Any) {
@@ -479,14 +481,19 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         if !(AppUtility.shared.country == .Pakistan) {
         info.append(MenuItemStruct.init(title: "Category", value: category))
         }
+        
+        if movingTo == .pickup {
+        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
+        }
+        
         if pickupHouseNo != "" {
             if movingTo == .pickup {
-            info.append(MenuItemStruct.init(title: "Pickup House No.", value: pickupHouseNo))
+            info.append(MenuItemStruct.init(title: "Pickup Unit/Door No.", value: pickupHouseNo))
             }
         }
         if dropoffHouseNo != "" {
             if movingTo == .dropoff {
-            info.append(MenuItemStruct.init(title: "Drop Off House No.", value: dropoffHouseNo))
+            info.append(MenuItemStruct.init(title: "Drop Off Unit/Door No.", value: dropoffHouseNo))
             }
         }
         
@@ -525,10 +532,6 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
                 info.append(MenuItemStruct.init(title: "Drop Off Property Type", value: dropoffPropertyType))
                 }
             }
-        }
-        
-        if movingTo == .pickup {
-        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
         }
         
         if category == "Dedicated Van" || category == "Man & Van" {

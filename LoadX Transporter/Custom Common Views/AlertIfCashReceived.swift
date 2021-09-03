@@ -40,9 +40,11 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
     func setupUI() {
         if AppUtility.shared.country == .Pakistan {
             closeButtonView.isHidden = true
+            
             cashReceivedBtn.backgroundColor = R.color.mehroonColor()
             paymentLinkBtn.backgroundColor = .darkGray
             paymentLinkBtn.setTitle("CLOSE", for: .normal)
+            paymentLinkBtn.isHidden = true
         }
     }
     

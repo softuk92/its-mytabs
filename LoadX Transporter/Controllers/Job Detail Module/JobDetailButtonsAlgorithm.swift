@@ -64,7 +64,6 @@ extension JobPickupDropoffViewController {
         
         if pickupState == "0" { //does not arrive at pickup
             upperButtonView.isHidden = false
-            disclaimerView.isHidden = false
             sendPaymentLinkBtn.isHidden = true
             bottomButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = true
@@ -74,6 +73,7 @@ extension JobPickupDropoffViewController {
             viewJobSummaryBtn.isHidden = true
             pickupArrivedBtn.isHidden = false
             disclaimerView.isHidden = true
+            topDisclaimerBtn.isHidden = true
             
             //show running late if running late is false and if country is not Pakistan
             if AppUtility.shared.country == .Pakistan {
@@ -102,8 +102,10 @@ extension JobPickupDropoffViewController {
             leavingForDropoffBtn.isHidden = false
             if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
                 disclaimerView.isHidden = true
+                topDisclaimerBtn.isHidden = true
             } else {
-            disclaimerView.isHidden = false
+            disclaimerView.isHidden = true
+                topDisclaimerBtn.isHidden = false
             }
         }
     }
@@ -123,6 +125,7 @@ extension JobPickupDropoffViewController {
             viewJobSummaryBtn.isHidden = true
             leavingForDropoffBtn.isHidden = true
             disclaimerView.isHidden = true
+            topDisclaimerBtn.isHidden = true
             
             upperButtonView.isHidden = false
             dropoffArrivedBtn.isHidden = false
@@ -130,8 +133,10 @@ extension JobPickupDropoffViewController {
         } else if status.d_cash_received == "0" {
             if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
                 disclaimerView.isHidden = true
+                topDisclaimerBtn.isHidden = true
             } else {
             disclaimerView.isHidden = false
+                topDisclaimerBtn.isHidden = true
             }
             if (input.addType == "Man & Van" || input.addType == "Man and Van") && !(AppUtility.shared.country == .Pakistan) {
                 bottomButtonView.isHidden = true
@@ -167,6 +172,7 @@ extension JobPickupDropoffViewController {
         } else {// if dropoffState == "arrivedAtDropOff" and cash collected/send payment link {
             //show job complete
             disclaimerView.isHidden = true
+            topDisclaimerBtn.isHidden = true
             upperButtonView.isHidden = true
             uploadImagesBtn.isHidden = true
             bottomButtonView.isHidden = false

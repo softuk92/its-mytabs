@@ -138,11 +138,11 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="acG-tq-uT0">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="acG-tq-uT0">
                                 <rect key="frame" x="0.0" y="381" width="359" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWD-39-aan" customClass="AnimatableButton" customModule="IBAnimatable">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="45"/>
                                         <color key="backgroundColor" name="NewBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Tn3-Sm-bqO"/>
@@ -162,7 +162,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-sL-Jnj" customClass="AnimatableButton" customModule="IBAnimatable">
-                                        <rect key="frame" x="187" y="0.0" width="172" height="45"/>
+                                        <rect key="frame" x="181.5" y="0.0" width="177.5" height="45"/>
                                         <color key="backgroundColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="xSp-h1-l81"/>
