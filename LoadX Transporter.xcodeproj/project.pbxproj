@@ -106,6 +106,8 @@
 		4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81828A241B9AA3005D3EC9 /* VC4.swift */; };
 		4E87C1DC266047CD007B6454 /* JobSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E87C1DB266047CD007B6454 /* JobSummaryView.xib */; };
 		4E87C1DF26604B5C007B6454 /* JobSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */; };
+		4E8F0B3C26E69CE200DD0961 /* AddBankDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F0B3B26E69CE200DD0961 /* AddBankDetailsViewController.swift */; };
+		4E8F0B3F26E69CFE00DD0961 /* BankDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F0B3E26E69CFE00DD0961 /* BankDetails.storyboard */; };
 		4E96FC0226A58E630074DE53 /* AuthAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96FC0126A58E630074DE53 /* AuthAPIs.swift */; };
 		4E96FC4F26A59ED40074DE53 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96FC4E26A59ED40074DE53 /* AppConstants.swift */; };
 		4E97FB7726B4A79F0048185C /* ImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E97FB7626B4A79F0048185C /* ImageSelector.swift */; };
@@ -355,6 +357,8 @@
 		4E81828A241B9AA3005D3EC9 /* VC4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC4.swift; sourceTree = "<group>"; };
 		4E87C1DB266047CD007B6454 /* JobSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSummaryView.xib; sourceTree = "<group>"; };
 		4E87C1DE26604B5C007B6454 /* JobSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryView.swift; sourceTree = "<group>"; };
+		4E8F0B3B26E69CE200DD0961 /* AddBankDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankDetailsViewController.swift; sourceTree = "<group>"; };
+		4E8F0B3E26E69CFE00DD0961 /* BankDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankDetails.storyboard; sourceTree = "<group>"; };
 		4E96FC0126A58E630074DE53 /* AuthAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIs.swift; sourceTree = "<group>"; };
 		4E96FC4E26A59ED40074DE53 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		4E97FB7626B4A79F0048185C /* ImageSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelector.swift; sourceTree = "<group>"; };
@@ -696,6 +700,7 @@
 		4E3964682695C20F00A67E44 /* PK Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4E8F0B3A26E69CC300DD0961 /* Bank Details */,
 				188FC35A26CBC76400271B49 /* Public Profile */,
 				8D23103526B7ED9F0042BFB6 /* Earning */,
 				4E31506426B7101B0001D63E /* Jobs Group */,
@@ -783,6 +788,15 @@
 				4E6FDC3D257E987F00634CAB /* ImageViewCell.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		4E8F0B3A26E69CC300DD0961 /* Bank Details */ = {
+			isa = PBXGroup;
+			children = (
+				4E8F0B3B26E69CE200DD0961 /* AddBankDetailsViewController.swift */,
+				4E8F0B3E26E69CFE00DD0961 /* BankDetails.storyboard */,
+			);
+			path = "Bank Details";
 			sourceTree = "<group>";
 		};
 		4EEDA46125631E7E00E7F212 /* Search Jobs */ = {
@@ -1288,6 +1302,7 @@
 				185139BF2562D3EC0053098B /* RouteDetailsCell.xib in Resources */,
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
+				4E8F0B3F26E69CFE00DD0961 /* BankDetails.storyboard in Resources */,
 				8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */,
 				4E87C1DC266047CD007B6454 /* JobSummaryView.xib in Resources */,
 				184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */,
@@ -1488,6 +1503,7 @@
 				8DC526222226F4990033D6CA /* TransporterProfileFeedbackModel.swift in Sources */,
 				8D98C723222050E800420BFA /* SearchDeliveriesController.swift in Sources */,
 				4E69145A260BD87B00352CAF /* location_ViewController.swift in Sources */,
+				4E8F0B3C26E69CE200DD0961 /* AddBankDetailsViewController.swift in Sources */,
 				BB16169A24BF3146008420A8 /* GeneralItemHeaderCell.swift in Sources */,
 				8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */,
 				4E9A3011269CE0A900671ACB /* LoginViewControllerPk.swift in Sources */,

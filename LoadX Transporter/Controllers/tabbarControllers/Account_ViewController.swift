@@ -46,6 +46,13 @@ class Account_ViewController: UIViewController {
         self.navigationController?.pushViewController(showVC!, animated: true)
     }
     
+    @IBAction func bankDetailScene(_ sender: Any) {
+        if let bankVC = UIStoryboard.init(name: "BankDetails", bundle: nil).instantiateViewController(withIdentifier: "AddBankDetailsViewController") as? AddBankDetailsViewController {
+            self.navigationController?.pushViewController(bankVC, animated: true)
+        }
+        
+    }
+    
     @IBAction func logOut_action(_ sender: Any) {
 
         UIView.animate(withDuration: 0.3, animations: {

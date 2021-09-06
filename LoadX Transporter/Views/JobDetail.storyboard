@@ -347,7 +347,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="uploadImagesAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="pOU-f6-wbq"/>
+                                                                    <action selector="uploadImagesAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="4F1-L5-Q2l"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnP-jD-aeb">
@@ -639,7 +639,7 @@
                         <outlet property="topDisclaimerBtn" destination="vXu-Dl-nsZ" id="exC-49-mjk"/>
                         <outlet property="trailingAdditionalDetails" destination="xqM-uX-8l7" id="phc-La-HbV"/>
                         <outlet property="trailingJobDescription" destination="ou9-es-j8s" id="gJt-GY-fAa"/>
-                        <outlet property="uploadImagesBtn" destination="L6m-i4-sMe" id="aFg-kp-ArM"/>
+                        <outlet property="uploadImagesBtn" destination="L6m-i4-sMe" id="yYh-lz-emt"/>
                         <outlet property="upperButtonView" destination="a47-va-txP" id="hVg-Ik-wfx"/>
                         <outlet property="viewJobSummaryBtn" destination="ewR-gq-Jyx" id="4Ui-Iz-xf3"/>
                     </connections>

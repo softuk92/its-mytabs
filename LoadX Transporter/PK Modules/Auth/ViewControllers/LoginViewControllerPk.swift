@@ -99,6 +99,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
         if phoneNumber.text != "" && password.text != "" {
             AuthAPIs.login(phone: phoneNumber.text ?? "", password: password.text ?? "") { (data, json, error) in
                 guard let jsonData = json, error == nil else { SVProgressHUD.dismiss(); showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self); return }
+                print("json userData \(jsonData)")
                 SVProgressHUD.dismiss()
                 let result = jsonData[0]["result"].stringValue
                 let message = jsonData[0]["message"].stringValue
@@ -128,7 +129,13 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                         userDefaults.set(isLoadxDriver, forKey: "isLoadxDriver")
                     userDefaults.set(true, forKey: "userLoggedIn")
                     userDefaults.synchronize()
+                        
+                    let accountTitle = jsonData[0]["account_title"].string ?? ""
+                        let accountIban = jsonData[0]["account_iban"].string ?? ""
+                        let bankName = jsonData[0]["bank_name"].string ?? ""
+                        let branchCode = jsonData[0]["branch_code"].string ?? "" 
                   
+                        AppUtility.shared.bankMO = BankMO.init(accountTitle: accountTitle, accountIban: accountIban, bankName: bankName, branchCode: branchCode)
                         self.AppDelegate.moveToHome()
             }
                 }
