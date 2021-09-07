@@ -45,8 +45,7 @@ class SuccessVC: UIViewController {
         }
         
         if btnTitle == "Dashboard" && phoneNumber != nil {
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            userLogin()
             return
         }
         NotificationCenter.default.post(name: Notification.Name("refresh"), object: nil)

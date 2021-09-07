@@ -110,7 +110,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         self.jobIdName.text = "Route ID"
         }
         self.ref_no_lbl.text = ref_no
-        self.contact_name_lbl.text = user_name
+        self.contact_name_lbl.text = contactName
         self.contact_no_lbl.text = contact_no
 //        if let customerName = contactName {
 //            receiverName.text = customerName
