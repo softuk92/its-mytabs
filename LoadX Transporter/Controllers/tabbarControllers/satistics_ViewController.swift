@@ -72,10 +72,10 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.register(UINib(nibName: "CompletedJobsCell", bundle: nil) , forCellReuseIdentifier: "completedJobs")
     }
     override func viewWillAppear(_ animated: Bool) {
-        totalCompleted_view.applyShadowToView()
-        totalPrice_view.applyShadowToView()
-        totalCompletedRoutesView.applyShadowToView()
-        totalOutstandingView.applyShadowToView()
+        totalCompleted_view.bottomShadow(color: .black)
+        totalPrice_view.bottomShadow(color: .black)
+        totalCompletedRoutesView.bottomShadow(color: .black)
+        totalOutstandingView.bottomShadow(color: .black)
     }
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)

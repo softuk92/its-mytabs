@@ -39,11 +39,17 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         self.signature_Image.isHidden = true
         
-        self.signatureView.layer.cornerRadius = 5
+        signatureView.layer.cornerRadius = 5
+        signatureView.layer.borderWidth = 1
+        signatureView.layer.borderColor = UIColor.black.cgColor
+        
+        signature_Image.layer.cornerRadius = 5
+        signature_Image.layer.borderWidth = 1
+        signature_Image.layer.borderColor = UIColor.black.cgColor
         
         self.signatureView.delegate = self
         
-        dateLabel.text = "Date: \(Date().string(format: "dd-MMMM-yyyy", timezone: .current))"
+        dateLabel.text = "\(Date().string(format: "dd-MMMM-yyyy", timezone: .current))"
         setDisclaimerText()
     }
     

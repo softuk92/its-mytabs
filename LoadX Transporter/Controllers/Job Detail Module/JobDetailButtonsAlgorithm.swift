@@ -97,7 +97,7 @@ extension JobPickupDropoffViewController {
             
             //show upload image
             uploadImagesBtn.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
-            bottomButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
+//            bottomButtonView.isHidden = !(input.jobStatus.is_img_uploaded == "0" || input.jobStatus.is_img_uploaded == "")
             //show leaving for drop off
             leavingForDropoffBtn.isHidden = false
             if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {

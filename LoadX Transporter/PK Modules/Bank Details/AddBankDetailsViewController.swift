@@ -76,6 +76,7 @@ class AddBankDetailsViewController: UIViewController {
             let message = json[0]["message"].stringValue
             if result == "1" {
                 AppUtility.shared.bankMO = BankMO.init(accountTitle: accountTitle, accountIban: accountIban, bankName: bankName, branchCode: branchCode)
+                self.addBankBtn.setTitle("Update Details", for: .normal)
                 showSuccessAlert(question: "Bank Details Updated Successfully", viewController: self)
             } else {
                 showAlert(title: "Error", message: message, viewController: self)

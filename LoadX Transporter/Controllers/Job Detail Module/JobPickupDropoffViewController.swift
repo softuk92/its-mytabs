@@ -124,6 +124,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         
         if (input.jobStatus.p_leaving_f_dropoff == "0" && UserDefaults.standard.bool(forKey: input.delId+"pickup")) || (input.jobStatus.p_leaving_f_dropoff == "1" && UserDefaults.standard.bool(forKey: input.delId+"dropoff")) {
             disclaimerView.isHidden = true
+            topDisclaimerBtn.isHidden = true
         }
         
     }

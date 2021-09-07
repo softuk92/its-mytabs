@@ -65,14 +65,21 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         super.viewDidLoad()
         self.signature_Image.isHidden = true
         
-        self.signatureView.layer.cornerRadius = 5
-        self.info_view.layer.cornerRadius = 5
-        info_view.layer.shadowColor = UIColor.black.cgColor
-        info_view.layer.shadowOffset = CGSize(width: 2, height: 2)
-        info_view.layer.shadowOpacity = 0.4
-        info_view.layer.shadowRadius = 4.0
+        signatureView.layer.cornerRadius = 5
+        signatureView.layer.borderWidth = 1
+        signatureView.layer.borderColor = UIColor.black.cgColor
         
-        self.signatureView.delegate = self
+        signature_Image.layer.cornerRadius = 5
+        signature_Image.layer.borderWidth = 1
+        signature_Image.layer.borderColor = UIColor.black.cgColor
+        
+        info_view.layer.cornerRadius = 5
+//        info_view.layer.shadowColor = UIColor.black.cgColor
+//        info_view.layer.shadowOffset = CGSize(width: 2, height: 2)
+//        info_view.layer.shadowOpacity = 0.4
+//        info_view.layer.shadowRadius = 4.0
+        
+        signatureView.delegate = self
         
             User_location.requestAlwaysAuthorization()
             User_location.requestWhenInUseAuthorization()

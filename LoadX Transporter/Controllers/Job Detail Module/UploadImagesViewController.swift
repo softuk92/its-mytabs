@@ -57,7 +57,7 @@ class UploadImagesViewController: UIViewController {
         }
         submit.isEnabled = false
         desc.layer.cornerRadius = 5
-        desc.layer.borderWidth = 0.1
+        desc.layer.borderWidth = 0.8
         desc.layer.borderColor = UIColor.black.cgColor
         selectImages.rx.tap.subscribe(onNext: { [weak self] (_) in
             guard let self = self else { return }

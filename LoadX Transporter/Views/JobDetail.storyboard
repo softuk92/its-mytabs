@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -330,7 +330,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9At-22-qYS">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-i4-sMe">
+                                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-i4-sMe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="189.5" height="40"/>
                                                                 <color key="backgroundColor" red="0.4823529411764706" green="0.82745098039215681" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
@@ -343,14 +343,14 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="uploadImagesAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="4F1-L5-Q2l"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnP-jD-aeb">
+                                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnP-jD-aeb">
                                                                 <rect key="frame" x="204.5" y="0.0" width="189.5" height="40"/>
                                                                 <color key="backgroundColor" name="MehroonColor"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
@@ -359,7 +359,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -369,14 +369,14 @@
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qP0-5U-Sk3">
                                                                 <rect key="frame" x="394" y="0.0" width="0.0" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" name="NewBlueColor"/>
+                                                                <color key="backgroundColor" name="MehroonColor"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                                 <state key="normal" title="Arrived?">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -393,7 +393,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -410,7 +410,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -427,7 +427,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -447,7 +447,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -482,7 +482,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -502,7 +502,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -520,7 +520,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -555,7 +555,7 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -687,7 +687,7 @@
                                 <rect key="frame" x="0.0" y="89" width="375" height="661"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBw-Wo-lBU">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="584.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="594.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: You can select multiple images." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSF-f4-Sc4">
                                                 <rect key="frame" x="20" y="49.5" width="235" height="16.5"/>
@@ -714,7 +714,7 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images that might be useful in describing your job." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAa-uk-YWc">
                                                 <rect key="frame" x="20" y="161" width="335" height="16.5"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" name="addressTextColor"/>
                                                 <color key="highlightedColor" systemColor="labelColor"/>
                                             </label>
@@ -751,16 +751,16 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66g-Sx-Vhj">
-                                                <rect key="frame" x="20" y="322.5" width="76.5" height="18"/>
+                                                <rect key="frame" x="20" y="312.5" width="76.5" height="18"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <color key="highlightedColor" systemColor="labelColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="0Jr-Ci-jPz" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                                <rect key="frame" x="20" y="360.5" width="335" height="120"/>
+                                                <rect key="frame" x="20" y="350.5" width="335" height="140"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="wsQ-vc-tsn"/>
+                                                    <constraint firstAttribute="height" constant="140" id="wsQ-vc-tsn"/>
                                                 </constraints>
                                                 <color key="textColor" name="TextfieldTextColor"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
@@ -779,13 +779,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngn-Rf-ERG">
-                                                <rect key="frame" x="30" y="510.5" width="315" height="44"/>
+                                                <rect key="frame" x="30" y="520.5" width="315" height="44"/>
                                                 <color key="backgroundColor" name="MehroonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="esz-tQ-UmS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                                <state key="normal" title="SUBMIT">
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                                                <state key="normal" title="Submit">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -845,7 +845,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="66g-Sx-Vhj" firstAttribute="top" secondItem="7jF-lB-0j2" secondAttribute="bottom" constant="30" id="1YR-cy-Kjk"/>
+                                            <constraint firstItem="66g-Sx-Vhj" firstAttribute="top" secondItem="7jF-lB-0j2" secondAttribute="bottom" constant="20" id="1YR-cy-Kjk"/>
                                             <constraint firstAttribute="bottom" secondItem="ngn-Rf-ERG" secondAttribute="bottom" constant="30" id="1fT-RG-z1s"/>
                                             <constraint firstItem="ngn-Rf-ERG" firstAttribute="leading" secondItem="tBw-Wo-lBU" secondAttribute="leading" constant="30" id="7ZI-DM-CJE"/>
                                             <constraint firstItem="LSF-f4-Sc4" firstAttribute="top" secondItem="FaS-q3-aIp" secondAttribute="bottom" constant="8" symbolic="YES" id="7ao-I7-1Qd"/>
@@ -955,10 +955,10 @@
                                 <rect key="frame" x="0.0" y="89" width="375" height="761"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyc-Bq-8je">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="834.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="769.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zFF-uI-5cZ">
-                                                <rect key="frame" x="15" y="350" width="345" height="50"/>
+                                                <rect key="frame" x="20" y="355" width="335" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTc-uw-9zb">
                                                         <rect key="frame" x="0.0" y="16.5" width="114" height="17.5"/>
@@ -967,10 +967,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opF-ck-Hdl">
-                                                        <rect key="frame" x="124" y="0.0" width="221" height="50"/>
+                                                        <rect key="frame" x="124" y="0.0" width="211" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0b5-do-vzs" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                                <rect key="frame" x="0.0" y="0.0" width="221" height="49"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="211" height="49"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -986,7 +986,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsW-ve-IGH">
-                                                                <rect key="frame" x="0.0" y="49" width="221" height="1"/>
+                                                                <rect key="frame" x="0.0" y="49" width="211" height="1"/>
                                                                 <color key="backgroundColor" name="TextfieldTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="CDT-Hb-T2E"/>
@@ -1007,12 +1007,12 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2d-ov-D29">
-                                                <rect key="frame" x="20" y="426.5" width="64" height="17.5"/>
+                                                <rect key="frame" x="20" y="431.5" width="64" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kjN-d5-HiP">
-                                                <rect key="frame" x="319" y="420" width="36" height="30"/>
+                                                <rect key="frame" x="319" y="425" width="36" height="30"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Clear">
@@ -1029,10 +1029,10 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-kO-SmO" customClass="SwiftSignatureView" customModule="SwiftSignatureView">
-                                                <rect key="frame" x="20" y="454" width="335" height="250"/>
+                                                <rect key="frame" x="20" y="459" width="335" height="180"/>
                                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="3do-c5-M1p"/>
+                                                    <constraint firstAttribute="height" constant="180" id="3do-c5-M1p"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
@@ -1050,7 +1050,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vwy-pj-DiT">
-                                                <rect key="frame" x="20" y="454" width="335" height="250"/>
+                                                <rect key="frame" x="20" y="459" width="335" height="180"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="6"/>
@@ -1064,23 +1064,26 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eep-jW-hXq">
-                                                <rect key="frame" x="15" y="50" width="345" height="280"/>
+                                                <rect key="frame" x="20" y="55" width="335" height="280"/>
                                                 <string key="text">Disclaimer \n\n- We are contracted to deliver your goods as entrusted to us as per our Standard Terms &amp; Conditions. \n\nAny additional work, such as moving items in or around the property, disassembling/reassembling items or furniture, removing/refitting doors (for ease of access), \("squeezing") large items through narrows doors/corridors, etc is undertaken at your own risk, and we are under no obligation to carry out such work, upon your insistence, we have agreed to carry out this work, which is contrary to our Standard Terms &amp; Conditions. \n\nAny damage caused to furniture, doors, walls or property under these circumstances is your sole responsibility and neither the Transporter nor LoadX can be held responsible for such damage.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="addressTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="U3x-d1-TXn">
-                                                <rect key="frame" x="15" y="724" width="162" height="17.5"/>
+                                                <rect key="frame" x="20" y="659" width="330" height="17.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWk-Pf-ig7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="17.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="yPG-I3-XZs"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                         <color key="textColor" name="TextfieldTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-06-2021" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwZ-8E-YuN">
-                                                        <rect key="frame" x="83.5" y="0.0" width="78.5" height="17.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-06-2021" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwZ-8E-YuN">
+                                                        <rect key="frame" x="45" y="0.0" width="285" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                         <color key="textColor" name="addressTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1088,7 +1091,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVQ-wB-xFS">
-                                                <rect key="frame" x="40" y="761.5" width="295" height="48"/>
+                                                <rect key="frame" x="40" y="696.5" width="295" height="48"/>
                                                 <color key="backgroundColor" name="MehroonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="fs7-hN-T0y"/>
@@ -1109,28 +1112,37 @@
                                                     <action selector="updateBtn:" destination="TH2-T3-IBn" eventType="touchUpInside" id="vok-4h-AWe"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disclaimer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FK6-BC-jGO">
+                                                <rect key="frame" x="20" y="20" width="79.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                                <color key="textColor" name="TextColorSet2"/>
+                                                <color key="highlightedColor" systemColor="labelColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="oNQ-kO-SmO" firstAttribute="leading" secondItem="Q2d-ov-D29" secondAttribute="leading" id="02p-sK-SW3"/>
                                             <constraint firstItem="kjN-d5-HiP" firstAttribute="centerY" secondItem="Q2d-ov-D29" secondAttribute="centerY" id="4B9-ZB-5Im"/>
-                                            <constraint firstAttribute="trailing" secondItem="zFF-uI-5cZ" secondAttribute="trailing" constant="15" id="5hH-Uf-l4e"/>
+                                            <constraint firstAttribute="trailing" secondItem="zFF-uI-5cZ" secondAttribute="trailing" constant="20" id="5hH-Uf-l4e"/>
                                             <constraint firstItem="YVQ-wB-xFS" firstAttribute="leading" secondItem="oNQ-kO-SmO" secondAttribute="leading" constant="20" id="9A2-hR-K7I"/>
                                             <constraint firstAttribute="trailing" secondItem="vwy-pj-DiT" secondAttribute="trailing" constant="20" id="GA6-y7-UJF"/>
+                                            <constraint firstItem="FK6-BC-jGO" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="HR7-6w-K3u"/>
                                             <constraint firstItem="U3x-d1-TXn" firstAttribute="top" secondItem="vwy-pj-DiT" secondAttribute="bottom" constant="20" id="JYr-VX-w3h"/>
                                             <constraint firstItem="oNQ-kO-SmO" firstAttribute="top" secondItem="Q2d-ov-D29" secondAttribute="bottom" constant="10" id="KXo-ix-Sgf"/>
-                                            <constraint firstItem="zFF-uI-5cZ" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="15" id="QFh-9X-bCF"/>
-                                            <constraint firstItem="Eep-jW-hXq" firstAttribute="top" secondItem="pyc-Bq-8je" secondAttribute="top" constant="50" id="SBN-VI-PEZ"/>
-                                            <constraint firstItem="U3x-d1-TXn" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="15" id="Tv0-ai-1Va"/>
+                                            <constraint firstItem="zFF-uI-5cZ" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="QFh-9X-bCF"/>
+                                            <constraint firstItem="U3x-d1-TXn" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="Tv0-ai-1Va"/>
                                             <constraint firstAttribute="bottom" secondItem="YVQ-wB-xFS" secondAttribute="bottom" constant="25" id="Ubx-9M-klt"/>
+                                            <constraint firstItem="Eep-jW-hXq" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="V5c-lc-dPg"/>
+                                            <constraint firstItem="Eep-jW-hXq" firstAttribute="top" secondItem="FK6-BC-jGO" secondAttribute="bottom" constant="15" id="V8h-jY-cxe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Eep-jW-hXq" secondAttribute="trailing" constant="20" id="VTP-Ai-vD2"/>
                                             <constraint firstItem="vwy-pj-DiT" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="Y6G-zD-0mY"/>
                                             <constraint firstItem="YVQ-wB-xFS" firstAttribute="top" secondItem="U3x-d1-TXn" secondAttribute="bottom" constant="20" id="YXO-xk-EpS"/>
-                                            <constraint firstItem="Eep-jW-hXq" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="15" id="ZKZ-Mr-4f2"/>
+                                            <constraint firstItem="FK6-BC-jGO" firstAttribute="top" secondItem="pyc-Bq-8je" secondAttribute="top" constant="20" id="cjC-TK-zgj"/>
+                                            <constraint firstAttribute="trailing" secondItem="U3x-d1-TXn" secondAttribute="trailing" constant="25" id="dhm-yo-dX1"/>
                                             <constraint firstItem="U3x-d1-TXn" firstAttribute="top" secondItem="oNQ-kO-SmO" secondAttribute="bottom" constant="20" id="ekD-Y8-aGV"/>
                                             <constraint firstItem="Q2d-ov-D29" firstAttribute="leading" secondItem="pyc-Bq-8je" secondAttribute="leading" constant="20" id="g9q-HA-jnt"/>
                                             <constraint firstItem="YVQ-wB-xFS" firstAttribute="trailing" secondItem="oNQ-kO-SmO" secondAttribute="trailing" constant="-20" id="hWS-DR-2Qv"/>
                                             <constraint firstItem="vwy-pj-DiT" firstAttribute="top" secondItem="Q2d-ov-D29" secondAttribute="bottom" constant="10" id="iez-3U-n5H"/>
-                                            <constraint firstAttribute="trailing" secondItem="Eep-jW-hXq" secondAttribute="trailing" constant="15" id="jgM-lf-T4g"/>
                                             <constraint firstItem="zFF-uI-5cZ" firstAttribute="top" secondItem="Eep-jW-hXq" secondAttribute="bottom" constant="20" id="n4x-8p-IU6"/>
                                             <constraint firstAttribute="trailing" secondItem="kjN-d5-HiP" secondAttribute="trailing" constant="20" id="rny-wd-n2W"/>
                                             <constraint firstItem="kjN-d5-HiP" firstAttribute="top" secondItem="zFF-uI-5cZ" secondAttribute="bottom" constant="20" id="vxw-3j-6rV"/>
@@ -1163,7 +1175,7 @@
                     <navigationItem key="navigationItem" id="D1E-jJ-x2x"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
-                        <outlet property="dateLabel" destination="KWk-Pf-ig7" id="1u6-cz-SWP"/>
+                        <outlet property="dateLabel" destination="NwZ-8E-YuN" id="RxS-bf-Jl2"/>
                         <outlet property="disclaimerLabel" destination="Eep-jW-hXq" id="bAN-tc-Vrq"/>
                         <outlet property="receiverName" destination="0b5-do-vzs" id="6qu-aE-1bX"/>
                         <outlet property="signatureView" destination="oNQ-kO-SmO" id="s0R-Eh-Tra"/>
