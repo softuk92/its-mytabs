@@ -116,7 +116,7 @@ class PaymentTypeViewController: UIViewController {
 		}
 
 		//set paynow title
-		let buttonTitle = attributedTitle(text1: "Pay Now ", text2: "(Rs. \(amount))")
+        let buttonTitle = attributedTitle(text1: "Pay Now ", text2: "(Rs. \(amount.withCommas()))")
 		payNow.setAttributedTitle(buttonTitle, for: .normal)
 		payNow.isEnabled = false
 //		payNow.titleLabel?.attributedText = buttonTitle

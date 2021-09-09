@@ -282,7 +282,12 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             if let vc = UIStoryboard.init(name: "JobDetail", bundle: Bundle.main).instantiateViewController(withIdentifier: "DisclaimerViewController") as? DisclaimerViewController {
                 vc.modalPresentationStyle = .fullScreen
                 vc.jobId = input.delId
-                vc.customerName = input.customerName.capitalized
+                if PickupOrDropOff.text == "Pickup" {
+                    vc.customerName = input.customerName.capitalized
+                } else {
+                    vc.customerName = input.receiverName.capitalized
+                }
+                
                 vc.parentVC = self
                 vc.isPickup = PickupOrDropOff.text == "Pickup"
                 self.navigationController?.present(vc, animated: true, completion: nil)

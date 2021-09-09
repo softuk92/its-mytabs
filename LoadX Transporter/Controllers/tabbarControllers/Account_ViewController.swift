@@ -54,60 +54,46 @@ class Account_ViewController: UIViewController {
     }
     
     @IBAction func logOut_action(_ sender: Any) {
+        showAlertView(question: "Are you sure you want to log out?")
+    }
 
-        UIView.animate(withDuration: 0.3, animations: {
-            self.popUpView.layer.borderColor = UIColor.gray.cgColor
-            self.popUpView.layer.borderWidth = 1
-            self.popUpView.layer.cornerRadius = 18
-//            self.tableView.alpha = 0.5
-        self.logo_popupView.clipsToBounds = true
-        self.logo_popupView.layer.cornerRadius = 18
-        self.logo_popupView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
-                           
-            self.view.addSubview(self.popUpView)
-            self.popUpView.center = self.view.center
-            
-//            if self.switchCheck == true {
-//                self.popUpView.backgroundColor = UIColor.darkGray
-//                self.popup_lable.textColor = UIColor.white
-//                self.popup_yes_btn.setBackgroundImage(UIImage(named: "darkMood_yellowBtn"), for: .normal)
-//                self.popup_yes_btn.setTitleColor(.white, for: .normal)
-//                self.popup_no_btn.setBackgroundImage(UIImage(named: "darkMood_yellowBtn"), for: .normal)
-//                self.popup_no_btn.setTitleColor(.white, for: .normal)
-//            }else{
-//                
-//            }
-        })
-    }
-    
-    @IBAction func yes_action(_ sender: Any) {
-         let userDefaults = UserDefaults.standard
-            userDefaults.set(false, forKey: "userLoggedIn")
-            userDefaults.removeObject(forKey: "user_id")
-            userDefaults.removeObject(forKey: "user_name")
-            userDefaults.removeObject(forKey: "user_email")
-            userDefaults.removeObject(forKey: "userPass")
-            userDefaults.removeObject(forKey: "user_phone")
-            userDefaults.removeObject(forKey: "user_image")
-            userDefaults.removeObject(forKey: "user_type")
-            userDefaults.synchronize()
-            user_id = nil
-            user_name = nil
-            user_email = nil
-            GIDSignIn.sharedInstance().signOut()
-            
-            self.manager.logOut()
-            FBSDKAccessToken.setCurrent(nil)
-            FBSDKProfile.setCurrent(nil)
-        //            let showVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-        //            self.window?.rootViewController = showVC
-        //            self.window?.makeKeyAndVisible()
-        //            self.dismiss(animated: true, completion: {
-        //                UIApplication.shared.keyWindow?.rootViewController = showVC
-        //            })
-        self.AppDelegate.moveToLogInVC()
-    }
-    @IBAction func noBtn_action(_ sender: Any) {
-          self.popUpView.removeFromSuperview()
+    func showAlertView(question: String) {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = R.image.logout_popup_icon()
+        aView.imageView.tintColor = R.color.mehroonColor()
+        aView.question.text = question
+        aView.ensure.text = ""
+        aView.sendPaymentLinkHeight.constant = 0
+        
+        aView.yesCall = {[weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            let userDefaults = UserDefaults.standard
+               userDefaults.set(false, forKey: "userLoggedIn")
+               userDefaults.removeObject(forKey: "user_id")
+               userDefaults.removeObject(forKey: "user_name")
+               userDefaults.removeObject(forKey: "user_email")
+               userDefaults.removeObject(forKey: "userPass")
+               userDefaults.removeObject(forKey: "user_phone")
+               userDefaults.removeObject(forKey: "user_image")
+               userDefaults.removeObject(forKey: "user_type")
+               userDefaults.synchronize()
+               user_id = nil
+               user_name = nil
+               user_email = nil
+               GIDSignIn.sharedInstance().signOut()
+               
+               self.manager.logOut()
+               FBSDKAccessToken.setCurrent(nil)
+               FBSDKProfile.setCurrent(nil)
+           self.AppDelegate.moveToLogInVC()
+        }
+        
+        aView.noCall = { (_) in
+            aView.removeFromSuperview()
+        }
+        
+        self.view.addSubview(aView)
     }
 }

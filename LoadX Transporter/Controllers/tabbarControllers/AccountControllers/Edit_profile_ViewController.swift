@@ -221,10 +221,12 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
         if (fullName_tf.text == "") {
             fullName_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Full Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             
-        }else if  email_address_tf.text == "" {
-            email_address_tf.attributedPlaceholder = NSAttributedString(string: "Enter Full Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            
-        } else if self.phoneNo_tf.text == "" || phoneNo_tf.text?.count != 11 && (phoneNo_tf.text?.hasPrefix("0"))!{
+        }
+//        else if  email_address_tf.text == "" {
+//            email_address_tf.attributedPlaceholder = NSAttributedString(string: "Enter Full Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+//
+//        }
+        else if self.phoneNo_tf.text == "" || phoneNo_tf.text?.count != 11 && (phoneNo_tf.text?.hasPrefix("0"))!{
             phoneNo_tf.attributedPlaceholder = NSAttributedString(string: "Contact Phone No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             /*}else if self.adress_tf.text == "" {
              adress_tf.attributedPlaceholder = NSAttributedString(string: "Please Enter Your Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
