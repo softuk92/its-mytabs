@@ -364,30 +364,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if businessJobs == true {
             let completedJobsRow = completedJobsModelBusiness[indexPath.row]
             cell.setJobBookedForView(workingHours: completedJobsRow.working_hours, category: completedJobsRow.add_type)
-            let payment_type1 = completedJobsRow.payment_type
-            let due_amount_status = completedJobsRow.due_amount_status
-            if payment_type1 == "full" || payment_type1 == "Full" {
-                if due_amount_status == "Pending" {
-                    cell.receivedAmountStatus.text = "Pending"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#F6AD4E")
-                    
-                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                }
-            } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                cell.receivedAmountStatus.text = "Received"
-                cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-            } else if payment_type1 == "initial" || payment_type1 == "Initial" {
-                if due_amount_status == "Pending" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                }
-            }
-            
+          
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
             cell.pick_up.text = completedJobsRow.pu_house_no ?? "" + " " + completedJobsRow.pick_up
@@ -468,7 +445,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             }
             
-            let due_amount_status = completedJobsRow.due_amount_status
+            let amountStatus = completedJobsRow.amount_status
             
             
             let payment_type2 = completedJobsRow.payment_type
@@ -481,29 +458,13 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 cell.payment_type_lbl.text = "Cash Job"
             }
             }
-            
-            if payment_type2 == "full" || payment_type2 == "Full" {
-                if due_amount_status == "Pending" {
-                    cell.receivedAmountStatus.text = "Pending"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#F6AD4E")
-                    
-                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                }
-            } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                cell.receivedAmountStatus.text = "Received"
+    
+            cell.receivedAmountStatus.text = amountStatus.capitalized
+            if amountStatus.lowercased() == "received" {
                 cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-            } else if payment_type2 == "initial" || payment_type2 == "Initial" {
-                if due_amount_status == "Pending" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                } else if due_amount_status == "paid" || due_amount_status == "Paid" {
-                    cell.receivedAmountStatus.text = "Received"
-                    cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#4A9B4B")
-                }
+            } else {
+                cell.receivedAmountStatus.textColor = UIColor.init(hexString: "#F6AD4E")
             }
-            
             let movingItem = completedJobsRow.moving_item
             cell.moving_item.text = movingItem.capitalized
             cell.pick_up.text = "\(completedJobsRow.pu_house_no ?? "") \(completedJobsRow.pick_up)"

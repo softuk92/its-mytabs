@@ -286,13 +286,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     func checkRouteAccess() {
         if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
-            if isLoadxDrive == "0" {
-                self.pagerViewHeight.constant = 0
-                self.topPagerView.isHidden = true
-                self.view.layoutIfNeeded()
-            } else {
+            if isLoadxDrive == "1" {
                 self.pagerViewHeight.constant = 55
                 self.topPagerView.isHidden = false
+                self.view.layoutIfNeeded()
+            } else {
+                self.pagerViewHeight.constant = 0
+                self.topPagerView.isHidden = true
                 self.view.layoutIfNeeded()
             }
         }
@@ -1104,6 +1104,7 @@ extension SearchBookedJobs {
             let isLoadx = json?[0]["is_loadx_driver"].stringValue
             
             UserDefaults.standard.setValue(isLoadx, forKey: "isLoadxDriver")
+            UserDefaults.standard.synchronize()
             self.checkRouteAccess()
         }
     }
