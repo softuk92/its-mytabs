@@ -653,5 +653,11 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    @IBAction func goToNotifications(_ sender: Any) {
+        if let vc = UIStoryboard.init(name: "Notifications", bundle: nil).instantiateViewController(withIdentifier: "NotificationsListViewController") as? NotificationsListViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
 

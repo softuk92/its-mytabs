@@ -1084,6 +1084,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         self.popUpView2.removeFromSuperview()
     }
     
+    
+    @IBAction func goToNotifications(_ sender: Any) {
+        if let vc = UIStoryboard.init(name: "Notifications", bundle: nil).instantiateViewController(withIdentifier: "NotificationsListViewController") as? NotificationsListViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
 
 extension SearchBookedJobs {

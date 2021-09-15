@@ -701,6 +701,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, receiverName: receiverName ?? "", receiverNumber: receiverNumber ?? "", addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
+    
+    @IBAction func goToNotifications(_ sender: Any) {
+        if let vc = UIStoryboard.init(name: "Notifications", bundle: nil).instantiateViewController(withIdentifier: "NotificationsListViewController") as? NotificationsListViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension JobsInProgress {

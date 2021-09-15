@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -38,7 +38,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQC-FX-5l3" userLabel="CenterView">
-                    <rect key="frame" x="15" y="139.5" width="298" height="304"/>
+                    <rect key="frame" x="15" y="140.5" width="298" height="302.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxR-yM-GcF">
                             <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
@@ -62,19 +62,19 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tap-hU-8KK">
-                            <rect key="frame" x="10" y="75" width="278" height="94"/>
+                            <rect key="frame" x="10" y="75" width="278" height="92.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ztc-hp-s7C">
-                                    <rect key="frame" x="0.0" y="0.0" width="262" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240.5" height="19"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Booked For:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-SP-XqN">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="19"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qba-tC-12P">
-                                            <rect key="frame" x="130" y="0.0" width="132" height="19"/>
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="19"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -82,16 +82,16 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vxs-Al-9zq">
-                                    <rect key="frame" x="0.0" y="27" width="262" height="17"/>
+                                    <rect key="frame" x="0.0" y="27" width="240.5" height="16.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYH-wz-ihX">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-e8-TRQ">
-                                            <rect key="frame" x="130" y="0.0" width="132" height="17"/>
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -99,16 +99,16 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBU-sb-ORh">
-                                    <rect key="frame" x="0.0" y="52" width="206" height="17"/>
+                                    <rect key="frame" x="0.0" y="51.5" width="187.5" height="16.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chG-yt-EmI">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz7-26-DZY">
-                                            <rect key="frame" x="130" y="0.0" width="76" height="17"/>
+                                            <rect key="frame" x="118" y="0.0" width="69.5" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -116,16 +116,16 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tfd-QW-dZP">
-                                    <rect key="frame" x="0.0" y="77" width="262" height="17"/>
+                                    <rect key="frame" x="0.0" y="76" width="240.5" height="16.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-m8-SHw">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Hours 30 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNr-TU-OBG">
-                                            <rect key="frame" x="130" y="0.0" width="132" height="17"/>
+                                            <rect key="frame" x="118" y="0.0" width="122.5" height="16.5"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="TextfieldTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-LA-Emx">
-                            <rect key="frame" x="15" y="199" width="268" height="80"/>
+                            <rect key="frame" x="15" y="197.5" width="268" height="80"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HJy-KZ-9CR">
                                     <rect key="frame" x="0.0" y="0.0" width="268" height="35"/>
@@ -249,13 +249,13 @@
     </objects>
     <designables>
         <designable name="0qe-2B-cqI">
-            <size key="intrinsicContentSize" width="105" height="26"/>
+            <size key="intrinsicContentSize" width="96" height="25"/>
         </designable>
         <designable name="SjM-Zz-UuL">
-            <size key="intrinsicContentSize" width="86" height="27"/>
+            <size key="intrinsicContentSize" width="81" height="26"/>
         </designable>
         <designable name="omz-69-vk6">
-            <size key="intrinsicContentSize" width="45" height="33"/>
+            <size key="intrinsicContentSize" width="44" height="32"/>
         </designable>
     </designables>
     <resources>
