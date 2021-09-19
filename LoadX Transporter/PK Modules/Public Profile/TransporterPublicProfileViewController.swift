@@ -43,6 +43,8 @@ class TransporterPublicProfileViewController: UIViewController {
     var statisticsData = [RouteSummaryDetails]()
     var showProfileData : ShowProfileData = .AboutMe
     
+    var transporterID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -20,6 +20,7 @@ import MobileCoreServices
 class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var fullName: AnimatableTextField!
+    @IBOutlet weak var companyName: AnimatableTextField!
     @IBOutlet weak var email_address: AnimatableTextField!
     @IBOutlet weak var phone_no: AnimatableTextField!
     @IBOutlet weak var address: AnimatableTextField!
@@ -37,9 +38,17 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     @IBOutlet weak var innerVehiclesListView: UIView!
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet weak var typeListView: UIView!
+    @IBOutlet weak var innerTypeListView: UIView!
+    @IBOutlet weak var typeTableview: UITableView!
+    @IBOutlet weak var companyNameView: UIView!
+    
     var list : [VehiclesMO] = []
+    var typeList = ["Single Transporter", "Transportation Company"]
     var imageSelector: ImageSelector!
     var cnicImageSelection : Int?
+    var selectedTypeIndex: Int = 0
+    let typeToSend = ["driver", "transportation_company"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +59,13 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         tableview.dataSource = self
         tableview.backgroundView = nil
         tableview.backgroundColor = UIColor.clear
-        self.innerVehiclesListView.layer.cornerRadius = 10
+        typeTableview.delegate = self
+        typeTableview.dataSource = self
+        typeTableview.backgroundView = nil
+        typeTableview.backgroundColor = UIColor.clear
+        
+        innerVehiclesListView.layer.cornerRadius = 10
+        innerTypeListView.layer.cornerRadius = 10
         
         AppUtility.shared.getVehiclesList { [weak self] (result) in
             switch result {
@@ -71,15 +86,21 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         
         imageSelector = ImageSelector()
         imageSelector.delegate = self
+        typeTableview.reloadData()
     }
     
     
     @IBAction private func btnCross_Pressed(_ sender : UIButton) {
         vehiclesListView.isHidden = true
+        typeListView.isHidden = true
     }
     
     @IBAction private func btnShowPop(_ sender : UIButton) {
         vehiclesListView.isHidden = false
+    }
+    
+    @IBAction private func typeBtnShowPop(_ sender : UIButton) {
+        typeListView.isHidden = false
     }
     
     @IBAction func back_action(_ sender: Any) {
@@ -231,7 +252,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     
     func registerTransporter() {
         guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
-        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1", "t_type" : "driver", "company_name" : ""]
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1", "t_type" : typeToSend[selectedTypeIndex], "company_name" : companyName.text!]
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
@@ -314,10 +335,24 @@ extension RegisterViewControllerPk: GMSAutocompleteViewControllerDelegate {
 //MARK: UITableViewDelegate
 extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableview == typeTableview {
+            return typeList.count
+        }
         return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableview == typeTableview {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
+            cell?.layer.cornerRadius = 10
+            cell?.backgroundColor = UIColor.clear
+            cell?.backgroundView = nil
+            cell?.lblJobNature.text = typeList[indexPath.row]
+            if indexPath.row == 1 {
+                cell?.bottomLineView.isHidden = true
+            }
+            return cell!
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
         cell?.layer.cornerRadius = 10
         cell?.backgroundColor = UIColor.clear
@@ -334,10 +369,15 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedValue = self.list[indexPath.row].vehicle_name
+        if tableview == typeTableview {
+            companyNameView.isHidden = indexPath.row == 0
+            selectedTypeIndex = indexPath.row
+            companyName.text = typeList[indexPath.row]
+        } else {
+        let selectedValue = list[indexPath.row].vehicle_name
         self.van_type.text = selectedValue
         vehiclesListView.isHidden = true
+        }
         
     }
     

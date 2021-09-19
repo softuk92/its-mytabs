@@ -108,8 +108,8 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    let userType = jsonData[0]["user_type"].stringValue
-                    if userType == "driver" {
+//                    let userType = jsonData[0]["user_type"].stringValue
+//                    if userType == "driver" {
                     user_type = jsonData[0]["user_type"].stringValue
                     user_id = jsonData[0]["user_id"].stringValue
                     user_email = jsonData[0]["user_email"].stringValue
@@ -137,7 +137,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                   
                         AppUtility.shared.bankMO = BankMO.init(accountTitle: accountTitle, accountIban: accountIban, bankName: bankName, branchCode: branchCode)
                         self.AppDelegate.moveToHome()
-            }
+//            }
                 }
                 }
         }
