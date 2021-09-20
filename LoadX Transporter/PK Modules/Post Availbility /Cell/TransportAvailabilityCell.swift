@@ -10,8 +10,22 @@ import UIKit
 import Reusable
 protocol TableViewDelegate: AnyObject{
     func didTapButton(cell:UITableViewCell, selected: Bool?)
+    func addButtonTapped(cell:UITableViewCell)
+    func deleteButtonTapped(cell:UITableViewCell)
+    func editButtonTapped(cell:UITableViewCell)
 }
-
+extension TableViewDelegate{
+    func didTapButton(cell:UITableViewCell, selected: Bool?){
+        
+    }
+    func addButtonTapped(cell:UITableViewCell){
+        
+    }
+    func deleteButtonTapped(cell:UITableViewCell){
+        
+    }
+    func editButtonTapped(cell:UITableViewCell){}
+}
 class TransportAvailabilityCell: UITableViewCell,NibReusable {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var vanType: UILabel!

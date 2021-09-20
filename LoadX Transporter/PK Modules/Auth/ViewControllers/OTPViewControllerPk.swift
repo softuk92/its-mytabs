@@ -17,8 +17,10 @@ import GooglePlaces
 import SKPhotoBrowser
 import MobileCoreServices
 import OTPFieldView
-
-class OTPViewControllerPk: UIViewController, UINavigationControllerDelegate {
+import Reusable
+class OTPViewControllerPk: UIViewController, UINavigationControllerDelegate,StoryboardSceneBased {
+    static var sceneStoryboard: UIStoryboard = R.storyboard.auth()
+    
     
     @IBOutlet weak var sentToNumber: UILabel!
     @IBOutlet weak var otpTextFieldView: OTPFieldView!

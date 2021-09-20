@@ -49,7 +49,14 @@ class TransporterPublicProfileViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
-        getProfileData()
+//        let id = transporterID ?? user_id
+        if let id = transporterID{
+            getProfileData(id: id)
+        }
+        else if let id = user_id{
+            getProfileData(id: id)
+        }
+        
     }
     
     func configureView() {
@@ -65,10 +72,10 @@ class TransporterPublicProfileViewController: UIViewController {
         tableView.register(cellType: ReviewsCell.self)
     }
     
-    func getProfileData() {
-        guard let userId = user_id else { return }
+    func getProfileData(id: String) {
+       
         SVProgressHUD.showInfo(withStatus: "Getting details...")
-        APIManager.apiPost(serviceName: "api/transporterPublicProfile", parameters: ["user_id" : userId]) { (data, json, error) in
+        APIManager.apiPost(serviceName: "api/transporterPublicProfile", parameters: ["user_id" : id]) { (data, json, error) in
             SVProgressHUD.dismiss()
             guard error == nil, let data = data else {
                 showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self); return }
