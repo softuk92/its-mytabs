@@ -54,6 +54,9 @@ class JobsInProgressCell: UITableViewCell {
             loadxShareView.isHidden = false
             jobPriceView.isHidden = true
             pickupTimeView.isHidden = true
+            if user_type == "transportation_company" {
+                
+            }
         } else {
             receivedAmountView.isHidden = true
             transporterShareView.isHidden = true

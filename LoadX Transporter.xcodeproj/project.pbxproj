@@ -50,6 +50,9 @@
 		1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890DC58251B7DD700B964C9 /* FAQSCell.xib */; };
 		1890DC5C251B7EA900B964C9 /* CustomizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890DC5B251B7EA800B964C9 /* CustomizedView.swift */; };
 		18AD1E4A253DBE80008F881A /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD1E49253DBE80008F881A /* ContactUsViewController.swift */; };
+		18B2080526F873110076F3D2 /* AssignDriver.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B2080426F873110076F3D2 /* AssignDriver.storyboard */; };
+		18B2080826F875280076F3D2 /* AssignDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2080726F875280076F3D2 /* AssignDriverViewController.swift */; };
+		18B2080C26F875AA0076F3D2 /* DriversListMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2080B26F875AA0076F3D2 /* DriversListMO.swift */; };
 		18B211E52566CFD20040C001 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B211E42566CFD20040C001 /* HeaderView.xib */; };
 		18B211E82566CFE10040C001 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B211E72566CFE10040C001 /* HeaderView.swift */; };
 		18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60945265D24BC00AC11DF /* JobStatus.swift */; };
@@ -312,6 +315,9 @@
 		1890DC58251B7DD700B964C9 /* FAQSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQSCell.xib; sourceTree = "<group>"; };
 		1890DC5B251B7EA800B964C9 /* CustomizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedView.swift; sourceTree = "<group>"; };
 		18AD1E49253DBE80008F881A /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		18B2080426F873110076F3D2 /* AssignDriver.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AssignDriver.storyboard; sourceTree = "<group>"; };
+		18B2080726F875280076F3D2 /* AssignDriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignDriverViewController.swift; sourceTree = "<group>"; };
+		18B2080B26F875AA0076F3D2 /* DriversListMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversListMO.swift; sourceTree = "<group>"; };
 		18B211E42566CFD20040C001 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		18B211E72566CFE10040C001 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		18B60945265D24BC00AC11DF /* JobStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatus.swift; sourceTree = "<group>"; };
@@ -668,6 +674,23 @@
 			path = "Public Profile";
 			sourceTree = "<group>";
 		};
+		18B2080326F872420076F3D2 /* Assign Drivers */ = {
+			isa = PBXGroup;
+			children = (
+				18B2080426F873110076F3D2 /* AssignDriver.storyboard */,
+				18B2080726F875280076F3D2 /* AssignDriverViewController.swift */,
+			);
+			path = "Assign Drivers";
+			sourceTree = "<group>";
+		};
+		18B2080A26F8759A0076F3D2 /* PK Models */ = {
+			isa = PBXGroup;
+			children = (
+				18B2080B26F875AA0076F3D2 /* DriversListMO.swift */,
+			);
+			path = "PK Models";
+			sourceTree = "<group>";
+		};
 		3DA0DBBD6B0B73C84F222B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +760,7 @@
 		4E3964682695C20F00A67E44 /* PK Modules */ = {
 			isa = PBXGroup;
 			children = (
+				18B2080326F872420076F3D2 /* Assign Drivers */,
 				1803710926F1D6430079DC26 /* Notifications */,
 				4E8F0B3A26E69CC300DD0961 /* Bank Details */,
 				188FC35A26CBC76400271B49 /* Public Profile */,
@@ -966,6 +990,7 @@
 		8D3E610A21F76477004EAB06 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18B2080A26F8759A0076F3D2 /* PK Models */,
 				8D1616B921FF328E0014070E /* VKCheckBox.swift */,
 				8DD0DFCF22048EB2009A7E52 /* ActiveJobsModel.swift */,
 				8DD0DFD92204A387009A7E52 /* JobsInProgressModel.swift */,
@@ -1363,6 +1388,7 @@
 				4E31506926B7105A0001D63E /* SearchJobsCellPk.xib in Resources */,
 				4E3780992579818E002B18C8 /* AlertView.xib in Resources */,
 				8D246FA12228362100E2B290 /* ViewAllQueriesCell.xib in Resources */,
+				18B2080526F873110076F3D2 /* AssignDriver.storyboard in Resources */,
 				4E09083C256AFD3600A6B2BB /* RouteBookedView.xib in Resources */,
 				8D3E610E21F76BC6004EAB06 /* Default-568h@2x.png in Resources */,
 				4EE42B082698F38C00555C23 /* PkAssets.xcassets in Resources */,
@@ -1503,6 +1529,7 @@
 				8DD0DFE32204AACD009A7E52 /* CompletedJobsModel.swift in Sources */,
 				18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */,
 				BB560F2A246C38F800F1AA23 /* LiveChat_ViewController.swift in Sources */,
+				18B2080826F875280076F3D2 /* AssignDriverViewController.swift in Sources */,
 				8D48C21A2224420700417EF5 /* ShowInvoice.swift in Sources */,
 				4E223D1D23FE7FD100DE4D29 /* CardView.swift in Sources */,
 				BBEE394E24E7E5CC00AC10FF /* jobCancel_ViewController.swift in Sources */,
@@ -1647,6 +1674,7 @@
 				183DDC8026B4326200BDCCF8 /* SuccessVC.swift in Sources */,
 				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,
 				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
+				18B2080C26F875AA0076F3D2 /* DriversListMO.swift in Sources */,
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,
 				8D33199C2211D84F00BCB339 /* UserModel.swift in Sources */,
 				8DC0948926B2A71A00106AC1 /* TransportAvailabilityCell.swift in Sources */,
