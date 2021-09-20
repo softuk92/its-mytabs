@@ -101,7 +101,7 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
             return
         }
 
-        //fetch vehicles from server
+        //fetch banks list from server
         APIManager.apiGet(serviceName: "api/getBankList", parameters: [:]) { [unowned self] (data, json, error) in
             //handle error
             if let error = error {
