@@ -93,6 +93,11 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
             tapGesture()
         }
     
+    @IBAction func showManageTransporter(_ sender: Any) {
+        let vc = ManageTransporterViewController.instantiate()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
    
       
         func tapGesture(){
