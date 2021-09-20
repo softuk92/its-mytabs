@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -976,7 +976,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobNatureCell" rowHeight="65" id="tk1-0V-LDh" customClass="JobNatureCell" customModule="LoadX_Transporter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="335" height="65"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="335" height="65"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tk1-0V-LDh" id="lAW-TA-53v">
                                                             <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
@@ -1087,7 +1087,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobNatureCell" rowHeight="65" id="w8N-dT-A3h" customClass="JobNatureCell" customModule="LoadX_Transporter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="335" height="65"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="335" height="65"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w8N-dT-A3h" id="gJa-Pm-Zk1">
                                                             <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
@@ -1941,26 +1941,6 @@
             <point key="canvasLocation" x="50" y="3221"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="3vI-iL-0ez">
-            <size key="intrinsicContentSize" width="61" height="18"/>
-        </designable>
-        <designable name="SaR-pw-ZID">
-            <size key="intrinsicContentSize" width="102" height="18"/>
-        </designable>
-        <designable name="agR-eK-6df">
-            <size key="intrinsicContentSize" width="72.5" height="18"/>
-        </designable>
-        <designable name="aqc-jl-i7h">
-            <size key="intrinsicContentSize" width="96.5" height="18"/>
-        </designable>
-        <designable name="gZU-1E-xzl">
-            <size key="intrinsicContentSize" width="72.5" height="18"/>
-        </designable>
-        <designable name="zLG-wS-cx1">
-            <size key="intrinsicContentSize" width="90" height="18"/>
-        </designable>
-    </designables>
     <resources>
         <image name="back_arrow" width="16" height="16"/>
         <image name="cross" width="16" height="18"/>
