@@ -25,6 +25,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var feedback_stars: UILabel!
     @IBOutlet weak var availabilityButton: UIButton!
+    @IBOutlet weak var manageDriverView: UIView!
+
 
     
     
@@ -54,14 +56,14 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         imageProfile.isUserInteractionEnabled = true
         imageProfile.makeRounded()
         imageProfile.setRounded()
-//       dashboradUpdateImage()
-         profileDetail()
-      
-      // Make switch be triggered by tapping on any position in the switch
-//        self.lableSwitch.fullSizeTapEnabled = true
-
-      // Set the delegate to inform when the switch was triggered
-//        self.lableSwitch.delegate = self
+        //       dashboradUpdateImage()
+        profileDetail()
+        
+        // Make switch be triggered by tapping on any position in the switch
+        //        self.lableSwitch.fullSizeTapEnabled = true
+        
+        // Set the delegate to inform when the switch was triggered
+        //        self.lableSwitch.delegate = self
         
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
@@ -70,22 +72,27 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
             else {
                 print("Light mode")
             }
-                
-        if UserDefaults.standard.bool(forKey: "dark") == true || UITraitCollection.current.userInterfaceStyle == .dark {
-            self.lableSwitch.switchState.accept(true)
-        } else {
-            self.lableSwitch.switchState.accept(false)
-        }
-    
-        lableSwitch.configureGesture()
-        lableSwitch.switchState.skip(1).subscribe(onNext: { (value) in
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = value ? .dark : .light
-                UserDefaults.standard.set(value, forKey: "dark")
+            
+            if UserDefaults.standard.bool(forKey: "dark") == true || UITraitCollection.current.userInterfaceStyle == .dark {
+                self.lableSwitch.switchState.accept(true)
+            } else {
+                self.lableSwitch.switchState.accept(false)
             }
-        }).disposed(by: disposeBag)
-    }
-        
+            
+            lableSwitch.configureGesture()
+            lableSwitch.switchState.skip(1).subscribe(onNext: { (value) in
+                UIApplication.shared.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = value ? .dark : .light
+                    UserDefaults.standard.set(value, forKey: "dark")
+                }
+            }).disposed(by: disposeBag)
+        }
+        if user_type == "transportation_company"{
+            self.manageDriverView.isHidden = false
+        }
+        else{
+            self.manageDriverView.isHidden = true
+        }
     }
     
         @IBAction func userProfileBtn(_ sender: Any) {
