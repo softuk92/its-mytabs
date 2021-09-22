@@ -97,7 +97,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         
         var input = [MultipartData]()
         if let receiptimageData = receiptImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: receiptimageData, paramName: " receipt_prof_img", fileName: receiptImg.description))
+            input.append(MultipartData.init(data: receiptimageData, paramName: "receipt_prof_img", fileName: receiptImg.description))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/sendPaymentRequestData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
