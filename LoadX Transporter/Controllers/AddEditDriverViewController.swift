@@ -81,7 +81,7 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         
         var title = ""
         if let driver = driver {
-             title = "Edit Transporter"
+             title = "Submit"
             self.setDriver(detail: driver)
             self.fetchTransporterData(model: driver)
             
@@ -212,11 +212,14 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         self.phone_no.text = detail.userPhone
         self.van_type.text = detail.vanType
         self.vehicle_reg_no.text = detail.truckRegestration
-        
+        let cnicFront = main_URL+"public/assets/documents/"+detail.cnicFront
+        let cnicBack = main_URL+"public/assets/documents/"+detail.cnicBack
+        cnicFrontimage.sd_setImage(with: URL(string: cnicFront), placeholderImage: R.image.signUp_image_upload(), options: .continueInBackground, completed: nil)
+        cnicBackimage.sd_setImage(with: URL(string: cnicBack), placeholderImage: R.image.signUp_image_upload(), options: .continueInBackground, completed: nil)
     }
     
     func setDriver(detail: ManageDriver)  {
-        self.fullName.text = detail.userName
+        self.fullName.text = detail.userName.capitalized
         self.email_address.text = detail.userEmail
         self.phone_no.text = detail.userPhone
         self.van_type.text = detail.vanType

@@ -103,7 +103,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.estimatedRowHeight = 370
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: CGFloat(HEADER_HEIGHT))
         
         tableView.register(UINib(nibName: "JobsInProgressCell", bundle: nil) , forCellReuseIdentifier: "jobsInProgress")
@@ -180,8 +181,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func callAPIs() {
         getRoutes()
         checkRouteAccess()
-        
-        getBookedJobs(url: "api/transporterInprogresJobs") {
+        let url = (user_type == "transportation_company") ? "api/transportationCompBookedJobsList" : "api/transporterInprogresJobs"
+        getBookedJobs(url: url) {
             if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
                 if isLoadxDrive == "0" {
                     self.searchJobsBtnFunc()
@@ -276,7 +277,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
         let bookedJobs_URL = main_URL+url
-        let parameters : Parameters = ["user_id" : user_id!]
+        let parameters : Parameters = (user_type == "transportation_company") ? ["trans_comp_id" : user_id!] : ["user_id" : user_id!]
         Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON { [weak self]
             response in
             guard let self = self else { return }
@@ -298,7 +299,11 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let data = response.data
                     if error == nil {
                         do {
+                            if user_type == "transportation_transportation" {
+                                
+                            } else {
                             self.jobsInProgressModel = try JSONDecoder().decode([JobsInProgressModel].self, from: data ?? Data())
+                            }
                             self.searchCount = "(\(self.jobsInProgressModel.count))"
                             self.book_job_lbl.text = "(\(self.jobsInProgressModel.count))"
                             SVProgressHUD.dismiss()
@@ -339,7 +344,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView == routesTableView {
             return 326
         }
-        return 345
+        return UITableView.automaticDimension
     }
     
     //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -389,37 +394,37 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
         cell.backgroundColor = nil
-        
+        cell.parentViewController = self
         let jobsInProgressRow = jobsInProgressModel[indexPath.row]
         
-        if jobsInProgressRow.is_job_started == nil || jobsInProgressRow.is_job_started == "0" {
+        if jobsInProgressRow.isJobStarted == nil || jobsInProgressRow.isJobStarted == "0" {
             cell.startJobBtn.isHidden = false
         } else {
             cell.startJobBtn.isHidden = true
         }
         
         //setJobBookedFor Status
-        cell.setJobBookedForView(workingHours: jobsInProgressRow.working_hours, category: jobsInProgressRow.add_type)
+        cell.setJobBookedForView(workingHours: jobsInProgressRow.workingHours, category: jobsInProgressRow.addType)
         cell.setData(model: jobsInProgressRow)
         
-        let movingItem = jobsInProgressRow.moving_item
+        let movingItem = jobsInProgressRow.movingItem
         cell.moving_item.text = movingItem.capitalized
-        cell.jobId.text = "LX00"+(jobsInProgressRow.del_id)
-        cell.pick_up.text = "\(jobsInProgressRow.pu_house_no ?? "") \(jobsInProgressRow.pick_up)"
-        cell.drop_off.text = "\(jobsInProgressRow.do_house_no ?? "") \(jobsInProgressRow.drop_off)"
+        cell.jobId.text = "LX00"+(jobsInProgressRow.delID)
+        cell.pick_up.text = "\(jobsInProgressRow.puHouseNo ?? "") \(jobsInProgressRow.pickUp)"
+        cell.drop_off.text = "\(jobsInProgressRow.doHouseNo ?? "") \(jobsInProgressRow.dropOff)"
         
         cell.date.text = convertDateFormatter(jobsInProgressRow.date)
-        cell.pickupTime.text = jobsInProgressRow.timeslot?.uppercased()
+        cell.pickupTime.text = jobsInProgressRow.timeSlot?.uppercased()
         
         if AppUtility.shared.country == .Pakistan {
-            let payment_type = jobsInProgressRow.job_payment_type
+            let payment_type = jobsInProgressRow.jobPaymentType
             if  payment_type == "full" {
                 cell.payment_method_lbl.text = "Account Job"
             }else{
                 cell.payment_method_lbl.text = "Cash Job"
             }
         } else {
-        let payment_type = jobsInProgressRow.payment_type
+        let payment_type = jobsInProgressRow.paymentType
         if  payment_type == "full" {
             cell.payment_method_lbl.text = "Account Job"
         }else{
@@ -427,7 +432,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         }
         
-        let is_companyJob = jobsInProgressRow.is_company_job
+        let is_companyJob = jobsInProgressRow.isCompanyJob
         
         if is_companyJob == "1" {
             cell.businessPatti.isHidden = false
@@ -436,14 +441,14 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.businessPatti.isHidden = true
             cell.widthBusiness.constant = 0
         }
-        cell.businessCharges.isHidden = AppUtility.shared.country == .Pakistan ? true : (jobsInProgressRow.is_cz == "0")
+        cell.businessCharges.isHidden = AppUtility.shared.country == .Pakistan ? true : (jobsInProgressRow.isCz == "0")
         
-        let bookedJob_id = jobsInProgressRow.is_booked_job
+        let bookedJob_id = jobsInProgressRow.isBookedJob
         
         if bookedJob_id == "1" {
             cell.cancelJobBtn.isHidden = false
             
-            let currentBid = jobsInProgressRow.current_bid ?? "0"
+            let currentBid = jobsInProgressRow.currentBid ?? "0"
             let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
             let doubleValue = Double(x)
             cell.jobPrice.text = "£ "+"\(getDoubleValue(currentBid: Double(currentBid) ?? 0.0, doubleValue: doubleValue ?? 0.0))"
@@ -451,28 +456,18 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.cancelJobBtn.isHidden = true
         }
         
-//        if !(AppUtility.shared.country == .Pakistan) {
-//        let currentBid = jobsInProgressRow.current_bid ?? "0"
-//        let x =  UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25"
-//        let doubleValue = Double(x)
-//        let resultInitialPrice = Double(currentBid)! * Double(doubleValue!/100)
-//        self.roundedPrice = Double(resultInitialPrice).rounded(toPlaces: 2)
-//        }
-        
         cell.startJob = {[weak self] (selectedCell) in
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
-            //            self.goToJobDetail(indexPath: indexPath)
-            
-            //            self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
-            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].del_id, indexPath: indexPath)
+            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
         }
         
         cell.cancelJob = {[weak self] (selectedCell) in
             guard let self = self else { return }
             let selectedIndex = self.tableView.indexPath(for: selectedCell)
             self.tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
-            jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-            self.presentCancelJobView()
+            jb_id = self.jobsInProgressModel[indexPath.row].jbID
+            self.showCancelJobAlertView()
+//            self.presentCancelJobView()
         }
         
         return cell
@@ -515,13 +510,40 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.view.addSubview(aView)
     }
     
-    func showCompleteAlertView() {
-        //            jb_id = self.jobsInProgressModel[indexPath.row].jb_id
-        //            self.contact_person = self.jobsInProgressModel[indexPath.row].contact_person
-        //            self.contact_no = self.jobsInProgressModel[indexPath.row].contact_phone
-        //            self.refference_no = "LOADX"+String(self.year)+"J"+self.jobsInProgressModel[indexPath.row].del_id
-        //            self.showCompleteAlertView()
+    func showCancelJobAlertView() {
+ 
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.question.text = "Are you sure you want to cancel this job?"
+        aView.ensure.text = ""
+        aView.sendPaymentLinkHeight.constant = 0
+        aView.sendPaymentLink.isHidden = true
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        aView.imageView.image = UIImage(named: "popup_icon")
         
+        aView.yes.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            if self.isCancel {
+                let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
+                vc.jb_id = jb_id
+                vc.isCancel = self.isCancel
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = self.sb.instantiateViewController(withIdentifier: "jobCancel_ViewController") as! jobCancel_ViewController
+                vc.lr_id = self.lr_id
+                vc.isCancel = self.isCancel
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }).disposed(by: disposeBag)
+        
+        aView.no.rx.tap.subscribe(onNext: { (_) in
+            aView.removeFromSuperview()
+        }).disposed(by: disposeBag)
+        
+        self.view.addSubview(aView)
+    }
+    
+    func showCompleteAlertView() {
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         aView.question.text = "Has the job been completed?"
         aView.ensure.text = "Before continuing ensure you submit the following: \n\n- Name & Signature of Recipient \n- Delivery Image Proof                      "
@@ -563,19 +585,19 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let jobData = self.jobsInProgressModel[indexPath.row]
             
-            if jobData.is_job_started == "1" {
-            self.checkJobStatus(delId: jobData.del_id, indexPath: indexPath)
+            if jobData.isJobStarted == "1" {
+            self.checkJobStatus(delId: jobData.delID, indexPath: indexPath)
             } else {
                         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
-                let price = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(jobData.transporter_share ?? "")?.withCommas() ?? "0")) : ("£ "+"\(getDoubleValue(currentBid: Double(jobData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
+                let price = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(jobData.transporterShare ?? "")?.withCommas() ?? "0")) : ("£ "+"\(getDoubleValue(currentBid: Double(jobData.currentBid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
           
-                        del_id = self.jobsInProgressModel[indexPath.row].del_id
-            if let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController {
+                        del_id = self.jobsInProgressModel[indexPath.row].delID
+                    if let vc = self.sb.instantiateViewController(withIdentifier: "JobDetial_ViewController") as? JobDetial_ViewController {
                            vc.bookedJobPrice = price
                         vc.showHouseNumber = true
             
-                        vc.pickupAdd = "\(jobData.pu_house_no ?? "") \(jobData.pick_up)"
-                        vc.dropoffAdd = "\(jobData.do_house_no ?? "") \(jobData.drop_off)"
+                        vc.pickupAdd = "\(jobData.puHouseNo ?? "") \(jobData.pickUp)"
+                        vc.dropoffAdd = "\(jobData.doHouseNo ?? "") \(jobData.dropOff)"
                         self.navigationController?.pushViewController(vc, animated: true)
         }
             }
@@ -677,28 +699,28 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
         let jobDetailVC = JobPickupDropoffViewController.instantiate()
         let rowData = self.jobsInProgressModel[indexPath.row]
-        let pickup = "\(rowData.pu_house_no ?? "") \(rowData.pick_up)"
-        let dropoff = "\(rowData.do_house_no ?? "") \(rowData.drop_off)"
+        let pickup = "\(rowData.puHouseNo ?? "") \(rowData.pickUp)"
+        let dropoff = "\(rowData.doHouseNo ?? "") \(rowData.dropOff)"
         
         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
-        let jobPrice = AppUtility.shared.country == .Pakistan ? AppUtility.shared.currencySymbol+((rowData.price ?? 0).withCommas()) : ("£ "+"\(getDoubleValue(currentBid: Double(rowData.current_bid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
-        let paymentType = AppUtility.shared.country == .Pakistan ? rowData.job_payment_type : rowData.payment_type
+        let jobPrice = AppUtility.shared.country == .Pakistan ? AppUtility.shared.currencySymbol+((Int(rowData.price ?? "") ?? 0).withCommas()) : ("£ "+"\(getDoubleValue(currentBid: Double(rowData.currentBid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
+        let paymentType = AppUtility.shared.country == .Pakistan ? rowData.jobPaymentType : rowData.paymentType
         let receiverName : String?
         let receiverNumber : String?
         
-        if let receiverN = rowData.receiver_name, receiverN != "" {
+        if let receiverN = rowData.receiverName, receiverN != "" {
             receiverName = receiverN.capitalized
         } else {
-            receiverName = rowData.contact_person.capitalized
+            receiverName = rowData.contactPhone.capitalized
         }
         
-        if let receiverNum = rowData.receiver_phone, receiverNum != "" {
+        if let receiverNum = rowData.receiverPhone, receiverNum != "" {
             receiverNumber = receiverNum
         } else {
-            receiverNumber = rowData.contact_phone
+            receiverNumber = rowData.contactPhone
         }
         
-        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contact_person.capitalized, customerNumber: rowData.contact_phone, receiverName: receiverName ?? "", receiverNumber: receiverNumber ?? "", addType: rowData.add_type, delId: rowData.del_id, jbId: rowData.jb_id, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
+        jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contactPerson.capitalized, customerNumber: rowData.contactPhone, receiverName: receiverName ?? "", receiverNumber: receiverNumber ?? "", addType: rowData.addType, delId: rowData.delID, jbId: rowData.jbID, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
     

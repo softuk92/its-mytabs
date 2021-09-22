@@ -24,7 +24,6 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var feedback_stars: UILabel!
-    @IBOutlet weak var availabilityButton: UIButton!
     @IBOutlet weak var manageDriverView: UIView!
 
 

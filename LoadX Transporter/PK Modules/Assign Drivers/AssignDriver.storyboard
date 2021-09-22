@@ -76,9 +76,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-Mg-3f5" userLabel="Show List">
                                         <rect key="frame" x="8" y="24" width="317" height="35"/>
-                                        <state key="normal" image="back_arrow"/>
                                         <connections>
-                                            <action selector="back_action:" destination="Sqw-3V-gJj" eventType="touchUpInside" id="htn-ub-FXk"/>
                                             <action selector="btnShowPop:" destination="Sqw-3V-gJj" eventType="touchUpInside" id="5Zg-4s-puC"/>
                                         </connections>
                                     </button>
@@ -132,6 +130,9 @@
                                         <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="assignDriver:" destination="Sqw-3V-gJj" eventType="touchUpInside" id="fJo-UL-IqX"/>
+                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-zg-Rfe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -141,7 +142,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7z-DC-NNV">
-                                        <rect key="frame" x="20" y="70" width="374" height="756"/>
+                                        <rect key="frame" x="20" y="250" width="374" height="396"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Driver to Assign Job" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWA-my-7cv">
                                                 <rect key="frame" x="64" y="15" width="246" height="19"/>
@@ -163,7 +164,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D1U-28-nv9">
-                                                <rect key="frame" x="0.0" y="44" width="374" height="712"/>
+                                                <rect key="frame" x="0.0" y="44" width="374" height="352"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobNatureCell" rowHeight="65" id="WQY-nG-uva" customClass="JobNatureCell" customModule="LoadX_Transporter" customModuleProvider="target">
@@ -238,7 +239,7 @@
                                     <constraint firstItem="xaE-OO-JzP" firstAttribute="top" secondItem="6BT-zg-Rfe" secondAttribute="top" id="GOO-7K-Gmh"/>
                                     <constraint firstAttribute="trailing" secondItem="xaE-OO-JzP" secondAttribute="trailing" id="HwZ-mX-J4n"/>
                                     <constraint firstAttribute="trailing" secondItem="t7z-DC-NNV" secondAttribute="trailing" constant="20" id="Xlh-2C-cWT"/>
-                                    <constraint firstItem="t7z-DC-NNV" firstAttribute="top" secondItem="6BT-zg-Rfe" secondAttribute="top" constant="70" id="bw5-B9-tLP"/>
+                                    <constraint firstItem="t7z-DC-NNV" firstAttribute="top" secondItem="6BT-zg-Rfe" secondAttribute="top" constant="250" id="bw5-B9-tLP"/>
                                     <constraint firstItem="t7z-DC-NNV" firstAttribute="centerX" secondItem="6BT-zg-Rfe" secondAttribute="centerX" id="unq-R8-bDQ"/>
                                     <constraint firstAttribute="bottom" secondItem="xaE-OO-JzP" secondAttribute="bottom" id="wPD-FC-CMg"/>
                                     <constraint firstItem="t7z-DC-NNV" firstAttribute="leading" secondItem="6BT-zg-Rfe" secondAttribute="leading" constant="20" id="xUK-91-fH4"/>

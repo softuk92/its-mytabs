@@ -32,7 +32,7 @@ class ManageTransporterViewCell: UITableViewCell,NibReusable {
 
     }
     func setData(data: ManageDriver) {
-        titleLabel.text = data.userName
+        titleLabel.text = data.userName.capitalized
         status.text = data.status
         mobileNumber.text = data.userPhone
         vehical.text = data.vanType

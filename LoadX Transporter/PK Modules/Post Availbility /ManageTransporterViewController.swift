@@ -12,9 +12,11 @@ import Alamofire
 import Reusable
 class ManageTransporterViewController: UIViewController,StoryboardSceneBased {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noTransporterFound: UIView!
     static var sceneStoryboard: UIStoryboard = UIStoryboard(name: "ManageTransporter", bundle: nil)
     
     var dataSource = [ManageDriver]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
@@ -56,9 +58,10 @@ class ManageTransporterViewController: UIViewController,StoryboardSceneBased {
 extension ManageTransporterViewController:UITableViewDelegate,UITableViewDataSource,TableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataSource.count == 0{
-            tableView.setEmptyMessage("No Data Found")
+            noTransporterFound.isHidden = false
         }
         else{
+            noTransporterFound.isHidden = true
             tableView.restore()
         }
         return dataSource.count
@@ -94,7 +97,7 @@ extension ManageTransporterViewController:UITableViewDelegate,UITableViewDataSou
     func deleteButtonTapped(cell: UITableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let model =  dataSource[indexPath.row]
-        showAlertView(question: "Are you sure you want to delete this record?", ensure: "", model: model)
+        showAlertView(question: "Are you sure you want to delete this transporter?", ensure: "", model: model)
     }
     
     func showAlertView(question: String, ensure: String, model: ManageDriver) {

@@ -11,6 +11,8 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
+public let TransportationCompany = "transportation_company"
+
 class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var phoneNumber: UITextField!

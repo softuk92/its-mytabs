@@ -16,10 +16,14 @@ class AssignDriverViewController: UIViewController {
     @IBOutlet weak var transporterName: UITextField!
     
     var list : [DriversListMO] = [] {
+        
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var selectedDriver: DriversListMO?
+    var jobID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +34,12 @@ class AssignDriverViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         
         innerDriversListView.layer.cornerRadius = 10
-        
+        getDriversList()
     }
     
     func getDriversList() {
         guard let tID = user_id else { return }
-        APIManager.apiPost(serviceName: "api/getAllLatesNotificatonList", parameters: ["transportation_id" : tID]) { [weak self] (data, json, error) in
+        APIManager.apiPost(serviceName: "api/approvedDriversList", parameters: ["transportation_id" : tID]) { [weak self] (data, json, error) in
             guard let self = self else { return }
             if error != nil {
                 showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
@@ -61,6 +65,24 @@ class AssignDriverViewController: UIViewController {
         
     @IBAction func back_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
+    }
+    
+    @IBAction func assignDriver(_ sender: Any) {
+        assignDriverFunc()
+    }
+    
+    func assignDriverFunc() {
+        guard let driverID = selectedDriver?.userID, let jobID = jobID else { return }
+        APIManager.apiPost(serviceName: "api/assignTransporter", parameters: ["driver_id" : driverID, "job_id" : jobID]) { [weak self] (data, json, error) in
+            guard let self = self else { return }
+            if error != nil {
+                showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+
+            
+        }
     }
     
 }
@@ -90,6 +112,7 @@ extension AssignDriverViewController: UITableViewDataSource , UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedValue = list[indexPath.row].userName.capitalized
         transporterName.text = selectedValue
+        selectedDriver = list[indexPath.row]
         driversListView.isHidden = true
     }
     

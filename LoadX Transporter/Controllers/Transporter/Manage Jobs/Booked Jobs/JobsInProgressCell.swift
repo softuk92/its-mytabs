@@ -37,8 +37,20 @@ class JobsInProgressCell: UITableViewCell {
     @IBOutlet weak var jobPriceView: UIStackView!
     @IBOutlet weak var pickupTimeView: UIStackView!
     
+    @IBOutlet weak var changeDriverRightView: UIView!
+    @IBOutlet weak var changeDriverBtn: UIButton!
+    @IBOutlet weak var changeDriverView: UIView!
+    @IBOutlet weak var startJobView: UIView!
+    
+    @IBOutlet weak var transporterName: UILabel!
+    @IBOutlet weak var transporterPhone: UILabel!
+    @IBOutlet weak var jobPriceTitle: UILabel!
+    @IBOutlet weak var deleteBtn: UIButton!
+    
     var startJob: ((JobsInProgressCell) -> Void)?
     var cancelJob: ((JobsInProgressCell) -> Void)?
+    weak var parentViewController: UIViewController!
+    var jobID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,9 +66,6 @@ class JobsInProgressCell: UITableViewCell {
             loadxShareView.isHidden = false
             jobPriceView.isHidden = true
             pickupTimeView.isHidden = true
-            if user_type == "transportation_company" {
-                
-            }
         } else {
             receivedAmountView.isHidden = true
             transporterShareView.isHidden = true
@@ -67,9 +76,40 @@ class JobsInProgressCell: UITableViewCell {
     }
     
     func setData(model: JobsInProgressModel) {
-        receivedAmount.text = AppUtility.shared.currencySymbol+(model.price?.withCommas() ?? "0")
-        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporter_share ?? "")?.withCommas() ?? "0")
-        loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
+        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.price ?? "")?.withCommas() ?? "0")
+        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+        loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadxShare ?? "")?.withCommas() ?? "0")
+        transporterName.text = model.driverName?.capitalized
+        jobID = model.jbID
+        jobPriceTitle.text = model.isCod == "1" ? "Collect Cash" : "Job Price"
+        if user_type == TransportationCompany {
+            deleteBtn.isHidden = false
+            if model.driverName?.lowercased() == user_name?.lowercased() {
+                if model.isJobStarted != "1" {
+                    changeDriverView.isHidden = true
+                    startJobView.isHidden = false
+                    cancelJobBtn.setTitle("Assign Driver", for: .normal)
+                } else {
+                    changeDriverView.isHidden = false
+                    startJobView.isHidden = true
+                }
+            } else {
+                if model.isJobStarted != "1" {
+                    changeDriverView.isHidden = true
+                    startJobView.isHidden = false
+                    cancelJobBtn.setTitle("Assign Driver", for: .normal)
+                } else {
+                changeDriverView.isHidden = false
+                startJobView.isHidden = true
+                }
+            }
+            
+        } else {
+            deleteBtn.isHidden = true
+            changeDriverView.isHidden = true
+            startJobView.isHidden = false
+        }
+        
     }
     
     func setJobBookedForView(workingHours: String?, category: String) {
@@ -94,10 +134,16 @@ class JobsInProgressCell: UITableViewCell {
         startJobBtn.layer.cornerRadius = 10
         startJobBtn.clipsToBounds = true
         startJobBtn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+        changeDriverBtn.layer.cornerRadius = 10
+        changeDriverBtn.clipsToBounds = true
+        changeDriverBtn.layer.maskedCorners = [ .layerMaxXMaxYCorner]
                
         cancelJobBtn.layer.cornerRadius = 10
         cancelJobBtn.clipsToBounds = true
         cancelJobBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
+        changeDriverRightView.layer.cornerRadius = 10
+        changeDriverRightView.clipsToBounds = true
+        changeDriverRightView.layer.maskedCorners = [.layerMinXMaxYCorner]
     }
     
     @IBAction func startJobAct(_ sender: Any) {
@@ -105,7 +151,25 @@ class JobsInProgressCell: UITableViewCell {
     }
 
     @IBAction func cancelJobAct(_ sender: Any) {
+        if cancelJobBtn.titleLabel?.text == "Assign Driver" {
+            goToAssignDriver()
+            return
+        }
         cancelJob?(self)
     }
     
+    @IBAction func deleteJob(_ sender: Any) {
+        cancelJob?(self)
+    }
+    
+    @IBAction func changeDriver(_ sender: Any) {
+        goToAssignDriver()
+    }
+    
+    func goToAssignDriver() {
+        if let vc = UIStoryboard.init(name: "AssignDriver", bundle: Bundle.main).instantiateViewController(withIdentifier: "AssignDriverViewController") as? AssignDriverViewController {
+            vc.jobID = jobID
+            parentViewController?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
