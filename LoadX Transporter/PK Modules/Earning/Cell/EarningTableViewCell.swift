@@ -43,7 +43,7 @@ class EarningTableViewCell: UITableViewCell, NibReusable {
 
 		let formattedPrice = data.price.withCommas()
         self.loadXShare.text = AppUtility.shared.currencySymbol+formattedPrice
-       // self.jobId.text = data.jobID
+        self.jobId.text = data.delID
 		switch data.jType {
 		case .loadXShare:
 			self.jobType.text = "LoadX Share"

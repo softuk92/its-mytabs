@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AssignDriverViewController: UIViewController {
 
@@ -73,8 +74,10 @@ class AssignDriverViewController: UIViewController {
     
     func assignDriverFunc() {
         guard let driverID = selectedDriver?.userID, let jobID = jobID else { return }
+        SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/assignTransporter", parameters: ["driver_id" : driverID, "job_id" : jobID]) { [weak self] (data, json, error) in
             guard let self = self else { return }
+            SVProgressHUD.dismiss()
             if error != nil {
                 showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
             } else {

@@ -80,6 +80,7 @@ class JobsInProgressCell: UITableViewCell {
         transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadxShare ?? "")?.withCommas() ?? "0")
         transporterName.text = model.driverName?.capitalized
+        transporterPhone.text = model.driverPhone
         jobID = model.jbID
         jobPriceTitle.text = model.isCod == "1" ? "Collect Cash" : "Job Price"
         if user_type == TransportationCompany {
@@ -94,14 +95,14 @@ class JobsInProgressCell: UITableViewCell {
                     startJobView.isHidden = true
                 }
             } else {
-                if model.isJobStarted != "1" {
-                    changeDriverView.isHidden = true
-                    startJobView.isHidden = false
-                    cancelJobBtn.setTitle("Assign Driver", for: .normal)
-                } else {
+//                if model.isJobStarted != "1" {
+//                    changeDriverView.isHidden = true
+//                    startJobView.isHidden = false
+//                    cancelJobBtn.setTitle("Assign Driver", for: .normal)
+//                } else {
                 changeDriverView.isHidden = false
                 startJobView.isHidden = true
-                }
+//                }
             }
             
         } else {

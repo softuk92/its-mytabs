@@ -145,8 +145,9 @@ class ShowInvoice: UIViewController {
     func showInvoice() {
         SVProgressHUD.show(withStatus: "Getting details...")
         if payment_id != nil && user_id != nil {
-            let showInvoice_URL = main_URL+"api/trsnsporterViewInvoiceDetail"
-            let parameters : Parameters = ["payment_id" : payment_id!, "user_id" : user_id!]
+            let endPointUrl = user_type == TransportationCompany ? "api/invoiceDetailTC" : "api/trsnsporterViewInvoiceDetail"
+            let showInvoice_URL = main_URL+endPointUrl
+            let parameters : Parameters = user_type == TransportationCompany ? ["payment_id" : payment_id!, "transportation_id" : user_id!] : ["payment_id" : payment_id!, "user_id" : user_id!]
             if Connectivity.isConnectedToInternet() {
                 Alamofire.request(showInvoice_URL, method : .post, parameters : parameters).responseJSON {
                     response in

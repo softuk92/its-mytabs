@@ -58,47 +58,67 @@ class CompletedJobsCell: UITableViewCell {
     func setupViews(paymentType: String, dueAmountStatus: String, lxShareStatus: String, isCOD: Bool) {
         if AppUtility.shared.country == .Pakistan {
             jobPriceView.isHidden = true
-            if paymentType.lowercased() == "full" {
-                if (dueAmountStatus.lowercased() == "pending" || dueAmountStatus.lowercased() == "paid") && !isCOD {
-                    loadxShareView.isHidden = true
-                    transporterShareView.isHidden = false
-                    receivedAmountView.isHidden = true
-                    loadxShareStatus.isHidden = true
-                    transporterShareTitle.text = "Job Price"
-                }
-                if (dueAmountStatus.lowercased() == "pending" || dueAmountStatus.lowercased() == "paid") && isCOD {
-                    receivedAmountView.isHidden = false
-                    transporterShareView.isHidden = false
-                    loadxShareView.isHidden = false
-                    loadxShareStatus.isHidden = false
-                    loadxShareStatus.text = lxShareStatus
-                }
-            }
-            if paymentType.lowercased() == "initial" {
-                    loadxShareView.isHidden = true
-                    transporterShareView.isHidden = false
-                    receivedAmountView.isHidden = true
-                    loadxShareStatus.isHidden = true
-                    transporterShareTitle.text = "Job Price"
-            }
+            if paymentType.lowercased() == "full" && isCOD {
+                receivedAmountView.isHidden = false
+                transporterShareView.isHidden = false
+                loadxShareView.isHidden = false
+                loadxShareStatus.isHidden = false
+                loadxShareStatus.text = lxShareStatus
+            } else if paymentType.lowercased() == "initial" {
+                loadxShareView.isHidden = true
+                transporterShareView.isHidden = false
+                receivedAmountView.isHidden = true
+                loadxShareStatus.isHidden = true
+                transporterShareTitle.text = "Job Price"
         } else {
             receivedAmountView.isHidden = true
             transporterShareView.isHidden = true
             loadxShareView.isHidden = true
             jobPriceView.isHidden = false
         }
+        }
+//            if paymentType.lowercased() == "full" {
+//                if (dueAmountStatus.lowercased() == "pending" || dueAmountStatus.lowercased() == "paid") && !isCOD {
+//                    loadxShareView.isHidden = true
+//                    transporterShareView.isHidden = false
+//                    receivedAmountView.isHidden = true
+//                    loadxShareStatus.isHidden = true
+//                    transporterShareTitle.text = "Job Price"
+//                }
+//                if (dueAmountStatus.lowercased() == "pending" || dueAmountStatus.lowercased() == "paid") && isCOD {
+//                    receivedAmountView.isHidden = false
+//                    transporterShareView.isHidden = false
+//                    loadxShareView.isHidden = false
+//                    loadxShareStatus.isHidden = false
+//                    loadxShareStatus.text = lxShareStatus
+//                }
+//            }
+//            if paymentType.lowercased() == "initial" {
+//                    loadxShareView.isHidden = true
+//                    transporterShareView.isHidden = false
+//                    receivedAmountView.isHidden = true
+//                    loadxShareStatus.isHidden = true
+//                    transporterShareTitle.text = "Job Price"
+//            }
+//        } else {
+//            receivedAmountView.isHidden = true
+//            transporterShareView.isHidden = true
+//            loadxShareView.isHidden = true
+//            jobPriceView.isHidden = false
+//        }
     }
 
     func setData(model: CompletedJobsModel) {
-        receivedAmount.text = AppUtility.shared.currencySymbol+(model.price?.withCommas() ?? "0")
+        let price = model.job_price == nil ? model.price : Int(model.job_price ?? "")
+        receivedAmount.text = AppUtility.shared.currencySymbol+(price?.withCommas() ?? "0")
         transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporter_share)?.withCommas() ?? "0")
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
-        contactPerson.text = model.contact_person.capitalized
-        setupViews(paymentType: model.payment_type, dueAmountStatus: model.due_amount_status, lxShareStatus: (model.loadx_share_status ?? ""), isCOD: model.is_cod == "1")
+        contactPerson.text = model.customer_name != nil ? model.customer_name?.capitalized : model.contact_person?.capitalized
+        setupViews(paymentType: model.payment_type, dueAmountStatus: model.amount_status, lxShareStatus: (model.loadx_share_status ?? ""), isCOD: model.is_cod == "1")
         jobId.text = "LX00\(model.del_id)"
     }
 
-    func setJobBookedForView(workingHours: String?, category: String) {
+    func setJobBookedForView(workingHours: String?, category: String?) {
         if category == "Man & Van" || category == "Man and Van" {
         if let workingHours = workingHours, workingHours != "" && workingHours != "N/A" {
             if workingHours == "0" {

@@ -92,15 +92,15 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     func uploadReceipt() {
         guard let receiptImg = receiptImage.image, let userId = user_id else { return }
 //        let jobIds = dataSource?.jobLists.map{$0.jobIDS} ?? []
-        let parameters = ["transporter_id" : userId, "send_req" : "1", "description" : self.messageTV.text!]
+        let parameters = user_type == TransportationCompany ? ["transportation_id" : userId, "send_req" : "1", "description" : self.messageTV.text!] : ["transporter_id" : userId, "send_req" : "1", "description" : self.messageTV.text!]
         SVProgressHUD.show()
         
         var input = [MultipartData]()
         if let receiptimageData = receiptImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
             input.append(MultipartData.init(data: receiptimageData, paramName: " receipt_prof_img", fileName: receiptImg.description))
         }
-        
-        APIManager.apiPostMultipart(serviceName: "api/sendPaymentRequestData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
+        let url = user_type == TransportationCompany ? "api/sendPaymentRequestDataForTC" : "api/sendPaymentRequestData"
+        APIManager.apiPostMultipart(serviceName: url, parameters: parameters, multipartImages: input) { (data, json, error, progress) in
             SVProgressHUD.dismiss()
             if error != nil {
                 showAlert(title: "Error", message: error!.localizedDescription, viewController: self)

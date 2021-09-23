@@ -15,31 +15,34 @@ struct CompletedJobsModel: Decodable  {
     let image1: String?
     let image2: String?
     let image3: String?
-    let moving_item: String
+    let moving_item: String //
     let pick_up: String
     let drop_off: String
     let lat_pickup: String
     let long_pickup: String
     let lat_dropoff: String
-    let long_dropoff: String
-    let distance: String
-    let add_type: String
+    let long_dropoff: String //
+    let distance: String?
+    let add_type: String?
     let current_bid: String?
-    let contact_person: String
-    let contact_phone: String
+    let contact_person: String?
+    let contact_phone: String?
+    let customer_name: String?
     let date: String
-    let is_company_job: String
-    let driver_get_job_payment: String
-    let payment_type: String
-    let due_amount_status: String
+    let is_company_job: String?
+    let driver_get_job_payment: String?
+    let payment_type: String //
+    let due_amount_status: String?
     let do_house_no : String?
-    let pu_house_no: String?
-    let transporter_share: String
+    let pu_house_no: String? //
+    let transporter_share: String //
     let working_hours: String?
-    let loadx_share: String?
+    let loadx_share: String? //
     let price: Int?
     let job_payment_type: String?
     let loadx_share_status: String?
     let is_cod: String?
     let amount_status: String
+    let jtype: String?
+    let job_price: String?
 }

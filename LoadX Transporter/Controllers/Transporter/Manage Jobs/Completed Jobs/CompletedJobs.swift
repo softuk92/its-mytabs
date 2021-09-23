@@ -106,8 +106,8 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func callAPIs() {
         getRoutes()
         checkRouteAccess()
-        
-        getCompletedJobs(url: "api/transporterCompletedJobs") {
+        let url = user_type == TransportationCompany ? "api/transportationCompCompletedJobsList" : "api/transporterCompletedJobs"
+        getCompletedJobs(url: url) {
             if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
                 if isLoadxDrive == "0" {
                     self.searchJobsBtnFunc()
@@ -252,7 +252,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         guard user_id != nil else { return self.present(showAlert(title: "Alert", message: "User id is missing"), animated: true, completion: nil)}
         SVProgressHUD.show(withStatus: "Getting details...")
         let activeJobs_URL = main_URL+url
-        let parameters : Parameters = ["user_id" : user_id!]
+        let parameters : Parameters = user_type == TransportationCompany ? ["trans_comp_id": user_id!] : ["user_id" : user_id!]
         Alamofire.request(activeJobs_URL, method : .post, parameters : parameters).responseJSON {
             response in
             if response.result.isSuccess {
@@ -402,62 +402,20 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.setData(model: completedJobsRow)
             cell.setJobBookedForView(workingHours: completedJobsRow.working_hours, category: completedJobsRow.add_type)
             if AppUtility.shared.country == .Pakistan {
-                let payment_type = completedJobsRow.job_payment_type
-                if payment_type != "" {
-                        cell.payment_type_lbl.text = "Account Job"
-                }else{
-                        cell.payment_type_lbl.text = "Cash Job"
-                }
-                let is_companyJob = completedJobsRow.is_company_job
-                
-                if is_companyJob == "1" {
-                    cell.businessPatti.isHidden = false
-                    cell.widthBusiness.constant = 82
-                    if switchCheck == true {
-                        cell.payment_type_lbl.text = "Account Job"
-                    }else{
-                        cell.payment_type_lbl.text = "Account Job"
-                    }
-                } else {
-                    cell.businessPatti.isHidden = true
-                    cell.widthBusiness.constant = 0
-                }
+                cell.payment_type_lbl.text = completedJobsRow.jtype != nil ? completedJobsRow.jtype : completedJobsRow.job_payment_type
             } else {
-            let payment_type = completedJobsRow.payment_type
-            if payment_type != "" {
-                    cell.payment_type_lbl.text = "Account Job"
-            }else{
-                    cell.payment_type_lbl.text = "Cash Job"
+                cell.payment_type_lbl.text = completedJobsRow.payment_type
             }
-            let is_companyJob = completedJobsRow.is_company_job
             
-            if is_companyJob == "1" {
+            if completedJobsRow.is_company_job == "1" {
                 cell.businessPatti.isHidden = false
                 cell.widthBusiness.constant = 82
-                if switchCheck == true {
-                    cell.payment_type_lbl.text = "Account Job"
-                }else{
-                    cell.payment_type_lbl.text = "Account Job"
-                }
             } else {
                 cell.businessPatti.isHidden = true
                 cell.widthBusiness.constant = 0
             }
-            }
             
             let amountStatus = completedJobsRow.amount_status
-            
-            
-            let payment_type2 = completedJobsRow.payment_type
-            if AppUtility.shared.country == .Pakistan {
-                cell.payment_type_lbl.text = completedJobsRow.job_payment_type
-            } else {
-            if payment_type2 == "full"  {
-                cell.payment_type_lbl.text = "Account Job"
-            }else{
-                cell.payment_type_lbl.text = "Cash Job"
-            }
-            }
     
             cell.receivedAmountStatus.text = amountStatus.capitalized
             if amountStatus.lowercased() == "received" {

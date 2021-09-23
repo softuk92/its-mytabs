@@ -80,7 +80,6 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 //        self.title = "Payment History"
         headView.bottomShadow(color: .black)
         headView.layer.cornerRadius = 5
-        getPaymentHistory()
 //        w.backgroundView = UIImageView(image: UIImage(named: "background.png"))
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -94,9 +93,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refresher.addTarget(self, action: #selector(PaymentHistoryController.populate), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
-        if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
-            paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
-        }
+        
         if !(AppUtility.shared.country == .Pakistan) {
             headViewHeight.constant = 0
         }
@@ -112,6 +109,32 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 
 		pendingPaymentHeaderView = PendingPaymentHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 64))
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData(notification:)), name: Notification.Name("refresh"), object: nil)
+        getCounter()
+        getPaymentHistory()
+    }
+    
+    func getCounter() {
+        if user_type == TransportationCompany {
+            APIManager.apiPost(serviceName: "api/TransCompCounter", parameters: ["user_id": user_id!]) { [weak self] (data, json, error) in
+                guard let self = self else { return }
+                if error != nil {
+                    showAlert(title: "Error", message: error?.localizedDescription ?? "", viewController: self)
+                }
+                
+                guard let json = json else { return }
+                let driverEarning = json[0]["Driver_earning"].stringValue
+                UserDefaults.standard.setValue(driverEarning, forKey: "total_earning")
+                
+                if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
+                    self.paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
+                }
+            }
+
+        } else {
+        if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
+            paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
+        }
+        }
     }
  
     @objc func populate() {
@@ -157,31 +180,6 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @objc func refreshData(notification: Notification) {
         getPendingPayments()
     }
-   /*
-    func getPendingPayments() {
-
-        guard let id = user_id else {
-            return
-        }
-        let params = ["user_id":id]
-        SVProgressHUD.show()
-        APIManager.apiPost(serviceName: "api/payToLoadxList", parameters: params) { [weak self] data, json, error in
-            guard let self = self else {return}
-            if error == nil{
-                if let json = json{
-                    let payToLoadX = PayToLoadX(json: json)
-                    self.totalPayableToLoadX = payToLoadX.totalPendingPayToLoadx.withCommas()
-                    self.pendingPaymentsDataSource = payToLoadX.jobLists
-                    let totolPayabale = "PAY TOTAL AMOUNT "+AppUtility.shared.currencySymbol+self.totalPayableToLoadX
-                    self.totalEarning.text = "Pending Loadx Share"
-                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+self.totalPayableToLoadX+")"
-                    self.paymentButton.setTitle(totolPayabale, for: .normal)
-                    self.tableView.reloadData()
-                }
-            }
-            SVProgressHUD.dismiss()
-        }
-    } */
 
 	var balanceAmount = 0
     func getPendingPayments() {
@@ -189,9 +187,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         guard let id = user_id else {
             return
         }
-        let params = ["transporter_id":id]
+        let params = user_type == TransportationCompany ? ["transportation_id":id] : ["transporter_id":id]
         SVProgressHUD.show()
-        APIManager.apiPost(serviceName: "api/getAllPaytoLoadxJobsList", parameters: params) { [weak self] data, json, error in
+        let url = user_type == TransportationCompany ? "api/getAllPaytoLoadxJobsListForTC" : "api/getAllPaytoLoadxJobsList"
+        APIManager.apiPost(serviceName: url, parameters: params) { [weak self] data, json, error in
             guard let self = self else {return}
             if error == nil{
                 if let json = json{
@@ -234,9 +233,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 			self.totalEarning.text = "Total Earning"
             paymentTotal.text = AppUtility.shared.country == .Pakistan ? "("+AppUtility.shared.currencySymbol+(Int(Double(totalEarning) ?? 0.0).withCommas())+")" : "£ (" + totalEarning + ")"
         }
-        if user_id != nil {
-            let paymentHistory_URL = main_URL+"api/transporterPaymentHistoryList"
-            let parameters : Parameters = ["user_id" : user_id!]
+        let endPointUrl = user_type == TransportationCompany ? "api/paymentHistoryTC" : "api/transporterPaymentHistoryList"
+            let paymentHistory_URL = main_URL+endPointUrl
+        let parameters : Parameters = user_type == TransportationCompany ? ["transportation_id" : user_id!] : ["user_id" : user_id!]
             if Connectivity.isConnectedToInternet() {
                 Alamofire.request(paymentHistory_URL, method : .post, parameters : parameters).responseJSON { [weak self]
                     response in
@@ -293,12 +292,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-        } else {
-            SVProgressHUD.dismiss()
-            let alert = UIAlertController(title: "Error", message: "Internet connection is missing", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+       
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -474,10 +468,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     
     func requestForPayment() {
         guard let userId = user_id else { return }
-        let parameters = ["transporter_id" : userId, "send_req" : "1", "description" : ""]
+        let parameters = user_type == TransportationCompany ? ["transportation_id" : userId, "send_req" : "1", "description" : ""] : ["transporter_id" : userId, "send_req" : "1", "description" : ""]
         SVProgressHUD.show()
-        
-        APIManager.apiPostMultipart(serviceName: "api/sendPaymentRequestData", parameters: parameters, multipartImages: []) { (data, json, error, progress) in
+        let url = user_type == TransportationCompany ? "api/sendPaymentRequestDataForTC" : "api/sendPaymentRequestData"
+        APIManager.apiPostMultipart(serviceName: url, parameters: parameters, multipartImages: []) { (data, json, error, progress) in
             SVProgressHUD.dismiss()
             if error != nil {
                 showAlert(title: "Error", message: error!.localizedDescription, viewController: self)

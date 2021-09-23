@@ -139,7 +139,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLb-fS-pof">
-                                        <rect key="frame" x="61" y="13" width="57.5" height="19"/>
+                                        <rect key="frame" x="61" y="13" width="62.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -158,25 +158,25 @@
                                 <rect key="frame" x="0.0" y="89" width="375" height="1177"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-6a-J7f" userLabel="innerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="656"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="658"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Owg-kC-F4S">
-                                                <rect key="frame" x="25" y="30" width="325" height="310"/>
+                                                <rect key="frame" x="25" y="30" width="325" height="312"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="657-82-INm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="227.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="229"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xfY-oj-f7c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="325" height="62.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="325" height="63"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O5-6E-baR">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="71" height="17"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIb-Bd-feK">
-                                                                        <rect key="frame" x="0.0" y="21.5" width="325" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-4U-Mcc" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
@@ -196,7 +196,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fD-rr-Njp">
-                                                                        <rect key="frame" x="0.0" y="61.5" width="325" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="62" width="325" height="1"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="fsM-Ll-qhi"/>
@@ -211,16 +211,16 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fkN-dD-ub7">
-                                                                <rect key="frame" x="0.0" y="82.5" width="325" height="62.5"/>
+                                                                <rect key="frame" x="0.0" y="83" width="325" height="63"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hej-ya-9az">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="96.5" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="17"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTQ-5g-cbJ">
-                                                                        <rect key="frame" x="0.0" y="21.5" width="325" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xys-7x-K4K" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
@@ -240,7 +240,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5IO-fd-XrY">
-                                                                        <rect key="frame" x="0.0" y="61.5" width="325" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="62" width="325" height="1"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="GCt-Z2-W2Q"/>
@@ -255,16 +255,16 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KXs-K3-zXa">
-                                                                <rect key="frame" x="0.0" y="165" width="325" height="62.5"/>
+                                                                <rect key="frame" x="0.0" y="166" width="325" height="63"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Email (Optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIE-xX-BpY">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="113" height="17"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyU-Mc-E1j">
-                                                                        <rect key="frame" x="0.0" y="21.5" width="325" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sjc-U4-uiM" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
@@ -284,7 +284,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-3S-HXN">
-                                                                        <rect key="frame" x="0.0" y="61.5" width="325" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="62" width="325" height="1"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="His-ID-uyy"/>
@@ -301,19 +301,19 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ebt-Lm-Aw1">
-                                                        <rect key="frame" x="0.0" y="247.5" width="325" height="62.5"/>
+                                                        <rect key="frame" x="0.0" y="249" width="325" height="63"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ekd-Ra-kJU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="147.5" height="62.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="147.5" height="63"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jq-Ft-f59">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="17"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UhG-0B-tFr">
-                                                                        <rect key="frame" x="0.0" y="21.5" width="147.5" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="147.5" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle type" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="tlC-rS-RGA" customClass="iOSDropDown" customModule="LoadX_Transporter" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147.5" height="35"/>
@@ -334,7 +334,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEQ-uy-PMi">
-                                                                        <rect key="frame" x="0.0" y="61.5" width="147.5" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="62" width="147.5" height="1"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="27v-aT-yl7"/>
@@ -349,16 +349,16 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fzq-nu-qqt">
-                                                                <rect key="frame" x="177.5" y="0.0" width="147.5" height="62.5"/>
+                                                                <rect key="frame" x="177.5" y="0.0" width="147.5" height="63"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Reg.No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhR-6v-raQ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="95.5" height="16.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="17"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="z54-il-jCh">
-                                                                        <rect key="frame" x="0.0" y="21.5" width="147.5" height="35"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="147.5" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle reg." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zh-Jj-Vh4" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="122.5" height="35"/>
@@ -378,7 +378,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-ja-qFo">
-                                                                        <rect key="frame" x="0.0" y="61.5" width="147.5" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="62" width="147.5" height="1"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="FI3-4A-Ufk"/>
@@ -404,7 +404,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QF3-2i-YuM">
-                                                <rect key="frame" x="25" y="360" width="193.5" height="30"/>
+                                                <rect key="frame" x="25" y="362" width="193.5" height="30"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpUploadDoc" translatesAutoresizingMaskIntoConstraints="NO" id="vxx-DG-gle">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
@@ -422,7 +422,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="7Zj-7r-iqu">
-                                                <rect key="frame" x="25" y="410" width="325" height="135"/>
+                                                <rect key="frame" x="25" y="412" width="325" height="135"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cKT-se-P5x">
                                                         <rect key="frame" x="0.0" y="0.0" width="146.5" height="135"/>
@@ -479,7 +479,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2X-dz-qyj">
-                                                <rect key="frame" x="87.5" y="578" width="200" height="48"/>
+                                                <rect key="frame" x="87.5" y="580" width="200" height="48"/>
                                                 <color key="backgroundColor" name="MehroonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="A2X-dz-qyj" secondAttribute="height" multiplier="25:6" id="EJI-Ug-xr1"/>
@@ -499,7 +499,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDQ-s4-5aV" userLabel="Vehicles List SHow">
-                                                <rect key="frame" x="25" y="299" width="147.5" height="35"/>
+                                                <rect key="frame" x="25" y="301" width="147.5" height="35"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -549,13 +549,13 @@
                                         <rect key="frame" x="20" y="70" width="335" height="1082"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Van Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl9-i3-l3S">
-                                                <rect key="frame" x="84.5" y="15" width="166" height="19"/>
+                                                <rect key="frame" x="77.5" y="15" width="180.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fv-Ai-KCz">
-                                                <rect key="frame" x="305" y="12.5" width="24" height="24"/>
+                                                <rect key="frame" x="305" y="13" width="24" height="24"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="3ES-kw-Nl8"/>
@@ -568,7 +568,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J8o-nw-Ca8">
-                                                <rect key="frame" x="0.0" y="44" width="335" height="1038"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="335" height="1037.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobNatureCell" rowHeight="65" id="iD1-Tu-PV7" customClass="JobNatureCell" customModule="LoadX_Transporter" customModuleProvider="target">
@@ -696,16 +696,16 @@
     </scenes>
     <designables>
         <designable name="0zh-Jj-Vh4">
-            <size key="intrinsicContentSize" width="72.5" height="18"/>
+            <size key="intrinsicContentSize" width="79" height="18.5"/>
         </designable>
         <designable name="Sjc-U4-uiM">
-            <size key="intrinsicContentSize" width="90" height="18"/>
+            <size key="intrinsicContentSize" width="98.5" height="18.5"/>
         </designable>
         <designable name="a5d-4U-Mcc">
-            <size key="intrinsicContentSize" width="61" height="18"/>
+            <size key="intrinsicContentSize" width="69" height="18.5"/>
         </designable>
         <designable name="xys-7x-K4K">
-            <size key="intrinsicContentSize" width="96.5" height="18"/>
+            <size key="intrinsicContentSize" width="108.5" height="18.5"/>
         </designable>
     </designables>
     <resources>

@@ -81,16 +81,16 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         
         var title = ""
         if let driver = driver {
-             title = "Submit"
+             title = "Update"
+            self.titleLabel.text = "Edit Transporter"
             self.setDriver(detail: driver)
             self.fetchTransporterData(model: driver)
             
         }
         else {
              title = "Add Transporter"
-          
+            self.titleLabel.text = "Add Transporter"
         }
-        self.titleLabel.text = title
         self.Registration_btn.setTitle(title, for: .normal)
         
         
@@ -206,7 +206,7 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
             SVProgressHUD.dismiss()
         }
     }
-    func setDriverDetail(detail: DriverDetail)  {
+    func setDriverDetail(detail: DriverDetail) {
         self.fullName.text = detail.userName
         self.email_address.text = detail.userEmail
         self.phone_no.text = detail.userPhone
@@ -298,17 +298,15 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
     func updateTransporter(detail: DriverDetail) {
         guard let cnicFrontImg = cnicFrontimage.image, let cnicBackImg = cnicBackimage.image else { return }
         
-        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1"]
-        
-//        let parameters2 = ["t_id" : detail.userID!, "company_id": detail.,tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!]
-        
+        let parameters = ["tname" : self.fullName.text!, "temail" : self.email_address.text ?? "", "tphone" : self.phone_no.text!, "vantype" : self.van_type.text!, "registration-number" : self.vehicle_reg_no.text!, "is_number_verified" : "1", "t_id":detail.userID, "company_id":user_id!]
+
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "id-card-front-side", fileName: cnicFrontImg.description))
+            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "cnic_front", fileName: cnicFrontImg.description))
         }
         if let cnicBackImageData = cnicBackImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicBackImageData, paramName: "id-card-back-side", fileName: cnicBackImg.description))
+            input.append(MultipartData.init(data: cnicBackImageData, paramName: "cnic_back", fileName: cnicBackImg.description))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/updateTransporterDetailData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
