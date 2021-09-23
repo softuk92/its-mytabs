@@ -79,6 +79,9 @@ class SplashScreen_ViewController: UIViewController {
                     user_image = userDefaults.string(forKey: "user_image") ?? ""
                     user_type = userDefaults.string(forKey: "user_type") ?? ""
                 
+                    isLoadxDriver = userDefaults.string(forKey: "isLoadxDriver") ?? ""
+                    isCompanyDriver = userDefaults.string(forKey: "is_comp_driver") ?? ""
+                    
                     
                     do {
                         let update = try self.isUpdateAvailable()

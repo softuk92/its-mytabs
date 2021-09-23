@@ -70,6 +70,15 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
                     }
                 }
             }
+        
+        
+        if isCompanyDriver == "1" {
+            self.viewControllers?.remove(at: 2)
+            self.viewControllers?.remove(at: 2)
+            self.selectedIndex = 0
+        } else {
+            self.viewControllers?.remove(at: 4)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +88,13 @@ class MainTabBarController: UITabBarController  , UITabBarControllerDelegate {
         }
     }
     
+    func removeTab(at index: Int) {
+        
+        guard let viewControllers = self.tabBarController?.viewControllers as? NSMutableArray else { return }
+        viewControllers.removeObject(at: index)
+        self.tabBarController?.viewControllers = (viewControllers as! [UIViewController])
+    }
+ 
     func postData() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didSelect"), object: nil)
     }

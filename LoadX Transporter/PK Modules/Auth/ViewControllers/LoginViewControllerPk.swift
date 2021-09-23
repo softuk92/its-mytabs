@@ -31,7 +31,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         checkForUpdate()
-        
+        phoneNumber.keyboardType = .phonePad
 //        phoneNumber.text = "03125656256"
 //        password.text = "12345"
     }
@@ -119,7 +119,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                     user_phone = jsonData[0]["user_phone"].stringValue
                     user_image = jsonData[0]["user_image"].stringValue
                         isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
-                        
+                    isCompanyDriver = jsonData[0]["is_comp_driver"].stringValue
                     let userDefaults = UserDefaults.standard
                     userDefaults.set(user_id, forKey: "user_id")
                     userDefaults.set(user_name, forKey: "user_name")
@@ -129,6 +129,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                     userDefaults.set(user_image, forKey: "user_image")
                     userDefaults.set(user_type, forKey: "user_type")
                         userDefaults.set(isLoadxDriver, forKey: "isLoadxDriver")
+                    userDefaults.set(isCompanyDriver, forKey: "is_comp_driver")
                     userDefaults.set(true, forKey: "userLoggedIn")
                     userDefaults.synchronize()
                         

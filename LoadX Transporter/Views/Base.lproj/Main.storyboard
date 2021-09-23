@@ -1738,10 +1738,10 @@
                                         <rect key="frame" x="0.0" y="45" width="375" height="906"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-kC-lYW" userLabel="Container">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="703.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="713.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-so-IzD" userLabel="main Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="693.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="703.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1E-nJ-FUd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -1841,7 +1841,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iMe-C1-NAT">
-                                                                <rect key="frame" x="0.0" y="120" width="375" height="573.5"/>
+                                                                <rect key="frame" x="0.0" y="120" width="375" height="583.5"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-mY-Sys">
                                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -2230,10 +2230,10 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-cW-AHW">
-                                                                        <rect key="frame" x="0.0" y="498.5" width="375" height="20"/>
+                                                                        <rect key="frame" x="0.0" y="498.5" width="375" height="30"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnt-Wc-gZw">
-                                                                                <rect key="frame" x="50" y="13.5" width="275" height="1"/>
+                                                                                <rect key="frame" x="100" y="18.5" width="175" height="1"/>
                                                                                 <color key="backgroundColor" name="TextColorSet1"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="1" id="w0i-33-eQa"/>
@@ -2242,14 +2242,14 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="LNU-2u-NON"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="Qnt-Wc-gZw" secondAttribute="trailing" constant="50" id="YGK-KM-1OX"/>
-                                                                            <constraint firstItem="Qnt-Wc-gZw" firstAttribute="leading" secondItem="KQY-cW-AHW" secondAttribute="leading" constant="50" id="avG-f8-4oh"/>
+                                                                            <constraint firstAttribute="height" constant="30" id="LNU-2u-NON"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Qnt-Wc-gZw" secondAttribute="trailing" constant="100" id="YGK-KM-1OX"/>
+                                                                            <constraint firstItem="Qnt-Wc-gZw" firstAttribute="leading" secondItem="KQY-cW-AHW" secondAttribute="leading" constant="100" id="avG-f8-4oh"/>
                                                                             <constraint firstItem="Qnt-Wc-gZw" firstAttribute="centerY" secondItem="KQY-cW-AHW" secondAttribute="centerY" constant="4" id="rXV-YA-8k4"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vB-tY-PCj">
-                                                                        <rect key="frame" x="0.0" y="523.5" width="375" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="533.5" width="375" height="50"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_inviteTransporter_icon" translatesAutoresizingMaskIntoConstraints="NO" id="M1W-wY-uUv">
                                                                                 <rect key="frame" x="20" y="12.5" width="29" height="25"/>
@@ -7657,10 +7657,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puR-g3-YcV">
-                                <rect key="frame" x="10" y="168.5" width="355" height="473.5"/>
+                                <rect key="frame" x="10" y="10" width="355" height="632"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickUp_icon_new" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-sh-Y8A">
-                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="15" y="210" width="20" height="20"/>
                                         <color key="tintColor" name="MehroonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="15x-76-ZjB"/>
@@ -7668,33 +7668,33 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vO-25-okb">
-                                        <rect key="frame" x="40" y="25" width="305" height="0.0"/>
+                                        <rect key="frame" x="40" y="220" width="305" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Light" family="Ubuntu" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickDropLine" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-sf-tIh">
-                                        <rect key="frame" x="17.5" y="35" width="15" height="20"/>
+                                        <rect key="frame" x="17.5" y="230" width="15" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="W7W-Qo-hb8"/>
                                             <constraint firstAttribute="height" constant="20" id="vwm-hu-DU1"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTB-Y4-hcu">
-                                        <rect key="frame" x="40" y="65" width="305" height="0.0"/>
+                                        <rect key="frame" x="40" y="260" width="305" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Light" family="Ubuntu" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropOff_new" translatesAutoresizingMaskIntoConstraints="NO" id="5GR-zN-tlQ">
-                                        <rect key="frame" x="15" y="55" width="20" height="20"/>
+                                        <rect key="frame" x="15" y="250" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="JSd-f3-Ymy"/>
                                             <constraint firstAttribute="width" constant="20" id="UVO-r8-Df9"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FG-5v-g1C">
-                                        <rect key="frame" x="0.0" y="92" width="355" height="25"/>
+                                        <rect key="frame" x="0.0" y="287" width="355" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elX-G9-AiB">
                                                 <rect key="frame" x="95.5" y="4.5" width="58" height="16"/>
@@ -7735,7 +7735,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKX-cD-1e4" customClass="GMSMapView">
-                                        <rect key="frame" x="18" y="130" width="319.5" height="313"/>
+                                        <rect key="frame" x="18" y="325" width="319.5" height="297"/>
                                         <color key="backgroundColor" name="Background_color"/>
                                     </view>
                                 </subviews>
@@ -7746,21 +7746,20 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     <constraint firstItem="E2F-sf-tIh" firstAttribute="top" secondItem="Fbe-sh-Y8A" secondAttribute="bottom" id="AHZ-zc-Php"/>
                                     <constraint firstItem="oKX-cD-1e4" firstAttribute="top" secondItem="5FG-5v-g1C" secondAttribute="bottom" constant="13" id="DjQ-zF-VSd"/>
                                     <constraint firstAttribute="trailing" secondItem="0vO-25-okb" secondAttribute="trailing" constant="10" id="FCW-c8-vgK"/>
-                                    <constraint firstAttribute="height" constant="473.5" id="IYp-By-KKb"/>
                                     <constraint firstItem="NTB-Y4-hcu" firstAttribute="leading" secondItem="5GR-zN-tlQ" secondAttribute="trailing" constant="5" id="Ox2-KB-AT1"/>
                                     <constraint firstItem="Fbe-sh-Y8A" firstAttribute="leading" secondItem="puR-g3-YcV" secondAttribute="leading" constant="15" id="PpU-GU-W5G"/>
                                     <constraint firstAttribute="trailing" secondItem="5FG-5v-g1C" secondAttribute="trailing" id="SWF-4h-0uW"/>
                                     <constraint firstAttribute="trailing" secondItem="NTB-Y4-hcu" secondAttribute="trailing" constant="10" id="b5F-eP-0gv"/>
                                     <constraint firstItem="NTB-Y4-hcu" firstAttribute="centerY" secondItem="5GR-zN-tlQ" secondAttribute="centerY" id="clJ-PN-4kS"/>
                                     <constraint firstItem="0vO-25-okb" firstAttribute="centerY" secondItem="Fbe-sh-Y8A" secondAttribute="centerY" id="cmK-3L-Mjf"/>
-                                    <constraint firstItem="Fbe-sh-Y8A" firstAttribute="top" secondItem="puR-g3-YcV" secondAttribute="top" constant="15" id="d3r-Pk-8DY"/>
+                                    <constraint firstItem="Fbe-sh-Y8A" firstAttribute="top" secondItem="puR-g3-YcV" secondAttribute="top" constant="210" id="d3r-Pk-8DY"/>
                                     <constraint firstItem="0vO-25-okb" firstAttribute="leading" secondItem="Fbe-sh-Y8A" secondAttribute="trailing" constant="5" id="e6G-d5-l4a"/>
                                     <constraint firstItem="oKX-cD-1e4" firstAttribute="centerX" secondItem="puR-g3-YcV" secondAttribute="centerX" id="e6g-Vy-0AL"/>
                                     <constraint firstItem="oKX-cD-1e4" firstAttribute="width" secondItem="puR-g3-YcV" secondAttribute="width" multiplier="0.9" id="hOx-yB-Yr5"/>
                                     <constraint firstItem="5GR-zN-tlQ" firstAttribute="top" secondItem="E2F-sf-tIh" secondAttribute="bottom" id="heq-TQ-hOz"/>
                                     <constraint firstItem="5FG-5v-g1C" firstAttribute="leading" secondItem="puR-g3-YcV" secondAttribute="leading" id="l3y-ru-0QG"/>
                                     <constraint firstItem="5FG-5v-g1C" firstAttribute="top" secondItem="5GR-zN-tlQ" secondAttribute="bottom" constant="17" id="mO4-ou-y0b"/>
-                                    <constraint firstItem="oKX-cD-1e4" firstAttribute="height" secondItem="puR-g3-YcV" secondAttribute="height" multiplier="0.6" constant="28.900000000000034" id="mXx-03-1YZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="oKX-cD-1e4" secondAttribute="bottom" constant="10" id="ozT-MA-TmH"/>
                                     <constraint firstItem="E2F-sf-tIh" firstAttribute="centerX" secondItem="Fbe-sh-Y8A" secondAttribute="centerX" id="rbS-tv-XL0"/>
                                 </constraints>
                             </view>
@@ -7770,6 +7769,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="puR-g3-YcV" secondAttribute="trailing" constant="10" id="MQZ-iB-DRS"/>
                             <constraint firstAttribute="bottom" secondItem="puR-g3-YcV" secondAttribute="bottom" constant="25" id="Swa-Ae-L67"/>
+                            <constraint firstItem="puR-g3-YcV" firstAttribute="top" secondItem="8NS-8z-ZvZ" secondAttribute="top" constant="10" id="pcO-i8-BzD"/>
                             <constraint firstItem="puR-g3-YcV" firstAttribute="leading" secondItem="rdI-Jr-M42" secondAttribute="leading" constant="10" id="yqN-qk-XFv"/>
                         </constraints>
                     </view>
@@ -7780,7 +7780,6 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <outlet property="fuelCost_lbl" destination="hrM-gr-cpL" id="aOm-aN-5Rk"/>
                         <outlet property="mapViewX" destination="oKX-cD-1e4" id="Z6Q-IX-oyr"/>
                         <outlet property="pickUp_lbl" destination="0vO-25-okb" id="w2J-d0-jIg"/>
-                        <outlet property="topViewHeight" destination="IYp-By-KKb" id="57G-Aa-Yhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsG-CU-WIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -10226,6 +10225,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <outletCollection property="gestureRecognizers" destination="mkF-Hr-JZ5" appends="YES" id="xe8-u7-5tm"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="Y33-V5-WSA"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="callpopup_innerView" destination="56D-zV-Ygz" id="JZp-nk-qdA"/>
@@ -11040,6 +11040,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                         <segue destination="UpP-2H-zVJ" kind="relationship" relationship="viewControllers" id="hx3-EM-Wza"/>
                         <segue destination="YHC-tB-dW7" kind="relationship" relationship="viewControllers" id="44c-uo-4vo"/>
                         <segue destination="ZDB-LV-fhB" kind="relationship" relationship="viewControllers" id="yOu-oe-DLS"/>
+                        <segue destination="EbU-6t-AmS" kind="relationship" relationship="viewControllers" id="BXS-oM-34A"/>
                         <segue destination="usG-r6-eNm" kind="relationship" relationship="viewControllers" id="o3d-Si-ClV"/>
                     </connections>
                 </tabBarController>
@@ -11700,40 +11701,44 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
             <objects>
                 <viewController storyboardIdentifier="Reach_Us_ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EbU-6t-AmS" customClass="Reach_Us_ViewController" customModule="LoadX_Transporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P0l-5d-vxD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s33-Gc-ETV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkN-AP-Tx0">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmZ-Zv-EmR">
-                                                <rect key="frame" x="20" y="10" width="25" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="Epk-rr-dCC"/>
-                                                    <constraint firstAttribute="width" constant="25" id="O8l-Aq-ziC"/>
-                                                </constraints>
-                                                <state key="normal" image="back_arrow"/>
-                                                <connections>
-                                                    <action selector="backBtn_action:" destination="EbU-6t-AmS" eventType="touchUpInside" id="SXH-4D-7c9"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reach Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-l8-0zf">
-                                                <rect key="frame" x="61" y="13" width="74" height="19"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3IN-9d-3la">
+                                                <rect key="frame" x="20" y="10" width="115" height="25"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmZ-Zv-EmR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="Epk-rr-dCC"/>
+                                                            <constraint firstAttribute="width" constant="25" id="O8l-Aq-ziC"/>
+                                                        </constraints>
+                                                        <state key="normal" image="back_arrow"/>
+                                                        <connections>
+                                                            <action selector="backBtn_action:" destination="EbU-6t-AmS" eventType="touchUpInside" id="SXH-4D-7c9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reach Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-l8-0zf">
+                                                        <rect key="frame" x="41" y="0.0" width="74" height="25"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" name="topBarcolor"/>
                                         <constraints>
-                                            <constraint firstItem="jVb-l8-0zf" firstAttribute="leading" secondItem="wmZ-Zv-EmR" secondAttribute="trailing" constant="16" id="Kob-63-mwi"/>
+                                            <constraint firstAttribute="bottom" secondItem="3IN-9d-3la" secondAttribute="bottom" constant="10" id="6TR-Mn-T2R"/>
                                             <constraint firstAttribute="height" constant="45" id="LSb-fs-GG9"/>
-                                            <constraint firstItem="wmZ-Zv-EmR" firstAttribute="centerY" secondItem="OkN-AP-Tx0" secondAttribute="centerY" id="WNq-YU-1iH"/>
-                                            <constraint firstItem="jVb-l8-0zf" firstAttribute="centerY" secondItem="wmZ-Zv-EmR" secondAttribute="centerY" id="eF9-IA-sB4"/>
-                                            <constraint firstItem="wmZ-Zv-EmR" firstAttribute="leading" secondItem="OkN-AP-Tx0" secondAttribute="leading" constant="20" id="z5U-5r-dLh"/>
+                                            <constraint firstItem="3IN-9d-3la" firstAttribute="leading" secondItem="OkN-AP-Tx0" secondAttribute="leading" constant="20" symbolic="YES" id="jLV-rB-m6D"/>
+                                            <constraint firstItem="3IN-9d-3la" firstAttribute="top" secondItem="OkN-AP-Tx0" secondAttribute="top" constant="10" id="paV-LU-nyt"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reachUs_liveChat" translatesAutoresizingMaskIntoConstraints="NO" id="nEH-UB-5EX">
@@ -11821,6 +11826,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             <constraint firstItem="qGq-av-Qtd" firstAttribute="trailing" secondItem="s33-Gc-ETV" secondAttribute="trailing" id="t0r-Ta-Du2"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="reachUsTabBar" selectedImage="reachUsTabBarSelected" id="Dm7-WB-gSs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbn-ZI-GxY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -16833,6 +16839,8 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
         <image name="popup_icon" width="170" height="170.5"/>
         <image name="popup_noBtn" width="285" height="80"/>
         <image name="popup_yesBtn" width="285" height="80"/>
+        <image name="reachUsTabBar" width="60.5" height="46"/>
+        <image name="reachUsTabBarSelected" width="60.5" height="46"/>
         <image name="reachUs_liveChat" width="66" height="53"/>
         <image name="reachUs_rateUs" width="60" height="51"/>
         <image name="reachUs_reportProblm" width="61" height="53"/>

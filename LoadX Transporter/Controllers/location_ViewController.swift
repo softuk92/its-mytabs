@@ -57,7 +57,7 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
         mapViewX.delegate = self
         mapViewX.settings.zoomGestures = true
         
-        topViewHeight.constant = UIScreen.main.bounds.height - 270
+//        topViewHeight.constant = UIScreen.main.bounds.height - 270
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark   {
                do {

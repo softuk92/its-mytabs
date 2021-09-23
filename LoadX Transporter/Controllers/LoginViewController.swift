@@ -38,7 +38,7 @@ var protected: Bool?
 var frbi_id: String?
 var userToken: String?
 var isLoadxDriver: String?
-
+var isCompanyDriver: String?
 //var job_id : String = ""
 //var bidId : String = ""
 //var new_price : String = ""
