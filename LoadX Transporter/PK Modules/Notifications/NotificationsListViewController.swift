@@ -47,6 +47,12 @@ class NotificationsListViewController: UIViewController {
             
             guard let data = data else { return }
 
+            let result = json?[0]["result"].stringValue
+            
+            if result == "0" {
+                self.noRecordFound.isHidden = false
+                return
+            }
             do {
                 self.notificationsList = try JSONDecoder().decode([NotificationsModel].self, from: data)
                 self.noRecordFound.isHidden = self.notificationsList.count > 0

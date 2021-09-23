@@ -25,7 +25,9 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var feedback_stars: UILabel!
     @IBOutlet weak var manageDriverView: UIView!
-
+    @IBOutlet weak var availabilityView: UIView!
+    @IBOutlet weak var statisticsView: UIView!
+    @IBOutlet weak var reachUsView: UIView!
 
     
     
@@ -92,6 +94,11 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         else{
             self.manageDriverView.isHidden = true
         }
+        
+        manageDriverView.isHidden = isCompanyDriver == "1"
+        availabilityView.isHidden = isCompanyDriver == "1"
+        statisticsView.isHidden = isCompanyDriver == "1"
+        reachUsView.isHidden = isCompanyDriver == "1"
     }
     
         @IBAction func userProfileBtn(_ sender: Any) {
@@ -277,6 +284,12 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                self.present(activityVC, animated: true, completion: nil)
 
         }
+    }
+    
+    @IBAction func affiliatedWithAct(sender: Any) {
+        let sb = UIStoryboard(name: "Affiliated", bundle: nil)
+        let showVC = sb.instantiateViewController(withIdentifier: "AffiliatedWithViewController") as? AffiliatedWithViewController
+       self.navigationController?.pushViewController(showVC!, animated: true)
     }
 
     

@@ -12,10 +12,11 @@ import ZDCChat
 class Reach_Us_ViewController : UIViewController {
 
     @IBOutlet weak var gifImage: UIImageView!
+    @IBOutlet weak var backBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        backBtn.isHidden = isCompanyDriver == "1"
     }
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)

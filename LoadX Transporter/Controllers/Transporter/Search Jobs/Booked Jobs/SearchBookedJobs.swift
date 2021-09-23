@@ -295,6 +295,10 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                 self.topPagerView.isHidden = true
                 self.view.layoutIfNeeded()
             }
+        } else {
+            self.pagerViewHeight.constant = 0
+            self.topPagerView.isHidden = true
+            self.view.layoutIfNeeded()
         }
     }
     
