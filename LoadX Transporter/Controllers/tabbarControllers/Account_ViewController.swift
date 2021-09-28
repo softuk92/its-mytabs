@@ -78,7 +78,10 @@ class Account_ViewController: UIViewController {
                userDefaults.removeObject(forKey: "user_phone")
                userDefaults.removeObject(forKey: "user_image")
                userDefaults.removeObject(forKey: "user_type")
-               userDefaults.synchronize()
+            userDefaults.removeObject(forKey: "is_comp_driver")
+            userDefaults.removeObject(forKey: "isLoadxDriver")
+
+            userDefaults.synchronize()
                user_id = nil
                user_name = nil
                user_email = nil

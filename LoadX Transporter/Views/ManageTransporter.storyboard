@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -41,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transporters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrH-PE-Py6">
-                                        <rect key="frame" x="61" y="13" width="89.5" height="19"/>
+                                        <rect key="frame" x="61" y="13" width="96.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fcQ-t9-Uuo">
-                                <rect key="frame" x="97" y="374" width="220" height="148"/>
+                                <rect key="frame" x="97" y="374" width="220" height="148.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noDataFound" translatesAutoresizingMaskIntoConstraints="NO" id="eMH-vK-r1u">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="120"/>
@@ -71,7 +71,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transporter found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSb-eg-we6">
-                                        <rect key="frame" x="30.5" y="128" width="159.5" height="20"/>
+                                        <rect key="frame" x="21" y="128" width="178" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -179,7 +179,7 @@
                                                                         <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-4U-Mcc" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="35"/>
                                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="oPx-Eg-5W5"/>
@@ -188,9 +188,9 @@
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpName" translatesAutoresizingMaskIntoConstraints="NO" id="bSn-hT-cVn">
-                                                                                <rect key="frame" x="305" y="0.0" width="20" height="35"/>
+                                                                                <rect key="frame" x="311" y="0.0" width="14" height="35"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="20" id="arA-Fg-h44"/>
+                                                                                    <constraint firstAttribute="width" constant="14" id="arA-Fg-h44"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
@@ -223,7 +223,7 @@
                                                                         <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xys-7x-K4K" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="35"/>
                                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="Ngh-Ko-oCK"/>
@@ -232,9 +232,9 @@
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpPhone" translatesAutoresizingMaskIntoConstraints="NO" id="9iq-hi-0Vq">
-                                                                                <rect key="frame" x="305" y="0.0" width="20" height="35"/>
+                                                                                <rect key="frame" x="311" y="0.0" width="14" height="35"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="20" id="lfG-iC-LF0"/>
+                                                                                    <constraint firstAttribute="width" constant="14" id="lfG-iC-LF0"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
@@ -267,7 +267,7 @@
                                                                         <rect key="frame" x="0.0" y="22" width="325" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sjc-U4-uiM" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="35"/>
                                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="24M-Al-68Q"/>
@@ -276,9 +276,9 @@
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpEmail" translatesAutoresizingMaskIntoConstraints="NO" id="SSi-8u-Iqj">
-                                                                                <rect key="frame" x="305" y="0.0" width="20" height="35"/>
+                                                                                <rect key="frame" x="311" y="0.0" width="14" height="35"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="20" id="6PC-K5-otN"/>
+                                                                                    <constraint firstAttribute="width" constant="14" id="6PC-K5-otN"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
@@ -361,7 +361,7 @@
                                                                         <rect key="frame" x="0.0" y="22" width="147.5" height="35"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle reg." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zh-Jj-Vh4" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="35"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="128.5" height="35"/>
                                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="CUB-Kb-2q2"/>
@@ -370,9 +370,9 @@
                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                                                             </textField>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpVehicleDoc" translatesAutoresizingMaskIntoConstraints="NO" id="JxN-58-MJ1">
-                                                                                <rect key="frame" x="127.5" y="0.0" width="20" height="35"/>
+                                                                                <rect key="frame" x="133.5" y="0.0" width="14" height="35"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="20" id="fbi-BQ-uUP"/>
+                                                                                    <constraint firstAttribute="width" constant="14" id="fbi-BQ-uUP"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
@@ -666,6 +666,11 @@
                             <constraint firstItem="azZ-hF-WBU" firstAttribute="top" secondItem="w70-8p-gRx" secondAttribute="top" id="pL9-pz-neY"/>
                             <constraint firstItem="w70-8p-gRx" firstAttribute="trailing" secondItem="rwl-hg-FnC" secondAttribute="trailing" id="uq9-fC-Y3z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="rwl-hg-FnC"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vUZ-ya-uft"/>

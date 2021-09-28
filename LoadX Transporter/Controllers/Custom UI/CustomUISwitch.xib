@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,23 +29,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amN-jK-CtC" userLabel="SwitchView">
-                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="30.5" height="29.5"/>
                     <color key="backgroundColor" name="Dim Disable"/>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5OS-wz-oQV" userLabel="thumb">
-                    <rect key="frame" x="2" y="2" width="39.5" height="40"/>
+                    <rect key="frame" x="2" y="1.5" width="26.5" height="26.5"/>
                     <color key="backgroundColor" red="0.71372549019607845" green="0.71764705882352942" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5OS-wz-oQV" secondAttribute="height" multiplier="1:1" id="1RO-1R-5aX"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="QA1-aT-1gG">
-                    <rect key="frame" x="4" y="4" width="35.5" height="36"/>
+                    <rect key="frame" x="3.5" y="3" width="24" height="24"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="amN-jK-CtC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Px-S1-Nh3"/>
                 <constraint firstItem="amN-jK-CtC" firstAttribute="trailing" secondItem="5OS-wz-oQV" secondAttribute="trailing" constant="2" id="3j3-am-bK3"/>
@@ -61,7 +62,6 @@
                 <constraint firstItem="5OS-wz-oQV" firstAttribute="leading" secondItem="amN-jK-CtC" secondAttribute="leading" constant="2" id="n3m-nB-cr4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-130.43478260869566" y="239.0625"/>
         </view>
     </objects>

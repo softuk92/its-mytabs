@@ -28,7 +28,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var availabilityView: UIView!
     @IBOutlet weak var statisticsView: UIView!
     @IBOutlet weak var reachUsView: UIView!
-
+    @IBOutlet weak var affiliatedWithView: UIView!
     
     
     let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -88,17 +88,17 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                 }
             }).disposed(by: disposeBag)
         }
-        if user_type == "transportation_company"{
-            self.manageDriverView.isHidden = false
+        if user_type == TransportationCompany {
+            manageDriverView.isHidden = false
         }
         else{
-            self.manageDriverView.isHidden = true
+            manageDriverView.isHidden = true
         }
         
-        manageDriverView.isHidden = isCompanyDriver == "1"
         availabilityView.isHidden = isCompanyDriver == "1"
         statisticsView.isHidden = isCompanyDriver == "1"
         reachUsView.isHidden = isCompanyDriver == "1"
+        affiliatedWithView.isHidden = !(isCompanyDriver == "1")
     }
     
         @IBAction func userProfileBtn(_ sender: Any) {
@@ -111,9 +111,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-   
-      
-        func tapGesture(){
+    func tapGesture(){
             let optionMenu = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
             
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {

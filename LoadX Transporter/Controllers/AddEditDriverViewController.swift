@@ -218,7 +218,7 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         cnicBackimage.sd_setImage(with: URL(string: cnicBack), placeholderImage: R.image.signUp_image_upload(), options: .continueInBackground, completed: nil)
     }
     
-    func setDriver(detail: ManageDriver)  {
+    func setDriver(detail: ManageDriver) {
         self.fullName.text = detail.userName.capitalized
         self.email_address.text = detail.userEmail
         self.phone_no.text = detail.userPhone

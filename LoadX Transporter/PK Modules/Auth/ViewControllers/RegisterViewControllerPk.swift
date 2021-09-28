@@ -20,6 +20,7 @@ import MobileCoreServices
 class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var fullName: AnimatableTextField!
+    @IBOutlet weak var category: AnimatableTextField!
     @IBOutlet weak var companyName: AnimatableTextField!
     @IBOutlet weak var email_address: AnimatableTextField!
     @IBOutlet weak var phone_no: AnimatableTextField!
@@ -36,7 +37,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     
     @IBOutlet weak var vehiclesListView: UIView!
     @IBOutlet weak var innerVehiclesListView: UIView!
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var typeListView: UIView!
     @IBOutlet weak var innerTypeListView: UIView!
@@ -55,10 +56,10 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         
         self.title = "Sign Up"
         
-        tableview.delegate = self
-        tableview.dataSource = self
-        tableview.backgroundView = nil
-        tableview.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundView = nil
+        tableView.backgroundColor = UIColor.clear
         typeTableview.delegate = self
         typeTableview.dataSource = self
         typeTableview.backgroundView = nil
@@ -71,7 +72,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             switch result {
             case .success(let vehicles):
                 self?.list = vehicles
-                self?.tableview.reloadData()
+                self?.tableView.reloadData()
             case .failure(_):
                 return
             }
@@ -86,6 +87,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         
         imageSelector = ImageSelector()
         imageSelector.delegate = self
+       
         typeTableview.reloadData()
     }
     
@@ -335,14 +337,14 @@ extension RegisterViewControllerPk: GMSAutocompleteViewControllerDelegate {
 //MARK: UITableViewDelegate
 extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableview == typeTableview {
+        if tableView == typeTableview {
             return typeList.count
         }
         return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableview == typeTableview {
+        if tableView == typeTableview {
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobNatureCell", for: indexPath) as? JobNatureCell
             cell?.layer.cornerRadius = 10
             cell?.backgroundColor = UIColor.clear
@@ -369,10 +371,11 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableview == typeTableview {
+        if tableView == typeTableview {
             companyNameView.isHidden = indexPath.row == 0
             selectedTypeIndex = indexPath.row
-            companyName.text = typeList[indexPath.row]
+            category.text = typeList[indexPath.row]
+            typeListView.isHidden = true
         } else {
         let selectedValue = list[indexPath.row].vehicle_name
         self.van_type.text = selectedValue

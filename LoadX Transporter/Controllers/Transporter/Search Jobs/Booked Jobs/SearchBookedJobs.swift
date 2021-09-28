@@ -539,11 +539,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                     }
                 } catch {
                     SVProgressHUD.dismiss()
-                    print(error.localizedDescription)
-                    DispatchQueue.main.async {
-//                        self.stackView.isHidden = false
-                        //self.tableView.backgroundView = nil
-                    }
+                    print(error)
+                    
                     
                 }
             }

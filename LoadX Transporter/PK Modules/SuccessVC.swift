@@ -65,15 +65,13 @@ class SuccessVC: UIViewController {
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    let userType = jsonData[0]["user_type"].stringValue
-                    if userType == "driver" {
                     user_type = jsonData[0]["user_type"].stringValue
                     user_id = jsonData[0]["user_id"].stringValue
                     user_email = jsonData[0]["user_email"].stringValue
                     user_name = jsonData[0]["user_name"].stringValue
                     user_phone = jsonData[0]["user_phone"].stringValue
                     user_image = jsonData[0]["user_image"].stringValue
-                        isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
+                    isLoadxDriver = jsonData[0]["is_loadx_driver"].stringValue
                         
                     let userDefaults = UserDefaults.standard
                     userDefaults.set(user_id, forKey: "user_id")
@@ -87,8 +85,8 @@ class SuccessVC: UIViewController {
                     userDefaults.set(true, forKey: "userLoggedIn")
                     userDefaults.synchronize()
                   
-                        self.AppDelegate.moveToHome()
-            }
+                    self.AppDelegate.moveToHome()
+
                 }
                 }
         }
