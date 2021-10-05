@@ -199,8 +199,6 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.totalPayableToLoadX = payToLoadX.summary.balance.withCommas()
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
 
-                    self.totalEarning.text = "Pending Loadx Share"
-                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+self.totalPayableToLoadX+")"
 //                    self.paymentButton.setTitle(totolPayabale, for: .normal)
 
 					//header
@@ -211,6 +209,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                     self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare.withCommas())"
                     self.balance.text = "Rs. " + "\(payToLoadX.summary.balance.withCommas())"
 
+                    self.totalEarning.text = "Pending Loadx Share"
+                    self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+payToLoadX.loadXShare.withCommas()+")"
+                    
 					//payment button title
 					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Request for Payment " : "Pay Now "
 					let buttonTitle = titlePrefix + "(\(AppUtility.shared.currencySymbol+self.totalPayableToLoadX))"

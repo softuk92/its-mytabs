@@ -237,15 +237,18 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func pickupArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at pickup?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
+//        showAlertView(question: "Have you arrived at pickup?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
+        pickupArrived()
     }
     
     @IBAction func dropoffArrivedAct(_ sender: Any) {
-        showAlertView(question: "Have you arrived at drop off?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
+//        showAlertView(question: "Have you arrived at drop off?", ensure: "", paymentLinkHeight: 0, status: .DropoffArrived)
+        dropoffArrived()
     }
     
     @IBAction func runningLateAct(_ sender: Any) {
-        showAlertView(question: "Are you running late?", ensure: "", paymentLinkHeight: 0, status: .RunningLate)
+//        showAlertView(question: "Are you running late?", ensure: "", paymentLinkHeight: 0, status: .RunningLate)
+        goToRunningLateScene()
     }
     
     @IBAction func uploadImagesAct(_ sender: Any) {
@@ -254,7 +257,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     }
     
     @IBAction func leavingForDropoffAct(_ sender: Any) {
-        showAlertView(question: "Has this pickup been completed?", ensure: "", paymentLinkHeight: 0, status: .LeavingForDropoff)
+//        showAlertView(question: "Has this pickup been completed?", ensure: "", paymentLinkHeight: 0, status: .LeavingForDropoff)
+        leavingForDropoff()
     }
     
     @IBAction func jobCompletedAct(_ sender: Any) {

@@ -405,7 +405,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         if jobsInProgressRow.isJobStarted == nil || jobsInProgressRow.isJobStarted == "0" {
             cell.startJobBtn.isHidden = false
         } else {
-            cell.startJobBtn.isHidden = true
+//            cell.startJobBtn.isHidden = true
+            cell.startJobBtn.setTitle("Resume Job", for: .normal)
         }
         
         //setJobBookedFor Status
@@ -463,7 +464,12 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.startJob = {[weak self] (selectedCell) in
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
-            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
+//            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
+            if self.jobsInProgressModel[indexPath.row].isJobStarted == "1" {
+                self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
+            } else {
+            self.startBookedJob(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
+            }
         }
         
         cell.cancelJob = {[weak self] (selectedCell) in
