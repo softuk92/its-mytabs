@@ -105,6 +105,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     
     var timer:Timer = Timer()
     var startTime: Int = 0
+    let locationManager  = CLocationManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +115,14 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         configureTableView()
         setData(input: input)
         phoneNumberAct()
+        updateTransporterLocation()
+    }
+    
+    func updateTransporterLocation() {
+        locationManager.delId = input.delId
+        locationManager.tId = user_id
+        locationManager.transporterStatus = "Yes"
+        locationManager.startLocationUpdates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
