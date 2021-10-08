@@ -25,7 +25,8 @@ public class CustomUISwitch: UIView, NibOwnerLoadable {
     @IBOutlet private weak var label: UILabel!
     
     public var switchState = BehaviorRelay<Bool>(value:  false)
-    
+    public var onLabel: String = "ON"
+    public var offLabel: String = "OFF"
     private var isConstrintSet=true
     //var isConstrintSet=PublishSubject<Bool>()
     
@@ -40,13 +41,14 @@ public class CustomUISwitch: UIView, NibOwnerLoadable {
         let tap = UITapGestureRecognizer(target: self, action: #selector(actTap))
         self.addGestureRecognizer(tap)
         
+        label.text = offLabel
         switchState.subscribe(onNext: { [weak self] (isOn) in
             guard let self = self else {return}
             self.trailing.isActive = isOn
 //            self.trailingLabel.isActive = isOn
             self.leading.isActive = !isOn
 //            self.leadingLabel.isActive = !isOn
-            self.label.text = isOn ? "ON" : "OFF"
+            self.label.text = isOn ? self.onLabel : self.offLabel
             self.thumbView.backgroundColor = isOn ? /*UIColor(red: 16/255, green: 174/255, blue: 2/255, alpha: 1.0)*/R.color.mehroonColor() : UIColor(red: 143/255, green: 143/255, blue: 143/255, alpha: 1.0)
             self.switchView.backgroundColor = isOn ? /*UIColor(red: 11/255, green: 100/255, blue: 1/255, alpha: 1.0)*/R.color.newBlueColor() : UIColor.white
             self.switchView.layer.borderWidth = isOn ? 0 : 1.0
@@ -54,6 +56,10 @@ public class CustomUISwitch: UIView, NibOwnerLoadable {
             self.layoutIfNeeded()
         }).disposed(by: disposeBag)
         self.trailing.isActive = false
+    }
+    
+    func setLabel(labelStr: String) {
+        label.text = labelStr
     }
     
     @objc private func actTap() {

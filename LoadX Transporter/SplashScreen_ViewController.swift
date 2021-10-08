@@ -15,13 +15,14 @@ class SplashScreen_ViewController: UIViewController {
     let date = Date()
     let calendar = Calendar.current
     @IBOutlet weak var largestPlatform: UIView!
+    @IBOutlet weak var harWqtBarWqt: UILabel!
     
     override func viewDidLoad() {
         
         if !(AppUtility.shared.country == .Pakistan) {
             largestPlatform.isHidden = true
         }
-        
+        harWqtBarWqt.font = R.font.alviNastaleeq(size: 34)
 //        if #available(iOS 13.0, *) {
 //            if UITraitCollection.current.userInterfaceStyle == .dark {
 //                print("Dark mode")

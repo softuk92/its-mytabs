@@ -43,6 +43,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var themeSwitch: UISwitch!
    
     @IBOutlet weak var lableSwitch: CustomUISwitch!
+    @IBOutlet weak var languageSwitch: CustomUISwitch!
     @IBOutlet weak var noFeedbackView: UIView!
      
     let AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -86,6 +87,14 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                     window.overrideUserInterfaceStyle = value ? .dark : .light
                     UserDefaults.standard.set(value, forKey: "dark")
                 }
+            }).disposed(by: disposeBag)
+            
+            languageSwitch.configureGesture()
+            languageSwitch.onLabel = "Urdu"
+            languageSwitch.offLabel = "Eng"
+            languageSwitch.setLabel(labelStr: "Eng")
+            languageSwitch.switchState.skip(1).subscribe(onNext: { (value) in
+                Config.shared.setLanguage.onNext(value ? .ur : .en)
             }).disposed(by: disposeBag)
         }
         if user_type == TransportationCompany {

@@ -34,6 +34,7 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 23
         
+        submitButton.setTitle(Config.shared.currentLanguage.value == .en ? "Submit" : "جمع کروائیں", for: .normal)
         setupAutoCompleteController()
     }
         
