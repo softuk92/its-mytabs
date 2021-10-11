@@ -94,7 +94,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var routesTableView: UITableView!
-    
+    @IBOutlet weak var languageBtn: UIButton!
     func setConstraints(leadingSearch: Bool, trailingSearch: Bool, leadingRoute: Bool, trailingRoute: Bool) {
         UIView.animate(withDuration: 3.0) { [weak self] in
             self?.leadingSearchJobs.isActive = leadingSearch
@@ -230,6 +230,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         callAPIs()
+        languageBtn.setTitle(Config.shared.currentLanguage.value == .en ? "English" : "Urdu", for: .normal)
     }
     
     func callAPIs() {
@@ -1092,6 +1093,17 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
     }
     
+    @IBAction func languageBtnAct(_ sender: Any) {
+        if languageBtn.titleLabel?.text == "English" {
+            Config.shared.setLanguage.onNext(.en)
+            languageBtn.setTitle("Urdu", for: .normal)
+        } else {
+            Config.shared.setLanguage.onNext(.ur)
+            languageBtn.setTitle("English", for: .normal)
+        }
+        
+    }
+
 }
 
 extension SearchBookedJobs {
