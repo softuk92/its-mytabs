@@ -238,8 +238,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         getProfileDetails()
         
         searchDeliveriesFunc {
-            
-        
             if let isLoadxDrive = UserDefaults.standard.string(forKey: "isLoadxDriver") {
                 if isLoadxDrive == "0" {
                     self.searchJobsBtnFunc()

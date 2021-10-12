@@ -25,6 +25,7 @@ class PaymentHistoryCell: UITableViewCell {
         super.awakeFromNib()
         cell_view.layer.cornerRadius = 5
         cell_view.bottomShadow(color: .black)
+        viewInvocie_btn.setTitle(Config.shared.currentLanguage.value == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

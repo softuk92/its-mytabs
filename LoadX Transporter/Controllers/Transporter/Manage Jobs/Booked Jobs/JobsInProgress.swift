@@ -408,7 +408,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.startJobBtn.isHidden = false
         } else {
 //            cell.startJobBtn.isHidden = true
-            cell.startJobBtn.setTitle("Resume Job", for: .normal)
+            cell.startJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Resume Job" : "دوبارہ شروع کریں۔", for: .normal)
+//            cell.startJobBtn.setTitle("Resume Job", for: .normal)
         }
         
         //setJobBookedFor Status

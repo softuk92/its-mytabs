@@ -57,6 +57,9 @@ class JobsInProgressCell: UITableViewCell {
 
         customizeView()
         setupViews()
+        
+        startJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Start Job" : "شروع کریں۔", for: .normal)
+        cancelJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Cancel Job" : "منسوخ کریں۔", for: .normal)
     }
     
     func setupViews() {
