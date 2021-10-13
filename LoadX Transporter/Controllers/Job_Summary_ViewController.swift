@@ -95,6 +95,9 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let dropoffHouseNo = jsonData[0]["do_house_no"].stringValue
         let workingHours = jsonData[0]["working_hours"].stringValue
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
+        let weightUnit = jsonData[0]["weight_unit"].stringValue
+        let estimatedWeight = jsonData[0]["est_weight"].stringValue
+        let goodsType = jsonData[0]["good_type"].stringValue
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         if !(AppUtility.shared.country == .Pakistan) {
@@ -146,12 +149,19 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         
         info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
         info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
-        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
+//        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         
         if category == "Dedicated Van" || category == "Man & Van" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
                 info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
             }
+        }
+        
+        if goodsType != "" && goodsType != "N/A" {
+            info.append(MenuItemStruct.init(title: "Goods Type", value: goodsType))
+        }
+        if weightUnit != "" && weightUnit != "N/A" && estimatedWeight != "" && estimatedWeight != "N/A" {
+            info.append(MenuItemStruct.init(title: "Estimated Weight", value: "\(estimatedWeight) \(weightUnit)"))
         }
         if category == "Vehicle Move" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {

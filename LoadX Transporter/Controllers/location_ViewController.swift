@@ -94,7 +94,7 @@ class location_ViewController: UIViewController, GMSMapViewDelegate{
             self.fuelCost_lbl.text = "£"+String(roundedFuel)
         
         if let roundedValue1 = Double(distance1)?.rounded(toPlaces: 2) {
-            self.distance_lbl.text = String(format: "%.2f", roundedValue1)+" miles"
+            self.distance_lbl.text = String(format: "%.0f", roundedValue1)+" Km"
             }
         }
         
