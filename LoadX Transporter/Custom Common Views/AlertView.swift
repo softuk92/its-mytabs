@@ -49,6 +49,9 @@ public class AlertView: UIView, NibOwnerLoadable {
         centerView.layer.shadowOffset = .zero
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
+        
+        yes.setTitle(Config.shared.currentLanguage.value == .en ? "Yes" : "جی ہاں", for: .normal)
+        no.setTitle(Config.shared.currentLanguage.value == .en ? "No" : "نہیں", for: .normal)
     }
     
     @IBAction func yesAct(_ sender: Any) {

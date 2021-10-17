@@ -14,8 +14,9 @@ class Contact_ViewController: UIViewController {
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var name_lbl: UILabel!
     @IBOutlet weak var phone_lbl: UILabel!
-    @IBOutlet weak var email_lbl: UILabel!
-    @IBOutlet weak var addres_lbl: UILabel!
+    @IBOutlet weak var receiverInformationView: UIView!
+    @IBOutlet weak var receiverName: UILabel!
+    @IBOutlet weak var receiverPhone: UILabel!
     
     var selectJob: Bool?
     
@@ -25,7 +26,9 @@ class Contact_ViewController: UIViewController {
     var address: String?
 //    var jsonData : JSON
     var jsonData : JSON = []
-
+    var receiverN: String?
+    var receiverP: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         contactView.layer.shadowColor = UIColor.darkGray.cgColor
@@ -37,19 +40,21 @@ class Contact_ViewController: UIViewController {
         phone = jsonData[0]["user_phone"].stringValue
         email = jsonData[0]["user_email"].stringValue
         address = jsonData[0]["user_address"].stringValue
-        // Do any additional setup after loading the view.
+
     }
     override func viewWillAppear(_ animated: Bool) {
         if selectJob == true {
         name_lbl.text = name
         phone_lbl.text = "[phone protected]"
-        email_lbl.text = "[email protected]"
-        addres_lbl.text = "[address protected]"
-       }else{
+        receiverInformationView.isHidden = true
+       } else {
         name_lbl.text = name
         phone_lbl.text = phone
-        email_lbl.text = email
-        addres_lbl.text = address
+        if receiverN == nil || receiverN == "" {
+            receiverInformationView.isHidden = true
+        }
+        receiverName.text = receiverN
+        receiverPhone.text = receiverP
        }
     }
     

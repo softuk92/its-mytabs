@@ -104,13 +104,16 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         info.append(MenuItemStruct.init(title: "Category", value: category))
         }
         
+        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
+        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
+        
         if isJobNotBooked != true {
             if AppUtility.shared.country == .Pakistan {
                 if pickupHouseNo != "" {
-                    info.append(MenuItemStruct.init(title: "Pickup Door/Unit No.", value: pickupHouseNo))
+                    info.append(MenuItemStruct.init(title: "Pickup Unit/Door No.", value: pickupHouseNo))
                 }
                 if dropoffHouseNo != "" {
-                    info.append(MenuItemStruct.init(title: "Drop Off Door/Unit No.", value: dropoffHouseNo))
+                    info.append(MenuItemStruct.init(title: "Drop Off Unit/Door No.", value: dropoffHouseNo))
                 }
             } else {
         if pickupHouseNo != "" {
@@ -147,8 +150,7 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
         
-        info.append(MenuItemStruct.init(title: "Pickup Date", value: pickUp_date))
-        info.append(MenuItemStruct.init(title: "Pickup Time", value: pickUp_time))
+        
 //        info.append(MenuItemStruct.init(title: "Date Posted", value: Posteddate))
         
         if category == "Dedicated Van" || category == "Man & Van" {

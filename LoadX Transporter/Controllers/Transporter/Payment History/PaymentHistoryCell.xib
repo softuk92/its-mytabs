@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,10 +28,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aj0-GS-Ah8">
-                        <rect key="frame" x="10" y="10" width="346" height="160"/>
+                        <rect key="frame" x="2" y="10" width="362" height="160"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moving Item..........." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-r3-91L">
-                                <rect key="frame" x="10" y="8" width="328" height="20"/>
+                                <rect key="frame" x="10" y="8" width="344" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5db-54-mQT"/>
                                 </constraints>
@@ -80,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaT-rT-GkW" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="196" y="115" width="150" height="45"/>
+                                <rect key="frame" x="212" y="115" width="150" height="45"/>
                                 <color key="backgroundColor" name="MehroonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="505-fI-Tz5"/>
@@ -152,9 +152,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="Aj0-GS-Ah8" firstAttribute="leading" secondItem="TIu-Vr-Zce" secondAttribute="leading" constant="10" id="6lb-No-e37"/>
+                    <constraint firstItem="Aj0-GS-Ah8" firstAttribute="leading" secondItem="TIu-Vr-Zce" secondAttribute="leading" constant="2" id="6lb-No-e37"/>
                     <constraint firstItem="Aj0-GS-Ah8" firstAttribute="top" secondItem="TIu-Vr-Zce" secondAttribute="top" constant="10" id="F7Z-U9-btK"/>
-                    <constraint firstAttribute="trailing" secondItem="Aj0-GS-Ah8" secondAttribute="trailing" constant="10" id="ZbI-GQ-qBi"/>
+                    <constraint firstAttribute="trailing" secondItem="Aj0-GS-Ah8" secondAttribute="trailing" constant="2" id="ZbI-GQ-qBi"/>
                     <constraint firstAttribute="bottom" secondItem="Aj0-GS-Ah8" secondAttribute="bottom" constant="10" id="q5U-DN-CoQ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -170,7 +170,7 @@
                 <outlet property="paid" destination="cB4-DA-GNi" id="Z2A-At-LYb"/>
                 <outlet property="viewInvocie_btn" destination="GaT-rT-GkW" id="aA6-Kb-e90"/>
             </connections>
-            <point key="canvasLocation" x="334.39999999999998" y="136.28185907046478"/>
+            <point key="canvasLocation" x="334.39999999999998" y="135.832083958021"/>
         </tableViewCell>
     </objects>
     <designables>

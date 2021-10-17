@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class PaymentHistoryCell: UITableViewCell {
 
@@ -20,11 +21,17 @@ class PaymentHistoryCell: UITableViewCell {
     @IBOutlet weak var viewInvocie_btn: UIButton!
     
     var viewInvoiceRow: ((PaymentHistoryCell) -> Void)?
+    var disposeBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cell_view.layer.cornerRadius = 5
         cell_view.bottomShadow(color: .black)
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.viewInvocie_btn.setTitle(lang == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
+        }).disposed(by: disposeBag)
+        
         viewInvocie_btn.setTitle(Config.shared.currentLanguage.value == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
     }
 

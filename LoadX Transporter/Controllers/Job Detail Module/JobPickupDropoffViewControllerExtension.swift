@@ -183,6 +183,7 @@ extension JobPickupDropoffViewController {
             vc.ref_no = "LX00"+input.delId
             vc.contactName = input.customerName.capitalized
             vc.jobId = input.jbId
+            vc.receiverN = input.receiverName
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

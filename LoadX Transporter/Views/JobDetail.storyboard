@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -585,6 +585,17 @@
                                 <color key="textColor" name="TextfieldTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOF-OI-CKh">
+                                <rect key="frame" x="364" y="96" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="hxc-69-b2N"/>
+                                    <constraint firstAttribute="height" constant="30" id="lJc-8y-Cxv"/>
+                                </constraints>
+                                <state key="normal" image="share"/>
+                                <connections>
+                                    <action selector="shareLocationAct:" destination="58D-6v-CoT" eventType="touchUpInside" id="Ole-y8-x6u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NJx-5b-JKC"/>
                         <color key="backgroundColor" name="Background_color"/>
@@ -596,7 +607,9 @@
                             <constraint firstItem="NJx-5b-JKC" firstAttribute="bottom" secondItem="0uQ-UR-gyy" secondAttribute="bottom" constant="15" id="N8T-O4-n4b"/>
                             <constraint firstItem="0uQ-UR-gyy" firstAttribute="leading" secondItem="NJx-5b-JKC" secondAttribute="leading" constant="10" id="OSA-Br-f8P"/>
                             <constraint firstItem="0uQ-UR-gyy" firstAttribute="top" secondItem="NYH-ko-g8M" secondAttribute="bottom" id="QGx-Kp-Qq0"/>
+                            <constraint firstItem="NJx-5b-JKC" firstAttribute="trailing" secondItem="QOF-OI-CKh" secondAttribute="trailing" constant="20" id="REV-s5-beJ"/>
                             <constraint firstItem="NYH-ko-g8M" firstAttribute="top" secondItem="3w2-a1-wnC" secondAttribute="bottom" constant="10" id="a9U-lh-SZ0"/>
+                            <constraint firstItem="QOF-OI-CKh" firstAttribute="centerY" secondItem="NYH-ko-g8M" secondAttribute="centerY" constant="-3" id="fym-Ab-GZb"/>
                             <constraint firstItem="NJx-5b-JKC" firstAttribute="trailing" secondItem="0uQ-UR-gyy" secondAttribute="trailing" constant="10" id="l9k-eI-iEV"/>
                             <constraint firstItem="3w2-a1-wnC" firstAttribute="top" secondItem="NJx-5b-JKC" secondAttribute="top" id="plN-Rb-V42"/>
                             <constraint firstAttribute="trailing" secondItem="3w2-a1-wnC" secondAttribute="trailing" id="sSE-Ou-pW5"/>
@@ -610,6 +623,7 @@
                         <outlet property="address" destination="LQU-xF-kjt" id="1cy-qF-wy3"/>
                         <outlet property="bottomButtonView" destination="9ma-qE-7lg" id="9Iz-ly-nCa"/>
                         <outlet property="bottomButtonsStackView" destination="THc-mi-Tq6" id="9MW-nz-017"/>
+                        <outlet property="bottomDisclaimerBtn" destination="RTO-kA-Hgv" id="jqR-LW-T55"/>
                         <outlet property="cashCollectedBtn" destination="31U-Os-Cv2" id="DiY-SJ-ct2"/>
                         <outlet property="cashToBeCollected" destination="skX-ga-4EL" id="HWp-yG-9uX"/>
                         <outlet property="cashToBeCollectedView" destination="hie-cL-Hr5" id="uGN-78-fgC"/>
@@ -619,6 +633,7 @@
                         <outlet property="detailTabView" destination="Icm-q5-NKf" id="h6V-xF-yZX"/>
                         <outlet property="disclaimerView" destination="u13-Pm-MkE" id="VkA-bE-gqP"/>
                         <outlet property="dropoffArrivedBtn" destination="qP0-5U-Sk3" id="azB-VU-W6f"/>
+                        <outlet property="etaView" destination="iO2-wG-P97" id="ulu-bt-6w4"/>
                         <outlet property="jobBookedFor" destination="Bka-Tr-Sqx" id="AUh-Gu-zP2"/>
                         <outlet property="jobBookedForStackView" destination="Vgy-Bo-MAz" id="KMg-k4-jhA"/>
                         <outlet property="jobCompletedBtn" destination="9AW-eQ-dEk" id="Q2J-kI-ca6"/>
@@ -775,7 +790,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" name="contactTextColor"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Please let us know about items?"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Please let us know about image details?"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngn-Rf-ERG">
@@ -1299,6 +1314,7 @@
     <resources>
         <image name="back_arrow" width="16" height="16"/>
         <image name="pickUp_icon_new" width="22" height="33"/>
+        <image name="share" width="512" height="512"/>
         <image name="success" width="609" height="464"/>
         <namedColor name="BackgroundColor2">
             <color red="0.875" green="0.89399999380111694" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

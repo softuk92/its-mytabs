@@ -64,6 +64,8 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
     var contact: Bool?
     
     var selectSearchJob: Bool?
+    var receiverName: String?
+    var receiverPhone: String?
     
     override func viewDidLoad() {
         // change selected bar color
@@ -108,9 +110,11 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
 //                        print("this is the job detial api inventory list result:-- \(self.jsonDataPArse[1])")
                         
                         self.movingItem_lbl.text = self.jsonDataPArse[0]["moving_item"].stringValue
-                        self.price_lbl.text = self.bookedJobPrice
+                        self.price_lbl.text = AppUtility.shared.currencySymbol+(Int(self.jsonDataPArse[0]["Price"].stringValue)?.withCommas() ?? "0.0")
                         
                         self.userId = self.jsonDataPArse[0]["user_id"].stringValue
+                        self.receiverName = self.jsonDataPArse[0]["receiver_name"].stringValue
+                        self.receiverPhone = self.jsonDataPArse[0]["receiver_phone"].stringValue
                         self.showProfile()
                     self.setPager()
                     self.view.bringSubviewToFront(self.viewOfTop)
@@ -386,7 +390,8 @@ func setPager() {
 //                 vc?.index = 2
                 vc.selectJob = selectSearchJob
                 vc.jsonData = self.jsonPrfileData
-
+                vc.receiverN = self.receiverName
+                vc.receiverP = self.receiverPhone
                  return vc
                 
              }

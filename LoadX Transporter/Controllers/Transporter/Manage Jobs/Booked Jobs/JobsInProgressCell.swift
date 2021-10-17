@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class JobsInProgressCell: UITableViewCell {
 
@@ -51,6 +52,7 @@ class JobsInProgressCell: UITableViewCell {
     var cancelJob: ((JobsInProgressCell) -> Void)?
     weak var parentViewController: UIViewController!
     var jobID: String?
+    var disposeBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,8 +60,10 @@ class JobsInProgressCell: UITableViewCell {
         customizeView()
         setupViews()
         
-        startJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Start Job" : "شروع کریں۔", for: .normal)
-        cancelJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Cancel Job" : "منسوخ کریں۔", for: .normal)
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.cancelJobBtn.setTitle(lang == .en ? "Cancel Job" : "جاب منسوخ کریں۔", for: .normal)
+        }).disposed(by: disposeBag)
+        
     }
     
     func setupViews() {
@@ -85,7 +89,7 @@ class JobsInProgressCell: UITableViewCell {
         transporterName.text = model.driverName?.capitalized
         transporterPhone.text = model.driverPhone
         jobID = model.jbID
-        jobPriceTitle.text = model.isCod == "1" ? "Collect Cash" : "Job Price"
+        jobPriceTitle.text = model.isCod == "1" ? "Job Price" : "Job Price"
         if user_type == TransportationCompany {
             deleteBtn.isHidden = false
             if model.driverName?.lowercased() == user_name?.lowercased() {

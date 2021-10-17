@@ -19,7 +19,7 @@ class jobCancel_ViewController: UIViewController {
     @IBOutlet weak var jobCancelReason1: UILabel!
     @IBOutlet weak var jobCancelReason2: UILabel!
     @IBOutlet weak var backBtn: UIButton!
-    
+    @IBOutlet weak var submitButton: UIButton!
     var jb_id: String?
     var lr_id: String?
     var isCancel: Bool = true
@@ -29,20 +29,23 @@ class jobCancel_ViewController: UIViewController {
         super.viewDidLoad()
         self.textView.layer.borderWidth = 1
         self.textView.layer.borderColor = UIColor.gray.cgColor
-        self.textView.layer.cornerRadius = 20
+        self.textView.layer.cornerRadius = 5
         self.textView.isEditable = true
         
         backBtn.rx.tap.subscribe(onNext: { [weak self] (_) in
             self?.navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
+   
+        
+        submitButton.setTitle(string.submit.capitalized, for: .normal)
         checkStatus()
     }
     
     func checkStatus() {
         if isCancel {
-            textView.placeholder = "Please let us know the reason for canceling the job"
+            textView.placeholder = (Config.shared.currentLanguage.value == .en ? "Please let us know the reason for canceling the job?" : "برائے مہربانی ہمیں جاب منسوخ کرنے کی وجہ بتائیں؟")
             jobCancelReason1.text = "Job Cancel Reason"
-            jobCancelReason2.text = "Job Cancel Reason"
+            jobCancelReason2.text = string.JobCancelReason
         } else {
             textView.placeholder = "Please let us know the reason for canceling the route"
             jobCancelReason1.text = "Route Cancel Reason"

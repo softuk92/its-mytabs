@@ -64,6 +64,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var cashToBeCollected: UILabel!
     @IBOutlet weak var disclaimerView: UIView!
     @IBOutlet weak var topDisclaimerBtn: UIButton!
+    @IBOutlet weak var bottomDisclaimerBtn: UIButton!
+    @IBOutlet weak var etaView: UIView!
     //Manage two tableview buttons
     @IBOutlet weak var detailTabView: UIView!
     @IBOutlet weak var leadingJobDescription: NSLayoutConstraint!
@@ -106,6 +108,8 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     var timer:Timer = Timer()
     var startTime: Int = 0
     let locationManager  = CLocationManager.shared
+    var locLat: String = "0.0"
+    var locLng: String = "0.0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +120,15 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         setData(input: input)
         phoneNumberAct()
         updateTransporterLocation()
+        setupUI()
+    }
+    
+    func setupUI() {
+        pickupArrivedBtn.setTitle(string.pickupArrived, for: .normal)
+        uploadImagesBtn.setTitle(string.uploadImages, for: .normal)
+        topDisclaimerBtn.setTitle(string.disclaimer, for: .normal)
+        bottomDisclaimerBtn.setTitle(string.disclaimer, for: .normal)
+        leavingForDropoffBtn.setTitle(string.leavingForDropoff, for: .normal)
     }
     
     func updateTransporterLocation() {
@@ -424,6 +437,20 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             timeString += String(format: "%02d", seconds)
             return timeString
         }
+    
+    @IBAction func shareLocationAct(_ sender: UIButton) {
+        shareLocation(sender: sender)
+    }
+    
+    func shareLocation(sender: UIButton) {
+        
+        let items: [Any] = ["LoadX Transporter Current Location", URL(string: "https://maps.google.com/?q=\(locLat),\(locLng)")!]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        if (ac.popoverPresentationController != nil) {
+//                    ac.popoverPresentationController?.sourceView = router.
+        }
+        self.present(ac, animated: true)
+    }
 }
 
 extension JobPickupDropoffViewController: JobDetailSetupDelegate, RunningLateDelegate {
@@ -443,6 +470,14 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
     
     //tableview data
     func getData(jsonData: JSON, jsonData_inventory: JSON, movingTo: MovingTo = .pickup) {
+        if input.jobStatus.p_leaving_f_dropoff == "0" {
+            locLat = jsonData[0]["lat_pickup"].stringValue
+            locLng = jsonData[0]["long_pickup"].stringValue
+        } else {
+            locLat = jsonData[0]["lat_dropoff"].stringValue
+            locLng = jsonData[0]["long_dropoff"].stringValue
+        }
+        
         routeSummaryDetails.removeAll()
         descriptionInventoryDetails.removeAll()
         var info = [MenuItemStruct]()
@@ -476,7 +511,11 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         var no_of_hepler : String = ""
         if AppUtility.shared.country == .Pakistan {
         let helper = jsonData[0]["no_of_helper"].stringValue
-        no_of_hepler = (helper == "0") ? "No Helper" : (helper == "1" ? "1 Helper" : "\(helper) Helpers")
+            if helper == "0" || helper == "N/A" {
+                no_of_hepler = "No Help Required"
+            } else {
+                no_of_hepler = (helper == "1" ? "1 Helper" : "\(helper) Helpers")
+            }
         } else {
         no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         }

@@ -226,11 +226,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             }
         }
         }
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+        }).disposed(by: disposeBag)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         callAPIs()
-        languageBtn.setTitle(Config.shared.currentLanguage.value == .en ? "English" : "Urdu", for: .normal)
     }
     
     func callAPIs() {
@@ -695,9 +699,11 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             cell.quotes.text = vanType
         }
 
-        cell.pickupLabel.text = getAddress(street: searchDeliveriesRow.pu_street, route: searchDeliveriesRow.pu_route, city: searchDeliveriesRow.pu_city, postcode: searchDeliveriesRow.pu_post_code)
+        cell.pickupLabel.text = searchDeliveriesRow.pick_up
+//        getAddress(street: searchDeliveriesRow.pu_street, route: searchDeliveriesRow.pu_route, city: searchDeliveriesRow.pu_city, postcode: searchDeliveriesRow.pu_post_code)
 
-        cell.dropOffLabel.text = getAddress(street: searchDeliveriesRow.do_street, route: searchDeliveriesRow.do_route, city: searchDeliveriesRow.do_city, postcode: searchDeliveriesRow.do_post_code)
+        cell.dropOffLabel.text = searchDeliveriesRow.drop_off
+//        getAddress(street: searchDeliveriesRow.do_street, route: searchDeliveriesRow.do_route, city: searchDeliveriesRow.do_city, postcode: searchDeliveriesRow.do_post_code)
         
         cell.postedDateLabel.text = searchDeliveriesRow.job_posted_date
         cell.deliveryDateLabel.text = convertDateFormatter(searchDeliveriesRow.date)

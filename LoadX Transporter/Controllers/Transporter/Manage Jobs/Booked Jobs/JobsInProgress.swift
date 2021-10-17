@@ -120,6 +120,10 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         routeJobsBtn.alpha = 0.5
         
         NotificationCenter.default.addObserver(self, selector: #selector(didSelect), name: NSNotification.Name(rawValue: "didSelect"), object: nil)
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+        }).disposed(by: disposeBag)
     }
     
     func tableViewsRefreshControl() {
@@ -181,8 +185,9 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        locationManager.stop()
         callAPIs()
-        languageBtn.setTitle(Config.shared.currentLanguage.value == .en ? "English" : "Urdu", for: .normal)
     }
     
     func callAPIs() {
@@ -406,6 +411,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if jobsInProgressRow.isJobStarted == nil || jobsInProgressRow.isJobStarted == "0" {
             cell.startJobBtn.isHidden = false
+            cell.startJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Start Job" : "جاب شروع کریں۔", for: .normal)
         } else {
 //            cell.startJobBtn.isHidden = true
             cell.startJobBtn.setTitle(Config.shared.currentLanguage.value == .en ? "Resume Job" : "دوبارہ شروع کریں۔", for: .normal)
@@ -425,21 +431,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.date.text = convertDateFormatter(jobsInProgressRow.date)
         cell.pickupTime.text = jobsInProgressRow.timeSlot?.uppercased()
         
-        if AppUtility.shared.country == .Pakistan {
-            let payment_type = jobsInProgressRow.jobPaymentType
-            if  payment_type == "full" {
-                cell.payment_method_lbl.text = "Account Job"
-            }else{
-                cell.payment_method_lbl.text = "Cash Job"
-            }
-        } else {
-        let payment_type = jobsInProgressRow.paymentType
-        if  payment_type == "full" {
-            cell.payment_method_lbl.text = "Account Job"
-        }else{
-            cell.payment_method_lbl.text = "Cash Job"
-        }
-        }
+        cell.payment_method_lbl.text = jobsInProgressRow.jobPaymentType
         
         let is_companyJob = jobsInProgressRow.isCompanyJob
         
@@ -493,7 +485,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let self = self else { return }
             self.jobCancel_popview.layer.cornerRadius = 18
             self.tableView.alpha = 0.5
-            self.jobCancelReason.text = "Are you sure you want to cancel this job?"
+            self.jobCancelReason.text = Config.shared.currentLanguage.value == .en ? "Are you sure you want to cancel this job?" : "کیا آپ یہ بکنگ منسوخ کرنا چاہتے ہیں؟"
             self.isCancel = true
             self.view.addSubview(self.jobCancel_popview)
             self.jobCancel_popview.center = self.view.center
@@ -527,7 +519,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func showCancelJobAlertView() {
  
         let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        aView.question.text = "Are you sure you want to cancel this job?"
+        aView.question.text = Config.shared.currentLanguage.value == .en ? "Are you sure you want to cancel this job?" : "کیا آپ یہ بکنگ منسوخ کرنا چاہتے ہیں؟"
         aView.ensure.text = ""
         aView.sendPaymentLinkHeight.constant = 0
         aView.sendPaymentLink.isHidden = true
@@ -713,8 +705,8 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
         let jobDetailVC = JobPickupDropoffViewController.instantiate()
         let rowData = self.jobsInProgressModel[indexPath.row]
-        let pickup = "\(rowData.puHouseNo ?? "") \(rowData.pickUp)"
-        let dropoff = "\(rowData.doHouseNo ?? "") \(rowData.dropOff)"
+        let pickup = rowData.pickUp
+        let dropoff = rowData.dropOff
         
         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
         let jobPrice = AppUtility.shared.country == .Pakistan ? AppUtility.shared.currencySymbol+((Int(rowData.price ?? "") ?? 0).withCommas()) : ("£ "+"\(getDoubleValue(currentBid: Double(rowData.currentBid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
@@ -753,6 +745,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             languageBtn.setTitle("English", for: .normal)
         }
         
+        tableView.reloadData()
     }
 }
 

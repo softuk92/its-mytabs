@@ -10,21 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
-
-extension UIView {
-
-	/*
-	func dropShadow(color: UIColor = UIColor(named: "shadowColor")!) {
-	   layer.masksToBounds = false
-	   layer.shadowColor = color.cgColor
-	   layer.shadowOpacity = 0.5
-	   layer.shadowOffset = CGSize(width: -1, height: 1)
-	   layer.shadowRadius = 1
-	   layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-	   layer.shouldRasterize = true
-	   layer.rasterizationScale = UIScreen.main.scale
-   }*/
-}
+import RxSwift
 
 class PendingPaymentHeaderView: UIView {
 	let title = UILabel()
@@ -59,6 +45,9 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var pendingLoadXShare: UILabel!
     @IBOutlet weak var pendingTransporterShare: UILabel!
     @IBOutlet weak var balance: UILabel!
+    @IBOutlet weak var transporterLoadxRequestOrPay: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var languageBtn: UIButton!
     
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
@@ -73,6 +62,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     var showInvoiceData = true
 	var pendingPaymentHeaderView: PendingPaymentHeaderView!
     var requestToLoadx : Bool?
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +101,10 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshData(notification:)), name: Notification.Name("refresh"), object: nil)
         getCounter()
         getPaymentHistory()
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+        }).disposed(by: disposeBag)
     }
     
     func getCounter() {
@@ -209,14 +203,25 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                     self.pendingTransporterShare.text = "Rs. " + "\(payToLoadX.transporterShare.withCommas())"
                     self.balance.text = "Rs. " + "\(payToLoadX.summary.balance.withCommas())"
 
-                    self.totalEarning.text = "Pending Loadx Share"
+                    self.totalEarning.text = "Payments"
                     self.paymentTotal.text = "("+AppUtility.shared.currencySymbol+payToLoadX.loadXShare.withCommas()+")"
                     
 					//payment button title
-					let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Request for Payment " : "Pay Now "
-					let buttonTitle = titlePrefix + "(\(AppUtility.shared.currencySymbol+self.totalPayableToLoadX))"
+                    self.transporterLoadxRequestOrPay.text = payToLoadX.summary.balanceType == .loadXToTransporter ? "LoadX has to pay to Transporter" : "Transporter has to pay to LoadX"
+                    self.priceLabel.text = "(\(AppUtility.shared.currencySymbol+self.totalPayableToLoadX))"
                     self.requestToLoadx = (payToLoadX.summary.balanceType == .loadXToTransporter)
-					self.paymentButton.setTitle(buttonTitle, for: .normal)
+                    Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+                        if lang == .en {
+                        let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "Request for Payment" : "Pay Now"
+                        self?.paymentButton.setTitle(titlePrefix, for: .normal)
+                        } else {
+                            let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "ابھی ادائیگی کی درخواست کریں۔" : "ابھی ادائیگی کریں"
+                            self?.paymentButton.setTitle(titlePrefix, for: .normal)
+                        }
+                        
+                    }).disposed(by: self.disposeBag)
+                    
+					
 
 					self.showShadow(for: self.tableView)
 					self.tableView.tableHeaderView = self.pendingPaymentHeaderView
@@ -492,6 +497,16 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                 showSuccessAlert(question: message, viewController: self)
 //                showAlert(title: "Alert", message: message, viewController: self)
             }
+        }
+    }
+    
+    @IBAction func languageBtnAct(_ sender: Any) {
+        if languageBtn.titleLabel?.text == "English" {
+            Config.shared.setLanguage.onNext(.en)
+            languageBtn.setTitle("Urdu", for: .normal)
+        } else {
+            Config.shared.setLanguage.onNext(.ur)
+            languageBtn.setTitle("English", for: .normal)
         }
     }
     

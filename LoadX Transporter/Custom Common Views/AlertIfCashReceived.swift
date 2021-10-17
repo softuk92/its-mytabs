@@ -41,7 +41,7 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
         if AppUtility.shared.country == .Pakistan {
             closeButtonView.isHidden = true
             ensure.text = ""
-            cashReceivedBtn.backgroundColor = R.color.mehroonColor()
+            cashReceivedBtn.backgroundColor = R.color.newBlueColor()
             paymentLinkBtn.backgroundColor = .darkGray
             paymentLinkBtn.setTitle("CLOSE", for: .normal)
             paymentLinkBtn.isHidden = true

@@ -65,6 +65,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var routeJobsBtn: UIButton!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var routesTableView: UITableView!
+    @IBOutlet weak var languageBtn: UIButton!
     
     func setConstraints(leadingSearch: Bool, trailingSearch: Bool, leadingRoute: Bool, trailingRoute: Bool) {
         UIView.animate(withDuration: 3.0) { [weak self] in
@@ -101,6 +102,10 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         configureRoutesTableView()
         tableViewsRefreshControl()
         routeJobsBtn.alpha = 0.5
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+        }).disposed(by: disposeBag)
     }
     
     func callAPIs() {
@@ -618,6 +623,16 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func goToNotifications(_ sender: Any) {
         if let vc = UIStoryboard.init(name: "Notifications", bundle: nil).instantiateViewController(withIdentifier: "NotificationsListViewController") as? NotificationsListViewController {
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @IBAction func languageBtnAct(_ sender: Any) {
+        if languageBtn.titleLabel?.text == "English" {
+            Config.shared.setLanguage.onNext(.en)
+            languageBtn.setTitle("Urdu", for: .normal)
+        } else {
+            Config.shared.setLanguage.onNext(.ur)
+            languageBtn.setTitle("English", for: .normal)
         }
     }
     

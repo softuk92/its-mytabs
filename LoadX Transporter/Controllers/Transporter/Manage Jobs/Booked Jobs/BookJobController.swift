@@ -43,6 +43,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     var ref_no: String?
     var contact_no: String?
     var contactName: String?
+    var receiverN: String?
     var isRoute: Bool = false
     var lrhJobId = ""
     var lrID = ""
@@ -117,11 +118,11 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         self.jobIdName.text = "Route ID"
         }
         self.ref_no_lbl.text = ref_no
-        self.contact_name_lbl.text = contactName
+        self.contact_name_lbl.text = contactName?.uppercased()
         self.contact_no_lbl.text = contact_no
-//        if let customerName = contactName {
-//            receiverName.text = customerName
-//        }
+        if let receiver = receiverN, receiver != "" {
+            receiverName.text = receiver.uppercased()
+        }
     }
     @IBAction func clear_btn(_ sender: Any) {
         signatureView.clear()

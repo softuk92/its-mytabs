@@ -353,7 +353,7 @@
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohr-Ud-fEc">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                                                                        <state key="normal" title="UPDATE">
+                                                                                        <state key="normal" title="SUBMIT">
                                                                                             <color key="titleColor" name="colorForInvoice"/>
                                                                                         </state>
                                                                                         <connections>
