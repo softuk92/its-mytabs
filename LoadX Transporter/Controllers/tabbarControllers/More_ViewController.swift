@@ -96,6 +96,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
             languageSwitch.switchState.skip(1).subscribe(onNext: { (value) in
                 Config.shared.setLanguage.onNext(value ? .ur : .en)
             }).disposed(by: disposeBag)
+            
         }
         if user_type == TransportationCompany {
             manageDriverView.isHidden = false
@@ -108,6 +109,13 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         statisticsView.isHidden = isCompanyDriver == "1"
         reachUsView.isHidden = isCompanyDriver == "1"
         affiliatedWithView.isHidden = !(isCompanyDriver == "1")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Config.shared.currentLanguage.take(1).subscribe(onNext: { [weak self] (lang) in
+            self?.languageSwitch.switchState.accept(lang == .ur)
+        }).disposed(by: disposeBag)
     }
     
         @IBAction func userProfileBtn(_ sender: Any) {
