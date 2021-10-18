@@ -129,6 +129,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         topDisclaimerBtn.setTitle(string.disclaimer, for: .normal)
         bottomDisclaimerBtn.setTitle(string.disclaimer, for: .normal)
         leavingForDropoffBtn.setTitle(string.leavingForDropoff, for: .normal)
+        dropoffArrivedBtn.setTitle(string.dropoffArrived, for: .normal)
+        cashCollectedBtn.setTitle(string.cashCollected, for: .normal)
+        jobCompletedBtn.setTitle(string.jobCompleted, for: .normal)
     }
     
     func updateTransporterLocation() {

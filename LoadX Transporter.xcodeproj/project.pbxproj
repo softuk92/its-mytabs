@@ -64,6 +64,7 @@
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
 		18E007FE26D91B82002D455B /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E007FC26D91B82002D455B /* ReviewsCell.swift */; };
 		18E007FF26D91B82002D455B /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E007FD26D91B82002D455B /* ReviewsCell.xib */; };
+		18F83088271D55E400D9263A /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F83087271D55E400D9263A /* BaseLabel.swift */; };
 		4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249D126616B16005D1CFE /* JobSummaryModel.swift */; };
 		4E0249E72661AE17005D1CFE /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */; };
 		4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E060570265EE42100B70BFE /* UploadImagesViewController.swift */; };
@@ -334,6 +335,7 @@
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		18E007FC26D91B82002D455B /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		18E007FD26D91B82002D455B /* ReviewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
+		18F83087271D55E400D9263A /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		4E0249D126616B16005D1CFE /* JobSummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryModel.swift; sourceTree = "<group>"; };
 		4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		4E060570265EE42100B70BFE /* UploadImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImagesViewController.swift; sourceTree = "<group>"; };
@@ -701,6 +703,22 @@
 			path = "PK Models";
 			sourceTree = "<group>";
 		};
+		18F83085271D55AD00D9263A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				18F83086271D55B400D9263A /* Custom Classes */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		18F83086271D55B400D9263A /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				18F83087271D55E400D9263A /* BaseLabel.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
 		3DA0DBBD6B0B73C84F222B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -943,6 +961,7 @@
 		8D3E60EB21F76432004EAB06 = {
 			isa = PBXGroup;
 			children = (
+				18F83085271D55AD00D9263A /* Utilities */,
 				8D3E610D21F76BC6004EAB06 /* Default-568h@2x.png */,
 				8D3E60F621F76432004EAB06 /* LoadX Transporter */,
 				8D3E60F521F76432004EAB06 /* Products */,
@@ -1576,6 +1595,7 @@
 				6DFAC4C32293087400556D30 /* SearchBookedJobs.swift in Sources */,
 				8D4385E3222447A200A3CE7F /* BidJobDetailController.swift in Sources */,
 				1803710B26F1D65B0079DC26 /* NotificationsListViewController.swift in Sources */,
+				18F83088271D55E400D9263A /* BaseLabel.swift in Sources */,
 				4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */,
 				8D48C2122224419200417EF5 /* JobDetailController.swift in Sources */,
 				1819CB43266E06BF00BDECC0 /* AlertIfCashReceived.swift in Sources */,

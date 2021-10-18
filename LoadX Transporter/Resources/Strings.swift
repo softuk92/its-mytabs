@@ -26,6 +26,16 @@ protocol StringResources {
     var uploadImages: String {get}
     var disclaimer: String {get}
     var leavingForDropoff: String {get}
+    var dropoffArrived: String {get}
+    var cashCollected: String {get}
+    var disclaimerDetails: String {get}
+    var haveYouCollectedCashOnThisJob: String {get}
+    var cashReceived: String {get}
+    var jobCompleted: String {get}
+    var uploadDeliveryProof: String {get}
+    var receiverSignature: String {get}
+    var dashboard: String {get}
+    var backToJob: String {get}
 }
 
 class StringsEn: StringResources {
@@ -35,6 +45,16 @@ class StringsEn: StringResources {
     let uploadImages: String = "Upload Images"
     let disclaimer: String = "Disclaimer"
     let leavingForDropoff: String = "Leaving for Dropoff"
+    let dropoffArrived: String = "Arrived"
+    let cashCollected: String = "Cash Collected"
+    let disclaimerDetails: String = "This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our services and the choices you have associated with that data.\n\nBy using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise deﬁned in this privacy policy, terms used in this privacy policy have the same meanings as in our terms and conditions.\n\nThe terms our, us, we and Service refer to LoadX on this page.\n\n1. What personal information do we collect?\n\nWe process different types of information for various purposes to provide and improve our Service to you."
+    let haveYouCollectedCashOnThisJob: String = "Have you collected cash on this job?"
+    let cashReceived: String = "Cash Received"
+    let jobCompleted: String = "Job Completed"
+    let uploadDeliveryProof: String = "Upload Delivery Proof"
+    let receiverSignature: String = "Receiver Signature"
+    let dashboard: String = "Dashboard"
+    let backToJob: String = "Back to Job"
 }
 
 class StringsUr: StringResources {
@@ -44,4 +64,14 @@ class StringsUr: StringResources {
     let uploadImages: String = "تصاویر اپ لوڈ کریں"
     let disclaimer: String = "شرائط و ضوابط۔"
     let leavingForDropoff: String = "سامان پہنچانے کے لیے نکل گیا ہوں"
+    let dropoffArrived: String = "سامان کی جگہ پر پہنچ گیا ہوں"
+    let cashCollected: String = "کیا رقم وصول کی"
+    let disclaimerDetails: String = "ہمارے شرائط و ضوابط میں یہ بات شامل ہے کہ ہم آپ کی اشیاء کو آپ کی بتائی ہوئی جگہ پر بحفاظت پہنچائیں۔ کوئی بھی اضافی کام جیسے آپ کی اشیاء کو آپ کے مکان/دفتر کے اندر لے جانا یا فرنیچر کو کھولنا یا جوڑنا , بڑی اشیاء کو چھوٹی جگہ سے گزارنا وغیرہ آپ کی ذمہ داری ہوگا۔ اگر آپ ہمیں یہ کام کرنے کو کہیں گے تو اس دوران اگر کوئی نقصان ہوگا تو اسکے ذمہ دار ہم نہیں ہوں گے۔"
+    let haveYouCollectedCashOnThisJob: String = "کیا آپ نے اس جاب پر نقد رقم وصول کی ھے؟"
+    let cashReceived: String = "جی نقد رقم وصول کی ھے"
+    let jobCompleted: String = "کیا جاب مکمل ھو گئی؟"
+    let uploadDeliveryProof: String = "سامان پہنچانے کا ثبوت آپ لوڈ کریں"
+    let receiverSignature: String = "وصول کرنے والے کے دستخط"
+    let dashboard: String = "واپس جائیں"
+    let backToJob: String = "واپس جائیں"
 }

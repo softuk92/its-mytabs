@@ -26,6 +26,8 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var signatureView: SwiftSignatureView!
     @IBOutlet weak var signature_Image: UIImageView!
+    @IBOutlet weak var disclaimerTitle: UILabel!
+    @IBOutlet weak var submitBtn: UIButton!
     
     var jobId: String?
     var customerName: String?
@@ -48,7 +50,9 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
         signature_Image.layer.borderColor = UIColor.black.cgColor
         
         self.signatureView.delegate = self
-        
+        disclaimerTitle.text = string.disclaimer
+        submitBtn.setTitle(string.submit, for: .normal)
+        disclaimerTitle.textAlignment = Config.shared.currentLanguage.value == .en ? .left : .right
         dateLabel.text = "\(Date().string(format: "dd-MMMM-yyyy", timezone: .current))"
         setDisclaimerText()
     }
@@ -58,7 +62,7 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
             receiverName.text = customerName
         }
         if AppUtility.shared.country == .Pakistan {
-        disclaimerLabel.text = "This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our services and the choices you have associated with that data.\n\nBy using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise deﬁned in this privacy policy, terms used in this privacy policy have the same meanings as in our terms and conditions.\n\nThe terms our, us, we and Service refer to LoadX on this page.\n\n1. What personal information do we collect?\n\nWe process different types of information for various purposes to provide and improve our Service to you."
+            disclaimerLabel.text = string.disclaimerDetails
         } else {
         disclaimerLabel.text = "We are contracted to deliver your goods as entrusted to us as per our Standard Terms & Conditions. \n\nAny additional work, such as moving items in or around the property, disassembling/reassembling items or furniture, removing/refitting doors (for ease of access), \("squeezing") large items through narrows doors/corridors, etc is undertaken at your own risk, and we are under no obligation to carry out such work, upon your insistence, we have agreed to carry out this work, which is contrary to our Standard Terms & Conditions. \n\nAny damage caused to furniture, doors, walls or property under these circumstances is your sole responsibility and neither the Transporter nor LoadX can be held responsible for such damage."
         }
@@ -140,7 +144,7 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
                                 }
                                 if let vc = UIStoryboard.init(name: "JobDetail", bundle: nil).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
                                     vc.modalPresentationStyle = .fullScreen
-                                    vc.buttonText = "Back to Job"
+                                    vc.buttonText = string.backToJob
                                     vc.ensureText = "Disclaimer has been submitted."
                                     self.dismiss(animated: true) { [weak self] in
                                         guard let self = self else { return }

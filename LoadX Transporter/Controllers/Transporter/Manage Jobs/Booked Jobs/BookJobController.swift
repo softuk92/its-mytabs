@@ -23,7 +23,6 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     @IBOutlet weak var myImage1: UIImageView!
     @IBOutlet weak var receiverName: UITextField!
-    @IBOutlet weak var uploadProofOutlet: UIStackView!
     @IBOutlet weak var selectImageOutlet: UIButton!
     @IBOutlet weak var updateOutlet: UIButton!
     @IBOutlet weak var yes_btn: UIButton!
@@ -39,6 +38,9 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var contact_no_lbl: UILabel!
     @IBOutlet weak var jobIdName: UILabel!
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var uploadDeliveryProof: UILabel!
+    @IBOutlet weak var receiverSignatureLabel: UILabel!
+    @IBOutlet weak var clearBtn: UIButton!
     
     var ref_no: String?
     var contact_no: String?
@@ -82,6 +84,10 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         signatureView.delegate = self
         
+        updateOutlet.setTitle(string.submit, for: .normal)
+        uploadDeliveryProof.text = string.uploadDeliveryProof
+        receiverSignatureLabel.text = string.receiverSignature
+        clearBtn.contentHorizontalAlignment = Config.shared.currentLanguage.value == .en ? .right : .left
             User_location.requestAlwaysAuthorization()
             User_location.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {

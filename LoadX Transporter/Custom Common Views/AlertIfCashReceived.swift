@@ -56,6 +56,8 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
         setupUI()
+        cashReceivedBtn.setTitle(string.cashReceived, for: .normal)
+        question.text = string.haveYouCollectedCashOnThisJob
     }
     
     @IBAction func cashReceivedAct(_ sender: Any) {

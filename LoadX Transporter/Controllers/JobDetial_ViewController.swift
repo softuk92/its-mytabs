@@ -119,7 +119,7 @@ class JobDetial_ViewController: UIViewController, UIPageViewControllerDataSource
                     self.setPager()
                     self.view.bringSubviewToFront(self.viewOfTop)
                                
-                       }else{
+                       }else{ 
 
                     }
                     

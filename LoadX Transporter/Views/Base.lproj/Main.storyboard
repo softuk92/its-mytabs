@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B64-sd-fT7">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10968,8 +10968,8 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                     <constraint firstAttribute="height" constant="1" id="RG8-PK-TrK"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Delivery Proof" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-8B-k5K">
-                                                <rect key="frame" x="30" y="245" width="146.5" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Delivery Proof" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-8B-k5K" customClass="BaseLabel" customModule="LoadX_Transporter" customModuleProvider="target">
+                                                <rect key="frame" x="30" y="245" width="315" height="18"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -11000,13 +11000,13 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                                     <action selector="selectimage:" destination="Yyp-3w-TGO" eventType="touchUpInside" id="Jx6-wb-bDm"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rom-VB-VgV">
-                                                <rect key="frame" x="30" y="443" width="126.5" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rom-VB-VgV" customClass="BaseLabel" customModule="LoadX_Transporter" customModuleProvider="target">
+                                                <rect key="frame" x="30" y="443" width="315" height="18"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-Is-bTs">
-                                                <rect key="frame" x="312" y="430" width="33" height="44"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-Is-bTs">
+                                                <rect key="frame" x="30" y="430" width="315" height="44"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Clear">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -11067,6 +11067,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstAttribute="bottom" secondItem="izN-m9-hUf" secondAttribute="bottom" constant="25" id="Fiz-j8-B5L"/>
                                             <constraint firstItem="Sio-u2-LMt" firstAttribute="top" secondItem="2BA-4V-VRr" secondAttribute="bottom" id="GCz-JE-94a"/>
                                             <constraint firstItem="2BA-4V-VRr" firstAttribute="top" secondItem="adJ-Rl-Qq9" secondAttribute="bottom" constant="10" id="HaG-cT-fqZ"/>
+                                            <constraint firstItem="kmy-Is-bTs" firstAttribute="leading" secondItem="MT9-6V-V32" secondAttribute="leading" constant="30" id="JRP-zW-mxD"/>
                                             <constraint firstItem="rom-VB-VgV" firstAttribute="leading" secondItem="cCd-8B-k5K" secondAttribute="leading" id="KY9-eb-drV"/>
                                             <constraint firstItem="vaV-4F-08A" firstAttribute="leading" secondItem="MT9-6V-V32" secondAttribute="leading" constant="30" id="L6v-JC-Ak1"/>
                                             <constraint firstItem="adJ-Rl-Qq9" firstAttribute="top" secondItem="2dk-IV-1dr" secondAttribute="bottom" constant="20" id="Ory-eP-z6l"/>
@@ -11077,7 +11078,9 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                             <constraint firstItem="cCd-8B-k5K" firstAttribute="leading" secondItem="MT9-6V-V32" secondAttribute="leading" constant="30" id="Tf5-tb-dy4"/>
                                             <constraint firstItem="kmy-Is-bTs" firstAttribute="trailing" secondItem="2BA-4V-VRr" secondAttribute="trailing" id="Th8-2c-Lui"/>
                                             <constraint firstItem="GqB-N7-fqF" firstAttribute="top" secondItem="rom-VB-VgV" secondAttribute="bottom" constant="10" id="bs7-7G-mbG"/>
+                                            <constraint firstAttribute="trailing" secondItem="cCd-8B-k5K" secondAttribute="trailing" constant="30" id="e4F-Kt-pxs"/>
                                             <constraint firstItem="Sio-u2-LMt" firstAttribute="trailing" secondItem="2BA-4V-VRr" secondAttribute="trailing" id="gB5-5E-zJj"/>
+                                            <constraint firstAttribute="trailing" secondItem="rom-VB-VgV" secondAttribute="trailing" constant="30" id="hbn-pR-bwQ"/>
                                             <constraint firstItem="pxb-fE-O2f" firstAttribute="top" secondItem="cCd-8B-k5K" secondAttribute="bottom" constant="20" id="hlN-a4-8cZ"/>
                                             <constraint firstAttribute="trailing" secondItem="adJ-Rl-Qq9" secondAttribute="trailing" constant="30" id="ibd-l4-cCc"/>
                                             <constraint firstAttribute="trailing" secondItem="vaV-4F-08A" secondAttribute="trailing" constant="30" id="kTq-N7-qYI"/>
@@ -11118,18 +11121,21 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <navigationItem key="navigationItem" id="WBP-Mb-oIh"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
+                        <outlet property="clearBtn" destination="kmy-Is-bTs" id="WCQ-WU-PgN"/>
                         <outlet property="contact_name_lbl" destination="j27-KC-56f" id="bcy-fJ-czG"/>
                         <outlet property="contact_no_lbl" destination="w1p-Xb-1lh" id="rIS-AW-Rc5"/>
                         <outlet property="info_view" destination="2dk-IV-1dr" id="uoe-ma-mxy"/>
                         <outlet property="jobIdName" destination="lTG-ZZ-l5C" id="j9s-mv-RDI"/>
                         <outlet property="myImage1" destination="pxb-fE-O2f" id="K1s-bm-Bdl"/>
                         <outlet property="receiverName" destination="2BA-4V-VRr" id="bVp-po-hFO"/>
+                        <outlet property="receiverSignatureLabel" destination="rom-VB-VgV" id="y2j-0A-zWV"/>
                         <outlet property="ref_no_lbl" destination="ce0-vY-DmB" id="XT6-vp-CjR"/>
                         <outlet property="selectImageOutlet" destination="v2M-dO-oOJ" id="4FH-m2-85S"/>
                         <outlet property="signatureView" destination="GqB-N7-fqF" id="zDJ-Tw-M2k"/>
                         <outlet property="signature_Image" destination="vaV-4F-08A" id="2fu-hQ-V9T"/>
                         <outlet property="topLabel" destination="kB2-88-DNE" id="8J7-Uo-xG0"/>
                         <outlet property="updateOutlet" destination="izN-m9-hUf" id="5Lz-wO-Ixp"/>
+                        <outlet property="uploadDeliveryProof" destination="cCd-8B-k5K" id="kso-vE-aRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iX7-6c-4L6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -12571,17 +12577,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h44-G1-V2o">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-T0-PR7">
-                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="mz7-lB-ntq"/>
                                         <constraint firstAttribute="height" constant="60" id="voq-Yb-d3D"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable email notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7I-Ns-q3r">
-                                    <rect key="frame" x="30" y="83" width="238" height="44"/>
+                                    <rect key="frame" x="30" y="83" width="240" height="44"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -12601,10 +12607,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4aC-So-8PO">
-                            <rect key="frame" x="20" y="175" width="260" height="35"/>
+                            <rect key="frame" x="20" y="175" width="262" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-FX-OXZ" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="4N2-JL-nGY"/>
@@ -12624,7 +12630,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-RQ-Eer" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
+                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">
@@ -12668,17 +12674,17 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-Ia-K4Y">
-                            <rect key="frame" x="0.0" y="0.0" width="302" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="135"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eLY-UP-Ncu">
-                                    <rect key="frame" x="121" y="15" width="60" height="60"/>
+                                    <rect key="frame" x="120" y="15" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="5xU-4k-Isn"/>
                                         <constraint firstAttribute="height" constant="60" id="JBP-7j-Mho"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enable mobile notifications?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-bE-zeh">
-                                    <rect key="frame" x="20" y="80" width="262" height="50"/>
+                                    <rect key="frame" x="20" y="80" width="260" height="50"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -12697,10 +12703,10 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-40-bMs">
-                            <rect key="frame" x="20" y="175" width="262" height="35"/>
+                            <rect key="frame" x="20" y="175" width="260" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-ra-EzO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="5Zq-1D-JZX"/>
@@ -12720,7 +12726,7 @@ LoadX is under no obligation to you or anyone if an order is cancelled. Necessar
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Xt-I48" customClass="AnimatableButton" customModule="IBAnimatable">
-                                    <rect key="frame" x="141" y="0.0" width="121" height="35"/>
+                                    <rect key="frame" x="140" y="0.0" width="120" height="35"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                     <state key="normal" title="No" backgroundImage="popup_noBtn">

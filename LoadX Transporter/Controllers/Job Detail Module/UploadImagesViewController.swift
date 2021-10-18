@@ -44,6 +44,7 @@ class UploadImagesViewController: UIViewController {
         showPickerView()
         configureCollectionView()
         collectionViewHeight.constant = 0
+        submit.setTitle(string.submit, for: .normal)
     }
     
     func configureCollectionView() {
@@ -128,7 +129,7 @@ class UploadImagesViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 if let vc = UIStoryboard.init(name: "JobDetail", bundle: .main).instantiateViewController(withIdentifier: "JobSuccessController") as? JobSuccessController {
                     vc.modalPresentationStyle = .fullScreen
-                    vc.buttonText = "Back to Job"
+                    vc.buttonText = string.backToJob
                     vc.ensureText = "Images Submitted Successfully."
                     vc.delegate = self.parentVC
                     self.dismiss(animated: true) { [weak self] in

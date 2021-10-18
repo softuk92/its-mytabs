@@ -116,7 +116,8 @@ class PaymentTypeViewController: UIViewController {
 		}
 
 		//set paynow title
-        let buttonTitle = attributedTitle(text1: "Pay Now ", text2: "(Rs. \(amount.withCommas()))")
+        let titleLabel = Config.shared.currentLanguage.value == .en ? "Pay Now" : "ابھی ادائیگی کریں"
+        let buttonTitle = attributedTitle(text1: titleLabel, text2: " (Rs. \(amount.withCommas()))")
 		payNow.setAttributedTitle(buttonTitle, for: .normal)
 		payNow.isEnabled = false
 //		payNow.titleLabel?.attributedText = buttonTitle

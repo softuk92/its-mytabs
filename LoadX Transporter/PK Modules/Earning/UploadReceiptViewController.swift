@@ -22,6 +22,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
     @IBOutlet weak var messageTV: UITextView!
     @IBOutlet weak var receiptImage: UIImageView!
     @IBOutlet weak var uploadButtonView: UIView!
+    @IBOutlet weak var submit: UIButton!
     
     var paymentsToPay = [PayToLoadXItme]()
     var dataSource: UploadReceipt?
@@ -41,6 +42,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         if let amountP = amount {
             totalAmount.text = "Rs. "+amountP
         }
+        submit.setTitle(string.submit, for: .normal)
     }
     
     

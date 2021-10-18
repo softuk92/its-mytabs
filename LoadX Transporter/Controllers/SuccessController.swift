@@ -19,7 +19,7 @@ class SuccessController: UIViewController {
         super.viewDidLoad()
         
         mainBtn.layer.cornerRadius = 20
-        
+        mainBtn.setTitle(string.dashboard, for: .normal)
         if runningLateFromJob {
             mainBtn.setTitle("Go Back to Job", for: .normal)
         }

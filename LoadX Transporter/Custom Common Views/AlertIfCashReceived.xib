@@ -119,7 +119,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="35"/>
                                             <color key="backgroundColor" name="NewBlueColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="125" id="CpE-Cd-3Mo"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="CpE-Cd-3Mo"/>
                                                 <constraint firstAttribute="height" constant="35" id="wNg-Zf-igs"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
