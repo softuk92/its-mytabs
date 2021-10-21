@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -35,6 +36,48 @@
                         <color key="textColor" name="addressTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-hJ-ECI">
+                        <rect key="frame" x="71" y="14.5" width="240" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaC-cq-cQ2">
+                                <rect key="frame" x="187.5" y="9" width="19.5" height="12"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" name="addressTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CC8-4I-1O5">
+                                <rect key="frame" x="210" y="5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="INr-SU-BKR"/>
+                                    <constraint firstAttribute="height" constant="20" id="eEL-ME-osK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="playIcon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T75-UH-CLP"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NXZ-dv-84q">
+                                <rect key="frame" x="15" y="13" width="167.5" height="4"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="240" id="5Xj-X2-hw3"/>
+                            <constraint firstItem="NXZ-dv-84q" firstAttribute="leading" secondItem="SS4-hJ-ECI" secondAttribute="leading" constant="15" id="Hue-gd-uQX"/>
+                            <constraint firstItem="NXZ-dv-84q" firstAttribute="centerY" secondItem="SS4-hJ-ECI" secondAttribute="centerY" id="Pmx-EJ-bY5"/>
+                            <constraint firstItem="IaC-cq-cQ2" firstAttribute="leading" secondItem="NXZ-dv-84q" secondAttribute="trailing" constant="5" id="RWz-ZK-WP6"/>
+                            <constraint firstItem="CC8-4I-1O5" firstAttribute="leading" secondItem="IaC-cq-cQ2" secondAttribute="trailing" constant="3" id="Sbb-2M-cwP"/>
+                            <constraint firstItem="IaC-cq-cQ2" firstAttribute="centerY" secondItem="SS4-hJ-ECI" secondAttribute="centerY" id="d7r-1d-MPb"/>
+                            <constraint firstItem="CC8-4I-1O5" firstAttribute="centerY" secondItem="SS4-hJ-ECI" secondAttribute="centerY" id="iPb-o1-S7w"/>
+                            <constraint firstAttribute="height" constant="30" id="ury-uP-9U2"/>
+                            <constraint firstAttribute="trailing" secondItem="CC8-4I-1O5" secondAttribute="trailing" constant="10" id="ysT-4a-267"/>
+                        </constraints>
+                    </view>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwM-Zy-RIe">
                         <rect key="frame" x="15" y="58" width="296" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,12 +88,14 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="SS4-hJ-ECI" secondAttribute="trailing" constant="15" id="HKb-Qk-8YD"/>
                     <constraint firstAttribute="trailing" secondItem="1ql-QI-m9L" secondAttribute="trailing" constant="15" id="K3e-Pf-Tcw"/>
                     <constraint firstAttribute="bottom" secondItem="Io8-fP-h9O" secondAttribute="bottom" constant="10" id="M8I-0c-moU"/>
                     <constraint firstAttribute="bottom" secondItem="iwM-Zy-RIe" secondAttribute="bottom" id="Pp5-hR-SxM"/>
                     <constraint firstAttribute="trailing" secondItem="iwM-Zy-RIe" secondAttribute="trailing" constant="15" id="QVE-dJ-LKj"/>
                     <constraint firstItem="Io8-fP-h9O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SDm-UR-gF7"/>
                     <constraint firstAttribute="bottom" secondItem="1ql-QI-m9L" secondAttribute="bottom" constant="10" id="Xly-2G-TAM"/>
+                    <constraint firstItem="SS4-hJ-ECI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yya-jI-doK"/>
                     <constraint firstItem="Io8-fP-h9O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mBY-PD-4rj"/>
                     <constraint firstItem="iwM-Zy-RIe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="npd-cn-ETV"/>
                     <constraint firstAttribute="trailing" secondItem="Io8-fP-h9O" secondAttribute="trailing" constant="5" id="sS8-sK-Nl8"/>
@@ -60,19 +105,27 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="audioView" destination="SS4-hJ-ECI" id="r3s-fG-8eP"/>
                 <outlet property="bottomView" destination="iwM-Zy-RIe" id="Rca-7U-zE7"/>
                 <outlet property="detail" destination="1ql-QI-m9L" id="Kfq-Vd-dUU"/>
+                <outlet property="playButton" destination="CC8-4I-1O5" id="ns6-8u-0pq"/>
+                <outlet property="progressView" destination="NXZ-dv-84q" id="cTm-Ws-4xq"/>
+                <outlet property="timeLabel" destination="IaC-cq-cQ2" id="M92-1h-bgr"/>
                 <outlet property="title" destination="Io8-fP-h9O" id="163-4h-5ye"/>
             </connections>
             <point key="canvasLocation" x="136.23188405797103" y="157.70089285714286"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="playIcon" width="39" height="39"/>
         <namedColor name="addressTextColor">
             <color red="0.42745098039215684" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="jobSummaryTitle">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

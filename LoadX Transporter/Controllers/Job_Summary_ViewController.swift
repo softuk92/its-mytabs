@@ -20,6 +20,11 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var jobdescription_lbl: UILabel!
     @IBOutlet weak var jobDescrp_height: NSLayoutConstraint!
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var jobImage1: UIImageView!
+    @IBOutlet weak var jobImage2: UIImageView!
+    @IBOutlet weak var jobImage3: UIImageView!
+    
     var jsonData : JSON = []
     var jsonData_inventory : JSON = []
     
@@ -45,6 +50,8 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cellType: JobSummaryCell.self)
+        tableView.tableFooterView = footerView
+        tableView.tableHeaderView = UIView()
     }
     
     func getData() {
@@ -98,6 +105,26 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let weightUnit = jsonData[0]["weight_unit"].stringValue
         let estimatedWeight = jsonData[0]["est_weight"].stringValue
         let goodsType = jsonData[0]["good_type"].stringValue
+        let image1 = jsonData[0]["image1"].stringValue
+        let image2 = jsonData[0]["image2"].stringValue
+        let image3 = jsonData[0]["image3"].stringValue
+        let audioFileName = jsonData[0]["audio_file_name"].stringValue
+
+        if image1 != "" && image1 != "N/A" {
+            let url = URL(string: "\(main_URL)public/assets/job_images/\(image1)")
+            jobImage1.sd_setImage(with: url, completed: .none)
+//            jobImage1.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
+        }
+        if image2 != "" && image2 != "N/A" {
+            let url = URL(string: "\(main_URL)public/assets/job_images/\(image2)")
+            jobImage2.sd_setImage(with: url, completed: .none)
+//            jobImage2.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
+        }
+        if image3 != "" && image3 != "N/A" {
+            let url = URL(string: "\(main_URL)public/assets/job_images/\(image3)")
+            jobImage3.sd_setImage(with: url, completed: .none)
+//            jobImage3.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
+        }
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         if !(AppUtility.shared.country == .Pakistan) {
@@ -201,6 +228,13 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         if supermarketName_lbl != "" {
             info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
         }
+        
+        if audioFileName != "" && audioFileName != "N/A" {
+            let audioFileURL = "\(main_URL)public/assets/user_audio/\(audioFileName)"
+            info.append(MenuItemStruct.init(title: "Voice Note", value: audioFileURL))
+        }
+//        "\(main_URL)public/assets/job_images/\(image1)"
+        
         self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Job Summary", detail: info))
         tableView.reloadData()
     }
@@ -233,10 +267,17 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
             cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
             cell.title.font = UIFont(name: "Montserrat-Light", size: 13)
             cell.detail.isHidden = true
+            cell.audioView.isHidden = true
         } else {
+            cell.detail.isHidden = false
+            cell.audioView.isHidden = true
+            if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title == "Voice Note" {
+                cell.audioUrl = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+                cell.detail.isHidden = true
+                cell.audioView.isHidden = false
+            }
             cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
             cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
-            cell.detail.isHidden = false
         }
         return cell
     }
