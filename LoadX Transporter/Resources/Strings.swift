@@ -8,7 +8,7 @@
 
 import Foundation
 
-let string: StringResources = {
+var string: StringResources {
     //Locale.current.languageCode == "ar" ? StringAr() : StringsEn()
 //    return StringsEn()
     if Config.shared.currentLanguage.value == .ur {
@@ -17,7 +17,7 @@ let string: StringResources = {
     else {
         return StringsEn()
     }
-}()
+}
 
 protocol StringResources {
     var submit: String {get}

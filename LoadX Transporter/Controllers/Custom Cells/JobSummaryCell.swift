@@ -27,7 +27,7 @@ class JobSummaryCell: UITableViewCell, NibReusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        audioView.layer.cornerRadius = 20
+        audioView.layer.cornerRadius = 18
         audioView.clipsToBounds = true
     }
     

@@ -36,11 +36,11 @@
                         <color key="textColor" name="addressTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-hJ-ECI">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-hJ-ECI">
                         <rect key="frame" x="71" y="14.5" width="240" height="30"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaC-cq-cQ2">
-                                <rect key="frame" x="187.5" y="9" width="19.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaC-cq-cQ2">
+                                <rect key="frame" x="181.5" y="9" width="25.5" height="12"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="10"/>
                                 <color key="textColor" name="addressTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NXZ-dv-84q">
-                                <rect key="frame" x="15" y="13" width="167.5" height="4"/>
+                                <rect key="frame" x="15" y="13" width="161.5" height="4"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>

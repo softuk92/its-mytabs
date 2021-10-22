@@ -1895,7 +1895,7 @@
 				CODE_SIGN_ENTITLEMENTS = "LoadX Transporter/CTS Move Transporter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YDM486DL29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1907,7 +1907,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1928,7 +1928,7 @@
 				CODE_SIGN_ENTITLEMENTS = "LoadX Transporter/CTS Move Transporter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YDM486DL29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1940,7 +1940,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
