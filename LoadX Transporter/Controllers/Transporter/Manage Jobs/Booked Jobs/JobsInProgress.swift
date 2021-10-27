@@ -122,7 +122,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         NotificationCenter.default.addObserver(self, selector: #selector(didSelect), name: NSNotification.Name(rawValue: "didSelect"), object: nil)
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
-            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+            self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
         }).disposed(by: disposeBag)
     }
     
@@ -461,7 +461,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let self = self, let indexPath = tableView.indexPath(for: selectedCell) else { return }
 //            self.showStartJobAlertView(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
             if self.jobsInProgressModel[indexPath.row].isJobStarted == "1" {
-                self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
+                self.checkJobStatus(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath, goToMap: false)
             } else {
             self.startBookedJob(delId: self.jobsInProgressModel[indexPath.row].delID, indexPath: indexPath)
             }
@@ -592,7 +592,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let jobData = self.jobsInProgressModel[indexPath.row]
             
             if jobData.isJobStarted == "1" {
-            self.checkJobStatus(delId: jobData.delID, indexPath: indexPath)
+                self.checkJobStatus(delId: jobData.delID, indexPath: indexPath, goToMap: false)
             } else {
                         let percentage = Double(UserDefaults.standard.string(forKey: "initial_deposite_value") ?? "25")
                 let price = AppUtility.shared.country == .Pakistan ? (AppUtility.shared.currencySymbol+(Int(jobData.transporterShare ?? "")?.withCommas() ?? "0")) : ("£ "+"\(getDoubleValue(currentBid: Double(jobData.currentBid ?? "") ?? 0.0, doubleValue: percentage ?? 0.0))")
@@ -672,7 +672,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             let result = json[0]["result"].stringValue
             
             if result == "1" {
-                self.checkJobStatus(delId: delId, indexPath: indexPath)
+                self.checkJobStatus(delId: delId, indexPath: indexPath, goToMap: true)
             } else {
                 showAlert(title: "Alert", message: msg, viewController: self)
             }
@@ -680,7 +680,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func checkJobStatus(delId: String, indexPath: IndexPath) {
+    func checkJobStatus(delId: String, indexPath: IndexPath, goToMap: Bool) {
         SVProgressHUD.show()
         APIManager.apiPost(serviceName: "api/jobArrivalInfo", parameters: ["del_id": delId]) { [weak self] (data, json, error) in
             guard let self = self else { SVProgressHUD.dismiss(); return }
@@ -693,7 +693,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             do {
                 if let jobStatus = try JSONDecoder().decode([JobStatus].self, from: data).first {
-                    self.goToJobDetail(indexPath: indexPath, jobStatus: jobStatus)
+                    self.goToJobDetail(indexPath: indexPath, jobStatus: jobStatus, goToMap: goToMap)
                 }
             } catch {
                 showAlert(title: "Error", message: error.localizedDescription, viewController: self)
@@ -702,7 +702,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus) {
+    func goToJobDetail(indexPath: IndexPath, jobStatus: JobStatus, goToMap: Bool) {
         let jobDetailVC = JobPickupDropoffViewController.instantiate()
         let rowData = self.jobsInProgressModel[indexPath.row]
         let pickup = rowData.pickUp
@@ -727,6 +727,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         jobDetailVC.input = .init(pickupAddress: pickup, dropoffAddress: dropoff, customerName: rowData.contactPerson.capitalized, customerNumber: rowData.contactPhone, receiverName: receiverName ?? "", receiverNumber: receiverNumber ?? "", addType: rowData.addType, delId: rowData.delID, jbId: rowData.jbID, paymentType: paymentType == "full" ? .Account : .Cash, jobStatus: jobStatus, jobPrice: jobPrice)
+        jobDetailVC.isOpenMaps = goToMap
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
     
@@ -739,7 +740,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func languageBtnAct(_ sender: Any) {
         if languageBtn.titleLabel?.text == "English" {
             Config.shared.setLanguage.onNext(.en)
-            languageBtn.setTitle("Urdu", for: .normal)
+            languageBtn.setTitle("اردو", for: .normal)
         } else {
             Config.shared.setLanguage.onNext(.ur)
             languageBtn.setTitle("English", for: .normal)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchDeliveriesCell: UITableViewCell {
 
@@ -31,7 +32,8 @@ class SearchDeliveriesCell: UITableViewCell {
     
     var bidNowRow: ((SearchDeliveriesCell) -> Void)?
     var getDetail: ((SearchDeliveriesCell) -> Void)?
-
+    var disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchDeliveriesCell.tapFunction))
@@ -46,6 +48,10 @@ class SearchDeliveriesCell: UITableViewCell {
             distanceStackView.isHidden = true
             quotes.isHidden = false
         }
+        
+        Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.bidNowBtn.setTitle(lang == .en ? "Accept Job" : "جاب قبول کریں", for: .normal)
+        }).disposed(by: disposeBag)
     }
     
     

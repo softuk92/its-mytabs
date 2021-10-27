@@ -282,7 +282,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             if result == "true" {
                 let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
                 vc?.titleStr = "SUCCESS"
-                vc?.subtitleStr = "Your Login detials have been sent to your phone number/email address."
+                vc?.subtitleStr = "Your Login detials have been sent to your mobile number/email address."
                 vc?.btnTitle = "Dashboard"
                 vc?.phoneNumber = self.phone_no.text
             self.navigationController?.pushViewController(vc!, animated: true)

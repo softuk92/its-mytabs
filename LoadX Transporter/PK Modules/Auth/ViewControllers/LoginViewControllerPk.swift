@@ -112,6 +112,7 @@ class LoginViewControllerPk: UIViewController, UITextFieldDelegate {
                 } else {
 //                    let userType = jsonData[0]["user_type"].stringValue
 //                    if userType == "driver" {
+                    print("user data is \(jsonData)")
                     user_type = jsonData[0]["user_type"].stringValue
                     user_id = jsonData[0]["user_id"].stringValue
                     user_email = jsonData[0]["user_email"].stringValue

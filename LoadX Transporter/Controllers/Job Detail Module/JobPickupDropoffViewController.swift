@@ -110,6 +110,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     let locationManager  = CLocationManager.shared
     var locLat: String = "0.0"
     var locLng: String = "0.0"
+    var isOpenMaps: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -257,9 +258,32 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             }
             self.jsonData = jsonData
             self.getData(jsonData: jsonData, jsonData_inventory: jsonData[1], movingTo: (self.input.jobStatus.p_leaving_f_dropoff == "0") ? .pickup : .dropoff)
+            let longPickup = jsonData[0]["long_pickup"].stringValue
+//            let longDropoff = jsonData[0]["long_dropoff"].stringValue
+            let latPickup = jsonData[0]["lat_pickup"].stringValue
+//            let latDropoff = jsonData[0]["lat_dropoff"].stringValue
+            if self.isOpenMaps {
+            self.openGoogleMap(latDouble: Double(latPickup) ?? 0.0, longDouble: Double(longPickup) ?? 0.0)
+            }
             SVProgressHUD.dismiss()
         })
     }
+    
+    func openGoogleMap(latDouble: Double, longDouble: Double) {
+         
+          if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+
+              if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(latDouble),\(longDouble)&directionsmode=driving") {
+                        UIApplication.shared.open(url, options: [:])
+               }}
+          else {
+                 //Open in browser
+                if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(latDouble),\(longDouble)&directionsmode=driving") {
+                                   UIApplication.shared.open(urlDestination)
+                               }
+                    }
+
+            }
     
     @IBAction func pickupArrivedAct(_ sender: Any) {
 //        showAlertView(question: "Have you arrived at pickup?", ensure: "", paymentLinkHeight: 0, status: .PickupArrived)
@@ -514,11 +538,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         var no_of_hepler : String = ""
         if AppUtility.shared.country == .Pakistan {
         let helper = jsonData[0]["no_of_helper"].stringValue
-            if helper == "0" || helper == "N/A" {
-                no_of_hepler = "No Help Required"
-            } else {
-                no_of_hepler = (helper == "1" ? "1 Helper" : "\(helper) Helpers")
-            }
+        no_of_hepler = (helper == "0" || helper == "N/A") ? "No Help Required" : (helper == "1" ? "1 Helper" : "\(helper) Helpers")
         } else {
         no_of_hepler = (jsonData[0]["no_of_helper"].stringValue == "1") ? "Driver Only" : ("\(jsonData[0]["no_of_helper"].stringValue) Helpers")
         }
@@ -538,6 +558,9 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let dropoffHouseNo = jsonData[0]["do_house_no"].stringValue
         let workingHours = jsonData[0]["working_hours"].stringValue
         let extraHalfHours = jsonData[0]["helper_extra_half_hr_charges"].stringValue
+        let weightUnit = jsonData[0]["weight_unit"].stringValue
+        let estimatedWeight = jsonData[0]["est_weight"].stringValue
+        let goodsType = jsonData[0]["good_type"].stringValue
         
         if !(AppUtility.shared.country == .Pakistan) {
         info.append(MenuItemStruct.init(title: "Category", value: category))
@@ -600,6 +623,14 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
                 info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
             }
         }
+        
+        if goodsType != "" && goodsType != "N/A" {
+            info.append(MenuItemStruct.init(title: "Goods Type", value: goodsType))
+        }
+        if weightUnit != "" && weightUnit != "N/A" && estimatedWeight != "" && estimatedWeight != "N/A" {
+            info.append(MenuItemStruct.init(title: "Estimated Weight", value: "\(estimatedWeight) \(weightUnit)"))
+        }
+        
         if category == "Vehicle Move" {
             if vehicleType_lbl != "" && vehicleType_lbl != "N/A" {
                 info.append(MenuItemStruct.init(title: "Vehicle Type", value: vehicleType_lbl))
@@ -614,7 +645,7 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
                 info.append(MenuItemStruct.init(title: "Vehicle Operational", value: (vehicleOperational == "0") ? "No" : "Yes"))
             }
         } else {
-            info.append(MenuItemStruct.init(title: "Number of Helpers", value: no_of_hepler))
+            info.append(MenuItemStruct.init(title: "No Of Helpers", value: no_of_hepler))
         }
         
         if category == "Man & Van", workingHours != "" && workingHours != "N/A" {

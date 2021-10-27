@@ -104,7 +104,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
         routeJobsBtn.alpha = 0.5
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
-            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+            self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
         }).disposed(by: disposeBag)
     }
     
@@ -629,7 +629,7 @@ class CompletedJobs: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func languageBtnAct(_ sender: Any) {
         if languageBtn.titleLabel?.text == "English" {
             Config.shared.setLanguage.onNext(.en)
-            languageBtn.setTitle("Urdu", for: .normal)
+            languageBtn.setTitle("اردو", for: .normal)
         } else {
             Config.shared.setLanguage.onNext(.ur)
             languageBtn.setTitle("English", for: .normal)

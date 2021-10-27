@@ -29,7 +29,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
     @IBOutlet weak var statisticsView: UIView!
     @IBOutlet weak var reachUsView: UIView!
     @IBOutlet weak var affiliatedWithView: UIView!
-    
+    @IBOutlet weak var affiliatedWithName: UILabel!
     
     let sb = UIStoryboard(name: "Main", bundle: nil)
     var images = [SKPhoto]()
@@ -90,7 +90,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
             }).disposed(by: disposeBag)
             
             languageSwitch.configureGesture()
-            languageSwitch.onLabel = "Urdu"
+            languageSwitch.onLabel = "اردو"
             languageSwitch.offLabel = "Eng"
             languageSwitch.setLabel(labelStr: "Eng")
             languageSwitch.switchState.skip(1).subscribe(onNext: { (value) in
@@ -108,7 +108,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         availabilityView.isHidden = isCompanyDriver == "1"
         statisticsView.isHidden = isCompanyDriver == "1"
         reachUsView.isHidden = isCompanyDriver == "1"
-        affiliatedWithView.isHidden = !(isCompanyDriver == "1")
+//        affiliatedWithView.isHidden = !(isCompanyDriver == "1")
+        affiliatedWithView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -311,7 +312,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         func profileDetail() {
     //        SVProgressHUD.show(withStatus: "Getting profile image...")
             if user_id != nil {
-                let bookedJobs_URL = main_URL+"api/transporterPublicProfile"
+//                let bookedJobs_URL = main_URL+"api/transporterPublicProfile"
+                let bookedJobs_URL = main_URL+"api/getTransporterProfileDetail"
                 let parameters : Parameters = ["user_id" : user_id!]
                 if Connectivity.isConnectedToInternet() {
                     Alamofire.request(bookedJobs_URL, method : .post, parameters : parameters).responseJSON {
@@ -321,7 +323,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                             
                             let jsonData : JSON = JSON(response.result.value!)
                             print("transporter Profile jsonData is \(jsonData)")
-                            
+                            self.affiliatedWithName.text = "Affiliated with \(jsonData[0]["comp_name"].stringValue.capitalized)"
                             let result = jsonData[0]["result"].stringValue
                             if result != "0"{
                                 self.userName.text = jsonData[0]["user_name"].stringValue.capitalized
@@ -345,7 +347,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
                                     }
                                 }
                             }
-                            let feedbackStars = jsonData[0]["avgfdbck"].stringValue
+                            let feedbackStars = jsonData[0]["avg_feedback"].stringValue
                             if feedbackStars == "null" || feedbackStars == "0" {
                                 self.noFeedbackView.isHidden = false
                                 self.feedback_stars.text = "null"
@@ -369,6 +371,8 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
 //                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
 //                                self.present(alert, animated: true, completion: nil)
                             }
+                            
+                            
                         } else {
     //                        SVProgressHUD.dismiss()
                           

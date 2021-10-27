@@ -69,8 +69,8 @@ class JobsInProgressCell: UITableViewCell {
     func setupViews() {
         if AppUtility.shared.country == .Pakistan {
             receivedAmountView.isHidden = false
-            transporterShareView.isHidden = false
-            loadxShareView.isHidden = false
+            transporterShareView.isHidden = true            
+            loadxShareView.isHidden = true
             jobPriceView.isHidden = true
             pickupTimeView.isHidden = true
         } else {
@@ -83,8 +83,9 @@ class JobsInProgressCell: UITableViewCell {
     }
     
     func setData(model: JobsInProgressModel) {
-        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.price ?? "")?.withCommas() ?? "0")
-        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+//        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.price ?? "")?.withCommas() ?? "0")
+//        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadxShare ?? "")?.withCommas() ?? "0")
         transporterName.text = model.driverName?.capitalized
         transporterPhone.text = model.driverPhone

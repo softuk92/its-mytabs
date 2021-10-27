@@ -36,9 +36,20 @@ extension SearchBookedJobs {
                     if result == "false" && message == "All fields are required." {
                         self.present(showAlert(title: "Alert", message: "Email is incorrect."), animated: true, completion: nil)
                     } else {
-                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
-                        vc?.goToBookedJobs = true
-                        self.navigationController?.pushViewController(vc!, animated: true)
+                        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+                        self.blurView?.effect = blurEffect
+                        
+                        for subview in self.view.subviews {
+                            if subview is UIVisualEffectView {
+                                subview.removeFromSuperview()
+                            }
+                        }
+                        self.popUpView.removeFromSuperview()
+                        self.popUpView2.removeFromSuperview()
+//                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jobBooked_successController") as? SuccessController
+//                        vc?.goToBookedJobs = true
+//                        self.navigationController?.pushViewController(vc!, animated: true)
+                        self.tabBarController?.selectedIndex = 0
                     }
                 } else {
                     SVProgressHUD.dismiss()

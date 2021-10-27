@@ -147,6 +147,13 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var radiusInnerView: UIView!
     @IBOutlet weak var radiusTableView: UITableView!
     
+    @IBOutlet weak var popupPriceLabel: UILabel!
+    @IBOutlet weak var popupDateLabel: UILabel!
+    @IBOutlet weak var popupTimeLabel: UILabel!
+    @IBOutlet weak var searchLabel: UIButton!
+    @IBOutlet weak var clearLabel: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user ID is \(String(describing: user_id))")
@@ -228,7 +235,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
-            self?.languageBtn.setTitle((lang == .en) ? "Urdu" : "English", for: .normal)
+            self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
+            self?.popup_lable.text = string.AreYouSureYouWantToAcceptThisJob
+            self?.popup_yes_btn.setTitle(string.yes, for: .normal)
+            self?.popup_no_btn.setTitle(string.no, for: .normal)
+            self?.popupPriceLabel.text = string.price
+            self?.popupDateLabel.text = string.date
+            self?.popupTimeLabel.text = string.time
+            self?.searchLabel.setTitle(string.search, for: .normal)
+            self?.clearLabel.setTitle(string.clear, for: .normal)
         }).disposed(by: disposeBag)
 
     }
@@ -777,6 +792,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
                             self.logoView_popview.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
                             self.view.addSubview(self.popUpView2)
                             self.popUpView2.center = self.view.center
+                            self.popUpView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 15).isActive = true
+                            self.popUpView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15).isActive = true
                             self.jobPrice.text = currentPrice
                             self.timeLabel.text = self.searchBookModel[indexPath.row].timeslot
                             self.dateLabel.text = convertDateFormatter2(self.searchBookModel[indexPath.row].date)
@@ -1100,7 +1117,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
     @IBAction func languageBtnAct(_ sender: Any) {
         if languageBtn.titleLabel?.text == "English" {
             Config.shared.setLanguage.onNext(.en)
-            languageBtn.setTitle("Urdu", for: .normal)
+            languageBtn.setTitle("اردو", for: .normal)
         } else {
             Config.shared.setLanguage.onNext(.ur)
             languageBtn.setTitle("English", for: .normal)

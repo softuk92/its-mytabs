@@ -60,6 +60,7 @@
 		18B211E82566CFE10040C001 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B211E72566CFE10040C001 /* HeaderView.swift */; };
 		18B60946265D24BC00AC11DF /* JobStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60945265D24BC00AC11DF /* JobStatus.swift */; };
 		18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */; };
+		18C16C532729A13B004118A3 /* Nastaleeq-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C16C522729A13B004118A3 /* Nastaleeq-Regular.ttf */; };
 		18C7832B252DEF87004B7F4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7832A252DEF87004B7F4F /* CoreServices.framework */; };
 		18CB24652562E1A3009F0472 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB24642562E1A3009F0472 /* ParentViewController.swift */; };
 		18E007FE26D91B82002D455B /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E007FC26D91B82002D455B /* ReviewsCell.swift */; };
@@ -331,6 +332,7 @@
 		18B211E72566CFE10040C001 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		18B60945265D24BC00AC11DF /* JobStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatus.swift; sourceTree = "<group>"; };
 		18B60948265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPickupDropoffViewControllerExtension.swift; sourceTree = "<group>"; };
+		18C16C522729A13B004118A3 /* Nastaleeq-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nastaleeq-Regular.ttf"; sourceTree = "<group>"; };
 		18C7832A252DEF87004B7F4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		18CB24642562E1A3009F0472 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		18E007FC26D91B82002D455B /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
@@ -1102,6 +1104,7 @@
 				8D3E611021F772C3004EAB06 /* Ubuntu-L.ttf */,
 				8D3E611121F772C3004EAB06 /* Ubuntu-M.ttf */,
 				18275CB927102D3B00260B46 /* urdu_c.ttf */,
+				18C16C522729A13B004118A3 /* Nastaleeq-Regular.ttf */,
 				18275CB627102C1700260B46 /* Strings.swift */,
 			);
 			path = Resources;
@@ -1412,6 +1415,7 @@
 				BB16169C24BF31E2008420A8 /* GeneralItemHeaderCell.xib in Resources */,
 				1800493F2555A2DC005EA70D /* Routes.storyboard in Resources */,
 				185139BF2562D3EC0053098B /* RouteDetailsCell.xib in Resources */,
+				18C16C532729A13B004118A3 /* Nastaleeq-Regular.ttf in Resources */,
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
 				4E8F0B3F26E69CFE00DD0961 /* BankDetails.storyboard in Resources */,

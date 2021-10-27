@@ -22,7 +22,7 @@ class SplashScreen_ViewController: UIViewController {
         if !(AppUtility.shared.country == .Pakistan) {
             largestPlatform.isHidden = true
         }
-        harWqtBarWqt.font = R.font.alviNastaleeq(size: 34)
+        harWqtBarWqt.font = R.font.jameelNooriNastaleeq(size: 40)
 //        if #available(iOS 13.0, *) {
 //            if UITraitCollection.current.userInterfaceStyle == .dark {
 //                print("Dark mode")
@@ -87,11 +87,11 @@ class SplashScreen_ViewController: UIViewController {
                     do {
                         let update = try self.isUpdateAvailable()
                         if update == true {
-                            if (month == 4 && day! <= 30) || (month == 5 && day! < 30) {
+//                            if (month == 4 && day! <= 30) || (month == 5 && day! < 30) {
                                 self.AppDelegate.moveToHome()
-                            } else {
-                            self.AppDelegate.moveToUpdateScreen()
-                            }
+//                            } else {
+//                            self.AppDelegate.moveToUpdateScreen()
+//                            }
                         } else {
                             self.AppDelegate.moveToHome()
                         }

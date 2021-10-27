@@ -36,7 +36,16 @@ protocol StringResources {
     var receiverSignature: String {get}
     var dashboard: String {get}
     var backToJob: String {get}
+    var AreYouSureYouWantToAcceptThisJob : String {get}
+    var yes: String {get}
+    var no: String {get}
+    var price: String {get}
+    var date: String {get}
+    var time: String {get}
+    var search: String {get}
+    var clear: String {get}
 }
+
 
 class StringsEn: StringResources {
     let submit = "Submit"
@@ -55,6 +64,14 @@ class StringsEn: StringResources {
     let receiverSignature: String = "Receiver Signature"
     let dashboard: String = "Dashboard"
     let backToJob: String = "Back to Job"
+    let AreYouSureYouWantToAcceptThisJob: String = "Are you sure you want to accept this job?"
+    let yes: String = "Yes"
+    let no: String = "No"
+    let price: String = "Price"
+    let date: String = "Date"
+    let time: String = "Time"
+    let search: String = "Search"
+    let clear: String = "Clear"
 }
 
 class StringsUr: StringResources {
@@ -65,7 +82,7 @@ class StringsUr: StringResources {
     let disclaimer: String = "شرائط و ضوابط۔"
     let leavingForDropoff: String = "سامان پہنچانے کے لیے نکل گیا ہوں"
     let dropoffArrived: String = "سامان کی جگہ پر پہنچ گیا ہوں"
-    let cashCollected: String = "کیا رقم وصول کی"
+    let cashCollected: String = "؟کیا رقم وصول کی"
     let disclaimerDetails: String = "ہمارے شرائط و ضوابط میں یہ بات شامل ہے کہ ہم آپ کی اشیاء کو آپ کی بتائی ہوئی جگہ پر بحفاظت پہنچائیں۔ کوئی بھی اضافی کام جیسے آپ کی اشیاء کو آپ کے مکان/دفتر کے اندر لے جانا یا فرنیچر کو کھولنا یا جوڑنا , بڑی اشیاء کو چھوٹی جگہ سے گزارنا وغیرہ آپ کی ذمہ داری ہوگا۔ اگر آپ ہمیں یہ کام کرنے کو کہیں گے تو اس دوران اگر کوئی نقصان ہوگا تو اسکے ذمہ دار ہم نہیں ہوں گے۔"
     let haveYouCollectedCashOnThisJob: String = "کیا آپ نے اس جاب پر نقد رقم وصول کی ھے؟"
     let cashReceived: String = "جی نقد رقم وصول کی ھے"
@@ -74,4 +91,12 @@ class StringsUr: StringResources {
     let receiverSignature: String = "وصول کرنے والے کے دستخط"
     let dashboard: String = "واپس جائیں"
     let backToJob: String = "واپس جائیں"
+    let AreYouSureYouWantToAcceptThisJob: String = "کیا آپ یہ بکنگ حاصل کرنا چاہتے ہیں؟"
+    let yes: String = "جی ہاں"
+    let no: String = "نہیں"
+    let price: String = "قیمت"
+    let date: String = "تاریخ"
+    let time: String = "وقت"
+    let search: String = "تلاش کریں"
+    let clear: String = "ختم کریں"
 }
