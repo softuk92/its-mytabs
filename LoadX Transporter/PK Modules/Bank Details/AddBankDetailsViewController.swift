@@ -26,6 +26,7 @@ class AddBankDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if Config.shared.currentLanguage.value == .en {
         if ((AppUtility.shared.bankMO?.accountTitle ?? "") == "N/A") || ((AppUtility.shared.bankMO?.accountTitle ?? "") == "") {
             addBankBtn.setTitle("Add Details", for: .normal)
         } else {
@@ -35,7 +36,10 @@ class AddBankDetailsViewController: UIViewController {
             branchCode.text = AppUtility.shared.bankMO?.branchCode.capitalized
             addBankBtn.setTitle("Update Details", for: .normal)
         }
-        
+        } else {
+            addBankBtn.titleLabel?.font = Config.shared.getFont()
+            addBankBtn.setTitle(string.updateProfile, for: .normal)
+        }
         tableview.delegate = self
         tableview.dataSource = self
         tableview.backgroundView = nil

@@ -43,6 +43,10 @@ public class AlertViewWithDescription: UIView, NibOwnerLoadable {
         centerView.layer.shadowOffset = .zero
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
+        
+        question.font = Config.shared.getFont()
+        no.titleLabel?.font = Config.shared.getFont()
+        no.setTitle(string.close, for: .normal)
     }
     
     @IBAction func noAct(_ sender: Any) {

@@ -44,6 +44,13 @@ protocol StringResources {
     var time: String {get}
     var search: String {get}
     var clear: String {get}
+    var updateProfile: String {get}
+    var AreYouSureYouWantToLogOut: String {get}
+    var updatePassword: String {get}
+    var areYouSureYouWantToDeactivateAccount: String {get}
+    var close: String {get}
+    var profileUpdatedSuccessfully: String {get}
+    var acceptJob: String {get}
 }
 
 
@@ -72,6 +79,13 @@ class StringsEn: StringResources {
     let time: String = "Time"
     let search: String = "Search"
     let clear: String = "Clear"
+    let updateProfile: String = "Update Profile"
+    let AreYouSureYouWantToLogOut: String = "Are you sure you want to log out?"
+    let updatePassword: String = "Update Password"
+    let areYouSureYouWantToDeactivateAccount: String = "Are you sure you want to deactivate your account?"
+    let close: String = "Close"
+    let profileUpdatedSuccessfully: String = "Profile Updated Successfully."
+    let acceptJob: String = "Accept Job"
 }
 
 class StringsUr: StringResources {
@@ -99,4 +113,11 @@ class StringsUr: StringResources {
     let time: String = "وقت"
     let search: String = "تلاش کریں"
     let clear: String = "ختم کریں"
+    let updateProfile: String = "تفصیلات اپ لوڈ کریں"
+    let AreYouSureYouWantToLogOut: String = "کیا  آپ  لاگ  آؤٹ  کرنا  چاہتے  ہیں؟"
+    let updatePassword: String = "پاس ورڈ اپ ڈیٹ کریں۔"
+    let areYouSureYouWantToDeactivateAccount: String = "کیا آپ اپنا اکاؤنٹ غیر فعال کرنا چاہتے ہیں؟"
+    let close: String = "بند کریں"
+    let profileUpdatedSuccessfully: String = "پروفائل کامیابی کے ساتھ اپ ڈیٹ ہو گیا۔"
+    let acceptJob: String = "جاب قبول کریں"
 }

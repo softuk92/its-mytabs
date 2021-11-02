@@ -49,8 +49,11 @@ class SearchDeliveriesCell: UITableViewCell {
             quotes.isHidden = false
         }
         
+        bidNowBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 13))
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
-            self?.bidNowBtn.setTitle(lang == .en ? "Accept Job" : "جاب قبول کریں", for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+                self?.bidNowBtn.setTitle(string.acceptJob, for: .normal)
+            }
         }).disposed(by: disposeBag)
     }
     

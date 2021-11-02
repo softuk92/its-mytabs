@@ -54,6 +54,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addressStackView: UIStackView!
     @IBOutlet weak var vanImageView: UIImageView!
     @IBOutlet weak var vanImgBtn: UIButton!
+    @IBOutlet weak var updateProfile: UIButton!
     
     let dropDown1 = DropDown()
     var list = ["Car","Small Van",
@@ -121,11 +122,13 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                 case .failure(_):
                     return
                 }
-                
             }
         }
         imageSelector = ImageSelector()
         imageSelector.delegate = self
+        
+        updateProfile.titleLabel?.font = Config.shared.getFont()
+        updateProfile.setTitle(string.updateProfile, for: .normal)
     }
     
     func getCarsMake() {
@@ -317,7 +320,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
             let message = json[0]["message"].stringValue
             
             if result == "true" || result == "1" {
-                showSuccessAlert(question: "Profile Updated Successfully", viewController: self)
+                showSuccessAlert(question: string.profileUpdatedSuccessfully, viewController: self)
                 UserDefaults.standard.set(self.carMakeField.text ?? "", forKey: "carMake")
                 UserDefaults.standard.set(self.carModelField.text ?? "", forKey: "carModel")
             } else {
@@ -526,7 +529,7 @@ extension Edit_profile_ViewController: UITableViewDataSource , UITableViewDelega
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
         cell?.lblJobNature.text = self.list[indexPath.row]
-        if indexPath.row == 10 {
+        if indexPath.row == list.count-1 {
             cell?.bottomLineView.isHidden = true
         }
         return cell!

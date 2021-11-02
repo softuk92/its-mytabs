@@ -34,15 +34,17 @@ class PostAvailabilityFormViewController: UIViewController,StoryboardSceneBased 
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 23
         
-        submitButton.setTitle(Config.shared.currentLanguage.value == .en ? "Submit" : "جمع کروائیں", for: .normal)
+        submitButton.setTitle(string.submit, for: .normal)
         setupAutoCompleteController()
+        
+        submitButton.titleLabel?.font = Config.shared.getFont()
     }
         
     func setupAutoCompleteController() {
         autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         if #available(iOS 13.0, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark   {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
                 // self.traitCollection.userInterfaceStyle == .dark
                 autocompleteController.primaryTextColor = UIColor.white
                 autocompleteController.secondaryTextColor = UIColor.lightGray

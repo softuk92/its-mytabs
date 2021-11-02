@@ -58,6 +58,10 @@ class Config{
 //        return ((lang == .en) ? (en ?? ar) : (ar ?? en)) ?? defaultString
         return ((lang == .en) ? en : ("‏\(ur ?? defaultString)‏")) ?? defaultString
     }
+    
+    func getFont(font: UIFont? = R.font.montserratRegular(size: 17)) -> UIFont? {
+        return (Config.shared.currentLanguage.value == .en) ? font : R.font.jameelNooriNastaleeq(size: 17)
+    }
     private init(){
         let lngRawValue = UserDefaults.standard.string(forKey: self.keyCurrentLanguage)
         if let lng = LoadxLanguage(rawValue: lngRawValue ?? "" ){

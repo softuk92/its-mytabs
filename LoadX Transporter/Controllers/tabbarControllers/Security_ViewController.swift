@@ -29,18 +29,7 @@ class Security_ViewController: UIViewController {
     }
     @IBAction func DeactiviteAccount_action(_ sender: Any) {
    
-         UIView.animate(withDuration: 0.3, animations: {
-                    self.popUpView.layer.borderColor = UIColor.gray.cgColor
-                    self.popUpView.layer.borderWidth = 1
-                    self.popUpView.layer.cornerRadius = 18
-        //            self.tableView.alpha = 0.5
-            self.logo_popupView.clipsToBounds = true
-            self.logo_popupView.layer.cornerRadius = 18
-            self.logo_popupView.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
-                               
-                    self.view.addSubview(self.popUpView)
-            self.popUpView.center = self.view.center
-            })
+        showAlertView(question: string.areYouSureYouWantToDeactivateAccount)
     
     }
     @IBAction func noBtn_action(_ sender: Any) {
@@ -99,14 +88,27 @@ class Security_ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func showAlertView(question: String) {
+        let aView = AlertView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        aView.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+        
+        aView.imageView.tintColor = R.color.mehroonColor()
+        aView.question.text = question
+        aView.ensure.text = ""
+        aView.sendPaymentLinkHeight.constant = 0
+        
+        aView.yesCall = { [weak self] (_) in
+            guard let self = self else { return }
+            aView.removeFromSuperview()
+            self.deactiveAccountFunc()
+        }
+        
+        aView.noCall = { (_) in
+            aView.removeFromSuperview()
+        }
+        
+        self.view.addSubview(aView)
     }
-    */
 
 }

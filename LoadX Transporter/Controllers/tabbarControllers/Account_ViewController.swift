@@ -54,7 +54,7 @@ class Account_ViewController: UIViewController {
     }
     
     @IBAction func logOut_action(_ sender: Any) {
-        showAlertView(question: "Are you sure you want to log out?")
+        showAlertView(question: string.AreYouSureYouWantToLogOut)
     }
 
     func showAlertView(question: String) {

@@ -110,6 +110,7 @@ class More_ViewController: UIViewController,UINavigationControllerDelegate, UIIm
         reachUsView.isHidden = isCompanyDriver == "1"
 //        affiliatedWithView.isHidden = !(isCompanyDriver == "1")
         affiliatedWithView.isHidden = true
+        affiliatedWithName.isHidden = !(isCompanyDriver == "1")
     }
     
     override func viewWillAppear(_ animated: Bool) {

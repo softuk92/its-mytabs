@@ -66,27 +66,29 @@ class Notification_ViewController: UIViewController {
         emailSwitch.switchState.skip(1).subscribe(onNext: {[weak self] (value) in
             guard let self = self else { return }
             if value {
-                UserDefaults.standard.set(value, forKey: "emailSwitch") //setObject
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
-                    self.email_popupView.layer.borderWidth = 1
-                    self.email_popupView.layer.cornerRadius = 18
-                    self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Do you want to enable email notifications?"
-                    self.view.addSubview(self.email_popupView)
-                    self.email_popupView.center = self.view.center
-                })
+                UserDefaults.standard.set(value, forKey: "emailSwitch")
+                self.emailNotificationFunc()
+                //setObject
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+//                    self.email_popupView.layer.borderWidth = 1
+//                    self.email_popupView.layer.cornerRadius = 18
+//                    self.mainView.alpha = 0.5
+//                    self.email_popupView_lbl.text = "Do you want to enable email notifications?"
+//                    self.view.addSubview(self.email_popupView)
+//                    self.email_popupView.center = self.view.center
+//                })
             } else {
                 UserDefaults.standard.set(value, forKey: "emailSwitch")
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
-                    self.email_popupView.layer.borderWidth = 1
-                    self.email_popupView.layer.cornerRadius = 18
-                    self.mainView.alpha = 0.5
-                    self.email_popupView_lbl.text = "Do you want to disable email notifications?"
-                    self.view.addSubview(self.email_popupView)
-                    self.email_popupView.center = self.view.center
-                })
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.email_popupView.layer.borderColor = UIColor.gray.cgColor
+//                    self.email_popupView.layer.borderWidth = 1
+//                    self.email_popupView.layer.cornerRadius = 18
+//                    self.mainView.alpha = 0.5
+//                    self.email_popupView_lbl.text = "Do you want to disable email notifications?"
+//                    self.view.addSubview(self.email_popupView)
+//                    self.email_popupView.center = self.view.center
+//                })
             }
         }).disposed(by: disposeBag)
         
@@ -95,27 +97,27 @@ class Notification_ViewController: UIViewController {
             if value {
                 UserDefaults.standard.set(value, forKey: "MobileSwitch")
                    
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
-                    self.mobilePopup_view.layer.borderWidth = 1
-                    self.mobilePopup_view.layer.cornerRadius = 18
-                    self.mainView.alpha = 0.5
-                    self.mobile_popup_lbl.text = "Do you want to enable mobile notifications?"
-                    self.view.addSubview(self.mobilePopup_view)
-                    self.mobilePopup_view.center = self.view.center
-                        })
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+//                    self.mobilePopup_view.layer.borderWidth = 1
+//                    self.mobilePopup_view.layer.cornerRadius = 18
+//                    self.mainView.alpha = 0.5
+//                    self.mobile_popup_lbl.text = "Do you want to enable mobile notifications?"
+//                    self.view.addSubview(self.mobilePopup_view)
+//                    self.mobilePopup_view.center = self.view.center
+//                        })
                 }else{
                 UserDefaults.standard.set(value, forKey: "MobileSwitch")
                        
-                UIView.animate(withDuration: 0.3, animations: {
-                           self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
-                           self.mobilePopup_view.layer.borderWidth = 1
-                           self.mobilePopup_view.layer.cornerRadius = 18
-                           self.mainView.alpha = 0.5
-                           self.mobile_popup_lbl.text = "Do you want to disable mobile notifications?"
-                           self.view.addSubview(self.mobilePopup_view)
-                           self.mobilePopup_view.center = self.view.center
-                       })
+//                UIView.animate(withDuration: 0.3, animations: {
+//                           self.mobilePopup_view.layer.borderColor = UIColor.gray.cgColor
+//                           self.mobilePopup_view.layer.borderWidth = 1
+//                           self.mobilePopup_view.layer.cornerRadius = 18
+//                           self.mainView.alpha = 0.5
+//                           self.mobile_popup_lbl.text = "Do you want to disable mobile notifications?"
+//                           self.view.addSubview(self.mobilePopup_view)
+//                           self.mobilePopup_view.center = self.view.center
+//                       })
                    }
         }).disposed(by: disposeBag)
         

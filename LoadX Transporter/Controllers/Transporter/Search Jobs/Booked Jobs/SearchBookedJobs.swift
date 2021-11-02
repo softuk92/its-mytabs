@@ -234,6 +234,16 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         }
         
+//        languageBtn.titleLabel?.font = Config.shared.getFont()
+        popup_lable.font = Config.shared.getFont()
+        popup_yes_btn.titleLabel?.font = Config.shared.getFont()
+        popup_no_btn.titleLabel?.font = Config.shared.getFont()
+        popupPriceLabel.font = Config.shared.getFont()
+        popupDateLabel.font = Config.shared.getFont()
+        popupTimeLabel.font = Config.shared.getFont()
+        searchLabel.titleLabel?.font = Config.shared.getFont()
+        clearLabel.titleLabel?.font = Config.shared.getFont()
+        
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
             self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
             self?.popup_lable.text = string.AreYouSureYouWantToAcceptThisJob
@@ -245,6 +255,8 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.searchLabel.setTitle(string.search, for: .normal)
             self?.clearLabel.setTitle(string.clear, for: .normal)
         }).disposed(by: disposeBag)
+        
+        
 
     }
     

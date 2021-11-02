@@ -28,6 +28,7 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
     @IBOutlet weak var totalOutstandingView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var searchBtn: UIButton!
     
     let picker = UIDatePicker()
     var businessJobs : Bool?
@@ -70,6 +71,9 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.separatorStyle = .none
         
         tableView.register(UINib(nibName: "CompletedJobsCell", bundle: nil) , forCellReuseIdentifier: "completedJobs")
+        
+        searchBtn.titleLabel?.font = Config.shared.getFont()
+        searchBtn.setTitle(string.search, for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         totalCompleted_view.bottomShadow(color: .black)

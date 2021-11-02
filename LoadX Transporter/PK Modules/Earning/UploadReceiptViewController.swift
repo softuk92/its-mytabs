@@ -43,9 +43,13 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
             totalAmount.text = "Rs. "+amountP
         }
         submit.setTitle(string.submit, for: .normal)
+        
+//        if Config.shared.currentLanguage.value == .en {
+//            submit.titleLabel?.font = R.font.montserratRegular(size: 17)
+//        } else {
+        submit.titleLabel?.font = R.font.ubuntuBold(size: 25)
+//        }
     }
-    
-    
     
     func fetechData() {
         guard let id = user_id else {return}

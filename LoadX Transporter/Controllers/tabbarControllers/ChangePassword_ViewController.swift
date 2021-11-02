@@ -20,12 +20,16 @@ class ChangePassword_ViewController: UIViewController {
     @IBOutlet weak var oldPass_btn: UIButton!
     @IBOutlet weak var newPass_btn: UIButton!
     @IBOutlet weak var confromPass_btn: UIButton!
+    @IBOutlet weak var updatePassword: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let userPassword = UserDefaults.standard.value(forKey: "userPass") as? String {
         old_password_txt.text = userPassword
         }
+        
+        updatePassword.titleLabel?.font = Config.shared.getFont()
+        updatePassword.setTitle(string.updatePassword, for: .normal)
         
     }
     @IBAction func oldPassword_hideaction(_ sender: Any) {
@@ -57,10 +61,10 @@ class ChangePassword_ViewController: UIViewController {
     }
     
     @IBAction func updatePassword_action(_ sender: Any) {
-        updatePassword()
+        updatePasswordFunc()
     }
     
-    func updatePassword() {
+    func updatePasswordFunc() {
         SVProgressHUD.show(withStatus: "Getting details...")
         if self.old_password_txt.text != "" && self.new_password_txt.text != "" && self.confrom_password_text.text != "" {
         if self.new_password_txt.text == self.confrom_password_text.text {

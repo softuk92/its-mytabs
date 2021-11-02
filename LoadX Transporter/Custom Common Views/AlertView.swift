@@ -50,8 +50,13 @@ public class AlertView: UIView, NibOwnerLoadable {
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
         
-        yes.setTitle(Config.shared.currentLanguage.value == .en ? "Yes" : "جی ہاں", for: .normal)
-        no.setTitle(Config.shared.currentLanguage.value == .en ? "No" : "نہیں", for: .normal)
+        yes.setTitle(string.yes, for: .normal)
+        no.setTitle(string.no, for: .normal)
+        
+        yes.titleLabel?.font = Config.shared.getFont()
+        no.titleLabel?.font = Config.shared.getFont()
+        question.font = Config.shared.getFont()
+        
     }
     
     @IBAction func yesAct(_ sender: Any) {
