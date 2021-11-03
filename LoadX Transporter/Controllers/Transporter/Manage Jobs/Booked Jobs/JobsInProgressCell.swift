@@ -58,7 +58,7 @@ class JobsInProgressCell: UITableViewCell {
         super.awakeFromNib()
 
         customizeView()
-        setupViews()
+//        setupViews()
         
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
@@ -71,9 +71,9 @@ class JobsInProgressCell: UITableViewCell {
     
     func setupViews() {
         if AppUtility.shared.country == .Pakistan {
-            receivedAmountView.isHidden = false
-            transporterShareView.isHidden = true            
-            loadxShareView.isHidden = true
+//            receivedAmountView.isHidden = false
+//            transporterShareView.isHidden = true
+//            loadxShareView.isHidden = true
             jobPriceView.isHidden = true
             pickupTimeView.isHidden = true
         } else {
@@ -86,14 +86,27 @@ class JobsInProgressCell: UITableViewCell {
     }
     
     func setData(model: JobsInProgressModel) {
-        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+        receivedAmountView.isHidden = false
+        if model.isCod == "1" {
+            jobPriceTitle.text = "Collect Cash"
+            receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.price ?? "")?.withCommas() ?? "0")
+            transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+            transporterShareView.isHidden = false
+            loadxShareView.isHidden = false
+        } else {
+            jobPriceTitle.text = "Job Price"
+            receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
+            transporterShareView.isHidden = true
+            loadxShareView.isHidden = true
+        }
+//        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
 //        receivedAmount.text = AppUtility.shared.currencySymbol+(Int(model.price ?? "")?.withCommas() ?? "0")
 //        transporterShare.text = AppUtility.shared.currencySymbol+(Int(model.transporterShare ?? "")?.withCommas() ?? "0")
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadxShare ?? "")?.withCommas() ?? "0")
         transporterName.text = model.driverName?.capitalized
         transporterPhone.text = model.driverPhone
         jobID = model.jbID
-        jobPriceTitle.text = model.isCod == "1" ? "Job Price" : "Job Price"
+//        jobPriceTitle.text = model.isCod == "1" ? "Job Price" : "Job Price"
         if user_type == TransportationCompany {
             deleteBtn.isHidden = false
             if model.driverName?.lowercased() == user_name?.lowercased() {
