@@ -58,6 +58,8 @@ public class AlertIfCashReceived: UIView, NibOwnerLoadable {
         setupUI()
         cashReceivedBtn.setTitle(string.cashReceived, for: .normal)
         question.text = string.haveYouCollectedCashOnThisJob
+        cashReceivedBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 11))
+        question.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
     }
     
     @IBAction func cashReceivedAct(_ sender: Any) {

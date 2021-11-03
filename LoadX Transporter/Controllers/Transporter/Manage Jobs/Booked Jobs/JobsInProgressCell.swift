@@ -60,8 +60,11 @@ class JobsInProgressCell: UITableViewCell {
         customizeView()
         setupViews()
         
+        
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
             self?.cancelJobBtn.setTitle(lang == .en ? "Cancel Job" : "جاب منسوخ کریں۔", for: .normal)
+            self?.cancelJobBtn.titleLabel?.font = Config.shared.getFont(font: .systemFont(ofSize: 14, weight: .light))
+            self?.startJobBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
         }).disposed(by: disposeBag)
         
     }

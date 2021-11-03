@@ -44,8 +44,47 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
     
         configureTableView()
         getData()
+        addZoomInimages()
     }
     
+    func addZoomInimages() {
+        jobImage1.isUserInteractionEnabled = true
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped1(_:)))
+        jobImage1.addGestureRecognizer(tap1)
+
+        jobImage2.isUserInteractionEnabled = true
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(imageTapped2(_:)))
+        jobImage2.addGestureRecognizer(tap2)
+        
+        jobImage3.isUserInteractionEnabled = true
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(imageTapped3(_:)))
+        jobImage3.addGestureRecognizer(tap3)
+    }
+    
+    @objc func imageTapped1(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage1.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func imageTapped2(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage2.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func imageTapped3(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage3.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -110,21 +149,15 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let image3 = jsonData[0]["image3"].stringValue
         let audioFileName = jsonData[0]["audio_file_name"].stringValue
 
-//        if image1 != "" && image1 != "N/A" {
             let url1 = URL(string: "\(main_URL)public/assets/job_images/\(image1)")
             jobImage1.sd_setImage(with: url1, completed: .none)
-//            jobImage1.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
-//        }
-//        if image2 != "" && image2 != "N/A" {
+
             let url2 = URL(string: "\(main_URL)public/assets/job_images/\(image2)")
             jobImage2.sd_setImage(with: url2, completed: .none)
-//            jobImage2.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
-//        }
-//        if image3 != "" && image3 != "N/A" {
+
             let url3 = URL(string: "\(main_URL)public/assets/job_images/\(image3)")
             jobImage3.sd_setImage(with: url3, completed: .none)
-//            jobImage3.sd_setImage(with: url, placeholderImage: R.image.notfound(), options: .cacheMemoryOnly, completed: .none)
-//        }
+
         
         info.append(MenuItemStruct.init(title: "Job ID", value: jobID))
         if !(AppUtility.shared.country == .Pakistan) {

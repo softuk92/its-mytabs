@@ -44,8 +44,8 @@ public class AlertViewWithDescription: UIView, NibOwnerLoadable {
         centerView.layer.shadowRadius = 10
         centerView.layer.cornerRadius = 10
         
-        question.font = Config.shared.getFont()
-        no.titleLabel?.font = Config.shared.getFont()
+        question.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+        no.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
         no.setTitle(string.close, for: .normal)
     }
     

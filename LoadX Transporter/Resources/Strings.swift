@@ -96,7 +96,7 @@ class StringsUr: StringResources {
     let disclaimer: String = "شرائط و ضوابط۔"
     let leavingForDropoff: String = "سامان پہنچانے کے لیے نکل گیا ہوں"
     let dropoffArrived: String = "سامان کی جگہ پر پہنچ گیا ہوں"
-    let cashCollected: String = "؟کیا رقم وصول کی"
+    let cashCollected: String = "کیا رقم وصول کی؟"
     let disclaimerDetails: String = "ہمارے شرائط و ضوابط میں یہ بات شامل ہے کہ ہم آپ کی اشیاء کو آپ کی بتائی ہوئی جگہ پر بحفاظت پہنچائیں۔ کوئی بھی اضافی کام جیسے آپ کی اشیاء کو آپ کے مکان/دفتر کے اندر لے جانا یا فرنیچر کو کھولنا یا جوڑنا , بڑی اشیاء کو چھوٹی جگہ سے گزارنا وغیرہ آپ کی ذمہ داری ہوگا۔ اگر آپ ہمیں یہ کام کرنے کو کہیں گے تو اس دوران اگر کوئی نقصان ہوگا تو اسکے ذمہ دار ہم نہیں ہوں گے۔"
     let haveYouCollectedCashOnThisJob: String = "کیا آپ نے اس جاب پر نقد رقم وصول کی ھے؟"
     let cashReceived: String = "جی نقد رقم وصول کی ھے"

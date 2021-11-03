@@ -51,7 +51,9 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
         
         self.signatureView.delegate = self
         disclaimerTitle.text = string.disclaimer
+        disclaimerTitle.font = Config.shared.getFont(font: R.font.montserratRegular(size: 17))
         submitBtn.setTitle(string.submit, for: .normal)
+        submitBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 17))
         disclaimerTitle.textAlignment = Config.shared.currentLanguage.value == .en ? .left : .right
         dateLabel.text = "\(Date().string(format: "dd-MMMM-yyyy", timezone: .current))"
         setDisclaimerText()
@@ -63,6 +65,7 @@ class DisclaimerViewController: UIViewController, UIImagePickerControllerDelegat
         }
         if AppUtility.shared.country == .Pakistan {
             disclaimerLabel.text = string.disclaimerDetails
+            disclaimerLabel.font = Config.shared.getFont(font: R.font.montserratLight(size: 15))
         } else {
         disclaimerLabel.text = "We are contracted to deliver your goods as entrusted to us as per our Standard Terms & Conditions. \n\nAny additional work, such as moving items in or around the property, disassembling/reassembling items or furniture, removing/refitting doors (for ease of access), \("squeezing") large items through narrows doors/corridors, etc is undertaken at your own risk, and we are under no obligation to carry out such work, upon your insistence, we have agreed to carry out this work, which is contrary to our Standard Terms & Conditions. \n\nAny damage caused to furniture, doors, walls or property under these circumstances is your sole responsibility and neither the Transporter nor LoadX can be held responsible for such damage."
         }

@@ -17,10 +17,12 @@ import IQKeyboardManagerSwift
 import DropDown
 import ZDCChat
 import SVProgressHUD
-//var main_URL = "https://www.loadx.co.uk/"
+
+//var main_URL = "https://www.loadx.pk/"
+var main_URL = "http://test.loadx.pk/"
 
 //test api
-var main_URL = AppUtility.shared.country == .Pakistan ? "https://www.loadx.pk/" : "https://test.loadx.co.uk/"
+//var main_URL = AppUtility.shared.country == .Pakistan ? "https://www.loadx.pk/" : "https://test.loadx.co.uk/"
 
 enum VersionError: Error {
     case invalidResponse, invalidBundleInfo

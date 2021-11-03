@@ -45,6 +45,7 @@ class UploadImagesViewController: UIViewController {
         configureCollectionView()
         collectionViewHeight.constant = 0
         submit.setTitle(string.submit, for: .normal)
+        submit.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 15))
     }
     
     func configureCollectionView() {

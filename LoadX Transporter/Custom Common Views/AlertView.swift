@@ -53,9 +53,9 @@ public class AlertView: UIView, NibOwnerLoadable {
         yes.setTitle(string.yes, for: .normal)
         no.setTitle(string.no, for: .normal)
         
-        yes.titleLabel?.font = Config.shared.getFont()
-        no.titleLabel?.font = Config.shared.getFont()
-        question.font = Config.shared.getFont()
+        yes.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+        no.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+        question.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
         
     }
     

@@ -43,11 +43,11 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
             totalAmount.text = "Rs. "+amountP
         }
         submit.setTitle(string.submit, for: .normal)
-        
+        submit.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 17))
 //        if Config.shared.currentLanguage.value == .en {
 //            submit.titleLabel?.font = R.font.montserratRegular(size: 17)
 //        } else {
-        submit.titleLabel?.font = R.font.ubuntuBold(size: 25)
+//        submit.titleLabel?.font = R.font.ubuntuBold(size: 25)
 //        }
     }
     
@@ -103,7 +103,7 @@ class UploadReceiptViewController: UIViewController,StoryboardSceneBased {
         
         var input = [MultipartData]()
         if let receiptimageData = receiptImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: receiptimageData, paramName: "receipt_prof_img", fileName: receiptImg.description))
+            input.append(MultipartData.init(data: receiptimageData, paramName: "receipt_prof_img", fileName: "receiptImg.jpeg"))
         }
         let url = user_type == TransportationCompany ? "api/sendPaymentRequestDataForTC" : "api/sendPaymentRequestData"
         APIManager.apiPostMultipart(serviceName: url, parameters: parameters, multipartImages: input) { (data, json, error, progress) in

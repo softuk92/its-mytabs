@@ -235,7 +235,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             
             let OtpNumber = json?[0]["OTP"].stringValue
             let registeredUser = json?[0]["register_user"].stringValue
-            
+            print("OTP -> \(OtpNumber ?? "0")")
             if registeredUser == "0" {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "OTPViewControllerPk") as! OTPViewControllerPk
                 vc.otpNumber = OtpNumber
@@ -258,10 +258,10 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "id-card-front-side", fileName: cnicFrontImg.description))
+            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "id-card-front-side", fileName: "cnicFront.jpeg"))
         }
         if let cnicBackImageData = cnicBackImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicBackImageData, paramName: "id-card-back-side", fileName: cnicBackImg.description))
+            input.append(MultipartData.init(data: cnicBackImageData, paramName: "id-card-back-side", fileName: "cnicBack.jpeg"))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/registerdriver", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
@@ -282,7 +282,8 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             if result == "true" {
                 let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
                 vc?.titleStr = "SUCCESS"
-                vc?.subtitleStr = "Your Login detials have been sent to your mobile number/email address."
+                vc?.subtitleStr = "You have been successfully registered."
+//                    "Your Login detials have been sent to your mobile number/email address."
                 vc?.btnTitle = "Dashboard"
                 vc?.phoneNumber = self.phone_no.text
             self.navigationController?.pushViewController(vc!, animated: true)

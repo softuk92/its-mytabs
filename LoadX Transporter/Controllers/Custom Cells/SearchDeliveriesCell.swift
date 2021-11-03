@@ -34,6 +34,11 @@ class SearchDeliveriesCell: UITableViewCell {
     var getDetail: ((SearchDeliveriesCell) -> Void)?
     var disposeBag = DisposeBag()
     
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        disposeBag = DisposeBag()
+//    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let tap = UITapGestureRecognizer(target: self, action: #selector(SearchDeliveriesCell.tapFunction))
@@ -49,12 +54,11 @@ class SearchDeliveriesCell: UITableViewCell {
             quotes.isHidden = false
         }
         
-        bidNowBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 13))
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
-                self?.bidNowBtn.setTitle(string.acceptJob, for: .normal)
-            }
+            self?.bidNowBtn.setTitle(string.acceptJob, for: .normal)
+            self?.bidNowBtn.titleLabel?.font = Config.shared.getFont(font: UIFont.init(name: "Montserrat-Regular", size: 13))
         }).disposed(by: disposeBag)
+        
     }
     
     

@@ -263,10 +263,10 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "cnic_front", fileName: cnicFrontImg.description))
+            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "cnic_front", fileName: "cnicFrontImg.jpeg"))
         }
         if let cnicBackImageData = cnicBackImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicBackImageData, paramName: "cnic_back", fileName: cnicBackImg.description))
+            input.append(MultipartData.init(data: cnicBackImageData, paramName: "cnic_back", fileName: "cnicBackImg.jpeg"))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/addNewCompanyDriver", parameters: parameters, multipartImages: input) { (data, json, error, progress) in
@@ -303,10 +303,10 @@ class AddEditDriverViewController: UIViewController, UITextFieldDelegate, UINavi
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let cnicFrontImageData = cnicFrontImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "cnic_front", fileName: cnicFrontImg.description))
+            input.append(MultipartData.init(data: cnicFrontImageData, paramName: "cnic_front", fileName: "cnicFrontImg.jpeg"))
         }
         if let cnicBackImageData = cnicBackImg.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: cnicBackImageData, paramName: "cnic_back", fileName: cnicBackImg.description))
+            input.append(MultipartData.init(data: cnicBackImageData, paramName: "cnic_back", fileName: "cnicBackImg.jpeg"))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/updateTransporterDetailData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in

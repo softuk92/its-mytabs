@@ -30,9 +30,12 @@ class PaymentHistoryCell: UITableViewCell {
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
             self?.viewInvocie_btn.setTitle(lang == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
+            self?.viewInvocie_btn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 15))
         }).disposed(by: disposeBag)
         
-        viewInvocie_btn.setTitle(Config.shared.currentLanguage.value == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
+//        viewInvocie_btn.setTitle(Config.shared.currentLanguage.value == .en ? "View Invoice" : "رسید دیکھیں", for: .normal)
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

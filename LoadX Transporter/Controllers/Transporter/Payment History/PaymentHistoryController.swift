@@ -103,8 +103,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         getPaymentHistory()
         
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
+            self?.paymentButton.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 15))
             self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
         }).disposed(by: disposeBag)
+        
+        
     }
     
     func getCounter() {
@@ -218,6 +221,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
                             let titlePrefix = payToLoadX.summary.balanceType == .loadXToTransporter ? "ابھی ادائیگی کی درخواست کریں۔" : "ابھی ادائیگی کریں"
                             self?.paymentButton.setTitle(titlePrefix, for: .normal)
                         }
+                        
                         
                     }).disposed(by: self.disposeBag)
                     

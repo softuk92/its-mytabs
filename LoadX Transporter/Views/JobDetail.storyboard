@@ -188,10 +188,6 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-jv-4gw">
-                                                <rect key="frame" x="0.0" y="248" width="394" height="370"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </tableView>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TH3-NG-eXe">
                                                 <rect key="frame" x="0.0" y="248" width="394" height="370"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -203,6 +199,47 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-jv-4gw">
+                                                <rect key="frame" x="0.0" y="248" width="394" height="370"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <view key="tableHeaderView" contentMode="scaleToFill" id="nlI-PH-zuB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="173"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="b7g-bp-Cjw">
+                                                            <rect key="frame" x="32" y="5" width="330" height="163"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="bD8-UY-SjN">
+                                                                    <rect key="frame" x="0.0" y="31.5" width="100" height="100"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="100" id="RCm-ir-f6b"/>
+                                                                        <constraint firstAttribute="width" constant="100" id="z7L-QQ-J3b"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="T2z-bx-39M">
+                                                                    <rect key="frame" x="115" y="7.5" width="100" height="148"/>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="J4M-P2-2a9">
+                                                                    <rect key="frame" x="230" y="7.5" width="100" height="148"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="T2z-bx-39M" firstAttribute="height" secondItem="bD8-UY-SjN" secondAttribute="height" multiplier="1.48" id="0kq-yh-G94"/>
+                                                                <constraint firstItem="T2z-bx-39M" firstAttribute="width" secondItem="bD8-UY-SjN" secondAttribute="width" id="czP-7V-Zqu"/>
+                                                                <constraint firstItem="J4M-P2-2a9" firstAttribute="width" secondItem="bD8-UY-SjN" secondAttribute="width" id="fXZ-Bx-gHv"/>
+                                                                <constraint firstItem="J4M-P2-2a9" firstAttribute="height" secondItem="bD8-UY-SjN" secondAttribute="height" multiplier="1.48" id="lwb-Oh-bKK"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="b7g-bp-Cjw" firstAttribute="top" secondItem="nlI-PH-zuB" secondAttribute="top" constant="5" id="3eX-kR-11b"/>
+                                                        <constraint firstItem="b7g-bp-Cjw" firstAttribute="centerY" secondItem="nlI-PH-zuB" secondAttribute="centerY" id="guD-Ka-UaK"/>
+                                                        <constraint firstItem="b7g-bp-Cjw" firstAttribute="centerX" secondItem="nlI-PH-zuB" secondAttribute="centerX" id="zOw-5Q-l1g"/>
+                                                    </constraints>
+                                                </view>
+                                            </tableView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OvT-Ey-TUe">
                                                 <rect key="frame" x="15" y="57" width="374" height="96"/>
                                                 <subviews>
@@ -635,12 +672,16 @@
                         <outlet property="disclaimerView" destination="u13-Pm-MkE" id="VkA-bE-gqP"/>
                         <outlet property="dropoffArrivedBtn" destination="qP0-5U-Sk3" id="azB-VU-W6f"/>
                         <outlet property="etaView" destination="iO2-wG-P97" id="ulu-bt-6w4"/>
+                        <outlet property="footerView" destination="nlI-PH-zuB" id="ORV-C4-Ty3"/>
                         <outlet property="jobBookedFor" destination="Bka-Tr-Sqx" id="AUh-Gu-zP2"/>
                         <outlet property="jobBookedForStackView" destination="Vgy-Bo-MAz" id="KMg-k4-jhA"/>
                         <outlet property="jobCompletedBtn" destination="9AW-eQ-dEk" id="Q2J-kI-ca6"/>
                         <outlet property="jobDescriptionBtn" destination="Qf6-wg-LGx" id="lw5-xB-mxh"/>
                         <outlet property="jobDescriptionTextView" destination="8gn-ge-Ted" id="i1F-qy-ocB"/>
                         <outlet property="jobId" destination="hTM-iN-WVg" id="m7c-6j-VLU"/>
+                        <outlet property="jobImage1" destination="bD8-UY-SjN" id="CeR-Jo-L73"/>
+                        <outlet property="jobImage2" destination="T2z-bx-39M" id="Ft3-Ze-zXj"/>
+                        <outlet property="jobImage3" destination="J4M-P2-2a9" id="StG-la-Jqq"/>
                         <outlet property="leadingAdditionalDetails" destination="jsF-hI-DY8" id="DNz-yG-wL8"/>
                         <outlet property="leadingJobDescription" destination="VpL-7u-zoB" id="g7S-L2-Xo5"/>
                         <outlet property="leavingForDropoffBtn" destination="Jxm-nF-s8g" id="68h-Rg-GbJ"/>
@@ -1317,6 +1358,7 @@
     </designables>
     <resources>
         <image name="back_arrow" width="16" height="16"/>
+        <image name="notfound" width="111.5" height="111"/>
         <image name="pickUp_icon_new" width="22" height="33"/>
         <image name="share" width="512" height="512"/>
         <image name="success" width="609" height="464"/>

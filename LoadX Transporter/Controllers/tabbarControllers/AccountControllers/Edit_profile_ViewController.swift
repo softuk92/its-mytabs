@@ -301,7 +301,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
         SVProgressHUD.show()
         var input = [MultipartData]()
         if let imageData = selectedVanImage.resizeWithWidth(width: 500)?.jpegData(compressionQuality: 0.5) {
-            input.append(MultipartData.init(data: imageData, paramName: "vanimage", fileName: selectedVanImage.description))
+            input.append(MultipartData.init(data: imageData, paramName: "vanimage", fileName: "VanImage.jpeg"))
         }
         
         APIManager.apiPostMultipart(serviceName: "api/transporterUpdateProfileData", parameters: parameters, multipartImages: input) { (data, json, error, progress) in

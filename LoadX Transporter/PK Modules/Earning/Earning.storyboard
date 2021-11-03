@@ -275,7 +275,7 @@
                                                                                     <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NxX-ZY-PCR">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="238" height="44"/>
                                                                                         <color key="backgroundColor" name="MehroonColor"/>
-                                                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                                                                         <color key="tintColor" name="MehroonColor"/>
                                                                                         <state key="normal" title="Upload Receipt" backgroundImage="signUp_imgSelect_btn">
                                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

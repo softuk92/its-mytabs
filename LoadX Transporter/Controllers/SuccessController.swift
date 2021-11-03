@@ -23,6 +23,8 @@ class SuccessController: UIViewController {
         if runningLateFromJob {
             mainBtn.setTitle("Go Back to Job", for: .normal)
         }
+        
+        mainBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 16))
     }
     
     override func viewWillAppear(_ animated: Bool) {

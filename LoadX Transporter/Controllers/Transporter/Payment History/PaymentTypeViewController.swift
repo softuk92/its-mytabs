@@ -120,14 +120,14 @@ class PaymentTypeViewController: UIViewController {
         let buttonTitle = attributedTitle(text1: titleLabel, text2: " (Rs. \(amount.withCommas()))")
 		payNow.setAttributedTitle(buttonTitle, for: .normal)
 		payNow.isEnabled = false
+        payNow.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 15))
 //		payNow.titleLabel?.attributedText = buttonTitle
 //		payNow.titleLabel?.text = buttonTitle.string
-
-
     }
 
 	func attributedTitle(text1: String, text2: String) -> NSAttributedString {
-		let text1Attributed = NSAttributedString(string: text1, attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Light", size: 14)!])
+//		let text1Attributed = NSAttributedString(string: text1, attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Light", size: 14)!])
+        let text1Attributed = NSAttributedString(string: text1, attributes: [NSAttributedString.Key.font : Config.shared.getFont(font: R.font.montserratLight(size: 14))!])
 		let text2Attributed = NSAttributedString(string: text2, attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 14)!])
 		let mutable = NSMutableAttributedString(attributedString: text1Attributed)
 		mutable.append(text2Attributed)

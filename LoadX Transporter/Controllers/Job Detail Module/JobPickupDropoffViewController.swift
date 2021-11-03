@@ -77,6 +77,11 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var locationImage: UIImageView!
     
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var jobImage1: UIImageView!
+    @IBOutlet weak var jobImage2: UIImageView!
+    @IBOutlet weak var jobImage3: UIImageView!
+    
     struct Input {
         let pickupAddress: String
         let dropoffAddress: String
@@ -122,9 +127,58 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         phoneNumberAct()
         updateTransporterLocation()
         setupUI()
+        addZoomInimages()
     }
     
+    func addZoomInimages() {
+        jobImage1.isUserInteractionEnabled = true
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped1(_:)))
+        jobImage1.addGestureRecognizer(tap1)
+
+        jobImage2.isUserInteractionEnabled = true
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(imageTapped2(_:)))
+        jobImage2.addGestureRecognizer(tap2)
+        
+        jobImage3.isUserInteractionEnabled = true
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(imageTapped3(_:)))
+        jobImage3.addGestureRecognizer(tap3)
+    }
+    
+    @objc func imageTapped1(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage1.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func imageTapped2(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage2.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func imageTapped3(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            let zoomCtrl = VKImageZoom()
+            zoomCtrl.image = jobImage3.image
+            self.present(zoomCtrl, animated: true, completion: nil)
+        }
+    }
+
+    
     func setupUI() {
+        pickupArrivedBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        uploadImagesBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        topDisclaimerBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        bottomDisclaimerBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        leavingForDropoffBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        dropoffArrivedBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        cashCollectedBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        jobCompletedBtn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 13))
+        
         pickupArrivedBtn.setTitle(string.pickupArrived, for: .normal)
         uploadImagesBtn.setTitle(string.uploadImages, for: .normal)
         topDisclaimerBtn.setTitle(string.disclaimer, for: .normal)
@@ -193,7 +247,9 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
         additionalDetailsTableView.delegate = self
         additionalDetailsTableView.dataSource = self
         additionalDetailsTableView.register(cellType: JobSummaryCell.self)
-        additionalDetailsTableView.tableFooterView = UIView()
+        additionalDetailsTableView.tableHeaderView = UIView()
+        additionalDetailsTableView.tableFooterView = footerView
+        
         descriptionInventoryTableView.delegate = self
         descriptionInventoryTableView.dataSource = self
         descriptionInventoryTableView.register(cellType: JobSummaryCell.self)
@@ -561,6 +617,19 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         let weightUnit = jsonData[0]["weight_unit"].stringValue
         let estimatedWeight = jsonData[0]["est_weight"].stringValue
         let goodsType = jsonData[0]["good_type"].stringValue
+        let image1 = jsonData[0]["image1"].stringValue
+        let image2 = jsonData[0]["image2"].stringValue
+        let image3 = jsonData[0]["image3"].stringValue
+        let audioFileName = jsonData[0]["audio_file_name"].stringValue
+        
+        let url1 = URL(string: "\(main_URL)public/assets/job_images/\(image1)")
+        jobImage1.sd_setImage(with: url1, completed: .none)
+
+        let url2 = URL(string: "\(main_URL)public/assets/job_images/\(image2)")
+        jobImage2.sd_setImage(with: url2, completed: .none)
+
+        let url3 = URL(string: "\(main_URL)public/assets/job_images/\(image3)")
+        jobImage3.sd_setImage(with: url3, completed: .none)
         
         if !(AppUtility.shared.country == .Pakistan) {
         info.append(MenuItemStruct.init(title: "Category", value: category))
@@ -667,6 +736,12 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         if supermarketName_lbl != "" {
             info.append(MenuItemStruct.init(title: "Supermarket Name", value: supermarketName_lbl))
         }
+        
+        if audioFileName != "" && audioFileName != "N/A" {
+            let audioFileURL = "\(main_URL)public/assets/user_audio/\(audioFileName)"
+            info.append(MenuItemStruct.init(title: "Voice Note", value: audioFileURL))
+        }
+        
         self.routeSummaryDetails.append(RouteSummaryDetails.init(title: "Summary", detail: info))
         timeEta.text = pickUp_time.uppercased()
         additionalDetailsTableView.reloadData()
@@ -725,10 +800,15 @@ extension JobPickupDropoffViewController: UITableViewDelegate, UITableViewDataSo
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundView = nil
         cell.backgroundColor = nil
-       
-            cell.title.text = routeSummaryDetails[indexPath.section].detail[indexPath.row].title
-            cell.detail.text = routeSummaryDetails[indexPath.section].detail[indexPath.row].value
             cell.detail.isHidden = false
+            cell.audioView.isHidden = true
+            if self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title == "Voice Note" {
+                cell.audioUrl = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
+                cell.detail.isHidden = true
+                cell.audioView.isHidden = false
+            }
+            cell.title.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].title
+            cell.detail.text = self.routeSummaryDetails[indexPath.section].detail[indexPath.row].value
         
         return cell
         } else {

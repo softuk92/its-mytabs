@@ -87,6 +87,9 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
         updateOutlet.setTitle(string.submit, for: .normal)
         uploadDeliveryProof.text = string.uploadDeliveryProof
         receiverSignatureLabel.text = string.receiverSignature
+        updateOutlet.titleLabel?.font = Config.shared.getFont(font: R.font.montserratRegular(size: 17))
+        uploadDeliveryProof.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+        receiverSignatureLabel.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
         clearBtn.contentHorizontalAlignment = Config.shared.currentLanguage.value == .en ? .right : .left
             User_location.requestAlwaysAuthorization()
             User_location.requestWhenInUseAuthorization()
@@ -264,6 +267,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                             let message = jsonData[0]["message"].stringValue
                             SVProgressHUD.dismiss()
                             if result == "1" {
+                                CLocationManager.shared.stop()
                       //          self.performSegue(withIdentifier: "complete", sender: self)
                                 if self.isRoute {
                                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteCompleted") as? SuccessController
@@ -272,7 +276,7 @@ class BookJobController: UIViewController, UIImagePickerControllerDelegate, UINa
                                 } else {
                                     
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "completedJob") as? SuccessController
-                         
+                                    
                             self.navigationController?.pushViewController(vc!, animated: true)
                                 }
                             } else {

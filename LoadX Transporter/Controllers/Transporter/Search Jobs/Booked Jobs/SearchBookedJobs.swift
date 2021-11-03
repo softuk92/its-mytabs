@@ -235,15 +235,6 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
 //        languageBtn.titleLabel?.font = Config.shared.getFont()
-        popup_lable.font = Config.shared.getFont()
-        popup_yes_btn.titleLabel?.font = Config.shared.getFont()
-        popup_no_btn.titleLabel?.font = Config.shared.getFont()
-        popupPriceLabel.font = Config.shared.getFont()
-        popupDateLabel.font = Config.shared.getFont()
-        popupTimeLabel.font = Config.shared.getFont()
-        searchLabel.titleLabel?.font = Config.shared.getFont()
-        clearLabel.titleLabel?.font = Config.shared.getFont()
-        
         Config.shared.currentLanguage.subscribe(onNext: { [weak self] (lang) in
             self?.languageBtn.setTitle((lang == .en) ? "اردو" : "English", for: .normal)
             self?.popup_lable.text = string.AreYouSureYouWantToAcceptThisJob
@@ -254,6 +245,15 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
             self?.popupTimeLabel.text = string.time
             self?.searchLabel.setTitle(string.search, for: .normal)
             self?.clearLabel.setTitle(string.clear, for: .normal)
+            
+            self?.popup_lable.font = Config.shared.getFont(font: R.font.montserratRegular(size: 15))
+            self?.popup_yes_btn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+            self?.popup_no_btn.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 14))
+            self?.popupPriceLabel.font = Config.shared.getFont(font: R.font.montserratRegular(size: 14))
+            self?.popupDateLabel.font = Config.shared.getFont(font: R.font.montserratRegular(size: 14))
+            self?.popupTimeLabel.font = Config.shared.getFont(font: R.font.montserratRegular(size: 14))
+            self?.searchLabel.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 17))
+            self?.clearLabel.titleLabel?.font = Config.shared.getFont(font: R.font.montserratLight(size: 17))
         }).disposed(by: disposeBag)
         
         
@@ -737,7 +737,7 @@ class SearchBookedJobs: UIViewController, UITableViewDataSource, UITableViewDele
         
         let currentBid = searchDeliveriesRow.price
         
-        cell.bidNowBtn.setTitle("Accept Job", for: .normal)
+//        cell.bidNowBtn.setTitle("Accept Job", for: .normal)
         
         if searchDeliveriesRow.transporter_share != "0" {
             let str = Double(searchDeliveriesRow.transporter_share) ?? 0.0

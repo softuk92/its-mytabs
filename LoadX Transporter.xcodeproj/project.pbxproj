@@ -66,6 +66,7 @@
 		18E007FE26D91B82002D455B /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E007FC26D91B82002D455B /* ReviewsCell.swift */; };
 		18E007FF26D91B82002D455B /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E007FD26D91B82002D455B /* ReviewsCell.xib */; };
 		18F83088271D55E400D9263A /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F83087271D55E400D9263A /* BaseLabel.swift */; };
+		18FBC8C52732C585004C75D3 /* VKImageZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBC8C42732C585004C75D3 /* VKImageZoom.swift */; };
 		4E0249D226616B16005D1CFE /* JobSummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249D126616B16005D1CFE /* JobSummaryModel.swift */; };
 		4E0249E72661AE17005D1CFE /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */; };
 		4E060571265EE42100B70BFE /* UploadImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E060570265EE42100B70BFE /* UploadImagesViewController.swift */; };
@@ -338,6 +339,7 @@
 		18E007FC26D91B82002D455B /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		18E007FD26D91B82002D455B /* ReviewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		18F83087271D55E400D9263A /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		18FBC8C42732C585004C75D3 /* VKImageZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKImageZoom.swift; sourceTree = "<group>"; };
 		4E0249D126616B16005D1CFE /* JobSummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSummaryModel.swift; sourceTree = "<group>"; };
 		4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		4E060570265EE42100B70BFE /* UploadImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImagesViewController.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				18F83087271D55E400D9263A /* BaseLabel.swift */,
+				18FBC8C42732C585004C75D3 /* VKImageZoom.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -1695,6 +1698,7 @@
 				8D8CAF7B26F7CC3700273DC4 /* Extension+TableView.swift in Sources */,
 				1819CB3D266E05CE00BDECC0 /* AlertView.swift in Sources */,
 				4EE97EA6263875DE009AE4A2 /* LogoViewDarkMode.swift in Sources */,
+				18FBC8C52732C585004C75D3 /* VKImageZoom.swift in Sources */,
 				18B60949265D2BB500AC11DF /* JobPickupDropoffViewControllerExtension.swift in Sources */,
 				8DE3AF302225A3C000A41DC1 /* TransporterPublicProfileController.swift in Sources */,
 				4E59299423E9CAAF007A3C09 /* Reach_Us_ViewController.swift in Sources */,
@@ -1919,7 +1923,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "LoadX Transporter/CTS Move Transporter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1951,7 +1955,7 @@
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoadX Transporter/CTS Move Transporter-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
