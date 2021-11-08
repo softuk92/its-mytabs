@@ -25,6 +25,7 @@ class AppIntro_ViewController: UIViewController , BmoViewPagerDataSource {
         super.viewDidLoad()
         pagerView.delegate = self
         pagerView.dataSource = self
+        pageControl.transform = CGAffineTransform(scaleX: 2, y: 2)
         
     }
     
