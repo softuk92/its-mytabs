@@ -180,7 +180,7 @@ extension JobPickupDropoffViewController {
     func goToJobCompletedScene() {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "BookJobController") as? BookJobController {
             vc.contact_no = input.customerNumber
-            vc.ref_no = "LX00"+input.delId
+			vc.ref_no = AppUtility.shared.getLoadXJobID(id: input.delId)
             vc.contactName = input.customerName.capitalized
             vc.jobId = input.jbId
             vc.receiverN = input.receiverName

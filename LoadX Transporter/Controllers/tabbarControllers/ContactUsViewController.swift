@@ -13,7 +13,7 @@ class ContactUsViewController: UIViewController {
     @IBOutlet weak var callUsBtn: UIButton!
     @IBOutlet weak var emailBtn: UIButton!
     
-    let pakNumber: String = "(+92) 4238938836"
+    let pakNumber: String = "(+92) 4232323050"
     let otherNumber: String = "02080570111"
     let pakEmail: String = "info@loadx.pk"
     let otherEmail: String = "info@loadx.co.uk"

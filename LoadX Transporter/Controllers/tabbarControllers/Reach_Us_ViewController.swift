@@ -64,7 +64,7 @@ class Reach_Us_ViewController : UIViewController {
     
     @IBAction func whatsappAct(_ sender: Any) {
     
-        let phoneNumber =  "+924238938836"
+        let phoneNumber =  "+924232323050"
         let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
         if UIApplication.shared.canOpenURL(appURL) {
             if #available(iOS 10.0, *) {

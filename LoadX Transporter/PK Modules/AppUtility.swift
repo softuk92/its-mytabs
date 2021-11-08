@@ -123,8 +123,21 @@ class AppUtility: NSObject, CLLocationManagerDelegate {
             }catch {
                 completion(.failure(error))
             }
-
         }
     }
+
+	func getLoadXJobID(id: String) -> String {
+		if id.count == 1 {
+			return "LX0000\(id)"
+		} else if id.count == 2 {
+			return "LX000\(id)"
+		} else if id.count == 3 {
+			return "LX00\(id)"
+		} else if id.count == 4 {
+			return "LX0\(id)"
+		} else {
+			return "LX\(id)"
+		}
+	}
 
 }

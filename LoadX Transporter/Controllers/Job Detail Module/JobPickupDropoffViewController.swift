@@ -298,7 +298,7 @@ class JobPickupDropoffViewController: UIViewController, StoryboardSceneBased {
             
             guard let jsonData = json else { return }
             
-            self.jobId.text = "LX00"+(jsonData[0]["del_id"].stringValue)
+			self.jobId.text = AppUtility.shared.getLoadXJobID(id: jsonData[0]["del_id"].stringValue)
             let workingHours = jsonData[0]["working_hours"].stringValue
             
             //hide job booked for if the job is of Man and Van

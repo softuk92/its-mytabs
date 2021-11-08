@@ -424,7 +424,7 @@ class JobsInProgress: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let movingItem = jobsInProgressRow.movingItem
         cell.moving_item.text = movingItem.capitalized
-        cell.jobId.text = "LX00"+(jobsInProgressRow.delID)
+		cell.jobId.text = AppUtility.shared.getLoadXJobID(id: jobsInProgressRow.delID)
         cell.pick_up.text = "\(jobsInProgressRow.puHouseNo ?? "") \(jobsInProgressRow.pickUp)"
         cell.drop_off.text = "\(jobsInProgressRow.doHouseNo ?? "") \(jobsInProgressRow.dropOff)"
         

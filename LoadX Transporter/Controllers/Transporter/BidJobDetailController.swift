@@ -86,7 +86,7 @@ class BidJobDetailController: UIViewController, GMSMapViewDelegate, UITableViewD
         jobSummaryView.isHidden = true
         userInformationView.isHidden = true
 //        let jobID = "LOADX"+String(year)+"J"+del_id!
-        let jobID = "LX00"+del_id!
+		let jobID = AppUtility.shared.getLoadXJobID(id: del_id ?? "")
         self.job_id.text = jobID
         mapViewX.delegate = self
         tableView.tableFooterView = UIView()

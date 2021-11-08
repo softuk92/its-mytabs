@@ -115,7 +115,7 @@ class CompletedJobsCell: UITableViewCell {
         loadxShare.text = AppUtility.shared.currencySymbol+(Int(model.loadx_share ?? "")?.withCommas() ?? "0")
         contactPerson.text = model.customer_name != nil ? model.customer_name?.capitalized : model.contact_person?.capitalized
         setupViews(paymentType: model.payment_type, dueAmountStatus: model.amount_status, lxShareStatus: (model.loadx_share_status ?? ""), isCOD: model.is_cod == "1")
-        jobId.text = "LX00\(model.del_id)"
+		jobId.text = AppUtility.shared.getLoadXJobID(id: model.del_id)
     }
 
     func setJobBookedForView(workingHours: String?, category: String?) {

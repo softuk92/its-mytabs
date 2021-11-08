@@ -51,11 +51,11 @@ class Notification_ViewController: UIViewController {
         emailSwitch.configureGesture()
         mobile_switch.configureGesture()
         
-        if UserDefaults.standard.bool(forKey: "emailSwitch") == true {
+//        if UserDefaults.standard.bool(forKey: "emailSwitch") == true {
             emailSwitch.switchState.accept(true)
-        }else{
-            emailSwitch.switchState.accept(false)
-        }
+//        }else{
+//            emailSwitch.switchState.accept(false)
+//        }
         
         if UserDefaults.standard.bool(forKey: "MobileSwitch") == true {
             mobile_switch.switchState.accept(true)
