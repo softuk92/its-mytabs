@@ -436,7 +436,7 @@ class Edit_profile_ViewController: UIViewController,UITextFieldDelegate {
                             
                             let vanImg = jsonData[0]["van_img"].stringValue
                             let imageUrl = main_URL+"public/assets/documents/"+vanImg
-                            self.vanImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: R.image.truckImage(), options: .continueInBackground, completed: nil)
+                            self.vanImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: R.image.signUp_image_upload(), options: .continueInBackground, completed: nil)
                         }
                         //                        else {
                         //                        SVProgressHUD.dismiss()

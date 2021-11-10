@@ -75,7 +75,7 @@ enum VersionError: Error {
         overrideSystemFont()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "TextfieldTextColor")
-        application.isStatusBarHidden = true
+      
         UNUserNotificationCenter.current().delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
@@ -243,4 +243,8 @@ enum VersionError: Error {
 
 }
 
-//
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}

@@ -76,14 +76,13 @@ class satistics_ViewController: UIViewController, UITextFieldDelegate, UITableVi
         searchBtn.setTitle(string.search, for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
-        totalCompleted_view.bottomShadow(color: .black)
-        totalPrice_view.bottomShadow(color: .black)
-        totalCompletedRoutesView.bottomShadow(color: .black)
-        totalOutstandingView.bottomShadow(color: .black)
+//        totalCompleted_view.bottomShadow(color: .black)
+//        totalPrice_view.bottomShadow(color: .black)
+//        totalCompletedRoutesView.bottomShadow(color: .black)
+//        totalOutstandingView.bottomShadow(color: .black)
     }
     @IBAction func backBtn_action(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
-        
     }
        
     //MARK: - Function for UIDatepicker

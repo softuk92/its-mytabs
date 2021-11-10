@@ -106,7 +106,7 @@ extension AddBankDetailsViewController: UITableViewDataSource , UITableViewDeleg
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
         cell?.lblJobNature.text = self.list[indexPath.row]
-        if indexPath.row == 11 {
+        if indexPath.row == list.count-1 {
             cell?.bottomLineView.isHidden = true
         }
         return cell!

@@ -48,6 +48,7 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var transporterLoadxRequestOrPay: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var languageBtn: UIButton!
+    @IBOutlet weak var noRecordFoundView: UIStackView!
     
     lazy var paymentHistoryModel = [PaymentHistoryModel]()
     var filteredPaymentHistory = [PaymentHistoryModel]()
@@ -108,6 +109,11 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         }).disposed(by: disposeBag)
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        noRecordFoundView.isHidden = true
     }
     
     func getCounter() {
@@ -190,13 +196,16 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
         APIManager.apiPost(serviceName: url, parameters: params) { [weak self] data, json, error in
             guard let self = self else {return}
             if error == nil{
-                if let json = json{
+//                if let json = json{
+                if json?[0]["msg"].stringValue == "No Record Found." {
+                    self.noRecordFoundView.isHidden = false
+                } else {
+                    self.noRecordFoundView.isHidden = true
+                }
                     let payToLoadX = PayToLoadX(json: json)
 					self.balanceAmount = payToLoadX.summary.balance
 					self.totalPayableToLoadX = payToLoadX.summary.balance.withCommas()
                     self.pendingPaymentsDataSource = payToLoadX.jobLists
-
-//                    self.paymentButton.setTitle(totolPayabale, for: .normal)
 
 					//header
 					self.pendingPaymentHeaderView.title.text = payToLoadX.summary.weekRange
@@ -231,13 +240,14 @@ class PaymentHistoryController: UIViewController, UITableViewDelegate, UITableVi
 					self.tableView.tableHeaderView = self.pendingPaymentHeaderView
 
 					self.tableView.reloadData()
-                }
+//                }
             }
             SVProgressHUD.dismiss()
         }
     }
 
     func getPaymentHistory() {
+        noRecordFoundView.isHidden = true
         SVProgressHUD.show(withStatus: "Getting details...")
         if let totalEarning = UserDefaults.standard.string(forKey: "total_earning") {
 			self.totalEarning.text = "Total Earning"

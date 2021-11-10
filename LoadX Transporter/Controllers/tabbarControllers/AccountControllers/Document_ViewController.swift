@@ -44,7 +44,7 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+//        setupUI()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -379,92 +379,27 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             let jsonData : JSON = JSON(response.result.value!)
                             print("transporter Profile jsonData is \(jsonData)")
                             let result = jsonData[0]["result"].stringValue
-    //            self.fullName.text = jsonData[0]["user_name"].stringValue
-                           
+
                             if result != "0" {
+                                let icStatus = jsonData[0]["cnic_frontside_status"].stringValue
+                                let dlStatus = jsonData[0]["cnic_backside_status"].stringValue
+                                
+                                self.dl_status.text = icStatus
+                                self.ic_status.text = dlStatus
+
                             
-                            let icStatus = jsonData[0]["ic_status"].stringValue
-                            let dlStatus = jsonData[0]["dl_status"].stringValue
-//                            self.fullName.text = jsonData[0]["user_name"].stringValue
-//                            self.email_address.text = jsonData[0]["user_email"].stringValue
-                                if icStatus == "pending" {
-                                    self.ic_status.text = "Pending"
-                                } else if icStatus == "Approved" {
-                                    self.ic_status.text = "Approved"
-                                } else if icStatus == "Reject" {
-                                    self.ic_status.text = "Rejected"
-                                } else if icStatus == "" {
-                                    self.ic_status.isHidden = true
-                                }
-                            
-                                if dlStatus == "pending" {
-                                    self.dl_status.text = "Pending"
-                                } else if dlStatus == "Approved" {
-                                    self.dl_status.text = "Approved"
-                                } else if dlStatus == "Reject" {
-                                    self.dl_status.text = "Rejected"
-                                } else if dlStatus == "" {
-                                    self.dl_status.isHidden = true
-                                }
-                            
-                         /*   self.phone_no.text = jsonData[0]["user_phone"].stringValue
-                            self.address.text = jsonData[0]["user_address"].stringValue
-                            let vanType = jsonData[0]["van_type"].stringValue
-                                if vanType != "" {
-                                    if vanType == "SWB Van" {
-                                        self.van_type.text = "Small Van"
-                                    } else if vanType == "MWB Van" {
-                                        self.van_type.text = "Medium Van"
-                                    } else if vanType == "LWB Van" {
-                                        self.van_type.text = "Large Van"
-                                    } else {
-                                        self.van_type.text = vanType
-                                    }
-                                } else {
-                                    
-                                }
-                            self.reg_no.text = jsonData[0]["truck_registration"].stringValue
-                            self.about_me.text = jsonData[0]["about_me"].stringValue
-                            
-                            self.current_password.text = jsonData[0]["user_password"].stringValue
-                            }*/
-//                            let image1 = jsonData[0]["user_image_url"].stringValue
-                            let image2 = jsonData[0]["van_img"].stringValue
-                            let image3 = jsonData[0]["copy_insurance"].stringValue
-                            let image4 = jsonData[0]["copy_driving_license"].stringValue
-                            
-                            if image3 == "" && image4 == "" {
-                                self.ic_status.isHidden = true
-                                self.dl_status.isHidden = true
-                            }
-                            
-                           /* if image1 != "" {
-                                        let urlString = main_URL+"assets/user_profile_image/"+image1
-                                        if let url = URL(string: urlString) {
-                                            SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
-                                                //                        print(received, expected)
-                                            }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
-                                                if let imageCell = imageReceived {
-                                                    self.myImage1.image = imageCell
-                                                    let photo1 = SKPhoto.photoWithImage(imageCell)
-                                                    self.images1.append(photo1)
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        let photo1 = SKPhoto.photoWithImage(self.myImage1.image!)
-                                        self.images1.append(photo1)
-                            }*/
-                                    
-                                    if image2 != "" {
-                                        let urlString = main_URL+"public/assets/user_profile_image/"+image2
+                            let cnicFront = jsonData[0]["cnic_front_img"].stringValue
+                            let cnicBack = jsonData[0]["cnic_back_img"].stringValue
+
+                                    if cnicFront != "" {
+                                        let urlString = main_URL+"public/assets/documents/"+cnicFront
                                         if let url = URL(string: urlString) {
                                             SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                                 //                        print(received, expected)
                                             }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
                                                 if let imageCell = imageReceived {
                                                     
-                                                    self.van_img.image = imageCell
+                                                    self.license_img.image = imageCell
 //                                                    self.imageThree = 1
                                                     
                                                     let photo2 = SKPhoto.photoWithImage(imageCell)
@@ -473,12 +408,12 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                                             }
                                         }
                                     } else {
-                                        let photo2 = SKPhoto.photoWithImage(self.van_img.image!)
+                                        let photo2 = SKPhoto.photoWithImage(self.license_img.image!)
                                         self.images1.append(photo2)
                             }
                             
-                            if image3 != "" {
-                                let urlString = main_URL+"public/assets/documents/"+image3
+                            if cnicBack != "" {
+                                let urlString = main_URL+"public/assets/documents/"+cnicBack
                                 if let url = URL(string: urlString) {
                                     SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
                                         //                        print(received, expected)
@@ -495,26 +430,6 @@ class Document_ViewController: UIViewController,UINavigationControllerDelegate, 
                             } else {
                                 let photo3 = SKPhoto.photoWithImage(self.insurance_img.image!)
                                 self.images2.append(photo3)
-                            }
-                            
-                            if image4 != "" {
-                                let urlString = main_URL+"public/assets/documents/"+image4
-                                if let url = URL(string: urlString) {
-                                    SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: { (received, expected, nil) in
-                                        //                        print(received, expected)
-                                    }) { (imageReceived, imageData, error, SDImageCache, true, imageURLString) in
-                                        if let imageCell = imageReceived {
-                                            
-                                            self.license_img.image = imageCell
-//                                            self.imageOne = 1
-                                            let photo4 = SKPhoto.photoWithImage(imageCell)
-                                            self.images2.append(photo4)
-                                        }
-                                    }
-                                }
-                            } else {
-                                let photo4 = SKPhoto.photoWithImage(self.license_img.image!)
-                                self.images2.append(photo4)
                             }
                             
                         } else {

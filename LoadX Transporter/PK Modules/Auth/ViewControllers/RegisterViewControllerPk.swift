@@ -25,7 +25,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     @IBOutlet weak var email_address: AnimatableTextField!
     @IBOutlet weak var phone_no: AnimatableTextField!
     @IBOutlet weak var address: AnimatableTextField!
-    @IBOutlet weak var van_type: AnimatableTextField!
+    @IBOutlet weak var van_type: iOSDropDown!
     @IBOutlet weak var vehicle_reg_no: AnimatableTextField!
     @IBOutlet weak var cnicFrontimage: UIImageView!
     @IBOutlet weak var cnicBackimage: UIImageView!
@@ -67,7 +67,8 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
         
         innerVehiclesListView.layer.cornerRadius = 10
         innerTypeListView.layer.cornerRadius = 10
-        
+        van_type.arrow.tintColor = R.color.addressTextColor()
+        van_type.tintColor = R.color.addressTextColor()
         AppUtility.shared.getVehiclesList { [weak self] (result) in
             switch result {
             case .success(let vehicles):
@@ -115,7 +116,7 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == van_type {
             
-            self.van_type.rightImage = UIImage(named: "ArrowUp")
+//            self.van_type.rightImage = UIImage(named: "ArrowUp")
             self.view.endEditing(true)
         }
         view.endEditing(true)
@@ -281,8 +282,8 @@ class RegisterViewControllerPk: UIViewController, UITextFieldDelegate, UINavigat
             
             if result == "true" {
                 let vc = UIStoryboard.init(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessVC") as? SuccessVC
-                vc?.titleStr = "SUCCESS"
-                vc?.subtitleStr = "You have been successfully registered."
+                vc?.titleStr = "Registered Successfully!"
+                vc?.subtitleStr = "You have registered successfully."
 //                    "Your Login detials have been sent to your mobile number/email address."
                 vc?.btnTitle = "Dashboard"
                 vc?.phoneNumber = self.phone_no.text
@@ -361,7 +362,7 @@ extension RegisterViewControllerPk: UITableViewDataSource , UITableViewDelegate 
         cell?.backgroundColor = UIColor.clear
         cell?.backgroundView = nil
         cell?.lblJobNature.text = self.list[indexPath.row].vehicle_name
-        if indexPath.row == 11 {
+        if indexPath.row == list.count-1 {
             cell?.bottomLineView.isHidden = true
         }
         return cell!

@@ -13,6 +13,10 @@ class JobNatureCell: UITableViewCell {
     @IBOutlet weak var lblJobNature : UILabel!
     @IBOutlet weak var bottomLineView: UIView!
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bottomLineView.isHidden = false
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

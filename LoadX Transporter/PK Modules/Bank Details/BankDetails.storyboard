@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-Hl-sVJ">
-                                <rect key="frame" x="25" y="114" width="364" height="310"/>
+                                <rect key="frame" x="25" y="105" width="364" height="310"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sQM-cB-xwr">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="310"/>
@@ -89,7 +89,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-Ic-UZf">
                                                         <rect key="frame" x="0.0" y="21.5" width="364" height="35"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VfC-sP-1ww" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VfC-sP-1ww" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="35"/>
                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -127,7 +127,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="krL-RS-9fM">
                                                         <rect key="frame" x="0.0" y="21.5" width="364" height="35"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account IBAN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-vu-XK0" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PK40 MEZN 0000 0011 2345 6702" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-vu-XK0" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="35"/>
                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -165,7 +165,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="aj1-Pc-QQ0">
                                                         <rect key="frame" x="0.0" y="21.5" width="364" height="35"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Branch Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-5b-d04" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-5b-d04" customClass="AnimatableTextField" customModule="IBAnimatable">
                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="35"/>
                                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -201,10 +201,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afl-I7-CYg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRc-zJ-xc4">
-                                        <rect key="frame" x="25" y="10" width="25" height="25"/>
+                                        <rect key="frame" x="25" y="43" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Ybi-YV-5vS"/>
                                             <constraint firstAttribute="height" constant="25" id="hXr-tw-QzI"/>
@@ -215,7 +215,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ga-9F-rfr">
-                                        <rect key="frame" x="66" y="13" width="90" height="19"/>
+                                        <rect key="frame" x="66" y="46" width="90" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -223,21 +223,21 @@
                                 </subviews>
                                 <color key="backgroundColor" name="topBarcolor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XRc-zJ-xc4" secondAttribute="bottom" constant="12" id="5WF-Ly-4bT"/>
                                     <constraint firstItem="7ga-9F-rfr" firstAttribute="centerY" secondItem="XRc-zJ-xc4" secondAttribute="centerY" id="X4Y-5Q-NAI"/>
                                     <constraint firstItem="7ga-9F-rfr" firstAttribute="leading" secondItem="XRc-zJ-xc4" secondAttribute="trailing" constant="16" id="Yfs-5N-HSi"/>
-                                    <constraint firstItem="XRc-zJ-xc4" firstAttribute="centerY" secondItem="Afl-I7-CYg" secondAttribute="centerY" id="bFO-sk-5H7"/>
                                     <constraint firstItem="XRc-zJ-xc4" firstAttribute="leading" secondItem="Afl-I7-CYg" secondAttribute="leading" constant="25" id="tun-Fd-dpm"/>
-                                    <constraint firstAttribute="height" constant="45" id="zFy-mV-SUA"/>
+                                    <constraint firstAttribute="height" constant="80" id="zFy-mV-SUA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfc-JY-7E8">
-                                <rect key="frame" x="25" y="135.5" width="362" height="35"/>
+                                <rect key="frame" x="25" y="126.5" width="362" height="35"/>
                                 <connections>
                                     <action selector="btnShowPop:" destination="aMN-u7-cvh" eventType="touchUpInside" id="Z4C-Ws-OAC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKq-uS-2cf">
-                                <rect key="frame" x="107" y="469" width="200" height="48"/>
+                                <rect key="frame" x="107" y="460" width="200" height="48"/>
                                 <color key="backgroundColor" name="MehroonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="COq-5b-vA4"/>
@@ -266,8 +266,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D28-SI-y5m">
                                         <rect key="frame" x="20" y="70" width="374" height="712"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-io-bHz">
-                                                <rect key="frame" x="118" y="15" width="138.5" height="19"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-io-bHz">
+                                                <rect key="frame" x="144" y="15" width="86" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -373,7 +373,7 @@
                         <constraints>
                             <constraint firstItem="kfc-JY-7E8" firstAttribute="bottom" secondItem="YWd-qc-BNk" secondAttribute="bottom" id="4AH-NY-8P0"/>
                             <constraint firstAttribute="trailing" secondItem="gxC-Hl-sVJ" secondAttribute="trailing" constant="25" id="4NS-2o-BCt"/>
-                            <constraint firstItem="3IF-Bb-pp5" firstAttribute="top" secondItem="hPD-L9-Xil" secondAttribute="top" id="4cb-Mk-2Fh"/>
+                            <constraint firstItem="3IF-Bb-pp5" firstAttribute="top" secondItem="jxB-i5-Em8" secondAttribute="top" constant="44" id="4cb-Mk-2Fh"/>
                             <constraint firstItem="kfc-JY-7E8" firstAttribute="trailing" secondItem="YWd-qc-BNk" secondAttribute="trailing" id="D1k-rg-I4j"/>
                             <constraint firstItem="kfc-JY-7E8" firstAttribute="top" secondItem="YWd-qc-BNk" secondAttribute="top" id="NUK-rm-VFX"/>
                             <constraint firstItem="gxC-Hl-sVJ" firstAttribute="top" secondItem="Afl-I7-CYg" secondAttribute="bottom" constant="25" id="PE2-kX-deA"/>
@@ -384,7 +384,7 @@
                             <constraint firstItem="gxC-Hl-sVJ" firstAttribute="leading" secondItem="hPD-L9-Xil" secondAttribute="leading" constant="25" id="cYm-XZ-p7B"/>
                             <constraint firstItem="hPD-L9-Xil" firstAttribute="trailing" secondItem="Afl-I7-CYg" secondAttribute="trailing" id="dEN-gT-qnf"/>
                             <constraint firstItem="Afl-I7-CYg" firstAttribute="leading" secondItem="hPD-L9-Xil" secondAttribute="leading" id="fFf-Vf-BQB"/>
-                            <constraint firstItem="Afl-I7-CYg" firstAttribute="top" secondItem="hPD-L9-Xil" secondAttribute="top" id="glS-ch-IHi"/>
+                            <constraint firstItem="Afl-I7-CYg" firstAttribute="top" secondItem="jxB-i5-Em8" secondAttribute="top" id="glS-ch-IHi"/>
                             <constraint firstAttribute="bottom" secondItem="3IF-Bb-pp5" secondAttribute="bottom" id="hgB-o0-vRF"/>
                             <constraint firstItem="UKq-uS-2cf" firstAttribute="top" secondItem="gxC-Hl-sVJ" secondAttribute="bottom" constant="45" id="hwJ-i6-WKp"/>
                         </constraints>
@@ -410,13 +410,13 @@
             <size key="intrinsicContentSize" width="75.5" height="18"/>
         </designable>
         <designable name="IFu-5b-d04">
-            <size key="intrinsicContentSize" width="83" height="18"/>
+            <size key="intrinsicContentSize" width="31.5" height="18"/>
         </designable>
         <designable name="VfC-sP-1ww">
-            <size key="intrinsicContentSize" width="82.5" height="18"/>
+            <size key="intrinsicContentSize" width="93.5" height="18"/>
         </designable>
         <designable name="dlg-vu-XK0">
-            <size key="intrinsicContentSize" width="88.5" height="18"/>
+            <size key="intrinsicContentSize" width="217.5" height="18"/>
         </designable>
     </designables>
     <resources>

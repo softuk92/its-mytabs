@@ -144,18 +144,18 @@ class Job_Summary_ViewController: UIViewController, UITableViewDataSource, UITab
         let weightUnit = jsonData[0]["weight_unit"].stringValue
         let estimatedWeight = jsonData[0]["est_weight"].stringValue
         let goodsType = jsonData[0]["good_type"].stringValue
-        let image1 = jsonData[0]["image1"].stringValue
-        let image2 = jsonData[0]["image2"].stringValue
-        let image3 = jsonData[0]["image3"].stringValue
+        let image1 = jsonData[0]["image1"].stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let image2 = jsonData[0]["image2"].stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let image3 = jsonData[0]["image3"].stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let audioFileName = jsonData[0]["audio_file_name"].stringValue
 
-            let url1 = URL(string: "\(main_URL)public/assets/job_images/\(image1)")
+            let url1 = URL(string: "\(main_URL)public/assets/job_images/\(image1)") ?? URL(fileURLWithPath: "\(main_URL)public/assets/job_images/\(image1)")
             jobImage1.sd_setImage(with: url1, completed: .none)
 
-            let url2 = URL(string: "\(main_URL)public/assets/job_images/\(image2)")
+            let url2 = URL(string: "\(main_URL)public/assets/job_images/\(image2)") ?? URL(fileURLWithPath: "\(main_URL)public/assets/job_images/\(image2)")
             jobImage2.sd_setImage(with: url2, completed: .none)
 
-            let url3 = URL(string: "\(main_URL)public/assets/job_images/\(image3)")
+            let url3 = URL(string: "\(main_URL)public/assets/job_images/\(image3)") ?? URL(fileURLWithPath: "\(main_URL)public/assets/job_images/\(image3)")
             jobImage3.sd_setImage(with: url3, completed: .none)
 
         
