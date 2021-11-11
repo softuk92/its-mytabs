@@ -163,9 +163,6 @@
 		8D23103726B7EE5C0042BFB6 /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23103626B7EE5C0042BFB6 /* UploadReceiptViewController.swift */; };
 		8D23103926B7EE770042BFB6 /* Earning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D23103826B7EE770042BFB6 /* Earning.storyboard */; };
 		8D246F9A22282E4F00E2B290 /* UserManaulController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246F9922282E4F00E2B290 /* UserManaulController.swift */; };
-		8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246F9C2228362000E2B290 /* ViewAllQueries.swift */; };
-		8D246FA02228362100E2B290 /* ViewAllQueriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246F9D2228362100E2B290 /* ViewAllQueriesCell.swift */; };
-		8D246FA12228362100E2B290 /* ViewAllQueriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D246F9E2228362100E2B290 /* ViewAllQueriesCell.xib */; };
 		8D246FA32228388D00E2B290 /* ViewAllQueriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246FA22228388D00E2B290 /* ViewAllQueriesModel.swift */; };
 		8D246FA52228414000E2B290 /* PrivacyPolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246FA42228414000E2B290 /* PrivacyPolicyController.swift */; };
 		8D246FA72228417000E2B290 /* TermsAndConditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D246FA62228417000E2B290 /* TermsAndConditionController.swift */; };
@@ -193,9 +190,6 @@
 		8D3E611421F772C3004EAB06 /* Ubuntu-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E611121F772C3004EAB06 /* Ubuntu-M.ttf */; };
 		8D3E611521F772C3004EAB06 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D3E611221F772C3004EAB06 /* Ubuntu-B.ttf */; };
 		8D4385E3222447A200A3CE7F /* BidJobDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4385E2222447A200A3CE7F /* BidJobDetailController.swift */; };
-		8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4385E52224495200A3CE7F /* ActivityLogListCell.xib */; };
-		8D4385E92224495200A3CE7F /* ActivityLogList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4385E62224495200A3CE7F /* ActivityLogList.swift */; };
-		8D4385EA2224495200A3CE7F /* ActivityLogListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4385E72224495200A3CE7F /* ActivityLogListCell.swift */; };
 		8D4385EC22244D6000A3CE7F /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4385EB22244D6000A3CE7F /* SideMenuController.swift */; };
 		8D48C1EE2224062800417EF5 /* TransporterDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48C1ED2224062700417EF5 /* TransporterDashboard.swift */; };
 		8D48C1F522240A1A00417EF5 /* ActiveJobs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48C1F222240A1A00417EF5 /* ActiveJobs.swift */; };
@@ -254,13 +248,9 @@
 		8DE44D412211B42A008CBEE0 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE44D402211B42A008CBEE0 /* SessionManager.swift */; };
 		8DE5908E225F7DCA008B6FCD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5908D225F7DCA008B6FCD /* CopyableLabel.swift */; };
 		8DE8FAFF220074EE009309F8 /* SuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8FAFE220074EE009309F8 /* SuccessController.swift */; };
-		8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA222577ADD00E6E069 /* FreebieJobDetail.swift */; };
 		8DEF4BA622577C2A00E6E069 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEF4BA522577C2A00E6E069 /* MapKit.framework */; };
 		8DEF4BA8225785BD00E6E069 /* SearchFreebieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */; };
 		8DF49C6A26B436EC0060F608 /* PostAvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */; };
-		8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */; };
-		8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */; };
-		8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */; };
 		B3F95C23A8304B6BC82EA818 /* Pods_LoadX_Transporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAC69D82028800BE33CA626 /* Pods_LoadX_Transporter.framework */; };
 		BB16169A24BF3146008420A8 /* GeneralItemHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16169924BF3146008420A8 /* GeneralItemHeaderCell.swift */; };
 		BB16169C24BF31E2008420A8 /* GeneralItemHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB16169B24BF31E1008420A8 /* GeneralItemHeaderCell.xib */; };
@@ -440,9 +430,6 @@
 		8D23103626B7EE5C0042BFB6 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
 		8D23103826B7EE770042BFB6 /* Earning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Earning.storyboard; sourceTree = "<group>"; };
 		8D246F9922282E4F00E2B290 /* UserManaulController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManaulController.swift; sourceTree = "<group>"; };
-		8D246F9C2228362000E2B290 /* ViewAllQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAllQueries.swift; sourceTree = "<group>"; };
-		8D246F9D2228362100E2B290 /* ViewAllQueriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAllQueriesCell.swift; sourceTree = "<group>"; };
-		8D246F9E2228362100E2B290 /* ViewAllQueriesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewAllQueriesCell.xib; sourceTree = "<group>"; };
 		8D246FA22228388D00E2B290 /* ViewAllQueriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllQueriesModel.swift; sourceTree = "<group>"; };
 		8D246FA42228414000E2B290 /* PrivacyPolicyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyController.swift; sourceTree = "<group>"; };
 		8D246FA62228417000E2B290 /* TermsAndConditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionController.swift; sourceTree = "<group>"; };
@@ -473,9 +460,6 @@
 		8D3E611121F772C3004EAB06 /* Ubuntu-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-M.ttf"; sourceTree = "<group>"; };
 		8D3E611221F772C3004EAB06 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
 		8D4385E2222447A200A3CE7F /* BidJobDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidJobDetailController.swift; sourceTree = "<group>"; };
-		8D4385E52224495200A3CE7F /* ActivityLogListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityLogListCell.xib; sourceTree = "<group>"; };
-		8D4385E62224495200A3CE7F /* ActivityLogList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLogList.swift; sourceTree = "<group>"; };
-		8D4385E72224495200A3CE7F /* ActivityLogListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLogListCell.swift; sourceTree = "<group>"; };
 		8D4385EB22244D6000A3CE7F /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		8D48C1ED2224062700417EF5 /* TransporterDashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransporterDashboard.swift; sourceTree = "<group>"; };
 		8D48C1F222240A1A00417EF5 /* ActiveJobs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveJobs.swift; sourceTree = "<group>"; };
@@ -534,14 +518,10 @@
 		8DE44D402211B42A008CBEE0 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		8DE5908D225F7DCA008B6FCD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		8DE8FAFE220074EE009309F8 /* SuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessController.swift; sourceTree = "<group>"; };
-		8DEF4BA222577ADD00E6E069 /* FreebieJobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreebieJobDetail.swift; sourceTree = "<group>"; };
 		8DEF4BA422577C1700E6E069 /* CTS Move Transporter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CTS Move Transporter.entitlements"; sourceTree = "<group>"; };
 		8DEF4BA522577C2A00E6E069 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8DEF4BA7225785BD00E6E069 /* SearchFreebieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFreebieModel.swift; sourceTree = "<group>"; };
 		8DF49C6926B436EC0060F608 /* PostAvailabilityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAvailabilityFormViewController.swift; sourceTree = "<group>"; };
-		8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFreebiesCell.xib; sourceTree = "<group>"; };
-		8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesCell.swift; sourceTree = "<group>"; };
-		8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFreebiesController.swift; sourceTree = "<group>"; };
 		9FA848A3996106A0C353C531 /* Pods-LoadX Transporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadX Transporter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoadX Transporter/Pods-LoadX Transporter.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAC69D82028800BE33CA626 /* Pods_LoadX_Transporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoadX_Transporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB16169924BF3146008420A8 /* GeneralItemHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralItemHeaderCell.swift; sourceTree = "<group>"; };
@@ -578,14 +558,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		180049412555ABAE005EA70D /* New Module */ = {
+		180049412555ABAE005EA70D /* New Route Module */ = {
 			isa = PBXGroup;
 			children = (
 				180049422555ABB7005EA70D /* Routes */,
 				18B60945265D24BC00AC11DF /* JobStatus.swift */,
 				4E0249D126616B16005D1CFE /* JobSummaryModel.swift */,
 			);
-			path = "New Module";
+			path = "New Route Module";
 			sourceTree = "<group>";
 		};
 		180049422555ABB7005EA70D /* Routes */ = {
@@ -633,7 +613,7 @@
 			path = "Report a Problem";
 			sourceTree = "<group>";
 		};
-		185870D3265BA8EA00FA0887 /* Job Detail Module */ = {
+		185870D3265BA8EA00FA0887 /* Booked Job Detail Module */ = {
 			isa = PBXGroup;
 			children = (
 				185870D4265BA91B00FA0887 /* JobPickupDropoffViewController.swift */,
@@ -643,7 +623,7 @@
 				4E0249E62661AE17005D1CFE /* DisclaimerViewController.swift */,
 				186B5369266E535F00B9FC6A /* JobSuccessController.swift */,
 			);
-			path = "Job Detail Module";
+			path = "Booked Job Detail Module";
 			sourceTree = "<group>";
 		};
 		18624ED2255AE57F000E1954 /* Helper Methods and Extensions */ = {
@@ -688,6 +668,14 @@
 				188FC36126CBF08D00271B49 /* TransporterProfileModel.swift */,
 			);
 			path = "Public Profile";
+			sourceTree = "<group>";
+		};
+		18AAD822273D2EDF004B08E3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8D48C20022242B8100417EF5 /* JobsInProgressCell.xib */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		18B2080326F872420076F3D2 /* Assign Drivers */ = {
@@ -785,6 +773,7 @@
 		4E3780972579817A002B18C8 /* Custom Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				184C48E4252233280042AA94 /* Custom UI */,
 				1819CB41266E06BF00BDECC0 /* AlertIfCashReceived.swift */,
 				1819CB42266E06BF00BDECC0 /* AlertIfCashReceived.xib */,
 				1819CB3B266E05CE00BDECC0 /* AlertView.swift */,
@@ -953,16 +942,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		8D246F9B2228361500E2B290 /* View All Queries */ = {
-			isa = PBXGroup;
-			children = (
-				8D246F9C2228362000E2B290 /* ViewAllQueries.swift */,
-				8D246F9D2228362100E2B290 /* ViewAllQueriesCell.swift */,
-				8D246F9E2228362100E2B290 /* ViewAllQueriesCell.xib */,
-			);
-			path = "View All Queries";
-			sourceTree = "<group>";
-		};
 		8D3E60EB21F76432004EAB06 = {
 			isa = PBXGroup;
 			children = (
@@ -986,6 +965,7 @@
 		8D3E60F621F76432004EAB06 /* LoadX Transporter */ = {
 			isa = PBXGroup;
 			children = (
+				180049412555ABAE005EA70D /* New Route Module */,
 				4E3964682695C20F00A67E44 /* PK Modules */,
 				4E3780972579817A002B18C8 /* Custom Common Views */,
 				18624ED2255AE57F000E1954 /* Helper Methods and Extensions */,
@@ -993,7 +973,6 @@
 				8DEF4BA422577C1700E6E069 /* CTS Move Transporter.entitlements */,
 				8D3E60F721F76432004EAB06 /* AppDelegate.swift */,
 				8D270D0B21FB638F0016D6DD /* CTS Move Transporter-Bridging-Header.h */,
-				180049412555ABAE005EA70D /* New Module */,
 				8D3E610921F7646C004EAB06 /* Controllers */,
 				8D3E610B21F76489004EAB06 /* Views */,
 				8D3E610F21F77281004EAB06 /* Resources */,
@@ -1008,10 +987,9 @@
 		8D3E610921F7646C004EAB06 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				185870D3265BA8EA00FA0887 /* Job Detail Module */,
+				185870D3265BA8EA00FA0887 /* Booked Job Detail Module */,
 				4E275CEA241AAABB00D05A24 /* App_intro_controllers */,
 				BB21E06A23DF68D5004DFE76 /* tabbarControllers */,
-				184C48E4252233280042AA94 /* Custom UI */,
 				8D98C726222056DB00420BFA /* Custom Cells */,
 				8D61D3CC221D9D5600F215D4 /* Transporter */,
 				8D3E60F921F76432004EAB06 /* OnboardingController.swift */,
@@ -1113,16 +1091,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		8D4385E42224494800A3CE7F /* Activity Log List */ = {
-			isa = PBXGroup;
-			children = (
-				8D4385E62224495200A3CE7F /* ActivityLogList.swift */,
-				8D4385E72224495200A3CE7F /* ActivityLogListCell.swift */,
-				8D4385E52224495200A3CE7F /* ActivityLogListCell.xib */,
-			);
-			path = "Activity Log List";
-			sourceTree = "<group>";
-		};
 		8D48C1F0222409C100417EF5 /* Manage Jobs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1146,9 +1114,9 @@
 		8D48C1F8222413CA00417EF5 /* Booked Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				18AAD822273D2EDF004B08E3 /* UI */,
 				8D48C20222242B8200417EF5 /* JobsInProgress.swift */,
 				8D48C20122242B8100417EF5 /* JobsInProgressCell.swift */,
-				8D48C20022242B8100417EF5 /* JobsInProgressCell.xib */,
 				4E1CF5D222FC64CF00503BEC /* BookJobController.swift */,
 				BBEE394D24E7E5CC00AC10FF /* jobCancel_ViewController.swift */,
 			);
@@ -1197,10 +1165,7 @@
 			children = (
 				4EEDA46125631E7E00E7F212 /* Search Jobs */,
 				184C48E9252351F10042AA94 /* Report a Problem */,
-				8DF9F0F122566EDE00137495 /* Freebie Items */,
-				8D246F9B2228361500E2B290 /* View All Queries */,
 				8D48C213222441F900417EF5 /* Payment History */,
-				8D4385E42224494800A3CE7F /* Activity Log List */,
 				8D48C20822243E2300417EF5 /* Reviews */,
 				8D48C1F0222409C100417EF5 /* Manage Jobs */,
 				8D48C2112224419200417EF5 /* JobDetailController.swift */,
@@ -1277,25 +1242,6 @@
 				8D8CAF7326F7B68E00273DC4 /* ManageTransporterViewCell.xib */,
 			);
 			path = "Post Availbility ";
-			sourceTree = "<group>";
-		};
-		8DF9F0F122566EDE00137495 /* Freebie Items */ = {
-			isa = PBXGroup;
-			children = (
-				8DF9F0F722566F4800137495 /* SearchFreebiesController.swift */,
-				8DF9F0F222566EE900137495 /* Freebie Cell */,
-				8DEF4BA222577ADD00E6E069 /* FreebieJobDetail.swift */,
-			);
-			path = "Freebie Items";
-			sourceTree = "<group>";
-		};
-		8DF9F0F222566EE900137495 /* Freebie Cell */ = {
-			isa = PBXGroup;
-			children = (
-				8DF9F0F422566F1800137495 /* SearchFreebiesCell.swift */,
-				8DF9F0F322566F1800137495 /* SearchFreebiesCell.xib */,
-			);
-			path = "Freebie Cell";
 			sourceTree = "<group>";
 		};
 		9AE261268342FD152F2ED396 /* Frameworks */ = {
@@ -1422,7 +1368,6 @@
 				4E454B5C23E48217009AFF47 /* Montserrat-Regular.otf in Resources */,
 				4E454B5D23E48217009AFF47 /* Montserrat-Black.otf in Resources */,
 				4E8F0B3F26E69CFE00DD0961 /* BankDetails.storyboard in Resources */,
-				8D4385E82224495200A3CE7F /* ActivityLogListCell.xib in Resources */,
 				4E298E0226FD01D20094313F /* Affiliated.storyboard in Resources */,
 				4E87C1DC266047CD007B6454 /* JobSummaryView.xib in Resources */,
 				184C48E8252233450042AA94 /* CustomUISwitch.xib in Resources */,
@@ -1438,7 +1383,6 @@
 				8D3E611321F772C3004EAB06 /* Ubuntu-L.ttf in Resources */,
 				4E31506926B7105A0001D63E /* SearchJobsCellPk.xib in Resources */,
 				4E3780992579818E002B18C8 /* AlertView.xib in Resources */,
-				8D246FA12228362100E2B290 /* ViewAllQueriesCell.xib in Resources */,
 				18B2080526F873110076F3D2 /* AssignDriver.storyboard in Resources */,
 				4E09083C256AFD3600A6B2BB /* RouteBookedView.xib in Resources */,
 				8D3E610E21F76BC6004EAB06 /* Default-568h@2x.png in Resources */,
@@ -1463,7 +1407,6 @@
 				8DC0948F26B2BAEC00106AC1 /* TransporterAvailability.storyboard in Resources */,
 				8D48C20D22243E3D00417EF5 /* ManageReviewsCell.xib in Resources */,
 				8D8CAF7526F7B68E00273DC4 /* ManageTransporterViewCell.xib in Resources */,
-				8DF9F0F522566F1900137495 /* SearchFreebiesCell.xib in Resources */,
 				1890DC5A251B7DD700B964C9 /* FAQSCell.xib in Resources */,
 				1848DB182664D58D00DA71B2 /* PaymentLinkView.xib in Resources */,
 				18624EDC255AF0C9000E1954 /* RouteViewCell.xib in Resources */,
@@ -1612,7 +1555,6 @@
 				1890DC59251B7DD700B964C9 /* FAQSCell.swift in Sources */,
 				4E19487C2565C8C300C3C3C8 /* RouteInventoryCell.swift in Sources */,
 				8D3E60FA21F76432004EAB06 /* OnboardingController.swift in Sources */,
-				8D246F9F2228362100E2B290 /* ViewAllQueries.swift in Sources */,
 				182B334325656B7700B8201A /* RouteStopDetail.swift in Sources */,
 				8D246FAD22284A3E00E2B290 /* FooterTableViewCell.swift in Sources */,
 				4E59299023E9CA7E007A3C09 /* Security_ViewController.swift in Sources */,
@@ -1636,7 +1578,6 @@
 				4E69145A260BD87B00352CAF /* location_ViewController.swift in Sources */,
 				4E8F0B3C26E69CE200DD0961 /* AddBankDetailsViewController.swift in Sources */,
 				BB16169A24BF3146008420A8 /* GeneralItemHeaderCell.swift in Sources */,
-				8DF9F0F822566F4800137495 /* SearchFreebiesController.swift in Sources */,
 				4E9A3011269CE0A900671ACB /* LoginViewControllerPk.swift in Sources */,
 				8D48C21022243FD900417EF5 /* ReportAProblem.swift in Sources */,
 				4EEDA46525631ED000E7F212 /* BookedJobsExtensions.swift in Sources */,
@@ -1674,7 +1615,6 @@
 				4EFE1A4125D70DE40044D701 /* CLocationManager.swift in Sources */,
 				4E1CF5D322FC64CF00503BEC /* BookJobController.swift in Sources */,
 				4E3F9145257D949A00351B9A /* AlertViewWithDescription.swift in Sources */,
-				8D246FA02228362100E2B290 /* ViewAllQueriesCell.swift in Sources */,
 				8D246FA92228450A00E2B290 /* FAQSTableViewController.swift in Sources */,
 				4E59299223E9CA95007A3C09 /* Notification_ViewController.swift in Sources */,
 				8D48C20E22243E3D00417EF5 /* ManageReviewsCell.swift in Sources */,
@@ -1692,7 +1632,6 @@
 				18B211E82566CFE10040C001 /* HeaderView.swift in Sources */,
 				4E7C9BD125645D13003BC22B /* BookedJobsFunctions.swift in Sources */,
 				18275CBD2710508C00260B46 /* Config.swift in Sources */,
-				8D4385E92224495200A3CE7F /* ActivityLogList.swift in Sources */,
 				4EB47DC3258D434B00DC0447 /* StopDetailsViewControllerExtension.swift in Sources */,
 				6DFAC4C522930B5100556D30 /* SearchBookedJobsModel.swift in Sources */,
 				8D8CAF7B26F7CC3700273DC4 /* Extension+TableView.swift in Sources */,
@@ -1713,7 +1652,6 @@
 				4E6FDC3E257E987F00634CAB /* ImageViewCell.swift in Sources */,
 				8DE8FAFF220074EE009309F8 /* SuccessController.swift in Sources */,
 				8D48C1FD2224257C00417EF5 /* CompletedJobsCell.swift in Sources */,
-				8D4385EA2224495200A3CE7F /* ActivityLogListCell.swift in Sources */,
 				8D48C20422242B8200417EF5 /* JobsInProgressCell.swift in Sources */,
 				4EC4B295257C29CE00A03986 /* RunningLateViewController.swift in Sources */,
 				BBED7FA324B50CBA00D65DC7 /* InventoryCell.swift in Sources */,
@@ -1728,7 +1666,6 @@
 				183DDC7D26B4291F00BDCCF8 /* ForgotPasswordViewControllerPk.swift in Sources */,
 				183DDC8026B4326200BDCCF8 /* SuccessVC.swift in Sources */,
 				184C48E7252233450042AA94 /* CustomUISwitch.swift in Sources */,
-				8DF9F0F622566F1900137495 /* SearchFreebiesCell.swift in Sources */,
 				18B2080C26F875AA0076F3D2 /* DriversListMO.swift in Sources */,
 				4E81828B241B9AA3005D3EC9 /* VC4.swift in Sources */,
 				8D33199C2211D84F00BCB339 /* UserModel.swift in Sources */,
@@ -1740,7 +1677,6 @@
 				4E818285241B92A8005D3EC9 /* VC1.swift in Sources */,
 				1803711326F1E0C10079DC26 /* NotificationsModel.swift in Sources */,
 				8DE5908E225F7DCA008B6FCD /* CopyableLabel.swift in Sources */,
-				8DEF4BA322577ADD00E6E069 /* FreebieJobDetail.swift in Sources */,
 				185139BE2562D3EC0053098B /* RouteDetailsCell.swift in Sources */,
 				4EC8049923E31E3300540F9A /* JobDetial_ViewController.swift in Sources */,
 				4E72F311258BF5C200789022 /* R.generated.swift in Sources */,
@@ -1915,7 +1851,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3;
+				MARKETING_VERSION = 4.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1948,7 +1884,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3;
+				MARKETING_VERSION = 4.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BIDS.CTSmoveTransporter;
 				PRODUCT_NAME = "LoadX Transporter";
 				PROVISIONING_PROFILE_SPECIFIER = "";
