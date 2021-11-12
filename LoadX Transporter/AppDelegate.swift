@@ -18,8 +18,8 @@ import DropDown
 import ZDCChat
 import SVProgressHUD
 
-//var main_URL = "https://www.loadx.pk/"
-var main_URL = "http://test.loadx.pk/"
+var main_URL = "https://www.loadx.pk/"
+//var main_URL = "http://test.loadx.pk/"
 
 //test api
 //var main_URL = AppUtility.shared.country == .Pakistan ? "https://www.loadx.pk/" : "https://test.loadx.co.uk/"
