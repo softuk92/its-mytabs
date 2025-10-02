@@ -146,6 +146,8 @@ It was AI generated on Songsterr, and the bass tab was inaccurate, so I fixed it
 
 Since I am a beginner, I re-arranged some parts (fewer slide) to make it easier to play. Hope you enjoy it too.
 
+Reddit post: https://www.reddit.com/r/selfhosted/comments/1nuisjc/comment/nhbn1p8
+
 ## Free Resources
 
 - [Ultimate Guitar](https://www.ultimate-guitar.com/) - Some free tabs in *.gp format
