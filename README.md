@@ -3,7 +3,7 @@
 Open source, web based, self hostable guitar/bass tab viewer and player, similar to Songsterr.
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/d7859f4a-8ae0-41e2-bdeb-93b900cc0220" />
-
+<img width="200"  alt="image" src="https://github.com/user-attachments/assets/c980d516-8f6d-4cca-8a59-4a1a4cc75b1b" />
 
 ## Live Demo
 
@@ -90,7 +90,7 @@ Go to `http://localhost:47777` to access the web UI.
 
 ## Screenshots
 
-<img width="200"  alt="image" src="https://github.com/user-attachments/assets/c980d516-8f6d-4cca-8a59-4a1a4cc75b1b" />
+
 
 
 <img width="300"  alt="image" src="https://github.com/user-attachments/assets/266c6c5a-ae86-4b88-8305-3ae120cf4dd8" />
