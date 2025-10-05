@@ -81,7 +81,7 @@ Requirements:
 ```bash
 git clone https://github.com/louislam/its-mytabs.git
 cd its-mytabs
-git checkout 1.0.0 --force
+git checkout 1.0.1 --force
 deno task setup
 deno task start
 ```
