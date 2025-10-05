@@ -18,6 +18,7 @@ export default defineComponent({
      * @type {SocketIOClient.Socket}
      */
     socket: null,
+    
     /**
      * @type {alphaTab.AlphaTabApi}
      */
@@ -319,12 +320,16 @@ export default defineComponent({
             });
         }
 
+        await this.initSocketIO();
+
         console.log("Mounted");
     },
     beforeUnmount() {
         console.log("Before unmount");
         this.destroyContainer();
         window.removeEventListener("keydown", this.keyEvents);
+        
+        this.socket.disconnect();
     },
     methods: {
         async load(trackID) {
@@ -639,9 +644,27 @@ export default defineComponent({
             this.socket.on("connect", () => {
                 console.log("Connected to server");
             });
-
+            
             this.socket.on("disconnect", () => {
                 console.log("Disconnected from server");
+            });
+
+            // Play
+            this.socket.on("play", () => {
+                this.play();
+            });
+            
+            // Pause
+            this.socket.on("pause", () => {
+                this.pause();
+            });
+            
+            // Seek
+            this.socket.on("seek", (time) => {
+                if (!this.api) {
+                    return;
+                }
+                api.timePosition = time;
             });
         },
 
@@ -987,58 +1010,6 @@ export default defineComponent({
             }
             this.currentAudio = "backingTrack";
             this.closeAllList();
-        },
-
-        /**
-         * TODO
-         */
-        async initSocket() {
-            this.api.settings.player.playerMode = alphaTab.PlayerMode.EnabledExternalMedia;
-            this.api.updateSettings();
-
-            // check if connected to socket
-
-            // websocket get info first
-            this.socket.emit("waitMPC");
-
-            const handler = {
-                get backingTrackDuration() {
-                    return 0;
-                },
-                get playbackRate() {
-                    return player.getPlaybackRate();
-                },
-                set playbackRate(value) {
-                    player.setPlaybackRate(value);
-                },
-                get masterVolume() {
-                    return player.getVolume() / 100;
-                },
-                set masterVolume(value) {
-                    player.setVolume(value * 100);
-                },
-                seekTo(time) {
-                    if (
-                        player.getPlayerState() !== YT.PlayerState.PAUSED &&
-                        player.getPlayerState() !== YT.PlayerState.PLAYING
-                    ) {
-                        initialSeek = time / 1000;
-                    } else {
-                        player.seekTo(time / 1000);
-                    }
-                },
-                play() {
-                    player.playVideo();
-                    if (initialSeek >= 0) {
-                        player.seekTo(initialSeek);
-                        initialSeek = -1;
-                    }
-                },
-                pause() {
-                },
-            };
-
-            this.api.player.output.handler = handler;
         },
 
         /**
